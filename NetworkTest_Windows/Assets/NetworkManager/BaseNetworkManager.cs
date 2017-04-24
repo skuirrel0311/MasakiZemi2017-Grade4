@@ -67,6 +67,7 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
         }
         catch
         {
+            Debug.Log("send failure");
             Stop();
         }
     }
@@ -96,6 +97,7 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
+                Debug.Log("reading failure");
                 Stop();
             }
             ReceiveBuffer(receiveData, dataLength);

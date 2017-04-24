@@ -28,7 +28,7 @@ public class MyNetworkClient : BaseNetworkManager
         int tryNum = 10;
         //interval秒ごとに接続し失敗したら接続失敗とする
         WaitForSeconds interval = new WaitForSeconds(0.5f);
-
+        
         while (true)
         {
             if (Connect()) break;
@@ -39,7 +39,7 @@ public class MyNetworkClient : BaseNetworkManager
                 Debug.Log("接続失敗");
                 state = NetworkState.Error;
                 connecedCallback.Invoke(false);
-                yield  break;
+                break;
             }
             yield return interval;
         }

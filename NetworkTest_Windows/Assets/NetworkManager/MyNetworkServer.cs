@@ -13,14 +13,14 @@ public class MyNetworkServer : BaseNetworkManager
         string hostName = Dns.GetHostName();
         IPAddress[] addresses = Dns.GetHostAddresses(hostName);
 
-        foreach (IPAddress add in addresses)
+        foreach(IPAddress add in addresses)
         {
             if (add.AddressFamily != AddressFamily.InterNetwork) continue;
             serverIP = add.ToString();
         }
-
+        
         server = new TcpListener(IPAddress.Parse(serverIP), portNum);
-
+        
         base.Start();
     }
 

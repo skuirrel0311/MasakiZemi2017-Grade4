@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MainSceneManager : BaseManager<MainSceneManager>
 {
-    MyNetworkClient client;
+    MyNetworkServer server;
     [SerializeField]
     InputField sendText = null;
 
@@ -13,31 +13,27 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     [SerializeField]
     Text stateText = null;
 
-    bool isTransition = false;
-
     protected override void Start()
     {
-        client = (MyNetworkClient)MyNetworkClient.I;
+        server = (MyNetworkServer)MyNetworkServer.I;
         base.Start();
     }
 
     public void SendBuffer()
     {
-        if (client.state != BaseNetworkManager.NetworkState.Conecting) return;
-        client.SendBuffer(sendText.text);
+        if (server.state != BaseNetworkManager.NetworkState.Conecting) return;
+        server.SendBuffer(sendText.text);
     }
 
     void Update()
     {
-        stateText.text = client.state.ToString();
-        if (client.state != BaseNetworkManager.NetworkState.Conecting)
+        stateText.text = server.state.ToString();
+        if (server.state != BaseNetworkManager.NetworkState.Conecting)
         {
-            if (isTransition) return;
-            isTransition = true;
             LoadSceneManager.I.LoadScene("Title", true, 1.0f);
             return;
         }
-        receiveText.text = client.receiveText;
+        receiveText.text = server.receiveText;
 
     }
 }

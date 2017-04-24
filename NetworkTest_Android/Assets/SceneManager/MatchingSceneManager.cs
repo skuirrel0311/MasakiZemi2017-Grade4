@@ -8,6 +8,7 @@ public class MatchingSceneManager : BaseManager<MatchingSceneManager>
     [SerializeField]
     InputField serverIpInput;
 
+    //接続中か？
     bool isConnecting = false;
 
     public void ChangeServerIp()
@@ -16,19 +17,15 @@ public class MatchingSceneManager : BaseManager<MatchingSceneManager>
         client.serverIP = serverIpInput.text;
     }
 
-    void Update()
-    {
-        if (!isConnecting) return;
-
-        if(client.state == BaseNetworkManager.NetworkState.Conecting)
-        {
-            LoadSceneManager.I.LoadScene("Main", true, 1.0f);
-        }
-    }
-
     public void Join()
     {
         if (isConnecting) return;
-        MyNetworkClient.I.Initialize();
+
+        isConnecting = true;
+        MyNetworkClient.I.Initialize((isConnected) =>
+        {
+            if (isConnected) LoadSceneManager.I.LoadScene("Main", true, 1.0f);
+        });
+
     }
 }
