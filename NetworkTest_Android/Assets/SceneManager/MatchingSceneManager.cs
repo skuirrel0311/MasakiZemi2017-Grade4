@@ -22,9 +22,18 @@ public class MatchingSceneManager : BaseManager<MatchingSceneManager>
         if (isConnecting) return;
 
         isConnecting = true;
+        NotificationManager.I.PopUpMessage("接続中・・・", 30, 30.0f);
         MyNetworkClient.I.Initialize((isConnected) =>
         {
-            if (isConnected) LoadSceneManager.I.LoadScene("Main", true, 1.0f);
+            if (isConnected)
+            {
+                NotificationManager.I.ClearMessage();
+                LoadSceneManager.I.LoadScene("Main", true, 1.0f);
+            }
+            else
+            {
+                NotificationManager.I.PopUpMessage("接続に失敗しました");
+            }
         });
 
     }

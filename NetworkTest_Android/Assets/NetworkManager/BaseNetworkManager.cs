@@ -70,6 +70,20 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
             Stop();
         }
     }
+    
+    public void SendBuffer(byte[] message)
+    {
+        if (stream == null) return;
+        try
+        {
+            stream.Write(message, 0, message.Length);
+            stream.Flush();
+        }
+        catch
+        {
+            Stop();
+        }
+    }
 
     void ReceiveBuffer(byte[] receiveData, int dataLength)
     {

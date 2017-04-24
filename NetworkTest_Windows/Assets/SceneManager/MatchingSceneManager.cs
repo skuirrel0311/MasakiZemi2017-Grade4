@@ -25,18 +25,19 @@ public class MatchingSceneManager : BaseManager<MatchingSceneManager>
     {
         if (isConnecting) return;
         isConnecting = true;
-        listenMessage.gameObject.SetActive(true);
-        listenMessage.text = "接続待機中";
-        MyNetworkClient.I.Initialize((isConnected)=>
+        NotificationManager.I.PopUpMessage("接続待機中・・・", 30, 60.0f);
+
+        MyNetworkClient.I.Initialize((isConnected) =>
         {
-            if (isConnected) LoadSceneManager.I.LoadScene("Main", true, 1.0f);
+            if (isConnected)
+            {
+                NotificationManager.I.ClearMessage();
+                LoadSceneManager.I.LoadScene("Main", true, 1.0f);
+            }
             else
             {
-                listenMessage.text = "接続に失敗しました";
-                StartCoroutine(KKUtilities.Delay(1.0f, () =>
-                {
-                    listenMessage.gameObject.SetActive(false);
-                }));
+                NotificationManager.I.PopUpMessage("接続に失敗しました", 30);
+                isConnecting = false;
             }
         });
     }

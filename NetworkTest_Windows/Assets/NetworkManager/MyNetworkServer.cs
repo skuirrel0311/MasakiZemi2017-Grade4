@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine;
 public class MyNetworkServer : BaseNetworkManager
 {
     TcpListener server;
+    List<RCVMethod> rcvMethodList = new List<RCVMethod>();
 
     protected override void Start()
     {
@@ -20,8 +22,20 @@ public class MyNetworkServer : BaseNetworkManager
         }
         
         server = new TcpListener(IPAddress.Parse(serverIP), portNum);
-        
+
+        rcvMethodList.Add(new RCVMethod((data) =>
+        {
+            float v = BitConverter.ToSingle(data, 0);
+            Move(v);
+        },
+        "move"));
+
         base.Start();
+    }
+
+    void Move(float velocty)
+    {
+        
     }
 
     public override void Initialize(Action<bool> connecedCallback)
@@ -34,6 +48,17 @@ public class MyNetworkServer : BaseNetworkManager
         }
         server.Start();
         base.Initialize(connecedCallback);
+    }
+
+    void Update()
+    {
+        /*
+         * if(rec[0] == "a")
+         * {
+         *      float v = rec[1];
+         *      move(v);
+         * }
+         */
     }
 
     IEnumerator Listen()

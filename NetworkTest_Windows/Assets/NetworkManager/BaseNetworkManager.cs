@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
 using System.Threading;
@@ -16,7 +17,8 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
     public string serverIP = "127.0.0.1";
     protected int portNum = 9000;
 
-    public string receiveText = "";
+    protected List<byte[]> receiveList = new List<byte[]>();
+
     Thread receiveThread = null;
 
     protected override void Start()
@@ -67,7 +69,22 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
         }
         catch
         {
-            Debug.Log("send failure");
+            Stop();
+        }
+    }
+
+    public void SendBuffer(byte[] message)
+    {
+        if (stream == null) return;
+
+        try
+        {
+            stream.Write(message, 0, message.Length);
+            //強制書き出し
+            stream.Flush();
+        }
+        catch
+        {
             Stop();
         }
     }
@@ -75,7 +92,7 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
     void ReceiveBuffer(byte[] receiveData, int dataLength)
     {
         if (receiveData == null) return;
-        receiveText = System.Text.Encoding.Unicode.GetString(receiveData, 0, dataLength);
+        receiveList.Add(receiveData);
     }
 
     void ReceiveWaiting()
