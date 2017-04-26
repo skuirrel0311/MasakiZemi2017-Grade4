@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
 using System.Threading;
@@ -27,6 +28,21 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
         receiveThread = new Thread(ReceiveWaiting);
         receiveThread.Start();
         base.Start();
+    }
+
+    protected string GetMyIPAddress()
+    {
+        string hostName = Dns.GetHostName();
+        IPAddress[] addresses = Dns.GetHostAddresses(hostName);
+
+        foreach (IPAddress add in addresses)
+        {
+            if (add.AddressFamily != AddressFamily.InterNetwork) continue;
+
+            return add.ToString();
+        }
+
+        return "";
     }
 
     public virtual void Initialize(Action<bool> connecedCallback)

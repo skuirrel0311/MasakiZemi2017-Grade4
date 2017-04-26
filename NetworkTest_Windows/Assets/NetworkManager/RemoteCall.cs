@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using UnityEngine;
 
 //クライアントからのメッセージとサーバーのメソッドを紐付けます
 public class RemoteCall
@@ -7,75 +8,75 @@ public class RemoteCall
     //クライアントが呼びたいサーバーのメソッド名
     public string name { get; private set; }
     //引数がある場合は型名
-    string model;
+    string type;
 
     /// <summary>
-    /// メソッドを実行します
+    /// メソッドを実行します（同じメソッドを呼ぶ場合は使いまわす）
     /// </summary>
     public Action<byte[]> run;
 
     //全てのTaskで共通
-    static BaseNetworkManager m_networkManager;
-    static Type m_t;
-    static Type t
-    {
-        get
-        {
-            if (m_t == null) m_t = m_networkManager.GetType();
-            return m_t;
-        }
-        set
-        {
-            m_t = value;
-        }
-    }
+    static MyNetworkServer m_networkManager;
+    static Type networkManagetType;
     
     MethodInfo mi;
+    
+    public static void Initialize(MyNetworkServer networkManager)
+    {
+        if (m_networkManager != null) return;
+        m_networkManager = networkManager;
+        networkManagetType = m_networkManager.GetType();
+    }
 
     /// <summary>
-    /// 
+    /// コンストラクタ
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="networkManager"></param>
-    /// <param name="model"></param>
-    public RemoteCall(string name, BaseNetworkManager networkManager, string model = "")
+    /// <param name="name">サーバー側で呼ばれるメソッドの名前</param>
+    /// <param name="type">メソッド引数の型名</param>
+    public RemoteCall(string name,  string type)
     {
         this.name = name;
-        m_networkManager = networkManager;
-        MethodInfo mi = t.GetMethod(name);
+        this.type = type;
+        
+        if(m_networkManager == null)
+        {
+            Debug.LogError("RemoteCall is no initialize");
+            return;
+        }
+        mi = networkManagetType.GetMethod(name);
 
         //初回のみrunに追加する
         run = (data) =>
         {
-            if (model == "")
+            if (type == "")
                 mi.Invoke(m_networkManager, null);
             else
-                mi.Invoke(m_networkManager, new object[] { encodeData(data, model) });
+                mi.Invoke(m_networkManager, new object[] { encodeData(data, type) });
         };
     }
 
     /// <summary>
     /// byte[] からobjectに変換
     /// </summary>
-    object encodeData(byte[] data, string model)
+    object encodeData(byte[] data, string type)
     {
-        if (model == "int")
+        if (type == "int")
         {
             return BitConverter.ToInt32(data, 0);
         }
-        if (model == "float")
+        if (type == "float")
         {
             return BitConverter.ToSingle(data, 0);
         }
-        if (model == "bool")
+        if (type == "bool")
         {
             return BitConverter.ToBoolean(data, 0);
         }
-        if (model == "string")
+        if (type == "string")
         {
             return BitConverter.ToString(data);
         }
-        if (model == "double")
+        if (type == "double")
         {
             return BitConverter.ToDouble(data, 0);
         }

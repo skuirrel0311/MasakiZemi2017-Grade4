@@ -8,39 +8,21 @@ using UnityEngine;
 public class MyNetworkServer : BaseNetworkManager
 {
     TcpListener server;
+    List<RemoteCall> m_remoteCallList = new List<RemoteCall>();
 
     protected override void Start()
     {
         serverIP = GetMyIPAddress();
 
-        if(serverIP == "")
+        if (serverIP == "")
         {
             Debug.LogError("自身のIPアドレスが取得できませんでした。");
         }
 
         server = new TcpListener(IPAddress.Parse(serverIP), portNum);
+        RemoteCall.Initialize(this);
 
         base.Start();
-    }
-
-    string GetMyIPAddress()
-    {
-        string hostName = Dns.GetHostName();
-        IPAddress[] addresses = Dns.GetHostAddresses(hostName);
-
-        foreach (IPAddress add in addresses)
-        {
-            if (add.AddressFamily != AddressFamily.InterNetwork) continue;
-
-            return add.ToString();
-        }
-
-        return "";
-    }
-
-    void Move(float velocty)
-    {
-        
     }
 
     public override void Initialize(Action<bool> connecedCallback)
@@ -59,24 +41,42 @@ public class MyNetworkServer : BaseNetworkManager
     {
         if (receiveList.Count == 0) return;
 
-        string methodName = convertString(receiveList[0]);
+        //メソッドの名前は１番目のデータ
+        string methodName = BitConverter.ToString(receiveList[0].data);
 
         if (receiveList.Count == 1)
         {
             //引数なしのメソッドの呼び出しがクライアントであった
-            RemoteCall task = new RemoteCall(methodName, this);
+            findRemoteCall(methodName).run.Invoke(null);
         }
-        else
+        else if(receiveList.Count == 3)
         {
-            //引数ありは闇
-            string model = convertString(receiveList[1]);
-
+            //引数の型は２番目のデータ
+            string type = BitConverter.ToString(receiveList[1].data);
+            //引数の値は３番目のデータ
+            findRemoteCall(methodName, type).run.Invoke(receiveList[2].data);
         }
+
+        //リストは初期化
+        for(int i = 0;i< receiveList.Count;i++)
+        {
+            receiveList[i] = null;
+        }
+        receiveList.Clear();
     }
 
-    string convertString(ReceiveData receiveData)
+    RemoteCall findRemoteCall(string methodName, string type = "")
     {
-        return BitConverter.ToString(receiveData.data);
+        foreach (RemoteCall r in m_remoteCallList)
+        {
+            if (r.name == methodName) return r;
+        }
+
+        //見つけられなかったら新しく作り、リストに追加
+        RemoteCall remoteCall = new RemoteCall(name, type);
+        m_remoteCallList.Add(remoteCall);
+
+        return remoteCall;
     }
 
     IEnumerator Listen()
@@ -104,7 +104,6 @@ public class MyNetworkServer : BaseNetworkManager
         catch (Exception ex)
         {
             Debug.Log(ex.Message);
-            Debug.Log("接続に失敗しました。");
             yield break;
         }
     }
@@ -137,5 +136,10 @@ public class MyNetworkServer : BaseNetworkManager
         }
         base.Stop();
         stream = null;
+    }
+
+    void FuncA()
+    {
+        NotificationManager.I.PopUpMessage("call FuncA");
     }
 }

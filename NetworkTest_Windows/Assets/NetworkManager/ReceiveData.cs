@@ -1,6 +1,6 @@
 ﻿using System;
 
-public struct ReceiveData
+public class ReceiveData
 {
     public byte[] data;
 
