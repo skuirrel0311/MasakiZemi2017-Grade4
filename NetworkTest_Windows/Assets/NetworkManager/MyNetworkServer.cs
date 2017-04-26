@@ -8,29 +8,34 @@ using UnityEngine;
 public class MyNetworkServer : BaseNetworkManager
 {
     TcpListener server;
-    List<RCVMethod> rcvMethodList = new List<RCVMethod>();
 
     protected override void Start()
+    {
+        serverIP = GetMyIPAddress();
+
+        if(serverIP == "")
+        {
+            Debug.LogError("自身のIPアドレスが取得できませんでした。");
+        }
+
+        server = new TcpListener(IPAddress.Parse(serverIP), portNum);
+
+        base.Start();
+    }
+
+    string GetMyIPAddress()
     {
         string hostName = Dns.GetHostName();
         IPAddress[] addresses = Dns.GetHostAddresses(hostName);
 
-        foreach(IPAddress add in addresses)
+        foreach (IPAddress add in addresses)
         {
             if (add.AddressFamily != AddressFamily.InterNetwork) continue;
-            serverIP = add.ToString();
+
+            return add.ToString();
         }
-        
-        server = new TcpListener(IPAddress.Parse(serverIP), portNum);
 
-        rcvMethodList.Add(new RCVMethod((data) =>
-        {
-            float v = BitConverter.ToSingle(data, 0);
-            Move(v);
-        },
-        "move"));
-
-        base.Start();
+        return "";
     }
 
     void Move(float velocty)
@@ -52,13 +57,26 @@ public class MyNetworkServer : BaseNetworkManager
 
     void Update()
     {
-        /*
-         * if(rec[0] == "a")
-         * {
-         *      float v = rec[1];
-         *      move(v);
-         * }
-         */
+        if (receiveList.Count == 0) return;
+
+        string methodName = convertString(receiveList[0]);
+
+        if (receiveList.Count == 1)
+        {
+            //引数なしのメソッドの呼び出しがクライアントであった
+            RemoteCall task = new RemoteCall(methodName, this);
+        }
+        else
+        {
+            //引数ありは闇
+            string model = convertString(receiveList[1]);
+
+        }
+    }
+
+    string convertString(ReceiveData receiveData)
+    {
+        return BitConverter.ToString(receiveData.data);
     }
 
     IEnumerator Listen()

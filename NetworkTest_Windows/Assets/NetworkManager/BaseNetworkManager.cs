@@ -17,7 +17,7 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
     public string serverIP = "127.0.0.1";
     protected int portNum = 9000;
 
-    protected List<byte[]> receiveList = new List<byte[]>();
+    protected List<ReceiveData> receiveList = new List<ReceiveData>();
 
     Thread receiveThread = null;
 
@@ -92,7 +92,7 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
     void ReceiveBuffer(byte[] receiveData, int dataLength)
     {
         if (receiveData == null) return;
-        receiveList.Add(receiveData);
+        receiveList.Add(new ReceiveData(receiveData, dataLength));
     }
 
     void ReceiveWaiting()
