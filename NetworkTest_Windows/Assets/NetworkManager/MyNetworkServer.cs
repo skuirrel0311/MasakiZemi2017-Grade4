@@ -42,7 +42,7 @@ public class MyNetworkServer : BaseNetworkManager
         if (receiveList.Count == 0) return;
 
         //メソッドの名前は１番目のデータ
-        string methodName = BitConverter.ToString(receiveList[0].data);
+        string methodName = System.Text.Encoding.Unicode.GetString(receiveList[0].data);
         Debug.Log("call " + methodName);
 
         if (receiveList.Count == 1)

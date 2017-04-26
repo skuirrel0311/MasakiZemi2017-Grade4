@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class ReceiveData
 {
@@ -6,7 +7,9 @@ public class ReceiveData
 
     public ReceiveData(byte[] data, int dataLength)
     {
-        Array.Clear(data, dataLength + 1, data.Length - dataLength);
-        this.data = data;
+        this.data = new byte[dataLength];
+        Array.Copy(data, this.data, dataLength);
+
+        Debug.Log("data length = " + this.data.Length);
     }
 }

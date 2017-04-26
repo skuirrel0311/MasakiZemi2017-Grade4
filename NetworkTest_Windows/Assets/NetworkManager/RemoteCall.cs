@@ -16,14 +16,13 @@ public class RemoteCall
     public Action<byte[]> run;
 
     //全てのTaskで共通
-    static MyNetworkServer m_networkManager;
+    static object m_networkManager;
     static Type networkManagetType;
     
     MethodInfo mi;
     
     public static void Initialize(MyNetworkServer networkManager)
     {
-        if (m_networkManager != null) return;
         m_networkManager = networkManager;
         networkManagetType = m_networkManager.GetType();
     }
@@ -43,11 +42,13 @@ public class RemoteCall
             Debug.LogError("RemoteCall is no initialize");
             return;
         }
-        mi = networkManagetType.GetMethod(name);
-
+        mi = networkManagetType.GetMethod(name, new Type[0]);
+        //mi = networkManagetType.GetMethod(name);
         //初回のみrunに追加する
         run = (data) =>
         {
+            if (mi == null) Debug.Log("mi is null");
+
             if (type == "")
                 mi.Invoke(m_networkManager, null);
             else

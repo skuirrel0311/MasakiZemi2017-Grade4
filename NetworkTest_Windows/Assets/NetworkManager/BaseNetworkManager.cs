@@ -108,6 +108,7 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
     void ReceiveBuffer(byte[] receiveData, int dataLength)
     {
         if (receiveData == null) return;
+        Debug.Log("receive data now");
         receiveList.Add(new ReceiveData(receiveData, dataLength));
     }
 
