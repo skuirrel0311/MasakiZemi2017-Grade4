@@ -43,6 +43,7 @@ public class MyNetworkServer : BaseNetworkManager
 
         //メソッドの名前は１番目のデータ
         string methodName = BitConverter.ToString(receiveList[0].data);
+        Debug.Log("call " + methodName);
 
         if (receiveList.Count == 1)
         {
