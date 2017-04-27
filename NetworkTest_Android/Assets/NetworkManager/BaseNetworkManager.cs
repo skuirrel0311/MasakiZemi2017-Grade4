@@ -53,11 +53,11 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
         yield break;
     }
 
-    public void SendBuffer(string message)
+    public void RemoteCall(string methodName)
     {
         if (stream == null) return;
 
-        byte[] sendBuffer = System.Text.Encoding.Unicode.GetBytes(message);
+        byte[] sendBuffer = System.Text.Encoding.Unicode.GetBytes(methodName);
 
         try
         {
@@ -71,12 +71,21 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
         }
     }
     
-    public void SendBuffer(byte[] message)
+    public void RemoteCall<T>(string methodName, string type, T data)
     {
         if (stream == null) return;
         try
         {
-            stream.Write(message, 0, message.Length);
+            byte[] sendBuffer = encodeData("string", methodName);
+            stream.Write(sendBuffer, 0, sendBuffer.Length);
+            stream.Flush();
+
+            sendBuffer = encodeData("string", type);
+            stream.Write(sendBuffer, 0, sendBuffer.Length);
+            stream.Flush();
+
+            sendBuffer = encodeData(type, data);
+            stream.Write(sendBuffer, 0, sendBuffer.Length);
             stream.Flush();
         }
         catch
@@ -84,6 +93,33 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
             Stop();
         }
     }
+
+    byte[] encodeData<T>(string type, T data)
+    {
+        if (type == "int")
+        {
+            return BitConverter.GetBytes((int)(object)data);
+        }
+        if (type == "float")
+        {
+            return BitConverter.GetBytes((float)(object)data);
+        }
+        if (type == "bool")
+        {
+            return BitConverter.GetBytes((bool)(object)data);
+        }
+        if (type == "string")
+        {
+            return System.Text.Encoding.Unicode.GetBytes((string)(object)data);
+        }
+        if (type == "double")
+        {
+            return BitConverter.GetBytes((bool)(object)data);
+        }
+
+        return null;
+    }
+    
 
     void ReceiveBuffer(byte[] receiveData, int dataLength)
     {

@@ -42,24 +42,23 @@ public class RemoteCall
             Debug.LogError("RemoteCall is no initialize");
             return;
         }
-        mi = networkManagetType.GetMethod(name, new Type[0]);
-        //mi = networkManagetType.GetMethod(name);
+        
+        mi = networkManagetType.GetMethod(name);
+
         //初回のみrunに追加する
         run = (data) =>
         {
-            if (mi == null) Debug.Log("mi is null");
-
             if (type == "")
                 mi.Invoke(m_networkManager, null);
             else
-                mi.Invoke(m_networkManager, new object[] { encodeData(data, type) });
+                mi.Invoke(m_networkManager, new object[] { decodeData(data, type) });
         };
     }
 
     /// <summary>
     /// byte[] からobjectに変換
     /// </summary>
-    object encodeData(byte[] data, string type)
+    object decodeData(byte[] data, string type)
     {
         if (type == "int")
         {
@@ -75,7 +74,7 @@ public class RemoteCall
         }
         if (type == "string")
         {
-            return BitConverter.ToString(data);
+            return System.Text.Encoding.Unicode.GetString(data, 0, data.Length);
         }
         if (type == "double")
         {

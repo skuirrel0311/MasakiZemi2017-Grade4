@@ -25,6 +25,12 @@ public class MyNetworkServer : BaseNetworkManager
         base.Start();
     }
 
+    void Test()
+    {
+        int a = 10;
+        byte[] b = BitConverter.GetBytes(a);
+    }
+
     public override void Initialize(Action<bool> connecedCallback)
     {
         if (state == NetworkState.Waiting || state == NetworkState.Conecting)
@@ -39,18 +45,26 @@ public class MyNetworkServer : BaseNetworkManager
 
     void Update()
     {
+        RemoteCallRun();
+    }
+
+    //クライアントからの命令を実行します
+    void RemoteCallRun()
+    {
+        if (state != NetworkState.Conecting) return;
         if (receiveList.Count == 0) return;
 
         //メソッドの名前は１番目のデータ
         string methodName = System.Text.Encoding.Unicode.GetString(receiveList[0].data);
         Debug.Log("call " + methodName);
+        Debug.Log("receiveDataLength = " + receiveList.Count);
 
         if (receiveList.Count == 1)
         {
             //引数なしのメソッドの呼び出しがクライアントであった
             findRemoteCall(methodName).run.Invoke(null);
         }
-        else if(receiveList.Count == 3)
+        else if (receiveList.Count == 3)
         {
             //引数の型は２番目のデータ
             string type = BitConverter.ToString(receiveList[1].data);
@@ -59,7 +73,7 @@ public class MyNetworkServer : BaseNetworkManager
         }
 
         //リストは初期化
-        for(int i = 0;i< receiveList.Count;i++)
+        for (int i = 0; i < receiveList.Count; i++)
         {
             receiveList[i] = null;
         }
@@ -74,7 +88,7 @@ public class MyNetworkServer : BaseNetworkManager
         }
 
         //見つけられなかったら新しく作り、リストに追加
-        RemoteCall remoteCall = new RemoteCall(name, type);
+        RemoteCall remoteCall = new RemoteCall(methodName, type);
         m_remoteCallList.Add(remoteCall);
 
         return remoteCall;
@@ -139,8 +153,13 @@ public class MyNetworkServer : BaseNetworkManager
         stream = null;
     }
 
-    void FuncA()
+    public void FuncA(int hp)
     {
-        NotificationManager.I.PopUpMessage("call FuncA");
+        NotificationManager.I.PopUpMessage("hp = " + hp);
     }
+
+    //public void FuncA()
+    //{
+    //    NotificationManager.I.PopUpMessage("call FuncA");
+    //}
 }

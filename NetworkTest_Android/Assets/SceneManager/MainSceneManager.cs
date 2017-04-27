@@ -29,7 +29,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     public void SendBuffer()
     {
-        client.SendBuffer("FuncA");
+        //client.RemoteCall("FuncA");
+        client.RemoteCall("FuncA", "int", 5);
     }
 
     void Update()
@@ -42,39 +43,5 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             return;
         }
     }
-
-    //void SendInput()
-    //{
-    //    float velocity;
-    //    velocity = 0.0f;
-    //    if (leftScreenButton.IsPushing) velocity -= 1.0f;
-    //    if (rightScreenButton.IsPushing) velocity += 1.0f;
-
-    //    //どっちも押されていたら先に押されていた方を優先する
-    //    if (leftScreenButton.IsPushing && rightScreenButton.IsPushing)
-    //    {
-    //        velocity = (leftScreenButton.pushingTime > rightScreenButton.pushingTime) ? -1.0f : 1.0f;
-    //    }
-
-    //    if (leftScreenButton.IsJustPush)
-    //    {
-    //        if (rightScreenButton.IsPushing)
-    //        {
-    //            client.SendBuffer(jumpActionMessgae);
-    //        }
-    //    }
-
-    //    if (rightScreenButton.IsJustPush)
-    //    {
-    //        if (leftScreenButton.IsPushing)
-    //        {
-    //            client.SendBuffer(jumpActionMessgae);
-    //        }
-    //    }
-
-    //    //値がないときは送らない
-    //    if (velocity == 0.0f) return;
-    //    client.SendBuffer(moveActionMessage);
-    //    client.SendBuffer(BitConverter.GetBytes(velocity));
-    //}
+    
 }
