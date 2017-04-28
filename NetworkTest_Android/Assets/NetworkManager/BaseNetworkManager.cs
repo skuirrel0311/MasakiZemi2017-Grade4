@@ -52,7 +52,10 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
     {
         yield break;
     }
-
+    
+    /// <summary>
+    /// 引数なしのメソッドの呼び出し
+    /// </summary>
     public void RemoteCall(string methodName)
     {
         if (stream == null) return;
@@ -71,16 +74,16 @@ public class BaseNetworkManager : BaseManager<BaseNetworkManager>
         }
     }
     
+    /// <summary>
+    /// 引数ありのメソッドの呼び出し
+    /// </summary>
+    /// <param name="type">引数の型</param>
     public void RemoteCall<T>(string methodName, string type, T data)
     {
         if (stream == null) return;
         try
         {
             byte[] sendBuffer = encodeData("string", methodName);
-            stream.Write(sendBuffer, 0, sendBuffer.Length);
-            stream.Flush();
-
-            sendBuffer = encodeData("string", type);
             stream.Write(sendBuffer, 0, sendBuffer.Length);
             stream.Flush();
 

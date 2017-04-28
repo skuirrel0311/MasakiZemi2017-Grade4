@@ -30,7 +30,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public void SendBuffer()
     {
         //client.RemoteCall("FuncA");
-        client.RemoteCall("FuncA", "int", 5);
+        client.RemoteCall("FuncA_int", "int", 5);
     }
 
     void Update()

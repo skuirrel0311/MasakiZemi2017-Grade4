@@ -9,7 +9,5 @@ public class ReceiveData
     {
         this.data = new byte[dataLength];
         Array.Copy(data, this.data, dataLength);
-
-        Debug.Log("data length = " + this.data.Length);
     }
 }

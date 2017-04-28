@@ -64,12 +64,10 @@ public class MyNetworkServer : BaseNetworkManager
             //引数なしのメソッドの呼び出しがクライアントであった
             findRemoteCall(methodName).run.Invoke(null);
         }
-        else if (receiveList.Count == 3)
+        else if (receiveList.Count == 2)
         {
-            //引数の型は２番目のデータ
-            string type = BitConverter.ToString(receiveList[1].data);
-            //引数の値は３番目のデータ
-            findRemoteCall(methodName, type).run.Invoke(receiveList[2].data);
+            //引数ありのメソッドの呼び出し 引数は２番目のデータに入っている
+            findRemoteCall(methodName).run.Invoke(receiveList[1].data);
         }
 
         //リストは初期化
@@ -80,15 +78,15 @@ public class MyNetworkServer : BaseNetworkManager
         receiveList.Clear();
     }
 
-    RemoteCall findRemoteCall(string methodName, string type = "")
+    RemoteCall findRemoteCall(string methodName)
     {
         foreach (RemoteCall r in m_remoteCallList)
         {
-            if (r.name == methodName) return r;
+            if (r.name == methodName.Split('_')[0]) return r;
         }
 
         //見つけられなかったら新しく作り、リストに追加
-        RemoteCall remoteCall = new RemoteCall(methodName, type);
+        RemoteCall remoteCall = new RemoteCall(methodName);
         m_remoteCallList.Add(remoteCall);
 
         return remoteCall;

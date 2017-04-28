@@ -8,7 +8,7 @@ public class RemoteCall
     //クライアントが呼びたいサーバーのメソッド名
     public string name { get; private set; }
     //引数がある場合は型名
-    string type;
+    string type = "";
 
     /// <summary>
     /// メソッドを実行します（同じメソッドを呼ぶ場合は使いまわす）
@@ -18,9 +18,9 @@ public class RemoteCall
     //全てのTaskで共通
     static object m_networkManager;
     static Type networkManagetType;
-    
+
     MethodInfo mi;
-    
+
     public static void Initialize(MyNetworkServer networkManager)
     {
         m_networkManager = networkManager;
@@ -31,19 +31,20 @@ public class RemoteCall
     /// コンストラクタ
     /// </summary>
     /// <param name="name">サーバー側で呼ばれるメソッドの名前</param>
-    /// <param name="type">メソッド引数の型名</param>
-    public RemoteCall(string name,  string type)
+    public RemoteCall(string name)
     {
-        this.name = name;
-        this.type = type;
-        
-        if(m_networkManager == null)
+        //methodName_Typeの形式で送ってもらう
+        string[] temp = name.Split('_');
+
+        this.name = temp[0];
+        if (temp.Length == 2)
         {
-            Debug.LogError("RemoteCall is no initialize");
-            return;
+            type = temp[1];
         }
-        
-        mi = networkManagetType.GetMethod(name);
+
+
+        Debug.Log("call " + this.name + "(" + type + ")");
+        mi = networkManagetType.GetMethod(this.name);
 
         //初回のみrunに追加する
         run = (data) =>
@@ -62,6 +63,7 @@ public class RemoteCall
     {
         if (type == "int")
         {
+            Debug.Log("decoded to int");
             return BitConverter.ToInt32(data, 0);
         }
         if (type == "float")
