@@ -4,7 +4,7 @@ public class MyObjRotationController : MyInputHandler
 {
     Vector3 oldHandPosition;
     [SerializeField]
-    float rotationSpeed = 150.0f;
+    float rotationSpeed = 360.0f;
 
     Vector3 targetRotation;
 

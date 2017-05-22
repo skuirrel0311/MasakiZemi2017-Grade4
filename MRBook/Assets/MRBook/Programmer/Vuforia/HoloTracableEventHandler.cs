@@ -8,15 +8,16 @@ public class HoloTracableEventHandler : MyTracableEventHandler
     GameObject obj = null;
     bool isView = false;
 
+    [SerializeField]
+    Transform anchorTransform = null;
+
     protected override void OnTrackingFound()
     {
         //一回のみ生成
         if (isView) return;
         isView = true;
-        Instantiate(obj, transform.position, transform.rotation);
+        Instantiate(obj, anchorTransform.position, anchorTransform.rotation);
     }
 
-    protected override void OnTrackingLost()
-    {
-    }
+    protected override void OnTrackingLost() { }
 }

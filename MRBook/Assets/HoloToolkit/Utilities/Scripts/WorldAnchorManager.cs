@@ -72,6 +72,7 @@ namespace HoloToolkit.Unity
         {
             if (AnchorStore != null && anchorOperations.Count > 0)
             {
+                Debug.Log("キューを発見したのでWorldAnchorを作成する。");
                 DoAnchorOperation(anchorOperations.Dequeue());
             }
         }
@@ -97,6 +98,8 @@ namespace HoloToolkit.Unity
                 return;
             }
 
+            //キューを作成
+            Debug.Log("キューを作成");
             anchorOperations.Enqueue(
                 new AnchorAttachmentInfo
                 {
@@ -192,6 +195,7 @@ namespace HoloToolkit.Unity
                     WorldAnchor savedAnchor = AnchorStore.Load(anchorName, gameObjectToAnchor);
                     if (savedAnchor == null)
                     {
+                        Debug.Log("WorldAnchor作る");
                         // Either world anchor was not saved / does not exist or has a different name.
                         Debug.LogWarning(gameObjectToAnchor.name + " : World anchor could not be loaded for this game object. Creating a new anchor.");
 
@@ -200,6 +204,7 @@ namespace HoloToolkit.Unity
                     }
                     else
                     {
+                        Debug.Log("WorldAnchorロードする");
                         savedAnchor.name = anchorName;
                         Debug.Log(gameObjectToAnchor.name + " : World anchor loaded from anchor store and updated for this game object.");
                     }
