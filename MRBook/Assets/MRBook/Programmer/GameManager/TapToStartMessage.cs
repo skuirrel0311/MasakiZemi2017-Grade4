@@ -8,7 +8,7 @@ public class TapToStartMessage : MonoBehaviour, IInputClickHandler
     [SerializeField]
     GameObject anchor;
 
-    Vector3 offset = new Vector3(-0.62f, 0.53f, 0.0f);
+    Vector3 offset = new Vector3(0.0f, 0.4f, 0.0f);
 
     GameObject mainCamera;
 

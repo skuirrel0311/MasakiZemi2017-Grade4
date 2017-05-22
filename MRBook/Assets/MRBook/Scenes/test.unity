@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf5639e96df77d46b19f86d7ec4094b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1211409967641088, guid: c9c8182adf9ca9c4fbc2afab2ed15173, type: 2}
+  obj: {fileID: 1640842138521940, guid: aa0081c66202f844ca1e22a1c817c33c, type: 2}
   anchorTransform: {fileID: 932384686}
 --- !u!4 &155
 Transform:
@@ -826,6 +826,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114992898132718618, guid: 3c6cff0074c302b469c9fd919f6a01c2, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 3c6cff0074c302b469c9fd919f6a01c2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &368737561
@@ -858,10 +859,10 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 13
+  m_FontSize: 60
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -907,8 +908,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 368737561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.629, y: 0.539, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -923,8 +924,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.3, y: 1.5, z: 0.001}
-  m_Center: {x: 3.15, y: -0.7, z: 0}
+  m_Size: {x: 29, y: 6.7, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &368737566
 MonoBehaviour:
   m_ObjectHideFlags: 0
