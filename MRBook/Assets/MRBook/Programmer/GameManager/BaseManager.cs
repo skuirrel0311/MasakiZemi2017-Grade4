@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BaseManager<T> : MonoBehaviour where T : MonoBehaviour
 {
@@ -25,14 +26,15 @@ public class BaseManager<T> : MonoBehaviour where T : MonoBehaviour
     protected virtual void Awake()
     {
         Inisialize();
+        SceneManager.sceneLoaded += WasLoaded;
     }
 
-    protected virtual void OnLevelWasLoaded(int level)
+    void WasLoaded(Scene scneName, LoadSceneMode sceneMode)
     {
         Inisialize();
     }
 
-    protected void Inisialize()
+    void Inisialize()
     {
         List<T> instances = new List<T>();
         instances.AddRange((T[])FindObjectsOfType(typeof(T)));
