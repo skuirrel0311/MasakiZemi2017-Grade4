@@ -57,6 +57,7 @@ public class BaseManager<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
+        SceneManager.sceneLoaded -= WasLoaded;
         I = null;
     }
 }

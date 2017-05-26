@@ -1,43 +1,25 @@
 ﻿using UnityEngine;
-using UnityEngine.VR.WSA;
-using UnityEngine.VR.WSA.Persistence;
 
 public class MainGameManager : BaseManager<MainGameManager>
 {
-    [SerializeField]
-    GameObject popupAnchor = null;
-
-    WorldAnchor anchor;
-    WorldAnchorStore anchorStore;
+    Animator m_Animator;
 
     protected override void Start()
     {
         base.Start();
-        WorldAnchorStore.GetAsync(AnchorStoreReady);
+        m_Animator = GetComponent<Animator>();
     }
 
-    void AnchorStoreReady(WorldAnchorStore anchorStore)
+    public void GameStart()
     {
-        this.anchorStore = anchorStore;
-        SetAnchor();
-    }
+        //イベントのトリガーをチェックしていく
+        GameObject[] eventTriggers = GameObject.FindGameObjectsWithTag("Trigger");
 
-    void SetAnchor()
-    {
-        WorldAnchor attached = anchorStore.Load(popupAnchor.name, popupAnchor);
+        for(int i = 0;i< eventTriggers.Length;i++)
+        {
+            eventTriggers[i].GetComponent<MyEventTrigger>().SetFlag();
+        }
 
-        if (attached == null)
-        {
-            Debug.Log("ロード失敗");
-            bool s = anchorStore.Save(popupAnchor.name, popupAnchor.GetComponent<WorldAnchor>());
-            if (!s) Debug.Log("セーブ失敗");
-            else popupAnchor.GetComponent<Renderer>().material.color = Color.red;
-        }
-        else
-        {
-            Debug.Log("ロード成功");
-            popupAnchor.GetComponent<Renderer>().material.color = Color.blue;
-        }
-        popupAnchor.SetActive(true);
+        m_Animator.SetBool("IsStart", true);
     }
 }

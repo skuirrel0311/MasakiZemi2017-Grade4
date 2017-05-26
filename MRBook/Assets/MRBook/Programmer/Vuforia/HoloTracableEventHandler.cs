@@ -16,6 +16,8 @@ public class HoloTracableEventHandler : MyTracableEventHandler
         //一回のみ生成
         if (isView) return;
         isView = true;
+
+        //WorldAnchorの位置に生成する
         Instantiate(obj, anchorTransform.position, anchorTransform.rotation);
     }
 

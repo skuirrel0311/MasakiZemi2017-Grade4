@@ -7,7 +7,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 {
     Color startColor;
     //動かせるか？
-    bool isMovable = false;
+    public bool IsMovable { get; private set; }
 
     Renderer m_rendere;
 
@@ -33,6 +33,9 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         }
         else
         {
+            //ここのコメントアウトを切れば初回のみアンカーが動かせる状態にできる
+            //gameObject.SetActive(false);
+
             m_rendere.material.color = Color.blue;
         }
 
@@ -41,9 +44,9 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
-        isMovable = !isMovable;
+        IsMovable = !IsMovable;
 
-        if (isMovable)
+        if (IsMovable)
         {
             anchorStore.Delete(name);
             DestroyImmediate(GetComponent<WorldAnchor>());
