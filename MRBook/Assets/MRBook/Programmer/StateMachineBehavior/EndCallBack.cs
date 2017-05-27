@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EndCallBack : StateMachineBehaviour
 {
+    public bool isEditor = false;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        MainGameManager.I.EndCallBack();
+        if (!isEditor) MainGameManager.I.EndCallBack();
+        else TestSceneManager.I.EndCallBack();
     }
 }

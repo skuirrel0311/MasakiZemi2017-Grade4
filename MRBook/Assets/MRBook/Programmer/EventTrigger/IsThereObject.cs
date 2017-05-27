@@ -2,11 +2,6 @@
 
 public class IsThereObject : MyEventTrigger
 {
-    [SerializeField]
-    GameObject targetObject = null;
-    [SerializeField]
-    LayerMask layer;
-
     MyTriggerBox trigger;
 
     public void Start()
