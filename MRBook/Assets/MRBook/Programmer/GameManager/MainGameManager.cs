@@ -3,6 +3,7 @@
 public class MainGameManager : BaseManager<MainGameManager>
 {
     Animator m_Animator;
+    PlayButton playButton;
 
     protected override void Start()
     {
@@ -10,7 +11,10 @@ public class MainGameManager : BaseManager<MainGameManager>
         m_Animator = GetComponent<Animator>();
     }
 
-    public void GameStart()
+    /// <summary>
+    /// 再生する
+    /// </summary>
+    public void Play(PlayButton playButton)
     {
         //イベントのトリガーをチェックしていく
         GameObject[] eventTriggers = GameObject.FindGameObjectsWithTag("Trigger");
@@ -20,6 +24,17 @@ public class MainGameManager : BaseManager<MainGameManager>
             eventTriggers[i].GetComponent<MyEventTrigger>().SetFlag();
         }
 
+        this.playButton = playButton;
         m_Animator.SetBool("IsStart", true);
+    }
+    
+    /// <summary>
+    /// 再生が終了した
+    /// </summary>
+    public void EndCallBack()
+    {
+        m_Animator.SetBool("IsStart", false);
+        //もう一回押せるようにする
+        playButton.Initialize();
     }
 }
