@@ -18,7 +18,7 @@ public class HoloTracableEventHandler : MyTracableEventHandler
         isView = true;
 
         //WorldAnchorの位置に生成する
-        Instantiate(obj, anchorTransform.position, anchorTransform.rotation);
+        Instantiate(obj, anchorTransform.position + (Vector3.up * -0.1f), anchorTransform.rotation);
     }
 
     protected override void OnTrackingLost() { }
