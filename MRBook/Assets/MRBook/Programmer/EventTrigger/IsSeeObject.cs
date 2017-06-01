@@ -6,6 +6,8 @@ public class IsSeeObject : MyEventTrigger
     [SerializeField]
     Transform eye = null;
 
+    public LayerMask ignoreLayerMask;
+
     public override void SetFlag()
     {
         Vector3 direction = targetObject.transform.position - eye.position;
@@ -20,7 +22,7 @@ public class IsSeeObject : MyEventTrigger
 
         //障害物はないか
         Ray ray = new Ray(eye.position, Vector3.Normalize(direction));
-        RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude);
+        RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude,~ignoreLayerMask);
         Debug.Log(cols.Length);
         for (int i = 0; i < cols.Length; i++)
         {
