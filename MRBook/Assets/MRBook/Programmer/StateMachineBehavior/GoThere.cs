@@ -13,6 +13,8 @@ public class GoThere : StateMachineBehaviour
     GameObject actor;
     NavMeshAgent agent;
 
+    bool isEnd = false;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         actor = ActorManager.I.GetActor(actorName);
@@ -27,10 +29,12 @@ public class GoThere : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (isEnd) return;
         if (agent == null)
         {
             Debug.Log("agent is null");
-            animator.SetBool("IsCompleted", true);
+            isEnd = true;
+            animator.SetTrigger("IsCompleted");
             return;
         }
 
@@ -47,7 +51,8 @@ public class GoThere : StateMachineBehaviour
 
         if(distance < stopDistance)
         {
-            animator.SetBool("IsCompleted", true);
+            isEnd = true;
+            animator.SetTrigger("IsCompleted");
         }
     }
 }

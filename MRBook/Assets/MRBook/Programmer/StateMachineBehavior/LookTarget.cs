@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LookTarget : StateMachineBehaviour
 {
     public string targetName;
     public string actorName;
-    public float rotationSpeed;
+    public float rotationSpeed = 100.0f;
     protected Transform target;
     protected Transform actor;
 
-    Quaternion from, to;
+    Quaternion to;
+
+    bool isEnd = false;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -18,18 +21,36 @@ public class LookTarget : StateMachineBehaviour
         actor = ActorManager.I.GetActor(actorName).transform;
         Vector3 targetDirection = target.position - actor.position;
         
-        from = actor.rotation;
         to = Quaternion.LookRotation(targetDirection);
+
+        NavMeshAgent agent = actor.GetComponent<NavMeshAgent>();
+        if(agent != null)
+        {
+            agent.updateRotation = false;
+        }
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        target.rotation = Quaternion.RotateTowards(from, to, rotationSpeed * Time.deltaTime);
+        if (isEnd) return;
+        actor.rotation = Quaternion.RotateTowards(actor.rotation, to, rotationSpeed * Time.deltaTime);
 
-        if(Quaternion.Angle(target.rotation, to) < 0.5f)
+        float angle = Quaternion.Angle(actor.rotation, to);
+        if(angle < 0.5f)
         {
+            Debug.Log("回転終わり");
             //回転し終わった
-            animator.SetBool("IsCompleted", true);
+            animator.SetTrigger("IsCompleted");
+            isEnd = true;
+        }
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        NavMeshAgent agent = actor.GetComponent<NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.updateRotation = true;
         }
     }
 }
