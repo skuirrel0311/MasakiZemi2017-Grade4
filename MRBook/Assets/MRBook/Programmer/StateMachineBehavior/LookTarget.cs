@@ -17,7 +17,7 @@ public class LookTarget : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        target = ActorManager.I.GetTarget(targetName);
+        target = ActorManager.I.GetAnchor(targetName);
         actor = ActorManager.I.GetActor(actorName).transform;
         Vector3 targetDirection = target.position - actor.position;
         

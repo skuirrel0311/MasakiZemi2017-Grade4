@@ -17,11 +17,12 @@ public class GoThere : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        actor = ActorManager.I.GetActor(actorName);
-        Vector3 targetPosition = ActorManager.I.GetTarget(targetName).position;
+        actor = ActorManager.I.GetActor(actorName).gameObject;
+        Vector3 targetPosition = ActorManager.I.GetAnchor(targetName).position;
         agent = actor.GetComponent<NavMeshAgent>();
         if (agent != null)
         {
+            agent.isStopped = false;
             agent.SetDestination(targetPosition);
             agent.stoppingDistance = stopDistance;
         }
@@ -51,6 +52,7 @@ public class GoThere : StateMachineBehaviour
 
         if(distance < stopDistance)
         {
+            agent.isStopped = true;
             isEnd = true;
             animator.SetTrigger("IsCompleted");
         }
