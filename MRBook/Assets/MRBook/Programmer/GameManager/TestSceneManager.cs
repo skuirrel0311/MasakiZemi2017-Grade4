@@ -5,12 +5,61 @@ using UnityEngine;
 public class TestSceneManager : BaseManager<TestSceneManager>
 {
     Animator m_Animator;
+    [SerializeField]
+    BasePage[] pages = null;
+    int currentPageIndex = 0;
+
+    public BasePage currentPage { get; private set; }
+
+    List<GameObject> globalObjectList = new List<GameObject>();
 
     protected override void Start()
     {
         base.Start();
         m_Animator = GetComponent<Animator>();
-        Play();
+        SetPage();
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            //次のページへ
+            pages[currentPageIndex].gameObject.SetActive(false);
+            currentPageIndex++;
+            if (currentPageIndex >= pages.Length)
+            {
+                //todo:リザルトへ
+                return;
+            }
+            SetPage();
+        }
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            //前のページへ
+        }
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            //再生
+            Play();
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            //リセット
+            pages[currentPageIndex].ResetPage();
+        }
+    }
+
+    void SetPage()
+    {
+        ActorManager.I.currentPage = pages[currentPageIndex];
+        pages[currentPageIndex].gameObject.SetActive(true);
+        pages[currentPageIndex].PageStart();
+        m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
+        NotificationManager.I.ShowMessage(pages[currentPageIndex].missionText);
     }
 
     /// <summary>

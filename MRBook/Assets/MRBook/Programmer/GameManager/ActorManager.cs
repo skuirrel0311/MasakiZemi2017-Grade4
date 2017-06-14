@@ -4,35 +4,24 @@ using UnityEngine;
 
 public class ActorManager : BaseManager<ActorManager>
 {
-    [SerializeField]
-    List<GameObject> actorList = new List<GameObject>();
-    [SerializeField]
-    List<Transform> targetList = new List<Transform>();
+    public BasePage currentPage;
 
     protected override void Start()
     {
         base.Start();
-        GameObject[] temp = GameObject.FindGameObjectsWithTag("Target");
-        for (int i = 0; i < temp.Length; i++)
-        {
-            targetList.Add(temp[i].transform);
-        }
     }
 
-    public GameObject GetActor(string name)
+    public Actor GetActor(string name)
     {
-        for(int i = 0;i< actorList.Count;i++)
-        {
-            if (actorList[i].name == name) return actorList[i];
-        }
-        return null;
+        return currentPage.GetActor(name);
     }
-    public Transform GetTarget(string name)
+    public Transform GetAnchor(string name)
     {
-        for (int i = 0; i < targetList.Count; i++)
-        {
-            if (targetList[i].name == name) return targetList[i];
-        }
-        return null;
+        return currentPage.GetAnchor(name);
+    }
+
+    public void DisableActor(string actorName)
+    {
+        currentPage.DisableActor(actorName);
     }
 }
