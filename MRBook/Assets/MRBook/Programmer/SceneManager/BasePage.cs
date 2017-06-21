@@ -8,8 +8,7 @@ public class BasePage : MonoBehaviour
     /// お題
     /// </summary>
     public string missionText = "";
-
-    [SerializeField]
+    
     int pageIndex = 0;
     
     public RuntimeAnimatorController controller = null;
@@ -22,17 +21,14 @@ public class BasePage : MonoBehaviour
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public List<Transform> anchorList = new List<Transform>();
 
-    //本の位置
-    Vector3 instancePosition;
-    Quaternion instanceRotation;
-
     Coroutine coroutine;
 
     //本の位置にページを固定する
-    public void PageLock(Vector3 position, Quaternion rotation)
+    public void PageLock(Vector3 position, Quaternion rotation,int pageIndex)
     {
-        instancePosition = position;
-        instanceRotation = rotation;
+        transform.position = position;
+        transform.rotation = rotation;
+        this.pageIndex = pageIndex;
     }
 
     /// <summary>

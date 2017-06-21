@@ -3,20 +3,18 @@ using HoloToolkit.Unity.InputModule;
 
 public class TapToStartMessage : MonoBehaviour, IInputClickHandler
 {
-    [SerializeField]
-    GameObject anchor = null;
     AnchorPositionController anchorController;
     Renderer m_renderer;
 
     Vector3 offset = new Vector3(0.0f, 0.4f, 0.0f);
     GameObject mainCamera;
     
-    public bool IsGameStart = false;
+    bool IsGameStart = false;
 
     void Start()
     {
         mainCamera = Camera.main.gameObject;
-        anchorController = anchor.GetComponent<AnchorPositionController>();
+        anchorController = GetComponentInParent<AnchorPositionController>();
         m_renderer = GetComponent<Renderer>();
     }
 
@@ -27,7 +25,6 @@ public class TapToStartMessage : MonoBehaviour, IInputClickHandler
         if (!anchorController.IsMovable)
         {
             m_renderer.enabled = true;
-            transform.position = anchor.transform.position + offset;
             Vector3 lookVector = transform.position - mainCamera.transform.position;
             transform.LookAt(transform.position + lookVector);
         }
@@ -41,7 +38,7 @@ public class TapToStartMessage : MonoBehaviour, IInputClickHandler
     {
         if (IsGameStart) return;
         IsGameStart = true;
-        anchor.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        anchorController.gameObject.SetActive(false);
+        MainGameManager.I.GameStart();
     }
 }

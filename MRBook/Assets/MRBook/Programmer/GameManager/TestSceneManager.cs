@@ -17,7 +17,13 @@ public class TestSceneManager : BaseManager<TestSceneManager>
     {
         base.Start();
         m_Animator = GetComponent<Animator>();
-        SetPage();
+
+        for(int i = 0;i< pages.Length;i++)
+        {
+            pages[i].PageLock(Vector3.zero, Quaternion.identity,i);
+        }
+
+        SetPage(currentPageIndex);
     }
 
     public void Update()
@@ -32,12 +38,20 @@ public class TestSceneManager : BaseManager<TestSceneManager>
                 //todo:リザルトへ
                 return;
             }
-            SetPage();
+            SetPage(currentPageIndex);
         }
 
         if(Input.GetKeyDown(KeyCode.B))
         {
             //前のページへ
+            pages[currentPageIndex].gameObject.SetActive(false);
+            currentPageIndex--;
+            if(currentPageIndex < 0)
+            {
+                //そんなに戻れない
+                return;
+            }
+            SetPage(currentPageIndex);
         }
 
         if(Input.GetKeyDown(KeyCode.P))
@@ -53,8 +67,9 @@ public class TestSceneManager : BaseManager<TestSceneManager>
         }
     }
 
-    void SetPage()
+    void SetPage(int index)
     {
+        currentPageIndex = index;
         ActorManager.I.currentPage = pages[currentPageIndex];
         pages[currentPageIndex].gameObject.SetActive(true);
         pages[currentPageIndex].PageStart();
