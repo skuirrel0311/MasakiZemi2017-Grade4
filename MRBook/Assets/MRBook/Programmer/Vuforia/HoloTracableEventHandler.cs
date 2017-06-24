@@ -19,6 +19,12 @@ public class HoloTracableEventHandler : MyTracableEventHandler
 
     WorldAnchorStore anchorStore;
 
+    protected override void Start()
+    {
+        base.Start();
+        WorldAnchorStore.GetAsync(AnchorStoreReady);
+    }
+
     protected override void OnTrackingFound()
     {
         //一回のみ生成
@@ -32,12 +38,9 @@ public class HoloTracableEventHandler : MyTracableEventHandler
             pos = anchorTransform.position + objArray[i].transform.position;
             objArray[i].transform.position = pos + offset;
             objArray[i].transform.rotation = anchorTransform.rotation;
-            WorldAnchor attaching = objArray[i].transform.Find("stage").gameObject.AddComponent<WorldAnchor>();
-            attaching.OnTrackingChanged += AttachingAnchor_OnTrackingChanged;
+            AttachingAnchor(objArray[i].transform.Find("stage").gameObject);
         }
         VuforiaBehaviour.Instance.enabled = false;
-
-
     }
 
     void AnchorStoreReady(WorldAnchorStore anchorStore)
@@ -45,6 +48,12 @@ public class HoloTracableEventHandler : MyTracableEventHandler
         this.anchorStore = anchorStore;
     }
 
+    //objにWorldAnchorをアタッチする
+    void AttachingAnchor(GameObject obj)
+    {
+        WorldAnchor attaching = obj.AddComponent<WorldAnchor>();
+        attaching.OnTrackingChanged += AttachingAnchor_OnTrackingChanged;
+    }
     void AttachingAnchor_OnTrackingChanged(WorldAnchor self, bool located)
     {
         if (!located) return;

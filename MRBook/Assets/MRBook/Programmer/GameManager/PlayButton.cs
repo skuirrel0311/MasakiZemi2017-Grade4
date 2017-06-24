@@ -5,19 +5,19 @@ using HoloToolkit.Unity.InputModule;
 
 public class PlayButton : MonoBehaviour, IInputClickHandler
 {
-    bool isClick;
+    bool isPlaying;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
-        if (isClick) return;
-        isClick = true;
-        MainGameManager.I.Play(this);
+        if (isPlaying) return;
+        isPlaying = true;
+        MainGameManager.I.Play();
         gameObject.SetActive(false);
     }
 
     public void Initialize()
     {
-        isClick = false;
+        isPlaying = false;
         gameObject.SetActive(true);
     }
 }
