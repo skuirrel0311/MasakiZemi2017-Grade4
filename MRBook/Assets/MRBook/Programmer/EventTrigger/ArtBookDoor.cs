@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class ArtBookDoor : ArtBookGimmick
 {
-    Renderer m_renderer;
+    [SerializeField]
+    GameObject arrowSprite = null;
 
     protected override void Start()
     {
         base.Start();
-        m_renderer = GetComponent<Renderer>();
     }
 
-    protected override void Update()
+    void Update()
     {
-        base.Update();
+        //初回だけ弾く
         if (!maker.IsVisuabled) return;
 
-        //隠れていたらenableを切る todo:ドアを閉めた時の場所に戻ると尚よい？
-        m_renderer.enabled = !isHide;
+        if (arrowSprite.activeSelf != maker.IsVisuable)
+        {
+            arrowSprite.SetActive(maker.IsVisuable);
+        }
 
         transform.position = maker.child.position;
     }

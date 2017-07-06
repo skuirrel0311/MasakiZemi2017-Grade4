@@ -11,7 +11,7 @@ public class PlayButton : MonoBehaviour, IInputClickHandler
     {
         if (isPlaying) return;
         isPlaying = true;
-        MainGameManager.I.Play();
+        //MainGameManager.I.Play();
         gameObject.SetActive(false);
     }
 

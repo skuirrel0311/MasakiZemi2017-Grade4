@@ -8,7 +8,7 @@ public class GoThere : StateMachineBehaviour
 {
     public string actorName;
     public string targetName;
-    public float stopDistance = 1.0f;
+    public float stopDistance = 0.2f;
 
     GameObject actor;
     NavMeshAgent agent;
@@ -22,7 +22,7 @@ public class GoThere : StateMachineBehaviour
         agent = actor.GetComponent<NavMeshAgent>();
         if (agent != null)
         {
-            agent.isStopped = false;
+            //agent.isStopped = false;
             agent.SetDestination(targetPosition);
             agent.stoppingDistance = stopDistance;
         }

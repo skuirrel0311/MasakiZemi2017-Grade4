@@ -63,4 +63,20 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
             m_rendere.material.color = startColor;
         }
     }
+
+    public void Hide()
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
+        for(int i= 0;i< renderers.Length;i++)
+        {
+            renderers[i].enabled = false;
+        }
+
+        Collider[] cols = GetComponentsInChildren<Collider>();
+        for(int i = 0;i < cols.Length;i++)
+        {
+            cols[i].enabled = false;
+        }
+    }
 }

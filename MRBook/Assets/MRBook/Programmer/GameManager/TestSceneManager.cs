@@ -20,7 +20,7 @@ public class TestSceneManager : BaseManager<TestSceneManager>
 
         for(int i = 0;i< pages.Length;i++)
         {
-            pages[i].PageLock(Vector3.zero, Quaternion.identity,i);
+            pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation,i);
         }
 
         SetPage(currentPageIndex);
@@ -66,7 +66,7 @@ public class TestSceneManager : BaseManager<TestSceneManager>
             pages[currentPageIndex].ResetPage();
         }
     }
-
+    
     void SetPage(int index)
     {
         currentPageIndex = index;
