@@ -25,19 +25,18 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
         attaching.OnTrackingChanged += AttachingAnchor_OnTrackingChanged;
     }
 
-    public IEnumerator GetAnchorStore(WorldAnchorStore anchorStore, Action action)
+    public IEnumerator GetAnchorStore(Action<WorldAnchorStore> action)
     {
+        Debug.Log("call get anchor store");
         yield return null;
 
-        while(this.anchorStore == null)
+        while(anchorStore == null)
         {
             yield return null;
         }
 
-        //ロードされた自身のAnchorStoreを入れる
-        anchorStore = this.anchorStore;
-
-        action.Invoke();
+        Debug.Log("call action");
+        action.Invoke(anchorStore);
     }
 
     void AttachingAnchor_OnTrackingChanged(WorldAnchor self, bool located)
