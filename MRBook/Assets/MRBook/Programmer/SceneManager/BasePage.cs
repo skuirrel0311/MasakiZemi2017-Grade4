@@ -68,7 +68,7 @@ public class BasePage : MonoBehaviour
     }
 
     //動かしたアクターを戻す
-    public void ResetPage()
+    public void ResetPage(System.Action endCallBack = null)
     {
         //後のページから戻ってきた場合はページ外にいるオブジェクトは戻さない
         for(int i = 0;i < actorList.Count;i++)
@@ -77,6 +77,8 @@ public class BasePage : MonoBehaviour
             actorList[i].transform.position = actorList[i].firstPosition;
             actorList[i].transform.rotation = actorList[i].firstRotation;
         }
+
+        if(endCallBack != null) endCallBack.Invoke();
     }
 
     public Actor GetActor(string name)

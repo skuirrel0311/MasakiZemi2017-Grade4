@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 /// <summary>
@@ -17,7 +16,7 @@ public class GimmickMaker : MyTracableEventHandler
     /// </summary>
     public bool IsVisuabled { get; private set; }
 
-    public float moveSpeed = 50.0f;
+    public float moveSpeed = 100.0f;
 
     public Transform child { get; private set; }
 
@@ -25,6 +24,9 @@ public class GimmickMaker : MyTracableEventHandler
     Vector3 oldPosition;
 
     bool isHide = true;
+
+    public Action foundMakerEvent;
+    public Action lostMakerEvent;
 
     protected override void Start()
     {
@@ -66,10 +68,14 @@ public class GimmickMaker : MyTracableEventHandler
         isHide = false;
         currentPosition = transform.position;
         oldPosition = currentPosition;
+
+        if (foundMakerEvent != null) foundMakerEvent.Invoke();
     }
 
     protected override void OnTrackingLost()
     {
         IsVisuable = false;
+
+        if (lostMakerEvent != null) lostMakerEvent.Invoke();
     }
 }
