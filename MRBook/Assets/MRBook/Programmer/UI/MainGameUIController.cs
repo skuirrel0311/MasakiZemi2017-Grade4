@@ -49,7 +49,6 @@ public class MainGameUIController : BaseManager<MainGameUIController>
         switch (gameManager.currentState)
         {
             case MainGameManager.GameState.Play:
-                missionText.CurrentText = gameManager.currentMissionText;
                 playButton.Hide();
                 resetButton.Hide();
                 break;
@@ -59,6 +58,7 @@ public class MainGameUIController : BaseManager<MainGameUIController>
                 resetButton.Hide();
                 break;
             case MainGameManager.GameState.Wait:
+                missionText.CurrentText = gameManager.currentMissionText;
                 playButton.Refresh();
                 resetButton.Refresh();
                 break;

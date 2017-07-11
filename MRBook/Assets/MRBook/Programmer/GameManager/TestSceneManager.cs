@@ -31,6 +31,7 @@ public class TestSceneManager : MainGameManager
 
         SetPage(currentPageIndex);
 
+        //使うUIだけアクティブにしておく
         uiController.missionText.gameObject.SetActive(true);
         uiController.stateText.gameObject.SetActive(true);
     }

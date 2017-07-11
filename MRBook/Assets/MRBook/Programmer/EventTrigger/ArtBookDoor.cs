@@ -11,8 +11,10 @@ public class ArtBookDoor : ArtBookGimmick
     {
         base.Start();
     }
+#if UNITY_EDITOR
 
-    void Update()
+#else
+    protected override void Update()
     {
         //初回だけ弾く
         if (!maker.IsVisuabled) return;
@@ -24,4 +26,6 @@ public class ArtBookDoor : ArtBookGimmick
 
         transform.position = maker.child.position;
     }
+#endif
+
 }

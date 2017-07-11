@@ -28,6 +28,8 @@ public class ArtBookGimmick : MyEventTrigger
         normalVec = transform.up;
         m_renderer = GetComponent<Renderer>();
 
+        if (maker == null) return;
+
         maker.foundMakerEvent = () =>
         {
             m_renderer.enabled = true;
@@ -50,6 +52,17 @@ public class ArtBookGimmick : MyEventTrigger
             }
         };
     }
+
+#if UNITY_EDITOR
+    protected virtual void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            isHide = !isHide;
+            NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
+        }
+    }
+#endif
 
     public override void SetFlag()
     {

@@ -16,7 +16,7 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     protected MainGameUIController uiController;
 
-    public string currentMissionText { get; private set; }
+    public string currentMissionText { get; protected set; }
 
     [SerializeField]
     protected BasePage[] pages = null;
@@ -157,7 +157,6 @@ public class MainGameManager : BaseManager<MainGameManager>
         {
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;
-            NotificationManager.I.ShowMessage(pages[currentPageIndex].missionText);
         }
 
         currentState = GameState.Wait;

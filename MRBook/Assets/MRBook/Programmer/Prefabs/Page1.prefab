@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1095104208052114
 GameObject:
   m_ObjectHideFlags: 1
@@ -1378,7 +1378,6 @@ GameObject:
   - component: {fileID: 33207327323396406}
   - component: {fileID: 135150871991406742}
   - component: {fileID: 23218846173267590}
-  - component: {fileID: 208653735064054502}
   - component: {fileID: 114202792350533490}
   m_Layer: 8
   m_Name: Turtle
@@ -5482,7 +5481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagName: UrashimaIsNearTurtle
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1550733524679626}
   layer:
     serializedVersion: 2
     m_Bits: 256
@@ -6040,21 +6039,6 @@ NavMeshObstacle:
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
---- !u!208 &208653735064054502
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563480667869934}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
