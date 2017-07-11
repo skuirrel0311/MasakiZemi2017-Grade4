@@ -13,6 +13,9 @@ public class BasePage : MonoBehaviour
     
     public RuntimeAnimatorController controller = null;
 
+    [SerializeField]
+    GameObject[] bookObjects = null;
+
     //そのページを開くのが初めてか？
     bool isFirst = true;
 
@@ -36,8 +39,6 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void PageStart()
     {
-        //todo:ナビメッシュを貼る
-
         if (!isFirst)
         {
             for (int i = 0; i < actorList.Count; i++)
@@ -64,6 +65,15 @@ public class BasePage : MonoBehaviour
         for(int i = 0;i < actorList.Count;i++)
         {
             actorList[i].PageStart(pageIndex, true);
+        }
+
+        if (MainGameManager.I.isVisibleBook)
+        {
+            Material visibleMat = MainGameManager.I.visibleMat;
+            for (int i = 0; i < bookObjects.Length; i++)
+            {
+                bookObjects[i].GetComponent<Renderer>().material = visibleMat;
+            }
         }
     }
 

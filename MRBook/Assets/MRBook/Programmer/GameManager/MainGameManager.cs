@@ -21,6 +21,9 @@ public class MainGameManager : BaseManager<MainGameManager>
     [SerializeField]
     protected BasePage[] pages = null;
 
+    public bool isVisibleBook = false;
+    public Material visibleMat = null;
+
     /// <summary>
     /// 初期位置を決める用のアンカー
     /// </summary>
