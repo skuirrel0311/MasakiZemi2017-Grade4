@@ -24,8 +24,6 @@ public class BasePage : MonoBehaviour
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public List<Transform> anchorList = new List<Transform>();
 
-    Coroutine coroutine;
-
     //本の位置にページを固定する
     public void PageLock(Vector3 position, Quaternion rotation,int pageIndex)
     {

@@ -59,6 +59,7 @@ public class ArtBookGimmick : MyEventTrigger
         if(Input.GetKeyDown(KeyCode.D))
         {
             isHide = !isHide;
+            m_renderer.enabled = !isHide;
             NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
         }
     }
