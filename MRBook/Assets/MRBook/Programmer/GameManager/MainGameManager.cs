@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MainGameManager : BaseManager<MainGameManager>
 {
@@ -9,6 +10,11 @@ public class MainGameManager : BaseManager<MainGameManager>
         Next   //ページが捲られるまで待機
     }
 
+    /// <summary>
+    /// ページの遷移時に呼ばれる。開くページ。
+    /// </summary>
+    public Action<BasePage> OnPageChanged = null;
+
     public GameState currentState { get; private set; }
     protected GameState oldState = GameState.Wait;
     
@@ -18,8 +24,7 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     public string currentMissionText { get; protected set; }
 
-    [SerializeField]
-    protected BasePage[] pages = null;
+    public BasePage[] pages = null;
 
     public bool isVisibleBook = false;
     public Material visibleMat = null;
@@ -162,6 +167,7 @@ public class MainGameManager : BaseManager<MainGameManager>
             currentMissionText = pages[currentPageIndex].missionText;
         }
 
+        if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex]);
         currentState = GameState.Wait;
     }
 }
