@@ -9,8 +9,6 @@ public class MyEventTrigger : MonoBehaviour
 
     [SerializeField]
     protected GameObject targetObject = null;
-    [SerializeField]
-    protected LayerMask layer;
 
     public virtual void SetFlag() { }
 }
