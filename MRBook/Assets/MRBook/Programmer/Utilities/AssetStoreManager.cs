@@ -5,5 +5,5 @@ using UnityEngine;
 public class AssetStoreManager : BaseManager<AssetStoreManager>
 {
     public MyAssetStore<Material> materialStore = new MyAssetStore<Material>("Materials/");
-    public MyAssetStore<GameObject> particleStore = new MyAssetStore<GameObject>("Particles/");
+    public MyAssetStore<GameObject> prefabStore = new MyAssetStore<GameObject>("Prefabs/");
 }

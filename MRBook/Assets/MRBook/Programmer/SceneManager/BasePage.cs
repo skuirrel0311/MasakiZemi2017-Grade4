@@ -13,18 +13,20 @@ public class BasePage : MonoBehaviour
     
     public RuntimeAnimatorController controller = null;
 
+    /// <summary>
+    /// オクルージョン用のオブジェクト
+    /// </summary>
     [SerializeField]
     GameObject[] bookObjects = null;
-
-    //そのページを開くのが初めてか？
-    bool isFirst = true;
 
     //ページに存在するアクター(ホログラムのオブジェクトのこと)のリスト
     public List<Actor> actorList = new List<Actor>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public List<Transform> anchorList = new List<Transform>();
-
-    //本の位置にページを固定する
+    
+    /// <summary>
+    /// 本の位置にページを固定する
+    /// </summary>
     public void PageLock(Vector3 position, Quaternion rotation,int pageIndex)
     {
         transform.position = position;
@@ -35,9 +37,9 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// ページを開いた時に呼ぶ
     /// </summary>
-    public void PageStart()
+    public void PageStart(bool isBack)
     {
-        if (!isFirst)
+        if (isBack)
         {
             for (int i = 0; i < actorList.Count; i++)
             {
@@ -47,7 +49,6 @@ public class BasePage : MonoBehaviour
         }
         
         //初回のみリストに格納する
-        isFirst = false;
         GameObject[] tempArray;
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
@@ -75,15 +76,15 @@ public class BasePage : MonoBehaviour
         }
     }
 
-    //動かしたアクターを戻す
+    /// <summary>
+    /// このページに登録されているアクターをページを開いた時の位置に戻す
+    /// </summary>
+    /// <param name="endCallBack"></param>
     public void ResetPage(System.Action endCallBack = null)
     {
-        //後のページから戻ってきた場合はページ外にいるオブジェクトは戻さない
         for(int i = 0;i < actorList.Count;i++)
         {
-            actorList[i].gameObject.SetActive(true);
-            actorList[i].transform.position = actorList[i].firstPosition;
-            actorList[i].transform.rotation = actorList[i].firstRotation;
+            actorList[i].ResetTransform();
         }
 
         if(endCallBack != null) endCallBack.Invoke();

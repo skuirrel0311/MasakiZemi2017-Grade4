@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MainGameManager : BaseManager<MainGameManager>
@@ -17,7 +18,7 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     public GameState currentState { get; private set; }
     protected GameState oldState = GameState.Wait;
-    
+
     protected Animator m_Animator;
 
     protected MainGameUIController uiController;
@@ -34,12 +35,12 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     [SerializeField]
     Transform anchor = null;
-    
+
     /// <summary>
     /// ゲームの進行度合い
     /// </summary>
     public int pageIndex { get; protected set; }
-    
+
     /// <summary>
     /// 今いるページ
     /// </summary>
@@ -77,7 +78,7 @@ public class MainGameManager : BaseManager<MainGameManager>
     public virtual void EndCallBack(bool success)
     {
         //todo:ページをクリアしたかを判断する
-        currentState = success ?  GameState.Next : GameState.Wait;
+        currentState = success ? GameState.Next : GameState.Wait;
 
         m_Animator.SetBool("IsStart", false);
     }
@@ -140,7 +141,7 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public virtual void ResetPage()
     {
-        pages[currentPageIndex].ResetPage(()=>
+        pages[currentPageIndex].ResetPage(() =>
         {
             uiController.resetButton.Refresh();
         });
@@ -152,6 +153,13 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// <param name="isBack">前のページか？</param>
     protected virtual void SetPage(int index, bool isBack = false)
     {
+        List<Actor> currentPageGlobalActorList = ActorManager.I.GetPageGlobalActor(currentPageIndex);
+        //グローバルに行ったアクターを今いるページから切り離す
+        for (int i = 0; i < currentPageGlobalActorList.Count; i++)
+        {
+            pages[currentPageIndex].actorList.Remove(currentPageGlobalActorList[i]);
+        }
+
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
 
@@ -159,7 +167,7 @@ public class MainGameManager : BaseManager<MainGameManager>
         currentPageIndex = index;
         ActorManager.I.currentPage = pages[currentPageIndex];
         pages[currentPageIndex].gameObject.SetActive(true);
-        pages[currentPageIndex].PageStart();
+        pages[currentPageIndex].PageStart(isBack);
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
         if (!isBack)
         {

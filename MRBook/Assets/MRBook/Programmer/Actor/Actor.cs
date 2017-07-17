@@ -5,18 +5,24 @@ public class Actor : MonoBehaviour
     /// <summary>
     /// 動かせるか
     /// </summary>
-    [SerializeField]
-    bool isMovable = false;
+    public bool isMovable = false;
     /// <summary>
     /// 別のページに持っていけるか
     /// </summary>
-    [SerializeField]
-    bool isBring = false;
+    public bool isBring = false;
+    /// <summary>
+    /// アイテムを持たせることができるか
+    /// </summary>
+    public bool CanHaveItem = false;
+    /// <summary>
+    /// 持たせることができるか
+    /// </summary>
+    public bool IsItem = false;
 
     /// <summary>
     /// そのオブジェクトが存在する（元の）ページのインデックス
     /// </summary>
-    int pageIndex = 0;
+    public int pageIndex { get; private set; }
 
     //初期値
     public Vector3 firstPosition { get; private set; }
@@ -51,6 +57,16 @@ public class Actor : MonoBehaviour
             //違うページ(必ず動かせる)
             ActivateControl();
         }
+    }
+
+    /// <summary>
+    /// ページが初めて開かれた時の場所に戻す
+    /// </summary>
+    public void ResetTransform()
+    {
+        gameObject.SetActive(true);
+        transform.position = firstPosition;
+        transform.rotation = firstRotation;
     }
 
     void ActivateControl()

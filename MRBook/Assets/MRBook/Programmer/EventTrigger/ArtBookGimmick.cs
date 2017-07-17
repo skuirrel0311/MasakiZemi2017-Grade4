@@ -53,17 +53,22 @@ public class ArtBookGimmick : MyEventTrigger
         };
     }
 
-#if UNITY_EDITOR
     protected virtual void Update()
     {
+#if UNITY_EDITOR
+
         if(Input.GetKeyDown(KeyCode.D))
         {
             isHide = !isHide;
             m_renderer.enabled = !isHide;
             NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
         }
-    }
+
+#else
+
 #endif
+    }
+
 
     public override void SetFlag()
     {
