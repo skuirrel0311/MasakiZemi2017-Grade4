@@ -18,7 +18,7 @@ Shader "HoloToolkit/Occlusion"
         Pass
         {
             ColorMask 0 // Color will not be rendered.
-			cull off
+            Offset 50, 100
 
             CGPROGRAM
             #pragma vertex vert

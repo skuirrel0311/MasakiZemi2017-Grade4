@@ -146,9 +146,7 @@ public class AkWwiseProjectData : ScriptableObject
         }
     }
     
-#if UNITY_5
     public string CurrentPluginConfig;
-#endif
 
     public enum WwiseObjectType
     {
