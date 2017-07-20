@@ -15,7 +15,7 @@ public class ArtBookDoor : ArtBookGimmick
     protected override void Update()
     {
 #if UNITY_EDITOR
-
+        base.Update();
 #else
         //初回だけ弾く
         if (!maker.IsVisuabled) return;
