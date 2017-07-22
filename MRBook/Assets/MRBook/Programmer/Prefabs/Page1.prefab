@@ -1214,7 +1214,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4841043544992154}
   - component: {fileID: 33102251489945998}
-  - component: {fileID: 64002038288693852}
   - component: {fileID: 114988197274802980}
   m_Layer: 0
   m_Name: BookNav
@@ -1555,7 +1554,10 @@ GameObject:
   - component: {fileID: 23537493386066754}
   - component: {fileID: 114876313024353592}
   - component: {fileID: 114719239183116732}
-  m_Layer: 0
+  - component: {fileID: 195130638469168930}
+  - component: {fileID: 114507812968960972}
+  - component: {fileID: 114175172365059626}
+  m_Layer: 8
   m_Name: Rock
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -5158,20 +5160,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698272046730764}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64002038288693852
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1538965916300506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64712905013315758
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -5305,6 +5293,18 @@ MonoBehaviour:
   - {fileID: 1315988204977866}
   actorList: []
   anchorList: []
+--- !u!114 &114175172365059626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638253663833516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7868105ca9ad5e446bd4c9e13fe832cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
 --- !u!114 &114202792350533490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5390,6 +5390,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 1550733524679626}
+--- !u!114 &114507812968960972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638253663833516}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb69de839bd015f4099b5bd2c45e53e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnscaledTime: 1
+  PositionPerSecond: 30
+  RotationDegreesPerSecond: 720
+  RotationSpeedScaler: 0
+  ScalePerSecond: 5
+  SmoothLerpToTarget: 0
+  SmoothPositionLerpRatio: 0.5
+  SmoothRotationLerpRatio: 0.5
+  SmoothScaleLerpRatio: 0.5
 --- !u!114 &114590170143258266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5449,8 +5469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98e7442883fb1245873f9ce71a0d528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMovable: 0
-  isBring: 0
+  isMovable: 1
+  isBring: 1
 --- !u!114 &114892589980189780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5464,9 +5484,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: UrashimaIsSeeTurtle
   targetObject: {fileID: 1563480667869934}
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
   eye: {fileID: 4986001372721068}
   ignoreLayerMask:
     serializedVersion: 2
@@ -5995,6 +6012,27 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.25996536, z: 0.026400775}
     m_Extent: {x: 0.4865767, y: 0.35944808, z: 0.57237947}
   m_DirtyAABB: 0
+--- !u!195 &195130638469168930
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638253663833516}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!195 &195459060913011756
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -10,11 +10,11 @@ public class MainGameManager : BaseManager<MainGameManager>
         Play,   //再生中
         Next   //ページが捲られるまで待機
     }
-
+    
     /// <summary>
-    /// ページの遷移時に呼ばれる。開くページ。
+    /// ページの遷移時に呼ばれる　前のページ、次のページ
     /// </summary>
-    public Action<BasePage> OnPageChanged = null;
+    public event Action<BasePage, BasePage> OnPageChanged;
 
     public GameState currentState { get; private set; }
     protected GameState oldState = GameState.Wait;
@@ -27,7 +27,6 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     public BasePage[] pages = null;
 
-    public bool isVisibleBook = false;
     public Material visibleMat = null;
 
     /// <summary>
@@ -51,6 +50,7 @@ public class MainGameManager : BaseManager<MainGameManager>
         base.Start();
         m_Animator = GetComponent<Animator>();
         uiController = MainGameUIController.I;
+        ActorManager.I.currentPage = pages[0];
     }
 
     /// <summary>
@@ -148,34 +148,29 @@ public class MainGameManager : BaseManager<MainGameManager>
     }
 
     /// <summary>
-    /// 指定されたページへ遷移する
+    /// 指定されたページへ遷移する(実際のページの遷移はここ)
     /// </summary>
     /// <param name="isBack">前のページか？</param>
     protected virtual void SetPage(int index, bool isBack = false)
     {
-        List<Actor> currentPageGlobalActorList = ActorManager.I.GetPageGlobalActor(currentPageIndex);
-        //グローバルに行ったアクターを今いるページから切り離す
-        for (int i = 0; i < currentPageGlobalActorList.Count; i++)
-        {
-            pages[currentPageIndex].actorList.Remove(currentPageGlobalActorList[i]);
-        }
-
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
 
         //ページを切り替える
+        if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex], pages[index]);
         currentPageIndex = index;
-        ActorManager.I.currentPage = pages[currentPageIndex];
+
+        //表示するtodo:エフェクト
         pages[currentPageIndex].gameObject.SetActive(true);
         pages[currentPageIndex].PageStart(isBack);
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
+
+        //ミッションの切り替え
         if (!isBack)
         {
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;
         }
-
-        if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex]);
         currentState = GameState.Wait;
     }
 }

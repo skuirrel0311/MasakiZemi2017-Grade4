@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,19 +9,19 @@ public class ActorManager : BaseManager<ActorManager>
     MainGameManager gameManager;
     public BasePage currentPage;
 
-    public List<Actor> globalActor = new List<Actor>();
+    public List<Actor> globalActorList = new List<Actor>();
 
     protected override void Start()
     {
         base.Start();
         gameManager = MainGameManager.I;
-        gameManager.OnPageChanged += OnPageStarted;
+        gameManager.OnPageChanged += OnPageChanged;
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        gameManager.OnPageChanged -= OnPageStarted;
+        gameManager.OnPageChanged -= OnPageChanged;
     }
 
     public Actor GetActor(string name)
@@ -41,39 +40,45 @@ public class ActorManager : BaseManager<ActorManager>
 
     public void SetGlobal(Actor actor)
     {
-        if (actor == null) return;        
-
-        if(!currentPage.actorList.Remove(actor))
-        {
-            Debug.LogError(actor.name +  " is not found current page");
-        }
-        globalActor.Add(actor);
+        globalActorList.Add(actor);
     }
 
-    public List<Actor> GetPageGlobalActor(int currentPageIndex)
+    public void RemoveGlobal(Actor actor)
+    {
+        if (globalActorList.Remove(actor))
+            Debug.Log("remove : " + actor.name);
+    }
+
+    public List<Actor> GetGlobalActorByPage(int pageIndex)
     {
         List<Actor> currentPageObjectList = new List<Actor>();
 
-        for(int i = 0;i< globalActor.Count;i++)
+        for(int i = 0;i< globalActorList.Count;i++)
         {
-            if (globalActor[i].pageIndex != currentPageIndex) continue;
+            if (globalActorList[i].pageIndex != pageIndex) continue;
 
-            currentPageObjectList.Add(globalActor[i]);
+            currentPageObjectList.Add(globalActorList[i]);
         }
 
         return currentPageObjectList;
     }
 
-    //ページが開始された
-    void OnPageStarted(BasePage page)
+    //ページが変更
+    void OnPageChanged(BasePage previousPage, BasePage nextPage)
     {
-        currentPage = page;
+        Debug.Log("changePage in actorManager");
+        currentPage = nextPage;
 
         //前のページから持ってきたオブジェクトがある。
-        if(globalActor.Count > 0)
+        if(globalActorList.Count > 0)
         {
-            currentPage.actorList.AddRange(globalActor);
-            globalActor.Clear();
+            //前のページから削除
+            for(int i = 0;i < globalActorList.Count;i++)
+            {
+                previousPage.actorList.Remove(globalActorList[i]);
+                //親子関係も変更
+                globalActorList[i].transform.parent = nextPage.transform;
+            }
         }
     }
 }

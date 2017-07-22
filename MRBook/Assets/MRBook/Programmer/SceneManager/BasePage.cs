@@ -8,9 +8,9 @@ public class BasePage : MonoBehaviour
     /// お題
     /// </summary>
     public string missionText = "";
-    
+
     int pageIndex = 0;
-    
+
     public RuntimeAnimatorController controller = null;
 
     /// <summary>
@@ -23,11 +23,14 @@ public class BasePage : MonoBehaviour
     public List<Actor> actorList = new List<Actor>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public List<Transform> anchorList = new List<Transform>();
-    
+
+    //このページを開くのが初めてか？
+    bool isFirst = true;
+
     /// <summary>
     /// 本の位置にページを固定する
     /// </summary>
-    public void PageLock(Vector3 position, Quaternion rotation,int pageIndex)
+    public void PageLock(Vector3 position, Quaternion rotation, int pageIndex)
     {
         transform.position = position;
         transform.rotation = rotation;
@@ -39,15 +42,17 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void PageStart(bool isBack)
     {
-        if (isBack)
+        if (!isFirst)
         {
+
             for (int i = 0; i < actorList.Count; i++)
             {
                 actorList[i].PageStart(pageIndex, false);
             }
             return;
         }
-        
+
+        isFirst = false;
         //初回のみリストに格納する
         GameObject[] tempArray;
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
@@ -61,18 +66,15 @@ public class BasePage : MonoBehaviour
             anchorList.Add(tempArray[i].transform);
         }
 
-        for(int i = 0;i < actorList.Count;i++)
+        for (int i = 0; i < actorList.Count; i++)
         {
             actorList[i].PageStart(pageIndex, true);
         }
 
-        if (MainGameManager.I.isVisibleBook)
+        Material visibleMat = MainGameManager.I.visibleMat;
+        for (int i = 0; i < bookObjects.Length; i++)
         {
-            Material visibleMat = MainGameManager.I.visibleMat;
-            for (int i = 0; i < bookObjects.Length; i++)
-            {
-                bookObjects[i].GetComponent<Renderer>().material = visibleMat;
-            }
+            bookObjects[i].GetComponent<Renderer>().material = visibleMat;
         }
     }
 
@@ -82,12 +84,12 @@ public class BasePage : MonoBehaviour
     /// <param name="endCallBack"></param>
     public void ResetPage(System.Action endCallBack = null)
     {
-        for(int i = 0;i < actorList.Count;i++)
+        for (int i = 0; i < actorList.Count; i++)
         {
             actorList[i].ResetTransform();
         }
 
-        if(endCallBack != null) endCallBack.Invoke();
+        if (endCallBack != null) endCallBack.Invoke();
     }
 
     public Actor GetActor(string name)

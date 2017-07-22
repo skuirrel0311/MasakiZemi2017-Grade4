@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
+/// <summary>
+/// このプロジェクトにおいてはホログラム全般のこと
+/// </summary>
 public class Actor : MonoBehaviour
 {
     /// <summary>
@@ -10,14 +14,6 @@ public class Actor : MonoBehaviour
     /// 別のページに持っていけるか
     /// </summary>
     public bool isBring = false;
-    /// <summary>
-    /// アイテムを持たせることができるか
-    /// </summary>
-    public bool CanHaveItem = false;
-    /// <summary>
-    /// 持たせることができるか
-    /// </summary>
-    public bool IsItem = false;
 
     /// <summary>
     /// そのオブジェクトが存在する（元の）ページのインデックス
@@ -32,7 +28,7 @@ public class Actor : MonoBehaviour
     /// ページが開かれた
     /// </summary>
     /// <param name="isFirst">そのページを開くのが初めてか？</param>
-    public void PageStart(int currentPageIndex, bool isFirst = true)
+    public virtual void PageStart(int currentPageIndex, bool isFirst = true)
     {
         if(isFirst)
         {
@@ -41,32 +37,36 @@ public class Actor : MonoBehaviour
             firstRotation = transform.rotation;
         }
 
-        if(pageIndex == currentPageIndex)
+        if (isMovable)
         {
-            if(isFirst && isMovable)
-            {
-                ActivateControl();
-            }
-            if(!isFirst && isBring)
-            {
-                ActivateControl();
-            }
+            ActivateControl();
         }
         else
         {
-            //違うページ(必ず動かせる)
-            ActivateControl();
+            //Renderer[] rends = GetComponentsInChildren<Renderer>();
+            //Shader grayScaleShader = AssetStoreManager.I.shaderStore.GetAsset("GrayScaleShader");
+            //for (int i = 0; i < rends.Length; i++)
+            //{
+            //    //todo:シェーダーのパラメーターで切り替える
+            //    //rends[i].material.shader = grayScaleShader;
+            //}
         }
     }
 
     /// <summary>
     /// ページが初めて開かれた時の場所に戻す
     /// </summary>
-    public void ResetTransform()
+    public virtual void ResetTransform()
     {
         gameObject.SetActive(true);
         transform.position = firstPosition;
         transform.rotation = firstRotation;
+
+        //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
+        if(isBring)
+        {
+            ActorManager.I.RemoveGlobal(this);
+        }
     }
 
     void ActivateControl()

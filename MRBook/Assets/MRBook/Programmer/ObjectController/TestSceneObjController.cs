@@ -8,15 +8,17 @@ public class TestSceneObjController : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     Camera mainCamera;
+    ActorManager actorManager;
 
-    [SerializeField]
-    LayerMask layer;
+    //Actor
+    LayerMask layerMask = 1 << 8;
 
     GameObject targetObj;
     NavMeshAgent targetAgent;
 
     Vector2 oldMousePosition;
 
+    //計算用キャッシュ
     Vector3 zeroVec;
 
     /// <summary>
@@ -31,6 +33,8 @@ public class TestSceneObjController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        actorManager = ActorManager.I;
+
         zeroVec = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
@@ -62,7 +66,7 @@ public class TestSceneObjController : MonoBehaviour
     {
         ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         
-        if(Physics.Raycast(ray, out hit, 10.0f, layer))
+        if(Physics.Raycast(ray, out hit, 10.0f, layerMask))
         {
             obj = hit.transform.gameObject;
 
@@ -103,8 +107,39 @@ public class TestSceneObjController : MonoBehaviour
 
     void EndOperationObject()
     {
-        if (targetAgent != null) targetAgent.enabled = true;
+        if (targetObj == null) return;
 
+        //離した時に直下に何かオブジェクトがあったら困るので対応
+        ray.direction = Vector3.down;
+        ray.origin = targetObj.transform.position;
+        float radius = targetAgent.radius * targetObj.transform.localScale.x;
+        
+        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 2.0f);
+        for (int i = 0;i< hits.Length;i++)
+        {
+            Debug.Log("hitobj = " + hits[i].transform.name);
+            if (hits[i].transform.gameObject.Equals(targetObj)) continue;
+            if (hits[i].transform.tag != "Actor") continue;
+            //なんか当たった
+            return;
+        }
+        Actor actor = targetObj.GetComponent<Actor>();
+
+        if (hits.Length == 1)
+        {
+            //ページの外に置いた
+            if(actor.isBring) actorManager.SetGlobal(actor);
+            //IsBringがtrueじゃない場合でもページ外に留まるという挙動をする
+            return;
+        }
+        
+        //ページ内に配置された
+
+        //グローバルに登録されていたら削除する。
+        actorManager.RemoveGlobal(actor);
+
+        //NavMeshAgentを戻す
+        targetAgent.enabled = true;
         targetObj = null;
     }
 

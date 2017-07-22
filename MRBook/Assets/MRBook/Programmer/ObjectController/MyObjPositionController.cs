@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 
 [RequireComponent(typeof(Interpolator))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class MyObjPositionController : MyInputHandler
 {
     //手が首からどれだけ離れているか
