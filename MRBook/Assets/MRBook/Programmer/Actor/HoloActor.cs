@@ -4,8 +4,11 @@ using System.Collections.Generic;
 /// <summary>
 /// このプロジェクトにおいてはホログラム全般のこと
 /// </summary>
-public class Actor : MonoBehaviour
+public class HoloActor : MonoBehaviour
 {
+    public enum ActorType { Character, Item, StaticObj }
+    public virtual ActorType GetActorType { get { return ActorType.StaticObj; } }
+
     /// <summary>
     /// 動かせるか
     /// </summary>
@@ -23,14 +26,14 @@ public class Actor : MonoBehaviour
     //初期値
     public Vector3 firstPosition { get; private set; }
     public Quaternion firstRotation { get; private set; }
-    
+
     /// <summary>
     /// ページが開かれた
     /// </summary>
     /// <param name="isFirst">そのページを開くのが初めてか？</param>
     public virtual void PageStart(int currentPageIndex, bool isFirst = true)
     {
-        if(isFirst)
+        if (isFirst)
         {
             pageIndex = currentPageIndex;
             firstPosition = transform.position;
@@ -43,11 +46,12 @@ public class Actor : MonoBehaviour
         }
         else
         {
+            //todo:シェーダーのパラメーターで切り替える
             //Renderer[] rends = GetComponentsInChildren<Renderer>();
             //Shader grayScaleShader = AssetStoreManager.I.shaderStore.GetAsset("GrayScaleShader");
             //for (int i = 0; i < rends.Length; i++)
             //{
-            //    //todo:シェーダーのパラメーターで切り替える
+            //    
             //    //rends[i].material.shader = grayScaleShader;
             //}
         }
@@ -63,7 +67,7 @@ public class Actor : MonoBehaviour
         transform.rotation = firstRotation;
 
         //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
-        if(isBring)
+        if (isBring)
         {
             ActorManager.I.RemoveGlobal(this);
         }
@@ -74,4 +78,6 @@ public class Actor : MonoBehaviour
         //操作できるようにする
         Debug.Log(gameObject.name + "は操作可能だ");
     }
+
+    public virtual void SetItem(GameObject item) { }
 }

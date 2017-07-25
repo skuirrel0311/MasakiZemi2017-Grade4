@@ -9,7 +9,7 @@ public class ActorManager : BaseManager<ActorManager>
     MainGameManager gameManager;
     public BasePage currentPage;
 
-    public List<Actor> globalActorList = new List<Actor>();
+    public List<HoloActor> globalActorList = new List<HoloActor>();
 
     protected override void Start()
     {
@@ -24,7 +24,7 @@ public class ActorManager : BaseManager<ActorManager>
         gameManager.OnPageChanged -= OnPageChanged;
     }
 
-    public Actor GetActor(string name)
+    public HoloActor GetActor(string name)
     {
         return currentPage.GetActor(name);
     }
@@ -38,20 +38,20 @@ public class ActorManager : BaseManager<ActorManager>
         currentPage.DisableActor(actorName);
     }
 
-    public void SetGlobal(Actor actor)
+    public void SetGlobal(HoloActor actor)
     {
         globalActorList.Add(actor);
     }
 
-    public void RemoveGlobal(Actor actor)
+    public void RemoveGlobal(HoloActor actor)
     {
         if (globalActorList.Remove(actor))
             Debug.Log("remove : " + actor.name);
     }
 
-    public List<Actor> GetGlobalActorByPage(int pageIndex)
+    public List<HoloActor> GetGlobalActorByPage(int pageIndex)
     {
-        List<Actor> currentPageObjectList = new List<Actor>();
+        List<HoloActor> currentPageObjectList = new List<HoloActor>();
 
         for(int i = 0;i< globalActorList.Count;i++)
         {

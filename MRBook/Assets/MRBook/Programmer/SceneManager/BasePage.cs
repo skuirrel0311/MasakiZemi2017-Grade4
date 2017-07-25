@@ -20,7 +20,7 @@ public class BasePage : MonoBehaviour
     GameObject[] bookObjects = null;
 
     //ページに存在するアクター(ホログラムのオブジェクトのこと)のリスト
-    public List<Actor> actorList = new List<Actor>();
+    public List<HoloActor> actorList = new List<HoloActor>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public List<Transform> anchorList = new List<Transform>();
 
@@ -58,7 +58,7 @@ public class BasePage : MonoBehaviour
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {
-            actorList.Add(tempArray[i].GetComponent<Actor>());
+            actorList.Add(tempArray[i].GetComponent<HoloActor>());
         }
         tempArray = GameObject.FindGameObjectsWithTag("Target");
         for (int i = 0; i < tempArray.Length; i++)
@@ -92,7 +92,7 @@ public class BasePage : MonoBehaviour
         if (endCallBack != null) endCallBack.Invoke();
     }
 
-    public Actor GetActor(string name)
+    public HoloActor GetActor(string name)
     {
         for (int i = 0; i < actorList.Count; i++)
         {
