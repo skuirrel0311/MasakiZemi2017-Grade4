@@ -8,11 +8,6 @@ public class EndCallBack : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            //もう一度再生できるようにする。
-        #if UNITY_EDITOR
-            animator.SetBool("IsStart", false);
-        #else
             MainGameManager.I.EndCallBack(success);
-        #endif
     }
 }

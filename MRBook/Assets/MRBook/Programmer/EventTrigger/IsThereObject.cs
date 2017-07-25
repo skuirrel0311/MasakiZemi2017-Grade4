@@ -4,6 +4,9 @@ public class IsThereObject : MyEventTrigger
 {
     MyTriggerBox trigger;
 
+    [SerializeField]
+    LayerMask layer;
+
     public void Start()
     {
         trigger = GetComponent<MyTriggerBox>();

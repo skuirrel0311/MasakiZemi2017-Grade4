@@ -2,102 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSceneManager : BaseManager<TestSceneManager>
+public class TestSceneManager : MainGameManager
 {
-    Animator m_Animator;
-    [SerializeField]
-    BasePage[] pages = null;
-    int currentPageIndex = 0;
-
-    public BasePage currentPage { get; private set; }
-
-    List<GameObject> globalObjectList = new List<GameObject>();
-
     protected override void Start()
     {
         base.Start();
-        m_Animator = GetComponent<Animator>();
-
-        for(int i = 0;i< pages.Length;i++)
-        {
-            pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation,i);
-        }
-
-        SetPage(currentPageIndex);
+        GameStart();
     }
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            //次のページへ
-            pages[currentPageIndex].gameObject.SetActive(false);
-            currentPageIndex++;
-            if (currentPageIndex >= pages.Length)
-            {
-                //todo:リザルトへ
-                return;
-            }
-            SetPage(currentPageIndex);
-        }
+        if (Input.GetKeyDown(KeyCode.N)) ChangePage(currentPageIndex + 1);
 
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            //前のページへ
-            pages[currentPageIndex].gameObject.SetActive(false);
-            currentPageIndex--;
-            if(currentPageIndex < 0)
-            {
-                //そんなに戻れない
-                return;
-            }
-            SetPage(currentPageIndex);
-        }
+        if (Input.GetKeyDown(KeyCode.B)) ChangePage(currentPageIndex - 1);
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            //再生
-            Play();
-        }
+        if (Input.GetKeyDown(KeyCode.P)) Play();
 
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            //リセット
-            pages[currentPageIndex].ResetPage();
-        }
+        if (Input.GetKeyDown(KeyCode.R)) ResetPage();
     }
     
-    void SetPage(int index)
+    public override void GameStart()
     {
-        currentPageIndex = index;
-        ActorManager.I.currentPage = pages[currentPageIndex];
-        pages[currentPageIndex].gameObject.SetActive(true);
-        pages[currentPageIndex].PageStart();
-        m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
-        NotificationManager.I.ShowMessage(pages[currentPageIndex].missionText);
-    }
-
-    /// <summary>
-    /// 再生する
-    /// </summary>
-    public void Play()
-    {
-        //イベントのトリガーをチェックしていく
-        GameObject[] eventTriggers = GameObject.FindGameObjectsWithTag("Trigger");
-
-        for (int i = 0; i < eventTriggers.Length; i++)
+        //エディタ上ではアンカーはないので起動時の位置に固定
+        for (int i = 0; i < pages.Length; i++)
         {
-            eventTriggers[i].GetComponent<MyEventTrigger>().SetFlag();
+            pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation, i);
         }
-        
-        m_Animator.SetBool("IsStart", true);
+
+        SetPage(currentPageIndex);
+
+        //使うUIだけアクティブにしておく
+        uiController.missionText.gameObject.SetActive(true);
+        uiController.stateText.gameObject.SetActive(true);
     }
 
-    /// <summary>
-    /// 再生が終了した
-    /// </summary>
-    public void EndCallBack()
-    {
-        m_Animator.SetBool("IsStart", false);
-    }
+    
 }

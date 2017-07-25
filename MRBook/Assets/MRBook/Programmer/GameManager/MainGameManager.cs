@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class MainGameManager : BaseManager<MainGameManager>
 {
@@ -8,38 +10,53 @@ public class MainGameManager : BaseManager<MainGameManager>
         Play,   //再生中
         Next   //ページが捲られるまで待機
     }
+    
+    /// <summary>
+    /// ページの遷移時に呼ばれる　前のページ、次のページ
+    /// </summary>
+    public event Action<BasePage, BasePage> OnPageChanged;
 
     public GameState currentState { get; private set; }
-    GameState oldState = GameState.Wait;
-    
-    Animator m_Animator;
+    protected GameState oldState = GameState.Wait;
 
-    MainGameUIController uiController;
+    protected Animator m_Animator;
 
-    public string currentMissionText { get; private set; }
+    protected MainGameUIController uiController;
 
-    [SerializeField]
-    BasePage[] pages = null;
+    public string currentMissionText { get; protected set; }
 
+    public BasePage[] pages = null;
+
+    public Material visibleMat = null;
+
+    /// <summary>
+    /// 初期位置を決める用のアンカー
+    /// </summary>
     [SerializeField]
     Transform anchor = null;
 
-    //ゲームの進行度合い
-    public int pageIndex { get; private set; }
-    //今いるページ
-    public int currentPageIndex { get; private set; }
+    /// <summary>
+    /// ゲームの進行度合い
+    /// </summary>
+    public int pageIndex { get; protected set; }
+
+    /// <summary>
+    /// 今いるページ
+    /// </summary>
+    public int currentPageIndex { get; protected set; }
 
     protected override void Start()
     {
         base.Start();
         m_Animator = GetComponent<Animator>();
         uiController = MainGameUIController.I;
+        ActorManager.I.currentPage = pages[0];
     }
 
     /// <summary>
     /// 再生する
     /// </summary>
-    public void Play()
+    public virtual void Play()
     {
         currentState = GameState.Play;
 
@@ -58,17 +75,18 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// <summary>
     /// 再生が終了した
     /// </summary>
-    public void EndCallBack(bool success)
+    public virtual void EndCallBack(bool success)
     {
         //todo:ページをクリアしたかを判断する
-        currentState = success ?  GameState.Next : GameState.Wait;
+        currentState = success ? GameState.Next : GameState.Wait;
 
         m_Animator.SetBool("IsStart", false);
-
-
     }
 
-    public void GameStart()
+    /// <summary>
+    /// TapToStartが押された
+    /// </summary>
+    public virtual void GameStart()
     {
         //絵本の位置
         Vector3 artBookPosition = anchor.position + new Vector3(0.0f, -0.1f, 0.0f);
@@ -84,6 +102,9 @@ public class MainGameManager : BaseManager<MainGameManager>
         uiController.SetPositionAndRotation(anchor);
     }
 
+    /// <summary>
+    /// 指定されたページへ遷移する。(事前にcurrentPageIndexを弄られると死ぬ)
+    /// </summary>
     public void ChangePage(int pageIndex)
     {
         bool isBack = false;
@@ -115,32 +136,41 @@ public class MainGameManager : BaseManager<MainGameManager>
         SetPage(pageIndex, isBack);
     }
 
-    public void ResetPage()
+    /// <summary>
+    /// ページを遷移してきたときの状態へ戻す
+    /// </summary>
+    public virtual void ResetPage()
     {
-        pages[currentPageIndex].ResetPage(()=>
+        pages[currentPageIndex].ResetPage(() =>
         {
             uiController.resetButton.Refresh();
         });
     }
 
-    void SetPage(int index, bool isBack = false)
+    /// <summary>
+    /// 指定されたページへ遷移する(実際のページの遷移はここ)
+    /// </summary>
+    /// <param name="isBack">前のページか？</param>
+    protected virtual void SetPage(int index, bool isBack = false)
     {
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
 
         //ページを切り替える
+        if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex], pages[index]);
         currentPageIndex = index;
-        ActorManager.I.currentPage = pages[currentPageIndex];
+
+        //表示するtodo:エフェクト
         pages[currentPageIndex].gameObject.SetActive(true);
-        pages[currentPageIndex].PageStart();
+        pages[currentPageIndex].PageStart(isBack);
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
+
+        //ミッションの切り替え
         if (!isBack)
         {
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;
-            NotificationManager.I.ShowMessage(pages[currentPageIndex].missionText);
         }
-
         currentState = GameState.Wait;
     }
 }

@@ -22,7 +22,8 @@ public class GoThere : StateMachineBehaviour
         agent = actor.GetComponent<NavMeshAgent>();
         if (agent != null)
         {
-            //agent.isStopped = false;
+            isEnd = false;
+            agent.isStopped = false;
             agent.SetDestination(targetPosition);
             agent.stoppingDistance = stopDistance;
         }

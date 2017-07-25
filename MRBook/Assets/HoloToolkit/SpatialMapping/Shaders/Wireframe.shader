@@ -3,19 +3,19 @@
 ///
 Shader "HoloToolkit/Wireframe"
 {
-	Properties
-	{
-		_BaseColor("Base color", Color) = (0.0, 0.0, 0.0, 1.0)
-		_WireColor("Wire color", Color) = (1.0, 1.0, 1.0, 1.0)
-		_WireThickness("Wire thickness", Range(0, 800)) = 100
-	}
-		SubShader
-	{
-		Tags { "RenderType" = "Opaque" }
+    Properties
+    {
+        _BaseColor("Base color", Color) = (0.0, 0.0, 0.0, 1.0)
+        _WireColor("Wire color", Color) = (1.0, 1.0, 1.0, 1.0)
+        _WireThickness("Wire thickness", Range(0, 800)) = 100
+    }
+    SubShader
+    {
+        Tags { "RenderType" = "Opaque" }
 
-		Pass
-		{
-			cull off
+        Pass
+        {
+            Offset 50, 100
 
             CGPROGRAM
             #pragma vertex vert

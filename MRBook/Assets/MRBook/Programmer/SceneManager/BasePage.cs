@@ -8,23 +8,29 @@ public class BasePage : MonoBehaviour
     /// お題
     /// </summary>
     public string missionText = "";
-    
+
     int pageIndex = 0;
-    
+
     public RuntimeAnimatorController controller = null;
 
-    //そのページを開くのが初めてか？
-    bool isFirst = true;
+    /// <summary>
+    /// オクルージョン用のオブジェクト
+    /// </summary>
+    [SerializeField]
+    GameObject[] bookObjects = null;
 
     //ページに存在するアクター(ホログラムのオブジェクトのこと)のリスト
-    public List<Actor> actorList = new List<Actor>();
+    public List<HoloActor> actorList = new List<HoloActor>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public List<Transform> anchorList = new List<Transform>();
 
-    Coroutine coroutine;
+    //このページを開くのが初めてか？
+    bool isFirst = true;
 
-    //本の位置にページを固定する
-    public void PageLock(Vector3 position, Quaternion rotation,int pageIndex)
+    /// <summary>
+    /// 本の位置にページを固定する
+    /// </summary>
+    public void PageLock(Vector3 position, Quaternion rotation, int pageIndex)
     {
         transform.position = position;
         transform.rotation = rotation;
@@ -34,26 +40,25 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// ページを開いた時に呼ぶ
     /// </summary>
-    public void PageStart()
+    public void PageStart(bool isBack)
     {
-        //todo:ナビメッシュを貼る
-
         if (!isFirst)
         {
+
             for (int i = 0; i < actorList.Count; i++)
             {
                 actorList[i].PageStart(pageIndex, false);
             }
             return;
         }
-        
-        //初回のみリストに格納する
+
         isFirst = false;
+        //初回のみリストに格納する
         GameObject[] tempArray;
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {
-            actorList.Add(tempArray[i].GetComponent<Actor>());
+            actorList.Add(tempArray[i].GetComponent<HoloActor>());
         }
         tempArray = GameObject.FindGameObjectsWithTag("Target");
         for (int i = 0; i < tempArray.Length; i++)
@@ -61,27 +66,33 @@ public class BasePage : MonoBehaviour
             anchorList.Add(tempArray[i].transform);
         }
 
-        for(int i = 0;i < actorList.Count;i++)
+        for (int i = 0; i < actorList.Count; i++)
         {
             actorList[i].PageStart(pageIndex, true);
         }
+
+        Material visibleMat = MainGameManager.I.visibleMat;
+        for (int i = 0; i < bookObjects.Length; i++)
+        {
+            bookObjects[i].GetComponent<Renderer>().material = visibleMat;
+        }
     }
 
-    //動かしたアクターを戻す
+    /// <summary>
+    /// このページに登録されているアクターをページを開いた時の位置に戻す
+    /// </summary>
+    /// <param name="endCallBack"></param>
     public void ResetPage(System.Action endCallBack = null)
     {
-        //後のページから戻ってきた場合はページ外にいるオブジェクトは戻さない
-        for(int i = 0;i < actorList.Count;i++)
+        for (int i = 0; i < actorList.Count; i++)
         {
-            actorList[i].gameObject.SetActive(true);
-            actorList[i].transform.position = actorList[i].firstPosition;
-            actorList[i].transform.rotation = actorList[i].firstRotation;
+            actorList[i].ResetTransform();
         }
 
-        if(endCallBack != null) endCallBack.Invoke();
+        if (endCallBack != null) endCallBack.Invoke();
     }
 
-    public Actor GetActor(string name)
+    public HoloActor GetActor(string name)
     {
         for (int i = 0; i < actorList.Count; i++)
         {
