@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
 using UnityEditor;
 
 public class GetCurrentSelectObject : Editor 
@@ -8,7 +10,7 @@ public class GetCurrentSelectObject : Editor
 	[MenuItem("Mytools/GetCurrentSelectObject")]
 	static void DrawText()
 	{
-		var asset = ScriptableObject.CreateInstance<ItemTransformDataList> ();
+		ItemTransformDataList asset = ScriptableObject.CreateInstance<ItemTransformDataList> ();
 
 		if (Selection.gameObjects.Length == 0) return;
 
@@ -20,7 +22,30 @@ public class GetCurrentSelectObject : Editor
 			asset.dataList.Add (data);
 		}
 
-		AssetDatabase.CreateAsset (asset, "Assets/MRBook/Resources/Data/" + transform.name +".asset");
-		AssetDatabase.SaveAssets ();
+		//そもそも同じファイルが存在するのかをチェックする
+		ItemTransformDataList original;
+		string filePath = "Assets/Resources/Data/" + transform.name +".asset";
+
+		//同じファイルは存在しなかった
+		if (!TryGetOriginalFile (transform.name, out original)) 
+		{
+			AssetDatabase.CreateAsset (asset, filePath);
+			AssetDatabase.SaveAssets ();
+			return;
+		}
+
+		//同じファイルが見つかった
+		if (EditorUtility.DisplayDialog ("override", transform.name + ".assetを上書きしますか？", "上書きする", "中止")) 
+		{
+			//データのみ差し替え
+			original.dataList = asset.dataList;
+		}
+	}
+
+	static bool TryGetOriginalFile(string fileName, out ItemTransformDataList result)
+	{
+		ItemTransformDataList original = Resources.Load<ItemTransformDataList> ("Data/" + fileName);
+		result = original;
+		return result == null ? false : true;
 	}
 }
