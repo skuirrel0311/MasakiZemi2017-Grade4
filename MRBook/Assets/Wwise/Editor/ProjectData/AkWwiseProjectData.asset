@@ -16,14 +16,14 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{97C18145-2FDD-4F60-98D0-D0DCCDA86244}'
-    m_lastTimePsrt1: -561825302
-    m_lastTimePart2: -1999318839
+    m_lastTimePsrt1: -50148467
+    m_lastTimePart2: -1999317411
     List: []
   - PhysicalPath: Events\Music.wwu
     ParentPhysicalPath: 
     Guid: '{5FD0981F-9232-4178-9468-F31BDDBDB1AE}'
-    m_lastTimePsrt1: -938062351
-    m_lastTimePart2: -1999318822
+    m_lastTimePsrt1: -50589640
+    m_lastTimePart2: -1999317411
     List:
     - Name: BGM_2p
       Path: Music\BGM_2p
@@ -38,8 +38,8 @@ MonoBehaviour:
   - PhysicalPath: Events\SE.wwu
     ParentPhysicalPath: 
     Guid: '{C69FD120-C7B6-45D4-8792-9610F754F5F3}'
-    m_lastTimePsrt1: -938042303
-    m_lastTimePart2: -1999318822
+    m_lastTimePsrt1: -50539319
+    m_lastTimePart2: -1999317411
     List:
     - Name: Eye
       Path: SE\Eye
@@ -105,29 +105,29 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{671DE137-3E93-444E-A424-1259206F7F07}'
-    m_lastTimePsrt1: -561845370
-    m_lastTimePart2: -1999318839
+    m_lastTimePsrt1: 439669685
+    m_lastTimePart2: -1999317400
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{2F0FD997-8F86-4183-842E-731DD64CA103}'
-    m_lastTimePsrt1: -1842066066
-    m_lastTimePart2: -1999326265
+    m_lastTimePsrt1: -50389104
+    m_lastTimePart2: -1999317411
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{7D1E98B7-6C7C-4B32-BA72-763175F2B72E}'
-    m_lastTimePsrt1: -1842056037
-    m_lastTimePart2: -1999326265
+    m_lastTimePsrt1: -50564396
+    m_lastTimePart2: -1999317411
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C2FB1BB9-16EF-4890-B22C-64FD73F58501}'
-    m_lastTimePsrt1: -938092434
-    m_lastTimePart2: -1999318822
+    m_lastTimePsrt1: -50183380
+    m_lastTimePart2: -1999317411
     List:
     - Name: MRBook
       Path: Default Work Unit\MRBook
@@ -138,11 +138,24 @@ MonoBehaviour:
         ObjectType: 7
       ID: 654057083
       Guid: b9590cff633fc9418ba7dda8c45f9a90
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{11794AD1-2A81-49BE-92E0-51F26F9CB4FB}'
+    m_lastTimePsrt1: -50514234
+    m_lastTimePart2: -1999317411
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{6DB7BA72-E4BB-4BFC-99FC-DEE168215D30}'
+    m_lastTimePsrt1: -50338968
+    m_lastTimePart2: -1999317411
+    List: []
   ExpandedItems:
   - /MRBook_WwiseProject
   - /MRBook_WwiseProject/Events
   - /MRBook_WwiseProject/Events/Music
-  - /MRBook_WwiseProject/Events/SE
   - /MRBook_WwiseProject/SoundBanks
   - /MRBook_WwiseProject/SoundBanks/Default Work Unit
   m_lastPopulateTimePsrt1: 0
@@ -155,3 +168,4 @@ MonoBehaviour:
   streamingPoolSize: 1024
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
+  callbackManagerBufferSize: 4

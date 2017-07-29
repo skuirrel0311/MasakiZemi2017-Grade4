@@ -7,11 +7,7 @@
 
 using UnityEngine;
 using UnityEditor;
-using System;
-using System.IO;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
+using AK.Wwise.TreeView;
 
 
 public class Postprocessor : AssetPostprocessor
@@ -50,7 +46,7 @@ class AkWwisePicker : EditorWindow
         }
         
         treeView.SaveExpansionStatus();
-        if (AkWwiseWWUBuilder.AutoPopulate())
+        if (AkWwiseWWUBuilder.Populate())
             PopulateTreeview();
     }
 
@@ -120,8 +116,9 @@ class AkWwisePicker : EditorWindow
         treeView.PopulateItem(treeView.RootItem, "States", AkWwiseProjectInfo.GetData().StateWwu);
 		treeView.PopulateItem(treeView.RootItem, "SoundBanks", AkWwiseProjectInfo.GetData().BankWwu);
         treeView.PopulateItem(treeView.RootItem, "Auxiliary Busses", AkWwiseProjectInfo.GetData().AuxBusWwu);
-
-    }
+		//treeView.PopulateItem(treeView.RootItem, "Game Parameters", AkWwiseProjectInfo.GetData().RtpcWwu);
+		//treeView.PopulateItem(treeView.RootItem, "Triggers", AkWwiseProjectInfo.GetData().TriggerWwu);
+	}
 
 }
 #endif

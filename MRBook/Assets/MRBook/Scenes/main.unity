@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 291}
   - component: {fileID: 296}
   - component: {fileID: 44}
+  - component: {fileID: 45}
   m_Layer: 0
   m_Name: HoloLensCamera
   m_TagString: MainCamera
@@ -225,7 +226,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b78d2173d5db194da67c84d37495392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDefaultListener: 1
   listenerId: 0
+--- !u!114 &45
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 43}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7bd2fcd40bd3e44904e126e92fc4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_listeners:
+    initialListenerList: []
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &98
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +506,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!108 &294
 Light:
   m_ObjectHideFlags: 0
@@ -2012,9 +2034,11 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
     KeepMe: 0
   isEnvironmentAware: 1
-  listenerMask: 1
   isStaticObject: 0
+  m_listeners:
+    initialListenerList: []
   m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!114 &389850138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5766,6 +5790,9 @@ MonoBehaviour:
   streamingPoolSize: 1024
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
+  monitorPoolSize: 128
+  monitorQueuePoolSize: 64
+  callbackManagerBufferSize: 4
   engineLogging: 1
 --- !u!114 &1359542497
 MonoBehaviour:

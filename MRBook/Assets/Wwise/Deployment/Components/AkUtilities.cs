@@ -1,4 +1,4 @@
-#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
 #if UNITY_EDITOR
 using System;
 using System.IO;
@@ -17,6 +17,7 @@ public class WwiseSettings
 	public string SoundbankPath;
     public bool CreateWwiseGlobal = true;
     public bool CreateWwiseListener = true;
+	public bool ShowMissingRigidBodyWarning = true;
     public string WwiseInstallationPathWindows;
     public string WwiseInstallationPathMac;
     public bool CreatedPicker = false;
@@ -112,10 +113,8 @@ public partial class AkUtilities
         // { BuildTarget.WebPlayer, null },
         // { BuildTarget.WebPlayerStreamed, null },
         { BuildTarget.iOS, new string[] { "iOS" } },
-#if !UNITY_5_5_OR_NEWER
-        { BuildTarget.PS3, new string[] { "PS3" } },
-        { BuildTarget.XBOX360, new string[] { "Xbox360" } },
-#endif
+        // { BuildTarget.PS3, null },
+        // { BuildTarget.XBOX360, null },
         { BuildTarget.Android, new string[] { "Android" } },
         // { BuildTarget.StandaloneGLESEmu, null },
         { BuildTarget.StandaloneLinux, new string[] { "Linux" } },
@@ -124,7 +123,7 @@ public partial class AkUtilities
         { BuildTarget.WSAPlayer, new string[] { "Windows" } },
         { BuildTarget.StandaloneLinux64, new string[] { "Linux" } },
         { BuildTarget.StandaloneLinuxUniversal, new string[] { "Linux" } },
-        // { BuildTarget.WP8Player, new string[] { "Windows" } },
+        // { BuildTarget.WP8Player, null },
         { BuildTarget.StandaloneOSXIntel64, new string[] { "Mac" } },
         // { BuildTarget.BlackBerry, null },
         // { BuildTarget.Tizen, null },
@@ -133,7 +132,7 @@ public partial class AkUtilities
         // { BuildTarget.PSM, null },
         { BuildTarget.XboxOne, new string[] { "XboxOne" } },
         // { BuildTarget.SamsungTV, null },
-        // { BuildTarget.Nintendo3DS, new string[] { "3DS" } },
+        // { BuildTarget.Nintendo3DS, null },
     };
 
     public static bool IsSoundbankGenerationAvailable()
@@ -405,8 +404,7 @@ public partial class AkUtilities
             XPathNodeIterator it = Navigator.Select("//Property[@Name='SoundBankPaths']/ValueList/Value");
             foreach (XPathNavigator node in it)
             {
-                string path = "";
-                path = node.Value;
+                string path = node.Value;
                 AkBasePathGetter.FixSlashes(ref path);
                 string pf = node.GetAttribute("Platform", "");
                 s_ProjectBankPaths[pf] = path;
@@ -660,7 +658,7 @@ public partial class AkUtilities
 
 	public static void SetByteArrayProperty(SerializedProperty property, byte[] byteArray)
 	{
-		if (!property.isArray || property.arraySize == 0)
+		if (!property.isArray)
 			return;
 
 		SerializedProperty iterator = property.Copy ();
@@ -772,12 +770,12 @@ public partial class AkUtilities
 }
 #endif // UNITY_EDITOR
 
-        /// <summary>
-        /// This is based on FNVHash as used by the DataManager
-        /// to assign short IDs to objects. Be sure to keep them both in sync
-        /// when making changes!
-        /// </summary>
-    public partial class AkUtilities
+/// <summary>
+/// This is based on FNVHash as used by the DataManager
+/// to assign short IDs to objects. Be sure to keep them both in sync
+/// when making changes!
+/// </summary>
+public partial class AkUtilities
 {
 	public class ShortIDGenerator
 	{
@@ -831,4 +829,4 @@ public partial class AkUtilities
 	}
 }	
 
-#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
