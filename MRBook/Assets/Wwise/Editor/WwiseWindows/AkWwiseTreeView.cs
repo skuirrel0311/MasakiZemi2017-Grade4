@@ -10,6 +10,7 @@ using UnityEditor;
 using System;
 using System.Text;
 using System.Collections.Generic;
+using AK.Wwise.TreeView;
 
 public class AkWwiseTreeView : TreeViewControl
 {
@@ -204,40 +205,31 @@ public class AkWwiseTreeView : TreeViewControl
 
 			UnityEngine.Object[] objectReferences = new UnityEngine.Object[1];
 			AkTreeInfo treeInfo = (AkTreeInfo)item.DataContext;
-			// GenericData[0] contains the component's name (string)
-			// GenericData[1] contains the component's Guid (Guid)
-			// GenericData[2] contains the component's AkGameObjID (int)
-			// GenericData[3] contains the object's type (string)
-			// We need two more fields for states and switches:
-			// GenericData[4] contains the state or switch group Guid (Guid)
-			// GenericData[5] contains the state or switch group AkGameObjID (int)
-            object[] DDInfo = null;
-            if (item != null)
+
+			AkDragDropData DDData = null;
+
+			string objType = GetObjectType(treeInfo.ObjectType);
+			if (objType == "State" || objType == "Switch")
             {
-				string objType = GetObjectType(treeInfo.ObjectType);
-				if (objType == "State" || objType == "Switch")
-                {
-                    AkTreeInfo ParentTreeInfo = (AkTreeInfo)item.Parent.DataContext;
-					DDInfo = new object[6];
-					DDInfo[4] = new Guid( ParentTreeInfo.Guid);
-					DDInfo[5] = ParentTreeInfo.ID;
-                }
-                else
-                {
-					DDInfo = new object[4];
-                }
-				DDInfo[1] = new Guid(treeInfo.Guid);
-				DDInfo[2] = treeInfo.ID;
-				DDInfo[3] = objType;
-            }
-            else
+				AkDragDropGroupData DDGroupData = new AkDragDropGroupData();
+				AkTreeInfo ParentTreeInfo = (AkTreeInfo)item.Parent.DataContext;
+				DDGroupData.groupGuid = new Guid( ParentTreeInfo.Guid);
+				DDGroupData.groupID = ParentTreeInfo.ID;
+				DDData = DDGroupData;
+			}
+			else
             {
-                DDInfo = new object[1];
+				DDData = new AkDragDropData();
             }
-			DDInfo[0] = item.Header;
+
+			DDData.name = item.Header;
+			DDData.guid = new Guid(treeInfo.Guid);
+			DDData.ID = treeInfo.ID;
+			DDData.typeName = objType;
+
 			objectReferences[0] = DragDropHelperMonoScript;
 			DragAndDrop.objectReferences = objectReferences;
-			DragAndDrop.SetGenericData("AKWwiseDDInfo", DDInfo);
+			DragAndDrop.SetGenericData(AkDragDropHelper.DragDropIdentifier, DDData);
 			DragAndDrop.StartDrag("Dragging an AkObject");
         }
         catch (Exception e)
@@ -265,6 +257,9 @@ public class AkWwiseTreeView : TreeViewControl
                 break;
             case AkWwiseProjectData.WwiseObjectType.SWITCH:
                 type = "Switch";
+                break;
+            case AkWwiseProjectData.WwiseObjectType.GAMEPARAMETER:
+                type = "GameParameter";
                 break;
         }
 
@@ -300,6 +295,7 @@ public class AkWwiseTreeView : TreeViewControl
                 }
                 break;
             case AkWwiseProjectData.WwiseObjectType.EVENT:
+            case AkWwiseProjectData.WwiseObjectType.GAMEPARAMETER:
                 if (null == m_textureWwiseEventIcon ||
                     m_forceButtonText)
                 {

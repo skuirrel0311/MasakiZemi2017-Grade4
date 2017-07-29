@@ -53,13 +53,14 @@ public class AkThreadProperties : IDisposable {
     } 
   }
 
-  public uint dwAffinityMask {
+  public PROCESSOR_NUMBER processorNumber {
     set {
-      AkSoundEnginePINVOKE.CSharp_AkThreadProperties_dwAffinityMask_set(swigCPtr, value);
+      AkSoundEnginePINVOKE.CSharp_AkThreadProperties_processorNumber_set(swigCPtr, PROCESSOR_NUMBER.getCPtr(value));
 
     } 
     get {
-      uint ret = AkSoundEnginePINVOKE.CSharp_AkThreadProperties_dwAffinityMask_get(swigCPtr);
+      IntPtr cPtr = AkSoundEnginePINVOKE.CSharp_AkThreadProperties_processorNumber_get(swigCPtr);
+      PROCESSOR_NUMBER ret = (cPtr == IntPtr.Zero) ? null : new PROCESSOR_NUMBER(cPtr, false);
 
       return ret;
     } 
