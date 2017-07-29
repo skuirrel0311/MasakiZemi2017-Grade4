@@ -40,6 +40,7 @@ public class HoloCharacter : HoloActor
     /// </summary>
     public override void SetItem(GameObject itemObj)
     {
+
         HoloItem item = itemObj.GetComponent<HoloItem>();
 
         if (item == null) return;
@@ -89,6 +90,10 @@ public class HoloCharacter : HoloActor
         //既に持っていたら捨てる
         if (hasItem_Left && item.hand == HoloItem.Hand.Left) DumpItem(HoloItem.Hand.Left);
         if (hasItem_Right && item.hand == HoloItem.Hand.Right) DumpItem(HoloItem.Hand.Right);
+
+
+        if (item.hand == HoloItem.Hand.Left) return leftHandItemDataList;
+        if (item.hand == HoloItem.Hand.Right) return rightHandItemDataList;
 
         //Bothの場合どちらにも持っていなかったら右になる
         return hasItem_Right ? leftHandItemDataList : rightHandItemDataList;
