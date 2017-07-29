@@ -34,6 +34,7 @@ public class TestSceneManager : MainGameManager
         //使うUIだけアクティブにしておく
         uiController.missionText.gameObject.SetActive(true);
         uiController.stateText.gameObject.SetActive(true);
+        IsGameStart = true;
     }
 
     

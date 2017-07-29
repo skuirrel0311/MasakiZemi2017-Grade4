@@ -123,7 +123,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         }
     }
 
-    void SaveAnchor()
+    public void SaveAnchor()
     {
         for (int i = 0; i < worldAnchors.Length; i++)
         {
@@ -131,7 +131,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         }
     }
 
-    void DeleteAnchor()
+    public void DeleteAnchor()
     {
         for (int i = 0; i < worldAnchors.Length; i++)
         {

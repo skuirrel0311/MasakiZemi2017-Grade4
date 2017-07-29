@@ -20,6 +20,7 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     public GameState currentState { get; private set; }
     protected GameState oldState = GameState.Wait;
+    public bool IsGameStart { get; protected set; }
 
     protected Animator m_Animator;
 
@@ -69,7 +70,11 @@ public class MainGameManager : BaseManager<MainGameManager>
 
         for (int i = 0; i < eventTriggers.Length; i++)
         {
-            eventTriggers[i].GetComponent<MyEventTrigger>().SetFlag();
+            MyEventTrigger[] tempArray = eventTriggers[i].GetComponents <MyEventTrigger>();
+            for(int j = 0;j< tempArray.Length;j++)
+            {
+                tempArray[j].SetFlag();
+            }
         }
         m_Animator.SetBool("IsStart", true);
     }
@@ -90,6 +95,13 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public virtual void GameStart()
     {
+        SetBookPositionByAnchor();
+        IsGameStart = true;
+        if(OnGameStart != null) OnGameStart.Invoke();
+    }
+
+    public void SetBookPositionByAnchor()
+    {
         //絵本の位置
         Vector3 artBookPosition = anchor.position + new Vector3(0.0f, -0.1f, 0.0f);
 
@@ -102,8 +114,6 @@ public class MainGameManager : BaseManager<MainGameManager>
         SetPage(currentPageIndex);
 
         uiController.SetPositionAndRotation(anchor);
-
-        if(OnGameStart != null) OnGameStart.Invoke();
     }
 
     /// <summary>

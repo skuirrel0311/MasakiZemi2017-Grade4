@@ -3192,6 +3192,12 @@ Transform:
   m_Father: {fileID: 1181371006}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727828765 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114615431497583390, guid: 3c6cff0074c302b469c9fd919f6a01c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 208039062}
+  m_Script: {fileID: 11500000, guid: 53aff677472408c43abb47352be3c3f1, type: 3}
 --- !u!1 &730884384
 GameObject:
   m_ObjectHideFlags: 0
@@ -7557,7 +7563,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: P1Material
+  m_Name: P2Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -7570,7 +7576,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 60b3dfd7342848029ca6f1809548b9ec, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a03e7ed4dca478a8fe810b31a1d7ea4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -7656,6 +7662,11 @@ Prefab:
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1077021672}
+    - target: {fileID: 114535518675127690, guid: 4e653380338af15458bb7a4dd66de34a,
+        type: 2}
+      propertyPath: anchor
+      value: 
+      objectReference: {fileID: 727828765}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e653380338af15458bb7a4dd66de34a, type: 2}
   m_IsPrefabParent: 0
