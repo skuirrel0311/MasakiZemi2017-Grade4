@@ -16,6 +16,8 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public event Action<BasePage, BasePage> OnPageChanged;
 
+    public event Action OnGameStart;
+
     public GameState currentState { get; private set; }
     protected GameState oldState = GameState.Wait;
 
@@ -100,6 +102,8 @@ public class MainGameManager : BaseManager<MainGameManager>
         SetPage(currentPageIndex);
 
         uiController.SetPositionAndRotation(anchor);
+
+        if(OnGameStart != null) OnGameStart.Invoke();
     }
 
     /// <summary>
