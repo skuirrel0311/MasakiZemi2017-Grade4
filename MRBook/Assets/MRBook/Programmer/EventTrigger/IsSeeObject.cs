@@ -23,16 +23,6 @@ public class IsSeeObject : MyEventTrigger
         //障害物はないか
         Ray ray = new Ray(eye.position, Vector3.Normalize(direction));
         RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude,~ignoreLayerMask);
-        Debug.Log(cols.Length);
-        for (int i = 0; i < cols.Length; i++)
-        {
-            //自身は省く
-            if (cols[i].transform.gameObject.Equals(gameObject)) continue;
-
-            //最初にヒットしたオブジェクト(targetだったらtrue、障害物だったらfalse)
-            FlagManager.I.SetFlag(flagName, cols[i].transform.gameObject.Equals(targetObject));
-            return;
-        }
 
         //障害物がなかった
         FlagManager.I.SetFlag(flagName, true);

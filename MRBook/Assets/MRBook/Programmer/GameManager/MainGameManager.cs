@@ -11,12 +11,19 @@ public class MainGameManager : BaseManager<MainGameManager>
         Next   //ページが捲られるまで待機
     }
     
+    /* イベント */
     /// <summary>
-    /// ページの遷移時に呼ばれる　前のページ、次のページ
+    /// ページの遷移時　前のページ、次のページ
     /// </summary>
     public event Action<BasePage, BasePage> OnPageChanged;
-
+    /// <summary>
+    /// TapToStartが押されたとき
+    /// </summary>
     public event Action OnGameStart;
+    /// <summary>
+    /// ページを再生させたとき
+    /// </summary>
+    public event Action<BasePage> OnPlayPage;
 
     public GameState currentState { get; private set; }
     protected GameState oldState = GameState.Wait;
@@ -76,7 +83,10 @@ public class MainGameManager : BaseManager<MainGameManager>
                 tempArray[j].SetFlag();
             }
         }
+
         m_Animator.SetBool("IsStart", true);
+
+        if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
     }
 
     /// <summary>

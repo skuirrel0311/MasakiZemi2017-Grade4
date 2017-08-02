@@ -12,21 +12,20 @@ public class MyObjRotationController : MyInputHandler
     {
         base.StartDragging();
 
-        oldHandPosition = GetHandPosition().normalized;
+        oldHandPosition = (GetHandPosition() - mainCameraTransform.position).normalized;
     }
 
     protected override void UpdateDragging()
     {
-        Vector3 currentHandPosition = GetHandPosition().normalized;
+        Vector3 currentHandPosition = (GetHandPosition() - mainCameraTransform.position).normalized;
 
         //回転量の計算（外積）
         float rotationValue = (oldHandPosition.x * currentHandPosition.z) - (currentHandPosition.x * oldHandPosition.z);
         
+        //Y軸回転
         targetRotation = targetObject.transform.localEulerAngles;
         targetRotation.y += rotationValue * rotationSpeed;
-        //Y軸回転
         targetObject.transform.localRotation = Quaternion.Euler(targetRotation);
-
 
         oldHandPosition = currentHandPosition;        
     }

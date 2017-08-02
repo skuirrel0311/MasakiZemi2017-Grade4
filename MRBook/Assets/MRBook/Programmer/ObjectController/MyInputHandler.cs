@@ -4,7 +4,7 @@ using HoloToolkit.Unity.InputModule;
 
 public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 {
-    bool isDragging = false;
+    protected bool isDragging = false;
 
     protected IInputSource currentInputSource = null;
     protected uint currentInputSourceID;

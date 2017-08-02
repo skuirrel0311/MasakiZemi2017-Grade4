@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using HoloToolkit.Unity.InputModule;
 
 /// <summary>
 /// このプロジェクトにおいてはホログラム全般のこと
 /// </summary>
-public class HoloActor : MonoBehaviour
+[RequireComponent(typeof(BoxCollider))]
+public class HoloActor : MonoBehaviour, IInputClickHandler
 {
     public enum ActorType { Character, Item, StaticObj }
     public virtual ActorType GetActorType { get { return ActorType.StaticObj; } }
@@ -80,4 +81,13 @@ public class HoloActor : MonoBehaviour
     }
 
     public virtual void SetItem(GameObject item) { }
+
+    public virtual void OnInputClicked(InputClickedEventData eventData)
+    {
+        #if UNITY_EDITOR
+        #else
+            if (!isMovable) return;
+            MainSceneObjController.I.SetTargetObject(gameObject);
+        #endif
+    }
 }

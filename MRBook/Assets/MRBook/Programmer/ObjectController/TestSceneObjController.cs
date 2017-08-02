@@ -116,7 +116,7 @@ public class TestSceneObjController : MonoBehaviour
         //離した時に直下に何かオブジェクトがあったら困るので対応
         ray.direction = Vector3.down;
         ray.origin = targetObj.transform.position;
-        float radius = targetAgent.radius * targetObj.transform.localScale.x;
+        float radius = targetAgent.radius * targetObj.transform.lossyScale.x;
         HoloActor actor;
         
         RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 2.0f);
@@ -127,7 +127,6 @@ public class TestSceneObjController : MonoBehaviour
             if (hits[i].transform.tag != "Actor") continue;
             //なんか当たった
             actor = hits[i].transform.GetComponent<HoloActor>();
-            if (actor == null) return;
             if(actor.GetActorType == HoloActor.ActorType.Character && isHoldItem)
             {
                 actor.SetItem(targetObj);
