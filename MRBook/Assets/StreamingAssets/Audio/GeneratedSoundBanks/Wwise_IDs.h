@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID BGM_1P = 3952481179U;
         static const AkUniqueID BGM_2P = 3969258766U;
+        static const AkUniqueID FIRE = 2678880713U;
     } // namespace EVENTS
 
     namespace BANKS
