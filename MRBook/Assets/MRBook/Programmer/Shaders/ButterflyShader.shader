@@ -11,17 +11,18 @@ Shader "Custom/ButterflyShader"
 
 		SubShader
 		{
+			Cull off
+			Tags{ "RenderType" = "Transparent" }
+			AlphaToMask On
+
 			Pass
 			{
 				Cull off
-				Blend SrcAlpha One
 				CGPROGRAM
 				#pragma vertex vert
 				#pragma fragment frag
-				#define PI 3.14159
 
 				#include "UnityCG.cginc"
-
 				uniform float _Speed;
 				uniform sampler2D _MainTex;
 				uniform fixed4 _Color;
@@ -41,7 +42,7 @@ Shader "Custom/ButterflyShader"
 				v2f vert (appdata v)
 				{
 					float x = (v.texcoord.x - 0.5);
-					v.vertex.y += ((x * x) + 0.1) * (sin(_Time.z * _Speed) + 0.5) * 10;
+					v.vertex.y += ((x * x) - 0.05) * (sin(_Time.z * _Speed)) * 0.04;
 
 					v2f o;
 					o.position = UnityObjectToClipPos(v.vertex);
