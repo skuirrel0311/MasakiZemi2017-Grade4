@@ -2401,6 +2401,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4978555033787980}
+  - component: {fileID: 54846415386137224}
+  - component: {fileID: 114678170022252666}
+  - component: {fileID: 114998662548475396}
   m_Layer: 0
   m_Name: Eff_Fire
   m_TagString: Untagged
@@ -2727,7 +2730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1813209805011544
 GameObject:
   m_ObjectHideFlags: 1
@@ -9501,6 +9504,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54846415386137224
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715656073030358}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &64137688364058352
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -9870,6 +9888,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e84d27b666b8a48863630a6d6dc226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114678170022252666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715656073030358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66dbf00f7ffc074db82c01364c482a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 03babd2f01a69a4783969833cf1c8b25
+  eventID: -1616086583
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
 --- !u!114 &114725146786653558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10034,6 +10076,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: HasRod
   targetObject: {fileID: 1866065380911908}
+--- !u!114 &114998662548475396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715656073030358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7bd2fcd40bd3e44904e126e92fc4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_listeners:
+    initialListenerList: []
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!135 &135121552618070314
 SphereCollider:
   m_ObjectHideFlags: 1

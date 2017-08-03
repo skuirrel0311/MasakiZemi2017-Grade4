@@ -4,6 +4,13 @@
 		<WorkUnit Name="Music" ID="{E634FB3F-9D9A-4FD9-B365-DD2955A6D911}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="PV_music" ID="{87E94126-B80D-4603-A2E6-DC99085D7106}" ShortID="6606924">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>

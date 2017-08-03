@@ -4,7 +4,21 @@
 		<WorkUnit Name="SE" ID="{C69FD120-C7B6-45D4-8792-9610F754F5F3}" PersistMode="Standalone">
 			<ChildrenList>
 				<Event Name="RodAttack" ID="{62185CED-34C0-424F-95AD-82877CDE4F73}"/>
-				<Event Name="Fire" ID="{2FBDBA03-A601-479A-8396-9833CF1C8B25}"/>
+				<Event Name="Fire" ID="{2FBDBA03-A601-479A-8396-9833CF1C8B25}">
+					<ChildrenList>
+						<Action Name="" ID="{056155CF-6A45-4D99-B110-326DE16FF6E9}" ShortID="232122889">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fire" ID="{39051C10-64F8-4D83-B91A-A0063295C71C}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Eye" ID="{3FE680A7-76B9-4311-83A3-67F0D77BEBC2}"/>
 				<Event Name="Start" ID="{9CB5AC88-1BDE-4784-B4C1-1FFEAC3577C4}"/>
 				<Event Name="PageLoad" ID="{09A3EA07-E6DA-4132-8CDF-BC2857317247}"/>
