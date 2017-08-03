@@ -13,7 +13,6 @@ public class MainGameUIController : BaseManager<MainGameUIController>
     public HoloText stateText = null;
     public HoloButton playButton = null;
     public HoloButton resetButton = null;
-    public GameObject offsetController = null;
 
     MainGameManager.GameState oldGameState;
 
@@ -32,7 +31,6 @@ public class MainGameUIController : BaseManager<MainGameUIController>
         stateText.gameObject.SetActive(true);
         playButton.gameObject.SetActive(true);
         resetButton.gameObject.SetActive(true);
-        offsetController.SetActive(true);
     }
 
     void Update()

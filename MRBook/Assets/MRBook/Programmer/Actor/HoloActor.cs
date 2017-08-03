@@ -84,10 +84,7 @@ public class HoloActor : MonoBehaviour, IInputClickHandler
 
     public virtual void OnInputClicked(InputClickedEventData eventData)
     {
-        #if UNITY_EDITOR
-        #else
-            if (!isMovable) return;
-            MainSceneObjController.I.SetTargetObject(gameObject);
-        #endif
+        if (!isMovable) return;
+        MainSceneObjController.I.SetTargetObject(gameObject);
     }
 }

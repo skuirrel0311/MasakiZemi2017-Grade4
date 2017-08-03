@@ -12,7 +12,7 @@ public class OffsetController : MonoBehaviour
     /// </summary>
     public float movePower = 0.01f;
 
-    public enum Direction { Up, Right, Down, Left }
+    public enum Direction { Up, Down}
 
     [SerializeField]
     AnchorPositionController anchor = null;
@@ -46,12 +46,6 @@ public class OffsetController : MonoBehaviour
                 break;
             case Direction.Down:
                 vec.y = -movePower;
-                break;
-            case Direction.Right:
-                vec.x = movePower;
-                break;
-            case Direction.Left:
-                vec.x = -movePower;
                 break;
         }
 
