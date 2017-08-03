@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1099992039527224
 GameObject:
   m_ObjectHideFlags: 1
@@ -2836,8 +2836,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457560230051624}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0.342, y: 0, z: 0.223}
+  m_LocalRotation: {x: -0, y: 0.38277417, z: -0, w: 0.92384195}
+  m_LocalPosition: {x: 0.342, y: 0.008333334, z: 0.223}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4406229714829820}
@@ -3338,8 +3338,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638253663833516}
-  m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -0.503, y: 0.05, z: 0.304}
+  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: -0.503, y: 0.058333334, z: 0.304}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4695311803211464}
@@ -3696,8 +3696,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293623036846520}
-  m_LocalRotation: {x: -0, y: -0.98901767, z: 0, w: -0.14779729}
-  m_LocalPosition: {x: 0.15, y: 0.059, z: -0.153}
+  m_LocalRotation: {x: -0, y: -0.98901767, z: -0, w: -0.14779729}
+  m_LocalPosition: {x: 0.15, y: 0.08047661, z: -0.153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4695311803211464}
@@ -4810,7 +4810,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: df172103f5fba4a4d8636aeca60cb0d7, type: 2}
+  - {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5154,8 +5154,16 @@ MonoBehaviour:
   controller: {fileID: 9100000, guid: f19da8d488b733f43a5d2a148a8c69f7, type: 2}
   bookObjects:
   - {fileID: 1315988204977866}
-  actorList: []
-  anchorList: []
+  actorList:
+  - {fileID: 114876313024353592}
+  - {fileID: 114553730934788132}
+  - {fileID: 114910599829289340}
+  - {fileID: 114202792350533490}
+  - {fileID: 114859547169051204}
+  - {fileID: 114987475679846014}
+  - {fileID: 114613587951079580}
+  anchorList:
+  - {fileID: 4666633181731128}
 --- !u!114 &114175172365059626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5167,7 +5175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7868105ca9ad5e446bd4c9e13fe832cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1638253663833516}
 --- !u!114 &114202792350533490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5232,7 +5240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7868105ca9ad5e446bd4c9e13fe832cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1293623036846520}
 --- !u!114 &114507812968960972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5389,13 +5397,13 @@ MonoBehaviour:
   useOtherObject: 0
   valueGuid: c2ce3a4a7d916a48823dd58eb0da1bca
   eventID: -342486117
-  soundEmitterObject: {fileID: 0}
+  soundEmitterObject: {fileID: 1838534642784304}
   enableActionOnEvent: 0
   actionOnEventType: 0
   curveInterpolation: 4
   transitionDuration: 0
   m_callbackData: {fileID: 0}
-  playingId: 0
+  playingId: 160
   multiPositionTypeLabel: 0
   multiPositionArray: []
 --- !u!114 &114898244831832716
