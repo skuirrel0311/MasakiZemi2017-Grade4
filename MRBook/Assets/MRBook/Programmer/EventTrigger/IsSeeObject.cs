@@ -24,6 +24,15 @@ public class IsSeeObject : MyEventTrigger
         Ray ray = new Ray(eye.position, Vector3.Normalize(direction));
         RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude,~ignoreLayerMask);
 
+        for(int i = 0;i< cols.Length;i++)
+        {
+            //自身は省く
+            if (cols[i].transform.gameObject.Equals(transform.parent.gameObject)) continue;
+
+            FlagManager.I.SetFlag(flagName, cols[i].transform.gameObject.Equals(targetObject));
+            return;
+        }
+
         //障害物がなかった
         FlagManager.I.SetFlag(flagName, true);
     }
