@@ -177,7 +177,7 @@ public class MainSceneObjController : MyObjPositionController
 
     public void SetTargetObject(GameObject obj)
     {
-        if (targetObject.Equals(obj))
+        if (targetObject != null && targetObject.Equals(obj))
         {
             ChangeWireFrameView(!canDragging);
             return;
@@ -187,7 +187,6 @@ public class MainSceneObjController : MyObjPositionController
         {
             targetObject.transform.parent = oldParent;
         }
-
         //targetObjectの切り替え
         targetObject = obj;
         targetAgent = targetObject.GetComponent<NavMeshAgent>();

@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1099992039527224
 GameObject:
   m_ObjectHideFlags: 1
@@ -549,11 +549,9 @@ GameObject:
   - component: {fileID: 4598989935416884}
   - component: {fileID: 33093837148117402}
   - component: {fileID: 23341118475680432}
-  - component: {fileID: 136326190488672418}
-  - component: {fileID: 114422896938555380}
-  - component: {fileID: 114864529425785252}
   - component: {fileID: 195241237140455522}
   - component: {fileID: 114553730934788132}
+  - component: {fileID: 65072424044183696}
   m_Layer: 8
   m_Name: fishingrod
   m_TagString: Actor
@@ -1429,10 +1427,6 @@ GameObject:
   - component: {fileID: 33599771256449052}
   - component: {fileID: 65063695495313574}
   - component: {fileID: 23537493386066754}
-  - component: {fileID: 114876313024353592}
-  - component: {fileID: 195130638469168930}
-  - component: {fileID: 114507812968960972}
-  - component: {fileID: 114175172365059626}
   m_Layer: 8
   m_Name: Rock
   m_TagString: Actor
@@ -5050,6 +5044,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65072424044183696
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293623036846520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03, y: 0.14428656, z: 0.05369076}
+  m_Center: {x: 1.1641532e-10, y: 0, z: 0}
 --- !u!65 &65422696106290808
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -5154,28 +5160,9 @@ MonoBehaviour:
   controller: {fileID: 9100000, guid: f19da8d488b733f43a5d2a148a8c69f7, type: 2}
   bookObjects:
   - {fileID: 1315988204977866}
-  actorList:
-  - {fileID: 114876313024353592}
-  - {fileID: 114553730934788132}
-  - {fileID: 114910599829289340}
-  - {fileID: 114202792350533490}
-  - {fileID: 114859547169051204}
-  - {fileID: 114987475679846014}
-  - {fileID: 114613587951079580}
+  actorList: []
   anchorList:
   - {fileID: 4666633181731128}
---- !u!114 &114175172365059626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638253663833516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7868105ca9ad5e446bd4c9e13fe832cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1638253663833516}
 --- !u!114 &114202792350533490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5229,38 +5216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e84d27b666b8a48863630a6d6dc226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114422896938555380
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293623036846520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7868105ca9ad5e446bd4c9e13fe832cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1293623036846520}
---- !u!114 &114507812968960972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638253663833516}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb69de839bd015f4099b5bd2c45e53e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseUnscaledTime: 1
-  PositionPerSecond: 30
-  RotationDegreesPerSecond: 720
-  RotationSpeedScaler: 0
-  ScalePerSecond: 5
-  SmoothLerpToTarget: 0
-  SmoothPositionLerpRatio: 0.5
-  SmoothRotationLerpRatio: 0.5
-  SmoothScaleLerpRatio: 0.5
 --- !u!114 &114553730934788132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5349,39 +5304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 0
   isBring: 0
---- !u!114 &114864529425785252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293623036846520}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb69de839bd015f4099b5bd2c45e53e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseUnscaledTime: 1
-  PositionPerSecond: 30
-  RotationDegreesPerSecond: 720
-  RotationSpeedScaler: 0
-  ScalePerSecond: 5
-  SmoothLerpToTarget: 0
-  SmoothPositionLerpRatio: 0.5
-  SmoothRotationLerpRatio: 0.5
-  SmoothScaleLerpRatio: 0.5
---- !u!114 &114876313024353592
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638253663833516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98e7442883fb1245873f9ce71a0d528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMovable: 1
-  isBring: 1
 --- !u!114 &114880709960549540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5504,19 +5426,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136326190488672418
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293623036846520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.02684538
-  m_Height: 0.14428656
-  m_Direction: 1
-  m_Center: {x: 1.1641532e-10, y: 0, z: 0}
 --- !u!136 &136355618372417146
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -5903,27 +5812,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.02689327, y: -0.108363554, z: -0.021314926}
     m_Extent: {x: 0.093810394, y: 0.007945962, z: 0.033973522}
   m_DirtyAABB: 0
---- !u!195 &195130638469168930
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638253663833516}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!195 &195241237140455522
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -5962,7 +5850,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
