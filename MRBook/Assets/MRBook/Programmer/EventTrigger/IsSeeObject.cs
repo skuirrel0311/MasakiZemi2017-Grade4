@@ -16,7 +16,7 @@ public class IsSeeObject : MyEventTrigger
         float angle = Vector3.Angle(transform.forward, direction);
         if (angle > 30.0f)
         {
-            FlagManager.I.SetFlag(flagName, false);
+            FlagManager.I.SetFlag(flagName,this, false);
             return;
         }
 
@@ -29,11 +29,11 @@ public class IsSeeObject : MyEventTrigger
             //自身は省く
             if (cols[i].transform.gameObject.Equals(transform.parent.gameObject)) continue;
 
-            FlagManager.I.SetFlag(flagName, cols[i].transform.gameObject.Equals(targetObject));
+            FlagManager.I.SetFlag(flagName, this, cols[i].transform.gameObject.Equals(targetObject));
             return;
         }
 
         //障害物がなかった
-        FlagManager.I.SetFlag(flagName, true);
+        FlagManager.I.SetFlag(flagName, this, true);
     }
 }

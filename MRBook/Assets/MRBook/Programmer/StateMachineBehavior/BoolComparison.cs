@@ -9,9 +9,16 @@ public class BoolComparison : StateMachineBehaviour
 {
     public string flagName;
     public bool boolValue = true;
+    public bool isCheckNow = true;
+    public bool isOnUpdate = false;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName) == boolValue);
+        animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
+    }
+
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //todo:常にフラグをチェックする。
     }
 }

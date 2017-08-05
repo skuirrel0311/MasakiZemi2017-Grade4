@@ -67,12 +67,16 @@ public class MainSceneObjController : MyObjPositionController
     protected override void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();
+
+        base.Start();
+
+        if (MainGameManager.I == null) return;
         MainGameManager.I.OnPlayPage += (page) =>
         {
             Disable();
         };
 
-        base.Start();
+
     }
 
     protected override void Update()
@@ -101,6 +105,7 @@ public class MainSceneObjController : MyObjPositionController
     protected override void StopDragging()
     {
         base.StopDragging();
+        if (MainGameManager.I == null) return;
 
         //直下を調べる
         ray.direction = Vector3.down;
@@ -179,7 +184,7 @@ public class MainSceneObjController : MyObjPositionController
     {
         if (targetObject != null && targetObject.Equals(obj))
         {
-            ChangeWireFrameView(!canDragging);
+            Disable();
             return;
         }
 
@@ -209,6 +214,7 @@ public class MainSceneObjController : MyObjPositionController
         offset.z *= boxCol.center.z;
 
         transform.position += offset;
+        transform.rotation = targetObject.transform.rotation;
 
         ChangeWireFrameView(true);
 

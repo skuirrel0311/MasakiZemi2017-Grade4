@@ -20,8 +20,10 @@ public class BasePage : MonoBehaviour
     GameObject[] bookObjects = null;
 
     //ページに存在するアクター(ホログラムのオブジェクトのこと)のリスト
+    [System.NonSerialized]
     public List<HoloActor> actorList = new List<HoloActor>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
+    [System.NonSerialized]
     public List<Transform> anchorList = new List<Transform>();
 
     //このページを開くのが初めてか？

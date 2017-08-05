@@ -7,6 +7,7 @@ public class BoolComparisonElement
 {
     public string flagName;
     public bool boolValue = true;
+    public bool isCheckNow = true;
 }
 
 public class BoolComparisonAll : StateMachineBehaviour
@@ -23,9 +24,10 @@ public class BoolComparisonAll : StateMachineBehaviour
 
         for(int i = 0;i< element.Length;i++)
         {
-            flaggedArray[i] = FlagManager.I.GetFlag(element[i].flagName) == element[i].boolValue;
+            flaggedArray[i] = FlagManager.I.GetFlag(element[i].flagName, element[i].isCheckNow) == element[i].boolValue;
             animator.SetBool("Flagged" + (i + 1), flaggedArray[i]);
         }
+
 
         animator.SetBool("Flagged", t == Type.And ? BoolAllTrue() : BoolAnyTrue());
     }
