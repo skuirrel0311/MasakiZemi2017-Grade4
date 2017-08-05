@@ -15,8 +15,11 @@ public class GoThere : StateMachineBehaviour
 
     bool isEnd = false;
 
+    
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         actor = ActorManager.I.GetActor(actorName).gameObject;
         Vector3 targetPosition = ActorManager.I.GetAnchor(targetName).position;
         agent = actor.GetComponent<NavMeshAgent>();

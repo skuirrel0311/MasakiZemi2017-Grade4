@@ -10,6 +10,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     protected uint currentInputSourceID;
 
     //頭の位置
+    [SerializeField]
     protected Transform mainCameraTransform;
 
     [SerializeField]
@@ -19,7 +20,11 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 
     protected virtual void Start()
     {
-        mainCameraTransform = Camera.main.transform;
+        if(mainCameraTransform == null)
+            mainCameraTransform = Camera.main.transform;
+
+        if(mainCameraTransform == null)
+            mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
 
         //ターゲットか自身からInterpolatorを取得する
         if(targetObject != null)

@@ -12,6 +12,6 @@ public class HasItem : MyEventTrigger
             return;
         }
 
-        FlagManager.I.SetFlag(flagName, transform.parent.Equals(item.owner.transform));
+        FlagManager.I.SetFlag(flagName, this, transform.parent.Equals(item.owner.transform));
     }
 }

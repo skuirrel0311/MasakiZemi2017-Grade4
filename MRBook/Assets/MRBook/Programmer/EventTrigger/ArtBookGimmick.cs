@@ -72,6 +72,6 @@ public class ArtBookGimmick : MyEventTrigger
 
     public override void SetFlag()
     {
-        FlagManager.I.SetFlag(flagName, isHide);
+        FlagManager.I.SetFlag(flagName,this, isHide);
     }
 }
