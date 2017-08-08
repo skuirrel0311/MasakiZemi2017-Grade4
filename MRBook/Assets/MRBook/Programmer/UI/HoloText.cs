@@ -6,21 +6,19 @@ using UnityEngine;
 public class HoloText : MonoBehaviour
 {
     TextMesh mesh;
-    string currentText;
     public string CurrentText
     {
-        get { return currentText; }
+        get { return mesh.text; }
         set
         {
-            if (currentText == value) return;
-            currentText = value;
-            if (mesh != null) mesh.text = currentText;
+            if (mesh.text == value) return;
+
+            mesh.text = value;
         }
     }
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         mesh = GetComponent<TextMesh>();
-        CurrentText = mesh.text;
     }
 }

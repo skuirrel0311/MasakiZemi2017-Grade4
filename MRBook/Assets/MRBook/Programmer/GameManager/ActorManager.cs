@@ -18,24 +18,39 @@ public class ActorManager : BaseManager<ActorManager>
         gameManager.OnPageChanged += OnPageChanged;
     }
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        gameManager.OnPageChanged -= OnPageChanged;
-    }
-
+    /// <summary>
+    /// 現在のページに登録されているアクターを返します
+    /// </summary>
     public HoloActor GetActor(string name)
     {
-        return currentPage.GetActor(name);
-    }
-    public Transform GetAnchor(string name)
-    {
-        return currentPage.GetAnchor(name);
+        for (int i = 0; i < currentPage.actorList.Count; i++)
+        {
+            if (currentPage.actorList[i].gameObject.name == name) return currentPage.actorList[i];
+        }
+        return null;
     }
 
+    /// <summary>
+    /// 現在のページに登録されているターゲットポイントを返します
+    /// </summary>
+    public Transform GetTargetPoint(string name)
+    {
+        for (int i = 0; i < currentPage.anchorList.Count; i++)
+        {
+            if (currentPage.anchorList[i].name == name) return currentPage.anchorList[i];
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// 現在のページに登録されているアクターを非表示にします
+    /// </summary>
     public void DisableActor(string actorName)
     {
-        currentPage.DisableActor(actorName);
+        //todo:消す時のエフェクト？
+        HoloActor actor = GetActor(actorName);
+        if (actor != null) actor.gameObject.SetActive(false);
     }
 
     public void SetGlobal(HoloActor actor)
@@ -66,7 +81,6 @@ public class ActorManager : BaseManager<ActorManager>
     //ページが変更
     void OnPageChanged(BasePage previousPage, BasePage nextPage)
     {
-        Debug.Log("changePage in actorManager");
         currentPage = nextPage;
 
         //前のページから持ってきたオブジェクトがある。

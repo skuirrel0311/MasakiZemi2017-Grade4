@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class FlagManager : BaseManager<FlagManager>
 {
+    MainGameManager gameManager;
     List<MyFlag> flagList = new List<MyFlag>();
+
+    protected override void Start()
+    {
+        base.Start();
+        gameManager = MainGameManager.I;
+    }
 
     public bool GetFlag(string name, bool isCheckNow)
     {
+        name += gameManager.currentPageIndex;
         for (int i = 0; i < flagList.Count; i++)
         {
             if (flagList[i].name == name)
@@ -25,7 +33,7 @@ public class FlagManager : BaseManager<FlagManager>
         MyFlag myFlag;
         myFlag.isFlagged = isFlagged;
         //同名のフラグは同じページには存在しない
-        myFlag.name = name + MainGameManager.I.currentPageIndex;
+        myFlag.name = name + gameManager.currentPageIndex;
         myFlag.eventTrigger = eventTrigger;
 
         for (int i = 0; i < flagList.Count; i++)

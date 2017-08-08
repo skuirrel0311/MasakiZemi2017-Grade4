@@ -46,7 +46,6 @@ public class BasePage : MonoBehaviour
     {
         if (!isFirst)
         {
-
             for (int i = 0; i < actorList.Count; i++)
             {
                 actorList[i].PageStart(pageIndex, false);
@@ -57,11 +56,16 @@ public class BasePage : MonoBehaviour
         isFirst = false;
         //初回のみリストに格納する
         GameObject[] tempArray;
+
+        //Actorとはホログラム全般のこと（キャラクター、小物など。背景は含まない）
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {
-            actorList.Add(tempArray[i].GetComponent<HoloActor>());
+            HoloActor actor = tempArray[i].GetComponent<HoloActor>();
+            if(actor != null) actorList.Add(actor);
         }
+        //Targetとは目印のこと
+        //todo:StaticTargetはベイクできるのでそれから取得
         tempArray = GameObject.FindGameObjectsWithTag("Target");
         for (int i = 0; i < tempArray.Length; i++)
         {
@@ -84,35 +88,13 @@ public class BasePage : MonoBehaviour
     /// このページに登録されているアクターをページを開いた時の位置に戻す
     /// </summary>
     /// <param name="endCallBack"></param>
-    public void ResetPage(System.Action endCallBack = null)
+    public void ResetPage()
     {
         for (int i = 0; i < actorList.Count; i++)
         {
             actorList[i].ResetTransform();
         }
 
-        if (endCallBack != null) endCallBack.Invoke();
-    }
-
-    public HoloActor GetActor(string name)
-    {
-        for (int i = 0; i < actorList.Count; i++)
-        {
-            if (actorList[i].gameObject.name == name) return actorList[i];
-        }
-        return null;
-    }
-    public Transform GetAnchor(string name)
-    {
-        for (int i = 0; i < anchorList.Count; i++)
-        {
-            if (anchorList[i].name == name) return anchorList[i];
-        }
-
-        return null;
-    }
-    public void DisableActor(string name)
-    {
-        GetActor(name).gameObject.SetActive(false);
+        //todo:リセット中のアニメーション
     }
 }

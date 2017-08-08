@@ -20,7 +20,7 @@ public class PageMaker : MyTracableEventHandler
     protected override void OnTrackingFound()
     {
         //ページに遷移するべきか？
-        if (gameManager.currentState != MainGameManager.GameState.Next) return;
+        if (gameManager.CurrentState != MainGameManager.GameState.Next) return;
         //意味のない移動はしない
         if (gameManager.currentPageIndex == pageIndex) return;
 

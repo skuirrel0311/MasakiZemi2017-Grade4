@@ -6,27 +6,51 @@ public class MainGameManager : BaseManager<MainGameManager>
 {
     public enum GameState
     {
+        Title,  //ゲーム開始画面
         Wait,   //再生待機中
         Play,   //再生中
-        Next   //ページが捲られるまで待機
+        Next    //ページが捲られるまで待機
     }
     
     /* イベント */
     /// <summary>
     /// ページの遷移時　前のページ、次のページ
     /// </summary>
-    public event Action<BasePage, BasePage> OnPageChanged;
+    public Action<BasePage, BasePage> OnPageChanged;
     /// <summary>
     /// TapToStartが押されたとき
     /// </summary>
-    public event Action OnGameStart;
+    public Action OnGameStart;
     /// <summary>
     /// ページを再生させたとき
     /// </summary>
-    public event Action<BasePage> OnPlayPage;
+    public Action<BasePage> OnPlayPage;
+    /// <summary>
+    /// ゲームが終了したとき(リザルトへ行く手前)
+    /// </summary>
+    public Action<bool> OnPlayEnd;
+    /// <summary>
+    /// ステートが変化したとき
+    /// </summary>
+    public Action<GameState> OnGameStateChanged;
 
-    public GameState currentState { get; private set; }
-    protected GameState oldState = GameState.Wait;
+
+    /* メンバ */
+    GameState currentState = GameState.Title;
+    public GameState CurrentState {
+        get
+        {
+            return currentState;
+        }
+        set
+        {
+            if (currentState == value) return;
+
+            currentState = value;
+            if (OnGameStateChanged != null) OnGameStateChanged.Invoke(value);
+        }
+    }
+    
     public bool IsGameStart { get; protected set; }
 
     protected Animator m_Animator;
@@ -60,7 +84,6 @@ public class MainGameManager : BaseManager<MainGameManager>
         base.Start();
         m_Animator = GetComponent<Animator>();
         uiController = MainGameUIController.I;
-        ActorManager.I.currentPage = pages[0];
     }
 
     /// <summary>
@@ -68,7 +91,9 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public virtual void Play()
     {
-        currentState = GameState.Play;
+        if (CurrentState != GameState.Wait) return;
+
+        CurrentState = GameState.Play;
 
         NotificationManager.I.ShowMessage("再生開始");
 
@@ -95,7 +120,9 @@ public class MainGameManager : BaseManager<MainGameManager>
     public virtual void EndCallBack(bool success)
     {
         //todo:ページをクリアしたかを判断する
-        currentState = success ? GameState.Next : GameState.Wait;
+        CurrentState = success ? GameState.Next : GameState.Wait;
+
+        if (!success) ResetPage();
 
         m_Animator.SetBool("IsStart", false);
     }
@@ -165,10 +192,9 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public virtual void ResetPage()
     {
-        pages[currentPageIndex].ResetPage(() =>
-        {
-            uiController.resetButton.Refresh();
-        });
+        if (CurrentState != GameState.Wait) return;
+
+        pages[currentPageIndex].ResetPage();
     }
 
     /// <summary>
@@ -195,6 +221,6 @@ public class MainGameManager : BaseManager<MainGameManager>
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;
         }
-        currentState = GameState.Wait;
+        CurrentState = GameState.Wait;
     }
 }

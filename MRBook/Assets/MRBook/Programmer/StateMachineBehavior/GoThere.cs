@@ -21,7 +21,7 @@ public class GoThere : StateMachineBehaviour
     {
 
         actor = ActorManager.I.GetActor(actorName).gameObject;
-        Vector3 targetPosition = ActorManager.I.GetAnchor(targetName).position;
+        Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetName).position;
         agent = actor.GetComponent<NavMeshAgent>();
         if (agent != null)
         {
