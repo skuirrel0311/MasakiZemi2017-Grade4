@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(TextMesh))]
 public class HoloText : MonoBehaviour
 {
-    TextMesh mesh;
+    [SerializeField]
+    TextMesh mesh = null;
+
     public string CurrentText
     {
         get { return mesh.text; }
@@ -15,10 +17,5 @@ public class HoloText : MonoBehaviour
 
             mesh.text = value;
         }
-    }
-
-    protected virtual void Awake()
-    {
-        mesh = GetComponent<TextMesh>();
     }
 }

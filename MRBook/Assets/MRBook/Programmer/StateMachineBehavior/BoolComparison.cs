@@ -9,7 +9,9 @@ public class BoolComparison : StateMachineBehaviour
 {
     public string flagName;
     public bool boolValue = true;
+    //現在の値を使うか再生が開始されたタイミングの値を使うか？
     public bool isCheckNow = true;
+    //瞬間判定か継続判定か？
     public bool isOnUpdate = false;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
