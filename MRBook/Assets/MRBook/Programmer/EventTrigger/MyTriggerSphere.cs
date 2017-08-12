@@ -12,6 +12,7 @@ public class MyTriggerSphere : MyTrigger
     void Start()
     {
         m_collider = GetComponent<SphereCollider>();
+        m_collider.isTrigger = true;
         Vector3 m_size = transform.lossyScale;
 
         float temp = Math.Max(m_size.x, Math.Max(m_size.y, m_size.z));

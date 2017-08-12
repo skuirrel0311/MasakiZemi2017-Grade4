@@ -12,53 +12,60 @@ public class GoThere : StateMachineBehaviour
 
     GameObject actor;
     NavMeshAgent agent;
+    int state = 0;
 
-    bool isEnd = false;
-
-    
+    Animator m_animator;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         actor = ActorManager.I.GetActor(actorName).gameObject;
         Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetName).position;
         agent = actor.GetComponent<NavMeshAgent>();
-        if (agent != null)
-        {
-            isEnd = false;
-            agent.isStopped = false;
-            agent.SetDestination(targetPosition);
-            agent.stoppingDistance = stopDistance;
-        }
-    }
+        m_animator = animator;
+        m_animator.SetInteger("GoThereState", 0);
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (isEnd) return;
         if (agent == null)
         {
-            Debug.Log("agent is null");
-            isEnd = true;
-            animator.SetTrigger("IsCompleted");
+            Debug.LogError("agent is null");
+            state = -1;
+            OnEnd();
             return;
         }
 
+        agent.isStopped = false;
+        agent.SetDestination(targetPosition);
+        agent.stoppingDistance = stopDistance;
+        StateMachineManager.I.Add(actor.name, OnUpdate, OnEnd);
+    }
+
+    void OnUpdate()
+    {
         NavMeshPath path = agent.path;
         float distance = 0.0f;
         Vector3 temp = actor.transform.position;
 
-        for(int i = 0;i< path.corners.Length;i++)
+        for (int i = 0; i < path.corners.Length; i++)
         {
             Vector3 conner = path.corners[i];
             distance += Vector3.Distance(temp, conner);
             temp = conner;
         }
 
-        if(distance < stopDistance)
+        //たどり着いた
+        if (distance < stopDistance)
+        {
+            state = 1;
+            OnEnd();
+        }
+    }
+
+    void OnEnd()
+    {
+        if (agent != null)
         {
             agent.isStopped = true;
-            isEnd = true;
-            animator.SetTrigger("IsCompleted");
+            StateMachineManager.I.StopEvent(actorName);
         }
+        m_animator.SetInteger("GoThereState", state);
     }
 }

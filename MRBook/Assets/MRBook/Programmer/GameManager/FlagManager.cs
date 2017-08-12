@@ -6,19 +6,11 @@ public class FlagManager : BaseManager<FlagManager>
 {
     MainGameManager gameManager;
     List<MyFlag> flagList = new List<MyFlag>();
-    public delegate void VoidEvent();
-
-    public VoidEvent OnUpdate;
 
     protected override void Start()
     {
         base.Start();
         gameManager = MainGameManager.I;
-    }
-
-    void Update()
-    {
-        if (OnUpdate != null) OnUpdate.Invoke();
     }
 
     public bool GetFlag(string name, bool isCheckNow)

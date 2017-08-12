@@ -1516,9 +1516,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 558423885}
+  - component: {fileID: 558423886}
   - component: {fileID: 558423888}
   - component: {fileID: 558423887}
-  - component: {fileID: 558423886}
   m_Layer: 2
   m_Name: IsThereObject
   m_TagString: Trigger
@@ -1534,7 +1534,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558423884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 756048978}
@@ -1560,27 +1560,25 @@ MonoBehaviour:
 --- !u!114 &558423887
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114403127880097952, guid: 69f132909ba52064c9c7763d14783821,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558423884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e84d27b666b8a48863630a6d6dc226, type: 3}
+  m_Script: {fileID: 11500000, guid: 8138223246872bd4ba2cfef803c1a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &558423888
-BoxCollider:
+--- !u!135 &558423888
+SphereCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 65752010478301752, guid: 69f132909ba52064c9c7763d14783821,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558423884}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 1, z: 8}
+  m_Radius: 2.16
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &581000969
 GameObject:
