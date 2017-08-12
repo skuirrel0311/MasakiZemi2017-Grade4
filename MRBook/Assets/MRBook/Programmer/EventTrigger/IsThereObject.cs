@@ -2,14 +2,19 @@
 
 public class IsThereObject : MyEventTrigger
 {
-    MyTriggerBox trigger;
+    MyTrigger trigger;
 
     [SerializeField]
     LayerMask layer;
 
     public void Start()
     {
-        trigger = GetComponent<MyTriggerBox>();
+        trigger = GetComponent<MyTrigger>();
+
+        if (trigger == null)
+        {
+            Debug.LogError(name + " don't have MyTrigger");
+        }
     }
 
     public override void SetFlag()

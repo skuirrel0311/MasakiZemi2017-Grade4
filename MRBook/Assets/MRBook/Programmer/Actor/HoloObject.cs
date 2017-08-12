@@ -70,7 +70,7 @@ public class HoloObject : MonoBehaviour, IInputClickHandler
         //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
         if (isBring)
         {
-            ActorManager.I.RemoveGlobal(this);
+            //ActorManager.I.RemoveGlobal(this);
         }
     }
 
