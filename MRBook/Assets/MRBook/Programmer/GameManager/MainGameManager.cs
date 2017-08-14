@@ -61,6 +61,9 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     public BasePage[] pages = null;
 
+    /// <summary>
+    /// 本のポリゴンに動的にアタッチされるマテリアル
+    /// </summary>
     public Material visibleMat = null;
 
     /// <summary>
@@ -137,6 +140,9 @@ public class MainGameManager : BaseManager<MainGameManager>
         if(OnGameStart != null) OnGameStart.Invoke();
     }
 
+    /// <summary>
+    /// アンカーの位置に本を固定する
+    /// </summary>
     public void SetBookPositionByAnchor()
     {
         //絵本の位置

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class FlagManager : BaseManager<FlagManager>
 {
     MainGameManager gameManager;
-    List<MyFlag> flagList = new List<MyFlag>();
+    Dictionary<string, MyFlag> flagDictionary = new Dictionary<string, MyFlag>();
 
     protected override void Start()
     {
@@ -15,36 +14,41 @@ public class FlagManager : BaseManager<FlagManager>
 
     public bool GetFlag(string name, bool isCheckNow)
     {
-        name += gameManager.currentPageIndex;
-        for (int i = 0; i < flagList.Count; i++)
+        MyFlag myFlag;
+        name = name + gameManager.currentPageIndex;
+        if(flagDictionary.TryGetValue(name, out myFlag))
         {
-            if (flagList[i].name == name)
-            {
-                if (isCheckNow) flagList[i].eventTrigger.SetFlag();
-                return flagList[i].isFlagged;
-            }
+            //いま判定を行う
+            if (isCheckNow) myFlag.eventTrigger.SetFlag();
+
+            return myFlag.isFlagged;
         }
 
+        //見つからなかった
+        Debug.LogError(name + " is not found");
+
+        //強制的にfalse
         return false;
     }
 
     public void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
     {
+        name = name + gameManager.currentPageIndex;
+
         MyFlag myFlag;
-        myFlag.isFlagged = isFlagged;
-        //同名のフラグは同じページには存在しない
-        myFlag.name = name + gameManager.currentPageIndex;
-        myFlag.eventTrigger = eventTrigger;
-
-        for (int i = 0; i < flagList.Count; i++)
+        
+        if(flagDictionary.TryGetValue(name, out myFlag))
         {
-            if (flagList[i].name == name)
-            {
-                flagList[i] = myFlag;
-                return;
-            }
+            //既にあったらフラグの値だけ更新
+            myFlag.isFlagged = isFlagged;
+            flagDictionary[name] = myFlag;
         }
-
-        flagList.Add(myFlag);
+        else
+        {
+            myFlag.isFlagged = isFlagged;
+            myFlag.eventTrigger = eventTrigger;
+            myFlag.name = name;
+            flagDictionary.Add(name, myFlag);
+        }
     }
 }
