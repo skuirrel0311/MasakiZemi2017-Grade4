@@ -4,34 +4,71 @@ using UnityEngine;
 
 public class StateMachineManager : BaseManager<StateMachineManager>
 {
-    public delegate void VoidEvent();
-
-    Dictionary<string, VoidEvent> updateEventDictionary = new Dictionary<string, VoidEvent>();
-    Dictionary<string, VoidEvent> stopEventDictionary = new Dictionary<string, VoidEvent>();
+    Dictionary<string, IMyTask> taskDictionary = new Dictionary<string, IMyTask>();
+    List<string> stopList = new List<string>();
 
     /// <summary>
     /// キャラの名前とかをキーにするといいんじゃないかな？
     /// </summary>
     /// <param name="name"></param>
-    /// <param name="e"></param>
-    public void Add(string name, VoidEvent updateEvent, VoidEvent stopEvent)
+    public void Add(string name, IMyTask task)
     {
-        updateEventDictionary.Add(name, updateEvent);
-        stopEventDictionary.Add(name, stopEvent);
+        taskDictionary.Add(name, task);
     }
 
     void Update()
     {
-        foreach(string key in updateEventDictionary.Keys)
+        foreach (string key in taskDictionary.Keys)
         {
-            updateEventDictionary[key].Invoke();
+            taskDictionary[key].Update();
+        }
+
+        for (int i = stopList.Count - 1; i >= 0; i--)
+        {
+            taskDictionary[stopList[i]].Stop();
+            taskDictionary.Remove(stopList[i]);
+            stopList.Remove(stopList[i]);
         }
     }
 
-    public void StopEvent(string name)
+    /// <summary>
+    /// タスクを中断します
+    /// </summary>
+    public void Stop(string name)
     {
-        updateEventDictionary.Remove(name);
-        stopEventDictionary[name].Invoke();
-        stopEventDictionary.Remove(name);
+        stopList.Add(name);
     }
 }
+
+public interface IMyTask
+{
+    void Update();
+    void Stop();
+}
+
+
+public class MyTask : IMyTask
+{
+    public delegate void VoidEvent();
+
+    public VoidEvent OnUpdate;
+    public VoidEvent OnExit;
+
+    public MyTask(VoidEvent onUpdate, VoidEvent onExit = null)
+    {
+        OnUpdate = onUpdate;
+        OnExit = onExit;
+    }
+
+    public void Update()
+    {
+        //アップデートは必須なのでnullチェックはしない
+        OnUpdate.Invoke();
+    }
+
+    public void Stop()
+    {
+        if (OnExit != null) OnExit.Invoke();
+    }
+}
+

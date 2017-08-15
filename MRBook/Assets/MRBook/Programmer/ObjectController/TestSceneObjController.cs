@@ -74,14 +74,14 @@ public class TestSceneObjController : MonoBehaviour
             obj = hit.transform.gameObject;
 
             //つかむことができるかチェック
-            HoloActor actor = obj.GetComponent<HoloActor>();
+            HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
             if (actor == null || !actor.isMovable)
             {
                 obj = null;
                 return false;
             }
 
-            if (actor.GetActorType == HoloActor.ActorType.Item) isHoldItem = true;
+            if (actor.GetActorType == HoloMovableObject.HoloObjectType.Item) isHoldItem = true;
             return true;
         }
         else
@@ -117,7 +117,7 @@ public class TestSceneObjController : MonoBehaviour
         ray.direction = Vector3.down;
         ray.origin = targetObj.transform.position;
         float radius = targetAgent.radius * targetObj.transform.lossyScale.x;
-        HoloActor actor;
+        HoloMovableObject actor;
         
         RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 2.0f);
         for (int i = 0;i< hits.Length;i++)
@@ -126,8 +126,8 @@ public class TestSceneObjController : MonoBehaviour
             if (hits[i].transform.gameObject.Equals(targetObj)) continue;
             if (hits[i].transform.tag != "Actor") continue;
             //なんか当たった
-            actor = hits[i].transform.GetComponent<HoloActor>();
-            if(actor.GetActorType == HoloActor.ActorType.Character && isHoldItem)
+            actor = hits[i].transform.GetComponent<HoloMovableObject>();
+            if(actor.GetActorType == HoloMovableObject.HoloObjectType.Character && isHoldItem)
             {
                 actor.SetItem(targetObj);
             }
@@ -135,7 +135,7 @@ public class TestSceneObjController : MonoBehaviour
             return;
         }
 
-        actor = targetObj.GetComponent<HoloActor>();
+        actor = targetObj.GetComponent<HoloMovableObject>();
 
         if (hits.Length == 1)
         {
@@ -155,7 +155,7 @@ public class TestSceneObjController : MonoBehaviour
         }
 
         //グローバルに登録されていたら削除する。
-        actorManager.RemoveGlobal(actor);
+        actorManager.RemoveGlobal(actor.name);
 
         //NavMeshAgentを戻す
         targetAgent.enabled = true;

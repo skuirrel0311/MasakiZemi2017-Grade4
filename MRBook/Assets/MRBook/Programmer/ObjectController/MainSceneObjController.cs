@@ -11,10 +11,10 @@ public class MainSceneObjController : MyObjPositionController
 
     Ray ray;
     RaycastHit hit;
-    HoloActor targetActor;
+    HoloMovableObject targetActor;
     NavMeshAgent targetAgent;
     Vector3 offset;
-    //Actor
+    [SerializeField]
     LayerMask layerMask = 1 << 8;
 
     //アイテムを掴んでいるか？
@@ -75,8 +75,6 @@ public class MainSceneObjController : MyObjPositionController
         {
             Disable();
         };
-
-
     }
 
     protected override void Update()
@@ -96,7 +94,7 @@ public class MainSceneObjController : MyObjPositionController
     {
         if (!canDragging) return;
 
-        if (targetActor.GetActorType == HoloActor.ActorType.Item) isHoldItem = true;
+        if (targetActor.GetActorType == HoloObject.HoloObjectType.Item) isHoldItem = true;
         targetAgent.enabled = false;
 
         base.StartDragging();
@@ -115,24 +113,25 @@ public class MainSceneObjController : MyObjPositionController
         radius = targetAgent.radius * targetObject.transform.lossyScale.x;
 
         RaycastHit[] hits = Physics.SphereCastAll(ray, radius, targetObject.transform.position.y + 0.5f);
-        HoloActor actor;
+        HoloMovableObject actor;
 
 
         for(int i = 0; i < hits.Length;i++)
         {
             if (hits[i].transform.tag != "Actor") continue;
             if (hits[i].transform.gameObject.Equals(targetObject)) continue;
-            actor = hits[i].transform.GetComponent<HoloActor>();
-            if(actor.GetActorType == HoloActor.ActorType.Character && isHoldItem)
+            actor = hits[i].transform.GetComponent<HoloMovableObject>();
+            if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
                 actor.SetItem(targetObject);
             }
             return;
         }
 
-        actor = targetObject.GetComponent<HoloActor>();
+        actor = targetObject.GetComponent<HoloMovableObject>();
 
-        //自身があるので１ todo:自身の持っているアイテムも含まれる可能性があるので対応
+        //todo:自身の持っているアイテムも含まれる可能性があるので対応
+        //自身があるので１ 
         if (hits.Length == 1)
         {
             //ページの外に置いた
@@ -151,7 +150,7 @@ public class MainSceneObjController : MyObjPositionController
         }
 
         //グローバルに登録されていたら削除する。
-        ActorManager.I.RemoveGlobal(actor);
+        ActorManager.I.RemoveGlobal(actor.name);
 
         //設定を戻す
         targetAgent.enabled = true;
@@ -195,7 +194,7 @@ public class MainSceneObjController : MyObjPositionController
         //targetObjectの切り替え
         targetObject = obj;
         targetAgent = targetObject.GetComponent<NavMeshAgent>();
-        targetActor = targetObject.GetComponent<HoloActor>();
+        targetActor = targetObject.GetComponent<HoloMovableObject>();
 
         transform.position = targetObject.transform.position;
 

@@ -87,6 +87,7 @@ public class MainGameManager : BaseManager<MainGameManager>
         base.Start();
         m_Animator = GetComponent<Animator>();
         uiController = MainGameUIController.I;
+        pageIndex = -1;
     }
 
     /// <summary>
@@ -164,7 +165,6 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public void ChangePage(int pageIndex)
     {
-        bool isBack = false;
         if (pageIndex < 0)
         {
             //そんなページはない
@@ -183,14 +183,13 @@ public class MainGameManager : BaseManager<MainGameManager>
         if (currentPageIndex > pageIndex)
         {
             //もどる場合
-            isBack = true;
         }
         else
         {
             //todo:まだ再生できないページは止める
         }
 
-        SetPage(pageIndex, isBack);
+        SetPage(pageIndex);
     }
 
     /// <summary>
@@ -207,8 +206,10 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// 指定されたページへ遷移する(実際のページの遷移はここ)
     /// </summary>
     /// <param name="isBack">前のページか？</param>
-    protected virtual void SetPage(int index, bool isBack = false)
+    protected virtual void SetPage(int index)
     {
+        bool isFirst = (pageIndex + 1) == index;
+
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
 
@@ -218,11 +219,11 @@ public class MainGameManager : BaseManager<MainGameManager>
 
         //表示するtodo:エフェクト
         pages[currentPageIndex].gameObject.SetActive(true);
-        pages[currentPageIndex].PageStart(isBack);
+        pages[currentPageIndex].PageStart(isFirst);
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
         //ミッションの切り替え
-        if (!isBack)
+        if (!isFirst)
         {
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;

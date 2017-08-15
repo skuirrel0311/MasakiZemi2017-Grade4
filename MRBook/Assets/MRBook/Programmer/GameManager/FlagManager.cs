@@ -34,7 +34,6 @@ public class FlagManager : BaseManager<FlagManager>
     public void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
     {
         name = name + gameManager.currentPageIndex;
-
         MyFlag myFlag;
         
         if(flagDictionary.TryGetValue(name, out myFlag))

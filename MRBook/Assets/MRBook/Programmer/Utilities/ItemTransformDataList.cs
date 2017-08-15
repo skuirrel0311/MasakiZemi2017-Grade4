@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ItemTransformDataList : ScriptableObject
 {
-    [System.NonSerialized]
-    public Transform parent = null;
+    public HoloItem.Hand hand;
 	public List<ItemTransformData> dataList = new List<ItemTransformData>();
 }
 

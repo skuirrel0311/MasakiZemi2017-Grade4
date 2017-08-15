@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using HoloToolkit.Unity.InputModule;
 
 /// <summary>
-/// このプロジェクトにおいてはホログラム全般のこと
+/// 動かすことのできるホログラム
 /// </summary>
 [RequireComponent(typeof(BoxCollider))]
-public class HoloActor : MonoBehaviour, IInputClickHandler
+[RequireComponent(typeof(NavMeshAgent))]
+public class HoloMovableObject : HoloObject, IInputClickHandler
 {
-    public enum ActorType { Character, Item, StaticObj }
-    public virtual ActorType GetActorType { get { return ActorType.StaticObj; } }
+    public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }
+
+    /*
+     * 動かすことができないが別のページに持っていける場合もある。
+     * （戻ってきた時のみに動かすことが出来る）
+     * 動かせるが別のページに持っていけない場合もある。
+     */
 
     /// <summary>
     /// 動かせるか
@@ -32,7 +39,7 @@ public class HoloActor : MonoBehaviour, IInputClickHandler
     /// ページが開かれた
     /// </summary>
     /// <param name="isFirst">そのページを開くのが初めてか？</param>
-    public virtual void PageStart(int currentPageIndex, bool isFirst = true)
+    public override void PageStart(int currentPageIndex, bool isFirst = true)
     {
         if (isFirst)
         {
@@ -47,21 +54,14 @@ public class HoloActor : MonoBehaviour, IInputClickHandler
         }
         else
         {
-            //todo:シェーダーのパラメーターで切り替える
-            //Renderer[] rends = GetComponentsInChildren<Renderer>();
-            //Shader grayScaleShader = AssetStoreManager.I.shaderStore.GetAsset("GrayScaleShader");
-            //for (int i = 0; i < rends.Length; i++)
-            //{
-            //    
-            //    //rends[i].material.shader = grayScaleShader;
-            //}
+            SetGrayScaleShader();
         }
     }
 
     /// <summary>
     /// ページが初めて開かれた時の場所に戻す
     /// </summary>
-    public virtual void ResetTransform()
+    public override void ResetTransform()
     {
         gameObject.SetActive(true);
         transform.position = firstPosition;
@@ -70,7 +70,7 @@ public class HoloActor : MonoBehaviour, IInputClickHandler
         //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
         if (isBring)
         {
-            ActorManager.I.RemoveGlobal(this);
+            ActorManager.I.RemoveGlobal(gameObject.name);
         }
     }
 
@@ -79,8 +79,6 @@ public class HoloActor : MonoBehaviour, IInputClickHandler
         //操作できるようにする
         Debug.Log(gameObject.name + "は操作可能だ");
     }
-
-    public virtual void SetItem(GameObject item) { }
 
     public virtual void OnInputClicked(InputClickedEventData eventData)
     {

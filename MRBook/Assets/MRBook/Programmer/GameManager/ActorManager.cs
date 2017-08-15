@@ -7,9 +7,10 @@ using UnityEngine;
 public class ActorManager : BaseManager<ActorManager>
 {
     MainGameManager gameManager;
-    public BasePage currentPage;
-
-    public List<HoloActor> globalActorList = new List<HoloActor>();
+    BasePage currentPage;
+    
+    //ページの外に置かれたオブジェクト
+    Dictionary<string, HoloObject> globalObjectDictionary = new Dictionary<string, HoloObject>();
 
     protected override void Start()
     {
@@ -19,27 +20,32 @@ public class ActorManager : BaseManager<ActorManager>
     }
 
     /// <summary>
-    /// 現在のページに登録されているアクターを返します
+    /// 現在アクティブなアクターを返します
     /// </summary>
-    public HoloActor GetActor(string name)
+    public HoloObject GetActor(string name)
     {
-        for (int i = 0; i < currentPage.actorList.Count; i++)
+        HoloObject obj;
+        if (currentPage.objectDictionary.TryGetValue(name, out obj))
         {
-            if (currentPage.actorList[i].gameObject.name == name) return currentPage.actorList[i];
+            return obj;
         }
+
+        Debug.LogError("not found " + name);
         return null;
     }
 
     /// <summary>
-    /// 現在のページに登録されているターゲットポイントを返します
+    /// 指定された名前のターゲットポイントを返します
     /// </summary>
     public Transform GetTargetPoint(string name)
     {
-        for (int i = 0; i < currentPage.anchorList.Count; i++)
+        Transform t;
+        if (currentPage.targetPointDictionary.TryGetValue(name, out t))
         {
-            if (currentPage.anchorList[i].name == name) return currentPage.anchorList[i];
+            return t;
         }
 
+        Debug.LogError("not found target point " + name);
         return null;
     }
 
@@ -49,50 +55,47 @@ public class ActorManager : BaseManager<ActorManager>
     public void DisableActor(string actorName)
     {
         //todo:消す時のエフェクト？
-        HoloActor actor = GetActor(actorName);
+        HoloObject actor = GetActor(actorName);
         if (actor != null) actor.gameObject.SetActive(false);
+        else Debug.LogError("didn't disable " + actorName);
     }
 
-    public void SetGlobal(HoloActor actor)
+    /// <summary>
+    /// グローバルオブジェクトに追加します
+    /// </summary>
+    public void SetGlobal(HoloObject actor)
     {
-        globalActorList.Add(actor);
-    }
-
-    public void RemoveGlobal(HoloActor actor)
-    {
-        if (globalActorList.Remove(actor))
-            Debug.Log("remove : " + actor.name);
-    }
-
-    public List<HoloActor> GetGlobalActorByPage(int pageIndex)
-    {
-        List<HoloActor> currentPageObjectList = new List<HoloActor>();
-
-        for(int i = 0;i< globalActorList.Count;i++)
+        if (globalObjectDictionary.ContainsKey(actor.name))
         {
-            if (globalActorList[i].pageIndex != pageIndex) continue;
-
-            currentPageObjectList.Add(globalActorList[i]);
+            Debug.LogError(actor.name + "is already added");
+            return;
         }
+        globalObjectDictionary.Add(actor.name, actor);
+    }
 
-        return currentPageObjectList;
+    /// <summary>
+    /// グローバルオブジェクトから削除します
+    /// </summary>
+    /// <param name="actor"></param>
+    public void RemoveGlobal(string name)
+    {
+        globalObjectDictionary.Remove(name);
     }
 
     //ページが変更
     void OnPageChanged(BasePage previousPage, BasePage nextPage)
     {
         currentPage = nextPage;
-
+        
+        if (globalObjectDictionary.Count == 0) return;
         //前のページから持ってきたオブジェクトがある。
-        if(globalActorList.Count > 0)
+        
+        foreach(string key in globalObjectDictionary.Keys)
         {
-            //前のページから削除
-            for(int i = 0;i < globalActorList.Count;i++)
-            {
-                previousPage.actorList.Remove(globalActorList[i]);
-                //親子関係も変更
-                globalActorList[i].transform.parent = nextPage.transform;
-            }
+            //前のページから登録を消す
+            previousPage.objectDictionary.Remove(key);
+            globalObjectDictionary[key].transform.parent = nextPage.transform;
         }
+        //アクティブなアクターはページを開いた時に追加されるのでここで追加はしない
     }
 }
