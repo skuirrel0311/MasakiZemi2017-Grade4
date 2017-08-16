@@ -223,7 +223,7 @@ public class MainGameManager : BaseManager<MainGameManager>
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
         //ミッションの切り替え
-        if (!isFirst)
+        if (isFirst)
         {
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;

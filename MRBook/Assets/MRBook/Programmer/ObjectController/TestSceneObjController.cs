@@ -43,7 +43,7 @@ public class TestSceneObjController : MonoBehaviour
 
     void Update()
     {
-        //右クリック？
+        //右クリック
         if(Input.GetMouseButtonDown(0))
         {
             if (TryGetGameObject(out targetObj))
@@ -81,7 +81,7 @@ public class TestSceneObjController : MonoBehaviour
                 return false;
             }
 
-            if (actor.GetActorType == HoloMovableObject.HoloObjectType.Item) isHoldItem = true;
+            if (actor.GetActorType == HoloObject.HoloObjectType.Item) isHoldItem = true;
             return true;
         }
         else
@@ -127,8 +127,11 @@ public class TestSceneObjController : MonoBehaviour
             if (hits[i].transform.tag != "Actor") continue;
             //なんか当たった
             actor = hits[i].transform.GetComponent<HoloMovableObject>();
-            if(actor.GetActorType == HoloMovableObject.HoloObjectType.Character && isHoldItem)
+
+            if (actor == null) return;
+            if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
+                Debug.Log("call set item");
                 actor.SetItem(targetObj);
             }
 

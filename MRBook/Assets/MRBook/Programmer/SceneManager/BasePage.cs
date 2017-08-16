@@ -39,6 +39,7 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void PageStart(bool isFirst)
     {
+        Debug.Log("is first = " + isFirst  + " page index = " + pageIndex);
         if (!isFirst)
         {
             foreach (string key in objectDictionary.Keys)

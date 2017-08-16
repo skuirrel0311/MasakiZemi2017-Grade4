@@ -32,17 +32,27 @@ public class HoloCharacter : HoloMovableObject
     {
         HoloItem item = itemObj.GetComponent<HoloItem>();
 
-        if (item == null) return;
-
+        if (item == null)
+        {
+            Debug.LogError("item is null");
+            return;
+        }
         ItemTransformDataList itemList = GetItemTransformDataList(item);
         ItemTransformData itemData = GetItemTransformDate(itemObj.name, itemList);
 
 
-        if (itemData == null) return;
+        if (itemData == null)
+        {
+            Debug.LogError("item data is null");
+            return;
+        }
         Transform hand = itemList.hand == HoloItem.Hand.Left ? leftHand : rightHand; 
 
-        if (hand == null) return;
-        
+        if (hand == null)
+        {
+            Debug.LogError("hand is null");
+            return;
+        }
         if (itemList.hand == HoloItem.Hand.Left) hasItem_Left = true;
         else hasItem_Right = true;
 
@@ -104,7 +114,11 @@ public class HoloCharacter : HoloMovableObject
     ItemTransformData GetItemTransformDate(string name, ItemTransformDataList list)
     {
         //todo:できればDictionaryに変換したいがScriptableObjectと相性が悪いので放置
-        if (list == null) return null;
+        if (list == null)
+        {
+            Debug.LogError("list is null");
+            return null;
+        }
         for (int i = 0; i < list.dataList.Count; i++)
         {
             if (list.dataList[i].itemName == name) return list.dataList[i];
@@ -124,7 +138,7 @@ public class HoloCharacter : HoloMovableObject
             case HoloItem.Hand.Right:
                 //持っていたら捨てる
                 if (hasItem_Right) DumpItem(HoloItem.Hand.Right);
-                return leftHandItemDataList;
+                return rightHandItemDataList;
 
             case HoloItem.Hand.Both:
                 if (hasItem_Left && hasItem_Right)

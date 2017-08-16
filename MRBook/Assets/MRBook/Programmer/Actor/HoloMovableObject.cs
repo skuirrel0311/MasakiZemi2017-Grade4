@@ -7,7 +7,6 @@ using HoloToolkit.Unity.InputModule;
 /// </summary>
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(MyObjPositionController))]
 public class HoloMovableObject : HoloObject, IInputClickHandler
 {
     public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }

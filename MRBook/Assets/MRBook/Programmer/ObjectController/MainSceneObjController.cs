@@ -19,7 +19,7 @@ public class MainSceneObjController : MyObjPositionController
 
     //アイテムを掴んでいるか？
     bool isHoldItem = false;
-    
+
     static MainSceneObjController instance;
     public static MainSceneObjController I
     {
@@ -80,8 +80,8 @@ public class MainSceneObjController : MyObjPositionController
     protected override void Update()
     {
         base.Update();
-        
-        if(canDragging && !isDragging)
+
+        if (canDragging && !isDragging)
         {
             Vector3 actorPosition = targetObject.transform.position;
             transform.position = actorPosition + offset;
@@ -94,7 +94,11 @@ public class MainSceneObjController : MyObjPositionController
     {
         if (!canDragging) return;
 
-        if (targetActor.GetActorType == HoloObject.HoloObjectType.Item) isHoldItem = true;
+        if (targetActor.GetActorType == HoloObject.HoloObjectType.Item)
+        {
+            Debug.Log("is hold item");
+            isHoldItem = true;
+        }
         targetAgent.enabled = false;
 
         base.StartDragging();
@@ -102,27 +106,33 @@ public class MainSceneObjController : MyObjPositionController
 
     protected override void StopDragging()
     {
+        Debug.Log("call stop dragging");
         base.StopDragging();
         if (MainGameManager.I == null) return;
 
         //直下を調べる
         ray.direction = Vector3.down;
         ray.origin = targetObject.transform.position;
-        
+
         float radius = 0.0f;
         radius = targetAgent.radius * targetObject.transform.lossyScale.x;
 
-        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, targetObject.transform.position.y + 0.5f);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 3.0f);
         HoloMovableObject actor;
 
 
-        for(int i = 0; i < hits.Length;i++)
+        for (int i = 0; i < hits.Length; i++)
         {
+            Debug.Log("hit " + hits[i].transform.name);
             if (hits[i].transform.tag != "Actor") continue;
             if (hits[i].transform.gameObject.Equals(targetObject)) continue;
             actor = hits[i].transform.GetComponent<HoloMovableObject>();
-            if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
+
+            if (actor == null) return;
+            Debug.Log("hit actor");
+            if (actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
+                Debug.Log("call set item");
                 actor.SetItem(targetObject);
             }
             return;
