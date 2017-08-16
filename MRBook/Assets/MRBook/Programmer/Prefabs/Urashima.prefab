@@ -37,7 +37,9 @@ GameObject:
   - component: {fileID: 4875062268065268}
   - component: {fileID: 195556354801449806}
   - component: {fileID: 65784798468683314}
-  - component: {fileID: 114633193404907822}
+  - component: {fileID: 114982212741630234}
+  - component: {fileID: 114851057342989328}
+  - component: {fileID: 114284053345119020}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -94,15 +96,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980377455706762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.99340284, z: 0, w: 0.11467709}
+  m_LocalPosition: {x: -0.478, y: 0, z: 0.388}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4180958276878272}
   - {fileID: 4785119681916094}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -166.83, z: 0}
 --- !u!23 &23717178290363064
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -171,7 +173,7 @@ MonoBehaviour:
   ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 4
---- !u!114 &114633193404907822
+--- !u!114 &114284053345119020
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -184,6 +186,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   isBring: 0
+--- !u!114 &114851057342989328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980377455706762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7868105ca9ad5e446bd4c9e13fe832cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 1980377455706762}
+--- !u!114 &114982212741630234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980377455706762}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb69de839bd015f4099b5bd2c45e53e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnscaledTime: 1
+  PositionPerSecond: 30
+  RotationDegreesPerSecond: 720
+  RotationSpeedScaler: 0
+  ScalePerSecond: 5
+  SmoothLerpToTarget: 0
+  SmoothPositionLerpRatio: 0.5
+  SmoothRotationLerpRatio: 0.5
+  SmoothScaleLerpRatio: 0.5
 --- !u!195 &195556354801449806
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -35,12 +35,11 @@ public class GoThere : StateMachineBehaviour
         agent.isStopped = false;
         agent.SetDestination(targetPosition);
         agent.stoppingDistance = stopDistance;
-        StateMachineManager.I.Add(actorName,new MyTask(OnUpdate, OnEnd));
+        StateMachineManager.I.Add(actorName + "Go",new MyTask(OnUpdate, OnEnd));
     }
 
     void OnUpdate()
     {
-        Debug.Log("call on update");
         NavMeshPath path = agent.path;
         float distance = 0.0f;
         Vector3 temp = actor.transform.position;
@@ -56,13 +55,13 @@ public class GoThere : StateMachineBehaviour
         if (distance < stopDistance)
         {
             state = 1;
-            StateMachineManager.I.Stop(actorName);
+            Debug.Log("移動終了");
+            StateMachineManager.I.Stop(actorName + "Go");
         }
     }
 
     void OnEnd()
     {
-        Debug.Log("set go there " + state);
         agent.isStopped = true;
         m_animator.SetInteger("GoThereState", state);
     }

@@ -7,6 +7,7 @@ using HoloToolkit.Unity.InputModule;
 /// </summary>
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(MyObjPositionController))]
 public class HoloMovableObject : HoloObject, IInputClickHandler
 {
     public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }
@@ -63,7 +64,6 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     /// </summary>
     public override void ResetTransform()
     {
-        gameObject.SetActive(true);
         transform.position = firstPosition;
         transform.rotation = firstRotation;
 
@@ -72,6 +72,8 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         {
             ActorManager.I.RemoveGlobal(gameObject.name);
         }
+
+        base.ResetTransform();
     }
 
     void ActivateControl()

@@ -16,4 +16,11 @@ public class HoloItem : HoloMovableObject
     public HoloCharacter owner;
     [System.NonSerialized]
     public Hand currentHand;
+
+    public override void ResetTransform()
+    {
+        //オーナー側でリセットを呼ぶ
+        if (owner != null) return;
+        base.ResetTransform();
+    }
 }

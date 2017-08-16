@@ -36,6 +36,8 @@ public class StateMachineManager : BaseManager<StateMachineManager>
     /// </summary>
     public void Stop(string name)
     {
+        if (!taskDictionary.ContainsKey(name)) return;
+
         stopList.Add(name);
     }
 }

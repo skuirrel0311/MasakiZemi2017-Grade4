@@ -12,15 +12,23 @@ public class BoolComparison : StateMachineBehaviour
     //現在の値を使うか再生が開始されたタイミングの値を使うか？
     public bool isCheckNow = true;
     //瞬間判定か継続判定か？
-    public bool isOnUpdate = false;
+    public bool checkOnUpdate = false;
+
+    Animator m_animator;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
+        m_animator = animator;
+        m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
+
+        if(checkOnUpdate)
+        {
+            StateMachineManager.I.Add(flagName, new MyTask(OnUpdate));
+        }
     }
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public void OnUpdate()
     {
-        //todo:常にフラグをチェックする。
+        m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, true) == boolValue);
     }
 }

@@ -10,7 +10,6 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     protected uint currentInputSourceID;
 
     //頭の位置
-    [SerializeField]
     protected Transform mainCameraTransform;
 
     [SerializeField]
@@ -20,19 +19,18 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 
     protected virtual void Start()
     {
-        if(mainCameraTransform == null)
-            mainCameraTransform = Camera.main.transform;
+        mainCameraTransform = Camera.main.transform;
 
-        if(mainCameraTransform == null)
+        if (mainCameraTransform == null)
             mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
 
         //ターゲットか自身からInterpolatorを取得する
-        if(targetObject != null)
+        if (targetObject != null)
         {
             interpolator = targetObject.GetComponent<Interpolator>();
         }
 
-        if(interpolator == null)
+        if (interpolator == null)
         {
             interpolator = GetComponent<Interpolator>();
             targetObject = gameObject;
@@ -78,7 +76,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 
         currentInputSource = eventData.InputSource;
         currentInputSourceID = eventData.SourceId;
-        
+
         StartDragging();
     }
 
@@ -103,7 +101,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
         if (currentInputSource == null) return;
         if (eventData.SourceId != currentInputSourceID) return;
         if (!isDragging) return;
-        
+
         StopDragging();
     }
 }

@@ -37,7 +37,10 @@ public class HoloObject : MonoBehaviour
     /// <summary>
     /// ページが初めて開かれた時の場所に戻す
     /// </summary>
-    public virtual void ResetTransform() { }
+    public virtual void ResetTransform()
+    {
+        gameObject.SetActive(true);
+    }
     
     /// <summary>
     /// アイテムを持たせる
