@@ -473,6 +473,18 @@ MonoBehaviour:
   boolValue: 1
   isCheckNow: 1
   checkOnUpdate: 0
+--- !u!114 &114742355891160852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aac4f07b709e4fab74983759c703a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskName: TurtleGo
 --- !u!114 &114790240576808518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1583,9 +1595,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: Flagged
-    m_EventTreshold: 0
-  - m_ConditionMode: 7
-    m_ConditionEvent: GoThereState
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102349362536297688}
@@ -2903,6 +2912,7 @@ AnimatorState:
   - {fileID: 1101442758699858132}
   m_StateMachineBehaviours:
   - {fileID: 114154707141096772}
+  - {fileID: 114742355891160852}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

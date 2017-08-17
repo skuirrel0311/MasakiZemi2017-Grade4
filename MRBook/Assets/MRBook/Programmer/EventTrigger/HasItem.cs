@@ -9,6 +9,7 @@ public class HasItem : MyEventTrigger
         HoloItem item = targetObject.GetComponent<HoloItem>();
         if (item == null || item.owner == null)
         {
+            FlagManager.I.SetFlag(flagName, this, false);
             return;
         }
 

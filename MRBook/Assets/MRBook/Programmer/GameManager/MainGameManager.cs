@@ -107,8 +107,10 @@ public class MainGameManager : BaseManager<MainGameManager>
         for (int i = 0; i < eventTriggers.Length; i++)
         {
             MyEventTrigger[] tempArray = eventTriggers[i].GetComponents <MyEventTrigger>();
+            
             for(int j = 0;j< tempArray.Length;j++)
             {
+                Debug.Log("set flag in maingame " + tempArray[j].flagName);
                 tempArray[j].SetFlag();
             }
         }

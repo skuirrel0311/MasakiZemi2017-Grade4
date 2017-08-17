@@ -9,7 +9,11 @@ public class FlagManager : BaseManager<FlagManager>
     protected override void Start()
     {
         base.Start();
+#if UNITY_EDITOR
+        gameManager = TestSceneManager.I;
+#else
         gameManager = MainGameManager.I;
+#endif
     }
 
     public bool GetFlag(string name, bool isCheckNow)
@@ -34,6 +38,7 @@ public class FlagManager : BaseManager<FlagManager>
     public void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
     {
         name = name + gameManager.currentPageIndex;
+        Debug.Log("set flag " + name);
         MyFlag myFlag;
         
         if(flagDictionary.TryGetValue(name, out myFlag))

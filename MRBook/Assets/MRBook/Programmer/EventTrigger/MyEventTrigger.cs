@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MyEventTrigger : MonoBehaviour
 {
-    [SerializeField]
-    protected string flagName = "";
+    public string flagName = "";
 
     [SerializeField]
     protected GameObject targetObject = null;
