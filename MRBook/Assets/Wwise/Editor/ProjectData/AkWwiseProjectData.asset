@@ -22,8 +22,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Music.wwu
     ParentPhysicalPath: 
     Guid: '{5FD0981F-9232-4178-9468-F31BDDBDB1AE}'
-    m_lastTimePsrt1: 209853731
-    m_lastTimePart2: -1999316434
+    m_lastTimePsrt1: -735549671
+    m_lastTimePart2: -1999313610
     List:
     - Name: BGM_1p
       Path: Music\BGM_1p
@@ -48,9 +48,19 @@ MonoBehaviour:
   - PhysicalPath: Events\SE.wwu
     ParentPhysicalPath: 
     Guid: '{C69FD120-C7B6-45D4-8792-9610F754F5F3}'
-    m_lastTimePsrt1: 341303922
-    m_lastTimePart2: -1999316049
+    m_lastTimePsrt1: 1429067997
+    m_lastTimePart2: -1999313591
     List:
+    - Name: Birds
+      Path: SE\Birds
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: Birds
+        ObjectType: 3
+      ID: 352130103
+      Guid: 51385be811df8547a079d7b45b172234
+      maxAttenuation: 3
     - Name: Eye
       Path: SE\Eye
       PathAndIcons:
@@ -70,7 +80,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1616086583
       Guid: 03babd2f01a69a4783969833cf1c8b25
-      maxAttenuation: 0
+      maxAttenuation: 3
     - Name: RodAttack
       Path: SE\RodAttack
       PathAndIcons:
@@ -81,6 +91,26 @@ MonoBehaviour:
       ID: -991664688
       Guid: ed5c1862c0344f4295ad82877cde4f73
       maxAttenuation: 0
+    - Name: RodSwing
+      Path: SE\RodSwing
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: RodSwing
+        ObjectType: 3
+      ID: 1172963822
+      Guid: 0c0098d66abfed4bb389f25f10ff8275
+      maxAttenuation: 0
+    - Name: Sea
+      Path: SE\Sea
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: Sea
+        ObjectType: 3
+      ID: 376462290
+      Guid: a5c659136599e24bbc453fbaf0420150
+      maxAttenuation: 3
     - Name: Start
       Path: SE\Start
       PathAndIcons:
@@ -116,8 +146,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C2FB1BB9-16EF-4890-B22C-64FD73F58501}'
-    m_lastTimePsrt1: -2068569206
-    m_lastTimePart2: -1999316398
+    m_lastTimePsrt1: 181346279
+    m_lastTimePart2: -1999313590
     List:
     - Name: MRBook
       Path: Default Work Unit\MRBook
