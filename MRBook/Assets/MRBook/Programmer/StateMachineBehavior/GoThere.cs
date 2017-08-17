@@ -69,7 +69,11 @@ public class GoThere : StateMachineBehaviour
         if (movement.magnitude < 0.0001f)
         {
             time += Time.deltaTime;
-            if (time > limitTime) StateMachineManager.I.Stop(actorName + "Go");
+            if (time > limitTime)
+            {
+                state = -1;
+                StateMachineManager.I.Stop(actorName + "Go");
+            }
         }
 
         oldPosition = actor.transform.position;
