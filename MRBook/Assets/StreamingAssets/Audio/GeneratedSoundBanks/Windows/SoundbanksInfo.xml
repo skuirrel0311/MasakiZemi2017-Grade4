@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="120">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="125">
 	<RootPaths>
 		<ProjectRoot>C:\Users\NAOTO\Documents\MasakiZemi2017-Grade4\MRBook\MRBook_WwiseProject\</ProjectRoot>
 		<SourceFilesRoot>C:\Users\NAOTO\Documents\MasakiZemi2017-Grade4\MRBook\MRBook_WwiseProject\.cache\Windows\</SourceFilesRoot>
@@ -16,12 +16,78 @@
 			<ShortName>MRBook</ShortName>
 			<Path>MRBook.bnk</Path>
 			<IncludedEvents>
-				<Event Id="412724365" Name="BGM" ObjectPath="\Events\Default Work Unit\BGM"/>
+				<Event Id="3952481179" Name="BGM_1p" ObjectPath="\Events\Music\BGM_1p"/>
+				<Event Id="3969258766" Name="BGM_2p" ObjectPath="\Events\Music\BGM_2p"/>
+				<Event Id="352130103" Name="Birds" ObjectPath="\Events\SE\Birds" MaxAttenuation="3.000000"/>
+				<Event Id="2678880713" Name="Fire" ObjectPath="\Events\SE\Fire" MaxAttenuation="3.000000"/>
+				<Event Id="3303302608" Name="RodAttack" ObjectPath="\Events\SE\RodAttack"/>
+				<Event Id="1172963822" Name="RodSwing" ObjectPath="\Events\SE\RodSwing"/>
+				<Event Id="376462290" Name="Sea" ObjectPath="\Events\SE\Sea" MaxAttenuation="3.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="39417345" Language="SFX">
+					<ShortName>Attack2.wav</ShortName>
+					<Path>SFX\Attack2_95DC29FC.wem</Path>
+				</File>
+				<File Id="77604302" Language="SFX">
+					<ShortName>bird4.wav</ShortName>
+					<Path>SFX\bird4_5645A33B.wem</Path>
+				</File>
+				<File Id="250175371" Language="SFX">
+					<ShortName>bird2.wav</ShortName>
+					<Path>SFX\bird2_5645A33B.wem</Path>
+				</File>
 				<File Id="288316969" Language="SFX">
 					<ShortName>PV_music.wav</ShortName>
-					<Path>SFX\PV_music_9E69E797.wem</Path>
+					<Path>SFX\PV_music_53CEE377.wem</Path>
+				</File>
+				<File Id="351033599" Language="SFX">
+					<ShortName>bird1.wav</ShortName>
+					<Path>SFX\bird1_5645A33B.wem</Path>
+				</File>
+				<File Id="454792909" Language="SFX">
+					<ShortName>Fire2.wav</ShortName>
+					<Path>SFX\Fire2_5645A33B.wem</Path>
+				</File>
+				<File Id="494808732" Language="SFX">
+					<ShortName>Fire5.wav</ShortName>
+					<Path>SFX\Fire5_5645A33B.wem</Path>
+				</File>
+				<File Id="501295145" Language="SFX">
+					<ShortName>Rod2.wav</ShortName>
+					<Path>SFX\Rod2_5645A33B.wem</Path>
+				</File>
+				<File Id="588115779" Language="SFX">
+					<ShortName>Fire1.wav</ShortName>
+					<Path>SFX\Fire1_5645A33B.wem</Path>
+				</File>
+				<File Id="736358626" Language="SFX">
+					<ShortName>Fire4.wav</ShortName>
+					<Path>SFX\Fire4_5645A33B.wem</Path>
+				</File>
+				<File Id="759526440" Language="SFX">
+					<ShortName>Rod1.wav</ShortName>
+					<Path>SFX\Rod1_5645A33B.wem</Path>
+				</File>
+				<File Id="787023770" Language="SFX">
+					<ShortName>Lake Waves Lapping.wav</ShortName>
+					<Path>SFX\Lake Waves Lapping_77A671E7.wem</Path>
+				</File>
+				<File Id="857752728" Language="SFX">
+					<ShortName>Attack1.wav</ShortName>
+					<Path>SFX\Attack1_11793F7A.wem</Path>
+				</File>
+				<File Id="873020480" Language="SFX">
+					<ShortName>Rod3.wav</ShortName>
+					<Path>SFX\Rod3_5645A33B.wem</Path>
+				</File>
+				<File Id="931031787" Language="SFX">
+					<ShortName>Fire3.wav</ShortName>
+					<Path>SFX\Fire3_5645A33B.wem</Path>
+				</File>
+				<File Id="966711306" Language="SFX">
+					<ShortName>bird3.wav</ShortName>
+					<Path>SFX\bird3_5645A33B.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

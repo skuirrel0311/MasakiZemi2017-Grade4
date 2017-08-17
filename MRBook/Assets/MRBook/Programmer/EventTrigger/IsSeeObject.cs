@@ -16,25 +16,25 @@ public class IsSeeObject : MyEventTrigger
         float angle = Vector3.Angle(transform.forward, direction);
         if (angle > 30.0f)
         {
-            FlagManager.I.SetFlag(flagName, false);
+            Debug.Log(flagName + " out angle");
+            FlagManager.I.SetFlag(flagName,this, false);
             return;
         }
 
         //障害物はないか
         Ray ray = new Ray(eye.position, Vector3.Normalize(direction));
         RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude,~ignoreLayerMask);
-        Debug.Log(cols.Length);
-        for (int i = 0; i < cols.Length; i++)
+
+        for(int i = 0;i< cols.Length;i++)
         {
             //自身は省く
-            if (cols[i].transform.gameObject.Equals(gameObject)) continue;
-
-            //最初にヒットしたオブジェクト(targetだったらtrue、障害物だったらfalse)
-            FlagManager.I.SetFlag(flagName, cols[i].transform.gameObject.Equals(targetObject));
+            if (cols[i].transform.gameObject.Equals(transform.parent.gameObject)) continue;
+            Debug.Log(flagName + " " + cols[i].transform.name);
+            FlagManager.I.SetFlag(flagName, this, cols[i].transform.gameObject.Equals(targetObject));
             return;
         }
 
         //障害物がなかった
-        FlagManager.I.SetFlag(flagName, true);
+        FlagManager.I.SetFlag(flagName, this, true);
     }
 }

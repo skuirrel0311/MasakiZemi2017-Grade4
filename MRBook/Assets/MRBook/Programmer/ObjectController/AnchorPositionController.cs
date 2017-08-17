@@ -10,9 +10,18 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
     public bool IsMovable { get; private set; }
 
     Renderer m_rendere;
-
+    
     MyWorldAnchorManager anchorSroreManager;
     WorldAnchorStore anchorStore;
+
+    [SerializeField]
+    GameObject[] worldAnchors = null;
+    //ゲームが開始された時の位置
+    Vector3[] startWorldAnchorPositionArray;
+
+    [SerializeField]
+    float updateIntervalTime = 3.5f;
+    float time = 0.0f;
 
     protected override void Start()
     {
@@ -23,6 +32,16 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 
         anchorStore = null;
 
+        startWorldAnchorPositionArray = new Vector3[worldAnchors.Length];
+
+        MainGameManager.I.OnGameStart += () =>
+        {
+            for(int i = 0;i< worldAnchors.Length;i++)
+            {
+                startWorldAnchorPositionArray[i] = worldAnchors[i].transform.position;
+            }
+        };
+
         Debug.Log("start coroutine");
         StartCoroutine(anchorSroreManager.GetAnchorStore((anchorStore) =>
         {
@@ -31,31 +50,45 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         }));
     }
 
+    protected override void Update()
+    {
+        time += Time.deltaTime;
+
+        if(time > updateIntervalTime && IsChangedAnchorPosition())
+        {
+            //設定しなおす
+            for (int i = 0; i < worldAnchors.Length; i++)
+            {
+                //案１.ロードし直し
+                anchorStore.Load(worldAnchors[i].name, worldAnchors[i]);
+            }
+        }
+
+        base.Update();
+    }
+
     void StartUpAnchor()
     {
-        WorldAnchor attached = anchorStore.Load(name, gameObject);
+        WorldAnchor attached = anchorStore.Load(worldAnchors[0].name, worldAnchors[0]);
 
         if (attached == null)
         {
-            anchorStore.Save(name, GetComponent<WorldAnchor>());
+            SaveAnchor();
             m_rendere.material.color = Color.red;
         }
         else
         {
             //ここのコメントアウトを切れば初回のみアンカーが動かせる状態にできる
             //gameObject.SetActive(false);
+            transform.position = worldAnchors[0].transform.GetChild(0).position;
+            transform.rotation = worldAnchors[0].transform.GetChild(0).rotation;
 
             m_rendere.material.color = Color.blue;
         }
 
         startColor = m_rendere.material.color;
     }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-
+    
     public void OnInputClicked(InputClickedEventData eventData)
     {
         if (anchorStore == null) return;
@@ -64,13 +97,12 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 
         if (IsMovable)
         {
-            anchorSroreManager.anchorStore.Delete(name);
-            DestroyImmediate(GetComponent<WorldAnchor>());
+            DeleteAnchor();
             m_rendere.material.color = Color.green;
         }
         else
         {
-            anchorSroreManager.AttachingAnchor(gameObject);
+            SaveAnchor();
             m_rendere.material.color = startColor;
         }
     }
@@ -89,5 +121,37 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         {
             cols[i].enabled = false;
         }
+    }
+
+    public void SaveAnchor()
+    {
+        for (int i = 0; i < worldAnchors.Length; i++)
+        {
+            anchorSroreManager.AttachingAnchor(worldAnchors[i]);
+        }
+    }
+
+    public void DeleteAnchor()
+    {
+        for (int i = 0; i < worldAnchors.Length; i++)
+        {
+            anchorSroreManager.anchorStore.Delete(worldAnchors[i].name);
+            DestroyImmediate(worldAnchors[i].GetComponent<WorldAnchor>());
+        }
+    }
+
+    protected override void StartDragging()
+    {
+        if (!IsMovable) return;
+        base.StartDragging();
+    }
+    
+    bool IsChangedAnchorPosition()
+    {
+        for (int i = 0; i < worldAnchors.Length; i++)
+        {
+            if (startWorldAnchorPositionArray[i] == worldAnchors[i].transform.position) return true;
+        }
+        return false;
     }
 }

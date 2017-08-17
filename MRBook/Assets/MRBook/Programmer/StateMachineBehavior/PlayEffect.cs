@@ -10,7 +10,7 @@ public class PlayEffect : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector3 targetPosition = ActorManager.I.GetAnchor(targetPositionName).position;
+        Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetPositionName).position;
         ParticleManager.I.Play(effectName, targetPosition + offset);
     }
 }

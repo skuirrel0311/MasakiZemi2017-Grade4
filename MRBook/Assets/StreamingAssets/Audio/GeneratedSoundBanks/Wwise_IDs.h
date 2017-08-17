@@ -13,7 +13,13 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID BGM = 412724365U;
+        static const AkUniqueID BGM_1P = 3952481179U;
+        static const AkUniqueID BGM_2P = 3969258766U;
+        static const AkUniqueID BIRDS = 352130103U;
+        static const AkUniqueID FIRE = 2678880713U;
+        static const AkUniqueID RODATTACK = 3303302608U;
+        static const AkUniqueID RODSWING = 1172963822U;
+        static const AkUniqueID SEA = 376462290U;
     } // namespace EVENTS
 
     namespace BANKS

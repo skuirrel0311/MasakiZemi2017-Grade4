@@ -3,4 +3,5 @@
     //フラグが立っているか？
     public bool isFlagged;
     public string name;
+    public MyEventTrigger eventTrigger;
 }

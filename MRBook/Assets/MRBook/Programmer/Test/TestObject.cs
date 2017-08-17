@@ -1,28 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TestObject : MonoBehaviour
 {
+    NavMeshAgent m_agent;
     [SerializeField]
-    IsRendered front = null;
-
-    Renderer m_renderer;
+    Transform targetPoint = null;
 
     void Start()
     {
-        m_renderer = GetComponent<Renderer>();
+        m_agent = GetComponent<NavMeshAgent>();
+        m_agent.SetDestination(targetPoint.position);
     }
 
     void Update()
     {
-        if(front.WasRendered)
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            m_renderer.material.color = Color.red;
-        }
-        else
-        {
-            m_renderer.material.color = Color.white;
+            m_agent.isStopped = true;
         }
     }
 }

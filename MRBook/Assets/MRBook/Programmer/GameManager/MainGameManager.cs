@@ -6,18 +6,52 @@ public class MainGameManager : BaseManager<MainGameManager>
 {
     public enum GameState
     {
+        Title,  //ゲーム開始画面
         Wait,   //再生待機中
         Play,   //再生中
-        Next   //ページが捲られるまで待機
+        Next    //ページが捲られるまで待機
     }
     
+    /* イベント */
     /// <summary>
-    /// ページの遷移時に呼ばれる　前のページ、次のページ
+    /// ページの遷移時　前のページ、次のページ
     /// </summary>
-    public event Action<BasePage, BasePage> OnPageChanged;
+    public Action<BasePage, BasePage> OnPageChanged;
+    /// <summary>
+    /// TapToStartが押されたとき
+    /// </summary>
+    public Action OnGameStart;
+    /// <summary>
+    /// ページを再生させたとき
+    /// </summary>
+    public Action<BasePage> OnPlayPage;
+    /// <summary>
+    /// ゲームが終了したとき(リザルトへ行く手前)
+    /// </summary>
+    public Action<bool> OnPlayEnd;
+    /// <summary>
+    /// ステートが変化したとき
+    /// </summary>
+    public Action<GameState> OnGameStateChanged;
 
-    public GameState currentState { get; private set; }
-    protected GameState oldState = GameState.Wait;
+
+    /* メンバ */
+    GameState currentState = GameState.Title;
+    public GameState CurrentState {
+        get
+        {
+            return currentState;
+        }
+        set
+        {
+            if (currentState == value) return;
+
+            currentState = value;
+            if (OnGameStateChanged != null) OnGameStateChanged.Invoke(value);
+        }
+    }
+    
+    public bool IsGameStart { get; protected set; }
 
     protected Animator m_Animator;
 
@@ -27,6 +61,9 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     public BasePage[] pages = null;
 
+    /// <summary>
+    /// 本のポリゴンに動的にアタッチされるマテリアル
+    /// </summary>
     public Material visibleMat = null;
 
     /// <summary>
@@ -50,7 +87,7 @@ public class MainGameManager : BaseManager<MainGameManager>
         base.Start();
         m_Animator = GetComponent<Animator>();
         uiController = MainGameUIController.I;
-        ActorManager.I.currentPage = pages[0];
+        pageIndex = -1;
     }
 
     /// <summary>
@@ -58,7 +95,9 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public virtual void Play()
     {
-        currentState = GameState.Play;
+        if (CurrentState != GameState.Wait) return;
+
+        CurrentState = GameState.Play;
 
         NotificationManager.I.ShowMessage("再生開始");
 
@@ -67,9 +106,19 @@ public class MainGameManager : BaseManager<MainGameManager>
 
         for (int i = 0; i < eventTriggers.Length; i++)
         {
-            eventTriggers[i].GetComponent<MyEventTrigger>().SetFlag();
+            MyEventTrigger[] tempArray = eventTriggers[i].GetComponents <MyEventTrigger>();
+            
+            for(int j = 0;j< tempArray.Length;j++)
+            {
+                Debug.Log("set flag in maingame " + tempArray[j].flagName);
+                tempArray[j].SetFlag();
+            }
         }
+
         m_Animator.SetBool("IsStart", true);
+
+        pages[currentPageIndex].PlayPage();
+        if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
     }
 
     /// <summary>
@@ -78,7 +127,9 @@ public class MainGameManager : BaseManager<MainGameManager>
     public virtual void EndCallBack(bool success)
     {
         //todo:ページをクリアしたかを判断する
-        currentState = success ? GameState.Next : GameState.Wait;
+        CurrentState = success ? GameState.Next : GameState.Wait;
+
+        if (!success) ResetPage();
 
         m_Animator.SetBool("IsStart", false);
     }
@@ -87,6 +138,16 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// TapToStartが押された
     /// </summary>
     public virtual void GameStart()
+    {
+        SetBookPositionByAnchor();
+        IsGameStart = true;
+        if(OnGameStart != null) OnGameStart.Invoke();
+    }
+
+    /// <summary>
+    /// アンカーの位置に本を固定する
+    /// </summary>
+    public void SetBookPositionByAnchor()
     {
         //絵本の位置
         Vector3 artBookPosition = anchor.position + new Vector3(0.0f, -0.1f, 0.0f);
@@ -107,7 +168,6 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public void ChangePage(int pageIndex)
     {
-        bool isBack = false;
         if (pageIndex < 0)
         {
             //そんなページはない
@@ -126,14 +186,13 @@ public class MainGameManager : BaseManager<MainGameManager>
         if (currentPageIndex > pageIndex)
         {
             //もどる場合
-            isBack = true;
         }
         else
         {
             //todo:まだ再生できないページは止める
         }
 
-        SetPage(pageIndex, isBack);
+        SetPage(pageIndex);
     }
 
     /// <summary>
@@ -141,18 +200,19 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public virtual void ResetPage()
     {
-        pages[currentPageIndex].ResetPage(() =>
-        {
-            uiController.resetButton.Refresh();
-        });
+        if (CurrentState != GameState.Wait) return;
+
+        pages[currentPageIndex].ResetPage();
     }
 
     /// <summary>
     /// 指定されたページへ遷移する(実際のページの遷移はここ)
     /// </summary>
     /// <param name="isBack">前のページか？</param>
-    protected virtual void SetPage(int index, bool isBack = false)
+    protected virtual void SetPage(int index)
     {
+        bool isFirst = (pageIndex + 1) == index;
+
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
 
@@ -162,15 +222,15 @@ public class MainGameManager : BaseManager<MainGameManager>
 
         //表示するtodo:エフェクト
         pages[currentPageIndex].gameObject.SetActive(true);
-        pages[currentPageIndex].PageStart(isBack);
+        pages[currentPageIndex].PageStart(isFirst);
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
         //ミッションの切り替え
-        if (!isBack)
+        if (isFirst)
         {
             pageIndex = currentPageIndex;
             currentMissionText = pages[currentPageIndex].missionText;
         }
-        currentState = GameState.Wait;
+        CurrentState = GameState.Wait;
     }
 }
