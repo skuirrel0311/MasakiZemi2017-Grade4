@@ -65,7 +65,6 @@ public class GoThere : StateMachineBehaviour
         }
 
         Vector3 movement = oldPosition - actor.transform.position;
-        Debug.Log("movement.mag = " + movement.magnitude);
         if (movement.magnitude < 0.0001f)
         {
             time += Time.deltaTime;

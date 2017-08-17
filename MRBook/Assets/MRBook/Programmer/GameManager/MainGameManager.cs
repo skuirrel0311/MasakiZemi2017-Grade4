@@ -117,6 +117,7 @@ public class MainGameManager : BaseManager<MainGameManager>
 
         m_Animator.SetBool("IsStart", true);
 
+        pages[currentPageIndex].PlayPage();
         if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
     }
 

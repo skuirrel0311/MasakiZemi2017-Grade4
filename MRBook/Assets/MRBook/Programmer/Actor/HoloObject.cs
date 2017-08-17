@@ -34,11 +34,23 @@ public class HoloObject : MonoBehaviour
         }
     }
 
+    public void ResetShader()
+    {
+        Renderer[] rends = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < rends.Length; i++)
+        {
+            if (GetActorType != HoloObjectType.Statics) continue;
+            if (defaultShader == null) continue;
+            rends[i].material.shader = defaultShader;
+        }
+    }
+
     /// <summary>
     /// ページが初めて開かれた時の場所に戻す
     /// </summary>
     public virtual void ResetTransform()
     {
+        if (GetActorType == HoloObjectType.Statics) SetGrayScaleShader();
         gameObject.SetActive(true);
     }
     

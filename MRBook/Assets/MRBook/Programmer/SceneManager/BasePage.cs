@@ -81,6 +81,14 @@ public class BasePage : MonoBehaviour
         }
     }
 
+    public void PlayPage()
+    {
+        foreach (string key in objectDictionary.Keys)
+        {
+            objectDictionary[key].ResetShader();
+        }
+    }
+
     /// <summary>
     /// このページに登録されているアクターをページを開いた時の位置に戻す
     /// </summary>
@@ -91,7 +99,6 @@ public class BasePage : MonoBehaviour
         {
             objectDictionary[key].ResetTransform();
         }
-
         //todo:リセット中のアニメーション
     }
 }
