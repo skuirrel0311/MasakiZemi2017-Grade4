@@ -31,7 +31,7 @@ public class TestSceneObjController : MonoBehaviour
     float moveSpeed = 4.0f;
 
     //アイテムを掴んでいるか？
-    bool isHoldItem = false;
+    public bool isHoldItem = false;
 
     void Start()
     {
@@ -132,6 +132,7 @@ public class TestSceneObjController : MonoBehaviour
             if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
                 Debug.Log("call set item");
+                isHoldItem = false;
                 actor.SetItem(targetObj);
             }
 
@@ -139,6 +140,7 @@ public class TestSceneObjController : MonoBehaviour
         }
 
         actor = targetObj.GetComponent<HoloMovableObject>();
+
 
         if (hits.Length == 1)
         {
@@ -154,7 +156,11 @@ public class TestSceneObjController : MonoBehaviour
         if(isHoldItem)
         {
             HoloItem item = targetObj.GetComponent<HoloItem>();
-            if (item.owner != null) item.owner.DumpItem(item.currentHand, false);
+            if (item.owner != null)
+            {
+                item.owner.DumpItem(item.currentHand, false);
+                item.owner = null;
+            }
         }
 
         //グローバルに登録されていたら削除する。

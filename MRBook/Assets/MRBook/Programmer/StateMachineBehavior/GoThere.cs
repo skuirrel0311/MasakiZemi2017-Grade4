@@ -14,6 +14,10 @@ public class GoThere : StateMachineBehaviour
     NavMeshAgent agent;
     int state = 0;
 
+    float time;
+    const float limitTime = 1.0f;
+    Vector3 oldPosition;
+
     Animator m_animator;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -35,6 +39,7 @@ public class GoThere : StateMachineBehaviour
         agent.isStopped = false;
         agent.SetDestination(targetPosition);
         agent.stoppingDistance = stopDistance;
+        oldPosition = actor.transform.position;
         StateMachineManager.I.Add(actorName + "Go",new MyTask(OnUpdate, OnEnd));
     }
 
@@ -43,7 +48,7 @@ public class GoThere : StateMachineBehaviour
         NavMeshPath path = agent.path;
         float distance = 0.0f;
         Vector3 temp = actor.transform.position;
-
+        
         for (int i = 0; i < path.corners.Length; i++)
         {
             Vector3 conner = path.corners[i];
@@ -58,6 +63,16 @@ public class GoThere : StateMachineBehaviour
             Debug.Log("移動終了");
             StateMachineManager.I.Stop(actorName + "Go");
         }
+
+        Vector3 movement = oldPosition - actor.transform.position;
+        Debug.Log("movement.mag = " + movement.magnitude);
+        if (movement.magnitude < 0.0001f)
+        {
+            time += Time.deltaTime;
+            if (time > limitTime) StateMachineManager.I.Stop(actorName + "Go");
+        }
+
+        oldPosition = actor.transform.position;
     }
 
     void OnEnd()
