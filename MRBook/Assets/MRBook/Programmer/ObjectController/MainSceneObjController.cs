@@ -133,6 +133,7 @@ public class MainSceneObjController : MyObjPositionController
             if (actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
                 Debug.Log("call set item");
+                isHoldItem = false;
                 actor.SetItem(targetObject);
             }
             return;
@@ -156,7 +157,11 @@ public class MainSceneObjController : MyObjPositionController
         if (isHoldItem)
         {
             HoloItem item = (HoloItem)targetActor;
-            if (item.owner != null) item.owner.DumpItem(item.currentHand, false);
+            if (item.owner != null)
+            {
+                item.owner.DumpItem(item.currentHand, false);
+                item.owner = null;
+            }
         }
 
         //グローバルに登録されていたら削除する。
