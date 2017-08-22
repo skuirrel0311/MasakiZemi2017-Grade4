@@ -76,6 +76,21 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Semi" ID="{0DB58C15-962B-4A31-8712-A99C49804CB8}">
+					<ChildrenList>
+						<Action Name="" ID="{DB294B2C-1C54-4AAA-A9FE-558DC8A95EAE}" ShortID="300927070">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Semis" ID="{BCAAE6DB-CB9B-42EF-94D2-64EED5FF600B}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Tap" ID="{C24C0CBB-89CA-407F-84D1-2EFFA46E00E1}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

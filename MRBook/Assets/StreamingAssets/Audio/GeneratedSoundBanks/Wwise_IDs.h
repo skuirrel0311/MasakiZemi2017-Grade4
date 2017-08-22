@@ -20,6 +20,7 @@ namespace AK
         static const AkUniqueID RODATTACK = 3303302608U;
         static const AkUniqueID RODSWING = 1172963822U;
         static const AkUniqueID SEA = 376462290U;
+        static const AkUniqueID SEMI = 820026899U;
     } // namespace EVENTS
 
     namespace BANKS
@@ -30,8 +31,11 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID AMBIENT = 77978275U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MASTER_SECONDARY_BUS = 805203703U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID SE = 1584861537U;
     } // namespace BUSSES
 
 }// namespace AK

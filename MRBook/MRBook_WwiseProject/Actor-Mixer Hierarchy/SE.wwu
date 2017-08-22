@@ -11,7 +11,7 @@
 						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-3</Value>
+								<Value>-6</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -20,10 +20,10 @@
 							<ObjectRef Name="Fire" ID="{BF81984D-A38B-4441-8705-633F242EAA51}" WorkUnitID="{9753E8B7-4AE0-4513-A349-9841876FB8CD}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+							<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+							<ObjectRef Name="Ambient" ID="{78FE5C28-D625-451E-9D1C-FEC1E0BBC181}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -139,10 +139,10 @@
 							<ObjectRef Name="Sea" ID="{C76309D4-FD0E-40D1-9833-C2D62E2275CF}" WorkUnitID="{9753E8B7-4AE0-4513-A349-9841876FB8CD}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+							<ObjectRef Name="Ambient" ID="{78FE5C28-D625-451E-9D1C-FEC1E0BBC181}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -184,10 +184,10 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+							<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -273,10 +273,10 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+							<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -352,7 +352,7 @@
 						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-7</Value>
+								<Value>-10</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -361,14 +361,21 @@
 							<ObjectRef Name="Birds" ID="{98F33701-7B7C-435F-966E-47E6CC6D84A5}" WorkUnitID="{9753E8B7-4AE0-4513-A349-9841876FB8CD}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+							<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+							<ObjectRef Name="Ambient" ID="{78FE5C28-D625-451E-9D1C-FEC1E0BBC181}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="bird1" ID="{5A55D1D2-BA11-453B-AFC4-FD180D6542B1}" ShortID="59444609">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ValueList>
+										<Value>0.1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
@@ -388,6 +395,18 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="bird4" ID="{8EF18FB4-5C4B-4309-9032-FA8D416169A3}" ShortID="674351934">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ValueList>
+										<Value>0.1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Weight" Type="Real64">
+									<ValueList>
+										<Value>35</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
@@ -407,6 +426,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="bird3" ID="{E986A22D-C788-47FE-8045-F27DABB7D99A}" ShortID="814116620">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ValueList>
+										<Value>0.1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
@@ -426,6 +452,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="bird2" ID="{E30B222E-43FB-4D15-AE56-86422F0BCB23}" ShortID="747764414">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ValueList>
+										<Value>0.1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
@@ -442,6 +475,67 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="bird2" ID="{53F8B783-DEA7-49C1-B29A-E401242CEB8E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Semis" ID="{BCAAE6DB-CB9B-42EF-94D2-64EED5FF600B}" ShortID="708572043">
+					<PropertyList>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Birds" ID="{98F33701-7B7C-435F-966E-47E6CC6D84A5}" WorkUnitID="{9753E8B7-4AE0-4513-A349-9841876FB8CD}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="semi" ID="{895BEB9A-75D4-4699-8710-F798037FA05E}" ShortID="211737325">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{BF1631BA-AF59-4F3F-80B9-1A34CF8A48A7}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="2"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="semi" ID="{78181ACC-29BE-4B00-93F1-8F41CBE8232B}" ShortID="1000262857">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.857838592282151"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>semi.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="semi" ID="{78181ACC-29BE-4B00-93F1-8F41CBE8232B}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
