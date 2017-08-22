@@ -11,15 +11,15 @@ public class MainSceneObjController : MyObjPositionController
 
     Ray ray;
     RaycastHit hit;
-    HoloActor targetActor;
+    HoloMovableObject targetActor;
     NavMeshAgent targetAgent;
     Vector3 offset;
-    //Actor
+    [SerializeField]
     LayerMask layerMask = 1 << 8;
 
     //アイテムを掴んでいるか？
     bool isHoldItem = false;
-    
+
     static MainSceneObjController instance;
     public static MainSceneObjController I
     {
@@ -67,19 +67,21 @@ public class MainSceneObjController : MyObjPositionController
     protected override void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();
+
+        base.Start();
+
+        if (MainGameManager.I == null) return;
         MainGameManager.I.OnPlayPage += (page) =>
         {
             Disable();
         };
-
-        base.Start();
     }
 
     protected override void Update()
     {
         base.Update();
-        
-        if(canDragging && !isDragging)
+
+        if (canDragging && !isDragging)
         {
             Vector3 actorPosition = targetObject.transform.position;
             transform.position = actorPosition + offset;
@@ -92,7 +94,11 @@ public class MainSceneObjController : MyObjPositionController
     {
         if (!canDragging) return;
 
-        if (targetActor.GetActorType == HoloActor.ActorType.Item) isHoldItem = true;
+        if (targetActor.GetActorType == HoloObject.HoloObjectType.Item)
+        {
+            Debug.Log("is hold item");
+            isHoldItem = true;
+        }
         targetAgent.enabled = false;
 
         base.StartDragging();
@@ -100,34 +106,43 @@ public class MainSceneObjController : MyObjPositionController
 
     protected override void StopDragging()
     {
+        Debug.Log("call stop dragging");
         base.StopDragging();
+        if (MainGameManager.I == null) return;
 
         //直下を調べる
         ray.direction = Vector3.down;
         ray.origin = targetObject.transform.position;
-        
+
         float radius = 0.0f;
         radius = targetAgent.radius * targetObject.transform.lossyScale.x;
 
-        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, targetObject.transform.position.y + 0.5f);
-        HoloActor actor;
+        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 3.0f);
+        HoloMovableObject actor;
 
 
-        for(int i = 0; i < hits.Length;i++)
+        for (int i = 0; i < hits.Length; i++)
         {
+            Debug.Log("hit " + hits[i].transform.name);
             if (hits[i].transform.tag != "Actor") continue;
             if (hits[i].transform.gameObject.Equals(targetObject)) continue;
-            actor = hits[i].transform.GetComponent<HoloActor>();
-            if(actor.GetActorType == HoloActor.ActorType.Character && isHoldItem)
+            actor = hits[i].transform.GetComponent<HoloMovableObject>();
+
+            if (actor == null) return;
+            Debug.Log("hit actor");
+            if (actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
+                Debug.Log("call set item");
+                isHoldItem = false;
                 actor.SetItem(targetObject);
             }
             return;
         }
 
-        actor = targetObject.GetComponent<HoloActor>();
+        actor = targetObject.GetComponent<HoloMovableObject>();
 
-        //自身があるので１ todo:自身の持っているアイテムも含まれる可能性があるので対応
+        //todo:自身の持っているアイテムも含まれる可能性があるので対応
+        //自身があるので１ 
         if (hits.Length == 1)
         {
             //ページの外に置いた
@@ -142,11 +157,15 @@ public class MainSceneObjController : MyObjPositionController
         if (isHoldItem)
         {
             HoloItem item = (HoloItem)targetActor;
-            if (item.owner != null) item.owner.DumpItem(item.currentHand, false);
+            if (item.owner != null)
+            {
+                item.owner.DumpItem(item.currentHand, false);
+                item.owner = null;
+            }
         }
 
         //グローバルに登録されていたら削除する。
-        ActorManager.I.RemoveGlobal(actor);
+        ActorManager.I.RemoveGlobal(actor.name);
 
         //設定を戻す
         targetAgent.enabled = true;
@@ -179,7 +198,7 @@ public class MainSceneObjController : MyObjPositionController
     {
         if (targetObject != null && targetObject.Equals(obj))
         {
-            ChangeWireFrameView(!canDragging);
+            Disable();
             return;
         }
 
@@ -190,7 +209,7 @@ public class MainSceneObjController : MyObjPositionController
         //targetObjectの切り替え
         targetObject = obj;
         targetAgent = targetObject.GetComponent<NavMeshAgent>();
-        targetActor = targetObject.GetComponent<HoloActor>();
+        targetActor = targetObject.GetComponent<HoloMovableObject>();
 
         transform.position = targetObject.transform.position;
 
@@ -209,6 +228,7 @@ public class MainSceneObjController : MyObjPositionController
         offset.z *= boxCol.center.z;
 
         transform.position += offset;
+        transform.rotation = targetObject.transform.rotation;
 
         ChangeWireFrameView(true);
 

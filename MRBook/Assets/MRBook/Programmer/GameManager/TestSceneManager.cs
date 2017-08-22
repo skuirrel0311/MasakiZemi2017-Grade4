@@ -7,11 +7,15 @@ public class TestSceneManager : MainGameManager
     protected override void Start()
     {
         base.Start();
-        GameStart();
     }
 
     public void Update()
     {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            if (!IsGameStart) GameStart();
+        }
+
         if (Input.GetKeyDown(KeyCode.N)) ChangePage(currentPageIndex + 1);
 
         if (Input.GetKeyDown(KeyCode.B)) ChangePage(currentPageIndex - 1);
@@ -30,11 +34,9 @@ public class TestSceneManager : MainGameManager
         }
 
         SetPage(currentPageIndex);
-
-        //使うUIだけアクティブにしておく
-        uiController.missionText.gameObject.SetActive(true);
-        uiController.stateText.gameObject.SetActive(true);
+        
         IsGameStart = true;
+        if (OnGameStart != null) OnGameStart.Invoke();
     }
 
     

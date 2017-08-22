@@ -44,6 +44,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: GoThereState
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: LookTargetState
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -71,8 +83,10 @@ MonoBehaviour:
   element:
   - flagName: TurtleIsSeeUrashima
     boolValue: 1
+    isCheckNow: 1
   - flagName: UrashimaIsSeeTurtle
     boolValue: 1
+    isCheckNow: 1
   t: 0
 --- !u!114 &114031539212124934
 MonoBehaviour:
@@ -88,8 +102,10 @@ MonoBehaviour:
   element:
   - flagName: HasSake
     boolValue: 1
+    isCheckNow: 1
   - flagName: HasRod
     boolValue: 1
+    isCheckNow: 1
   t: 0
 --- !u!114 &114081548465548904
 MonoBehaviour:
@@ -158,6 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: UrashimaIsNearTurtle
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114314555497743440
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -171,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: DoorIsOpen
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114328427223646618
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -258,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: DoorIsOpen
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114510691859839300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,6 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: UrashimaIsNearTurtle
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114568176902592136
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -322,6 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: TurtleIsNearRoof
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114614446875354138
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -362,8 +388,10 @@ MonoBehaviour:
   element:
   - flagName: UrashimaIsSeeTurtle
     boolValue: 1
+    isCheckNow: 1
   - flagName: HaveSao
     boolValue: 1
+    isCheckNow: 1
   t: 0
 --- !u!114 &114667220911349734
 MonoBehaviour:
@@ -390,6 +418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: IsInHouse
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114694540340094740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,6 +459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: IsInHouse
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114790240576808518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,6 +488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: IsInHouse
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114857372412118002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: UrashimaIsNearTurtle
   boolValue: 1
+  isCheckNow: 1
+  checkOnUpdate: 0
 --- !u!114 &114887251407387958
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,7 +7,7 @@ using HoloToolkit.Unity.InputModule;
 public class HoloButton : MonoBehaviour, IInputClickHandler
 {
     [SerializeField]
-    UnityEvent onClick;
+    UnityEvent onClick = null;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
@@ -17,18 +17,10 @@ public class HoloButton : MonoBehaviour, IInputClickHandler
 
     public void Refresh()
     {
-#if UNITY_EDITOR
-
-#else
         gameObject.SetActive(true);
-#endif
     }
     public void Hide()
     {
-#if UNITY_EDITOR
-
-#else
         gameObject.SetActive(false);
-#endif
     }
 }

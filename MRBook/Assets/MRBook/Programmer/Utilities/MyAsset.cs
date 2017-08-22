@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyAsset<T> where T : Object
+public interface IMyAsset
 {
-    public string name;
-    public string path;
-    public T data { get; private set; }
+    string Name { get; }
+    string Path { get; }
+}
 
-    public MyAsset(string name, string path)
+public class MyAsset<T> : IMyAsset
+    where T : Object
+{
+    public string Name { get; private set; }
+    public string Path { get; private set; }
+    public T Data { get; private set; }
+
+    public MyAsset(string name, string path, T data)
     {
-        this.name = name;
-        this.path = path;
-
-        data = Resources.Load<T>(path + name);
+        Name = name;
+        Path = path;
+        Data = data;
     }
 
     public virtual void Unload()
     {
-        data = null;
+        Data = null;
     }
-
 }

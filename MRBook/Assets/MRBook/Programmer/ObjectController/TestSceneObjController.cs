@@ -31,7 +31,7 @@ public class TestSceneObjController : MonoBehaviour
     float moveSpeed = 4.0f;
 
     //アイテムを掴んでいるか？
-    bool isHoldItem = false;
+    public bool isHoldItem = false;
 
     void Start()
     {
@@ -43,7 +43,7 @@ public class TestSceneObjController : MonoBehaviour
 
     void Update()
     {
-        //右クリック？
+        //右クリック
         if(Input.GetMouseButtonDown(0))
         {
             if (TryGetGameObject(out targetObj))
@@ -74,14 +74,14 @@ public class TestSceneObjController : MonoBehaviour
             obj = hit.transform.gameObject;
 
             //つかむことができるかチェック
-            HoloActor actor = obj.GetComponent<HoloActor>();
+            HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
             if (actor == null || !actor.isMovable)
             {
                 obj = null;
                 return false;
             }
 
-            if (actor.GetActorType == HoloActor.ActorType.Item) isHoldItem = true;
+            if (actor.GetActorType == HoloObject.HoloObjectType.Item) isHoldItem = true;
             return true;
         }
         else
@@ -117,7 +117,7 @@ public class TestSceneObjController : MonoBehaviour
         ray.direction = Vector3.down;
         ray.origin = targetObj.transform.position;
         float radius = targetAgent.radius * targetObj.transform.lossyScale.x;
-        HoloActor actor;
+        HoloMovableObject actor;
         
         RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 2.0f);
         for (int i = 0;i< hits.Length;i++)
@@ -126,16 +126,21 @@ public class TestSceneObjController : MonoBehaviour
             if (hits[i].transform.gameObject.Equals(targetObj)) continue;
             if (hits[i].transform.tag != "Actor") continue;
             //なんか当たった
-            actor = hits[i].transform.GetComponent<HoloActor>();
-            if(actor.GetActorType == HoloActor.ActorType.Character && isHoldItem)
+            actor = hits[i].transform.GetComponent<HoloMovableObject>();
+
+            if (actor == null) return;
+            if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
+                Debug.Log("call set item");
+                isHoldItem = false;
                 actor.SetItem(targetObj);
             }
 
             return;
         }
 
-        actor = targetObj.GetComponent<HoloActor>();
+        actor = targetObj.GetComponent<HoloMovableObject>();
+
 
         if (hits.Length == 1)
         {
@@ -151,11 +156,15 @@ public class TestSceneObjController : MonoBehaviour
         if(isHoldItem)
         {
             HoloItem item = targetObj.GetComponent<HoloItem>();
-            if (item.owner != null) item.owner.DumpItem(item.currentHand, false);
+            if (item.owner != null)
+            {
+                item.owner.DumpItem(item.currentHand, false);
+                item.owner = null;
+            }
         }
 
         //グローバルに登録されていたら削除する。
-        actorManager.RemoveGlobal(actor);
+        actorManager.RemoveGlobal(actor.name);
 
         //NavMeshAgentを戻す
         targetAgent.enabled = true;

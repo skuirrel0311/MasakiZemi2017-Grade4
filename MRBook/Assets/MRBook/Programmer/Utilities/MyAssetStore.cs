@@ -2,42 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyAssetStore<T> where T : Object
+public class MyAssetStore : BaseManager<MyAssetStore>
 {
-    List<MyAsset<T>> assetList = new List<MyAsset<T>>();
-    string rootPath;
-
-    public MyAssetStore(string rootPath)
-    {
-        this.rootPath = rootPath;
-    }
+    Dictionary<string, IMyAsset> assetDictionray = new Dictionary<string, IMyAsset>();
+    List<IMyAsset> assetList = new List<IMyAsset>();
 
     /// <summary>
     /// パスの最後には「/」を付ける
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="path"></param>
-    /// <returns></returns>
-    public T GetAsset(string name, string path = "")
+    public T GetAsset<T>(string name, string path) where T : Object
     {
         //既にロードされているならそのまま
-        MyAsset<T> asset = FindAsset(name);
-        if (asset != null) return asset.data;
+        MyAsset<T> asset = FindAsset<T>(name);
+        if (asset != null) return asset.Data;
 
         //ロードしてリストに追加する
-        if (path == "") path = rootPath;
-        asset = new MyAsset<T>(name, path);
-        assetList.Add(asset);
+        T data = Resources.Load<T>(path + name);
+        if (data == null)
+        {
+            Debug.LogError("not found " + name);
+            return null;
+        }
+        asset = new MyAsset<T>(name, path, data);
+        assetDictionray.Add(name, asset);
 
-        return asset.data;
+        return asset.Data;
     }
 
-    MyAsset<T> FindAsset(string name)
+    MyAsset<T> FindAsset<T>(string name) where T : Object
     {
-        for(int i = 0;i < assetList.Count;i++)
+        IMyAsset asset;
+        if (assetDictionray.TryGetValue(name, out asset))
         {
-            if (assetList[i].name == name) return assetList[i];
+            return (MyAsset<T>)asset;
         }
-        return null;
+        else
+        {
+            return null;
+        }
     }
 }

@@ -8,16 +8,17 @@ public class LookTarget : StateMachineBehaviour
     public string targetName;
     public string actorName;
     public float rotationSpeed = 100.0f;
-    protected Transform target;
-    protected Transform actor;
 
+    Transform target;
+    Transform actor;
+    Animator m_animator;
     Quaternion to;
-
-    bool isEnd = false;
+    int state = 0;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        target = ActorManager.I.GetAnchor(targetName);
+        m_animator = animator;
+        target = ActorManager.I.GetTargetPoint(targetName);
         actor = ActorManager.I.GetActor(actorName).transform;
         Vector3 targetDirection = target.position - actor.position;
         
@@ -28,11 +29,12 @@ public class LookTarget : StateMachineBehaviour
         {
             agent.updateRotation = false;
         }
+
+        StateMachineManager.I.Add(actorName + "Look", new MyTask(OnUpdate, OnEnd));
     }
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    void OnUpdate()
     {
-        if (isEnd) return;
         actor.rotation = Quaternion.RotateTowards(actor.rotation, to, rotationSpeed * Time.deltaTime);
 
         float angle = Quaternion.Angle(actor.rotation, to);
@@ -40,17 +42,19 @@ public class LookTarget : StateMachineBehaviour
         {
             Debug.Log("回転終わり");
             //回転し終わった
-            animator.SetTrigger("IsCompleted");
-            isEnd = true;
+            state = 1;
+            StateMachineManager.I.Stop(actorName + "Look");
         }
     }
 
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    void OnEnd()
     {
         NavMeshAgent agent = actor.GetComponent<NavMeshAgent>();
         if (agent != null)
         {
             agent.updateRotation = true;
         }
+
+        m_animator.SetInteger("LookTargetState", state);
     }
 }

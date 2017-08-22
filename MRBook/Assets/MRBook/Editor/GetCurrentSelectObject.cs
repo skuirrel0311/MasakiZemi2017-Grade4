@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class GetCurrentSelectObject : Editor 
 {
-	[MenuItem("Mytools/GetCurrentSelectObject")]
+	[MenuItem("Mytools/CreateItemTransformDataAsset")]
 	static void DrawText()
 	{
 		ItemTransformDataList asset = ScriptableObject.CreateInstance<ItemTransformDataList> ();
@@ -24,7 +24,7 @@ public class GetCurrentSelectObject : Editor
 
 		//そもそも同じファイルが存在するのかをチェックする
 		ItemTransformDataList original;
-		string filePath = "Assets/Resources/Data/" + transform.name +".asset";
+		string filePath = "Assets/MRBook/Resources/Data/" + transform.name +".asset";
 
 		//同じファイルは存在しなかった
 		if (!TryGetOriginalFile (transform.name, out original)) 

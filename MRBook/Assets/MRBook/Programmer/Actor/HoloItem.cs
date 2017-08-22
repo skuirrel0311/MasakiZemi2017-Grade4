@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoloItem : HoloActor
+public class HoloItem : HoloMovableObject
 {
     public enum Hand { Right, Left, Both }
 
@@ -11,9 +11,16 @@ public class HoloItem : HoloActor
     /// </summary>
     public Hand hand;
 
-    public override ActorType GetActorType { get { return ActorType.Item; } }
+    public override HoloObjectType GetActorType { get { return HoloObjectType.Item; } }
     [System.NonSerialized]
     public HoloCharacter owner;
     [System.NonSerialized]
     public Hand currentHand;
+
+    public override void ResetTransform()
+    {
+        //オーナー側でリセットを呼ぶ
+        if (owner != null) return;
+        base.ResetTransform();
+    }
 }

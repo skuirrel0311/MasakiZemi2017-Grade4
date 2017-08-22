@@ -19,14 +19,11 @@ public class BasePage : MonoBehaviour
     [SerializeField]
     GameObject[] bookObjects = null;
 
-    //ページに存在するアクター(ホログラムのオブジェクトのこと)のリスト
-    public List<HoloActor> actorList = new List<HoloActor>();
+    //ページに存在するホログラム
+    public Dictionary<string, HoloObject> objectDictionary = new Dictionary<string, HoloObject>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
-    public List<Transform> anchorList = new List<Transform>();
-
-    //このページを開くのが初めてか？
-    bool isFirst = true;
-
+    public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
+    
     /// <summary>
     /// 本の位置にページを固定する
     /// </summary>
@@ -40,41 +37,55 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// ページを開いた時に呼ぶ
     /// </summary>
-    public void PageStart(bool isBack)
+    public void PageStart(bool isFirst)
     {
+        Debug.Log("is first = " + isFirst  + " page index = " + pageIndex);
         if (!isFirst)
         {
-
-            for (int i = 0; i < actorList.Count; i++)
+            foreach (string key in objectDictionary.Keys)
             {
-                actorList[i].PageStart(pageIndex, false);
+                objectDictionary[key].PageStart(pageIndex, true);
             }
             return;
         }
 
-        isFirst = false;
         //初回のみリストに格納する
         GameObject[] tempArray;
+        
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {
-            actorList.Add(tempArray[i].GetComponent<HoloActor>());
+            HoloObject actor = tempArray[i].GetComponent<HoloObject>();
+            if (actor != null)
+            {
+                Debug.Log("add actor " + actor.name);
+                objectDictionary.Add(actor.name, actor);
+            }
         }
+        
         tempArray = GameObject.FindGameObjectsWithTag("Target");
         for (int i = 0; i < tempArray.Length; i++)
         {
-            anchorList.Add(tempArray[i].transform);
+            Debug.Log("add target point " + tempArray[i].name);
+            targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
         }
-
-        for (int i = 0; i < actorList.Count; i++)
-        {
-            actorList[i].PageStart(pageIndex, true);
-        }
-
         Material visibleMat = MainGameManager.I.visibleMat;
         for (int i = 0; i < bookObjects.Length; i++)
         {
             bookObjects[i].GetComponent<Renderer>().material = visibleMat;
+        }
+
+        foreach (string key in objectDictionary.Keys)
+        {
+            objectDictionary[key].PageStart(pageIndex, true);
+        }
+    }
+
+    public void PlayPage()
+    {
+        foreach (string key in objectDictionary.Keys)
+        {
+            objectDictionary[key].ResetShader();
         }
     }
 
@@ -82,35 +93,12 @@ public class BasePage : MonoBehaviour
     /// このページに登録されているアクターをページを開いた時の位置に戻す
     /// </summary>
     /// <param name="endCallBack"></param>
-    public void ResetPage(System.Action endCallBack = null)
+    public void ResetPage()
     {
-        for (int i = 0; i < actorList.Count; i++)
+        foreach (string key in objectDictionary.Keys)
         {
-            actorList[i].ResetTransform();
+            objectDictionary[key].ResetTransform();
         }
-
-        if (endCallBack != null) endCallBack.Invoke();
-    }
-
-    public HoloActor GetActor(string name)
-    {
-        for (int i = 0; i < actorList.Count; i++)
-        {
-            if (actorList[i].gameObject.name == name) return actorList[i];
-        }
-        return null;
-    }
-    public Transform GetAnchor(string name)
-    {
-        for (int i = 0; i < anchorList.Count; i++)
-        {
-            if (anchorList[i].name == name) return anchorList[i];
-        }
-
-        return null;
-    }
-    public void DisableActor(string name)
-    {
-        GetActor(name).gameObject.SetActive(false);
+        //todo:リセット中のアニメーション
     }
 }

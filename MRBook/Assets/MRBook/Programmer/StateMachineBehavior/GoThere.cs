@@ -12,50 +12,75 @@ public class GoThere : StateMachineBehaviour
 
     GameObject actor;
     NavMeshAgent agent;
+    int state = 0;
 
-    bool isEnd = false;
+    float time;
+    const float limitTime = 1.0f;
+    Vector3 oldPosition;
+
+    Animator m_animator;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         actor = ActorManager.I.GetActor(actorName).gameObject;
-        Vector3 targetPosition = ActorManager.I.GetAnchor(targetName).position;
+        Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetName).position;
         agent = actor.GetComponent<NavMeshAgent>();
-        if (agent != null)
-        {
-            isEnd = false;
-            agent.isStopped = false;
-            agent.SetDestination(targetPosition);
-            agent.stoppingDistance = stopDistance;
-        }
-    }
+        m_animator = animator;
+        m_animator.SetInteger("GoThereState", 0);
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (isEnd) return;
         if (agent == null)
         {
-            Debug.Log("agent is null");
-            isEnd = true;
-            animator.SetTrigger("IsCompleted");
+            Debug.LogError("agent is null");
+            state = -1;
+            OnEnd();
             return;
         }
 
+        agent.isStopped = false;
+        agent.SetDestination(targetPosition);
+        agent.stoppingDistance = stopDistance;
+        oldPosition = actor.transform.position;
+        StateMachineManager.I.Add(actorName + "Go",new MyTask(OnUpdate, OnEnd));
+    }
+
+    void OnUpdate()
+    {
         NavMeshPath path = agent.path;
         float distance = 0.0f;
         Vector3 temp = actor.transform.position;
-
-        for(int i = 0;i< path.corners.Length;i++)
+        
+        for (int i = 0; i < path.corners.Length; i++)
         {
             Vector3 conner = path.corners[i];
             distance += Vector3.Distance(temp, conner);
             temp = conner;
         }
 
-        if(distance < stopDistance)
+        //たどり着いた
+        if (distance < stopDistance)
         {
-            agent.isStopped = true;
-            isEnd = true;
-            animator.SetTrigger("IsCompleted");
+            state = 1;
+            Debug.Log("移動終了");
+            StateMachineManager.I.Stop(actorName + "Go");
         }
+
+        Vector3 movement = oldPosition - actor.transform.position;
+        if (movement.magnitude < 0.0001f)
+        {
+            time += Time.deltaTime;
+            if (time > limitTime)
+            {
+                state = -1;
+                StateMachineManager.I.Stop(actorName + "Go");
+            }
+        }
+
+        oldPosition = actor.transform.position;
+    }
+
+    void OnEnd()
+    {
+        agent.isStopped = true;
+        m_animator.SetInteger("GoThereState", state);
     }
 }

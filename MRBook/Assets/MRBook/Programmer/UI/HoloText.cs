@@ -5,22 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(TextMesh))]
 public class HoloText : MonoBehaviour
 {
-    TextMesh mesh;
-    string currentText;
+    [SerializeField]
+    TextMesh mesh = null;
+
     public string CurrentText
     {
-        get { return currentText; }
+        get { return mesh.text; }
         set
         {
-            if (currentText == value) return;
-            currentText = value;
-            if (mesh != null) mesh.text = currentText;
-        }
-    }
+            if (mesh.text == value) return;
 
-    protected virtual void Start()
-    {
-        mesh = GetComponent<TextMesh>();
-        CurrentText = mesh.text;
+            mesh.text = value;
+        }
     }
 }

@@ -10,6 +10,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
 public partial class AkSoundEngine {
   public static uint AK_SOUNDBANK_VERSION {
@@ -2485,7 +2486,12 @@ public partial class AkSoundEngine {
 
   public static string GetWindowsDeviceName(int index, out uint out_uDeviceID) { return AkSoundEngine.StringFromIntPtrWString(AkSoundEnginePINVOKE.CSharp_GetWindowsDeviceName(index, out out_uDeviceID)); }
 
-  public const int _WIN32_WINNT = 0x0602;
+    internal static void PostEvent(string taskName, GameObject gameObject, object in_gameObjectID)
+    {
+        throw new NotImplementedException();
+    }
+
+    public const int _WIN32_WINNT = 0x0602;
   public const int AK_SIMD_ALIGNMENT = 16;
   public const int AK_BUFFER_ALIGNMENT = 16;
   public const int AK_XAUDIO2_FLAGS = 0;

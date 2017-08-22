@@ -21,13 +21,16 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     {
         mainCameraTransform = Camera.main.transform;
 
+        if (mainCameraTransform == null)
+            mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
         //ターゲットか自身からInterpolatorを取得する
-        if(targetObject != null)
+        if (targetObject != null)
         {
             interpolator = targetObject.GetComponent<Interpolator>();
         }
 
-        if(interpolator == null)
+        if (interpolator == null)
         {
             interpolator = GetComponent<Interpolator>();
             targetObject = gameObject;
@@ -73,7 +76,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 
         currentInputSource = eventData.InputSource;
         currentInputSourceID = eventData.SourceId;
-        
+
         StartDragging();
     }
 
@@ -98,7 +101,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
         if (currentInputSource == null) return;
         if (eventData.SourceId != currentInputSourceID) return;
         if (!isDragging) return;
-        
+
         StopDragging();
     }
 }
