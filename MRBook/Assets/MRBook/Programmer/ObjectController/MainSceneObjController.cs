@@ -7,10 +7,10 @@ public class MainSceneObjController : MyObjPositionController
 {
     bool canDragging = false;
     Renderer[] m_renderers;
+    Collider[] m_cols;
     Transform oldParent = null;
 
     Ray ray;
-    RaycastHit hit;
     HoloMovableObject targetActor;
     NavMeshAgent targetAgent;
     Vector3 offset;
@@ -67,7 +67,8 @@ public class MainSceneObjController : MyObjPositionController
     protected override void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();
-
+        m_cols = GetComponentsInChildren<Collider>();
+        ChangeWireFrameView(false);
         base.Start();
 
         if (MainGameManager.I == null) return;
@@ -180,6 +181,11 @@ public class MainSceneObjController : MyObjPositionController
         {
             m_renderers[i].enabled = canDragging;
         }
+
+        for(int i = 0;i< m_cols.Length;i++)
+        {
+            m_cols[i].enabled = canDragging;
+        }
     }
 
     //中断
@@ -190,7 +196,7 @@ public class MainSceneObjController : MyObjPositionController
             targetObject.transform.parent = oldParent;
         }
         targetObject = null;
-
+        
         ChangeWireFrameView(false);
     }
 

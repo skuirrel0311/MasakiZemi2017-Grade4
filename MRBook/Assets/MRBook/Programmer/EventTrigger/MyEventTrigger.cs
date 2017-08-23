@@ -6,8 +6,5 @@ public class MyEventTrigger : MonoBehaviour
 {
     public string flagName = "";
 
-    [SerializeField]
-    protected GameObject targetObject = null;
-
     public virtual void SetFlag() { }
 }

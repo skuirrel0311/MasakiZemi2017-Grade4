@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HasItem : MyEventTrigger
 {
+    [SerializeField]
+    protected GameObject targetObject = null;
+
     public override void SetFlag()
     {
         HoloItem item = targetObject.GetComponent<HoloItem>();

@@ -5,7 +5,10 @@ public class IsThereObject : MyEventTrigger
     MyTrigger trigger;
 
     [SerializeField]
-    LayerMask layer;
+    LayerMask layer = 1 << 8;
+
+    [SerializeField]
+    protected GameObject targetObject = null;
 
     public void Start()
     {

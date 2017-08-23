@@ -165,7 +165,7 @@ namespace HoloToolkit.Unity.InputModule
             SetVisiblity(isVisible);
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             gazeManager = GazeManager.Instance;
             RegisterManagers();

@@ -20,7 +20,7 @@ public class ArtBookGimmick : MyEventTrigger
 
     Camera mainCamera;
 
-    Renderer m_renderer;
+    protected Renderer m_renderer;
 
     protected virtual void Start()
     {
@@ -55,18 +55,6 @@ public class ArtBookGimmick : MyEventTrigger
 
     protected virtual void Update()
     {
-#if UNITY_EDITOR
-
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            isHide = !isHide;
-            m_renderer.enabled = !isHide;
-            NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
-        }
-
-#else
-
-#endif
     }
 
 

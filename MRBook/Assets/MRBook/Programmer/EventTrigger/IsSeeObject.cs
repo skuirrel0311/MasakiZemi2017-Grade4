@@ -6,7 +6,11 @@ public class IsSeeObject : MyEventTrigger
     [SerializeField]
     Transform eye = null;
 
-    public LayerMask ignoreLayerMask;
+    [SerializeField]
+    protected GameObject targetObject = null;
+
+    [SerializeField]
+    LayerMask ignoreLayerMask = 1 << 2;
 
     public override void SetFlag()
     {

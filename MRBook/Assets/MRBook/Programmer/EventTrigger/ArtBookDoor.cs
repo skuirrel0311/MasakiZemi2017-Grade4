@@ -15,7 +15,12 @@ public class ArtBookDoor : ArtBookGimmick
     protected override void Update()
     {
 #if UNITY_EDITOR
-        base.Update();
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            isHide = !isHide;
+            m_renderer.enabled = !isHide;
+            NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
+        }
 #else
         //初回だけ弾く
         if (!maker.IsVisuabled) return;
