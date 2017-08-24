@@ -62,15 +62,15 @@ public class MainGameUIController : BaseManager<MainGameUIController>
         switch (currentState)
         {
             case MainGameManager.GameState.Play:
-                playButton.Hide();
-                resetButton.Hide();
+                playButton.Disable();
+                resetButton.Disable();
                 missionText.gameObject.SetActive(false);
                 break;
             case MainGameManager.GameState.Next:
                 missionText.gameObject.SetActive(true);
                 missionText.CurrentText = "ページをめくれ！";
-                playButton.Hide();
-                resetButton.Hide();
+                playButton.Disable();
+                resetButton.Disable();
                 break;
             case MainGameManager.GameState.Wait:
                 missionText.gameObject.SetActive(true);
