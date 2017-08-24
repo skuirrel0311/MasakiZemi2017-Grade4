@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 102876399762133954}
   - component: {fileID: 114319730653283690}
   - component: {fileID: 65936607606976242}
-  m_Layer: 0
+  - component: {fileID: 114981722639582254}
+  m_Layer: 5
   m_Name: HoloButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,8 +120,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee6b3c469c317144a1a3d4d66879739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
   onClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  autoHide: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  limSprite: {fileID: 0}
+--- !u!114 &114981722639582254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577315343966784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a40fe0d32e51394da5daa7cee908245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 102876399762133954}

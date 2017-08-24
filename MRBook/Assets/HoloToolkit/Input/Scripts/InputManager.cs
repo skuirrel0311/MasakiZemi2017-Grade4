@@ -47,6 +47,8 @@ namespace HoloToolkit.Unity.InputModule
         private NavigationEventData navigationEventData;
         private SpeechKeywordRecognizedEventData speechKeywordRecognizedEventData;
         private DictationEventData dictationEventData;
+        
+        public MyCursor cursor = null;
 
         /// <summary>
         /// Indicates if input is currently enabled or not.

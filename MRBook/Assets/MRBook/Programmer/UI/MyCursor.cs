@@ -146,7 +146,7 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
         if (isRecognizedPosCon || isRecognizedRotCon)
         {
             PrimaryCursorVisual.parent = boundingBox;
-            PrimaryCursorVisual.localScale = PrimaryCursorVisual.localScale * (boundingBox.lossyScale.x * 2.0f);
+            PrimaryCursorVisual.localScale = PrimaryCursorVisual.localScale * (boundingBox.lossyScale.x * 3.0f);
         }
 
         isRecognizedHold = true;

@@ -9,9 +9,6 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     protected IInputSource currentInputSource = null;
     protected uint currentInputSourceID;
 
-    //頭の位置
-    protected Transform mainCameraTransform;
-
     [SerializeField]
     protected GameObject targetObject = null;
     //オブジェクトを滑らかに動かすのに必要
@@ -19,17 +16,13 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 
     protected virtual void Start()
     {
-        mainCameraTransform = Camera.main.transform;
-
-        if (mainCameraTransform == null)
-            mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
-
         //ターゲットか自身からInterpolatorを取得する
         if (targetObject != null)
         {
             interpolator = targetObject.GetComponent<Interpolator>();
         }
 
+        //なければ自身から
         if (interpolator == null)
         {
             interpolator = GetComponent<Interpolator>();
@@ -57,13 +50,6 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
         //固定の解除
         InputManager.Instance.PopModalInputHandler();
         currentInputSource = null;
-    }
-
-    protected Vector3 GetHandPosition()
-    {
-        Vector3 handPosition;
-        currentInputSource.TryGetPosition(currentInputSourceID, out handPosition);
-        return handPosition;
     }
 
     //指が倒された

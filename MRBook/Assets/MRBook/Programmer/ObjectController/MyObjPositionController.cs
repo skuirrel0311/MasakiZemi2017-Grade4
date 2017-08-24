@@ -16,8 +16,14 @@ public class MyObjPositionController : MyInputHandler
 
     Vector3 draggingPosition;
 
+    protected Transform mainCameraTransform;
+
     protected override void Start()
     {
+        mainCameraTransform = Camera.main.transform;
+
+        if (mainCameraTransform == null)
+            mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         base.Start();
     }
 

@@ -129,7 +129,7 @@ namespace HoloToolkit.Unity.InputModule
         /// </summary>
         protected bool IsInputSourceDown;
 
-        protected GameObject TargetedObject;
+        public GameObject TargetedObject;
         protected ICursorModifier TargetedCursorModifier;
 
         private uint visibleHandsCount = 0;

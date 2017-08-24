@@ -5,21 +5,8 @@ using UnityEngine.AI;
 
 public class TestObject : MonoBehaviour
 {
-    NavMeshAgent m_agent;
-    [SerializeField]
-    Transform targetPoint = null;
-
-    void Start()
+    public void ShowMessage()
     {
-        m_agent = GetComponent<NavMeshAgent>();
-        m_agent.SetDestination(targetPoint.position);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            m_agent.isStopped = true;
-        }
+        HoloWindow.I.Show("警告", "メモリが不足しています");
     }
 }

@@ -8,6 +8,8 @@ public class MyObjRotationController : MyInputHandler
 
     Vector3 targetRotation;
 
+    protected Transform mainCameraTransform;
+
     protected override void StartDragging()
     {
         base.StartDragging();
@@ -28,5 +30,12 @@ public class MyObjRotationController : MyInputHandler
         targetObject.transform.localRotation = Quaternion.Euler(targetRotation);
 
         oldHandPosition = currentHandPosition;        
+    }
+
+    Vector3 GetHandPosition()
+    {
+        Vector3 handPosition;
+        currentInputSource.TryGetPosition(currentInputSourceID, out handPosition);
+        return handPosition;
     }
 }
