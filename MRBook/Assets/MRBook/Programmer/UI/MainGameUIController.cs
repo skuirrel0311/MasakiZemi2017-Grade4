@@ -19,8 +19,8 @@ public class MainGameUIController : BaseManager<MainGameUIController>
         base.Awake();
         missionText.gameObject.SetActive(false);
         stateText.gameObject.SetActive(false);
-        playButton.gameObject.SetActive(false);
-        resetButton.gameObject.SetActive(false);
+        playButton.Hide();
+        resetButton.Hide();
     }
 
     protected override void Start()
@@ -42,8 +42,8 @@ public class MainGameUIController : BaseManager<MainGameUIController>
 
         missionText.gameObject.SetActive(true);
         stateText.gameObject.SetActive(true);
-        playButton.gameObject.SetActive(true);
-        resetButton.gameObject.SetActive(true);
+        playButton.Refresh();
+        resetButton.Refresh();
     }
 
     void OnGameStart()

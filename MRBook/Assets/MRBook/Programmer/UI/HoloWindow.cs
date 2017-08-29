@@ -32,6 +32,8 @@ public class HoloWindow : BaseManager<HoloWindow>
 
     bool isVisuable = false;
     bool isMovable = false;
+
+    Coroutine showCoroutine;
     
     protected override void Start()
     {
@@ -52,14 +54,15 @@ public class HoloWindow : BaseManager<HoloWindow>
         }
     }
 
-    public void Show(string title, string message, bool automaticFadeOut = false)
+    public void Show(string title, string message)
     {
+        if (isVisuable) return;
+
         isVisuable = true;
         transform.GetChild(0).gameObject.SetActive(true);
-        closeButton.Refresh();
         this.title.text = title;
         this.message.text = message;
-
+        
         foreach (var c in colorDictionary)
         {
             c.Key.Color = c.Value;
@@ -69,7 +72,15 @@ public class HoloWindow : BaseManager<HoloWindow>
         StartCoroutine(KKUtilities.FloatLerp(0.15f, (t) =>
         {
             transform.localScale = Vector3.Lerp(zeroVec, defaultScale, t * t);
-        }));
+        }).OnCompleted(()=> closeButton.Refresh()));
+    }
+
+    public void Show(string title, string message, float limitTime)
+    {
+        if (isVisuable) return;
+        Show(title, message);
+
+        KKUtilities.Delay(limitTime, () => Close(), this);
     }
 
     void Update()
@@ -103,8 +114,6 @@ public class HoloWindow : BaseManager<HoloWindow>
     {
         isVisuable = false;
 
-        transform.GetChild(0).gameObject.SetActive(false);
-
         float temp = 0.0f;
         StartCoroutine(KKUtilities.FloatLerp(0.1f, (t) =>
         {
@@ -113,6 +122,6 @@ public class HoloWindow : BaseManager<HoloWindow>
             {
                 c.Key.Color = Color.Lerp(c.Value, clearColor, temp);
             }
-        }));
+        }).OnCompleted(() => transform.GetChild(0).gameObject.SetActive(false)));
     }
 }

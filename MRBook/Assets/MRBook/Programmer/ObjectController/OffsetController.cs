@@ -23,11 +23,11 @@ public class OffsetController : MonoBehaviour
     {
         Vector3 moveVec = GetMoveVec(direction);
 
-        anchor.DeleteAnchor();
+       // anchor.DeleteAnchor();
 
         anchor.transform.position += moveVec;
 
-        anchor.SaveAnchor();
+       // anchor.SaveAnchor();
 
         buttons[direction].Refresh();
 

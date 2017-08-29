@@ -10,6 +10,12 @@ public class MyObjRotationController : MyInputHandler
 
     protected Transform mainCameraTransform;
 
+    protected override void Start()
+    {
+        base.Start();
+        mainCameraTransform = Camera.main.transform;
+    }
+
     protected override void StartDragging()
     {
         base.StartDragging();

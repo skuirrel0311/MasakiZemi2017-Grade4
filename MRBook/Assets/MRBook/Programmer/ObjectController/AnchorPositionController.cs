@@ -10,7 +10,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
     public bool IsMovable { get; private set; }
 
     Renderer m_rendere;
-    
+
     MyWorldAnchorManager anchorSroreManager;
     WorldAnchorStore anchorStore;
 
@@ -19,8 +19,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
     //ゲームが開始された時の位置
     Vector3[] startWorldAnchorPositionArray;
 
-    [SerializeField]
-    float updateIntervalTime = 3.5f;
+    float updateIntervalTime = 5.0f;
     float time = 0.0f;
 
     protected override void Start()
@@ -36,9 +35,10 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 
         MainGameManager.I.OnGameStart += () =>
         {
-            for(int i = 0;i< worldAnchors.Length;i++)
+            for (int i = 0; i < worldAnchors.Length; i++)
             {
                 startWorldAnchorPositionArray[i] = worldAnchors[i].transform.position;
+                Debug.Log("start world anchor position = " + startWorldAnchorPositionArray[i]);
             }
         };
 
@@ -54,15 +54,28 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
     {
         time += Time.deltaTime;
 
-        if(time > updateIntervalTime && IsChangedAnchorPosition())
+        if (time > updateIntervalTime)
         {
-            //設定しなおす
-            for (int i = 0; i < worldAnchors.Length; i++)
+            time = 0.0f;
+
+            Debug.Log("world anchor position = (" + worldAnchors[0].transform.position.x + "," + worldAnchors[0].transform.position.y + "," + worldAnchors[0].transform.position.z + ")");
+            if (IsChangedAnchorPosition())
             {
-                //案１.ロードし直し
-                anchorStore.Load(worldAnchors[i].name, worldAnchors[i]);
+                //設定しなおす
+                Debug.Log("reload hologram");
+                HoloWindow.I.Show("警告", "ホログラムのズレを検出しました。");
+
+                DeleteAnchor();
+
+                for (int i = 0; i < worldAnchors.Length; i++)
+                {
+                    worldAnchors[i].transform.position = startWorldAnchorPositionArray[i];
+                }
+
+                SaveAnchor();
             }
         }
+
 
         base.Update();
     }
@@ -88,7 +101,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 
         startColor = m_rendere.material.color;
     }
-    
+
     public void OnInputClicked(InputClickedEventData eventData)
     {
         if (anchorStore == null) return;
@@ -111,13 +124,13 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
 
-        for(int i= 0;i< renderers.Length;i++)
+        for (int i = 0; i < renderers.Length; i++)
         {
             renderers[i].enabled = false;
         }
 
         Collider[] cols = GetComponentsInChildren<Collider>();
-        for(int i = 0;i < cols.Length;i++)
+        for (int i = 0; i < cols.Length; i++)
         {
             cols[i].enabled = false;
         }
@@ -145,12 +158,12 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         if (!IsMovable) return;
         base.StartDragging();
     }
-    
+
     bool IsChangedAnchorPosition()
     {
         for (int i = 0; i < worldAnchors.Length; i++)
         {
-            if (startWorldAnchorPositionArray[i] == worldAnchors[i].transform.position) return true;
+            if (!startWorldAnchorPositionArray[i].Equals(worldAnchors[i].transform.position)) return true;
         }
         return false;
     }

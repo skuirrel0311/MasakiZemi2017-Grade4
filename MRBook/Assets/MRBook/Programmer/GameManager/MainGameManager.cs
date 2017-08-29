@@ -141,6 +141,7 @@ public class MainGameManager : BaseManager<MainGameManager>
     {
         SetBookPositionByAnchor();
         IsGameStart = true;
+        HoloWindow.I.Show("お知らせ", "ゲームが開始されました");
         if(OnGameStart != null) OnGameStart.Invoke();
     }
 
@@ -232,5 +233,10 @@ public class MainGameManager : BaseManager<MainGameManager>
             currentMissionText = pages[currentPageIndex].missionText;
         }
         CurrentState = GameState.Wait;
+    }
+
+    public void ShowWindow()
+    {
+        HoloWindow.I.Show("テスト", "テストですと");
     }
 }

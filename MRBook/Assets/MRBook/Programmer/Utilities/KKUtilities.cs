@@ -16,16 +16,13 @@ public class KKUtilities
         mono.StartCoroutine(Delay(duration, action));
     }
 
-    //aとbの間を補間した値を返す
-    public static float FloatLerp(float a, float b, float t)
+    //与えられたActionにduration秒かけて０→１になる値を毎フレーム渡す
+    public static MyCoroutine FloatLerp(float duration, Action<float> action)
     {
-        t = Mathf.Clamp(t, 0, 1);
-
-        return a + ((b - a) * t);
+        return new MyCoroutine(M_FloatLerp(duration, action));
     }
 
-    //与えられたActionにduration秒かけて０→１になる値を毎フレーム渡す
-    public static IEnumerator FloatLerp(float duration, Action<float> action)
+    static IEnumerator M_FloatLerp(float duration, Action<float> action)
     {
         float t = 0.0f;
 
@@ -71,5 +68,48 @@ public class KKUtilities
         position.z = temp1 * Mathf.Cos(temp2);
 
         return position;
+    }
+}
+
+public class MyCoroutine : IEnumerator
+{
+    IEnumerator logic;
+    Action callback;
+
+    public MyCoroutine(IEnumerator logic)
+    {
+        this.logic = logic;
+    }
+
+    public bool MoveNext()
+    {
+        return Start().MoveNext();
+    }
+    public void Reset()
+    {
+        Start().Reset();
+    }
+    public object Current
+    {
+        get
+        {
+            return Start().Current;
+        }
+    }
+
+    IEnumerator Start()
+    {
+        while (logic.MoveNext())
+        {
+            yield return null;
+        }
+
+        if (callback != null) callback.Invoke();
+    }
+
+    public MyCoroutine OnCompleted(Action callback)
+    {
+        this.callback = callback;
+        return this;
     }
 }

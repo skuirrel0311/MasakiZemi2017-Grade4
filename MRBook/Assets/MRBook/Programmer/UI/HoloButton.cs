@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using HoloToolkit.Unity.InputModule;
 
+[RequireComponent(typeof(BoxCollider))]
 public class HoloButton : MyInputHandler
 {
-    enum ButtonState { Normal, Over, Pressed, Disabled }
+    public enum HoloButtonState { Normal, Over, Pressed, Disabled }
 
     [SerializeField]
     UnityEvent onClick = null;
@@ -15,37 +16,34 @@ public class HoloButton : MyInputHandler
     bool autoHide = false;
 
     [SerializeField]
-    Color normalColor = Color.white;
-    [SerializeField]
     Color pressedColor = Color.gray;
     [SerializeField]
     Color disabledColor = new Color(0.2f, 0.2f, 0.2f);
     Color clearColor = Color.clear;
-
-    [SerializeField]
-    HoloSprite mainSprite = null;
-    [SerializeField]
-    HoloSprite limSprite = null;
+    
+    //あとで消える予定
     [SerializeField]
     HoloText text = null;
-
+    
     List<IHoloUI> imageList = new List<IHoloUI>();
 
-    ButtonState currentState = ButtonState.Normal;
+    BoxCollider m_collider;
 
-    protected override void Start()
+    Coroutine changeColorCoroutine;
+    public bool isChangeColor = false;
+
+    protected void Awake()
     {
         base.Start();
 
-        if (text != null) imageList.Add(text);
-        if (mainSprite != null) imageList.Add(mainSprite);
+        m_collider = GetComponent<BoxCollider>();
+        imageList.AddRange(GetComponentsInChildren<HoloSprite>());
     }
 
     protected override void StartDragging()
     {
         base.StartDragging();
-        currentState = ButtonState.Pressed;
-        ChangeLimState(ButtonState.Normal);
+        ChangeButtonColor(pressedColor);
     }
 
     protected override void StopDragging()
@@ -59,62 +57,57 @@ public class HoloButton : MyInputHandler
             return;
         }
 
+        Debug.LogError("on click");
         onClick.Invoke();
 
         if (autoHide) Disable();
         else Refresh();
     }
+    
+    void ChangeButtonColor(Color targetColor, float duration = 0.1f)
+    {
+        if (imageList.Count <= 0) return;
+
+        Color start = imageList[0].Color;
+
+        if (start.Equals(targetColor)) return;
+
+        if(isChangeColor)
+        {
+            StopCoroutine(changeColorCoroutine);
+        }
+
+        isChangeColor = true;
+        Color currentColor;
+        changeColorCoroutine = StartCoroutine(KKUtilities.FloatLerp(duration, t =>
+        {
+            currentColor = Color.Lerp(start, targetColor, t * t);
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                imageList[i].Color = currentColor;
+            }
+        }).OnCompleted(() => isChangeColor = false));
+
+    }
 
     public void Refresh()
     {
-        ChangeLimState(ButtonState.Disabled);
-        ChangeState(currentState, ButtonState.Normal);
+        text.gameObject.SetActive(true);
+        m_collider.enabled = true;
+        ChangeButtonColor(Color.white);
     }
 
+    //見えるが押せない状態
     public void Disable()
     {
-        ChangeLimState(ButtonState.Disabled);
-        ChangeState(currentState, ButtonState.Disabled);
+        m_collider.enabled = false;
+        ChangeButtonColor(disabledColor);
     }
 
-    void ChangeState(ButtonState previousState, ButtonState newState, float duration = 0.1f)
+    public void Hide()
     {
-        Color startColor = GetStateColor(previousState);
-        Color endColor = GetStateColor(newState);
-
-        StartCoroutine(KKUtilities.FloatLerp(duration, (t) =>
-        {
-            for (int i = 0; i < imageList.Count; i++)
-            {
-                imageList[i].Color = Color.Lerp(startColor, endColor, t);
-            }
-        }));
-    }
-    Color GetStateColor(ButtonState state)
-    {
-        switch (state)
-        {
-            case ButtonState.Normal:
-                return normalColor;
-            case ButtonState.Pressed:
-                return pressedColor;
-            case ButtonState.Disabled:
-                return disabledColor;
-        }
-
-        return Color.white;
-    }
-
-    //渡すstateはNormalかDisableのみ
-    void ChangeLimState(ButtonState state, float duration = 0.1f)
-    {
-        if (limSprite == null) return;
-
-        Color startColor = state == ButtonState.Disabled ? normalColor : clearColor;
-        Color endColor = state == ButtonState.Normal ? normalColor : clearColor;
-        StartCoroutine(KKUtilities.FloatLerp(duration, (t) =>
-        {
-            limSprite.Color = Color.Lerp(startColor, endColor, t);
-        }));
+        m_collider.enabled = false;
+        text.gameObject.SetActive(false);
+        ChangeButtonColor(clearColor);
     }
 }
