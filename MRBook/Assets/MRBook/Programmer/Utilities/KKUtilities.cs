@@ -104,12 +104,21 @@ public class MyCoroutine : IEnumerator
             yield return null;
         }
 
-        if (callback != null) callback.Invoke();
+        if (callback != null)
+        {
+            callback.Invoke();
+            callback = null;
+        }
     }
 
     public MyCoroutine OnCompleted(Action callback)
     {
-        this.callback = callback;
+        this.callback += callback;
         return this;
+    }
+
+    public void CallCompletedSelf()
+    {
+        if (callback != null) callback.Invoke();
     }
 }

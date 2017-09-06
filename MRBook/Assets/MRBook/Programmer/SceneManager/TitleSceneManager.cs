@@ -7,6 +7,6 @@ public class TitleSceneManager : BaseManager<TitleSceneManager>
 {
     public void GameStart()
     {
-        SceneManager.LoadSceneAsync("main");
+        SceneManager.LoadSceneAsync("Main");
     }
 }

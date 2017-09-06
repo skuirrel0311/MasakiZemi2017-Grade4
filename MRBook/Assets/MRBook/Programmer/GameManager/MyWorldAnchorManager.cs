@@ -8,6 +8,8 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
 {
     public WorldAnchorStore anchorStore;
 
+    Action<WorldAnchorStore> onLoaded;
+
     protected override void Start()
     {
         base.Start();
@@ -17,25 +19,29 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
     void AnchorStoreReady(WorldAnchorStore anchorStore)
     {
         this.anchorStore = anchorStore;
+        if(onLoaded != null)  onLoaded.Invoke(anchorStore);
     }
 
-    public void AttachingAnchor(GameObject obj)
+    public void SaveAnchor(GameObject obj)
     {
         WorldAnchor attaching = obj.AddComponent<WorldAnchor>();
         attaching.OnTrackingChanged += AttachingAnchor_OnTrackingChanged;
     }
 
+    public WorldAnchor LoadAnchor(GameObject obj)
+    {
+        return anchorStore.Load(obj.name, obj);
+    }
+
     public IEnumerator GetAnchorStore(Action<WorldAnchorStore> action)
     {
-        Debug.Log("call get anchor store");
         yield return null;
 
         while(anchorStore == null)
         {
             yield return null;
         }
-
-        Debug.Log("call action");
+        
         action.Invoke(anchorStore);
     }
 
@@ -46,5 +52,16 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
         anchorStore.Save(self.gameObject.name, self);
 
         self.OnTrackingChanged -= AttachingAnchor_OnTrackingChanged;
+    }
+
+    public void AddOnLoadedAction(Action<WorldAnchorStore> act)
+    {
+        if(anchorStore != null)
+        {
+            act.Invoke(anchorStore);
+            return;
+        }
+
+        onLoaded += act;
     }
 }

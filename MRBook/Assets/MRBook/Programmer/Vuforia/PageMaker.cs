@@ -8,19 +8,19 @@ public class PageMaker : MyTracableEventHandler
     /// どのページに繊維するためのマーカーなのか？
     /// </summary>
     [SerializeField]
-    int pageIndex;
-    MainGameManager gameManager;
+    int pageIndex = 0;
+    MainSceneManager gameManager;
 
     protected override void Start()
     {
         base.Start();
-        gameManager = MainGameManager.I;
+        gameManager = MainSceneManager.I;
     }
 
     protected override void OnTrackingFound()
     {
         //ページに遷移するべきか？
-        if (gameManager.CurrentState != MainGameManager.GameState.Next) return;
+        if (gameManager.CurrentState != MainSceneManager.GameState.Next) return;
         //意味のない移動はしない
         if (gameManager.currentPageIndex == pageIndex) return;
 

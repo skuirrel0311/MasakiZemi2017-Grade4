@@ -39,6 +39,6 @@ public class TapToStartMessage : MonoBehaviour, IInputClickHandler
         if (IsGameStart) return;
         IsGameStart = true;
         anchorController.Hide();
-        MainGameManager.I.GameStart();
+        MainSceneManager.I.GameStart();
     }
 }

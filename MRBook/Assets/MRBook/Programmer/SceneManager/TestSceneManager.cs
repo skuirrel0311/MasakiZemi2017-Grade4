@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSceneManager : MainGameManager
+public class TestSceneManager : MainSceneManager
 {
     protected override void Start()
     {
@@ -25,7 +25,7 @@ public class TestSceneManager : MainGameManager
         if (Input.GetKeyDown(KeyCode.R)) ResetPage();
     }
     
-    public override void GameStart()
+    public override void GameStart(Transform bookTransfomr = null)
     {
         //エディタ上ではアンカーはないので起動時の位置に固定
         for (int i = 0; i < pages.Length; i++)

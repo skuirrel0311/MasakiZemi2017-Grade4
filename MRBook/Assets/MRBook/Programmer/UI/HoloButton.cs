@@ -57,7 +57,7 @@ public class HoloButton : MyInputHandler
             return;
         }
 
-        Debug.LogError("on click");
+        Debug.Log("on click");
         onClick.Invoke();
 
         if (autoHide) Disable();

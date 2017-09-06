@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainGameManager : BaseManager<MainGameManager>
+public class MainSceneManager : BaseManager<MainSceneManager>
 {
     public enum GameState
     {
@@ -55,8 +55,6 @@ public class MainGameManager : BaseManager<MainGameManager>
 
     protected Animator m_Animator;
 
-    protected MainGameUIController uiController;
-
     public string currentMissionText { get; protected set; }
 
     public BasePage[] pages = null;
@@ -65,12 +63,6 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// 本のポリゴンに動的にアタッチされるマテリアル
     /// </summary>
     public Material visibleMat = null;
-
-    /// <summary>
-    /// 初期位置を決める用のアンカー
-    /// </summary>
-    [SerializeField]
-    Transform anchor = null;
 
     /// <summary>
     /// ゲームの進行度合い
@@ -82,12 +74,11 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// </summary>
     public int currentPageIndex { get; protected set; }
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        m_Animator = GetComponent<Animator>();
-        uiController = MainGameUIController.I;
+        base.Awake();
         pageIndex = -1;
+        m_Animator = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -137,31 +128,35 @@ public class MainGameManager : BaseManager<MainGameManager>
     /// <summary>
     /// TapToStartが押された
     /// </summary>
-    public virtual void GameStart()
+    public virtual void GameStart(Transform bookTransform = null)
     {
-        SetBookPositionByAnchor();
+        if (bookTransform == null)
+            SetBookPositionByAnchor(Vector3.zero, Quaternion.identity);
+        else
+            SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
+
         IsGameStart = true;
-        HoloWindow.I.Show("お知らせ", "ゲームが開始されました");
         if(OnGameStart != null) OnGameStart.Invoke();
     }
 
     /// <summary>
     /// アンカーの位置に本を固定する
     /// </summary>
-    public void SetBookPositionByAnchor()
+    public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
-        //絵本の位置
-        Vector3 artBookPosition = anchor.position + new Vector3(0.0f, -0.1f, 0.0f);
+        //
+        rot = Quaternion.Euler( rot.eulerAngles + pages[0].transform.eulerAngles);
 
         for (int i = 0; i < pages.Length; i++)
         {
-            Vector3 rotation = anchor.eulerAngles + pages[i].transform.eulerAngles;
-            pages[i].PageLock(artBookPosition, Quaternion.Euler(rotation), i);
+            
+            pages[i].PageLock(pos, rot, i);
         }
 
         SetPage(currentPageIndex);
 
-        uiController.SetPositionAndRotation(anchor);
+        Debug.LogWarning("SetUI");
+        MainGameUIController.I.SetPositionAndRotation(pos, rot);
     }
 
     /// <summary>
@@ -233,10 +228,5 @@ public class MainGameManager : BaseManager<MainGameManager>
             currentMissionText = pages[currentPageIndex].missionText;
         }
         CurrentState = GameState.Wait;
-    }
-
-    public void ShowWindow()
-    {
-        HoloWindow.I.Show("テスト", "テストですと");
     }
 }

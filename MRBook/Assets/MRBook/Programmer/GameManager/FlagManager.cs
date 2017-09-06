@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FlagManager : BaseManager<FlagManager>
 {
-    MainGameManager gameManager;
+    MainSceneManager gameManager;
     Dictionary<string, MyFlag> flagDictionary = new Dictionary<string, MyFlag>();
 
     protected override void Start()
@@ -12,7 +12,7 @@ public class FlagManager : BaseManager<FlagManager>
 #if UNITY_EDITOR
         gameManager = TestSceneManager.I;
 #else
-        gameManager = MainGameManager.I;
+        gameManager = MainSceneManager.I;
 #endif
     }
 

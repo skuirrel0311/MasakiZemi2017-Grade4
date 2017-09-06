@@ -46,7 +46,7 @@ public class HoloTestScript : MonoBehaviour, IInputClickHandler
         {
             for (int i = 0; i < worldAnchors.Length; i++)
             {
-                anchorSroreManager.AttachingAnchor(worldAnchors[i]);
+                anchorSroreManager.SaveAnchor(worldAnchors[i]);
             }
             GetComponent<MyObjPositionController>().enabled = false;
             m_rendere.material.color = Color.red;

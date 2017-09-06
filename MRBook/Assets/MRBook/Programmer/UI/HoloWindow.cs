@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoloWindow : BaseManager<HoloWindow>
+public class HoloWindow : MonoBehaviour
 {
     Vector3 zeroVec = Vector3.zero;
     Vector3 defaultScale;
@@ -30,14 +30,13 @@ public class HoloWindow : BaseManager<HoloWindow>
 
     Transform cameraTrans;
 
-    bool isVisuable = false;
     bool isMovable = false;
+    GameObject rootObj;
 
-    Coroutine showCoroutine;
-    
-    protected override void Start()
+    MyCoroutine viewCoroutine;
+
+    protected void Start()
     {
-        base.Start();
         defaultScale = transform.localScale;
 
         cameraTrans = Camera.main.transform;
@@ -52,45 +51,54 @@ public class HoloWindow : BaseManager<HoloWindow>
         {
             colorDictionary.Add(sprites[i], sprites[i].Color);
         }
+
+        rootObj = transform.GetChild(0).gameObject;
     }
 
-    public void Show(string title, string message)
+    public void Show(string title, string message, bool autoHide = false, float limitTime = 1.0f)
     {
-        if (isVisuable) return;
+        if (rootObj.activeSelf && viewCoroutine != null)
+        {
+            StopCoroutine(viewCoroutine);
+        }
 
-        isVisuable = true;
-        transform.GetChild(0).gameObject.SetActive(true);
+        //どんな状態で止められるかわからないのでここですべての初期化をしておく
+        rootObj.SetActive(true);
         this.title.text = title;
         this.message.text = message;
-        
         foreach (var c in colorDictionary)
         {
             c.Key.Color = c.Value;
         }
         transform.localScale = zeroVec;
-
-        StartCoroutine(KKUtilities.FloatLerp(0.15f, (t) =>
+        
+        //出てくるときのアニメーション
+        viewCoroutine = KKUtilities.FloatLerp(0.15f, (t) =>
         {
             transform.localScale = Vector3.Lerp(zeroVec, defaultScale, t * t);
-        }).OnCompleted(()=> closeButton.Refresh()));
-    }
+        });
 
-    public void Show(string title, string message, float limitTime)
-    {
-        if (isVisuable) return;
-        Show(title, message);
+        //自動で消えない場合はCloseボタンが使えるようにする
+        if (!autoHide)
+            viewCoroutine.OnCompleted(() => closeButton.Refresh());
+        else
+            viewCoroutine.OnCompleted(() => KKUtilities.Delay(limitTime, () => Close(), this));
 
-        KKUtilities.Delay(limitTime, () => Close(), this);
+        StartCoroutine(viewCoroutine);
     }
 
     void Update()
     {
+        if (cameraTrans == null)
+            cameraTrans = Camera.main.transform;
         transform.position = cameraTrans.position;
-        if (!isVisuable) return;
+
+
+        if (!rootObj.activeSelf) return;
 
         float angle = cameraTrans.eulerAngles.y - transform.eulerAngles.y;
         float temp = Mathf.Abs(angle);
-        
+
         if (temp > maxRange) isMovable = true;
         if (temp < minRange) isMovable = false;
 
@@ -104,7 +112,7 @@ public class HoloWindow : BaseManager<HoloWindow>
             else
                 angle = (360.0f - transform.eulerAngles.y) + cameraTrans.eulerAngles.y;
         }
-        
+
         Vector3 tempVec = transform.eulerAngles;
         tempVec.y += angle * Time.deltaTime * moveSpeed;
         transform.rotation = Quaternion.Euler(tempVec);
@@ -112,16 +120,16 @@ public class HoloWindow : BaseManager<HoloWindow>
 
     public void Close()
     {
-        isVisuable = false;
-
         float temp = 0.0f;
-        StartCoroutine(KKUtilities.FloatLerp(0.1f, (t) =>
+        viewCoroutine = KKUtilities.FloatLerp(0.1f, (t) =>
         {
             temp = t * t;
             foreach (var c in colorDictionary)
             {
                 c.Key.Color = Color.Lerp(c.Value, clearColor, temp);
             }
-        }).OnCompleted(() => transform.GetChild(0).gameObject.SetActive(false)));
+        }).OnCompleted(() => rootObj.SetActive(false));
+
+        StartCoroutine(viewCoroutine);
     }
 }

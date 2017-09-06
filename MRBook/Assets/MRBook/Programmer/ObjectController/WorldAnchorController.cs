@@ -3,60 +3,103 @@ using HoloToolkit.Unity.InputModule;
 using UnityEngine.VR.WSA;
 using UnityEngine.VR.WSA.Persistence;
 
-public class WorldAnchorController : MyObjPositionController, IInputClickHandler
+//キューブ型のWorldAnchorを移動させたり固定させたりするもの
+public class WorldAnchorController : HoloMovableObject
 {
-    bool isMovable = false;
-    Renderer m_renderer;
     MyWorldAnchorManager worldAnchorManager;
-    WorldAnchorStore anchorStore;
-    
-    Color movableColor = Color.green;
-    Color staticColor = Color.gray;
 
-    protected override void Start()
+    Color movableColor = Color.yellow;
+    Color staticColor = Color.green;
+
+    Renderer m_renderer;
+    BoxCollider m_collider;
+    MaterialPropertyBlock block;
+
+    public bool isObserver = false;
+    public bool canDragging = false;
+    public bool isLoaded = false;
+
+    void Start()
     {
-        base.Start();
         m_renderer = GetComponent<Renderer>();
+        m_collider = GetComponent<BoxCollider>();
         worldAnchorManager = MyWorldAnchorManager.I;
-        anchorStore = null;
-        
-        StartCoroutine(worldAnchorManager.GetAnchorStore((anchorStore) =>
+        block = new MaterialPropertyBlock();
+
+        worldAnchorManager.AddOnLoadedAction((store) =>
         {
-            this.anchorStore = anchorStore;
-            StartUpAnchor();
-        }));
+            isLoaded = true;
+            SetColor(staticColor);
+            SaveAnchor();
+        });
+
+        ChangeObserverState(true);
     }
 
-    void StartUpAnchor()
+    void ChangeObserverState(bool isObserver)
     {
-        WorldAnchor attached = anchorStore.Load(name, gameObject);
+        if (this.isObserver == isObserver) return;
 
-        if (attached == null)
-        {
-            anchorStore.Save(name, GetComponent<WorldAnchor>());
-            m_renderer.material.color = Color.red;
-        }
+        this.isObserver = isObserver;
+
+        if (this.isObserver)
+            MyObjControllerByBoundingBox.I.OnTargetChanged += OnTargetChangedInObjCon;
         else
-        {
-            m_renderer.material.color = Color.blue;
-        }
-        
+            MyObjControllerByBoundingBox.I.OnTargetChanged -= OnTargetChangedInObjCon;
     }
 
-    public void OnInputClicked(InputClickedEventData eventData)
+    void OnTargetChangedInObjCon(GameObject oldObj, GameObject newObj)
     {
-        isMovable = !isMovable;
+        bool equalOld = gameObject.Equals(oldObj);
+        bool equalNew = gameObject.Equals(newObj);
 
-        if (m_renderer == null) return;
+        if (equalOld && !equalNew) OnBreak();
 
-        if (isMovable)
-        {
-            worldAnchorManager.anchorStore.Delete(name);
-            DestroyImmediate(GetComponent<WorldAnchor>());
-        }
+        if (equalNew) OnClicked();
+    }
+
+    //このオブジェクトを選択した状態で別のオブジェクトを選択した
+    void OnBreak()
+    {
+        canDragging = false;
+        SaveAnchor();
+    }
+
+    void OnClicked()
+    {
+        canDragging = !canDragging;
+        if (canDragging)
+            DeleteAnchor();
         else
-        {
-            worldAnchorManager.AttachingAnchor(gameObject);
-        }
+            SaveAnchor();
+    }
+
+    public void SaveAnchor()
+    {
+        if (!isLoaded) return;
+        worldAnchorManager.SaveAnchor(gameObject);
+        SetColor(staticColor);
+    }
+
+    public void DeleteAnchor()
+    {
+        if (!isLoaded) return;
+        worldAnchorManager.anchorStore.Delete(name);
+        DestroyImmediate(GetComponent<WorldAnchor>());
+        SetColor(movableColor);
+    }
+
+    void SetColor(Color col)
+    {
+        block.SetColor("_Color", col);
+
+        m_renderer.SetPropertyBlock(block);
+    }
+
+    public void SetActive(bool isActive)
+    {
+        m_renderer.enabled = isActive;
+        m_collider.enabled = isActive;
+        ChangeObserverState(isActive);
     }
 }

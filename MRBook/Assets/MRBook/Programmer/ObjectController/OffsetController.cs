@@ -17,7 +17,7 @@ public class OffsetController : MonoBehaviour
     [SerializeField]
     AnchorPositionController anchor = null;
     [SerializeField]
-    HoloButton[] buttons;
+    HoloButton[] buttons = null;
     
     public void MoveBook(int direction)
     {
@@ -31,8 +31,8 @@ public class OffsetController : MonoBehaviour
 
         buttons[direction].Refresh();
 
-        MainGameManager gameManager = MainGameManager.I;
-        if(gameManager.IsGameStart) gameManager.SetBookPositionByAnchor();
+        MainSceneManager gameManager = MainSceneManager.I;
+        //if(gameManager.IsGameStart) gameManager.SetBookPositionByAnchor();
     }
 
     Vector3 GetMoveVec(int direction)

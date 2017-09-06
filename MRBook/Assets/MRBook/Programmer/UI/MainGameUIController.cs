@@ -7,28 +7,18 @@ using UnityEngine;
 /// </summary>
 public class MainGameUIController : BaseManager<MainGameUIController>
 {
-    MainGameManager gameManager;
+    MainSceneManager gameManager;
 
     public HoloText missionText = null;
     public HoloText stateText = null;
     public HoloButton playButton = null;
     public HoloButton resetButton = null;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        missionText.gameObject.SetActive(false);
-        stateText.gameObject.SetActive(false);
-        playButton.Hide();
-        resetButton.Hide();
-    }
-
     protected override void Start()
     {
         base.Start();
-        gameManager = MainGameManager.I;
+        gameManager = MainSceneManager.I;
         gameManager.OnGameStateChanged += OnGameStateChanged;
-        gameManager.OnGameStart += OnGameStart;
 
 #if UNITY_EDITOR
         missionText.gameObject.SetActive(true);
@@ -36,43 +26,28 @@ public class MainGameUIController : BaseManager<MainGameUIController>
 #endif
     }
 
-    public void SetPositionAndRotation(Transform anchorTransform)
+    public void SetPositionAndRotation(Vector3 pos, Quaternion rot)
     {
-        transform.SetPositionAndRotation(anchorTransform.position, anchorTransform.rotation);
-
-        missionText.gameObject.SetActive(true);
-        stateText.gameObject.SetActive(true);
-        playButton.Refresh();
-        resetButton.Refresh();
+        transform.SetPositionAndRotation(pos, rot);
     }
 
-    void OnGameStart()
-    {
-#if UNITY_EDITOR
-        //必要なUIだけアクティブをtrueにする
-        playButton.gameObject.SetActive(true);
-        resetButton.gameObject.SetActive(true);
-        missionText.gameObject.SetActive(true);
-        //stateText.gameObject.SetActive(true);
-#endif
-    }
-    void OnGameStateChanged(MainGameManager.GameState currentState)
+    void OnGameStateChanged(MainSceneManager.GameState currentState)
     {
         stateText.CurrentText = currentState + ":" + gameManager.currentPageIndex;
         switch (currentState)
         {
-            case MainGameManager.GameState.Play:
+            case MainSceneManager.GameState.Play:
                 playButton.Disable();
                 resetButton.Disable();
                 missionText.gameObject.SetActive(false);
                 break;
-            case MainGameManager.GameState.Next:
+            case MainSceneManager.GameState.Next:
                 missionText.gameObject.SetActive(true);
                 missionText.CurrentText = "ページをめくれ！";
                 playButton.Disable();
                 resetButton.Disable();
                 break;
-            case MainGameManager.GameState.Wait:
+            case MainSceneManager.GameState.Wait:
                 missionText.gameObject.SetActive(true);
                 missionText.CurrentText = gameManager.currentMissionText;
                 playButton.Refresh();

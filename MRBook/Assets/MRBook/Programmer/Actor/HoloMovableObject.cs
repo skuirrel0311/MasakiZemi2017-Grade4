@@ -84,6 +84,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     public virtual void OnInputClicked(InputClickedEventData eventData)
     {
         if (!isMovable) return;
-        MainSceneObjController.I.SetTargetObject(gameObject);
+
+        MyObjControllerByBoundingBox.I.SetTargetObject(gameObject);
     }
 }

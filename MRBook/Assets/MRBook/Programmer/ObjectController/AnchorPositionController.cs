@@ -33,7 +33,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
 
         startWorldAnchorPositionArray = new Vector3[worldAnchors.Length];
 
-        MainGameManager.I.OnGameStart += () =>
+        MainSceneManager.I.OnGameStart += () =>
         {
             for (int i = 0; i < worldAnchors.Length; i++)
             {
@@ -63,7 +63,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
             {
                 //設定しなおす
                 Debug.Log("reload hologram");
-                HoloWindow.I.Show("警告", "ホログラムのズレを検出しました。");
+                NotificationManager.I.ShowDialog("警告", "ホログラムのズレを検出しました。");
 
                 DeleteAnchor();
 
@@ -140,7 +140,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
     {
         for (int i = 0; i < worldAnchors.Length; i++)
         {
-            anchorSroreManager.AttachingAnchor(worldAnchors[i]);
+            anchorSroreManager.SaveAnchor(worldAnchors[i]);
         }
     }
 

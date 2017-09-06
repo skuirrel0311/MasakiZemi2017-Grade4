@@ -33,11 +33,11 @@ public class TestObject : MonoBehaviour
 
     void StartUpAnchor()
     {
-        anchorStoreManager.AttachingAnchor(anchor);
+        anchorStoreManager.SaveAnchor(anchor);
     }
 
     public void ShowMessage()
     {
-        HoloWindow.I.Show("警告", "メモリが不足しています");
+        NotificationManager.I.ShowDialog("警告", "メモリが不足しています");
     }
 }

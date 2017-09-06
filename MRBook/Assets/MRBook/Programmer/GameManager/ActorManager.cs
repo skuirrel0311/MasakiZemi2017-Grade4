@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class ActorManager : BaseManager<ActorManager>
 {
-    MainGameManager gameManager;
+    MainSceneManager gameManager;
     BasePage currentPage;
     
     //ページの外に置かれたオブジェクト
@@ -15,7 +15,7 @@ public class ActorManager : BaseManager<ActorManager>
     protected override void Start()
     {
         base.Start();
-        gameManager = MainGameManager.I;
+        gameManager = MainSceneManager.I;
         gameManager.OnPageChanged += OnPageChanged;
     }
 

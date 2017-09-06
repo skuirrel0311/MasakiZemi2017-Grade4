@@ -3,6 +3,7 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
+		_Color("Color", Color) = (1, 1, 1, 1)
 		_OutlineColor ("Outline Color", Color) = (0,0,0,0)
 		_OutlineWidth ("Outline Width", Range(.0001, 0.03)) = .005
 	}
@@ -72,6 +73,7 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			float4 _Color;
 
 			v2f vert(appdata v)
 			{
@@ -85,6 +87,8 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				fixed4 col = tex2D(_MainTex, i.uv);
+				col.rgb *= _Color.rgb;
+				col.a *= _Color.a;
 				return col;
 			}
 			ENDCG

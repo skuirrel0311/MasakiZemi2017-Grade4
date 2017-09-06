@@ -16,14 +16,15 @@ public class MyObjPositionController : MyInputHandler
 
     Vector3 draggingPosition;
 
+    float draggingTime = 0.0f;
+    const float minDragTime = 0.2f;
+
     protected Transform mainCameraTransform;
 
     protected override void Start()
     {
         mainCameraTransform = Camera.main.transform;
 
-        if (mainCameraTransform == null)
-            mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         base.Start();
     }
 
@@ -50,10 +51,17 @@ public class MyObjPositionController : MyInputHandler
         gazeAngleOffset = Quaternion.FromToRotation(handDirection, objDirection);
 
         draggingPosition = gazeHitPosition;
+
+        draggingTime = 0.0f;
     }
 
     protected override void UpdateDragging()
     {
+        draggingTime += Time.deltaTime;
+
+        //短すぎるドラッグは排除
+        if (draggingTime < minDragTime) return;
+
         Vector3 currentHandPosition;
         currentInputSource.TryGetPosition(currentInputSourceID, out currentHandPosition);
         Vector3 headPosition = GetHeadPosition();

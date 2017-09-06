@@ -69,7 +69,7 @@ public class BasePage : MonoBehaviour
             Debug.Log("add target point " + tempArray[i].name);
             targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
         }
-        Material visibleMat = MainGameManager.I.visibleMat;
+        Material visibleMat = MainSceneManager.I.visibleMat;
         for (int i = 0; i < bookObjects.Length; i++)
         {
             bookObjects[i].GetComponent<Renderer>().material = visibleMat;
