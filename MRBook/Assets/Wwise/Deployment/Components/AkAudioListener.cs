@@ -15,7 +15,7 @@ using System.Collections.Generic;
 [DisallowMultipleComponent]
 ///@brief Add this script on the game object that represent a listener.  This is normally added to the Camera object or the Player object, but can be added to any game object when implementing 3D busses.  \c isDefaultListener determines whether the game object will be considered a default listener - a listener that automatically listens to all game objects that do not have listeners attached to their AkGameObjListenerList's.
 /// \sa
-/// - \ref soundengine_listeners
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__listeners.html" target="_blank">Integrating Listeners</a> (Note: This is described in the Wwise SDK documentation.)
 public class AkAudioListener : MonoBehaviour
 {
 	public bool isDefaultListener = true;

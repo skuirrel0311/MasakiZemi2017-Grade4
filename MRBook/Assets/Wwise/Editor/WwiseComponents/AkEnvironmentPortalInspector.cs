@@ -13,7 +13,7 @@ using System;
 [CustomEditor(typeof(AkEnvironmentPortal))]
 public class AkEnvironmentPortalInspector : Editor
 {
-	[MenuItem("GameObject/Wwise/Environment Portal", false, 1)]
+	[UnityEditor.MenuItem("GameObject/Wwise/Environment Portal", false, 1)]
 	public static void CreatePortal()
 	{
 		GameObject portal = new GameObject("EnvironmentPortal");

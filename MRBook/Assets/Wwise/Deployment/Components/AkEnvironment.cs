@@ -16,8 +16,8 @@ using System.Collections.Generic;
 /// "environment"-aware will receive a send value when entering the attached collider.
 /// \sa
 /// - \ref unity_use_AkEvironment_AkEvironmentPortal
-/// - \ref integrating_elements_environments
-/// - \ref AK::SoundEngine::SetGameObjectAuxSendValues
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=integrating__elements__environments.html" target="_blank">Integrating Environments and Game-defined Auxiliary Sends</a> (Note: This is described in the Wwise SDK documentation.)
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=namespace_a_k_1_1_sound_engine_a18f56e8e0e881c4efb9080545efbb233.html#a18f56e8e0e881c4efb9080545efbb233" target="_blank">AK::SoundEngine::SetGameObjectAuxSendValues</a> (Note: This is described in the Wwise SDK documentation.)
 public class AkEnvironment : MonoBehaviour
 {
 	public const int MAX_NB_ENVIRONMENTS = 4;
@@ -37,10 +37,10 @@ public class AkEnvironment : MonoBehaviour
 
 	static public AkEnvironment_CompareByPriority s_compareByPriority = new AkEnvironment_CompareByPriority();
 
-	///The selection algorithm is as follow:
-	///1. Environments have priorities (already the case)
-	///2. Environments have a "Default" flag.  This flag effectively says that this environment will be bumped out if any other is present.
-	///3. Environments have a "Exclude Other" flag.  This flag will tell that this env is not overlappable with others.  So only one (the highest priority) should be selected.
+	///The selection algorithm is as follow: 
+	/// -# Environments have priorities.
+    /// -# Environments have a "Default" flag. This flag effectively says that this environment will be bumped out if any other is present.
+    /// -# Environments have an "Exclude Other" flag. This flag will tell that this env is not overlappable with others. So, only one (the highest priority) should be selected.
 	public class AkEnvironment_CompareBySelectionAlgorithm : AkEnvironment_CompareByPriority
 	{
 		public override int Compare(AkEnvironment a, AkEnvironment b)

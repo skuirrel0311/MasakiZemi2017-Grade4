@@ -11,7 +11,7 @@ using System.Collections;
 [AddComponentMenu("Wwise/AkSwitch")]
 /// @brief This will call AK::SoundEngine::SetSwitch whenever the selected Unity event is triggered.  For example this component could be set on a Unity collider to trigger when an object enters it.
 /// \sa 
-/// - \subpage soundengine_switch
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__switch.html" target="_blank">Integration Details - Switches</a> (Note: This is described in the Wwise SDK documentation.)
 public class AkSwitch : AkUnityEventHandler 
 {
 #if UNITY_EDITOR

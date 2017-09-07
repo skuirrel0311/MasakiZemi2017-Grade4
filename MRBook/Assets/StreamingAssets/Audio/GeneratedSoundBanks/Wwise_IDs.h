@@ -20,7 +20,6 @@ namespace AK
         static const AkUniqueID RODATTACK = 3303302608U;
         static const AkUniqueID RODSWING = 1172963822U;
         static const AkUniqueID SEA = 376462290U;
-        static const AkUniqueID SEMI = 820026899U;
     } // namespace EVENTS
 
     namespace BANKS

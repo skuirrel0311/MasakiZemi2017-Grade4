@@ -16,14 +16,14 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{97C18145-2FDD-4F60-98D0-D0DCCDA86244}'
-    m_lastTimePsrt1: -1767755327
-    m_lastTimePart2: -1999316048
+    m_lastTimePsrt1: -1296087410
+    m_lastTimePart2: -1999317398
     List: []
   - PhysicalPath: Events\Music.wwu
     ParentPhysicalPath: 
     Guid: '{5FD0981F-9232-4178-9468-F31BDDBDB1AE}'
-    m_lastTimePsrt1: -1712844867
-    m_lastTimePart2: -1999313589
+    m_lastTimePsrt1: -361674570
+    m_lastTimePart2: -1999310778
     List:
     - Name: BGM_1p
       Path: Music\BGM_1p
@@ -48,9 +48,21 @@ MonoBehaviour:
   - PhysicalPath: Events\SE.wwu
     ParentPhysicalPath: 
     Guid: '{C69FD120-C7B6-45D4-8792-9610F754F5F3}'
-    m_lastTimePsrt1: 951347240
-    m_lastTimePart2: -1999312633
+    m_lastTimePsrt1: 1037524196
+    m_lastTimePart2: -1999310768
     List:
+    - Name: Alart
+      Path: SE\System\Alart
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: System
+        ObjectType: 4
+      - ElementName: Alart
+        ObjectType: 3
+      ID: 855317061
+      Guid: 0f0ac3273ae0b74ca54385f0fa11c16a
+      maxAttenuation: 0
     - Name: Birds
       Path: SE\Birds
       PathAndIcons:
@@ -60,7 +72,19 @@ MonoBehaviour:
         ObjectType: 3
       ID: 352130103
       Guid: 51385be811df8547a079d7b45b172234
-      maxAttenuation: 3
+      maxAttenuation: 2
+    - Name: Close
+      Path: SE\System\Close
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: System
+        ObjectType: 4
+      - ElementName: Close
+        ObjectType: 3
+      ID: 1451272583
+      Guid: c12cbf186ef1734db6fc613055235311
+      maxAttenuation: 0
     - Name: Eye
       Path: SE\Eye
       PathAndIcons:
@@ -80,7 +104,17 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1616086583
       Guid: 03babd2f01a69a4783969833cf1c8b25
-      maxAttenuation: 3
+      maxAttenuation: 2
+    - Name: Reset
+      Path: SE\Reset
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: Reset
+        ObjectType: 3
+      ID: -277512134
+      Guid: 59dbf0a20ebc51439ed3a06bc87478ff
+      maxAttenuation: 0
     - Name: RodAttack
       Path: SE\RodAttack
       PathAndIcons:
@@ -120,7 +154,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 820026899
       Guid: 158cb50d2b96314a8712a99c49804cb8
-      maxAttenuation: 0
+      maxAttenuation: 2
     - Name: Start
       Path: SE\Start
       PathAndIcons:
@@ -131,33 +165,45 @@ MonoBehaviour:
       ID: 1281810935
       Guid: 88acb59cde1b8447b4c11ffeac3577c4
       maxAttenuation: 0
+    - Name: Tap
+      Path: SE\System\Tap
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: System
+        ObjectType: 4
+      - ElementName: Tap
+        ObjectType: 3
+      ID: 845985344
+      Guid: bb0c4cc2ca897f4084d12effa46e00e1
+      maxAttenuation: 0
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{671DE137-3E93-444E-A424-1259206F7F07}'
-    m_lastTimePsrt1: -1765704732
-    m_lastTimePart2: -1999316048
+    m_lastTimePsrt1: -136725868
+    m_lastTimePart2: -1999312563
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{2F0FD997-8F86-4183-842E-731DD64CA103}'
-    m_lastTimePsrt1: -1765477293
-    m_lastTimePart2: -1999316048
+    m_lastTimePsrt1: -1293879304
+    m_lastTimePart2: -1999317398
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{7D1E98B7-6C7C-4B32-BA72-763175F2B72E}'
-    m_lastTimePsrt1: -1765459851
-    m_lastTimePart2: -1999316048
+    m_lastTimePsrt1: -1293869277
+    m_lastTimePart2: -1999317398
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C2FB1BB9-16EF-4890-B22C-64FD73F58501}'
-    m_lastTimePsrt1: 951372302
-    m_lastTimePart2: -1999312633
+    m_lastTimePsrt1: -129771407
+    m_lastTimePart2: -1999312563
     List:
     - Name: MRBook
       Path: Default Work Unit\MRBook
@@ -172,23 +218,18 @@ MonoBehaviour:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{11794AD1-2A81-49BE-92E0-51F26F9CB4FB}'
-    m_lastTimePsrt1: -1767735276
-    m_lastTimePart2: -1999316048
+    m_lastTimePsrt1: -1296057327
+    m_lastTimePart2: -1999317398
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{6DB7BA72-E4BB-4BFC-99FC-DEE168215D30}'
-    m_lastTimePsrt1: -1765449824
-    m_lastTimePart2: -1999316048
+    m_lastTimePsrt1: -1293859236
+    m_lastTimePart2: -1999317398
     List: []
   ExpandedItems:
   - /MRBook_WwiseProject
-  - /MRBook_WwiseProject/Events
-  - /MRBook_WwiseProject/Events/Music
-  - /MRBook_WwiseProject/Events/SE
-  - /MRBook_WwiseProject/SoundBanks
-  - /MRBook_WwiseProject/SoundBanks/Default Work Unit
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

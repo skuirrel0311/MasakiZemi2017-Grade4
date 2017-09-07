@@ -90,7 +90,22 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Tap" ID="{C24C0CBB-89CA-407F-84D1-2EFFA46E00E1}"/>
+				<Event Name="Reset" ID="{A2F0DB59-BC0E-4351-9ED3-A06BC87478FF}"/>
+				<Folder Name="System" ID="{E478FBBF-1340-4CD7-8FDA-715AF411665D}" ShortID="842393623">
+					<ChildrenList>
+						<Event Name="Tap" ID="{C24C0CBB-89CA-407F-84D1-2EFFA46E00E1}"/>
+						<Event Name="Alart" ID="{27C30A0F-E03A-4CB7-A543-85F0FA11C16A}"/>
+						<Event Name="Close" ID="{18BF2CC1-F16E-4D73-B6FC-613055235311}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="equip" ID="{93A3B01A-D5BF-4F1E-A8FC-05AAE21193BE}" ShortID="932266339">
+					<ChildrenList>
+						<Event Name="Sake_have" ID="{2EA38EB1-3601-49D1-BC34-7044647D7873}"/>
+						<Event Name="Sake_tap" ID="{20E5D3D4-C53C-47B1-80D0-7F97F175AD0F}"/>
+						<Event Name="Rod_tap" ID="{454977C5-9103-4FF7-AAC3-E0EFD2A95D2D}"/>
+						<Event Name="Rod_have" ID="{7630E4E5-4EC6-4B4A-94AD-CBD201381AE3}"/>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -22,9 +22,9 @@ using UnityEditor;
 /// It must be present on one Game Object at the beginning of the game to initialize the audio properly.
 /// It must be executed BEFORE any other MonoBehaviors that use AkSoundEngine.
 /// \sa
-/// - \ref workingwithsdks_initialization
-/// - AK::SoundEngine::Init()
-/// - AK::SoundEngine::Term()
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=workingwithsdks__initialization.html" target="_blank">Initialize the Different Modules of the Sound Engine</a> (Note: This is described in the Wwise SDK documentation.)
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=namespace_a_k_1_1_sound_engine_a27257629833b9481dcfdf5e793d9d037.html#a27257629833b9481dcfdf5e793d9d037" target="_blank">AK::SoundEngine::Init()</a> (Note: This is described in the Wwise SDK documentation.)
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=namespace_a_k_1_1_sound_engine_a9176602bbe972da4acc1f8ebdb37f2bf.html#a9176602bbe972da4acc1f8ebdb37f2bf" target="_blank">AK::SoundEngine::Term()</a> (Note: This is described in the Wwise SDK documentation.)
 /// - AkCallbackManager
 [RequireComponent(typeof(AkTerminator))]
 public class AkInitializer : MonoBehaviour
@@ -178,7 +178,9 @@ public class AkInitializer : MonoBehaviour
 
 #if !UNITY_SWITCH
 		// Calling Application.persistentDataPath crashes Switch
-		AkSoundEngine.SetDecodedBankPath(GetDecodedBankFullPath());
+		string decodedBankFullPath = GetDecodedBankFullPath();
+		// AkSoundEngine.SetDecodedBankPath creates the folders for writing to (if they don't exist)
+		AkSoundEngine.SetDecodedBankPath(decodedBankFullPath);
 #endif
 
 		AkSoundEngine.SetCurrentLanguage(language);
@@ -187,6 +189,8 @@ public class AkInitializer : MonoBehaviour
 		// Calling Application.persistentDataPath crashes Switch
 		// AkSoundEngine.AddBasePath is currently only implemented for iOS and Android; No-op for all other platforms.
 		AkSoundEngine.AddBasePath(Application.persistentDataPath + Path.DirectorySeparatorChar);
+		// Adding decoded bank path last to ensure that it is the first one used when writing decoded banks.
+		AkSoundEngine.AddBasePath(decodedBankFullPath);
 #endif
 
 		result = AkCallbackManager.Init(callbackManagerBufferSize * 1024);
@@ -219,7 +223,12 @@ public class AkInitializer : MonoBehaviour
 		}
 
 #if UNITY_EDITOR
+#if UNITY_2017_2_OR_NEWER
+		EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+		EditorApplication.pauseStateChanged += OnPauseStateChanged;
+#else
 		EditorApplication.playmodeStateChanged += OnEditorPlaymodeStateChanged;
+#endif
 #endif
 	}
 
@@ -228,14 +237,18 @@ public class AkInitializer : MonoBehaviour
 		if (ms_Instance == this)
 		{
 #if UNITY_EDITOR
+#if UNITY_2017_2_OR_NEWER
+			EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+			EditorApplication.pauseStateChanged -= OnPauseStateChanged;
+#else
 			EditorApplication.playmodeStateChanged -= OnEditorPlaymodeStateChanged;
+#endif
 #endif
 
 			AkCallbackManager.SetMonitoringCallback(0, null);
 			ms_Instance = null;
 		}
 		// Do nothing. AkTerminator handles sound engine termination.
-
 	}
 
 	void OnEnable()
@@ -256,7 +269,7 @@ public class AkInitializer : MonoBehaviour
 	//Use LateUpdate instead of Update() to ensure all gameobjects positions, listener positions, environements, RTPC, etc are set before finishing the audio frame.
 	void LateUpdate()
 	{
-		//Execute callbacks that occured in last frame (not the current update)     
+		//Execute callbacks that occurred in last frame (not the current update)     
 		if (ms_Instance != null)
 		{
 			AkCallbackManager.PostCallbacks();
@@ -319,10 +332,25 @@ public class AkInitializer : MonoBehaviour
 
 #if UNITY_EDITOR
 	// Enable/Disable the audio when pressing play/pause in the editor.
+#if UNITY_2017_2_OR_NEWER
+	private static void OnPlayModeStateChanged(PlayModeStateChange playMode)
+	{
+		if (playMode == PlayModeStateChange.EnteredPlayMode)
+			ActivateAudio(true);
+		else if (playMode == PlayModeStateChange.ExitingPlayMode)
+			ActivateAudio(false);
+	}
+
+	private static void OnPauseStateChanged(PauseState pauseState)
+	{
+		ActivateAudio(pauseState != PauseState.Paused);
+	}
+#else
 	private static void OnEditorPlaymodeStateChanged()
 	{
 		ActivateAudio(!EditorApplication.isPaused);
 	}
+#endif
 #endif
 
 	private static void ActivateAudio(bool activate)

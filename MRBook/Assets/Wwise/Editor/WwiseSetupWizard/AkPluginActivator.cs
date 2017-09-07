@@ -66,19 +66,19 @@ public class AkPluginActivator
 		CheckMenuItems(config);
 	}
 
-	[MenuItem(MENU_PATH + CONFIG_DEBUG)]
+	[UnityEditor.MenuItem(MENU_PATH + CONFIG_DEBUG)]
 	public static void ActivateDebug()
 	{
 		ActivateConfig(CONFIG_DEBUG);
 	}
 
-	[MenuItem(MENU_PATH + CONFIG_PROFILE)]
+	[UnityEditor.MenuItem(MENU_PATH + CONFIG_PROFILE)]
 	public static void ActivateProfile()
 	{
 		ActivateConfig(CONFIG_PROFILE);
 	}
 
-	[MenuItem(MENU_PATH + CONFIG_RELEASE)]
+	[UnityEditor.MenuItem(MENU_PATH + CONFIG_RELEASE)]
 	public static void ActivateRelease()
 	{
 		ActivateConfig(CONFIG_RELEASE);
@@ -446,7 +446,14 @@ void *_pluginName_##_fp = (void*)&_pluginName_##Registration;" + "\n";
 				// This is not the configuration we want to activate, make sure it is deactivated
 				foreach (BuildTarget target in targetsToSet)
 				{
-					AssetChanged |= pluginImporter.GetCompatibleWithPlatform(target);
+					// Hack for TLS ALLOCATOR ALLOC_TEMP_THREAD ERROR: We need to explicitely deactivate the plugins for WSA
+					// even if they are already reported as deactivated. If we don't, we get the ALLOC_TEMP_THREAD errors for
+					// some reason...
+					if (target == BuildTarget.WSAPlayer)
+						AssetChanged = true;
+					else
+						AssetChanged |= pluginImporter.GetCompatibleWithPlatform(target);
+
 					pluginImporter.SetCompatibleWithPlatform(target, false);
 				}
 				if (setEditor)
@@ -505,9 +512,9 @@ void *_pluginName_##_fp = (void*)&_pluginName_##Registration;" + "\n";
 	static void CheckMenuItems(string config)
 	{
 		/// Set checkmark on menu item
-		Menu.SetChecked(MENU_PATH + CONFIG_DEBUG, config == CONFIG_DEBUG);
-		Menu.SetChecked(MENU_PATH + CONFIG_PROFILE, config == CONFIG_PROFILE);
-		Menu.SetChecked(MENU_PATH + CONFIG_RELEASE, config == CONFIG_RELEASE);
+		UnityEditor.Menu.SetChecked(MENU_PATH + CONFIG_DEBUG, config == CONFIG_DEBUG);
+		UnityEditor.Menu.SetChecked(MENU_PATH + CONFIG_PROFILE, config == CONFIG_PROFILE);
+		UnityEditor.Menu.SetChecked(MENU_PATH + CONFIG_RELEASE, config == CONFIG_RELEASE);
 	}
     
 	public static void DeactivateAllPlugins()

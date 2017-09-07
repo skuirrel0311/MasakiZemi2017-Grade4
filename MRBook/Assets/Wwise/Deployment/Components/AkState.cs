@@ -11,7 +11,7 @@ using System.Collections;
 [AddComponentMenu("Wwise/AkState")]
 /// @brief This will call AK::SoundEngine::SetState whenever the selected Unity event is triggered.  For example this component could be set on a Unity collider to trigger when an object enters it.
 /// \sa 
-/// - \subpage soundengine_states
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__states.html" target="_blank">Integration Details - States</a> (Note: This is described in the Wwise SDK documentation.)
 public class AkState : AkUnityEventHandler
 {
 #if UNITY_EDITOR

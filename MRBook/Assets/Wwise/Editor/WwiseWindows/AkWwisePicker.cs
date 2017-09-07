@@ -29,7 +29,7 @@ class AkWwisePicker : EditorWindow
 {
 	public static bool WwiseProjectFound = true;
 	
-    [MenuItem("Window/Wwise Picker", false, (int)AkWwiseWindowOrder.WwisePicker)] 
+    [UnityEditor.MenuItem("Window/Wwise Picker", false, (int)AkWwiseWindowOrder.WwisePicker)] 
     public static void init()
     {
 		EditorWindow.GetWindow<AkWwisePicker>("Wwise Picker", true, typeof(EditorWindow).Assembly.GetType("UnityEditor.ConsoleWindow"));

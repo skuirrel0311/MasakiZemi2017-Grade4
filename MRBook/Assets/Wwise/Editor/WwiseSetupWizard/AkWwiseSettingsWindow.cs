@@ -203,7 +203,7 @@ public class AkWwiseSettingsWindow : EditorWindow
 		GUILayout.EndHorizontal();
 	}
 
-	[MenuItem("Edit/Wwise Settings...", false, (int)AkWwiseWindowOrder.WwiseSettings)]
+	[UnityEditor.MenuItem("Edit/Wwise Settings...", false, (int)AkWwiseWindowOrder.WwiseSettings)]
 	public static void Init()
 	{
 		// Get existing open window or if none, make a new one:

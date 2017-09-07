@@ -610,7 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   textMesh: {fileID: 1216761190}
-  popUpPosition: {fileID: 1216761191}
+  normalWindow: {fileID: 0}
 --- !u!114 &1552864900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +627,6 @@ MonoBehaviour:
   - {fileID: 1564264653}
   - {fileID: 2077021154}
   visibleMat: {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
-  anchor: {fileID: 0}
 --- !u!114 &1552864901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  currentPage: {fileID: 0}
 --- !u!114 &1552864903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,20 +771,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0

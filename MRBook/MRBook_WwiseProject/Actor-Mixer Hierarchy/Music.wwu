@@ -29,6 +29,33 @@
 						<ActiveSource Name="PV_music" ID="{5A29FF30-752D-482D-BC7D-392730FE838C}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="2pPlay" ID="{37092DC9-01D1-49D4-8AFE-4F3E8A723147}" ShortID="250155473">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{2838ECC5-78DD-4F08-A458-BF31B1CA13D3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="2pPlay(2)" ID="{C496091C-0E40-4F54-8C84-86CC73DBD081}" ShortID="687741793">
+							<Language>SFX</Language>
+							<AudioFile>2pPlay(2).wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="2pPlay(2)" ID="{C496091C-0E40-4F54-8C84-86CC73DBD081}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

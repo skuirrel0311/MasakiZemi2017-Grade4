@@ -26,7 +26,7 @@ public class AkEventCallbackMsg
 /// @brief Helper class that knows a Wwise Event and when to trigger it in Unity.
 /// \sa
 /// - \ref unity_use_AkEvent_AkAmbient
-/// - \ref soundengine_events
+/// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__events.html" target="_blank">Integration Details - Events</a> (Note: This is described in the Wwise SDK documentation.)
 public class AkEvent : AkUnityEventHandler 
 {
 #if UNITY_EDITOR

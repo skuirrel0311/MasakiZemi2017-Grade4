@@ -161,95 +161,6 @@
 						<ActiveSource Name="Lake Waves Lapping" ID="{F491EE00-7A97-4FD9-91BD-2767BBB5125B}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<RandomSequenceContainer Name="Rod" ID="{BB2E9F40-F319-42D6-A8EF-67875F1A5903}" ShortID="585781807">
-					<PropertyList>
-						<Property Name="Pitch" Type="int32">
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{9AD6543D-EB54-4F09-9450-5044A9345B40}">
-										<PropertyList>
-											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="150"/>
-											<Property Name="Min" Type="Real64" Value="-50"/>
-										</PropertyList>
-									</Modifier>
-								</ModifierInfo>
-							</ModifierList>
-						</Property>
-						<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
-						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-						<Property Name="PlayMechanismLoopCount" Type="int32" Value="4"/>
-						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-						<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="Rod3" ID="{AF02E4F8-E862-4742-B8D8-FE975108B6DE}" ShortID="214057479">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" ShortID="873020480">
-									<Language>SFX</Language>
-									<AudioFile>Rod3.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Rod2" ID="{54F45B33-DE12-461E-ABF3-86C5D950136A}" ShortID="71901602">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Rod2" ID="{B9B8DE9C-B491-4EFF-B8E5-128DB0557C3D}" ShortID="501295145">
-									<Language>SFX</Language>
-									<AudioFile>Rod2.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Rod2" ID="{B9B8DE9C-B491-4EFF-B8E5-128DB0557C3D}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Rod1" ID="{61816094-C925-417C-91A6-589C54F2F47F}" ShortID="182102515">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Rod1" ID="{78DAE313-5836-4D59-A90D-FBB9B347E0BB}" ShortID="759526440">
-									<Language>SFX</Language>
-									<AudioFile>Rod1.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Rod1" ID="{78DAE313-5836-4D59-A90D-FBB9B347E0BB}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="Attack" ID="{5FA58768-923D-4D1A-A99F-7976078A4F86}" ShortID="107498881">
 					<PropertyList>
 						<Property Name="Pitch" Type="int32">
@@ -538,6 +449,157 @@
 								<ActiveSource Name="semi" ID="{78181ACC-29BE-4B00-93F1-8F41CBE8232B}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<Sound Name="Equip" ID="{FBB59C17-52E5-48E9-8E1E-8071BE003814}" ShortID="123827988">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Equip" ID="{92D83008-DA4C-4D48-AF67-26DEAF23EF74}" ShortID="979378000">
+							<Language>SFX</Language>
+							<AudioFile>Equip.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Equip" ID="{92D83008-DA4C-4D48-AF67-26DEAF23EF74}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Tap" ID="{1FF3F020-17C9-44A6-A304-7C14F8986C4A}" ShortID="760122647">
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Birds" ID="{98F33701-7B7C-435F-966E-47E6CC6D84A5}" WorkUnitID="{9753E8B7-4AE0-4513-A349-9841876FB8CD}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Tap" ID="{8C1B6850-F586-47EF-9F0E-52021459FE37}" ShortID="310033104">
+							<Language>SFX</Language>
+							<AudioFile>Tap.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Tap" ID="{8C1B6850-F586-47EF-9F0E-52021459FE37}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="New Sequence Container" ID="{A97F6046-04B8-41FF-8CD9-4996AD701536}" ShortID="271136999">
+					<PropertyList>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Rod" ID="{BB2E9F40-F319-42D6-A8EF-67875F1A5903}" ShortID="585781807">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{9AD6543D-EB54-4F09-9450-5044A9345B40}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="150"/>
+													<Property Name="Min" Type="Real64" Value="-50"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
+								<Property Name="PlayMechanismLoopCount" Type="int32" Value="4"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Rod3" ID="{AF02E4F8-E862-4742-B8D8-FE975108B6DE}" ShortID="214057479">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" ShortID="873020480">
+											<Language>SFX</Language>
+											<AudioFile>Rod3.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Rod2" ID="{54F45B33-DE12-461E-ABF3-86C5D950136A}" ShortID="71901602">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Rod2" ID="{B9B8DE9C-B491-4EFF-B8E5-128DB0557C3D}" ShortID="501295145">
+											<Language>SFX</Language>
+											<AudioFile>Rod2.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Rod2" ID="{B9B8DE9C-B491-4EFF-B8E5-128DB0557C3D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Rod1" ID="{61816094-C925-417C-91A6-589C54F2F47F}" ShortID="182102515">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Rod1" ID="{78DAE313-5836-4D59-A90D-FBB9B347E0BB}" ShortID="759526440">
+											<Language>SFX</Language>
+											<AudioFile>Rod1.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Rod1" ID="{78DAE313-5836-4D59-A90D-FBB9B347E0BB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</RandomSequenceContainer>
 			</ChildrenList>
