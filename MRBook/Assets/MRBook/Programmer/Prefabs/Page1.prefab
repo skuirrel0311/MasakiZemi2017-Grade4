@@ -577,6 +577,7 @@ GameObject:
   - component: {fileID: 4841043544992154}
   - component: {fileID: 33102251489945998}
   - component: {fileID: 114988197274802980}
+  - component: {fileID: 23966921690209636}
   m_Layer: 0
   m_Name: BookNav
   m_TagString: Untagged
@@ -1842,7 +1843,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422982435717418}
   m_LocalRotation: {x: -0, y: -0.99340284, z: -0, w: 0.11467709}
-  m_LocalPosition: {x: -0.478, y: 0, z: 0.388}
+  m_LocalPosition: {x: -0.45, y: 0, z: 0.324}
   m_LocalScale: {x: 0.20000002, y: 0.2, z: 0.20000002}
   m_Children:
   - {fileID: 4962290980990698}
@@ -2290,7 +2291,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
+  - {fileID: 2100000, guid: 0fa81c2c2db3a3940b42471a2841f018, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2395,6 +2396,38 @@ MeshRenderer:
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23966921690209636
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538965916300506}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 64832dfb818edac4db8dfa22798a5c31, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
@@ -2578,7 +2611,7 @@ Animator:
   m_GameObject: {fileID: 1422982435717418}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c5cef3176dab545439c84de1544aada1, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f01c9b43c37ddbf44b00d59d8130619d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2618,6 +2651,8 @@ MonoBehaviour:
   controller: {fileID: 9100000, guid: 267531f3dd76ce04cbaa38e37cf45fa8, type: 2}
   bookObjects:
   - {fileID: 1315988204977866}
+  agents:
+  - {fileID: 195296743951224482}
 --- !u!114 &114209685429119590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2633,7 +2668,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1422982435717418}
 --- !u!114 &114235879893105280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3005,7 +3040,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 3.5
+  m_Speed: 0.1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

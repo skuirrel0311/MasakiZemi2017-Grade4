@@ -70,7 +70,7 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
     {
         if(newState == PositionalLocatorState.Active)
         {
-            MyGameManager.I.ModifiBookPosition();
+            MyGameManager.I.ModifiBookPosition(true);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using HoloToolkit.Unity.SpatialMapping;
@@ -23,16 +24,27 @@ public class MyGameManager : BaseManager<MyGameManager>
     [SerializeField]
     Transform worldAnchorContainer = null;
     WorldAnchorController[] worldAnchors;
-    
+
     public Transform bookTransform = null;
 
     Vector3 firstBookPosition = Vector3.zero;
-    Quaternion firstBookRotation = Quaternion.identity;
+    Vector3 firstBookRotationVec = Vector3.zero;
+
+    Vector3 oldWorldAnchorPosition;
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(spatialMappingManager.gameObject);
+
+        if (worldAnchors == null)
+            worldAnchors = worldAnchorContainer.GetComponentsInChildren<WorldAnchorController>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        StartCoroutine(MonitorWorldAnchor());
     }
 
     //このメソッドはAwakeより後でStartよりも前に呼ばれることに注意
@@ -61,28 +73,51 @@ public class MyGameManager : BaseManager<MyGameManager>
                 {
                     spatialMappingManager.transform.GetChild(i).gameObject.layer = 2;
                 }
+                
+                firstBookPosition = bookTransform.position - worldAnchors[0].transform.position;
+                firstBookRotationVec = bookTransform.rotation.eulerAngles - worldAnchors[0].transform.eulerAngles;
 
                 mainSceneManager = MainSceneManager.I;
-                firstBookPosition = bookTransform.position - worldAnchors[0].transform.position;
-                firstBookRotation = bookTransform.rotation;
                 mainSceneManager.GameStart(bookTransform.position, bookTransform.rotation);
 
                 NotificationManager.I.SetDefaultTransform(bookTransform.position, bookTransform.rotation);
 
-                Debug.Log("book is lock " + bookTransform.position);
                 break;
             case SceneState.Result:
                 break;
         }
     }
 
+    IEnumerator MonitorWorldAnchor()
+    {
+        WaitForSeconds wait = new WaitForSeconds(1.0f);
+
+        while (true)
+        {
+            yield return wait;
+
+            if (IsChangeWorldAnchorPosition())
+            {
+                ModifiBookPosition(true);
+            }
+            oldWorldAnchorPosition = worldAnchors[0].transform.position;
+        }
+    }
+
+    bool IsChangeWorldAnchorPosition()
+    {
+        float temp = 0.2f;
+
+        Vector3 difVec = oldWorldAnchorPosition - worldAnchors[0].transform.position;
+        if (Mathf.Abs(difVec.x) > temp) return true;
+        if (Mathf.Abs(difVec.y) > temp) return true;
+        if (Mathf.Abs(difVec.z) > temp) return true;
+
+        return false;
+    }
+
     public void SetWorldAnchorsRendererActive(bool isActive)
     {
-        if (worldAnchorContainer == null) return;
-
-        if (worldAnchors == null)
-            worldAnchors = worldAnchorContainer.GetComponentsInChildren<WorldAnchorController>();
-
         for (int i = 0; i < worldAnchors.Length; i++)
         {
             worldAnchors[i].SetActive(isActive);
@@ -92,10 +127,7 @@ public class MyGameManager : BaseManager<MyGameManager>
 
     public void WorldAnchorsOperation(bool isSave)
     {
-        if (worldAnchors == null)
-            worldAnchors = worldAnchorContainer.GetComponentsInChildren<WorldAnchorController>();
-
-        for (int i = 0;i< worldAnchors.Length;i++)
+        for (int i = 0; i < worldAnchors.Length; i++)
         {
             if (isSave)
                 worldAnchors[i].SaveAnchor();
@@ -104,10 +136,11 @@ public class MyGameManager : BaseManager<MyGameManager>
         }
     }
 
-    public void ModifiBookPosition()
+    public void ModifiBookPosition(bool showDialog)
     {
         if (currentSceneState != SceneState.Main) return;
-        mainSceneManager.SetBookPositionByAnchor(worldAnchors[0].transform.position + firstBookPosition, bookTransform.rotation);
-        NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 1.0f);
+        Debug.Log("modifi");
+        mainSceneManager.SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
+        if(showDialog) NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 3.0f);
     }
 }

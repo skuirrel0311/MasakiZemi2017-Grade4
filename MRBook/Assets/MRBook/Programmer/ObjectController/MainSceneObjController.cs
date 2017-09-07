@@ -70,6 +70,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
                 isHoldItem = false;
                 actor.SetItem(targetObject);
             }
+
+            Debug.Log("aaa");
             return;
         }
 
@@ -82,11 +84,13 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             //ページの外に置いた
             if (actor.isBring) ActorManager.I.SetGlobal(actor);
             //IsBringがtrueじゃない場合でもページ外に留まるという挙動をする
+            Debug.Log("hits.Length is 1");
             return;
         }
 
         //ページ内に配置された
 
+        Debug.Log("in page");
         //キャラクターからアイテムを外した可能性がある
         if (isHoldItem)
         {
@@ -102,6 +106,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         ActorManager.I.RemoveGlobal(actor.name);
 
         //設定を戻す
+        Debug.Log("enable is true");
         targetAgent.enabled = true;
         isHoldItem = false;
     }
@@ -110,8 +115,10 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         base.SetTargetObject(obj);
 
-        if(targetObject != null)
-        targetAgent = targetObject.GetComponent<NavMeshAgent>();
-        targetActor = targetObject.GetComponent<HoloMovableObject>();
+        if (targetObject != null)
+        {
+            targetActor = targetObject.GetComponent<HoloMovableObject>();
+            targetAgent = targetActor.m_agent;
+        }
     }
 }

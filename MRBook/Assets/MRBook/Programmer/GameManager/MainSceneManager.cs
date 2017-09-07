@@ -152,9 +152,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         OnGameStart += () =>
         {
-            MyGameManager gameManager = MyGameManager.I;
-
-            SetBookPositionByAnchor(gameManager.bookTransform.position, gameManager.bookTransform.rotation);
+            MyGameManager.I.ModifiBookPosition(false);
             SetPage(currentPageIndex);
             IsGameStart = true;
         };
@@ -165,34 +163,17 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
-        HoloMovableObject[] objList = null;
-        if (pages[currentPageIndex].objectDictionary != null)
-        {
-            objList = pages[currentPageIndex].GetComponentsInChildren<HoloMovableObject>();
 
-            for (int i = 0; i < objList.Length; i++)
-            {
-                if (objList[i].m_agent != null)
-                    objList[i].m_agent.enabled = false;
-            }
-        }
-        //ページごとに回転量が違うということはないはず
-        rot = Quaternion.Euler(rot.eulerAngles + pages[0].transform.eulerAngles);
 
         for (int i = 0; i < pages.Length; i++)
         {
+            for (int j = 0; j < pages[i].agents.Length; j++) pages[i].agents[j].enabled = false;
             pages[i].PageLock(pos, rot, i);
+            for (int j = 0; j < pages[i].agents.Length; j++) pages[i].agents[j].enabled = true;
         }
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
-
-        if (objList != null)
-        {
-            for (int i = 0; i < objList.Length; i++)
-            {
-                if (objList[i].m_agent != null)
-                    objList[i].m_agent.enabled = true;
-            }
-        }
+        NotificationManager.I.SetDefaultTransform(pos, rot);
+        
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BasePage : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class BasePage : MonoBehaviour
     public Dictionary<string, HoloObject> objectDictionary = new Dictionary<string, HoloObject>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
+
+    public NavMeshAgent[] agents = null;
     
     /// <summary>
     /// 本の位置にページを固定する
