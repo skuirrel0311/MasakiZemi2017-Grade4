@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         Play,   //再生中
         Next    //ページが捲られるまで待機
     }
-    
+
     /* イベント */
     /// <summary>
     /// ページの遷移時　前のページ、次のページ
@@ -35,9 +36,11 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public Action<GameState> OnGameStateChanged;
 
 
+
     /* メンバ */
     GameState currentState = GameState.Title;
-    public GameState CurrentState {
+    public GameState CurrentState
+    {
         get
         {
             return currentState;
@@ -50,7 +53,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             if (OnGameStateChanged != null) OnGameStateChanged.Invoke(value);
         }
     }
-    
+
     public bool IsGameStart { get; protected set; }
 
     protected Animator m_Animator;
@@ -74,11 +77,20 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public int currentPageIndex { get; protected set; }
 
+    /* メソッド */
+
     protected override void Awake()
     {
         base.Awake();
         pageIndex = -1;
         m_Animator = GetComponent<Animator>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        KKUtilities.Delay(1.0f, () => OnGameStart.Invoke(), this);
     }
 
     /// <summary>
@@ -97,9 +109,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         for (int i = 0; i < eventTriggers.Length; i++)
         {
-            MyEventTrigger[] tempArray = eventTriggers[i].GetComponents <MyEventTrigger>();
-            
-            for(int j = 0;j< tempArray.Length;j++)
+            MyEventTrigger[] tempArray = eventTriggers[i].GetComponents<MyEventTrigger>();
+
+            for (int j = 0; j < tempArray.Length; j++)
             {
                 Debug.Log("set flag in maingame " + tempArray[j].flagName);
                 tempArray[j].SetFlag();
@@ -120,7 +132,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         //todo:ページをクリアしたかを判断する
         CurrentState = success ? GameState.Next : GameState.Wait;
 
-        if (!success) ResetPage();
+        if (!success)
+        {
+            KKUtilities.Delay(0.2f, () => ResetPage(), this);
+        }
 
         m_Animator.SetBool("IsStart", false);
     }
@@ -128,15 +143,21 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// <summary>
     /// TapToStartが押された
     /// </summary>
-    public virtual void GameStart(Transform bookTransform = null)
+    public virtual void GameStart()
     {
-        if (bookTransform == null)
-            SetBookPositionByAnchor(Vector3.zero, Quaternion.identity);
-        else
-            SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
+        GameStart(Vector3.zero, Quaternion.identity);
+    }
 
-        IsGameStart = true;
-        if(OnGameStart != null) OnGameStart.Invoke();
+    public virtual void GameStart(Vector3 pos, Quaternion rot)
+    {
+        OnGameStart += () =>
+        {
+            MyGameManager gameManager = MyGameManager.I;
+
+            SetBookPositionByAnchor(gameManager.bookTransform.position, gameManager.bookTransform.rotation);
+            SetPage(currentPageIndex);
+            IsGameStart = true;
+        };
     }
 
     /// <summary>
@@ -144,19 +165,34 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
-        //
-        rot = Quaternion.Euler( rot.eulerAngles + pages[0].transform.eulerAngles);
+        HoloMovableObject[] objList = null;
+        if (pages[currentPageIndex].objectDictionary != null)
+        {
+            objList = pages[currentPageIndex].GetComponentsInChildren<HoloMovableObject>();
+
+            for (int i = 0; i < objList.Length; i++)
+            {
+                if (objList[i].m_agent != null)
+                    objList[i].m_agent.enabled = false;
+            }
+        }
+        //ページごとに回転量が違うということはないはず
+        rot = Quaternion.Euler(rot.eulerAngles + pages[0].transform.eulerAngles);
 
         for (int i = 0; i < pages.Length; i++)
         {
-            
             pages[i].PageLock(pos, rot, i);
         }
-
-        SetPage(currentPageIndex);
-
-        Debug.LogWarning("SetUI");
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
+
+        if (objList != null)
+        {
+            for (int i = 0; i < objList.Length; i++)
+            {
+                if (objList[i].m_agent != null)
+                    objList[i].m_agent.enabled = true;
+            }
+        }
     }
 
     /// <summary>

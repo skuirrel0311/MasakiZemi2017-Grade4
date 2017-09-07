@@ -92,7 +92,6 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// このページに登録されているアクターをページを開いた時の位置に戻す
     /// </summary>
-    /// <param name="endCallBack"></param>
     public void ResetPage()
     {
         foreach (string key in objectDictionary.Keys)

@@ -25,7 +25,7 @@ public class TestSceneManager : MainSceneManager
         if (Input.GetKeyDown(KeyCode.R)) ResetPage();
     }
     
-    public override void GameStart(Transform bookTransfomr = null)
+    public override void GameStart()
     {
         //エディタ上ではアンカーはないので起動時の位置に固定
         for (int i = 0; i < pages.Length; i++)

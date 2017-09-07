@@ -1,35 +1,33 @@
 ﻿using UnityEngine;
-using HoloToolkit.Unity.InputModule;
 using UnityEngine.VR.WSA;
-using UnityEngine.VR.WSA.Persistence;
 
 //キューブ型のWorldAnchorを移動させたり固定させたりするもの
 public class WorldAnchorController : HoloMovableObject
 {
-    MyWorldAnchorManager worldAnchorManager;
+    protected MyWorldAnchorManager worldAnchorManager;
 
     Color movableColor = Color.yellow;
     Color staticColor = Color.green;
 
     Renderer m_renderer;
-    BoxCollider m_collider;
     MaterialPropertyBlock block;
 
-    public bool isObserver = false;
-    public bool canDragging = false;
-    public bool isLoaded = false;
+    /// <summary>
+    /// BoundingBoxでの操作を監視するか？
+    /// </summary>
+    bool isObserver = false;
+    bool canDragging = false;
+    protected bool isLoaded = false;
 
-    void Start()
+    protected virtual void Start()
     {
         m_renderer = GetComponent<Renderer>();
-        m_collider = GetComponent<BoxCollider>();
         worldAnchorManager = MyWorldAnchorManager.I;
         block = new MaterialPropertyBlock();
 
         worldAnchorManager.AddOnLoadedAction((store) =>
         {
             isLoaded = true;
-            SetColor(staticColor);
             SaveAnchor();
         });
 
@@ -47,15 +45,14 @@ public class WorldAnchorController : HoloMovableObject
         else
             MyObjControllerByBoundingBox.I.OnTargetChanged -= OnTargetChangedInObjCon;
     }
-
+    
     void OnTargetChangedInObjCon(GameObject oldObj, GameObject newObj)
     {
         bool equalOld = gameObject.Equals(oldObj);
         bool equalNew = gameObject.Equals(newObj);
 
         if (equalOld && !equalNew) OnBreak();
-
-        if (equalNew) OnClicked();
+        else if (equalNew) OnClicked();
     }
 
     //このオブジェクトを選択した状態で別のオブジェクトを選択した
@@ -74,14 +71,14 @@ public class WorldAnchorController : HoloMovableObject
             SaveAnchor();
     }
 
-    public void SaveAnchor()
+    public virtual void SaveAnchor()
     {
         if (!isLoaded) return;
         worldAnchorManager.SaveAnchor(gameObject);
         SetColor(staticColor);
     }
 
-    public void DeleteAnchor()
+    public virtual void DeleteAnchor()
     {
         if (!isLoaded) return;
         worldAnchorManager.anchorStore.Delete(name);
@@ -96,7 +93,11 @@ public class WorldAnchorController : HoloMovableObject
         m_renderer.SetPropertyBlock(block);
     }
 
-    public void SetActive(bool isActive)
+    /// <summary>
+    /// 表示とコリジョンをon,offします
+    /// </summary>
+    /// <param name="isActive"></param>
+    public virtual void SetActive(bool isActive)
     {
         m_renderer.enabled = isActive;
         m_collider.enabled = isActive;

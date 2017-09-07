@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// ホログラム全般を管理するクラス
@@ -7,6 +8,7 @@ using UnityEngine;
 public class ActorManager : BaseManager<ActorManager>
 {
     MainSceneManager gameManager;
+    [SerializeField]
     BasePage currentPage;
     
     //ページの外に置かれたオブジェクト
@@ -80,6 +82,12 @@ public class ActorManager : BaseManager<ActorManager>
     public void RemoveGlobal(string name)
     {
         globalObjectDictionary.Remove(name);
+    }
+
+    //大量にコールすると重いかも
+    public List<HoloObject> GetAllObject()
+    {
+        return new List<HoloObject>(currentPage.objectDictionary.Values).Where(n => n.GetActorType != HoloObject.HoloObjectType.Statics).ToList();
     }
 
     //ページが変更

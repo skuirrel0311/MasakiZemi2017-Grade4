@@ -58,12 +58,10 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
         {
             time = 0.0f;
 
-            Debug.Log("world anchor position = (" + worldAnchors[0].transform.position.x + "," + worldAnchors[0].transform.position.y + "," + worldAnchors[0].transform.position.z + ")");
+            //Debug.Log("world anchor position = (" + worldAnchors[0].transform.position.x + "," + worldAnchors[0].transform.position.y + "," + worldAnchors[0].transform.position.z + ")");
             if (IsChangedAnchorPosition())
             {
                 //設定しなおす
-                Debug.Log("reload hologram");
-                NotificationManager.I.ShowDialog("警告", "ホログラムのズレを検出しました。");
 
                 DeleteAnchor();
 

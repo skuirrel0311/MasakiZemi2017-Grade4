@@ -5,8 +5,8 @@ using HoloToolkit.Unity.InputModule;
 /// <summary>
 /// 動かすことのできるホログラム
 /// </summary>
-[RequireComponent(typeof(BoxCollider))]
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(BoxCollider))]  //BoundingBoxの形状を決めるために必須
+[RequireComponent(typeof(NavMeshAgent))] //下に落とすために必須
 public class HoloMovableObject : HoloObject, IInputClickHandler
 {
     public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }
@@ -35,10 +35,19 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     public Vector3 firstPosition { get; private set; }
     public Quaternion firstRotation { get; private set; }
 
+    public NavMeshAgent m_agent { get; protected set; }
+    public BoxCollider m_collider { get; protected set; }
+
+    protected virtual void Awake()
+    {
+        m_agent = GetComponent<NavMeshAgent>();
+        m_collider = GetComponent<BoxCollider>();
+    }
+
     /// <summary>
     /// ページが開かれた
     /// </summary>
-    /// <param name="isFirst">そのページを開くのが初めてか？</param>
+    /// <param name="isFirst">そのページを開くのが初めてか？</param
     public override void PageStart(int currentPageIndex, bool isFirst = true)
     {
         if (isFirst)

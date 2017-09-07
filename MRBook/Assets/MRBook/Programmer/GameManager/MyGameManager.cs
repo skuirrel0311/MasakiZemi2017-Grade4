@@ -23,9 +23,11 @@ public class MyGameManager : BaseManager<MyGameManager>
     [SerializeField]
     Transform worldAnchorContainer = null;
     WorldAnchorController[] worldAnchors;
+    
+    public Transform bookTransform = null;
 
-    [SerializeField]
-    Transform bookTransform = null;
+    Vector3 firstBookPosition = Vector3.zero;
+    Quaternion firstBookRotation = Quaternion.identity;
 
     protected override void Awake()
     {
@@ -50,8 +52,9 @@ public class MyGameManager : BaseManager<MyGameManager>
                 spatialMappingManager.PhysicsLayer = 10;
                 break;
             case SceneState.Main:
-                if (titleView != null) titleView.AllHide();
-                SetWorldAnchorsRendererActive(false);
+                Debug.Log("on loaded main scene");
+
+                if (titleView != null) titleView.HideAll();
 
                 spatialMappingManager.DrawVisualMeshes = false;
                 for (int i = 0; i < spatialMappingManager.transform.childCount; i++)
@@ -59,10 +62,14 @@ public class MyGameManager : BaseManager<MyGameManager>
                     spatialMappingManager.transform.GetChild(i).gameObject.layer = 2;
                 }
 
-                SetWorldAnchorsRendererActive(false);
-
                 mainSceneManager = MainSceneManager.I;
-                mainSceneManager.GameStart(bookTransform);
+                firstBookPosition = bookTransform.position - worldAnchors[0].transform.position;
+                firstBookRotation = bookTransform.rotation;
+                mainSceneManager.GameStart(bookTransform.position, bookTransform.rotation);
+
+                NotificationManager.I.SetDefaultTransform(bookTransform.position, bookTransform.rotation);
+
+                Debug.Log("book is lock " + bookTransform.position);
                 break;
             case SceneState.Result:
                 break;
@@ -81,5 +88,26 @@ public class MyGameManager : BaseManager<MyGameManager>
             worldAnchors[i].SetActive(isActive);
         }
 
+    }
+
+    public void WorldAnchorsOperation(bool isSave)
+    {
+        if (worldAnchors == null)
+            worldAnchors = worldAnchorContainer.GetComponentsInChildren<WorldAnchorController>();
+
+        for (int i = 0;i< worldAnchors.Length;i++)
+        {
+            if (isSave)
+                worldAnchors[i].SaveAnchor();
+            else
+                worldAnchors[i].DeleteAnchor();
+        }
+    }
+
+    public void ModifiBookPosition()
+    {
+        if (currentSceneState != SceneState.Main) return;
+        mainSceneManager.SetBookPositionByAnchor(worldAnchors[0].transform.position + firstBookPosition, bookTransform.rotation);
+        NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 1.0f);
     }
 }

@@ -10,7 +10,7 @@ public class GoThere : StateMachineBehaviour
     public string targetName;
     public float stopDistance = 0.2f;
 
-    GameObject actor;
+    HoloMovableObject actor;
     NavMeshAgent agent;
     int state = 0;
 
@@ -22,9 +22,10 @@ public class GoThere : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        actor = ActorManager.I.GetActor(actorName).gameObject;
+        Debug.Log("Start Go There " + actorName);
+        actor = (HoloMovableObject)ActorManager.I.GetActor(actorName);
         Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetName).position;
-        agent = actor.GetComponent<NavMeshAgent>();
+        agent = actor.m_agent;
         m_animator = animator;
         m_animator.SetInteger("GoThereState", 0);
 

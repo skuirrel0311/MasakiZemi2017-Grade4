@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using HoloToolkit.Unity.InputModule;
+﻿using HoloToolkit.Unity.InputModule;
 using UnityEngine;
 
 public class TitleView : HoloMovableObject
@@ -11,8 +9,13 @@ public class TitleView : HoloMovableObject
     [SerializeField]
     GameObject rootObj = null;
 
+    [SerializeField]
+    GameObject toFollowObjContainer = null;
+
     MyGameManager gameManager;
     MyObjControllerByBoundingBox objController;
+
+    bool isHide = false;
 
     void Start()
     {
@@ -20,15 +23,21 @@ public class TitleView : HoloMovableObject
         objController = MyObjControllerByBoundingBox.I;
     }
 
+    void Update()
+    {
+        if (isHide) return;
+        toFollowObjContainer.transform.SetPositionAndRotation(transform.position, transform.rotation);
+    }
+
     public override void OnInputClicked(InputClickedEventData eventData)
     {
         base.OnInputClicked(eventData);
-        gameManager.SetWorldAnchorsRendererActive(!objController.canDragging);
 
+        gameManager.WorldAnchorsOperation(!objController.canDragging);
         SetButtonActive(!objController.canDragging);
     }
 
-    public void AllHide()
+    public void HideAll()
     {
         BoxCollider[] cols = GetComponents<BoxCollider>();
         for(int i = 0;i< cols.Length;i++)
@@ -36,6 +45,11 @@ public class TitleView : HoloMovableObject
             cols[i].enabled = false;
         }
         rootObj.SetActive(false);
+
+        SetButtonActive(false);
+        //gameManager.SetWorldAnchorsRendererActive(false);
+
+        isHide = true;
     }
 
     public void SetButtonActive(bool isActive)

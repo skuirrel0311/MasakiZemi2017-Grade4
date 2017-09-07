@@ -13,6 +13,7 @@ public class StateMachineManager : BaseManager<StateMachineManager>
     /// <param name="name"></param>
     public void Add(string name, IMyTask task)
     {
+        Debug.Log("Add Task " + name);
         taskDictionary.Add(name, task);
     }
 
