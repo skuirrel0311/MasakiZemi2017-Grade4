@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MainSceneManager : BaseManager<MainSceneManager>
 {
@@ -90,7 +91,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         base.Start();
 
-        KKUtilities.Delay(1.0f, () => OnGameStart.Invoke(), this);
+        KKUtilities.Delay(1.0f, () =>
+        {
+            if(OnGameStart != null) OnGameStart.Invoke();
+        }, this);
     }
 
     /// <summary>
@@ -152,7 +156,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         OnGameStart += () =>
         {
-            MyGameManager.I.ModifiBookPosition(false);
+            MyGameManager.I.ModifyBookPosition(false);
             SetPage(currentPageIndex);
             IsGameStart = true;
         };
@@ -163,8 +167,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
-
-
         for (int i = 0; i < pages.Length; i++)
         {
             for (int j = 0; j < pages[i].agents.Length; j++) pages[i].agents[j].enabled = false;
@@ -173,7 +175,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         }
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
         NotificationManager.I.SetDefaultTransform(pos, rot);
-        
     }
 
     /// <summary>

@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1897559779513964}
+  m_RootGameObject: {fileID: 1696847154679504}
   m_IsPrefabParent: 1
---- !u!1 &1897559779513964
+--- !u!1 &1696847154679504
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4572139074036498}
-  - component: {fileID: 114328425524655754}
+  - component: {fileID: 4285189889527124}
+  - component: {fileID: 114933779211591452}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
+  m_Name: IsSeeObject
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4572139074036498
+--- !u!4 &4285189889527124
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1897559779513964}
+  m_GameObject: {fileID: 1696847154679504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,20 +40,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114328425524655754
+--- !u!114 &114933779211591452
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1897559779513964}
+  m_GameObject: {fileID: 1696847154679504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ad86f8b8cc4454894e50745043cd64, type: 3}
+  m_Script: {fileID: 11500000, guid: ee919f1f1f4827c42b837cc3de6874a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  currentSceneState: 0
-  spatialMappingManager: {fileID: 0}
-  titleView: {fileID: 0}
-  worldAnchorContainer: {fileID: 0}
-  bookTransform: {fileID: 0}
+  flagName: 
+  eye: {fileID: 4285189889527124}
+  targetObject: {fileID: 0}
+  ignoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 4

@@ -26,8 +26,8 @@ public class ActorManager : BaseManager<ActorManager>
     /// </summary>
     public HoloObject GetActor(string name)
     {
-        HoloObject obj;
-        if (currentPage.objectDictionary.TryGetValue(name, out obj))
+        HoloMovableObject obj;
+        if (currentPage.movableObjectDictionary.TryGetValue(name, out obj))
         {
             return obj;
         }
@@ -83,11 +83,11 @@ public class ActorManager : BaseManager<ActorManager>
     {
         globalObjectDictionary.Remove(name);
     }
-
-    //大量にコールすると重いかも
+    
     public List<HoloObject> GetAllObject()
     {
-        return new List<HoloObject>(currentPage.objectDictionary.Values).Where(n => n.GetActorType != HoloObject.HoloObjectType.Statics).ToList();
+        return currentPage.holoObjectList;
+        //return new List<HoloObject>(currentPage.objectDictionary.Values).Where(n => n.GetActorType != HoloObject.HoloObjectType.Statics).ToList();
     }
 
     //ページが変更
@@ -101,7 +101,7 @@ public class ActorManager : BaseManager<ActorManager>
         foreach(string key in globalObjectDictionary.Keys)
         {
             //前のページから登録を消す
-            previousPage.objectDictionary.Remove(key);
+            previousPage.movableObjectDictionary.Remove(key);
             globalObjectDictionary[key].transform.parent = nextPage.transform;
         }
         //アクティブなアクターはページを開いた時に追加されるのでここで追加はしない

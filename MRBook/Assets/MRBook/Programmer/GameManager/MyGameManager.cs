@@ -91,6 +91,7 @@ public class MyGameManager : BaseManager<MyGameManager>
     IEnumerator MonitorWorldAnchor()
     {
         WaitForSeconds wait = new WaitForSeconds(1.0f);
+        oldWorldAnchorPosition = worldAnchors[0].transform.position;
 
         while (true)
         {
@@ -98,7 +99,7 @@ public class MyGameManager : BaseManager<MyGameManager>
 
             if (IsChangeWorldAnchorPosition())
             {
-                ModifiBookPosition(true);
+                ModifyBookPosition(true);
             }
             oldWorldAnchorPosition = worldAnchors[0].transform.position;
         }
@@ -122,7 +123,6 @@ public class MyGameManager : BaseManager<MyGameManager>
         {
             worldAnchors[i].SetActive(isActive);
         }
-
     }
 
     public void WorldAnchorsOperation(bool isSave)
@@ -136,10 +136,10 @@ public class MyGameManager : BaseManager<MyGameManager>
         }
     }
 
-    public void ModifiBookPosition(bool showDialog)
+    public void ModifyBookPosition(bool showDialog)
     {
         if (currentSceneState != SceneState.Main) return;
-        Debug.Log("modifi");
+        Debug.Log("modify");
         mainSceneManager.SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
         if(showDialog) NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 3.0f);
     }

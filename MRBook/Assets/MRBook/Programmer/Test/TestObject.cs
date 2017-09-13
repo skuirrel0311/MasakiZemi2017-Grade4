@@ -2,42 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.VR.WSA;
-using UnityEngine.VR.WSA.Persistence;
 
 public class TestObject : MonoBehaviour
 {
-    [SerializeField]
-    GameObject anchor = null;
+    NavMeshAgent agent;
 
-    MyWorldAnchorManager anchorStoreManager;
-    WorldAnchorStore anchorStore;
+    public GameObject obj;
 
-    private void Start()
+    void Update()
     {
-        anchorStoreManager = MyWorldAnchorManager.I;
-
-        anchorStore = null;
-
-        StartCoroutine(anchorStoreManager.GetAnchorStore((anchorStore) =>
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            this.anchorStore = anchorStore;
-            StartUpAnchor();
-        }));
-    }
-
-    private void OnDestroy()
-    {
-        anchorStore.Delete(anchor.name);
-    }
-
-    void StartUpAnchor()
-    {
-        anchorStoreManager.SaveAnchor(anchor);
-    }
-
-    public void ShowMessage()
-    {
-        NotificationManager.I.ShowDialog("警告", "メモリが不足しています");
+            obj.transform.Translate(Vector3.right * 3);
+        }
     }
 }

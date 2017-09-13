@@ -19,13 +19,17 @@ public class BasePage : MonoBehaviour
     /// </summary>
     [SerializeField]
     GameObject[] bookObjects = null;
+    
 
-    //ページに存在するホログラム
-    public Dictionary<string, HoloObject> objectDictionary = new Dictionary<string, HoloObject>();
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
-
+    //動かすことが出来るオブジェクト
     public NavMeshAgent[] agents = null;
+
+    //ページに存在するホログラム全部。
+    public List<HoloObject> holoObjectList = new List<HoloObject>();
+    //動かせるホログラム全部
+    public Dictionary<string, HoloMovableObject> movableObjectDictionary = new Dictionary<string, HoloMovableObject>();
     
     /// <summary>
     /// 本の位置にページを固定する
@@ -45,9 +49,9 @@ public class BasePage : MonoBehaviour
         Debug.Log("is first = " + isFirst  + " page index = " + pageIndex);
         if (!isFirst)
         {
-            foreach (string key in objectDictionary.Keys)
+            for (int i = 0; i < holoObjectList.Count; i++)
             {
-                objectDictionary[key].PageStart(pageIndex, true);
+                holoObjectList[i].PageStart(pageIndex, true);
             }
             return;
         }
@@ -62,7 +66,8 @@ public class BasePage : MonoBehaviour
             if (actor != null)
             {
                 Debug.Log("add actor " + actor.name);
-                objectDictionary.Add(actor.name, actor);
+                holoObjectList.Add(actor);
+                //objectDictionary.Add(actor.name, actor);
             }
         }
         
@@ -78,17 +83,17 @@ public class BasePage : MonoBehaviour
             bookObjects[i].GetComponent<Renderer>().material = visibleMat;
         }
 
-        foreach (string key in objectDictionary.Keys)
+        for (int i = 0; i < holoObjectList.Count; i++)
         {
-            objectDictionary[key].PageStart(pageIndex, true);
+            holoObjectList[i].PageStart(pageIndex, true);
         }
     }
 
     public void PlayPage()
     {
-        foreach (string key in objectDictionary.Keys)
+        for (int i = 0; i < holoObjectList.Count; i++)
         {
-            objectDictionary[key].ResetShader();
+            holoObjectList[i].ResetShader();
         }
     }
 
@@ -97,9 +102,9 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void ResetPage()
     {
-        foreach (string key in objectDictionary.Keys)
+        for (int i = 0; i < holoObjectList.Count; i++)
         {
-            objectDictionary[key].ResetTransform();
+            holoObjectList[i].ResetTransform();
         }
         //todo:リセット中のアニメーション
     }
