@@ -12,14 +12,14 @@ public class TitleView : HoloMovableObject
     [SerializeField]
     GameObject toFollowObjContainer = null;
 
-    MyGameManager gameManager;
+    BookPositionModifier modifier;
     MyObjControllerByBoundingBox objController;
 
     bool isHide = false;
 
     void Start()
     {
-        gameManager = MyGameManager.I;
+        modifier = BookPositionModifier.I;
         objController = MyObjControllerByBoundingBox.I;
     }
 
@@ -33,7 +33,7 @@ public class TitleView : HoloMovableObject
     {
         base.OnInputClicked(eventData);
 
-        gameManager.WorldAnchorsOperation(!objController.canDragging);
+        modifier.WorldAnchorsOperation(!objController.canDragging);
         SetButtonActive(!objController.canDragging);
     }
 

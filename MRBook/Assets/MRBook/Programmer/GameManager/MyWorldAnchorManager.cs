@@ -14,7 +14,6 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
     {
         base.Start();
         WorldAnchorStore.GetAsync(AnchorStoreReady);
-        WorldManager.OnPositionalLocatorStateChanged += WorldManagerOnStateChanged;
     }
 
     void AnchorStoreReady(WorldAnchorStore anchorStore)
@@ -64,13 +63,5 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
         }
 
         onLoaded += act;
-    }
-
-    void WorldManagerOnStateChanged(PositionalLocatorState oldState, PositionalLocatorState newState)
-    {
-        if(newState == PositionalLocatorState.Active)
-        {
-            MyGameManager.I.ModifyBookPosition(true);
-        }
     }
 }

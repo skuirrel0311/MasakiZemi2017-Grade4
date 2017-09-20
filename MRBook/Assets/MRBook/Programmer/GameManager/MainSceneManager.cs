@@ -35,9 +35,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ステートが変化したとき
     /// </summary>
     public Action<GameState> OnGameStateChanged;
-
-
-
+    
     /* メンバ */
     GameState currentState = GameState.Title;
     public GameState CurrentState
@@ -156,7 +154,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         OnGameStart += () =>
         {
-            MyGameManager.I.ModifyBookPosition(false);
+            BookPositionModifier.I.ModifyBookPosition(false);
             SetPage(currentPageIndex);
             IsGameStart = true;
         };
