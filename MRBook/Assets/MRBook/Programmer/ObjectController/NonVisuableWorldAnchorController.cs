@@ -1,36 +1,28 @@
 ﻿using UnityEngine.VR.WSA;
 
+//使ってない
 public class NonVisuableWorldAnchorController : WorldAnchorController
 {
     protected override void Start()
     {
         worldAnchorManager = MyWorldAnchorManager.I;
 
-        worldAnchorManager.AddOnLoadedAction((store) =>
+        worldAnchorManager.FutureAnchorStore((store) =>
         {
-            isLoaded = true;
             SaveAnchor();
         });
-
         m_collider.enabled = false;
     }
     public override void SaveAnchor()
     {
-        if (!isLoaded) return;
-
         worldAnchorManager.SaveAnchor(gameObject);
     }
 
     public override void DeleteAnchor()
     {
-        if (!isLoaded) return;
-
-        worldAnchorManager.anchorStore.Delete(name);
-        DestroyImmediate(GetComponent<WorldAnchor>());
+        worldAnchorManager.SaveAnchor(gameObject);
     }
 
-    public override void SetActive(bool isActive)
-    {
-
-    }
+    //なにもしない
+    public override void SetActive(bool isActive) { }
 }

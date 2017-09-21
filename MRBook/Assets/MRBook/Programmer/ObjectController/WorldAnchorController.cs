@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.VR.WSA;
 
-//キューブ型のWorldAnchorを移動させたり固定させたりするもの
+/// <summary>
+/// キューブ型のWorldAnchorを移動させたり固定させたりするもの
+/// </summary>
 public class WorldAnchorController : HoloMovableObject
 {
     protected MyWorldAnchorManager worldAnchorManager;
@@ -13,11 +15,10 @@ public class WorldAnchorController : HoloMovableObject
     MaterialPropertyBlock block;
 
     /// <summary>
-    /// BoundingBoxでの操作を監視するか？
+    /// BoundingBoxでの操作を受け付けるか？
     /// </summary>
     bool isObserver = false;
     bool canDragging = false;
-    protected bool isLoaded = false;
 
     protected virtual void Start()
     {
@@ -25,12 +26,7 @@ public class WorldAnchorController : HoloMovableObject
         worldAnchorManager = MyWorldAnchorManager.I;
         block = new MaterialPropertyBlock();
 
-        worldAnchorManager.AddOnLoadedAction((store) =>
-        {
-            isLoaded = true;
-            SaveAnchor();
-        });
-
+        LoadAnchor();
         ChangeObserverState(true);
     }
 
@@ -73,17 +69,22 @@ public class WorldAnchorController : HoloMovableObject
 
     public virtual void SaveAnchor()
     {
-        if (!isLoaded) return;
         worldAnchorManager.SaveAnchor(gameObject);
         SetColor(staticColor);
     }
 
     public virtual void DeleteAnchor()
     {
-        if (!isLoaded) return;
-        worldAnchorManager.anchorStore.Delete(name);
-        DestroyImmediate(GetComponent<WorldAnchor>());
+        worldAnchorManager.DeleteAnchor(gameObject);
         SetColor(movableColor);
+    }
+
+    public virtual void LoadAnchor()
+    {
+        worldAnchorManager.LoadAnchor(gameObject, (anchor) =>
+        {
+            SetColor(anchor != null ? staticColor : movableColor);
+        });
     }
 
     void SetColor(Color col)

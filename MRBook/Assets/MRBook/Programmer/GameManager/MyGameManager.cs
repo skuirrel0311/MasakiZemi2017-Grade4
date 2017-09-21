@@ -23,12 +23,13 @@ public class MyGameManager : BaseManager<MyGameManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(spatialMappingManager.gameObject);
+        //DontDestroyOnLoad(spatialMappingManager.gameObject);
     }
 
     //このメソッドはAwakeより後でStartよりも前に呼ばれることに注意
     protected override void WasLoaded(Scene sceneName, LoadSceneMode sceneMode)
     {
+        Debug.Log("was loaded");
         base.WasLoaded(sceneName, sceneMode);
         //ベースを先に呼ぶことでこのインスタンスがデストロイされたときに以下のコードが実行されることはないはず
 

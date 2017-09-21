@@ -8,32 +8,17 @@ public class TitleView : HoloMovableObject
 
     [SerializeField]
     GameObject rootObj = null;
-
-    [SerializeField]
-    GameObject toFollowObjContainer = null;
-
-    BookPositionModifier modifier;
+    
     MyObjControllerByBoundingBox objController;
-
-    bool isHide = false;
 
     void Start()
     {
-        modifier = BookPositionModifier.I;
         objController = MyObjControllerByBoundingBox.I;
-    }
-
-    void Update()
-    {
-        if (isHide) return;
-        toFollowObjContainer.transform.SetPositionAndRotation(transform.position, transform.rotation);
     }
 
     public override void OnInputClicked(InputClickedEventData eventData)
     {
         base.OnInputClicked(eventData);
-
-        modifier.WorldAnchorsOperation(!objController.canDragging);
         SetButtonActive(!objController.canDragging);
     }
 
@@ -47,12 +32,10 @@ public class TitleView : HoloMovableObject
         rootObj.SetActive(false);
 
         SetButtonActive(false);
-        //gameManager.SetWorldAnchorsRendererActive(false);
-
-        isHide = true;
+        BookPositionModifier.I.SetWorldAnchorsRendererActive(false);
     }
 
-    public void SetButtonActive(bool isActive)
+    void SetButtonActive(bool isActive)
     {
         if (isActive)
             tapToStart.Refresh();

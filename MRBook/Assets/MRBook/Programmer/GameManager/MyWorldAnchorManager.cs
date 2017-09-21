@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.VR.WSA;
 using UnityEngine.VR.WSA.Persistence;
 
+/// <summary>
+/// WorldAnchorのアタッチや削除をやってくれる人
+/// </summary>
 public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
 {
     public WorldAnchorStore anchorStore;
@@ -19,7 +22,7 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
     void AnchorStoreReady(WorldAnchorStore anchorStore)
     {
         this.anchorStore = anchorStore;
-        if(onLoaded != null)  onLoaded.Invoke(anchorStore);
+        if (onLoaded != null) onLoaded.Invoke(anchorStore);
     }
 
     public void SaveAnchor(GameObject obj)
@@ -28,20 +31,33 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
         attaching.OnTrackingChanged += AttachingAnchor_OnTrackingChanged;
     }
 
-    public WorldAnchor LoadAnchor(GameObject obj)
+    public void LoadAnchor(GameObject obj, Action<WorldAnchor> onLoaded = null)
     {
-        return anchorStore.Load(obj.name, obj);
+        FutureAnchorStore((store) =>
+        {
+            WorldAnchor anchor = store.Load(obj.name, obj);
+            if(onLoaded != null) onLoaded.Invoke(anchor);
+        });
+    }
+
+    public void DeleteAnchor(GameObject obj)
+    {
+        FutureAnchorStore((store) =>
+        {
+            store.Delete(obj.name);
+            DestroyImmediate(obj.GetComponent<WorldAnchor>());
+        });
     }
 
     public IEnumerator GetAnchorStore(Action<WorldAnchorStore> action)
     {
         yield return null;
 
-        while(anchorStore == null)
+        while (anchorStore == null)
         {
             yield return null;
         }
-        
+
         action.Invoke(anchorStore);
     }
 
@@ -54,14 +70,17 @@ public class MyWorldAnchorManager : BaseManager<MyWorldAnchorManager>
         self.OnTrackingChanged -= AttachingAnchor_OnTrackingChanged;
     }
 
-    public void AddOnLoadedAction(Action<WorldAnchorStore> act)
+    /// <summary>
+    /// AnchorStoreをロードし終わったらactionにAnchorStoreを渡す
+    /// </summary>
+    public void FutureAnchorStore(Action<WorldAnchorStore> action)
     {
-        if(anchorStore != null)
+        if (anchorStore != null)
         {
-            act.Invoke(anchorStore);
+            action.Invoke(anchorStore);
             return;
         }
 
-        onLoaded += act;
+        onLoaded += action;
     }
 }

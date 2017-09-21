@@ -13,33 +13,19 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     //部屋に配置するWorldAnchor
     [SerializeField]
-    Transform worldAnchorContainer = null;
+    WorldAnchorController worldAnchor = null;
 
     [SerializeField]
     float positionCheckInterval = 1.0f;
 
     MyGameManager gameManager;
-    MainSceneManager mainSceneManager;
-
-    WorldAnchorController[] worldAnchors;
-
     Vector3 oldWorldAnchorPosition;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        if (worldAnchors != null) return;
-
-        worldAnchors = worldAnchorContainer.GetComponentsInChildren<WorldAnchorController>();
-    }
 
     protected override void Start()
     {
         base.Start();
 
         gameManager = MyGameManager.I;
-        mainSceneManager = MainSceneManager.I;
 
         WorldManager.OnPositionalLocatorStateChanged += WorldManagerOnStateChanged;
     }
@@ -56,7 +42,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
             {
                 ModifyBookPosition(true);
             }
-            oldWorldAnchorPosition = worldAnchors[0].transform.position;
+            oldWorldAnchorPosition = worldAnchor.transform.position;
         }
     }
 
@@ -64,7 +50,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     {
         float temp = 0.3f;
 
-        Vector3 difVec = oldWorldAnchorPosition - worldAnchors[0].transform.position;
+        Vector3 difVec = oldWorldAnchorPosition - worldAnchor.transform.position;
 
         if (Mathf.Abs(difVec.x) > temp) return true;
         if (Mathf.Abs(difVec.y) > temp) return true;
@@ -91,20 +77,15 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     public void SetWorldAnchorsRendererActive(bool isActive)
     {
-        for (int i = 0; i < worldAnchors.Length; i++)
-        {
-            worldAnchors[i].SetActive(isActive);
-        }
+        //gameObjectのSetActiveではない
+        worldAnchor.SetActive(isActive);
     }
 
     public void WorldAnchorsOperation(bool isSave)
     {
-        for (int i = 0; i < worldAnchors.Length; i++)
-        {
-            if (isSave)
-                worldAnchors[i].SaveAnchor();
-            else
-                worldAnchors[i].DeleteAnchor();
-        }
+        if (isSave)
+            worldAnchor.SaveAnchor();
+        else
+            worldAnchor.DeleteAnchor();
     }
 }

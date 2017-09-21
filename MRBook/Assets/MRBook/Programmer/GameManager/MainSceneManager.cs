@@ -165,12 +165,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
+        pages[currentPageIndex].SetAllAgentEnabled(false);
         for (int i = 0; i < pages.Length; i++)
         {
-            for (int j = 0; j < pages[i].agents.Length; j++) pages[i].agents[j].enabled = false;
             pages[i].PageLock(pos, rot, i);
-            for (int j = 0; j < pages[i].agents.Length; j++) pages[i].agents[j].enabled = true;
         }
+        pages[currentPageIndex].SetAllAgentEnabled(false);
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
         NotificationManager.I.SetDefaultTransform(pos, rot);
     }

@@ -87,7 +87,11 @@ public class ActorManager : BaseManager<ActorManager>
     public List<HoloObject> GetAllObject()
     {
         return currentPage.holoObjectList;
-        //return new List<HoloObject>(currentPage.objectDictionary.Values).Where(n => n.GetActorType != HoloObject.HoloObjectType.Statics).ToList();
+    }
+
+    public List<HoloMovableObject> GetAllActor()
+    {
+        return currentPage.movableObjectDictionary.Values.ToList();
     }
 
     //ページが変更

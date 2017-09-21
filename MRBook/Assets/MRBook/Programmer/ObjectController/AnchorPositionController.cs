@@ -41,8 +41,7 @@ public class AnchorPositionController : MyObjPositionController, IInputClickHand
                 Debug.Log("start world anchor position = " + startWorldAnchorPositionArray[i]);
             }
         };
-
-        Debug.Log("start coroutine");
+        
         StartCoroutine(anchorSroreManager.GetAnchorStore((anchorStore) =>
         {
             this.anchorStore = anchorStore;

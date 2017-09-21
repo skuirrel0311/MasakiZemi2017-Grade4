@@ -108,4 +108,12 @@ public class BasePage : MonoBehaviour
         }
         //todo:リセット中のアニメーション
     }
+
+    public void SetAllAgentEnabled(bool enabled)
+    {
+        foreach(string key in movableObjectDictionary.Keys)
+        {
+            movableObjectDictionary[key].m_agent.enabled = enabled;
+        }
+    }
 }

@@ -30,7 +30,7 @@ public class HoloButton : MyInputHandler
     BoxCollider m_collider;
 
     Coroutine changeColorCoroutine;
-    public bool isChangeColor = false;
+    bool isChangeColor = false;
 
     protected void Awake()
     {

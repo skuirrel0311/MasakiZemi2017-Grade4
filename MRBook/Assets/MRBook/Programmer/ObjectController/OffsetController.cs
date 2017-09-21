@@ -7,52 +7,35 @@ using UnityEngine;
 /// </summary>
 public class OffsetController : MonoBehaviour
 {
-    public enum Direction { Up, Down, Left, Right, Front, Back}
+    public enum Direction { Up, Down, Left, Right, Front, Back }
 
     /// <summary>
     /// １回押すたびにずれる量
     /// </summary>
     [SerializeField]
     float movePower = 0.01f;
-    
-    [SerializeField]
-    HoloButton[] buttons = null;
 
     Vector3 zeroVec = Vector3.zero;
-
-    bool isCalc = true;
-
-    List<HoloObject> objList;
-
-    void Start()
-    {
-        MainSceneManager.I.OnPageChanged += (o, n) => isCalc = true;
-    }
     
+    /// <summary>
+    /// TitleSceneではBookPositionControllerの子のやつ。MainSceneではWorldAnchorの子のやつ。
+    /// </summary>
+    [SerializeField]
+    Transform bookTransform = null;
+
     //別にWorldAnchorの位置を操作するわけではない
     public void MoveBook(int direction)
     {
         Vector3 moveVec = GetMoveVec(direction);
-        buttons[direction].Refresh();
 
-        //ActorについているNavMeshAgentはすべて外しておかなければならない
-        if(isCalc)
-        {
-            isCalc = false;
-            objList = ActorManager.I.GetAllObject();
-            //多少GCは吐くがページごとに1回なので気にしなくてもよいはず…
-            objList.RemoveAll(n => n.GetActorType == HoloObject.HoloObjectType.Statics);
-        }
-
-        for(int i = 0;i < objList.Count;i++)
-        {
-        }
+        bookTransform.position += moveVec;
+        BookPositionModifier.I.ModifyBookPosition(false);
     }
 
     Vector3 GetMoveVec(int direction)
     {
         Vector3 vec = zeroVec;
-        
+
         switch ((Direction)direction)
         {
             case Direction.Up:
