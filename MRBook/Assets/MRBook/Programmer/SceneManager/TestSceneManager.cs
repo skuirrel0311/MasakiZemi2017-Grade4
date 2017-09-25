@@ -27,17 +27,17 @@ public class TestSceneManager : MainSceneManager
 
         if (Input.GetKeyDown(KeyCode.R)) ResetPage();
 
-        if (Input.GetKeyDown(KeyCode.Alpha4)) offsetController.MoveBook((int)OffsetController.Direction.Left);
+        if (Input.GetKeyDown(KeyCode.Keypad4)) offsetController.MoveBook((int)OffsetController.Direction.Left);
 
-        if (Input.GetKeyDown(KeyCode.Alpha6)) offsetController.MoveBook((int)OffsetController.Direction.Right);
+        if (Input.GetKeyDown(KeyCode.Keypad6)) offsetController.MoveBook((int)OffsetController.Direction.Right);
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) offsetController.MoveBook((int)OffsetController.Direction.Down);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) offsetController.MoveBook((int)OffsetController.Direction.Down);
 
-        if (Input.GetKeyDown(KeyCode.Alpha8)) offsetController.MoveBook((int)OffsetController.Direction.Up);
+        if (Input.GetKeyDown(KeyCode.Keypad8)) offsetController.MoveBook((int)OffsetController.Direction.Up);
 
-        if (Input.GetKeyDown(KeyCode.Alpha7)) offsetController.MoveBook((int)OffsetController.Direction.Front);
+        if (Input.GetKeyDown(KeyCode.Keypad7)) offsetController.MoveBook((int)OffsetController.Direction.Front);
 
-        if (Input.GetKeyDown(KeyCode.Alpha9)) offsetController.MoveBook((int)OffsetController.Direction.Back);
+        if (Input.GetKeyDown(KeyCode.Keypad9)) offsetController.MoveBook((int)OffsetController.Direction.Back);
     }
 
     public override void GameStart()

@@ -91,7 +91,7 @@ public class ActorManager : BaseManager<ActorManager>
 
     public List<HoloMovableObject> GetAllActor()
     {
-        return currentPage.movableObjectDictionary.Values.ToList();
+        return currentPage.movableObjectList;
     }
 
     //ページが変更

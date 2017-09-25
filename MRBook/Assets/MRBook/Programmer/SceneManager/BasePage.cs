@@ -19,25 +19,28 @@ public class BasePage : MonoBehaviour
     /// </summary>
     [SerializeField]
     GameObject[] bookObjects = null;
-    
+
 
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
-    //動かすことが出来るオブジェクト
-    public NavMeshAgent[] agents = null;
 
     //ページに存在するホログラム全部。
     public List<HoloObject> holoObjectList = new List<HoloObject>();
     //動かせるホログラム全部
     public Dictionary<string, HoloMovableObject> movableObjectDictionary = new Dictionary<string, HoloMovableObject>();
-    
+    //よく使うのでリストでも管理
+    public List<HoloMovableObject> movableObjectList = new List<HoloMovableObject>();
+
     /// <summary>
     /// 本の位置にページを固定する
     /// </summary>
     public void PageLock(Vector3 position, Quaternion rotation, int pageIndex)
     {
-        transform.position = position;
-        transform.rotation = rotation;
+        transform.SetPositionAndRotation(position, rotation);
+        for(int i = 0;i < movableObjectList.Count;i++)
+        {
+            movableObjectList[i].ApplyDefaultTransform();
+        }
         this.pageIndex = pageIndex;
     }
 
@@ -46,7 +49,7 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void PageStart(bool isFirst)
     {
-        Debug.Log("is first = " + isFirst  + " page index = " + pageIndex);
+        Debug.Log("is first = " + isFirst + " page index = " + pageIndex);
         if (!isFirst)
         {
             for (int i = 0; i < holoObjectList.Count; i++)
@@ -58,7 +61,7 @@ public class BasePage : MonoBehaviour
 
         //初回のみリストに格納する
         GameObject[] tempArray;
-        
+
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {
@@ -67,10 +70,15 @@ public class BasePage : MonoBehaviour
             {
                 Debug.Log("add actor " + actor.name);
                 holoObjectList.Add(actor);
-                //objectDictionary.Add(actor.name, actor);
+
+                if (actor.GetActorType != HoloObject.HoloObjectType.Statics)
+                {
+                    movableObjectList.Add((HoloMovableObject)actor);
+                    movableObjectDictionary.Add(actor.name, (HoloMovableObject)actor);
+                }
             }
         }
-        
+
         tempArray = GameObject.FindGameObjectsWithTag("Target");
         for (int i = 0; i < tempArray.Length; i++)
         {
@@ -111,9 +119,21 @@ public class BasePage : MonoBehaviour
 
     public void SetAllAgentEnabled(bool enabled)
     {
-        foreach(string key in movableObjectDictionary.Keys)
+        for (int i = 0; i < movableObjectList.Count; i++)
         {
-            movableObjectDictionary[key].m_agent.enabled = enabled;
+            movableObjectList[i].m_agent.enabled = enabled;
         }
+    }
+
+    public void AddMovableObject(HoloMovableObject obj)
+    {
+        movableObjectList.Add(obj);
+        movableObjectDictionary.Add(obj.name, obj);
+    }
+
+    public void RemoveMovableObject(string name)
+    {
+        movableObjectList.Remove(movableObjectDictionary[name]);
+        movableObjectDictionary.Remove(name);
     }
 }

@@ -53,8 +53,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         if (isFirst)
         {
             pageIndex = currentPageIndex;
-            firstPosition = transform.position;
-            firstRotation = transform.rotation;
+            ApplyDefaultTransform();
         }
 
         if (isMovable)
@@ -82,6 +81,15 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         }
 
         base.ResetTransform();
+    }
+
+    /// <summary>
+    /// 現在の座標と角度をデフォルトとして登録する
+    /// </summary>
+    public void ApplyDefaultTransform()
+    {
+        firstPosition = transform.position;
+        firstRotation = transform.rotation;
     }
 
     void ActivateControl()

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -165,12 +165,22 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
+        StartCoroutine(SetPosition(pos, rot));
+    }
+
+    IEnumerator SetPosition(Vector3 pos, Quaternion rot)
+    {
         pages[currentPageIndex].SetAllAgentEnabled(false);
+
+        yield return null;
+
         for (int i = 0; i < pages.Length; i++)
         {
             pages[i].PageLock(pos, rot, i);
         }
-        pages[currentPageIndex].SetAllAgentEnabled(false);
+        yield return null;
+
+        pages[currentPageIndex].SetAllAgentEnabled(true);
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
         NotificationManager.I.SetDefaultTransform(pos, rot);
     }
