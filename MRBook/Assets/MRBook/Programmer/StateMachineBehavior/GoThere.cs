@@ -9,6 +9,7 @@ public class GoThere : StateMachineBehaviour
     public string actorName;
     public string targetName;
     public float stopDistance = 0.2f;
+    public float moveSpeed = 0.1f;
 
     HoloMovableObject actor;
     NavMeshAgent agent;
@@ -26,6 +27,7 @@ public class GoThere : StateMachineBehaviour
         actor = (HoloMovableObject)ActorManager.I.GetActor(actorName);
         Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetName).position;
         agent = actor.m_agent;
+        agent.speed = moveSpeed;
         m_animator = animator;
         m_animator.SetInteger("GoThereState", 0);
 

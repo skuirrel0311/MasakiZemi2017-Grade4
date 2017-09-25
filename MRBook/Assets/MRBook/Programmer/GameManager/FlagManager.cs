@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
 public class FlagManager : BaseManager<FlagManager>
@@ -35,7 +36,7 @@ public class FlagManager : BaseManager<FlagManager>
         return false;
     }
 
-    public void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
+    public virtual void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
     {
         name = name + gameManager.currentPageIndex;
         Debug.Log("set flag " + name);
