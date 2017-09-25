@@ -10,7 +10,7 @@ public class HoloButton : MyInputHandler
     public enum HoloButtonState { Normal, Over, Pressed, Disabled }
 
     [SerializeField]
-    UnityEvent onClick = null;
+    protected UnityEvent onClick = null;
 
     [SerializeField]
     bool autoHide = false;
