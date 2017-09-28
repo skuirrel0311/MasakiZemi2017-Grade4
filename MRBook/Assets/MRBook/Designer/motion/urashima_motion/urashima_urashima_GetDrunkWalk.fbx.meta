@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ecd3be6b1a16acc4da205577a13f2ed4
-timeCreated: 1504608826
+guid: e7c982baf7e037f43b58218c82759768
+timeCreated: 1506494075
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -77,7 +77,7 @@ ModelImporter:
     400066: Spine1
     400068: urashima
     400070: //RootNode
-    7400000: urashima_Stand_Sit
+    7400000: urashima_GetDrunkWalk
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -88,7 +88,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -102,7 +102,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: urashima_GetDrunkWalk
+      takeName: urashima_GetDrunkWalk
+      firstFrame: 0
+      lastFrame: 135
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
