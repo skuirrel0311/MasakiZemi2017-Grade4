@@ -132,7 +132,16 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public virtual void EndCallBack(bool success)
     {
-        //todo:ページをクリアしたかを判断する
+        if(success)
+        {
+            CurrentState = GameState.Next;
+            AkSoundEngine.PostEvent("Clear" + (currentPageIndex + 1) + "p", gameObject);
+        }
+        else
+        {
+            CurrentState = GameState.Wait;
+            AkSoundEngine.PostEvent("Mistake" + (currentPageIndex + 1) + "p", gameObject);
+        }
         CurrentState = success ? GameState.Next : GameState.Wait;
 
         if (!success)
