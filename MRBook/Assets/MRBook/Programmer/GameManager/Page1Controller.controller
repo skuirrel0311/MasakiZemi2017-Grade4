@@ -63,6 +63,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskName: UrashimaIsSeeTurtle
+--- !u!114 &114078391076226880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: Urashima
+  animationName: Wait
+  transitionDuration: 0.1
 --- !u!114 &114081594349651388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +154,7 @@ MonoBehaviour:
   actorName: Urashima
   targetName: TurtlePosition
   stopDistance: 0.2
+  moveSpeed: 0.1
 --- !u!114 &114194048483756216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,6 +205,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30AB\u30E1\u306F\u3044\u3058\u3081\u3089\u308C\u3066\u6B7B\u3093\u3067\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+--- !u!114 &114333244089232124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: Urashima
+  animationName: Wait
+  transitionDuration: 0.1
+--- !u!114 &114336262770630794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: Urashima
+  animationName: Walk
+  transitionDuration: 0.1
 --- !u!114 &114382510835726516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +293,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: Turtle
+--- !u!114 &114595044794329400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: Urashima
+  animationName: Walk
+  transitionDuration: 0.1
 --- !u!114 &114755207044737972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,6 +336,7 @@ MonoBehaviour:
   actorName: Urashima
   targetName: AwayPosition
   stopDistance: 0.1
+  moveSpeed: 0.1
 --- !u!114 &114789141178306110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,6 +765,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 114765203097786420}
   - {fileID: 114456286463861782}
+  - {fileID: 114336262770630794}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -732,6 +791,7 @@ AnimatorState:
   - {fileID: 1101428279510753474}
   m_StateMachineBehaviours:
   - {fileID: 114153950533756402}
+  - {fileID: 114595044794329400}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -812,6 +872,7 @@ AnimatorState:
   - {fileID: 114482215144640646}
   - {fileID: 114041342076944978}
   - {fileID: 114081594349651388}
+  - {fileID: 114078391076226880}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1016,6 +1077,7 @@ AnimatorState:
   - {fileID: 1101265730554903252}
   m_StateMachineBehaviours:
   - {fileID: 114259144835714576}
+  - {fileID: 114333244089232124}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
