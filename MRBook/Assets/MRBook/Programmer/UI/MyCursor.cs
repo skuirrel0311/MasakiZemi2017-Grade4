@@ -157,6 +157,8 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
     {
         base.OnInputUp(eventData);
         isRecognizedHold = false;
+        //ひとまず
+        AkSoundEngine.PostEvent("Tap", gameObject);
 
         if (!isRecognizedPosCon && !isRecognizedRotCon && TargetedObject != null)
         {

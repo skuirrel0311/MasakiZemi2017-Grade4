@@ -8,10 +8,6 @@
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows
 
-		#pragma target 3.0
-
-		#pragma multi_comple_instancing
-
 		sampler2D _MainTex;
 
 		struct Input {
