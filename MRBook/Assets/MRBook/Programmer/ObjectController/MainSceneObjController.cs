@@ -68,10 +68,10 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             {
                 Debug.Log("call set item");
                 isHoldItem = false;
+                AkSoundEngine.PostEvent("Equip", gameObject);
                 actor.SetItem(targetObject);
             }
-
-            Debug.Log("aaa");
+            
             return;
         }
 

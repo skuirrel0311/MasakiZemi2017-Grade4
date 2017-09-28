@@ -101,7 +101,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public virtual void Play()
     {
         if (CurrentState != GameState.Wait) return;
-
+        
+        AkSoundEngine.PostEvent("BGM_" + (currentPageIndex + 1) + "p", gameObject);
         CurrentState = GameState.Play;
 
         NotificationManager.I.ShowMessage("再生開始");
@@ -224,6 +225,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         if (CurrentState != GameState.Wait) return;
 
+        AkSoundEngine.PostEvent("Reset", gameObject);
         pages[currentPageIndex].ResetPage();
     }
 

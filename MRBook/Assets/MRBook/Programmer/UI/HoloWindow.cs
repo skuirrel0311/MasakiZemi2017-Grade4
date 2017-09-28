@@ -120,6 +120,8 @@ public class HoloWindow : MonoBehaviour
 
     public void Close()
     {
+        AkSoundEngine.PostEvent("Close", gameObject);
+
         float temp = 0.0f;
         viewCoroutine = KKUtilities.FloatLerp(0.1f, (t) =>
         {

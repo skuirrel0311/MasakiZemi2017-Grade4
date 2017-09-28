@@ -72,7 +72,11 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     {
         if (gameManager.currentSceneState != MyGameManager.SceneState.Main) return;
         MainSceneManager.I.SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
-        if (showDialog) NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 3.0f);
+        if (showDialog)
+        {
+            AkSoundEngine.PostEvent("Alart", gameObject);
+            NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 3.0f);
+        }
     }
 
     public void SetWorldAnchorsRendererActive(bool isActive)

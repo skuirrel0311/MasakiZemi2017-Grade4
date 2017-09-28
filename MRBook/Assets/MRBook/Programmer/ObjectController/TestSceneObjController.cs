@@ -132,6 +132,7 @@ public class TestSceneObjController : MonoBehaviour
             if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
                 Debug.Log("call set item");
+                AkSoundEngine.PostEvent("Equip", gameObject);
                 isHoldItem = false;
                 actor.SetItem(targetObj);
             }

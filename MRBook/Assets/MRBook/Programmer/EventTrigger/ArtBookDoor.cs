@@ -27,6 +27,7 @@ public class ArtBookDoor : ArtBookGimmick
 
         if (arrowSprite.activeSelf != maker.IsVisuable)
         {
+            AkSoundEngine.PostEvent("Eye", gameObject);
             arrowSprite.SetActive(maker.IsVisuable);
         }
 
