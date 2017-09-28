@@ -13,7 +13,7 @@ public class TestSceneObjController : MonoBehaviour
     //Actor
     LayerMask layerMask = 1 << 8;
 
-    GameObject targetObj;
+    public GameObject targetObj;
     NavMeshAgent targetAgent;
 
     Vector2 oldMousePosition;
@@ -167,9 +167,9 @@ public class TestSceneObjController : MonoBehaviour
         actorManager.RemoveGlobal(actor.name);
 
         //NavMeshAgentを戻す
-        targetAgent.enabled = true;
-        targetObj = null;
         isHoldItem = false;
+
+        StartCoroutine(CheckUnderNavMesh());
     }
 
     /// <summary>
@@ -192,5 +192,28 @@ public class TestSceneObjController : MonoBehaviour
         temp.z = vec.y;             
 
         return temp;
+    }
+
+    //直下に本のメッシュはあるが、遠すぎて反応できていなかった場合のみ使用する
+    IEnumerator CheckUnderNavMesh()
+    {
+        NavMeshHit hit;
+        while(true)
+        {
+            if (targetAgent == null) break;
+            //0.1ずつ下を探す
+            targetObj.transform.position += Vector3.down * 0.1f;
+
+            if(NavMesh.SamplePosition(targetAgent.transform.position, out hit, targetAgent.height * 2, NavMesh.AllAreas))
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        targetAgent.enabled = true;
+        targetAgent = null;
+        targetObj = null;
     }
 }
