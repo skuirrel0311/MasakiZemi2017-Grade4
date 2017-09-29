@@ -12,7 +12,6 @@ public class GoThere : StateMachineBehaviour
     public float moveSpeed = 0.1f;
 
     HoloMovableObject actor;
-    NavMeshAgent agent;
     int state = 0;
 
     float time;
@@ -23,32 +22,36 @@ public class GoThere : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Start Go There " + actorName);
-        actor = (HoloMovableObject)ActorManager.I.GetActor(actorName);
-        Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetName).position;
-        agent = actor.m_agent;
-        agent.speed = moveSpeed;
-        m_animator = animator;
-        m_animator.SetInteger("GoThereState", 0);
-
-        if (agent == null)
+        actor = ActorManager.I.GetActor(actorName);
+        if(actor == null)
         {
-            Debug.LogError("agent is null");
-            state = -1;
-            OnEnd();
+            Debug.LogError(actorName + " is null");
+            Suspension();
+            return;
+        }
+        Transform target = ActorManager.I.GetTargetPoint(targetName);
+        if(target == null)
+        {
+            Debug.LogError(targetName + " is null");
+            Suspension();
             return;
         }
 
-        agent.isStopped = false;
-        agent.SetDestination(targetPosition);
-        agent.stoppingDistance = stopDistance;
+        actor.m_agent.speed = moveSpeed;
+        m_animator = animator;
+        m_animator.SetInteger("GoThereState", 0);
+
+        actor.m_agent.isStopped = false;
+        actor.m_agent.SetDestination(target.position);
+        actor.m_agent.stoppingDistance = stopDistance;
         oldPosition = actor.transform.position;
+        actor.m_animator.CrossFade("Walk", 0.1f);
         StateMachineManager.I.Add(actorName + "Go",new MyTask(OnUpdate, OnEnd));
     }
 
     void OnUpdate()
     {
-        NavMeshPath path = agent.path;
+        NavMeshPath path = actor.m_agent.path;
         float distance = 0.0f;
         Vector3 temp = actor.transform.position;
         
@@ -67,6 +70,7 @@ public class GoThere : StateMachineBehaviour
             StateMachineManager.I.Stop(actorName + "Go");
         }
 
+        //動けなくなった
         Vector3 movement = oldPosition - actor.transform.position;
         if (movement.magnitude < 0.0001f)
         {
@@ -83,7 +87,14 @@ public class GoThere : StateMachineBehaviour
 
     void OnEnd()
     {
-        agent.isStopped = true;
+        actor.m_agent.isStopped = true;
+        actor.m_animator.CrossFade("Wait", 0.1f);
         m_animator.SetInteger("GoThereState", state);
+    }
+    //中断
+    void Suspension()
+    {
+        state = -1;
+        OnEnd();
     }
 }

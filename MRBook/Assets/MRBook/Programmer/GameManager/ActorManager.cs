@@ -24,10 +24,22 @@ public class ActorManager : BaseManager<ActorManager>
     /// <summary>
     /// 現在アクティブなアクターを返します
     /// </summary>
-    public HoloObject GetActor(string name)
+    public HoloMovableObject GetActor(string name)
     {
         HoloMovableObject obj;
         if (currentPage.movableObjectDictionary.TryGetValue(name, out obj))
+        {
+            return obj;
+        }
+
+        Debug.LogError("not found " + name);
+        return null;
+    }
+
+    public HoloObject GetObject(string name)
+    {
+        HoloObject obj;
+        if (currentPage.objectDictionary.TryGetValue(name, out obj))
         {
             return obj;
         }
@@ -86,7 +98,7 @@ public class ActorManager : BaseManager<ActorManager>
     
     public List<HoloObject> GetAllObject()
     {
-        return currentPage.holoObjectList;
+        return currentPage.objectList;
     }
 
     public List<HoloMovableObject> GetAllActor()

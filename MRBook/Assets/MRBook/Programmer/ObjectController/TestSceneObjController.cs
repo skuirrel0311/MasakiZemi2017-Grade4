@@ -146,6 +146,7 @@ public class TestSceneObjController : MonoBehaviour
         if (hits.Length == 1)
         {
             //ページの外に置いた
+            Debug.Log("hits.Length is one");
             if(actor.isBring) actorManager.SetGlobal(actor);
             //IsBringがtrueじゃない場合でもページ外に留まるという挙動をする
             return;

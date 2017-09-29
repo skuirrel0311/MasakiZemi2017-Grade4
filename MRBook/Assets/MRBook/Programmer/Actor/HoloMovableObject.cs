@@ -37,11 +37,13 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
 
     public NavMeshAgent m_agent { get; protected set; }
     public BoxCollider m_collider { get; protected set; }
+    public Animator m_animator { get; protected set; }
 
     protected virtual void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_collider = GetComponent<BoxCollider>();
+        m_animator = GetComponent<Animator>();
     }
 
     /// <summary>

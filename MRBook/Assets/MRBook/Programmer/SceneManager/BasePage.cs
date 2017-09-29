@@ -24,8 +24,10 @@ public class BasePage : MonoBehaviour
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
 
-    //ページに存在するホログラム全部。
-    public List<HoloObject> holoObjectList = new List<HoloObject>();
+    //同名のオブジェクトがあるときには使えない
+    public Dictionary<string, HoloObject> objectDictionary = new Dictionary<string, HoloObject>();
+    //ページに存在するホログラム全部。(灰色にさせたりするときに必要)
+    public List<HoloObject> objectList = new List<HoloObject>();
     //動かせるホログラム全部
     public Dictionary<string, HoloMovableObject> movableObjectDictionary = new Dictionary<string, HoloMovableObject>();
     //よく使うのでリストでも管理
@@ -37,7 +39,7 @@ public class BasePage : MonoBehaviour
     public void PageLock(Vector3 position, Quaternion rotation, int pageIndex)
     {
         transform.SetPositionAndRotation(position, rotation);
-        for(int i = 0;i < movableObjectList.Count;i++)
+        for (int i = 0; i < movableObjectList.Count; i++)
         {
             movableObjectList[i].ApplyDefaultTransform();
         }
@@ -52,9 +54,9 @@ public class BasePage : MonoBehaviour
         Debug.Log("is first = " + isFirst + " page index = " + pageIndex);
         if (!isFirst)
         {
-            for (int i = 0; i < holoObjectList.Count; i++)
+            for (int i = 0; i < objectList.Count; i++)
             {
-                holoObjectList[i].PageStart(pageIndex, true);
+                objectList[i].PageStart(pageIndex, true);
             }
             return;
         }
@@ -66,16 +68,28 @@ public class BasePage : MonoBehaviour
         for (int i = 0; i < tempArray.Length; i++)
         {
             HoloObject actor = tempArray[i].GetComponent<HoloObject>();
-            if (actor != null)
+            if (actor == null)
             {
-                Debug.Log("add actor " + actor.name);
-                holoObjectList.Add(actor);
+                Debug.Log(tempArray[i].name + "is not actor");
+                continue;
+            }
 
-                if (actor.GetActorType != HoloObject.HoloObjectType.Statics)
-                {
-                    movableObjectList.Add((HoloMovableObject)actor);
-                    movableObjectDictionary.Add(actor.name, (HoloMovableObject)actor);
-                }
+            Debug.Log("add actor " + actor.name);
+            objectList.Add(actor);
+
+            try
+            {
+                objectDictionary.Add(actor.name, actor);
+            }
+            catch
+            {
+                //同名のオブジェクトを追加しようとした
+                continue;
+            }
+            if (actor.GetActorType != HoloObject.HoloObjectType.Statics)
+            {
+                movableObjectList.Add((HoloMovableObject)actor);
+                movableObjectDictionary.Add(actor.name, (HoloMovableObject)actor);
             }
         }
 
@@ -91,17 +105,17 @@ public class BasePage : MonoBehaviour
             bookObjects[i].GetComponent<Renderer>().material = visibleMat;
         }
 
-        for (int i = 0; i < holoObjectList.Count; i++)
+        for (int i = 0; i < objectList.Count; i++)
         {
-            holoObjectList[i].PageStart(pageIndex, true);
+            objectList[i].PageStart(pageIndex, true);
         }
     }
 
     public void PlayPage()
     {
-        for (int i = 0; i < holoObjectList.Count; i++)
+        for (int i = 0; i < objectList.Count; i++)
         {
-            holoObjectList[i].ResetShader();
+            objectList[i].ResetShader();
         }
     }
 
@@ -110,9 +124,9 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void ResetPage()
     {
-        for (int i = 0; i < holoObjectList.Count; i++)
+        for (int i = 0; i < objectList.Count; i++)
         {
-            holoObjectList[i].ResetTransform();
+            objectList[i].ResetTransform();
         }
         //todo:リセット中のアニメーション
     }
