@@ -12,6 +12,8 @@ public class HoloCharacter : HoloMovableObject
 
     public bool hasItem_Left;
     public bool hasItem_Right;
+    public string leftHandItemName { get; private set; }
+    public string rightHandItemName { get; private set; }
 
     [SerializeField]
     Transform rightHand = null;
@@ -56,7 +58,16 @@ public class HoloCharacter : HoloMovableObject
         if (itemList.hand == HoloItem.Hand.Left) hasItem_Left = true;
         else hasItem_Right = true;
 
-        item.currentHand = hasItem_Left ? HoloItem.Hand.Left : HoloItem.Hand.Right;
+        if(hasItem_Left)
+        {
+            item.currentHand = HoloItem.Hand.Left;
+            leftHandItemName = item.name;
+        }
+        else
+        {
+            item.currentHand = HoloItem.Hand.Right;
+            rightHandItemName = item.name;
+        }
 
         item.owner = this;
         item.transform.parent = hand;

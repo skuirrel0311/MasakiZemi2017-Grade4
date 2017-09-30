@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class LookTarget : StateMachineBehaviour
 {
@@ -37,7 +34,16 @@ public class LookTarget : StateMachineBehaviour
         
         to = Quaternion.LookRotation(targetDirection);
         actor.m_agent.updateRotation = false;
-        actor.m_animator.CrossFade("Walk", 0.1f);
+
+        string animationName = "Walk";
+        if (actor.GetActorType == HoloObject.HoloObjectType.Character)
+        {
+            HoloCharacter character = (HoloCharacter)actor;
+
+            animationName += character.hasItem_Right ? "_" + character.rightHandItemName : "";
+            animationName += character.hasItem_Left ? "_" + character.leftHandItemName : "";
+        }
+        actor.m_animator.CrossFade(animationName, 0.1f);
 
         StateMachineManager.I.Add(actorName + "Look", new MyTask(OnUpdate, OnEnd));
     }
