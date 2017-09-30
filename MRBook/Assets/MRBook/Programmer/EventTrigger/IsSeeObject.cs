@@ -21,15 +21,15 @@ public class IsSeeObject : MyEventTrigger
         if (angle > 45.0f)
         {
             Debug.Log(flagName + " out angle");
-            FlagManager.I.SetFlag(flagName,this, false);
+            FlagManager.I.SetFlag(flagName, this, false);
             return;
         }
 
         //障害物はないか
         Ray ray = new Ray(eye.position, Vector3.Normalize(direction));
-        RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude,~ignoreLayerMask);
+        RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude, ~ignoreLayerMask);
 
-        for(int i = 0;i< cols.Length;i++)
+        for (int i = 0; i < cols.Length; i++)
         {
             //自身は省く
             if (cols[i].transform.gameObject.Equals(transform.gameObject)) continue;
