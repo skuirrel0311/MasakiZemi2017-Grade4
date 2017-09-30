@@ -7,13 +7,13 @@ using UnityEngine;
 /// </summary>
 public class HoloCharacter : HoloMovableObject
 {
-    //public bool hasItem_Left { get; private set; }
-    //public bool hasItem_Right { get; private set; }
-
-    public bool hasItem_Left;
-    public bool hasItem_Right;
+    public bool hasItem_Left { get; private set; }
+    public bool hasItem_Right { get; private set; }
+    
     public string leftHandItemName { get; private set; }
     public string rightHandItemName { get; private set; }
+
+    public bool IsGetAlcohol { get; private set; }
 
     [SerializeField]
     Transform rightHand = null;
@@ -24,7 +24,7 @@ public class HoloCharacter : HoloMovableObject
     ItemTransformDataList rightHandItemDataList = null;
     [SerializeField]
     ItemTransformDataList leftHandItemDataList = null;
-
+    
     public override HoloObjectType GetActorType { get { return HoloObjectType.Character; } }
 
     /// <summary>

@@ -1,6 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+
+[Serializable]
+public enum ActorName
+{
+    Urashima,
+    Turtle,
+    Otohime,
+    Akane,
+    Ai,
+    Midori,
+    Lemon,
+    Gen,
+    Ryu,
+    Don
+}
 
 /// <summary>
 /// ホログラム全般を管理するクラス
@@ -13,6 +28,22 @@ public class ActorManager : BaseManager<ActorManager>
     
     //ページの外に置かれたオブジェクト
     Dictionary<string, HoloObject> globalObjectDictionary = new Dictionary<string, HoloObject>();
+
+    string[] actorNameList;
+    string[] ActorNameList
+    {
+        get
+        {
+            if (actorNameList != null) return actorNameList;
+
+            int num = Enum.GetNames(typeof(ActorName)).Length;
+            for(int i = 0;i < num;i++)
+            {
+            }
+
+            return actorNameList;
+        }
+    }
 
     protected override void Start()
     {
@@ -68,8 +99,7 @@ public class ActorManager : BaseManager<ActorManager>
     /// </summary>
     public void DisableActor(string actorName)
     {
-        //todo:消す時のエフェクト？
-        HoloObject actor = GetActor(actorName);
+        HoloObject actor = GetObject(actorName);
         if (actor != null) actor.gameObject.SetActive(false);
         else Debug.LogError("didn't disable " + actorName);
     }

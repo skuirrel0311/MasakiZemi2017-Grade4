@@ -24,6 +24,11 @@ public class StateMachineManager : BaseManager<StateMachineManager>
             taskDictionary[key].Update();
         }
 
+        if(stopList.Count != 0) OnStopTask();
+    }
+
+    void OnStopTask()
+    {
         for (int i = stopList.Count - 1; i >= 0; i--)
         {
             taskDictionary[stopList[i]].Stop();

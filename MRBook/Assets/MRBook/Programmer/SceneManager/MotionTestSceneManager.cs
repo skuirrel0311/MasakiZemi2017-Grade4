@@ -5,12 +5,32 @@ using UnityEngine;
 public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 {
     [SerializeField]
-    Animator actorAnimator = null;
+    HoloMovableObject actor = null;
 
     [SerializeField]
-    string[] animationNames = null;
+    MotionName[] animationNames = null;
 
     int currentNameIndex = 0;
+
+    [SerializeField]
+    HoloItem item = null;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        GameObject[] tempArray = GameObject.FindGameObjectsWithTag("Actor");
+
+        for (int i = 0; i < tempArray.Length; i++)
+        {
+            HoloObject obj = tempArray[i].GetComponent<HoloObject>();
+
+            if (obj.GetActorType == HoloObject.HoloObjectType.Statics) return;
+
+            HoloMovableObject movableObject = (HoloMovableObject)obj;
+            movableObject.ApplyDefaultTransform();
+        }
+    }
 
     void Update()
     {
@@ -23,7 +43,19 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
                 currentNameIndex = 0;
             }
 
-            actorAnimator.CrossFade(animationNames[currentNameIndex], 0.1f);
+            string motionName = MotionNameManager.GetMotionName(animationNames[currentNameIndex], actor);
+            Debug.Log("call change Animation " + motionName);
+            actor.m_animator.CrossFade(motionName, 0.1f);
         }
+    }
+
+    public void SetItem()
+    {
+        if (item == null) return;
+        if (actor.GetActorType != HoloObject.HoloObjectType.Character) return;
+
+        HoloCharacter character = (HoloCharacter)actor;
+
+        character.SetItem(item.gameObject);
     }
 }

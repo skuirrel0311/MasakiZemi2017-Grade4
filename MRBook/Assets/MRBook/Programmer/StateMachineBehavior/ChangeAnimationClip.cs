@@ -4,28 +4,22 @@ using UnityEngine;
 
 public class ChangeAnimationClip : StateMachineBehaviour
 {
-    public string actorName;
-    public string animationName;
+    public ActorName actorName;
+    public MotionName motionName;
     public float transitionDuration = 0.1f;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        HoloObject actor = ActorManager.I.GetActor(actorName);
+        HoloMovableObject actor = ActorManager.I.GetActor(actorName.ToString());
         
         if(actor == null)
         {
-            Debug.LogError(actorName + "is not found actor in change animation clip");
+            Debug.LogError(actorName + "is not found actor");
             return;
         }
 
-        Animator actorAnimator = actor.GetComponent<Animator>();
-
-        if (actorAnimator == null)
-        {
-            Debug.LogError(actorName + " don't attach animator");
-            return;
-        }
-
-        actorAnimator.CrossFade(animationName, transitionDuration);
+        string animationName = MotionNameManager.GetMotionName(motionName, actor);
+        
+        actor.m_animator.CrossFade(animationName, transitionDuration);
     }
 }
