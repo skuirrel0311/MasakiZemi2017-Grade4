@@ -12,15 +12,6 @@
 						</Property>
 					</PropertyList>
 					<ReferenceList>
-						<Reference Name="Effect0">
-							<Custom>
-								<Effect Name="Microsoft HRTF (Custom)" ID="{23B31AEF-CB4D-438A-BFF9-7170753EE4C9}" ShortID="63241679" PluginName="Microsoft HRTF" CompanyID="0" PluginID="170" PluginType="3">
-									<PropertyList>
-										<Property Name="RoomSize" Type="int32" Value="1"/>
-									</PropertyList>
-								</Effect>
-							</Custom>
-						</Reference>
 						<Reference Name="Effect1">
 							<Custom>
 								<Effect Name="Wwise Peak Limiter (Custom)" ID="{7A1453BD-BD3A-4F0A-BF0E-43369347DAFC}" ShortID="546755087" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
@@ -45,6 +36,7 @@
 									</ValueList>
 								</Property>
 							</PropertyList>
+							<ReferenceList/>
 						</Bus>
 						<Bus Name="Ambient" ID="{78FE5C28-D625-451E-9D1C-FEC1E0BBC181}">
 							<PropertyList>
@@ -54,6 +46,17 @@
 									</ValueList>
 								</Property>
 							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom>
+										<Effect Name="Microsoft HRTF (Custom)" ID="{D4996521-B260-42A0-B948-BDA75E2D0787}" ShortID="73965849" PluginName="Microsoft HRTF" CompanyID="0" PluginID="170" PluginType="3">
+											<PropertyList>
+												<Property Name="RoomSize" Type="int32" Value="1"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+							</ReferenceList>
 						</Bus>
 						<Bus Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}">
 							<PropertyList>
@@ -63,6 +66,17 @@
 									</ValueList>
 								</Property>
 							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom>
+										<Effect Name="Microsoft HRTF (Custom)" ID="{C88A48C9-018E-468C-879B-59F8FB92048E}" ShortID="899685737" PluginName="Microsoft HRTF" CompanyID="0" PluginID="170" PluginType="3">
+											<PropertyList>
+												<Property Name="RoomSize" Type="int32" Value="1"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+							</ReferenceList>
 						</Bus>
 					</ChildrenList>
 				</Bus>

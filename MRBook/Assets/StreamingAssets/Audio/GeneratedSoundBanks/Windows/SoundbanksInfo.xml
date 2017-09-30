@@ -16,18 +16,25 @@
 			<ShortName>MRBook</ShortName>
 			<Path>MRBook.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3952481179" Name="BGM_1p" ObjectPath="\Events\Music\BGM_1p"/>
-				<Event Id="3969258766" Name="BGM_2p" ObjectPath="\Events\Music\BGM_2p"/>
+				<Event Id="3952481179" Name="BGM_1p" ObjectPath="\Events\Music\BGM\BGM_1p"/>
+				<Event Id="3969258766" Name="BGM_2p" ObjectPath="\Events\Music\BGM\BGM_2p"/>
 				<Event Id="352130103" Name="Birds" ObjectPath="\Events\SE\Birds" MaxAttenuation="2.000000"/>
+				<Event Id="2412608643" Name="Equip" ObjectPath="\Events\SE\equip\Equip"/>
 				<Event Id="2678880713" Name="Fire" ObjectPath="\Events\SE\Fire" MaxAttenuation="2.000000"/>
+				<Event Id="3705595128" Name="Mistake_2p" ObjectPath="\Events\Music\Jingle\Mistake_2p"/>
 				<Event Id="3303302608" Name="RodAttack" ObjectPath="\Events\SE\RodAttack"/>
 				<Event Id="1172963822" Name="RodSwing" ObjectPath="\Events\SE\RodSwing"/>
 				<Event Id="376462290" Name="Sea" ObjectPath="\Events\SE\Sea" MaxAttenuation="3.000000"/>
+				<Event Id="845985344" Name="Tap" ObjectPath="\Events\SE\System\Tap"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="39417345" Language="SFX">
 					<ShortName>Attack2.wav</ShortName>
 					<Path>SFX\Attack2_58963501.wem</Path>
+				</File>
+				<File Id="75137142" Language="SFX">
+					<ShortName>2pSet.wav</ShortName>
+					<Path>SFX\2pSet_9452F465.wem</Path>
 				</File>
 				<File Id="77604302" Language="SFX">
 					<ShortName>bird4.wav</ShortName>
@@ -37,9 +44,9 @@
 					<ShortName>bird2.wav</ShortName>
 					<Path>SFX\bird2_CAD75EBB.wem</Path>
 				</File>
-				<File Id="288316969" Language="SFX">
-					<ShortName>PV_music.wav</ShortName>
-					<Path>SFX\PV_music_53CEE377.wem</Path>
+				<File Id="310033104" Language="SFX">
+					<ShortName>Tap.wav</ShortName>
+					<Path>SFX\Tap_53CEE377.wem</Path>
 				</File>
 				<File Id="351033599" Language="SFX">
 					<ShortName>bird1.wav</ShortName>
@@ -92,6 +99,10 @@
 				<File Id="966711306" Language="SFX">
 					<ShortName>bird3.wav</ShortName>
 					<Path>SFX\bird3_CAD75EBB.wem</Path>
+				</File>
+				<File Id="979378000" Language="SFX">
+					<ShortName>Equip.wav</ShortName>
+					<Path>SFX\Equip_53CEE377.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

@@ -33,7 +33,6 @@
 					</ChildrenList>
 				</Event>
 				<Event Name="Eye" ID="{3FE680A7-76B9-4311-83A3-67F0D77BEBC2}"/>
-				<Event Name="Start" ID="{9CB5AC88-1BDE-4784-B4C1-1FFEAC3577C4}"/>
 				<Event Name="RodSwing" ID="{D698000C-BF6A-4BED-B389-F25F10FF8275}">
 					<ChildrenList>
 						<Action Name="" ID="{B9B9409E-F99E-4518-82B7-63A3D5CB1948}" ShortID="96762510">
@@ -76,34 +75,44 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Semi" ID="{0DB58C15-962B-4A31-8712-A99C49804CB8}">
-					<ChildrenList>
-						<Action Name="" ID="{DB294B2C-1C54-4AAA-A9FE-558DC8A95EAE}" ShortID="300927070">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Semis" ID="{BCAAE6DB-CB9B-42EF-94D2-64EED5FF600B}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Reset" ID="{A2F0DB59-BC0E-4351-9ED3-A06BC87478FF}"/>
 				<Folder Name="System" ID="{E478FBBF-1340-4CD7-8FDA-715AF411665D}" ShortID="842393623">
 					<ChildrenList>
-						<Event Name="Tap" ID="{C24C0CBB-89CA-407F-84D1-2EFFA46E00E1}"/>
+						<Event Name="Tap" ID="{C24C0CBB-89CA-407F-84D1-2EFFA46E00E1}">
+							<ChildrenList>
+								<Action Name="" ID="{FC8B80FF-A962-447C-8084-B9CA2E5183EB}" ShortID="848129739">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Tap" ID="{1FF3F020-17C9-44A6-A304-7C14F8986C4A}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="Alart" ID="{27C30A0F-E03A-4CB7-A543-85F0FA11C16A}"/>
 						<Event Name="Close" ID="{18BF2CC1-F16E-4D73-B6FC-613055235311}"/>
+						<Event Name="Reset" ID="{A2F0DB59-BC0E-4351-9ED3-A06BC87478FF}"/>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="equip" ID="{93A3B01A-D5BF-4F1E-A8FC-05AAE21193BE}" ShortID="932266339">
 					<ChildrenList>
 						<Event Name="Sake_have" ID="{2EA38EB1-3601-49D1-BC34-7044647D7873}"/>
-						<Event Name="Sake_tap" ID="{20E5D3D4-C53C-47B1-80D0-7F97F175AD0F}"/>
-						<Event Name="Rod_tap" ID="{454977C5-9103-4FF7-AAC3-E0EFD2A95D2D}"/>
-						<Event Name="Rod_have" ID="{7630E4E5-4EC6-4B4A-94AD-CBD201381AE3}"/>
+						<Event Name="Equip" ID="{7630E4E5-4EC6-4B4A-94AD-CBD201381AE3}">
+							<ChildrenList>
+								<Action Name="" ID="{499B04F4-B4C1-4911-A53D-27D8B4466935}" ShortID="414003752">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Equip" ID="{FBB59C17-52E5-48E9-8E1E-8071BE003814}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

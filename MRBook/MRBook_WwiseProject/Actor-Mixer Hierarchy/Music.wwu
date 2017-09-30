@@ -3,32 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Music" ID="{E634FB3F-9D9A-4FD9-B365-DD2955A6D911}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="PV_music" ID="{87E94126-B80D-4603-A2E6-DC99085D7106}" ShortID="6606924">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-5</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Music" ID="{2838ECC5-78DD-4F08-A458-BF31B1CA13D3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="PV_music" ID="{5A29FF30-752D-482D-BC7D-392730FE838C}" ShortID="288316969">
-							<Language>SFX</Language>
-							<AudioFile>PV_music.wav</AudioFile>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="PV_music" ID="{5A29FF30-752D-482D-BC7D-392730FE838C}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<Sound Name="2pPlay" ID="{37092DC9-01D1-49D4-8AFE-4F3E8A723147}" ShortID="250155473">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
@@ -54,6 +28,33 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="2pPlay(2)" ID="{C496091C-0E40-4F54-8C84-86CC73DBD081}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="2pSet" ID="{C8E68470-60D5-4EA9-9AB2-A995D65E748A}" ShortID="140869499">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{2838ECC5-78DD-4F08-A458-BF31B1CA13D3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="2pSet" ID="{30D1EF7F-0CE7-479E-A2FC-E375A862346D}" ShortID="75137142">
+							<Language>SFX</Language>
+							<AudioFile>2pSet.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="2pSet" ID="{30D1EF7F-0CE7-479E-A2FC-E375A862346D}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

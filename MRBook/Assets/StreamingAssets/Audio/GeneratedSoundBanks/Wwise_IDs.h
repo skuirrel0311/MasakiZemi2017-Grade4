@@ -16,10 +16,13 @@ namespace AK
         static const AkUniqueID BGM_1P = 3952481179U;
         static const AkUniqueID BGM_2P = 3969258766U;
         static const AkUniqueID BIRDS = 352130103U;
+        static const AkUniqueID EQUIP = 2412608643U;
         static const AkUniqueID FIRE = 2678880713U;
+        static const AkUniqueID MISTAKE_2P = 3705595128U;
         static const AkUniqueID RODATTACK = 3303302608U;
         static const AkUniqueID RODSWING = 1172963822U;
         static const AkUniqueID SEA = 376462290U;
+        static const AkUniqueID TAP = 845985344U;
     } // namespace EVENTS
 
     namespace BANKS
