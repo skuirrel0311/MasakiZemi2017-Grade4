@@ -18,7 +18,7 @@ public class IsSeeObject : MyEventTrigger
 
         //まず角度
         float angle = Vector3.Angle(transform.forward, direction);
-        if (angle > 30.0f)
+        if (angle > 45.0f)
         {
             Debug.Log(flagName + " out angle");
             FlagManager.I.SetFlag(flagName,this, false);
@@ -32,7 +32,7 @@ public class IsSeeObject : MyEventTrigger
         for(int i = 0;i< cols.Length;i++)
         {
             //自身は省く
-            if (cols[i].transform.gameObject.Equals(transform.parent.gameObject)) continue;
+            if (cols[i].transform.gameObject.Equals(transform.gameObject)) continue;
             Debug.Log(flagName + " " + cols[i].transform.name);
             FlagManager.I.SetFlag(flagName, this, cols[i].transform.gameObject.Equals(targetObject));
             return;

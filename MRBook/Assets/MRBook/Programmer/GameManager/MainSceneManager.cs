@@ -116,7 +116,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
             for (int j = 0; j < tempArray.Length; j++)
             {
-                Debug.Log("set flag in maingame " + tempArray[j].flagName);
                 tempArray[j].SetFlag();
             }
         }

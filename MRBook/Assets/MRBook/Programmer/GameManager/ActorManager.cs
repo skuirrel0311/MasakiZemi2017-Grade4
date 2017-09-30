@@ -99,8 +99,7 @@ public class ActorManager : BaseManager<ActorManager>
     /// </summary>
     public void DisableActor(string actorName)
     {
-        //todo:消す時のエフェクト？
-        HoloObject actor = GetActor(actorName);
+        HoloObject actor = GetObject(actorName);
         if (actor != null) actor.gameObject.SetActive(false);
         else Debug.LogError("didn't disable " + actorName);
     }

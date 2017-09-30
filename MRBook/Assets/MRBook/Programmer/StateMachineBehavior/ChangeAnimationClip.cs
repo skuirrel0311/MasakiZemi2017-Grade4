@@ -6,7 +6,6 @@ public class ChangeAnimationClip : StateMachineBehaviour
 {
     public ActorName actorName;
     public MotionName motionName;
-    public MotionType[] types = { MotionType.Normal };
     public float transitionDuration = 0.1f;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
