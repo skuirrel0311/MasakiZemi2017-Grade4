@@ -135,12 +135,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         if(success)
         {
             CurrentState = GameState.Next;
-            AkSoundEngine.PostEvent("Clear" + (currentPageIndex + 1) + "p", gameObject);
+            AkSoundEngine.PostEvent("Clear_" + (currentPageIndex + 1) + "p", gameObject);
         }
         else
         {
             CurrentState = GameState.Wait;
-            AkSoundEngine.PostEvent("Mistake" + (currentPageIndex + 1) + "p", gameObject);
+            AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
         CurrentState = success ? GameState.Next : GameState.Wait;
 
