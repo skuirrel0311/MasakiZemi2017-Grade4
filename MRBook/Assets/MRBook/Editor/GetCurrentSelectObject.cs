@@ -24,10 +24,10 @@ public class GetCurrentSelectObject : Editor
 
 		//そもそも同じファイルが存在するのかをチェックする
 		ItemTransformDataList original;
-		string filePath = "Assets/MRBook/Resources/Data/" + transform.name +".asset";
+		string filePath = "Assets/MRBook/Resources/Data/" + transform.root.name +  transform.name +".asset";
 
 		//同じファイルは存在しなかった
-		if (!TryGetOriginalFile (transform.name, out original)) 
+		if (!TryGetOriginalFile (transform.root.name + transform.name, out original)) 
 		{
 			AssetDatabase.CreateAsset (asset, filePath);
 			AssetDatabase.SaveAssets ();
