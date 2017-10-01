@@ -35,14 +35,8 @@ public class LookTarget : StateMachineBehaviour
         to = Quaternion.LookRotation(targetDirection);
         actor.m_agent.updateRotation = false;
 
-        string animationName = "Walk";
-        if (actor.GetActorType == HoloObject.HoloObjectType.Character)
-        {
-            HoloCharacter character = (HoloCharacter)actor;
+        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, actor);
 
-            animationName += character.hasItem_Right ? "_" + character.rightHandItemName : "";
-            animationName += character.hasItem_Left ? "_" + character.leftHandItemName : "";
-        }
         actor.m_animator.CrossFade(animationName, 0.1f);
 
         StateMachineManager.I.Add(actorName + "Look", new MyTask(OnUpdate, OnEnd));
@@ -65,7 +59,8 @@ public class LookTarget : StateMachineBehaviour
     void OnEnd()
     {
         actor.m_agent.updateRotation = true;
-        actor.m_animator.CrossFade("Wait", 0.1f);
+        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, actor);
+        actor.m_animator.CrossFade(animationName, 0.1f);
         m_animator.SetInteger("LookTargetState", state);
     }
 

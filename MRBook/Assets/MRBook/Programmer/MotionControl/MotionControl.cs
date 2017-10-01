@@ -12,15 +12,8 @@ public enum MotionName
     Performance,//演奏する
     Dance,      //踊る
     Lie,        //寝っ転がる
-    Maintenance //釣竿の手入れ
-}
-
-[System.Serializable]
-public enum MotionType
-{
-    Normal,     //差分の無いユニークなモーション
-    GetDrunk,   //酔っ払い時の差分があるモーション
-    HasItem     //アイテムを持っている時の差分があるモーション
+    Maintenance,//釣竿の手入れ
+    Dither      //困惑する
 }
 
 public static class MotionNameManager

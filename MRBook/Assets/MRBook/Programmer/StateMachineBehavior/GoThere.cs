@@ -46,14 +46,7 @@ public class GoThere : StateMachineBehaviour
         actor.m_agent.stoppingDistance = stopDistance;
         oldPosition = actor.transform.position;
 
-        string animationName = "Walk";
-        if(actor.GetActorType == HoloObject.HoloObjectType.Character)
-        {
-            HoloCharacter character = (HoloCharacter)actor;
-            
-            animationName += character.hasItem_Right ? "_" + character.rightHandItemName : "";
-            animationName += character.hasItem_Left ? "_" + character.leftHandItemName : "";
-        }
+        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, actor);
 
         actor.m_animator.CrossFade(animationName, 0.1f);
         StateMachineManager.I.Add(actorName + "Go",new MyTask(OnUpdate, OnEnd));
@@ -98,7 +91,8 @@ public class GoThere : StateMachineBehaviour
     void OnEnd()
     {
         actor.m_agent.isStopped = true;
-        actor.m_animator.CrossFade("Wait", 0.1f);
+        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, actor);
+        actor.m_animator.CrossFade(animationName, 0.1f);
         m_animator.SetInteger("GoThereState", state);
     }
     //中断

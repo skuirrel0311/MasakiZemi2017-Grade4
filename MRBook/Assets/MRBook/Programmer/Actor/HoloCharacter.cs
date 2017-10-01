@@ -14,6 +14,7 @@ public class HoloCharacter : HoloMovableObject
     public string rightHandItemName { get; private set; }
 
     public bool IsGetAlcohol { get; private set; }
+    const string AlcoholItemName = "Sakabin";
 
     [SerializeField]
     Transform rightHand = null;
@@ -73,6 +74,11 @@ public class HoloCharacter : HoloMovableObject
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
         item.transform.localRotation = itemData.rotation;
+        
+        if(item.name == AlcoholItemName)
+        {
+            IsGetAlcohol = true;
+        }
     }
 
     /// <summary>
@@ -87,8 +93,6 @@ public class HoloCharacter : HoloMovableObject
         {
             DumpItem(HoloItem.Hand.Left, setDefault);
             DumpItem(HoloItem.Hand.Right, setDefault);
-            hasItem_Left = false;
-            hasItem_Right = false;
             return;
         }
 
@@ -113,6 +117,11 @@ public class HoloCharacter : HoloMovableObject
         oldItem.transform.parent = null;
         //todo:グローバルの場所に戻る可能性も考えるべき
         oldItem.ResetTransform();
+
+        if (oldItem.name == AlcoholItemName)
+        {
+            IsGetAlcohol = false;
+        }
     }
 
     public override void ResetTransform()

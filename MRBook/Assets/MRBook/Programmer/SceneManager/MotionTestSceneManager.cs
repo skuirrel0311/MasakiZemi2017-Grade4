@@ -57,5 +57,15 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
         HoloCharacter character = (HoloCharacter)actor;
 
         character.SetItem(item.gameObject);
+
+    }
+
+    public void DumpItem()
+    {
+        if (actor.GetActorType != HoloObject.HoloObjectType.Character) return;
+
+        HoloCharacter character = (HoloCharacter)actor;
+
+        character.DumpItem(HoloItem.Hand.Both);
     }
 }
