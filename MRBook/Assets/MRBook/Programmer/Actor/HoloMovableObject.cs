@@ -5,8 +5,8 @@ using HoloToolkit.Unity.InputModule;
 /// <summary>
 /// 動かすことのできるホログラム
 /// </summary>
-[RequireComponent(typeof(BoxCollider))]  //BoundingBoxの形状を決めるために必須
-[RequireComponent(typeof(NavMeshAgent))] //下に落とすために必須
+[RequireComponent(typeof(BoxCollider))]  //BoundingBoxの形状を決めるために必須(トリガーも可)
+[RequireComponent(typeof(NavMeshAgent))]
 public class HoloMovableObject : HoloObject, IInputClickHandler
 {
     public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }
@@ -34,6 +34,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     //初期値
     public Vector3 firstPosition { get; private set; }
     public Quaternion firstRotation { get; private set; }
+    bool defaultAgentEnabled;
 
     public NavMeshAgent m_agent { get; protected set; }
     public BoxCollider m_collider { get; protected set; }
@@ -44,6 +45,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         m_agent = GetComponent<NavMeshAgent>();
         m_collider = GetComponent<BoxCollider>();
         m_animator = GetComponent<Animator>();
+        defaultAgentEnabled = m_agent.enabled;
     }
 
     /// <summary>
@@ -73,8 +75,10 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     /// </summary>
     public override void ResetTransform()
     {
+        m_agent.enabled = false;
         transform.position = firstPosition;
         transform.rotation = firstRotation;
+        m_agent.enabled = defaultAgentEnabled;
 
         //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
         if (isBring)
@@ -105,5 +109,15 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         if (!isMovable) return;
 
         MyObjControllerByBoundingBox.I.SetTargetObject(gameObject);
+    }
+
+    public override bool Equals(object other)
+    {
+        return gameObject.Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 }

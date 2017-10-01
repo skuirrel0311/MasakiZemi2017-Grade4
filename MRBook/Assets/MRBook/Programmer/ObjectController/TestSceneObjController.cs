@@ -14,6 +14,7 @@ public class TestSceneObjController : MonoBehaviour
     LayerMask layerMask = 1 << 8;
 
     public GameObject targetObj;
+    HoloMovableObject targetActor;
     NavMeshAgent targetAgent;
 
     Vector2 oldMousePosition;
@@ -95,8 +96,11 @@ public class TestSceneObjController : MonoBehaviour
     void StartOperationObject()
     {
         //つかむ動作
-        targetAgent = targetObj.GetComponent<NavMeshAgent>();
-        if (targetAgent != null) targetAgent.enabled = false;
+        targetActor = targetObj.GetComponent<HoloMovableObject>();
+
+        targetAgent = targetActor.m_agent;
+        targetAgent.enabled = false;
+
         oldMousePosition = Input.mousePosition;
         targetObj.transform.position = new Vector3(targetObj.transform.position.x, operationLockHeight, targetObj.transform.position.z);
     }
@@ -116,14 +120,16 @@ public class TestSceneObjController : MonoBehaviour
         //離した時に直下に何かオブジェクトがあったら困るので対応
         ray.direction = Vector3.down;
         ray.origin = targetObj.transform.position;
+
         float radius = targetAgent.radius * targetObj.transform.lossyScale.x;
+
         HoloMovableObject actor;
         
         RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 2.0f);
         for (int i = 0;i< hits.Length;i++)
         {
             Debug.Log("hitobj = " + hits[i].transform.name);
-            if (hits[i].transform.gameObject.Equals(targetObj)) continue;
+            if (targetActor.Equals(hits[i].transform.gameObject)) continue;
             if (hits[i].transform.tag != "Actor") continue;
             //なんか当たった
             actor = hits[i].transform.GetComponent<HoloMovableObject>();
@@ -199,6 +205,8 @@ public class TestSceneObjController : MonoBehaviour
     //直下に本のメッシュはあるが、遠すぎて反応できていなかった場合のみ使用する
     IEnumerator CheckUnderNavMesh()
     {
+        MainSceneManager mainSceneManager = TestSceneManager.I;
+
         NavMeshHit hit;
         while(true)
         {
@@ -214,6 +222,7 @@ public class TestSceneObjController : MonoBehaviour
             yield return null;
         }
 
+        //todo:エフェクト（煙？）
         targetAgent.enabled = true;
         targetAgent = null;
         targetObj = null;

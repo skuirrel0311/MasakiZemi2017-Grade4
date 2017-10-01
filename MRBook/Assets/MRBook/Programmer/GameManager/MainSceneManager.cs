@@ -231,8 +231,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public virtual void ResetPage()
     {
-        if (CurrentState != GameState.Wait) return;
+        if (CurrentState != GameState.Wait && CurrentState != GameState.Next) return;
 
+        CurrentState = GameState.Wait;
         AkSoundEngine.PostEvent("Reset", gameObject);
         pages[currentPageIndex].ResetPage();
     }

@@ -106,7 +106,6 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         ActorManager.I.RemoveGlobal(actor.name);
 
         //設定を戻す
-        Debug.Log("enable is true");
         targetAgent.enabled = true;
         isHoldItem = false;
     }

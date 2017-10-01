@@ -15,9 +15,13 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
     [SerializeField]
     HoloItem item = null;
 
+    GameObject targetObj = null;
+
     protected override void Start()
     {
         base.Start();
+
+        targetObj = GameObject.FindGameObjectWithTag("Target");
 
         GameObject[] tempArray = GameObject.FindGameObjectsWithTag("Actor");
 
@@ -67,5 +71,14 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
         HoloCharacter character = (HoloCharacter)actor;
 
         character.DumpItem(HoloItem.Hand.Both);
+    }
+
+    public void GoThere()
+    {
+        Vector3 targetPosition = targetObj.transform.position;
+        targetPosition.y = 0.0f;
+        actor.m_agent.stoppingDistance = 0.01f;
+        actor.m_agent.speed = 0.1f;
+        actor.m_agent.SetDestination(targetPosition);
     }
 }

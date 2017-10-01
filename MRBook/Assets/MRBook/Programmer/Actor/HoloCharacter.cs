@@ -10,8 +10,8 @@ public class HoloCharacter : HoloMovableObject
     public bool hasItem_Left { get; private set; }
     public bool hasItem_Right { get; private set; }
     
-    public string leftHandItemName { get; private set; }
-    public string rightHandItemName { get; private set; }
+    public HoloItem leftHandItem { get; private set; }
+    public HoloItem rightHandItem { get; private set; }
 
     public bool IsGetAlcohol { get; private set; }
     const string AlcoholItemName = "Sakabin";
@@ -62,12 +62,12 @@ public class HoloCharacter : HoloMovableObject
         if(hasItem_Left)
         {
             item.currentHand = HoloItem.Hand.Left;
-            leftHandItemName = item.name;
+            leftHandItem = item;
         }
         else
         {
             item.currentHand = HoloItem.Hand.Right;
-            rightHandItemName = item.name;
+            rightHandItem = item;
         }
 
         item.owner = this;
@@ -176,5 +176,18 @@ public class HoloCharacter : HoloMovableObject
         }
     }
 
+    public override bool Equals(object other)
+    {
+        bool equal = gameObject.Equals(other);
 
+        if (!equal && hasItem_Left) equal = leftHandItem.gameObject.Equals(other);
+        if (!equal && hasItem_Right) equal = rightHandItem.gameObject.Equals(other);
+
+        return equal;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

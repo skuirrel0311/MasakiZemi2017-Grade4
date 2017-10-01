@@ -39,7 +39,6 @@ public class HoloObject : MonoBehaviour
         Renderer[] rends = GetComponentsInChildren<Renderer>();
         for (int i = 0; i < rends.Length; i++)
         {
-            if (GetActorType != HoloObjectType.Statics) continue;
             if (defaultShader == null) continue;
             rends[i].material.shader = defaultShader;
         }

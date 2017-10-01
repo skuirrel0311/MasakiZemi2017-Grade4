@@ -29,7 +29,7 @@ public class ActorManager : BaseManager<ActorManager>
     //ページの外に置かれたオブジェクト
     Dictionary<string, HoloObject> globalObjectDictionary = new Dictionary<string, HoloObject>();
 
-    string[] actorNameList;
+    string[] actorNameList = null;
     string[] ActorNameList
     {
         get

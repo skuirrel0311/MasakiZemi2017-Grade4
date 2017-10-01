@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using UnityEngine;
+
+[System.Serializable]
 public enum MotionName
 {
     Wait,       //待機
@@ -13,7 +15,8 @@ public enum MotionName
     Dance,      //踊る
     Lie,        //寝っ転がる
     Maintenance,//釣竿の手入れ
-    Dither      //困惑する
+    Troubled,   //困惑する
+    PutOff      //引く
 }
 
 public static class MotionNameManager
@@ -22,19 +25,22 @@ public static class MotionNameManager
     {
         string motionName = name.ToString();
 
-        if (actor == null) return motionName;
-
-        if (actor.GetActorType != HoloObject.HoloObjectType.Character) return motionName;
+        if (actor == null || actor.GetActorType != HoloObject.HoloObjectType.Character)
+        {
+            Debug.Log(actor.name + "is call animation " + motionName);
+            return motionName;
+        }
 
         HoloCharacter character = (HoloCharacter)actor;
 
-        motionName += character.hasItem_Right ? "_" + character.rightHandItemName : "";
-        motionName += character.hasItem_Left ? "_" + character.leftHandItemName : "";
+        motionName += character.hasItem_Right ? "_" + character.rightHandItem.name : "";
+        motionName += character.hasItem_Left ? "_" + character.leftHandItem.name : "";
 
         if(character.IsGetAlcohol)
         {
             motionName = "GetDrunk_" + motionName;
         }
+        Debug.Log(actor.name + "is call animation " + motionName);
 
         return motionName;
     }
