@@ -7,6 +7,7 @@
 		
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows
+		#pragma multi_compile_instancing
 
 		sampler2D _MainTex;
 
