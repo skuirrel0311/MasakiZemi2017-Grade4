@@ -8,7 +8,7 @@ using HoloToolkit.Unity.SpatialMapping;
 public class MyGameManager : BaseManager<MyGameManager>
 {
     //.unityファイルと同じ名前
-    public enum SceneState { Title, Main, Result }
+    public enum SceneState { Title, main, Result }
 
     public SceneState currentSceneState = SceneState.Title;
 
@@ -16,9 +16,6 @@ public class MyGameManager : BaseManager<MyGameManager>
 
     [SerializeField]
     SpatialMappingManager spatialMappingManager = null;
-
-    [SerializeField]
-    TitleView titleView = null;
 
     protected override void Awake()
     {
@@ -43,9 +40,7 @@ public class MyGameManager : BaseManager<MyGameManager>
                 spatialMappingManager.DrawVisualMeshes = true;
                 spatialMappingManager.PhysicsLayer = 10;
                 break;
-            case SceneState.Main:
-                if (titleView != null) titleView.HideAll();
-
+            case SceneState.main:
                 spatialMappingManager.DrawVisualMeshes = false;
                 for (int i = 0; i < spatialMappingManager.transform.childCount; i++)
                 {

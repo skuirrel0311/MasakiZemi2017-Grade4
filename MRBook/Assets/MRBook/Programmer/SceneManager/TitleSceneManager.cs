@@ -11,10 +11,15 @@ public class TitleSceneManager : MonoBehaviour
     [SerializeField]
     Transform bookPositionController = null;
 
+    [SerializeField]
+    TitleView titleView = null;
+
     public void GameStart()
     {
         bookPosition.position = bookPositionController.position;
         bookPosition.rotation = bookPositionController.rotation;
-        SceneManager.LoadSceneAsync("Main");
+        titleView.HideAll();
+        
+        SceneManager.LoadSceneAsync("main");
     }
 }

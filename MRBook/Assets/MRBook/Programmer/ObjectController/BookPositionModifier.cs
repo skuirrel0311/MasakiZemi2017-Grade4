@@ -70,7 +70,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     public void ModifyBookPosition(bool showDialog)
     {
-        if (gameManager.currentSceneState != MyGameManager.SceneState.Main) return;
+        if (gameManager.currentSceneState != MyGameManager.SceneState.main) return;
         MainSceneManager.I.SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
         if (showDialog)
         {

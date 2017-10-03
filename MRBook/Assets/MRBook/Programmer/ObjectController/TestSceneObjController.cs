@@ -129,15 +129,15 @@ public class TestSceneObjController : MonoBehaviour
         for (int i = 0;i< hits.Length;i++)
         {
             Debug.Log("hitobj = " + hits[i].transform.name);
-            if (targetActor.Equals(hits[i].transform.gameObject)) continue;
             if (hits[i].transform.tag != "Actor") continue;
+            if (targetActor.Equals(hits[i].transform.gameObject)) continue;
             //なんか当たった
             actor = hits[i].transform.GetComponent<HoloMovableObject>();
 
             if (actor == null) return;
             if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
-                Debug.Log("call set item");
+                Debug.Log("call set item(" + targetObj.name + ")");
                 AkSoundEngine.PostEvent("Equip", gameObject);
                 isHoldItem = false;
                 actor.SetItem(targetObj);

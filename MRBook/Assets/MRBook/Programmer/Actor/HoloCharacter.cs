@@ -56,16 +56,17 @@ public class HoloCharacter : HoloMovableObject
             Debug.LogError("hand is null");
             return;
         }
-        if (itemList.hand == HoloItem.Hand.Left) hasItem_Left = true;
-        else hasItem_Right = true;
 
-        if(hasItem_Left)
+
+        if (itemList.hand == HoloItem.Hand.Left)
         {
+            hasItem_Left = true;
             item.currentHand = HoloItem.Hand.Left;
             leftHandItem = item;
         }
         else
         {
+            hasItem_Right = true;
             item.currentHand = HoloItem.Hand.Right;
             rightHandItem = item;
         }
