@@ -22,8 +22,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Music.wwu
     ParentPhysicalPath: 
     Guid: '{5FD0981F-9232-4178-9468-F31BDDBDB1AE}'
-    m_lastTimePsrt1: 349413445
-    m_lastTimePart2: -1999304759
+    m_lastTimePsrt1: 22300507
+    m_lastTimePart2: -1999304730
     List:
     - Name: BGM_1p
       Path: Music\BGM\BGM_1p
@@ -48,6 +48,42 @@ MonoBehaviour:
         ObjectType: 3
       ID: -325708530
       Guid: 6a00895f6178f2478710ecaeea571e7f
+      maxAttenuation: 0
+    - Name: BGM_3p
+      Path: Music\BGM\BGM_3p
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BGM
+        ObjectType: 4
+      - ElementName: BGM_3p
+        ObjectType: 3
+      ID: -308930719
+      Guid: 37b61b4b4eb0d14c95082ab1132f3325
+      maxAttenuation: 0
+    - Name: BGM_4p
+      Path: Music\BGM\BGM_4p
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BGM
+        ObjectType: 4
+      - ElementName: BGM_4p
+        ObjectType: 3
+      ID: -292153132
+      Guid: 02463cc03eb6c5428afb0e20a091378d
+      maxAttenuation: 0
+    - Name: BGM_5p
+      Path: Music\BGM\BGM_5p
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BGM
+        ObjectType: 4
+      - ElementName: BGM_5p
+        ObjectType: 3
+      ID: -275375545
+      Guid: 207d20042bf4f04fb5f8c52e02b6d510
       maxAttenuation: 0
     - Name: Clear_1p
       Path: Music\Jingle\Clear_1p
@@ -172,8 +208,8 @@ MonoBehaviour:
   - PhysicalPath: Events\SE.wwu
     ParentPhysicalPath: 
     Guid: '{C69FD120-C7B6-45D4-8792-9610F754F5F3}'
-    m_lastTimePsrt1: 349438513
-    m_lastTimePart2: -1999304759
+    m_lastTimePsrt1: 22330513
+    m_lastTimePart2: -1999304730
     List:
     - Name: Alart
       Path: SE\System\Alart
@@ -242,10 +278,12 @@ MonoBehaviour:
       Guid: 03babd2f01a69a4783969833cf1c8b25
       maxAttenuation: 2
     - Name: Reset
-      Path: SE\Reset
+      Path: SE\System\Reset
       PathAndIcons:
       - ElementName: SE
         ObjectType: 12
+      - ElementName: System
+        ObjectType: 4
       - ElementName: Reset
         ObjectType: 3
       ID: -277512134
@@ -293,16 +331,6 @@ MonoBehaviour:
       ID: 376462290
       Guid: a5c659136599e24bbc453fbaf0420150
       maxAttenuation: 3
-    - Name: Start
-      Path: SE\Start
-      PathAndIcons:
-      - ElementName: SE
-        ObjectType: 12
-      - ElementName: Start
-        ObjectType: 3
-      ID: 1281810935
-      Guid: 88acb59cde1b8447b4c11ffeac3577c4
-      maxAttenuation: 0
     - Name: Tap
       Path: SE\System\Tap
       PathAndIcons:
@@ -319,8 +347,8 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{671DE137-3E93-444E-A424-1259206F7F07}'
-    m_lastTimePsrt1: 629150227
-    m_lastTimePart2: -1999305140
+    m_lastTimePsrt1: 1098274077
+    m_lastTimePart2: -1999304724
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
