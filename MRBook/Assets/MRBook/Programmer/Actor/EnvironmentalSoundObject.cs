@@ -8,8 +8,8 @@ public class EnvironmentalSoundObject : MonoBehaviour
     void Start()
     {
         MainSceneManager.I.OnPlayPage +=  PlaySound;
-
-        MainSceneManager.I.OnPlayEnd += (isSuccess) =>
+        
+        MainSceneManager.I.OnPageChanged += (arg1, arg2) =>
         {
             MainSceneManager.I.OnPlayPage -=  PlaySound;
         };

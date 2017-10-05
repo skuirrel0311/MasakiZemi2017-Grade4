@@ -7,6 +7,7 @@ public class ChangeAnimationClip : StateMachineBehaviour
     public ActorName actorName;
     public MotionName motionName;
     public float transitionDuration = 0.1f;
+    public string WwiseEventName = string.Empty;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,5 +22,9 @@ public class ChangeAnimationClip : StateMachineBehaviour
         string animationName = MotionNameManager.GetMotionName(motionName, actor);
         
         actor.m_animator.CrossFade(animationName, transitionDuration);
+        if(!string.IsNullOrEmpty(WwiseEventName))
+        {
+            AkSoundEngine.PostEvent(WwiseEventName, actor.gameObject);
+        }
     }
 }
