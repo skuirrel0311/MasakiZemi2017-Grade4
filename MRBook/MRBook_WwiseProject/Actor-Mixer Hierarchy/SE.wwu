@@ -445,27 +445,79 @@
 						<ActiveSource Name="Tap" ID="{8C1B6850-F586-47EF-9F0E-52021459FE37}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<RandomSequenceContainer Name="Rod" ID="{BB2E9F40-F319-42D6-A8EF-67875F1A5903}" ShortID="585781807">
+				<Sound Name="Door" ID="{1AF6A21C-97A0-4970-8070-DCEB4332E61F}" ShortID="413795922">
 					<PropertyList>
-						<Property Name="Pitch" Type="int32">
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{9AD6543D-EB54-4F09-9450-5044A9345B40}">
-										<PropertyList>
-											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="150"/>
-											<Property Name="Min" Type="Real64" Value="-50"/>
-										</PropertyList>
-									</Modifier>
-								</ModifierInfo>
-							</ModifierList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
 						</Property>
-						<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
-						<Property Name="PlayMechanismLoopCount" Type="int32" Value="4"/>
-						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-						<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Door" ID="{C431FAB3-55CD-48F6-A189-BF31C96738AD}" ShortID="337922090">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.283482142857143"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Door.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Door" ID="{C431FAB3-55CD-48F6-A189-BF31C96738AD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Eye" ID="{D61F4FE1-6AC0-4046-A7CB-EF5A531ED3DB}" ShortID="234548224">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Eye" ID="{8C47D44E-CD0A-4272-8DAA-EE21F22C85D9}" ShortID="444534215">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.225446428571428"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Eye.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Eye" ID="{8C47D44E-CD0A-4272-8DAA-EE21F22C85D9}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="RodSwing" ID="{BBDCEFF9-87E2-4A4C-A667-F7D98A19A1D2}" ShortID="636764158">
+					<PropertyList>
+						<Property Name="InitialDelay" Type="Real64">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Birds" ID="{98F33701-7B7C-435F-966E-47E6CC6D84A5}" WorkUnitID="{9753E8B7-4AE0-4513-A349-9841876FB8CD}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
 						</Reference>
@@ -474,25 +526,6 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Rod3" ID="{AF02E4F8-E862-4742-B8D8-FE975108B6DE}" ShortID="214057479">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" ShortID="873020480">
-									<Language>SFX</Language>
-									<AudioFile>Rod3.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<Sound Name="Rod2" ID="{54F45B33-DE12-461E-ABF3-86C5D950136A}" ShortID="71901602">
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -531,66 +564,118 @@
 								<ActiveSource Name="Rod1" ID="{78DAE313-5836-4D59-A90D-FBB9B347E0BB}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="Rod3" ID="{AF02E4F8-E862-4742-B8D8-FE975108B6DE}" ShortID="214057479">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>30</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{02CD4EC1-2BE9-440B-BAC3-9775B4E7D01E}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="152"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" ShortID="873020480">
+									<Language>SFX</Language>
+									<AudioFile>Rod3.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Rod3" ID="{67826E6C-7660-47BA-9EF0-B1B632920907}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Silence" ID="{F7044B5E-BEC0-4A2C-A04C-39362CD16EB7}" ShortID="991803804">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Silence" ID="{B36921BB-47CB-4DC2-ACE0-2472935F2156}" ShortID="623326999" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+									<PropertyList>
+										<Property Name="Length" Type="Real32" Value="0.3"/>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Silence" ID="{B36921BB-47CB-4DC2-ACE0-2472935F2156}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Silence_01" ID="{0AA8BB0C-AE7C-41A6-B5C9-8AED3F8DFFEC}" ShortID="705098484">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Silence" ID="{94116B24-D33A-4186-94A5-391A77E25456}" ShortID="198464847" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+									<PropertyList>
+										<Property Name="Length" Type="Real32" Value="0.4"/>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Silence" ID="{94116B24-D33A-4186-94A5-391A77E25456}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Silence_02" ID="{09667F6B-0F95-459F-B17B-DC770528C3DD}" ShortID="330263903">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Silence" ID="{FEE7AD4E-CFFA-4FD6-9F76-1E1A6BBEEE05}" ShortID="196873971" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+									<PropertyList>
+										<Property Name="Length" Type="Real32" Value="0.65"/>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Silence" ID="{FEE7AD4E-CFFA-4FD6-9F76-1E1A6BBEEE05}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
+					<Playlist>
+						<ItemRef Name="Rod3" ID="{AF02E4F8-E862-4742-B8D8-FE975108B6DE}"/>
+						<ItemRef Name="Silence" ID="{F7044B5E-BEC0-4A2C-A04C-39362CD16EB7}"/>
+						<ItemRef Name="Rod3" ID="{AF02E4F8-E862-4742-B8D8-FE975108B6DE}"/>
+						<ItemRef Name="Silence_01" ID="{0AA8BB0C-AE7C-41A6-B5C9-8AED3F8DFFEC}"/>
+						<ItemRef Name="Rod2" ID="{54F45B33-DE12-461E-ABF3-86C5D950136A}"/>
+						<ItemRef Name="Silence_02" ID="{09667F6B-0F95-459F-B17B-DC770528C3DD}"/>
+						<ItemRef Name="Rod1" ID="{61816094-C925-417C-91A6-589C54F2F47F}"/>
+					</Playlist>
 				</RandomSequenceContainer>
-				<Sound Name="Door" ID="{1AF6A21C-97A0-4970-8070-DCEB4332E61F}" ShortID="413795922">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-8</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="Door" ID="{C431FAB3-55CD-48F6-A189-BF31C96738AD}" ShortID="337922090">
-							<PropertyList>
-								<Property Name="FadeOutDuration" Type="Real64" Value="0.283482142857143"/>
-							</PropertyList>
-							<Language>SFX</Language>
-							<AudioFile>Door.wav</AudioFile>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="Door" ID="{C431FAB3-55CD-48F6-A189-BF31C96738AD}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
-				<Sound Name="Eye" ID="{D61F4FE1-6AC0-4046-A7CB-EF5A531ED3DB}" ShortID="234548224">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-8</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="Eye" ID="{8C47D44E-CD0A-4272-8DAA-EE21F22C85D9}" ShortID="444534215">
-							<PropertyList>
-								<Property Name="FadeOutDuration" Type="Real64" Value="0.225446428571428"/>
-							</PropertyList>
-							<Language>SFX</Language>
-							<AudioFile>Eye.wav</AudioFile>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="Eye" ID="{8C47D44E-CD0A-4272-8DAA-EE21F22C85D9}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
