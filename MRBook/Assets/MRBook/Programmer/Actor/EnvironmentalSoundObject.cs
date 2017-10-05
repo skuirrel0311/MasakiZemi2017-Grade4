@@ -7,15 +7,15 @@ public class EnvironmentalSoundObject : MonoBehaviour
 
     void Start()
     {
-        MainSceneManager.I.OnPlayPage += (arg1) => PlaySound();
+        MainSceneManager.I.OnPlayPage +=  PlaySound;
 
         MainSceneManager.I.OnPlayEnd += (isSuccess) =>
         {
-            MainSceneManager.I.OnPlayPage -= (arg1) => PlaySound();
+            MainSceneManager.I.OnPlayPage -=  PlaySound;
         };
     }
 
-    void PlaySound()
+    void PlaySound(BasePage page)
     {
         AkSoundEngine.PostEvent(triggerName, gameObject);
     }

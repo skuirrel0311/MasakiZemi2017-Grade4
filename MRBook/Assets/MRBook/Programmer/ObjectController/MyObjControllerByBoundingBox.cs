@@ -135,6 +135,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
 
     public void Disable(bool setParent = true)
     {
+        if (m_renderers == null) return;
         if (targetObject != null && setParent)
         {
             targetObject.transform.parent = oldParent;

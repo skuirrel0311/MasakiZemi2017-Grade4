@@ -20,6 +20,7 @@ public class TestSceneObjController : MainSceneObjController
     protected override void Start()
     {
         mainCamera = Camera.main;
+        actorManager = ActorManager.I;
     }
 
     protected override void Update()

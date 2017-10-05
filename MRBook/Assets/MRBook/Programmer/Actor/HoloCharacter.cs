@@ -33,6 +33,10 @@ public class HoloCharacter : HoloMovableObject
     /// </summary>
     public override void SetItem(GameObject itemObj)
     {
+        if(itemObj == null)
+        {
+            Debug.LogError("item obj is null");
+        }
         HoloItem item = itemObj.GetComponent<HoloItem>();
 
         if (item == null)
