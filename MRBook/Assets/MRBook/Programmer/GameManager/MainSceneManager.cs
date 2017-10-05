@@ -83,16 +83,17 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         base.Awake();
         pageIndex = -1;
         m_Animator = GetComponent<Animator>();
-
-//#if !UNITY_EDITOR
-
+        
         SpatialMappingManager spatialMappingManager = SpatialMappingManager.Instance;
-        spatialMappingManager.DrawVisualMeshes = false;
-        for (int i = 0; i < spatialMappingManager.transform.childCount; i++)
+
+        if (spatialMappingManager != null)
         {
-            spatialMappingManager.transform.GetChild(i).gameObject.layer = 2;
+            spatialMappingManager.DrawVisualMeshes = false;
+            for (int i = 0; i < spatialMappingManager.transform.childCount; i++)
+            {
+                spatialMappingManager.transform.GetChild(i).gameObject.layer = 2;
+            }
         }
-//#endif
 
         ActorManager.I.InitSceneManager(this);
     }
