@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class NotificationManager : BaseManager<NotificationManager>
 {
@@ -42,7 +43,7 @@ public class NotificationManager : BaseManager<NotificationManager>
         }
 
         isView = true;
-        messageCoroutine = StartCoroutine(KKUtilities.Delay(viewTime, () =>
+        messageCoroutine = StartCoroutine(Utilities.Delay(viewTime, () =>
         {
             isView = false;
             textMesh.gameObject.SetActive(false);

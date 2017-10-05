@@ -1,15 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VR.WSA;
 
 /// <summary>
 /// タイトルで設定された時の位置からずれた時に自動で直してくれる人
 /// </summary>
 public class BookPositionModifier : BaseManager<BookPositionModifier>
 {
-    [SerializeField]
-    Transform bookTransform = null;
+    public Transform bookTransform = null;
 
     //部屋に配置するWorldAnchor
     [SerializeField]
@@ -17,17 +14,12 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     [SerializeField]
     float positionCheckInterval = 1.0f;
-
-    MyGameManager gameManager;
+    
     Vector3 oldWorldAnchorPosition;
 
     protected override void Start()
     {
         base.Start();
-
-        gameManager = MyGameManager.I;
-
-        WorldManager.OnPositionalLocatorStateChanged += WorldManagerOnStateChanged;
     }
 
     IEnumerator MonitorWorldAnchor()
@@ -59,18 +51,8 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
         return false;
     }
 
-    void WorldManagerOnStateChanged(PositionalLocatorState oldState, PositionalLocatorState newState)
-    {
-        //アクティブに戻った時になおす
-        if (newState == PositionalLocatorState.Active)
-        {
-            ModifyBookPosition(true);
-        }
-    }
-
     public void ModifyBookPosition(bool showDialog)
     {
-        if (gameManager.currentSceneState != MyGameManager.SceneState.main) return;
         MainSceneManager.I.SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
         if (showDialog)
         {

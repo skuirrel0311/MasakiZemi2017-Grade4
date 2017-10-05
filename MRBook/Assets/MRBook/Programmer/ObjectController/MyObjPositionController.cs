@@ -19,11 +19,11 @@ public class MyObjPositionController : MyInputHandler
     float draggingTime = 0.0f;
     const float minDragTime = 0.2f;
 
-    protected Transform mainCameraTransform;
+    protected Camera mainCamera;
 
     protected override void Start()
     {
-        mainCameraTransform = Camera.main.transform;
+        mainCamera = Camera.main;
 
         base.Start();
     }
@@ -81,6 +81,6 @@ public class MyObjPositionController : MyInputHandler
 
     Vector3 GetHeadPosition()
     {
-        return mainCameraTransform.position;
+        return mainCamera.transform.position;
     }
 }

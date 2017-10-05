@@ -1,22 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class MainSceneObjController : MyObjControllerByBoundingBox
 {
-    HoloMovableObject targetActor;
-    NavMeshAgent targetAgent;
+    protected ActorManager actorManager;
+    //掴んでいるアクター
+    protected HoloMovableObject targetActor;
 
     //アイテムを掴んでいるか？
-    bool isHoldItem = false;
+    protected bool isHoldItem = false;
 
-    Ray ray;
+    protected Ray ray;
+
+    [SerializeField]
+    LayerMask ignoreLayerMask = 1 << 2;
 
     protected override void Start()
     {
         base.Start();
-
+        actorManager = ActorManager.I;
+        
         if (MainSceneManager.I == null) return;
         MainSceneManager.I.OnPlayPage += (page) =>
         {
@@ -28,73 +32,102 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         if (!canDragging) return;
 
+        StartOperation();
+
+        base.StartDragging();
+    }
+
+    /// <summary>
+    /// 呼ぶ前にtargetActorにActorがセットする
+    /// </summary>
+    protected virtual void StartOperation()
+    {
         if (targetActor.GetActorType == HoloObject.HoloObjectType.Item)
         {
             Debug.Log("is hold item");
             isHoldItem = true;
         }
-        targetAgent.enabled = false;
-
-        base.StartDragging();
+        targetActor.m_agent.enabled = false;
     }
 
     protected override void StopDragging()
     {
-        Debug.Log("call stop dragging");
         base.StopDragging();
-        if (MainSceneManager.I == null) return;
+        EndOperation();
+    }
 
+    protected virtual void EndOperation()
+    {
         //直下を調べる
         ray.direction = Vector3.down;
-        ray.origin = targetObject.transform.position;
+        ray.origin = targetActor.transform.position;
 
         float radius = 0.0f;
-        radius = targetAgent.radius * targetObject.transform.lossyScale.x;
+        radius = targetActor.m_agent.radius * targetActor.transform.lossyScale.x;
 
-        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 3.0f);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 3.0f, ~ignoreLayerMask);
         HoloMovableObject actor;
+        int hitObjectNum = hits.Length;
 
-
+        //下にHoloObjectが有った時の処理
         for (int i = 0; i < hits.Length; i++)
         {
             Debug.Log("hit " + hits[i].transform.name);
             if (hits[i].transform.tag != "Actor") continue;
-            if (hits[i].transform.gameObject.Equals(targetObject)) continue;
+            //こちらでオーバライドしたEqualsを呼び出している(アイテムを持っている時の対応)
+            if (targetActor.Equals(hits[i].transform.gameObject))continue;
+
+            //下にHoloObjectがあった
             actor = hits[i].transform.GetComponent<HoloMovableObject>();
 
             if (actor == null) return;
-            Debug.Log("hit actor");
+
+            //todo:そのキャラがそのアイテムを持つことが出来るのかどうかの判定をする
             if (actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
             {
-                Debug.Log("call set item");
+                Debug.LogWarning("call set item");
                 isHoldItem = false;
                 AkSoundEngine.PostEvent("Equip", gameObject);
                 actor.SetItem(targetObject);
+//#if !UNITY_EDITOR
+                //バウンディングボックスは消す
+                Disable(false);
+//#endif
             }
-            
+
             return;
         }
 
-        actor = targetObject.GetComponent<HoloMovableObject>();
+        //下に何もHoloObjectがなかった時の処理
 
-        //todo:自身の持っているアイテムも含まれる可能性があるので対応
-        //自身があるので１ 
-        if (hits.Length == 1)
+        for(int i = 0;i< hits.Length;i++)
         {
-            //ページの外に置いた
-            if (actor.isBring) ActorManager.I.SetGlobal(actor);
+            if (targetActor.Equals(hits[i].transform.gameObject))
+            {
+                //自身以外の数が知りたいので減らす
+                hitObjectNum--;
+                continue;
+            }
+        }
+
+        //ページの外に置いた
+        if (hitObjectNum == 0)
+        {
+            if (targetActor.isBring) actorManager.SetGlobal(targetActor);
             //IsBringがtrueじゃない場合でもページ外に留まるという挙動をする
-            Debug.Log("hits.Length is 1");
+            Debug.Log(targetActor.name + "is out book");
             return;
         }
 
-        //ページ内に配置された
+        //下にHoloObject以外がある(ページ内に配置された)
+        Debug.Log(targetActor +  " is put page");
 
-        Debug.Log("in page");
         //キャラクターからアイテムを外した可能性がある
         if (isHoldItem)
         {
             HoloItem item = (HoloItem)targetActor;
+
+            //誰かに所有されていたら
             if (item.owner != null)
             {
                 item.owner.DumpItem(item.currentHand, false);
@@ -103,13 +136,19 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         }
 
         //グローバルに登録されていたら削除する。
-        ActorManager.I.RemoveGlobal(actor.name);
+        actorManager.RemoveGlobal(targetActor.name);
 
         //設定を戻す
-        targetAgent.enabled = true;
+        targetActor.m_agent.enabled = true;
         isHoldItem = false;
+        //バウンディングボックスは消す
+//#if !UNITY_EDITOR
+        Disable();
+//#endif
+        StartCoroutine(CheckUnderNavMesh());
     }
 
+    //渡されたオブジェクトに合わせてバウンディングボックスを表示し、操作できるようにする
     public override void SetTargetObject(GameObject obj)
     {
         base.SetTargetObject(obj);
@@ -117,7 +156,31 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         if (targetObject != null)
         {
             targetActor = targetObject.GetComponent<HoloMovableObject>();
-            targetAgent = targetActor.m_agent;
         }
+    }
+
+    //直下に本のメッシュはあるが、遠すぎて反応できていなかった場合のみ使用する
+    IEnumerator CheckUnderNavMesh()
+    {
+        MainSceneManager mainSceneManager = TestSceneManager.I;
+
+        NavMeshHit hit;
+        while (true)
+        {
+            if (targetActor == null || targetActor.m_agent) break;
+            //0.1ずつ下を探す
+            targetActor.transform.position += Vector3.down * 0.1f;
+
+            if (NavMesh.SamplePosition(targetActor.m_agent.transform.position, out hit, targetActor.m_agent.height * 2, NavMesh.AllAreas))
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        //todo:エフェクト（煙？）
+        targetActor.m_agent.enabled = true;
+        targetActor = null;
     }
 }

@@ -3,24 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TestSceneObjController : MonoBehaviour
+public class TestSceneObjController : MainSceneObjController
 {
-    Ray ray;
-    RaycastHit hit;
-    Camera mainCamera;
-    ActorManager actorManager;
-
-    //Actor
-    LayerMask layerMask = 1 << 8;
-
-    public GameObject targetObj;
-    HoloMovableObject targetActor;
-    NavMeshAgent targetAgent;
-
     Vector2 oldMousePosition;
-
-    //計算用キャッシュ
-    Vector3 zeroVec;
 
     /// <summary>
     /// つかんだ時に固定する高さ
@@ -31,153 +16,76 @@ public class TestSceneObjController : MonoBehaviour
     [SerializeField]
     float moveSpeed = 4.0f;
 
-    //アイテムを掴んでいるか？
-    public bool isHoldItem = false;
-
-    void Start()
+    //ベースを呼ばないために宣言する
+    protected override void Start()
     {
         mainCamera = Camera.main;
-        actorManager = ActorManager.I;
-
-        zeroVec = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
-    void Update()
+    protected override void Update()
     {
         //右クリック
         if(Input.GetMouseButtonDown(0))
         {
-            if (TryGetGameObject(out targetObj))
+            if (TryGetGameObject())
             {
-                StartOperationObject();
+                StartOperation();
             }
         }
 
         //右クリック長押し
         if (Input.GetMouseButton(0))
         {
-            if (targetObj != null) UpdateObjectOperation();
+            if (targetActor != null) UpdateOperation();
 
         }
 
         if(Input.GetMouseButtonUp(0))
         {
-            EndOperationObject();
+            if(targetActor != null) EndOperation();
         }
     }
 
-    bool TryGetGameObject(out GameObject obj)
+    bool TryGetGameObject()
     {
         ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
         
         if(Physics.Raycast(ray, out hit, 10.0f, layerMask))
         {
-            obj = hit.transform.gameObject;
+            GameObject obj = hit.transform.gameObject;
 
             //つかむことができるかチェック
             HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
             if (actor == null || !actor.isMovable)
             {
-                obj = null;
+                targetActor = null;
                 return false;
             }
-
-            if (actor.GetActorType == HoloObject.HoloObjectType.Item) isHoldItem = true;
+            
+            //掴むことができた
+            targetActor = actor;
             return true;
         }
-        else
-        {
-            obj = null;
-        }
 
+        targetActor = null;
         return false;
     }
-
-    void StartOperationObject()
+    
+    protected override void StartOperation()
     {
-        //つかむ動作
-        targetActor = targetObj.GetComponent<HoloMovableObject>();
-
-        targetAgent = targetActor.m_agent;
-        targetAgent.enabled = false;
+        base.StartOperation();
 
         oldMousePosition = Input.mousePosition;
-        targetObj.transform.position = new Vector3(targetObj.transform.position.x, operationLockHeight, targetObj.transform.position.z);
+        targetActor.transform.position = new Vector3(targetActor.transform.position.x, operationLockHeight, targetActor.transform.position.z);
     }
 
-    void UpdateObjectOperation()
+    void UpdateOperation()
     {
         Vector3 velocity = Vector2ComvertToXZVector(GetMouseVelocity());
         Quaternion cam = mainCamera.transform.rotation;
         velocity = Quaternion.Euler(0.0f, cam.eulerAngles.y, 0.0f) * velocity;
-        targetObj.transform.position += velocity * moveSpeed * Time.deltaTime;
-    }
-
-    void EndOperationObject()
-    {
-        if (targetObj == null) return;
-
-        //離した時に直下に何かオブジェクトがあったら困るので対応
-        ray.direction = Vector3.down;
-        ray.origin = targetObj.transform.position;
-
-        float radius = targetAgent.radius * targetObj.transform.lossyScale.x;
-
-        HoloMovableObject actor;
-        
-        RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 2.0f);
-        for (int i = 0;i< hits.Length;i++)
-        {
-            Debug.Log("hitobj = " + hits[i].transform.name);
-            if (hits[i].transform.tag != "Actor") continue;
-            if (targetActor.Equals(hits[i].transform.gameObject)) continue;
-            //なんか当たった
-            actor = hits[i].transform.GetComponent<HoloMovableObject>();
-
-            if (actor == null) return;
-            if(actor.GetActorType == HoloObject.HoloObjectType.Character && isHoldItem)
-            {
-                Debug.Log("call set item(" + targetObj.name + ")");
-                AkSoundEngine.PostEvent("Equip", gameObject);
-                isHoldItem = false;
-                actor.SetItem(targetObj);
-            }
-
-            return;
-        }
-
-        actor = targetObj.GetComponent<HoloMovableObject>();
-
-
-        if (hits.Length == 1)
-        {
-            //ページの外に置いた
-            Debug.Log("hits.Length is one");
-            if(actor.isBring) actorManager.SetGlobal(actor);
-            //IsBringがtrueじゃない場合でもページ外に留まるという挙動をする
-            return;
-        }
-        
-        //ページ内に配置された
-
-        //キャラクターからアイテムを外した可能性がある
-        if(isHoldItem)
-        {
-            HoloItem item = targetObj.GetComponent<HoloItem>();
-            if (item.owner != null)
-            {
-                item.owner.DumpItem(item.currentHand, false);
-                item.owner = null;
-            }
-        }
-
-        //グローバルに登録されていたら削除する。
-        actorManager.RemoveGlobal(actor.name);
-
-        //NavMeshAgentを戻す
-        isHoldItem = false;
-
-        StartCoroutine(CheckUnderNavMesh());
+        targetActor.transform.position += velocity * moveSpeed * Time.deltaTime;
     }
 
     /// <summary>
@@ -194,37 +102,12 @@ public class TestSceneObjController : MonoBehaviour
 
     Vector3 Vector2ComvertToXZVector(Vector2 vec)
     {
-        Vector3 temp = zeroVec;
+        Vector3 temp;
 
         temp.x = vec.x;
+        temp.y = 0.0f;
         temp.z = vec.y;             
 
         return temp;
-    }
-
-    //直下に本のメッシュはあるが、遠すぎて反応できていなかった場合のみ使用する
-    IEnumerator CheckUnderNavMesh()
-    {
-        MainSceneManager mainSceneManager = TestSceneManager.I;
-
-        NavMeshHit hit;
-        while(true)
-        {
-            if (targetAgent == null) break;
-            //0.1ずつ下を探す
-            targetObj.transform.position += Vector3.down * 0.1f;
-
-            if(NavMesh.SamplePosition(targetAgent.transform.position, out hit, targetAgent.height * 2, NavMesh.AllAreas))
-            {
-                break;
-            }
-
-            yield return null;
-        }
-
-        //todo:エフェクト（煙？）
-        targetAgent.enabled = true;
-        targetAgent = null;
-        targetObj = null;
     }
 }

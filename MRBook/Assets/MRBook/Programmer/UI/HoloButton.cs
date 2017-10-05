@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using HoloToolkit.Unity.InputModule;
+using KKUtilities;
 
 [RequireComponent(typeof(BoxCollider))]
 public class HoloButton : MyInputHandler
@@ -79,7 +79,7 @@ public class HoloButton : MyInputHandler
 
         isChangeColor = true;
         Color currentColor;
-        changeColorCoroutine = StartCoroutine(KKUtilities.FloatLerp(duration, t =>
+        changeColorCoroutine = StartCoroutine(Utilities.FloatLerp(duration, t =>
         {
             currentColor = Color.Lerp(start, targetColor, t * t);
             for (int i = 0; i < imageList.Count; i++)

@@ -6,18 +6,18 @@ using UnityEngine.SceneManagement;
 //バウンディングボックスを用いたオブジェクトの操作
 public class MyObjControllerByBoundingBox : MyObjPositionController
 {
-    public bool canDragging { get; private set; }
+    public bool canDragging { get; protected set; }
     Renderer[] m_renderers;
     Collider[] m_cols;
     Transform oldParent = null;
     
     Vector3 offset;
     [SerializeField]
-    LayerMask layerMask = 1 << 8;
+    protected LayerMask layerMask = 1 << 8;
 
     public Action<GameObject, GameObject> OnTargetChanged;
 
-    //シングルトン todo: インターフェース化できるとベスト
+    /* シングルトン */ 
     static MyObjControllerByBoundingBox instance;
     public static MyObjControllerByBoundingBox I
     {
@@ -61,6 +61,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         I = null;
     }
 
+    /* メソッド */
     protected override void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();
@@ -132,9 +133,9 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         base.StartDragging();
     }
 
-    public void Disable()
+    public void Disable(bool setParent = true)
     {
-        if (targetObject != null)
+        if (targetObject != null && setParent)
         {
             targetObject.transform.parent = oldParent;
         }

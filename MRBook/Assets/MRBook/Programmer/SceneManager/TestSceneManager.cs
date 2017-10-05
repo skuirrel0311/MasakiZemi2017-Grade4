@@ -6,18 +6,10 @@ public class TestSceneManager : MainSceneManager
 {
     [SerializeField]
     OffsetController offsetController = null;
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
+    
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (!IsGameStart) GameStart();
-        }
+        if (Input.GetKeyDown(KeyCode.S) && !IsGameStart) GameStart();
 
         if (Input.GetKeyDown(KeyCode.N)) ChangePage(currentPageIndex + 1);
 
@@ -27,6 +19,7 @@ public class TestSceneManager : MainSceneManager
 
         if (Input.GetKeyDown(KeyCode.R)) ResetPage();
 
+        //offset controller
         if (Input.GetKeyDown(KeyCode.Keypad4)) offsetController.MoveBook((int)OffsetController.Direction.Left);
 
         if (Input.GetKeyDown(KeyCode.Keypad6)) offsetController.MoveBook((int)OffsetController.Direction.Right);
@@ -49,9 +42,7 @@ public class TestSceneManager : MainSceneManager
         }
 
         SetPage(currentPageIndex);
-
         IsGameStart = true;
-        if (OnGameStart != null) OnGameStart.Invoke();
     }
 
 

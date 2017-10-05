@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine;
+using KKUtilities;
 
 public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
 {
@@ -191,7 +192,7 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
         PrimaryCursorVisual.localPosition = defaultPosition;
         PrimaryCursorVisual.localRotation = defaultRotation;
 
-        StartCoroutine(KKUtilities.FloatLerp(resetSpeed, (t) =>
+        StartCoroutine(Utilities.FloatLerp(resetSpeed, (t) =>
         {
             spriteRenderer.color = Color.Lerp(Color.clear, Color.white, t * t);
             PrimaryCursorVisual.localScale = Vector3.Lerp(startScale, defaultScale, t * t);

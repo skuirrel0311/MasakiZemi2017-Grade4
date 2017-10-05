@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-[Serializable]
+using KKUtilities;
+    
 public enum ActorName
 {
     Urashima,
@@ -20,9 +20,9 @@ public enum ActorName
 /// <summary>
 /// ホログラム全般を管理するクラス
 /// </summary>
-public class ActorManager : BaseManager<ActorManager>
+public class ActorManager : Singleton<ActorManager>
 {
-    MainSceneManager gameManager;
+    MainSceneManager sceneManager;
     [SerializeField]
     BasePage currentPage;
     
@@ -44,12 +44,12 @@ public class ActorManager : BaseManager<ActorManager>
             return actorNameList;
         }
     }
-
-    protected override void Start()
+    
+    public void InitSceneManager(MainSceneManager sceneManager)
     {
-        base.Start();
-        gameManager = MainSceneManager.I;
-        gameManager.OnPageChanged += OnPageChanged;
+        if (this.sceneManager != null) return;
+        this.sceneManager = sceneManager;
+        this.sceneManager.OnPageChanged += OnPageChanged;
     }
 
     /// <summary>

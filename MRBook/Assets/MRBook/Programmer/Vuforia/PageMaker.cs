@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class PageMaker : MyTracableEventHandler
 {
@@ -26,7 +27,7 @@ public class PageMaker : MyTracableEventHandler
 
         NotificationManager.I.ShowMessage("page" + (pageIndex + 1) + "に移動します");
 
-        KKUtilities.Delay(2.0f, () =>
+        Utilities.Delay(2.0f, () =>
         {
             gameManager.ChangePage(pageIndex);
         }, this);

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
+using HoloToolkit.Unity.SpatialMapping;
+using KKUtilities;
 
 public class MainSceneManager : BaseManager<MainSceneManager>
 {
@@ -35,7 +35,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ステートが変化したとき
     /// </summary>
     public Action<GameState> OnGameStateChanged;
-    
+
     /* メンバ */
     GameState currentState = GameState.Title;
     public GameState CurrentState
@@ -83,16 +83,33 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         base.Awake();
         pageIndex = -1;
         m_Animator = GetComponent<Animator>();
+
+//#if !UNITY_EDITOR
+
+        SpatialMappingManager spatialMappingManager = SpatialMappingManager.Instance;
+        spatialMappingManager.DrawVisualMeshes = false;
+        for (int i = 0; i < spatialMappingManager.transform.childCount; i++)
+        {
+            spatialMappingManager.transform.GetChild(i).gameObject.layer = 2;
+        }
+//#endif
+
+        ActorManager.I.InitSceneManager(this);
     }
 
     protected override void Start()
     {
         base.Start();
+        OnGameStart += GameStart;
 
-        KKUtilities.Delay(1.0f, () =>
+        //todo:UIで読み込み中と出す
+
+        //この時点ではBookTransfromが正しい位置にいないので遅らせる
+        Utilities.Delay(1.0f, () =>
         {
-            if(OnGameStart != null) OnGameStart.Invoke();
+            OnGameStart.Invoke();
         }, this);
+        
     }
 
     /// <summary>
@@ -101,7 +118,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public virtual void Play()
     {
         if (CurrentState != GameState.Wait) return;
-        
+
         AkSoundEngine.PostEvent("BGM_" + (currentPageIndex + 1) + "p", gameObject);
         CurrentState = GameState.Play;
 
@@ -131,7 +148,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public virtual void EndCallBack(bool success)
     {
-        if(success)
+        if (success)
         {
             CurrentState = GameState.Next;
             AkSoundEngine.PostEvent("Clear_" + (currentPageIndex + 1) + "p", gameObject);
@@ -145,28 +162,19 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         if (!success)
         {
-            KKUtilities.Delay(0.2f, () => ResetPage(), this);
+            Utilities.Delay(0.2f, () => ResetPage(), this);
         }
 
         m_Animator.SetBool("IsStart", false);
     }
-
-    /// <summary>
-    /// TapToStartが押された
-    /// </summary>
+    
     public virtual void GameStart()
     {
-        GameStart(Vector3.zero, Quaternion.identity);
-    }
+        Transform t = BookPositionModifier.I.bookTransform;
 
-    public virtual void GameStart(Vector3 pos, Quaternion rot)
-    {
-        OnGameStart += () =>
-        {
-            BookPositionModifier.I.ModifyBookPosition(false);
-            SetPage(currentPageIndex);
-            IsGameStart = true;
-        };
+        SetBookPositionByAnchor(t.position, t.rotation);
+        SetPage(currentPageIndex);
+        IsGameStart = true;
     }
 
     /// <summary>

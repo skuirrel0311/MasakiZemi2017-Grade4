@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class HoloWindow : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class HoloWindow : MonoBehaviour
         transform.localScale = zeroVec;
         
         //出てくるときのアニメーション
-        viewCoroutine = KKUtilities.FloatLerp(0.15f, (t) =>
+        viewCoroutine = Utilities.FloatLerp(0.15f, (t) =>
         {
             transform.localScale = Vector3.Lerp(zeroVec, defaultScale, t * t);
         });
@@ -82,7 +83,7 @@ public class HoloWindow : MonoBehaviour
         if (!autoHide)
             viewCoroutine.OnCompleted(() => closeButton.Refresh());
         else
-            viewCoroutine.OnCompleted(() => KKUtilities.Delay(limitTime, () => Close(), this));
+            viewCoroutine.OnCompleted(() => Utilities.Delay(limitTime, () => Close(), this));
 
         StartCoroutine(viewCoroutine);
     }
@@ -123,7 +124,7 @@ public class HoloWindow : MonoBehaviour
         AkSoundEngine.PostEvent("Close", gameObject);
 
         float temp = 0.0f;
-        viewCoroutine = KKUtilities.FloatLerp(0.1f, (t) =>
+        viewCoroutine = Utilities.FloatLerp(0.1f, (t) =>
         {
             temp = t * t;
             foreach (var c in colorDictionary)

@@ -234,18 +234,6 @@ MonoBehaviour:
   targetName: UrashimaPosition
   stopDistance: 0.3
   moveSpeed: 0.1
---- !u!114 &114330858949316720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u91E3\u308A\u7AFF\u3092\u632F\u308A\u56DE\u3057\u306F\u3058\u3081\u307E\u3057\u305F"
 --- !u!114 &114381611256293886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,21 +423,6 @@ MonoBehaviour:
   boolValue: 1
   isCheckNow: 1
   checkOnUpdate: 0
---- !u!114 &114597519037044734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05a892e66013984ea2f69e8b7725746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: TurtleIsNearRoof
-  boolValue: 1
-  isCheckNow: 1
-  checkOnUpdate: 0
 --- !u!114 &114622836378746488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,18 +494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u4E80\u306F\u6050\u308B\u6050\u308B\u6D66\u5CF6\u306B\u8A71\u3057\u304B\u3051\u307E\u3057\u305F"
---- !u!114 &114694540340094740
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u91E3\u308A\u7AFF\u306E\u624B\u5165\u308C\u3092\u59CB\u3081\u307E\u3057\u305F"
 --- !u!114 &114724123464447264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -571,36 +532,6 @@ MonoBehaviour:
   actorName: 0
   motionName: 0
   transitionDuration: 0.1
---- !u!114 &114790240576808518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: Turtle
-  targetName: yane
-  stopDistance: 0.2
-  moveSpeed: 0.1
---- !u!114 &114802037728589288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05a892e66013984ea2f69e8b7725746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: IsInHouse
-  boolValue: 1
-  isCheckNow: 1
-  checkOnUpdate: 0
 --- !u!114 &114887251407387958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2935,31 +2866,6 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1102 &1102501424099319050
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u6D66\u5CF6\u304C\u91E3\u308A\u7AFF\u3092\u632F\u308A\u56DE\u3059"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 114330858949316720}
-  - {fileID: 114802037728589288}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
 --- !u!1102 &1102511070119846566
 AnimatorState:
   serializedVersion: 5
@@ -3052,54 +2958,6 @@ AnimatorState:
   - {fileID: 114106616879943380}
   - {fileID: 114544746889146636}
   - {fileID: 114914175162690730}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102572595345357948
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u6D66\u5CF6\u304C\u91E3\u308A\u7AFF\u3092\u624B\u5165\u308C\u3059\u308B"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 114694540340094740}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102588616887737532
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u5C4B\u6839\u306E\u524D\u3067\u7ACB\u3061\u6B62\u307E\u308B\u4E80"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 114790240576808518}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3415,30 +3273,6 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1102 &1102912773110094292
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u4E80\u306E\u76EE\u306E\u524D\u306B\u5C4B\u6839\u304C\u3042\u308B\u304B\uFF1F"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 114597519037044734}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
 --- !u!1102 &1102961892034884340
 AnimatorState:
   serializedVersion: 5
@@ -3561,20 +3395,14 @@ AnimatorStateMachine:
     m_State: {fileID: 1102853447811472042}
     m_Position: {x: -1428, y: 180, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102572595345357948}
-    m_Position: {x: -360, y: 288, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102349503222002424}
     m_Position: {x: -1080, y: 36, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102501424099319050}
-    m_Position: {x: -360, y: 360, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102349362536297688}
-    m_Position: {x: -360, y: 432, z: 0}
+    m_Position: {x: -420, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102961892034884340}
-    m_Position: {x: -360, y: 504, z: 0}
+    m_Position: {x: -420, y: 276, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102002615424417874}
     m_Position: {x: 444, y: 1188, z: 0}
@@ -3584,12 +3412,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102878708044785530}
     m_Position: {x: -1188, y: 180, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102912773110094292}
-    m_Position: {x: -360, y: 204, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102588616887737532}
-    m_Position: {x: -360, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102112612601544808}
     m_Position: {x: -888, y: 324, z: 0}

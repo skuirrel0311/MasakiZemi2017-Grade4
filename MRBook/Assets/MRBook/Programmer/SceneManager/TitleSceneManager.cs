@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using HoloToolkit.Unity.SpatialMapping;
 
 public class TitleSceneManager : MonoBehaviour
 {
@@ -14,12 +15,20 @@ public class TitleSceneManager : MonoBehaviour
     [SerializeField]
     TitleView titleView = null;
 
+    void Start()
+    {
+        SpatialMappingManager spatialMappingManager = SpatialMappingManager.Instance;
+        spatialMappingManager.DrawVisualMeshes = true;
+        spatialMappingManager.PhysicsLayer = 10;
+    }
+
     public void GameStart()
     {
         bookPosition.position = bookPositionController.position;
         bookPosition.rotation = bookPositionController.rotation;
         titleView.HideAll();
-        
+
+        Debug.LogWarning("BookPos = " + BookPositionModifier.I.bookTransform.position);
         SceneManager.LoadSceneAsync("main");
     }
 }
