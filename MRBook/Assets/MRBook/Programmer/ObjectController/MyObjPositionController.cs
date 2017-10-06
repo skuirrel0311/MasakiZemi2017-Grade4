@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 
@@ -20,12 +21,17 @@ public class MyObjPositionController : MyInputHandler
     const float minDragTime = 0.2f;
 
     protected Camera mainCamera;
-
+    
     protected override void Start()
     {
         mainCamera = Camera.main;
-
+        SceneManager.sceneLoaded += WasLoaded;
         base.Start();
+    }
+
+    void WasLoaded(Scene sceneName, LoadSceneMode sceneMode)
+    {
+        mainCamera = Camera.main;
     }
 
     protected override void StartDragging()

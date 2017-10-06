@@ -40,12 +40,15 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     public BoxCollider m_collider { get; protected set; }
     public Animator m_animator { get; protected set; }
 
+    public string firstAnimationName = "Wait";
+
     protected virtual void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_collider = GetComponent<BoxCollider>();
         m_animator = GetComponent<Animator>();
         defaultAgentEnabled = m_agent.enabled;
+        if(m_animator != null) m_animator.CrossFade(firstAnimationName, 0.1f);
     }
 
     /// <summary>
@@ -79,6 +82,11 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         transform.position = firstPosition;
         transform.rotation = firstRotation;
         m_agent.enabled = defaultAgentEnabled;
+
+        if(m_animator != null)
+        {
+            m_animator.CrossFade(firstAnimationName, 0.1f);
+        }
 
         //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
         if (isBring)

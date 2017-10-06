@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// ホログラムがずれた時になおす用（本番でも使う可能性あり）
 /// </summary>
-public class OffsetController : MonoBehaviour
+public class OffsetController : BaseManager<OffsetController>
 {
     public enum Direction { Up, Down, Left, Right, Front, Back }
 

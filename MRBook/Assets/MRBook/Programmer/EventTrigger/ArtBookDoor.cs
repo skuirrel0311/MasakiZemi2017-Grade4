@@ -19,6 +19,7 @@ public class ArtBookDoor : ArtBookGimmick
         {
             isHide = !isHide;
             m_renderer.enabled = !isHide;
+            if(!isHide) AkSoundEngine.PostEvent("Eye", gameObject);
             NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
         }
 #else
@@ -27,7 +28,7 @@ public class ArtBookDoor : ArtBookGimmick
 
         if (arrowSprite.activeSelf != maker.IsVisuable)
         {
-            AkSoundEngine.PostEvent("Eye", gameObject);
+            if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
             arrowSprite.SetActive(maker.IsVisuable);
         }
 
