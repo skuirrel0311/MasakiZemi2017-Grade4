@@ -1,16 +1,35 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// targetObjectをownerがeyeから見えるか？
+/// </summary>
 public class IsSeeObject : MyEventTrigger
 {
     //視点
     [SerializeField]
     Transform eye = null;
+    
+    /// <summary>
+    /// 誰が
+    /// </summary>
+    [SerializeField]
+    ActorName ownerName = ActorName.Urashima;
+    HoloMovableObject actor;
 
+    /// <summary>
+    /// 誰を
+    /// </summary>
     [SerializeField]
     protected GameObject targetObject = null;
 
     [SerializeField]
     LayerMask ignoreLayerMask = 1 << 2;
+    Ray ray;
+
+    void Start()
+    {
+        actor = ActorManager.I.GetActor(ownerName.ToString());
+    }
 
     public override void SetFlag()
     {
@@ -26,19 +45,26 @@ public class IsSeeObject : MyEventTrigger
         }
 
         //障害物はないか
-        Ray ray = new Ray(eye.position, Vector3.Normalize(direction));
-        RaycastHit[] cols = Physics.RaycastAll(ray, direction.magnitude, ~ignoreLayerMask);
+        ray = new Ray(eye.position, Vector3.Normalize(direction));
+        float maxDistance = direction.magnitude;
+        float currentDistance = maxDistance;
+        RaycastHit[] hits = Physics.RaycastAll(ray, maxDistance, ~ignoreLayerMask);
+        GameObject hit = null;
 
-        for (int i = 0; i < cols.Length; i++)
+        for (int i = 0; i < hits.Length; i++)
         {
             //自身は省く
-            if (cols[i].transform.gameObject.Equals(transform.gameObject)) continue;
-            Debug.Log(flagName + " " + cols[i].transform.name);
-            FlagManager.I.SetFlag(flagName, this, cols[i].transform.gameObject.Equals(targetObject));
-            return;
+            if (actor.Equals(hits[i].transform.gameObject)) continue;
+
+            //自身以外に当たった
+            if (hits[i].distance < currentDistance)
+            {
+                hit = hits[i].transform.gameObject;
+            }
         }
 
-        //障害物がなかった
-        FlagManager.I.SetFlag(flagName, this, true);
+        Debug.Log(ownerName.ToString() + " is see " + hit != null ? hit.name : "null");
+        //targetObjectとhitが同じだったら障害物はなかったということ
+        FlagManager.I.SetFlag(flagName, this, targetObject.Equals(hit));
     }
 }
