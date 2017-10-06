@@ -12,10 +12,18 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     protected bool isHoldItem = false;
 
     protected Ray ray;
-
     [SerializeField]
     LayerMask ignoreLayerMask = 1 << 2;
+    float sphereCastRadius;
 
+    [SerializeField]
+    Transform underTargetMaker = null;
+
+    //キャッシュ
+    Vector3 downVec = Vector3.down;
+
+    const int bookLayer = 11;
+    
     protected override void Start()
     {
         base.Start();
@@ -38,7 +46,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     }
 
     /// <summary>
-    /// 呼ぶ前にtargetActorにActorがセットする
+    /// 呼ぶ前にtargetActorにActorをセットする
     /// </summary>
     protected virtual void StartOperation()
     {
@@ -48,6 +56,39 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             isHoldItem = true;
         }
         targetActor.m_agent.enabled = false;
+        sphereCastRadius = targetActor.m_agent.radius * targetActor.transform.lossyScale.x;
+    }
+
+    protected override void UpdateDragging()
+    {
+        base.UpdateDragging();
+        UpdateOperation();
+    }
+
+    protected virtual void UpdateOperation()
+    {
+        RaycastHit underObj;
+
+        bool isHitObject = TryGetUnderObject(out underObj);
+
+        underTargetMaker.gameObject.SetActive(isHitObject);
+
+        if (isHitObject)
+        {
+            Debug.Log("underObj = " + underObj.transform.gameObject.name);
+            //ページ内に配置されそう
+
+            underTargetMaker.SetPositionAndRotation(underObj.point, Quaternion.identity);
+            if (underObj.transform.gameObject.layer == bookLayer)
+            {
+                //サークルを表示
+            }
+            else
+            {
+                //キャラに持たせようとしている可能性もある
+                Debug.Log("PresentItem");
+            }
+        }
     }
 
     protected override void StopDragging()
@@ -58,6 +99,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     protected virtual void EndOperation()
     {
+        underTargetMaker.gameObject.SetActive(false);
         //直下を調べる
         ray.direction = Vector3.down;
         ray.origin = targetActor.transform.position;
@@ -76,7 +118,6 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             if (hits[i].transform.tag != "Actor") continue;
             //こちらでオーバライドしたEqualsを呼び出している(アイテムを持っている時の対応)
             if (targetActor.Equals(hits[i].transform.gameObject)) continue;
-
             //下にHoloObjectがあった
             actor = hits[i].transform.GetComponent<HoloMovableObject>();
 
@@ -187,5 +228,35 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         //todo:エフェクト（煙？）
         targetActor.m_agent.enabled = true;
         targetActor = null;
+    }
+    
+    /// <summary>
+    /// 掴んでいるオブジェクトの直下のオブジェクトを取得する
+    /// </summary>
+    bool TryGetUnderObject(out RaycastHit hitObj)
+    {
+        //直下を調べる
+        ray.direction = Vector3.down;
+        ray.origin = targetActor.transform.position;
+        float maxDistance = 3.0f;
+        float currentDistance = maxDistance;
+        RaycastHit[] hits = Physics.SphereCastAll(ray, sphereCastRadius, maxDistance, ~ignoreLayerMask);
+        hitObj = new RaycastHit();
+        bool isHit = false;
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            //こちらでオーバライドしたEqualsを呼び出している(アイテムを持っている時の対応)
+            if (targetActor.Equals(hits[i].transform.gameObject)) continue;
+
+            isHit = true;
+            //自身以外に当たった
+            if (hits[i].distance < currentDistance)
+            {
+                hitObj = hits[i];
+            }
+        }
+
+        return isHit;
     }
 }

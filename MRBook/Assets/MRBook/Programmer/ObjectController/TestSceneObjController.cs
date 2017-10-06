@@ -81,12 +81,13 @@ public class TestSceneObjController : MainSceneObjController
         targetActor.transform.position = new Vector3(targetActor.transform.position.x, operationLockHeight, targetActor.transform.position.z);
     }
 
-    void UpdateOperation()
+    protected override void UpdateOperation()
     {
         Vector3 velocity = Vector2ComvertToXZVector(GetMouseVelocity());
         Quaternion cam = mainCamera.transform.rotation;
         velocity = Quaternion.Euler(0.0f, cam.eulerAngles.y, 0.0f) * velocity;
         targetActor.transform.position += velocity * moveSpeed * Time.deltaTime;
+        base.UpdateOperation();
     }
 
     /// <summary>

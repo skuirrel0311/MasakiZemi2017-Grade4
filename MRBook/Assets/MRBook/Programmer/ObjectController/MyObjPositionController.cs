@@ -64,10 +64,7 @@ public class MyObjPositionController : MyInputHandler
     protected override void UpdateDragging()
     {
         draggingTime += Time.deltaTime;
-
-        //短すぎるドラッグは排除
-        if (draggingTime < minDragTime) return;
-
+        
         Vector3 currentHandPosition;
         currentInputSource.TryGetPosition(currentInputSourceID, out currentHandPosition);
         Vector3 headPosition = GetHeadPosition();
@@ -78,9 +75,11 @@ public class MyObjPositionController : MyInputHandler
 
         float currentHandDistance = Vector3.Magnitude(currentHandPosition - headPosition);
         float distanceRatio = currentHandDistance / handDistance;
-
-
+        
         draggingPosition = headPosition + (objDirection * (objDistance * distanceRatio));
+
+        //短すぎるドラッグは排除
+        if (draggingTime < minDragTime) return;
 
         interpolator.SetTargetPosition(draggingPosition + objPositionOffset);
     }
