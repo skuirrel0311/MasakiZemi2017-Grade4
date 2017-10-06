@@ -14,6 +14,7 @@ public class ItemTransformData
 	public string itemName;
 	public Vector3 position;
 	public Quaternion rotation;
+    public MotionName motionName;
 
 	public ItemTransformData(string itemName, Transform transform)
 	{

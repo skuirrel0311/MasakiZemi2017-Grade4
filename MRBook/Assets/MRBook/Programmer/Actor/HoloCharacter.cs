@@ -74,11 +74,15 @@ public class HoloCharacter : HoloMovableObject
             item.currentHand = HoloItem.Hand.Right;
             rightHandItem = item;
         }
-
+        
         item.owner = this;
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
         item.transform.localRotation = itemData.rotation;
+
+        //モーションを変える
+        ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
+        m_animator.CrossFade(MotionNameManager.GetMotionName(itemData.motionName, this), 0.0f);
         
         if(item.name == AlcoholItemName)
         {
