@@ -18,6 +18,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     [SerializeField]
     Transform underTargetMaker = null;
+    [SerializeField]
+    Transform particle = null;
 
     //キャッシュ
     Vector3 downVec = Vector3.down;
@@ -71,14 +73,15 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         bool isHitObject = TryGetUnderObject(out underObj);
 
+        particle.gameObject.SetActive(isHitObject);
         underTargetMaker.gameObject.SetActive(isHitObject);
 
         if (isHitObject)
         {
             Debug.Log("underObj = " + underObj.transform.gameObject.name);
             //ページ内に配置されそう
-
-            underTargetMaker.SetPositionAndRotation(underObj.point, Quaternion.identity);
+            particle.position = targetActor.transform.position;
+            underTargetMaker.position =underObj.point;
             if (underObj.transform.gameObject.layer == bookLayer)
             {
                 //サークルを表示
@@ -99,6 +102,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     protected virtual void EndOperation()
     {
+        particle.gameObject.SetActive(false);
         underTargetMaker.gameObject.SetActive(false);
         //直下を調べる
         ray.direction = Vector3.down;
