@@ -23,6 +23,9 @@ public class GimmickMaker : MyTracableEventHandler
     Vector3 currentPosition;
     Vector3 oldPosition;
 
+    //移動量
+    public Vector3 deltaPosition { get; private set; }
+
     bool isHide = true;
 
     public Action foundMakerEvent;
@@ -35,6 +38,7 @@ public class GimmickMaker : MyTracableEventHandler
         child = transform.GetChild(0);
         //親子関係を切る
         child.parent = null;
+        oldPosition = child.position;
     }
 
     void Update()
@@ -43,7 +47,9 @@ public class GimmickMaker : MyTracableEventHandler
 
         if (!IsVisuable)
         {
+            //見失ったあとでも多少追随する
             float temp = Vector3.Distance(child.position, oldPosition);
+            //ある程度近くになったら終了
             if (temp < 0.05f)
             {
                 isHide = true;
@@ -57,7 +63,8 @@ public class GimmickMaker : MyTracableEventHandler
         float distance = Vector3.Distance(currentPosition, oldPosition);
         
         child.position = Vector3.Lerp(oldPosition, currentPosition, (moveSpeed / distance) * Time.deltaTime);
-        
+
+        deltaPosition = child.position - oldPosition;
         oldPosition = child.position;
     }
 

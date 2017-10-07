@@ -28,10 +28,12 @@ public class ArtBookDoor : ArtBookGimmick
 
         if (arrowSprite.activeSelf != maker.IsVisuable)
         {
-            if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
+            //if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
             arrowSprite.SetActive(maker.IsVisuable);
         }
-
+        Vector3 movement = maker.deltaPosition;
+        Debug.Log("movement" + movement);
+        movement.y = 0.0f;
         transform.position = maker.child.position;
 #endif
 
