@@ -7,7 +7,7 @@ public class ArtBookDoor : ArtBookGimmick
     [SerializeField]
     GameObject arrowSprite = null;
     [SerializeField]
-    float speed = 1.0f;
+    float speed = 0.01f;
 
     protected override void Start()
     {
@@ -16,7 +16,7 @@ public class ArtBookDoor : ArtBookGimmick
 
     protected override void Update()
     {
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.D))
         {
             isHide = !isHide;
@@ -37,7 +37,6 @@ public class ArtBookDoor : ArtBookGimmick
 
         float value = (maker.oldPosition.x * maker.child.position.z) - (maker.child.position.x * maker.oldPosition.z);
         transform.position = transform.right * value * speed;
-        transform.position = maker.child.position;
 #endif
 
     }
