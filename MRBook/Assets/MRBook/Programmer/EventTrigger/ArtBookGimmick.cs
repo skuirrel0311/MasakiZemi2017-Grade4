@@ -9,7 +9,7 @@ public class ArtBookGimmick : MyEventTrigger
     protected bool isHide = false;
 
     //面法線
-    Vector3 normalVec;
+    protected Vector3 normalVec;
 
     [SerializeField]
     protected GimmickMaker maker = null;

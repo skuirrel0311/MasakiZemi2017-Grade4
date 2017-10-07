@@ -21,10 +21,7 @@ public class GimmickMaker : MyTracableEventHandler
     public Transform child { get; private set; }
 
     Vector3 currentPosition;
-    Vector3 oldPosition;
-
-    //移動量
-    public Vector3 deltaPosition { get; private set; }
+    public Vector3 oldPosition { get; private set; }
 
     bool isHide = true;
 
@@ -64,7 +61,6 @@ public class GimmickMaker : MyTracableEventHandler
         
         child.position = Vector3.Lerp(oldPosition, currentPosition, (moveSpeed / distance) * Time.deltaTime);
 
-        deltaPosition = child.position - oldPosition;
         oldPosition = child.position;
     }
 
