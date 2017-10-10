@@ -10,7 +10,7 @@ public class GetCurrentSelectObject : Editor
 	[MenuItem("Mytools/CreateItemTransformDataAsset")]
 	static void DrawText()
 	{
-		ItemTransformDataList asset = ScriptableObject.CreateInstance<ItemTransformDataList> ();
+		ItemTransformDataList asset = CreateInstance<ItemTransformDataList> ();
 
 		if (Selection.gameObjects.Length == 0) return;
 
@@ -25,6 +25,7 @@ public class GetCurrentSelectObject : Editor
 		//そもそも同じファイルが存在するのかをチェックする
 		ItemTransformDataList original;
 		string filePath = "Assets/MRBook/Resources/Data/" + transform.root.name +  transform.name +".asset";
+        
 
 		//同じファイルは存在しなかった
 		if (!TryGetOriginalFile (transform.root.name + transform.name, out original)) 
@@ -37,8 +38,10 @@ public class GetCurrentSelectObject : Editor
 		//同じファイルが見つかった
 		if (EditorUtility.DisplayDialog ("override", transform.name + ".assetを上書きしますか？", "上書きする", "中止")) 
 		{
-			//データのみ差し替え
-			original.dataList = asset.dataList;
+            //データの差し替え
+            AssetDatabase.DeleteAsset(filePath);
+            AssetDatabase.CreateAsset(asset, filePath);
+            AssetDatabase.SaveAssets();
 		}
 	}
 
