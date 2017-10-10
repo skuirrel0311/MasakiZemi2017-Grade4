@@ -23,9 +23,11 @@ public enum ActorName
 public class ActorManager : Singleton<ActorManager>
 {
     MainSceneManager sceneManager;
-    [SerializeField]
     BasePage currentPage;
-    
+
+    //動かせるオブジェクトの上に表示する三角のやつ
+    public GameObject trianglePrefab = null;
+
     //ページの外に置かれたオブジェクト
     Dictionary<string, HoloObject> globalObjectDictionary = new Dictionary<string, HoloObject>();
 
@@ -50,6 +52,8 @@ public class ActorManager : Singleton<ActorManager>
         if (this.sceneManager != null) return;
         this.sceneManager = sceneManager;
         this.sceneManager.OnPageChanged += OnPageChanged;
+
+        trianglePrefab = MyAssetStore.I.GetAsset<GameObject>("triangle", "Prefabs/");
     }
 
     /// <summary>

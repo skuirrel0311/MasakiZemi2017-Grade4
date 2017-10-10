@@ -6,7 +6,7 @@ using HoloToolkit.Unity.InputModule;
 /// 動かすことのできるホログラム
 /// </summary>
 [RequireComponent(typeof(BoxCollider))]  //BoundingBoxの形状を決めるために必須(トリガーも可)
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent))] //落とすために必須
 public class HoloMovableObject : HoloObject, IInputClickHandler
 {
     public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }
@@ -109,6 +109,11 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     void ActivateControl()
     {
         //操作できるようにする
+        GameObject triangle = Instantiate(ActorManager.I.trianglePrefab, transform);
+        triangle.transform.localPosition = Vector3.up * m_collider.size.y * 1.0f;
+        float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
+        scale = Mathf.Clamp(scale, 0.02f, 0.08f);
+        triangle.transform.localScale = Vector3.one * scale * (1.0f / transform.lossyScale.x);
         Debug.Log(gameObject.name + "は操作可能だ");
     }
 

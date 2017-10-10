@@ -9,13 +9,13 @@ public class ArtBookDoor : ArtBookGimmick
     [SerializeField]
     float speed = 0.01f;
 
-    Transform mainCameraTransform;
+    Vector3 cameraPosition;
     Vector3 oldPosition;
 
     protected override void Start()
     {
-        mainCameraTransform = Camera.main.transform;
-        oldPosition = (maker.child.position - mainCameraTransform.position).normalized;
+        cameraPosition = transform.position + transform.up;
+        oldPosition = (maker.child.position - cameraPosition).normalized;
         base.Start();
     }
 
@@ -39,10 +39,13 @@ public class ArtBookDoor : ArtBookGimmick
             //if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
             arrowSprite.SetActive(maker.IsVisuable);
         }
-        Vector3 currentPosition = (maker.child.position - mainCameraTransform.position).normalized;
-        float value = (oldPosition.x * currentPosition.z) - (currentPosition.x * oldPosition.z);
-        transform.position += transform.right * value * speed;
-        oldPosition = currentPosition;
+
+        if(maker.IsVisuable){
+            Vector3 currentPosition = (maker.child.position - cameraPosition).normalized;
+            float value = (oldPosition.x * currentPosition.z) - (currentPosition.x * oldPosition.z);
+            transform.position += transform.right * value * speed;
+            oldPosition = currentPosition;
+        }
 #endif
 
     }
