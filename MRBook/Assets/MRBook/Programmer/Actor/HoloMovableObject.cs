@@ -71,6 +71,11 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         }
     }
 
+    public override void PlayPage()
+    {
+        triangle.SetActive(false);
+    }
+
     /// <summary>
     /// ページが初めて開かれた時の場所に戻す
     /// </summary>
@@ -84,6 +89,11 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         if(m_animator != null)
         {
             m_animator.CrossFade(firstAnimationName, 0.1f);
+        }
+
+        if(isMovable)
+        {
+            triangle.SetActive(true);
         }
 
         //ほかのページに持っていけるオブジェクトの場合はグローバルになっている可能性がある
@@ -106,7 +116,11 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
 
     void ActivateControl()
     {
-        //操作できるようにする
+        if(triangle != null)
+        {
+            triangle.SetActive(true);
+            return;
+        }
         triangle = Instantiate(ActorManager.I.trianglePrefab, transform);
         triangle.transform.localPosition = Vector3.up * m_collider.size.y * 1.0f;
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;

@@ -173,8 +173,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             //誰かに所有されていたら
             if (item.owner != null)
             {
+                Debug.Log("call dump item");
                 item.owner.DumpItem(item.currentHand, false);
-                item.owner = null;
             }
         }
 

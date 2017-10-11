@@ -15,15 +15,9 @@ public class HoloObject : MonoBehaviour
     /// ページが開かれた
     /// </summary>
     /// <param name="isFirst">そのページを開くのが初めてか？</param>
-    public virtual void PageStart(int currentPageIndex, bool isFirst = true)
-    {
-        SetGrayScaleShader();
-    }
+    public virtual void PageStart(int currentPageIndex, bool isFirst = true) { }
 
-    public virtual void PlayPage()
-    {
-        ResetShader();
-    }
+    public virtual void PlayPage() { }
 
     /// <summary>
     /// 動かすことのできないオブジェクトは灰色にする
@@ -54,8 +48,7 @@ public class HoloObject : MonoBehaviour
     /// </summary>
     public virtual void ResetTransform()
     {
-        SetGrayScaleShader();
-        gameObject.SetActive(true);
+        if(!gameObject.activeSelf) gameObject.SetActive(true);
     }
     
     /// <summary>

@@ -82,12 +82,13 @@ public class HoloCharacter : HoloMovableObject
 
         //モーションを変える
         ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
-        m_animator.CrossFade(MotionNameManager.GetMotionName(itemData.motionName, this), 0.0f);
         
         if(item.name == AlcoholItemName)
         {
             IsGetAlcohol = true;
         }
+
+        m_animator.CrossFade(MotionNameManager.GetMotionName(itemData.motionName, this), 0.0f);
     }
 
     /// <summary>
@@ -117,15 +118,13 @@ public class HoloCharacter : HoloMovableObject
             oldItem = leftHand.GetComponentInChildren<HoloItem>();
         }
 
-        if (!setDefault) return;
-
         if (oldItem == null) return;
         
         oldItem.owner = null;
         //todo:parentをnullにするのはダメ
         oldItem.transform.parent = null;
         //todo:グローバルの場所に戻る可能性も考えるべき
-        oldItem.ResetTransform();
+        if(setDefault) oldItem.ResetTransform();
 
         if (oldItem.name == AlcoholItemName)
         {

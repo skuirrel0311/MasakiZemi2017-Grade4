@@ -52,71 +52,24 @@ public class BasePage : MonoBehaviour
     public void PageStart(bool isFirst)
     {
         Debug.Log("is first = " + isFirst + " page index = " + pageIndex);
-        if (!isFirst)
+        
+        if (isFirst)
         {
-            for (int i = 0; i < objectList.Count; i++)
-            {
-                objectList[i].PageStart(pageIndex, false);
-            }
-            return;
-        }
+            //初回のみ行う設定
+            ImportHoloObject();
+            ImportTargetPoint();
 
-        //初回のみリストに格納する
-        GameObject[] tempArray;
-
-        tempArray = GameObject.FindGameObjectsWithTag("Actor");
-        for (int i = 0; i < tempArray.Length; i++)
-        {
-            HoloObject actor = tempArray[i].GetComponent<HoloObject>();
-            if (actor == null)
+            //絵本のメッシュに適用されているマテリアルを強制的に変更する
+            Material visibleMat = MainSceneManager.I.visibleMat;
+            for (int i = 0; i < bookObjects.Length; i++)
             {
-                Debug.LogWarning(tempArray[i].name + "is not actor");
-                continue;
+                bookObjects[i].GetComponent<Renderer>().material = visibleMat;
             }
-
-            Debug.Log("add actor " + actor.name);
-            objectList.Add(actor);
-
-            try
-            {
-                objectDictionary.Add(actor.name, actor);
-            }
-            catch
-            {
-                //同名のオブジェクトを追加しようとした
-                Debug.LogError(actor.name + "was not import actor ");
-                continue;
-            }
-            if (actor.GetActorType != HoloObject.HoloObjectType.Statics)
-            {
-                movableObjectList.Add((HoloMovableObject)actor);
-                movableObjectDictionary.Add(actor.name, (HoloMovableObject)actor);
-            }
-        }
-
-        tempArray = GameObject.FindGameObjectsWithTag("Target");
-        for (int i = 0; i < tempArray.Length; i++)
-        {
-            Debug.Log("add target point " + tempArray[i].name);
-            try
-            {
-                targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
-            }
-            catch
-            {
-                Debug.LogError(tempArray[i].name + "was not import target point ");
-                continue;
-            }
-        }
-        Material visibleMat = MainSceneManager.I.visibleMat;
-        for (int i = 0; i < bookObjects.Length; i++)
-        {
-            bookObjects[i].GetComponent<Renderer>().material = visibleMat;
         }
 
         for (int i = 0; i < objectList.Count; i++)
         {
-            objectList[i].PageStart(pageIndex, true);
+            objectList[i].PageStart(pageIndex, isFirst);
         }
     }
 
@@ -144,8 +97,8 @@ public class BasePage : MonoBehaviour
             }
             catch
             {
-                //同名のKeyだと格納できない
-                Debug.LogError(holoObject.name + "was not import object dictionary");
+                //同名のKeyだと格納できない(Destroyとかの処理をする場合は固有の名前にしなければならない)
+                Debug.LogWarning(holoObject.name + "was not import object dictionary");
                 continue;
             }
 
@@ -160,7 +113,28 @@ public class BasePage : MonoBehaviour
             }
             catch
             {
+                //動かすオブジェクトは必ず固有の名前にするべきなのでErrorを出す
                 Debug.LogError(holoObject.name + "was not import movable dictionary");
+                continue;
+            }
+        }
+    }
+    //ページに存在するTargetタグのオブジェクトをDictionaryに格納する
+    void ImportTargetPoint()
+    {
+        GameObject[] tempArray;
+
+        tempArray = GameObject.FindGameObjectsWithTag("Target");
+        for (int i = 0; i < tempArray.Length; i++)
+        {
+            Debug.Log("add target point " + tempArray[i].name);
+            try
+            {
+                targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
+            }
+            catch
+            {
+                Debug.LogError(tempArray[i].name + "was not import target point ");
                 continue;
             }
         }
