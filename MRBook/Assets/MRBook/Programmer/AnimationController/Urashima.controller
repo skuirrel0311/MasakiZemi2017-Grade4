@@ -27,6 +27,27 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1101 &1101053314015647972
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102152959361085092}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.40250516
+  m_TransitionOffset: 0.014295918
+  m_ExitTime: 0.33093917
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101081089812282196
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -64,6 +85,27 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.82758623
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101177648727865994
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102129340573517422}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.33583856
+  m_TransitionOffset: 0
+  m_ExitTime: 0.36370355
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -345,6 +387,29 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102129340573517422
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Wait_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 2b83d77ab2b81c04cb7ea3106c42967b, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102132643278524662
 AnimatorState:
   serializedVersion: 5
@@ -364,6 +429,29 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: ec2c4a01dc7a7b544a74c411200a22e6, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1102 &1102152959361085092
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Wait_Fishingrod_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: e24bbfc84c095ff458068aface6e8d3e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -492,7 +580,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sitting_Sakabin
+  m_Name: Sit_Sakabin
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -555,13 +643,37 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102405683553191558
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Stand_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101177648727865994}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7134ef05bb402f34681488d0778b4d60, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102446474425856112
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: GetDrunk_Sit_Fishingrod_Sakabin
+  m_Name: GetDrunk_Drink_Fishingrod_Sakabin
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -585,7 +697,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sitting_Fishingrod
+  m_Name: Sit_Fishingrod
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -621,6 +733,30 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: b648aae301004d0499fd68b48bf5d29b, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1102 &1102536838543642900
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Stand_Fishingrod_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101053314015647972}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7134ef05bb402f34681488d0778b4d60, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -743,6 +879,29 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102595569486728476
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Walk_Fishingrod_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7693bf55e4217e14796699acbce0e2ee, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102604513142608752
 AnimatorState:
   serializedVersion: 5
@@ -818,7 +977,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: GetDrunk_Sit_Sakabin
+  m_Name: StandSit_Sakabin
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -836,13 +995,36 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102703270419963338
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Talk_Fishingrod_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: d1efd736f93d28e42b8cc6587591a9a3, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102704966564837318
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sit_Fishingrod
+  m_Name: StandSit_Fishingrod
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -866,7 +1048,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sitting_Fishingrod_Sakabin
+  m_Name: Sit_Fishingrod_Sakabin
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -953,13 +1135,36 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102862699132118088
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Talk_Sakabin
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 86d969dedc46c5f48acf4d99f93d2a65, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102940001748593018
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sit_Fishingrod_Sakabin
+  m_Name: StandSit_Fishingrod_Sakabin
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1010,7 +1215,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102249263532475714}
-    m_Position: {x: -72, y: 708, z: 0}
+    m_Position: {x: -72, y: 732, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102796850265800662}
     m_Position: {x: -360, y: 516, z: 0}
@@ -1034,7 +1239,7 @@ AnimatorStateMachine:
     m_Position: {x: 396, y: 816, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102579132101872432}
-    m_Position: {x: -72, y: 456, z: 0}
+    m_Position: {x: -72, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102514435585016742}
     m_Position: {x: -72, y: 648, z: 0}
@@ -1049,10 +1254,10 @@ AnimatorStateMachine:
     m_Position: {x: 396, y: 564, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102809549787215220}
-    m_Position: {x: -72, y: 516, z: 0}
+    m_Position: {x: -72, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102382717879368464}
-    m_Position: {x: -72, y: 768, z: 0}
+    m_Position: {x: -72, y: 792, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102704966564837318}
     m_Position: {x: 168, y: 564, z: 0}
@@ -1079,16 +1284,37 @@ AnimatorStateMachine:
     m_Position: {x: 168, y: 888, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102178577455305546}
-    m_Position: {x: -72, y: 576, z: 0}
+    m_Position: {x: -72, y: 468, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102446474425856112}
-    m_Position: {x: 624, y: 732, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102940001748593018}
     m_Position: {x: 840, y: 732, z: 0}
   - serializedVersion: 1
+    m_State: {fileID: 1102940001748593018}
+    m_Position: {x: 624, y: 732, z: 0}
+  - serializedVersion: 1
     m_State: {fileID: 1102946743451120350}
-    m_Position: {x: -72, y: 828, z: 0}
+    m_Position: {x: -72, y: 852, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102129340573517422}
+    m_Position: {x: 168, y: 948, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102595569486728476}
+    m_Position: {x: -72, y: 912, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102405683553191558}
+    m_Position: {x: 168, y: 1008, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102152959361085092}
+    m_Position: {x: 396, y: 948, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102536838543642900}
+    m_Position: {x: 396, y: 1008, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102862699132118088}
+    m_Position: {x: -72, y: 516, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102703270419963338}
+    m_Position: {x: -72, y: 564, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
