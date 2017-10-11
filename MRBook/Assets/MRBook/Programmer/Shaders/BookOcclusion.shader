@@ -25,7 +25,7 @@ Shader "Custom/BookOcclusion"
 #pragma fragment frag
 
 		// We only target the HoloLens (and the Unity editor), so take advantage of shader model 5.
-#pragma target 5.0
+//#pragma target 5.0
 #pragma only_renderers d3d11
 
 #include "UnityCG.cginc"

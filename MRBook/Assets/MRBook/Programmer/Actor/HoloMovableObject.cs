@@ -42,6 +42,8 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
 
     public string firstAnimationName = "Wait";
 
+    protected GameObject triangle;
+
     protected virtual void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
@@ -66,10 +68,6 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         if (isMovable)
         {
             ActivateControl();
-        }
-        else
-        {
-            SetGrayScaleShader();
         }
     }
 
@@ -109,7 +107,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     void ActivateControl()
     {
         //操作できるようにする
-        GameObject triangle = Instantiate(ActorManager.I.trianglePrefab, transform);
+        triangle = Instantiate(ActorManager.I.trianglePrefab, transform);
         triangle.transform.localPosition = Vector3.up * m_collider.size.y * 1.0f;
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
         scale = Mathf.Clamp(scale, 0.02f, 0.08f);

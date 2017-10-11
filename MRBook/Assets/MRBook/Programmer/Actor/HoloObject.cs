@@ -20,6 +20,11 @@ public class HoloObject : MonoBehaviour
         SetGrayScaleShader();
     }
 
+    public virtual void PlayPage()
+    {
+        ResetShader();
+    }
+
     /// <summary>
     /// 動かすことのできないオブジェクトは灰色にする
     /// </summary>
@@ -49,7 +54,7 @@ public class HoloObject : MonoBehaviour
     /// </summary>
     public virtual void ResetTransform()
     {
-        if (GetActorType == HoloObjectType.Statics) SetGrayScaleShader();
+        SetGrayScaleShader();
         gameObject.SetActive(true);
     }
     

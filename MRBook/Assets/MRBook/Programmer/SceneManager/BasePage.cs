@@ -56,7 +56,7 @@ public class BasePage : MonoBehaviour
         {
             for (int i = 0; i < objectList.Count; i++)
             {
-                objectList[i].PageStart(pageIndex, true);
+                objectList[i].PageStart(pageIndex, false);
             }
             return;
         }
@@ -70,7 +70,7 @@ public class BasePage : MonoBehaviour
             HoloObject actor = tempArray[i].GetComponent<HoloObject>();
             if (actor == null)
             {
-                Debug.Log(tempArray[i].name + "is not actor");
+                Debug.LogWarning(tempArray[i].name + "is not actor");
                 continue;
             }
 
@@ -84,6 +84,7 @@ public class BasePage : MonoBehaviour
             catch
             {
                 //同名のオブジェクトを追加しようとした
+                Debug.LogError(actor.name + "was not import actor ");
                 continue;
             }
             if (actor.GetActorType != HoloObject.HoloObjectType.Statics)
@@ -97,7 +98,15 @@ public class BasePage : MonoBehaviour
         for (int i = 0; i < tempArray.Length; i++)
         {
             Debug.Log("add target point " + tempArray[i].name);
-            targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
+            try
+            {
+                targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
+            }
+            catch
+            {
+                Debug.LogError(tempArray[i].name + "was not import target point ");
+                continue;
+            }
         }
         Material visibleMat = MainSceneManager.I.visibleMat;
         for (int i = 0; i < bookObjects.Length; i++)
@@ -111,11 +120,57 @@ public class BasePage : MonoBehaviour
         }
     }
 
+    //ページに存在するActorタグのオブジェクトをDictionaryとListに格納する
+    void ImportHoloObject()
+    {
+        GameObject[] tempArray;
+
+        tempArray = GameObject.FindGameObjectsWithTag("Actor");
+        for (int i = 0; i < tempArray.Length; i++)
+        {
+            HoloObject holoObject = tempArray[i].GetComponent<HoloObject>();
+            if (holoObject == null)
+            {
+                Debug.LogWarning(tempArray[i].name + "is not actor");
+                continue;
+            }
+
+            Debug.Log("add actor " + holoObject.name);
+            objectList.Add(holoObject);
+
+            try
+            {
+                objectDictionary.Add(holoObject.name, holoObject);
+            }
+            catch
+            {
+                //同名のKeyだと格納できない
+                Debug.LogError(holoObject.name + "was not import object dictionary");
+                continue;
+            }
+
+            if (holoObject.GetActorType == HoloObject.HoloObjectType.Statics) continue;
+
+            //動かせるオブジェクト
+            movableObjectList.Add((HoloMovableObject)holoObject);
+
+            try
+            {
+                movableObjectDictionary.Add(holoObject.name, (HoloMovableObject)holoObject);
+            }
+            catch
+            {
+                Debug.LogError(holoObject.name + "was not import movable dictionary");
+                continue;
+            }
+        }
+    }
+
     public void PlayPage()
     {
         for (int i = 0; i < objectList.Count; i++)
         {
-            objectList[i].ResetShader();
+            objectList[i].PlayPage();
         }
     }
 

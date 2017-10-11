@@ -5,15 +5,11 @@ using UnityEngine.AI;
 
 public class TestObject : MonoBehaviour
 {
-    NavMeshAgent agent;
+    [SerializeField]
+    BoxCollider box = null;
 
-    public GameObject obj;
-
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            obj.transform.Translate(Vector3.right * 3);
-        }
+        Debug.Log("(" + box.size.x + "," + box.size.y + "," + box.size.z + ")");
     }
 }
