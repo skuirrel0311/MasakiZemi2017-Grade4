@@ -13,30 +13,27 @@ public class CircleRotationController : MonoBehaviour {
 
     Transform m_transform;
     Vector3 rot;
-
-    void Awake()
+    float t;
+    
+    void Start()
     {
         m_transform = transform;
         rot = Vector3.zero;
+        t = 0.0f;
     }
 
-    void Start()
+    void Update()
     {
-        StartCoroutine(Rotation());
-    }
+        t += Time.deltaTime;
 
-    IEnumerator Rotation()
-    {
-        while(true)
+        if (t < interval) return;
+
+        t = 0.0f;
+        rot.y += rotVal;
+        if (rot.y >= 360.0f)
         {
-            rot.y += rotVal;
-            if (rot.y >= 360.0f)
-            {
-                rot.y = 0.0f;
-            }
-            m_transform.rotation = Quaternion.Euler(rot);
-
-            yield return new WaitForSeconds(interval);
+            rot.y = 0.0f;
         }
+        m_transform.rotation = Quaternion.Euler(rot);
     }
 }

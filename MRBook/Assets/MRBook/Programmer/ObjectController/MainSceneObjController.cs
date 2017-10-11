@@ -185,7 +185,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         isHoldItem = false;
         //バウンディングボックスは消す
         Disable();
-        StartCoroutine(CheckUnderNavMesh());
+        //床に落とす
+        if(!targetActor.isFloating) StartCoroutine(CheckUnderNavMesh());
     }
 
     //渡されたオブジェクトに合わせてバウンディングボックスを表示し、操作できるようにする
@@ -213,23 +214,24 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         {
             if (targetActor == null || targetActor.m_agent == null)
             {
-                Debug.Log("un checked");
+                Debug.Log("don't nav checked");
                 break;
             }
             //0.1ずつ下を探す
             targetActor.transform.position += Vector3.down * 0.1f;
 
+            //todo : 絵本よりも下に行った場合はやばいのでなにか対応が必要
+
             if (NavMesh.SamplePosition(targetActor.transform.position, out hit, targetActor.m_agent.height, NavMesh.AllAreas))
             {
-                Debug.Log("checked");
+                Debug.Log("nav checked");
                 break;
             }
 
             yield return null;
         }
 
-        Debug.Log("end checked");
-        //todo:エフェクト（煙？）
+        Debug.Log("end nav checked");
         targetActor.m_agent.enabled = true;
         targetActor = null;
     }

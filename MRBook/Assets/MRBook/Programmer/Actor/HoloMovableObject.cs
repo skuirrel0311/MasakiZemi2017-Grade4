@@ -25,6 +25,10 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     /// 別のページに持っていけるか
     /// </summary>
     public bool isBring = false;
+    /// <summary>
+    /// 離した時に浮いているか？
+    /// </summary>
+    public bool isFloating = false;
 
     /// <summary>
     /// そのオブジェクトが存在する（元の）ページのインデックス

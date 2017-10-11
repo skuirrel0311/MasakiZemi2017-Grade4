@@ -17,17 +17,20 @@ public class OffsetController : BaseManager<OffsetController>
 
     Vector3 zeroVec = Vector3.zero;
     
-    /// <summary>
-    /// TitleSceneではBookPositionControllerの子のやつ。MainSceneではWorldAnchorの子のやつ。
-    /// </summary>
-    [SerializeField]
     Transform bookTransform = null;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        bookTransform = BookPositionModifier.I.bookTransform;
+    }
 
     //別にWorldAnchorの位置を操作するわけではない
     public void MoveBook(int direction)
     {
         Vector3 moveVec = GetMoveVec(direction);
-
+        
         bookTransform.position += moveVec;
         BookPositionModifier.I.ModifyBookPosition(false);
     }

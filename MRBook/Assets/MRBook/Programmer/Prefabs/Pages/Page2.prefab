@@ -687,6 +687,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1313707071578140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4264567205534872}
+  - component: {fileID: 23963656801220794}
+  - component: {fileID: 114004893815510964}
+  - component: {fileID: 114275100306991078}
+  - component: {fileID: 33442030744774166}
+  - component: {fileID: 114108869038733006}
+  - component: {fileID: 114004489626354734}
+  m_Layer: 0
+  m_Name: DoorMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1314680286710162
 GameObject:
   m_ObjectHideFlags: 1
@@ -1412,6 +1433,21 @@ GameObject:
   - component: {fileID: 23000283166778118}
   m_Layer: 8
   m_Name: sao1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1567440511889460
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4610507517261136}
+  m_Layer: 0
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3158,6 +3194,20 @@ Transform:
   m_Father: {fileID: 4097863310661546}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 96.129005, z: 0}
+--- !u!4 &4264567205534872
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15322581, y: 0.15322581, z: 0.15322581}
+  m_Children:
+  - {fileID: 4610507517261136}
+  m_Father: {fileID: 4625159049393850}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4271820924464372
 Transform:
   m_ObjectHideFlags: 1
@@ -3756,6 +3806,19 @@ Transform:
   m_Father: {fileID: 4807383221489878}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -48.675003, z: 0}
+--- !u!4 &4610507517261136
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1567440511889460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4264567205534872}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4615862567301124
 Transform:
   m_ObjectHideFlags: 1
@@ -3820,6 +3883,7 @@ Transform:
   - {fileID: 4513841316946916}
   - {fileID: 4780977212809032}
   - {fileID: 4097863310661546}
+  - {fileID: 4264567205534872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3845,7 +3909,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572797954723488}
   m_LocalRotation: {x: -0, y: 0.92387956, z: -0, w: -0.38268343}
-  m_LocalPosition: {x: -0.034, y: 0.3681, z: -0.01}
+  m_LocalPosition: {x: 0.505, y: 0.3681, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4020298814889670}
@@ -3868,8 +3932,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488786261927110}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.0111, y: 0, z: -0.0077}
+  m_LocalRotation: {x: 0, y: -0.42261827, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 0.0235, y: 0, z: -0.1259}
   m_LocalScale: {x: 0.20000006, y: 0.2, z: 0.20000006}
   m_Children:
   - {fileID: 4450245382048004}
@@ -3878,7 +3942,7 @@ Transform:
   - {fileID: 4898965394579708}
   m_Father: {fileID: 4625159049393850}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -50, z: 0}
 --- !u!4 &4658711695978382
 Transform:
   m_ObjectHideFlags: 1
@@ -6116,7 +6180,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0fa81c2c2db3a3940b42471a2841f018, type: 2}
+  - {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6309,6 +6373,38 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ed5d9ab539cc8cf4c8ae627bafdcdc2c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23963656801220794
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6530,6 +6626,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1134914783280966}
   m_Mesh: {fileID: 4300000, guid: 77d86001f51f7674f9d0ffef6e53921d, type: 3}
+--- !u!33 &33442030744774166
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_Mesh: {fileID: 0}
 --- !u!33 &33445460408892046
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -7221,6 +7324,46 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114004489626354734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb220985160357247b90130e16ec8e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100
+--- !u!114 &114004893815510964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTrackableName: Door
+  mPreserveChildSize: 0
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/HololensFirstProject.xml
+  mExtendedTracking: 0
+  mInitializeSmartTerrain: 0
+  mReconstructionToInitialize: {fileID: 0}
+  mSmartTerrainOccluderBoundsMin: {x: 0, y: 0, z: 0}
+  mSmartTerrainOccluderBoundsMax: {x: 0, y: 0, z: 0}
+  mIsSmartTerrainOccluderOffset: 0
+  mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
+  mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
+  mAutoSetOccluderFromTargetSize: 0
+  mAspectRatio: 0.6526316
+  mImageTargetType: 0
+  mWidth: 0.15322581
+  mHeight: 0.1
 --- !u!114 &114011538911121234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7256,6 +7399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   isBring: 1
+  isFloating: 1
   firstAnimationName: Wait
 --- !u!114 &114054997742663814
 MonoBehaviour:
@@ -7288,6 +7432,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eb6ed755a166734ebeebd3d61062df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114108869038733006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a917f0af64a6423093132dab321c15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114112967735564030
@@ -7374,6 +7529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: UrashimaIsSeeTurtle
   eye: {fileID: 4830510903459218}
+  ownerName: 0
   targetObject: {fileID: 1405804417402064}
   ignoreLayerMask:
     serializedVersion: 2
@@ -7411,6 +7567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   isBring: 0
+  isFloating: 0
   firstAnimationName: Lie
   rightHand: {fileID: 4594715610580610}
   leftHand: {fileID: 4617312846791204}
@@ -7441,6 +7598,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerName: Fire
+--- !u!114 &114275100306991078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313707071578140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e246bd21db86f8346bc66895a661fcc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114318555508260660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7576,6 +7744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: TurtleIsSeeUrashima
   eye: {fileID: 4603655350835708}
+  ownerName: 0
   targetObject: {fileID: 1488786261927110}
   ignoreLayerMask:
     serializedVersion: 2
@@ -7621,9 +7790,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagName: DoorIsOpen
-  maker: {fileID: 0}
+  maker: {fileID: 114004489626354734}
   original: {fileID: 114107344141228422}
   arrowSprite: {fileID: 1653924831512826}
+  speed: 0.01
 --- !u!114 &114611499229533816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7770,6 +7940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   isBring: 1
+  isFloating: 0
   firstAnimationName: Wait
   hand: 1
 --- !u!114 &114796491002826536
@@ -7820,6 +7991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   isBring: 0
+  isFloating: 0
   firstAnimationName: Wait
   hand: 0
 --- !u!114 &114911192089471236
@@ -7934,6 +8106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 0
   isBring: 0
+  isFloating: 0
   firstAnimationName: Wait
 --- !u!114 &114979257511939044
 MonoBehaviour:
