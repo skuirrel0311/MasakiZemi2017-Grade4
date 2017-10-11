@@ -78,7 +78,6 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
         Vector3 targetPosition = targetObj.transform.position;
         targetPosition.y = 0.0f;
         actor.m_agent.stoppingDistance = 0.01f;
-        actor.m_agent.speed = 0.1f;
         actor.m_agent.SetDestination(targetPosition);
     }
 }
