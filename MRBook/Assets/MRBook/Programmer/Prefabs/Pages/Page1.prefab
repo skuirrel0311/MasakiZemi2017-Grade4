@@ -543,7 +543,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4805429437056758}
   - component: {fileID: 33765830226940002}
-  - component: {fileID: 65813013725616824}
   - component: {fileID: 23335698467259592}
   m_Layer: 2
   m_Name: Cube
@@ -609,7 +608,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4699855517632124}
   - component: {fileID: 33323461791233746}
-  - component: {fileID: 65726915131633732}
   - component: {fileID: 23683569175237426}
   m_Layer: 2
   m_Name: Cube
@@ -711,6 +709,7 @@ GameObject:
   - component: {fileID: 33870094811820828}
   - component: {fileID: 23199455407646834}
   - component: {fileID: 114303514932315888}
+  - component: {fileID: 65190259648216940}
   m_Layer: 2
   m_Name: Child_C
   m_TagString: Actor
@@ -744,6 +743,7 @@ GameObject:
   - component: {fileID: 33404125204691728}
   - component: {fileID: 23877831704277222}
   - component: {fileID: 114523658258210426}
+  - component: {fileID: 65224447519081632}
   m_Layer: 2
   m_Name: Child_A
   m_TagString: Actor
@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 33958550206320218}
   - component: {fileID: 23903989428475132}
   - component: {fileID: 114235879893105280}
+  - component: {fileID: 65281483983531036}
   m_Layer: 2
   m_Name: Child_B
   m_TagString: Actor
@@ -808,7 +809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4857356495130322}
   - component: {fileID: 33435259783597836}
-  - component: {fileID: 65422696106290808}
   - component: {fileID: 23017823594936316}
   m_Layer: 2
   m_Name: Cube
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 54872854657053676}
   - component: {fileID: 114816246451474708}
   - component: {fileID: 114880709960549540}
-  - component: {fileID: 114121812439851654}
+  - component: {fileID: 114770130978512092}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -2539,6 +2539,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65190259648216940
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642633172637790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65224447519081632
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678458655519336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65281483983531036
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698272046730764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 2, z: 1.0000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65282979513064936
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2551,18 +2587,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!65 &65422696106290808
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1698400880621412}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65468659207115842
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2575,30 +2599,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!65 &65726915131633732
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559474115250064}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65813013725616824
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492856019384488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95398367873112572
 Animator:
   serializedVersion: 3
@@ -2650,18 +2650,6 @@ MonoBehaviour:
   - {fileID: 1315988204977866}
   objectList: []
   movableObjectList: []
---- !u!114 &114121812439851654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838534642784304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aedc4cf60a9c8649820a6c4271a544c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerName: Sea
 --- !u!114 &114209685429119590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2713,6 +2701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: UrashimaIsSeeTurtle
   eye: {fileID: 4983231095214776}
+  ownerName: 0
   targetObject: {fileID: 1883419340261078}
   ignoreLayerMask:
     serializedVersion: 2
@@ -2741,6 +2730,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   isBring: 0
+  isFloating: 0
+  firstAnimationName: Wait
 --- !u!114 &114491075788582938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2790,6 +2781,30 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   targetObject: {fileID: 1422982435717418}
+--- !u!114 &114770130978512092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838534642784304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66dbf00f7ffc074db82c01364c482a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: a5c659136599e24bbc453fbaf0420150
+  eventID: 376462290
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
 --- !u!114 &114816246451474708
 MonoBehaviour:
   m_ObjectHideFlags: 1

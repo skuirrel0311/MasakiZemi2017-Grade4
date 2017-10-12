@@ -878,7 +878,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4229597236742642}
   - component: {fileID: 54501476279215780}
-  - component: {fileID: 114247207890016332}
+  - component: {fileID: 114905258663014336}
+  - component: {fileID: 114821584679715046}
   m_Layer: 0
   m_Name: Eff_Fire
   m_TagString: Untagged
@@ -944,7 +945,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4513841316946916}
   - component: {fileID: 54407148035679502}
-  - component: {fileID: 114510678437903532}
+  - component: {fileID: 114671068461729590}
+  - component: {fileID: 114647854198908912}
   m_Layer: 0
   m_Name: SuzumeSE
   m_TagString: Untagged
@@ -7615,18 +7617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114247207890016332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356245135463830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aedc4cf60a9c8649820a6c4271a544c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerName: Fire
 --- !u!114 &114275100306991078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7737,18 +7727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114510678437903532
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388144918040378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aedc4cf60a9c8649820a6c4271a544c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerName: Birds
 --- !u!114 &114539220278235430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7834,6 +7812,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114647854198908912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388144918040378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66dbf00f7ffc074db82c01364c482a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 51385be811df8547a079d7b45b172234
+  eventID: 352130103
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
 --- !u!114 &114668449900177408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7845,6 +7847,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114671068461729590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388144918040378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7bd2fcd40bd3e44904e126e92fc4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_listeners:
+    initialListenerList: []
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!114 &114719011920662210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7983,6 +8005,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114821584679715046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356245135463830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66dbf00f7ffc074db82c01364c482a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 03babd2f01a69a4783969833cf1c8b25
+  eventID: -1616086583
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
 --- !u!114 &114835162039549814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8023,6 +8069,26 @@ MonoBehaviour:
   isFloating: 0
   firstAnimationName: Wait
   hand: 0
+--- !u!114 &114905258663014336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356245135463830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7bd2fcd40bd3e44904e126e92fc4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 1
+  isStaticObject: 1
+  m_listeners:
+    initialListenerList: []
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!114 &114911192089471236
 MonoBehaviour:
   m_ObjectHideFlags: 1

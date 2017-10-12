@@ -21,6 +21,18 @@
 					<ChildrenList>
 						<Action Name="" ID="{056155CF-6A45-4D99-B110-326DE16FF6E9}" ShortID="232122889">
 							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fire" ID="{1CFF7814-30A4-4D1E-8B3E-B0D66754CC12}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{BE36A510-7CC2-4F51-9B63-751EDB88726B}" ShortID="256836454">
+							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
 								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 							</PropertyList>
@@ -64,6 +76,17 @@
 					<ChildrenList>
 						<Action Name="" ID="{52B12B77-3F4B-4AF4-AC38-2F7B00ADD307}" ShortID="620934570">
 							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Lake Waves Lapping" ID="{F8B388A6-6E62-4AE7-BA26-CDAE51997850}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{2F1FA4F7-4318-43B3-A8AB-F9335F8ABD4A}" ShortID="667535108">
+							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
@@ -76,7 +99,29 @@
 				</Event>
 				<Event Name="Birds" ID="{E85B3851-DF11-4785-A079-D7B45B172234}">
 					<ChildrenList>
+						<Action Name="" ID="{3F0A3403-5A8C-4284-98E4-28EFD6499ABD}" ShortID="144588645">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Lake Waves Lapping" ID="{F8B388A6-6E62-4AE7-BA26-CDAE51997850}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{CD8A31C1-AC36-45DD-AB3C-BC6BCC56C1B8}" ShortID="687954262">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Birds" ID="{6CD5377F-CDFA-45CA-A1C0-4AE695409519}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E111E249-3D6A-4CE5-8934-1D85DDE4B05E}" ShortID="187662566">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
@@ -140,7 +185,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Tap" ID="{1FF3F020-17C9-44A6-A304-7C14F8986C4A}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+											<ObjectRef Name="Equip" ID="{FBB59C17-52E5-48E9-8E1E-8071BE003814}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

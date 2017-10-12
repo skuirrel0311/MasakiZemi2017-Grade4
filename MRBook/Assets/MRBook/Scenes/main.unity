@@ -1842,30 +1842,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114605379038169522, guid: cb13c7aaf58ac244b8d459159d3dd871,
-        type: 2}
-      propertyPath: maker
-      value: 
-      objectReference: {fileID: 2119661498}
-    - target: {fileID: 1820422258942914, guid: cb13c7aaf58ac244b8d459159d3dd871, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212180334460055022, guid: cb13c7aaf58ac244b8d459159d3dd871,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 23963656801220794, guid: cb13c7aaf58ac244b8d459159d3dd871,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1714824287}
     - target: {fileID: 33442030744774166, guid: cb13c7aaf58ac244b8d459159d3dd871,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1228211364}
+    - target: {fileID: 23963656801220794, guid: cb13c7aaf58ac244b8d459159d3dd871,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1714824287}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb13c7aaf58ac244b8d459159d3dd871, type: 2}
   m_IsPrefabParent: 0
@@ -10848,7 +10834,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: P1Material
+  m_Name: P2Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -10861,7 +10847,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 60b3dfd7342848029ca6f1809548b9ec, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a03e7ed4dca478a8fe810b31a1d7ea4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -11304,12 +11290,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 920517573}
   m_Script: {fileID: 11500000, guid: 56b5372def98e1c478f5ca0b765842a5, type: 3}
---- !u!114 &2119661498 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114004489626354734, guid: cb13c7aaf58ac244b8d459159d3dd871,
-    type: 2}
-  m_PrefabInternal: {fileID: 456004276}
-  m_Script: {fileID: 11500000, guid: fb220985160357247b90130e16ec8e02, type: 3}
 --- !u!1001 &2122181072
 Prefab:
   m_ObjectHideFlags: 0
