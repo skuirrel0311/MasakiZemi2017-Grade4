@@ -141,7 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   movePower: 0.01
-  bookTransform: {fileID: 86539194}
 --- !u!4 &86539194
 Transform:
   m_ObjectHideFlags: 0
@@ -275,7 +274,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 356696943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.525}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1870037712}
@@ -1177,16 +1176,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 23963656801220794, guid: cb13c7aaf58ac244b8d459159d3dd871,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2095254538}
     - target: {fileID: 33442030744774166, guid: cb13c7aaf58ac244b8d459159d3dd871,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 700646399}
+    - target: {fileID: 23963656801220794, guid: cb13c7aaf58ac244b8d459159d3dd871,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2095254538}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb13c7aaf58ac244b8d459159d3dd871, type: 2}
   m_IsPrefabParent: 0

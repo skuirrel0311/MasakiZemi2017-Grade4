@@ -77,7 +77,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
 
     public override void PlayPage()
     {
-        triangle.SetActive(false);
+        if(triangle != null) triangle.SetActive(false);
     }
 
     /// <summary>
