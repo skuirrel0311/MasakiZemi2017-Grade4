@@ -20,6 +20,7 @@ namespace AK
         static const AkUniqueID CLEAR_1P = 3100207988U;
         static const AkUniqueID CLEAR_2P = 3150540749U;
         static const AkUniqueID CLOSE = 1451272583U;
+        static const AkUniqueID DOOR = 1877847629U;
         static const AkUniqueID EQUIP = 2412608643U;
         static const AkUniqueID EYE = 915611696U;
         static const AkUniqueID FIRE = 2678880713U;

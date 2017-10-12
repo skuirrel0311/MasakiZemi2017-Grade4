@@ -148,25 +148,6 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
-				<Folder Name="equip" ID="{93A3B01A-D5BF-4F1E-A8FC-05AAE21193BE}" ShortID="932266339">
-					<ChildrenList>
-						<Event Name="Sake_have" ID="{2EA38EB1-3601-49D1-BC34-7044647D7873}"/>
-						<Event Name="Equip" ID="{7630E4E5-4EC6-4B4A-94AD-CBD201381AE3}">
-							<ChildrenList>
-								<Action Name="" ID="{499B04F4-B4C1-4911-A53D-27D8B4466935}" ShortID="414003752">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="1"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Equip" ID="{FBB59C17-52E5-48E9-8E1E-8071BE003814}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
 				<Event Name="Door" ID="{509F40D9-C231-4ECC-AC56-A6FD23F8A2AB}">
 					<ChildrenList>
 						<Action Name="" ID="{301EC198-9DEE-4D4D-8329-0B6786570B44}" ShortID="89899182">
@@ -176,6 +157,20 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Door" ID="{1AF6A21C-97A0-4970-8070-DCEB4332E61F}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Equip" ID="{7630E4E5-4EC6-4B4A-94AD-CBD201381AE3}">
+					<ChildrenList>
+						<Action Name="" ID="{499B04F4-B4C1-4911-A53D-27D8B4466935}" ShortID="414003752">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dron" ID="{C95CAE36-9A49-4121-9D7C-F9A1E94495D5}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
