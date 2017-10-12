@@ -8,7 +8,8 @@ public enum MotionName
     Talk,       //話す
     Drink,      //飲む
     Eat,        //食べる
-    Sit,        //座る
+    Sit,        //座っている
+    StandSit,   //立った状態から座るモーション
     Stand,      //立つ
     Swing,      //釣竿を振る
     Performance,//演奏する
@@ -24,7 +25,7 @@ public static class MotionNameManager
     public static string GetMotionName(MotionName name, HoloMovableObject actor)
     {
         string motionName = name.ToString();
-
+        
         if (actor == null || actor.GetActorType != HoloObject.HoloObjectType.Character)
         {
             Debug.Log(actor.name + "is call animation " + motionName);

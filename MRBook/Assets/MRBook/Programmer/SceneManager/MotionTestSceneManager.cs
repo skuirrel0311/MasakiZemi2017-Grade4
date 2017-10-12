@@ -1,21 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 {
     [SerializeField]
-    HoloMovableObject actor = null;
+    ActorName actorName;
+
+    HoloMovableObject actor;
+    [SerializeField]
+    Element[] elements = null;
+
+    [System.Serializable]
+    class Element
+    {
+        public MotionName name;
+        public float transitionTime = 0.1f;
+    }
 
     [SerializeField]
-    MotionName[] animationNames = null;
+    Text stateText = null;
 
-    int currentNameIndex = 0;
+    int currentNameIndex = -1;
 
     [SerializeField]
     HoloItem item = null;
 
     GameObject targetObj = null;
+
+    Dictionary<string, HoloMovableObject> actorDictionary = new Dictionary<string, HoloMovableObject>();
 
     protected override void Start()
     {
@@ -33,6 +47,7 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 
             HoloMovableObject movableObject = (HoloMovableObject)obj;
             movableObject.ApplyDefaultTransform();
+            actorDictionary.Add(movableObject.name, movableObject);
         }
     }
 
@@ -42,20 +57,24 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
         {
             currentNameIndex++;
 
-            if (currentNameIndex >= animationNames.Length)
+            if (currentNameIndex >= elements.Length)
             {
                 currentNameIndex = 0;
             }
 
-            string motionName = MotionNameManager.GetMotionName(animationNames[currentNameIndex], actor);
+            actor = GetActor(actorName);
+            string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name, actor);
+            stateText.text = motionName;
             Debug.Log("call change Animation " + motionName);
-            actor.m_animator.CrossFade(motionName, 0.1f);
+            actor.m_animator.CrossFade(motionName, elements[currentNameIndex].transitionTime);
         }
     }
 
     public void SetItem()
     {
         if (item == null) return;
+        actor = GetActor(actorName);
+
         if (actor.GetActorType != HoloObject.HoloObjectType.Character) return;
 
         HoloCharacter character = (HoloCharacter)actor;
@@ -66,6 +85,7 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 
     public void DumpItem()
     {
+        actor = GetActor(actorName);
         if (actor.GetActorType != HoloObject.HoloObjectType.Character) return;
 
         HoloCharacter character = (HoloCharacter)actor;
@@ -77,7 +97,13 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
     {
         Vector3 targetPosition = targetObj.transform.position;
         targetPosition.y = 0.0f;
+        actor = GetActor(actorName);
         actor.m_agent.stoppingDistance = 0.01f;
         actor.m_agent.SetDestination(targetPosition);
+    }
+
+    HoloMovableObject GetActor(ActorName actorName)
+    {
+        return actorDictionary[actorName.ToString()];
     }
 }
