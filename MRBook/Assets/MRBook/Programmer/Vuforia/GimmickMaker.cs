@@ -28,10 +28,8 @@ public class GimmickMaker : MyTracableEventHandler
     public Action foundMakerEvent;
     public Action lostMakerEvent;
 
-    protected override void Start()
+    void Awake()
     {
-        base.Start();
-
         child = transform.GetChild(0);
         //親子関係を切る
         child.parent = null;

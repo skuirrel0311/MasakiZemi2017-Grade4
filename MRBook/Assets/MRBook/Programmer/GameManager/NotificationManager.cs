@@ -11,6 +11,9 @@ public class NotificationManager : BaseManager<NotificationManager>
     [SerializeField]
     HoloWindow normalWindow = null;
 
+    [SerializeField]
+    bool isActive = true;
+
     bool isView = false;
 
     Coroutine messageCoroutine;
@@ -54,6 +57,7 @@ public class NotificationManager : BaseManager<NotificationManager>
 
     public void ShowMessage(string message, float viewTime = 2.0f)
     {
+        if (!isActive) return;
         ShowMessage(message, viewTime, true);
     }
 

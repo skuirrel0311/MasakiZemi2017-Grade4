@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyActor : StateMachineBehaviour
+public class DestroyObject : StateMachineBehaviour
 {
-    public string actorName;
+    public string objectName;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ActorManager.I.DisableActor(actorName);
+        ActorManager.I.DisableActor(objectName);
     }
 }

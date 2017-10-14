@@ -17,7 +17,8 @@ public enum MotionName
     Lie,        //寝っ転がる
     Maintenance,//釣竿の手入れ
     Troubled,   //困惑する
-    PutOff      //引く
+    PutOff,     //引く
+    Dead        //死亡
 }
 
 public static class MotionNameManager

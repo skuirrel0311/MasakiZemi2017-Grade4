@@ -6,7 +6,7 @@ using UnityEngine.AI;
 //～まで行けという命令
 public class GoThere : StateMachineBehaviour
 {
-    public string actorName;
+    public ActorName actorName;
     public string targetName;
     public float stopDistance = 0.2f;
     public float moveSpeed = 0.1f;
@@ -22,10 +22,10 @@ public class GoThere : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        actor = ActorManager.I.GetActor(actorName);
+        actor = ActorManager.I.GetActor(actorName.ToString());
         if(actor == null)
         {
-            Debug.LogError(actorName + " is null");
+            Debug.LogError(actorName.ToString() + " is null");
             Suspension();
             return;
         }
@@ -49,7 +49,7 @@ public class GoThere : StateMachineBehaviour
         string animationName = MotionNameManager.GetMotionName(MotionName.Walk, actor);
 
         actor.m_animator.CrossFade(animationName, 0.1f);
-        StateMachineManager.I.Add(actorName + "Go",new MyTask(OnUpdate, OnEnd));
+        StateMachineManager.I.Add(actorName.ToString() + "Go",new MyTask(OnUpdate, OnEnd));
     }
 
     void OnUpdate()
@@ -70,7 +70,7 @@ public class GoThere : StateMachineBehaviour
         {
             state = 1;
             Debug.Log("移動終了");
-            StateMachineManager.I.Stop(actorName + "Go");
+            StateMachineManager.I.Stop(actorName.ToString() + "Go");
         }
 
         //動けなくなった
@@ -81,7 +81,7 @@ public class GoThere : StateMachineBehaviour
             if (time > limitTime)
             {
                 state = -1;
-                StateMachineManager.I.Stop(actorName + "Go");
+                StateMachineManager.I.Stop(actorName.ToString() + "Go");
             }
         }
 

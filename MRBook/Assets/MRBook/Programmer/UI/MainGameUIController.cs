@@ -19,11 +19,6 @@ public class MainGameUIController : BaseManager<MainGameUIController>
         base.Start();
         gameManager = MainSceneManager.I;
         gameManager.OnGameStateChanged += OnGameStateChanged;
-
-#if UNITY_EDITOR
-        missionText.gameObject.SetActive(true);
-        missionText.CurrentText = "push S key!";
-#endif
     }
 
     public void SetPositionAndRotation(Vector3 pos, Quaternion rot)
@@ -39,17 +34,18 @@ public class MainGameUIController : BaseManager<MainGameUIController>
             case MainSceneManager.GameState.Play:
                 playButton.Disable();
                 resetButton.Disable();
-                missionText.gameObject.SetActive(false);
+                //missionText.gameObject.SetActive(false);
                 break;
             case MainSceneManager.GameState.Next:
-                missionText.gameObject.SetActive(true);
-                missionText.CurrentText = "ページをめくれ！";
+                //missionText.gameObject.SetActive(true);
+                //missionText.CurrentText = "ページをめくれ！";
                 playButton.Disable();
-                resetButton.Disable();
+                //resetButton.Disable();
+                resetButton.Refresh();
                 break;
             case MainSceneManager.GameState.Wait:
-                missionText.gameObject.SetActive(true);
-                missionText.CurrentText = gameManager.currentMissionText;
+                //missionText.gameObject.SetActive(true);
+                //missionText.CurrentText = gameManager.currentMissionText;
                 playButton.Refresh();
                 resetButton.Refresh();
                 break;
