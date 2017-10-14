@@ -703,6 +703,33 @@
 						<ActiveSource Name="Dron" ID="{CE902755-DF64-4400-9D65-D5DFAA9C69AF}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Die" ID="{A17F9B97-11EB-4870-878C-9E54A97E58EF}" ShortID="870288573">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{23BD27B9-07F6-47D6-990E-FBB2EA950EB3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Die" ID="{7E31C08B-37F5-4612-ADF3-2A5C7CC99875}" ShortID="519706695">
+							<Language>SFX</Language>
+							<AudioFile>Die.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Die" ID="{7E31C08B-37F5-4612-ADF3-2A5C7CC99875}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

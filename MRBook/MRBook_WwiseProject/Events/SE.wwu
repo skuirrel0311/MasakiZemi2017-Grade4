@@ -221,6 +221,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Die" ID="{7E8D8961-122A-4F35-956E-77148E13CB9A}">
+					<ChildrenList>
+						<Action Name="" ID="{703755DD-2735-40D5-A3A2-25FC0F361C25}" ShortID="660513330">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Die" ID="{A17F9B97-11EB-4870-878C-9E54A97E58EF}" WorkUnitID="{BF751201-670B-4D19-B722-541314EFAC03}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
