@@ -36,11 +36,12 @@ public class ArtBookDoor : ArtBookGimmick
 
         if (arrowSprite.activeSelf != maker.IsVisuable)
         {
-            //if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
+            if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
             arrowSprite.SetActive(maker.IsVisuable);
         }
 
-        if(maker.IsVisuable){
+        if(maker.IsVisuable)
+        {
             Vector3 currentPosition = (maker.child.position - cameraPosition).normalized;
             float value = (oldPosition.x * currentPosition.z) - (currentPosition.x * oldPosition.z);
             transform.position += transform.right * value * speed;
