@@ -16,7 +16,7 @@ public class ArtBookGimmick : MyEventTrigger
 
     //本来ある場所
     [SerializeField]
-    IsRendered original = null;
+    protected IsRendered original = null;
 
     Camera mainCamera;
 
