@@ -13,6 +13,7 @@ public class MainGameUIController : BaseManager<MainGameUIController>
     public HoloText stateText = null;
     public HoloButton playButton = null;
     public HoloButton resetButton = null;
+    public EndingManager endingManager = null;
 
     protected override void Start()
     {
@@ -46,6 +47,7 @@ public class MainGameUIController : BaseManager<MainGameUIController>
             case MainSceneManager.GameState.Wait:
                 //missionText.gameObject.SetActive(true);
                 //missionText.CurrentText = gameManager.currentMissionText;
+                endingManager.Hide();
                 playButton.Refresh();
                 resetButton.Refresh();
                 break;
