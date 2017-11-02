@@ -161,9 +161,9 @@ namespace RootMotion.Dynamics {
 
 			// Blending between catch fall and writhe animations
 			float blendTarget = GetBlendTarget(GetGroundHeight());
-			float blend = Mathf.MoveTowards(puppetMaster.targetAnimator.GetFloat(blendParameter), blendTarget, Time.deltaTime * blendSpeed);
+			//float blend = Mathf.MoveTowards(puppetMaster.targetAnimator.GetFloat(blendParameter), blendTarget, Time.deltaTime * blendSpeed);
 
-			puppetMaster.targetAnimator.SetFloat(blendParameter, blend);
+			//puppetMaster.targetAnimator.SetFloat(blendParameter, blend);
 
 			// Ending conditions
 			timer += Time.deltaTime;
