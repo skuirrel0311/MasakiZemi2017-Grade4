@@ -730,6 +730,25 @@
 						<ActiveSource Name="Die" ID="{7E31C08B-37F5-4612-ADF3-2A5C7CC99875}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="GoDeath" ID="{CAB5299A-3B0A-4554-AFF3-9C69F80120CF}" ShortID="310445359">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{074AA788-7B4A-4248-929F-E712BDF82BA2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{671DE137-3E93-444E-A424-1259206F7F07}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="GoDeath" ID="{43300C32-452F-4D1A-B9BB-33E2D1D92AC0}" ShortID="333454395">
+							<Language>SFX</Language>
+							<AudioFile>GoDeath.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="GoDeath" ID="{43300C32-452F-4D1A-B9BB-33E2D1D92AC0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

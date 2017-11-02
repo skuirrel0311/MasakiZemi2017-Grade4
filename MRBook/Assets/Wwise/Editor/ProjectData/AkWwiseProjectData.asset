@@ -22,8 +22,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Music.wwu
     ParentPhysicalPath: 
     Guid: '{5FD0981F-9232-4178-9468-F31BDDBDB1AE}'
-    m_lastTimePsrt1: -1929250791
-    m_lastTimePart2: -1999302339
+    m_lastTimePsrt1: -84628990
+    m_lastTimePart2: -1999299550
     List:
     - Name: BGM_1p
       Path: Music\BGM\BGM_1p
@@ -220,8 +220,8 @@ MonoBehaviour:
   - PhysicalPath: Events\SE.wwu
     ParentPhysicalPath: 
     Guid: '{C69FD120-C7B6-45D4-8792-9610F754F5F3}'
-    m_lastTimePsrt1: -452211211
-    m_lastTimePart2: -1999302339
+    m_lastTimePsrt1: 1079013156
+    m_lastTimePart2: -1999301947
     List:
     - Name: Alart
       Path: SE\System\Alart
@@ -256,6 +256,16 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1451272583
       Guid: c12cbf186ef1734db6fc613055235311
+      maxAttenuation: 0
+    - Name: Die
+      Path: SE\Die
+      PathAndIcons:
+      - ElementName: SE
+        ObjectType: 12
+      - ElementName: Die
+        ObjectType: 3
+      ID: 445985469
+      Guid: 61898d7e2a12354f956e77148e13cb9a
       maxAttenuation: 0
     - Name: Door
       Path: SE\Door
@@ -376,8 +386,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C2FB1BB9-16EF-4890-B22C-64FD73F58501}'
-    m_lastTimePsrt1: -1884971871
-    m_lastTimePart2: -1999302375
+    m_lastTimePsrt1: -1472518068
+    m_lastTimePart2: -1999299540
     List:
     - Name: MRBook
       Path: Default Work Unit\MRBook
@@ -407,8 +417,6 @@ MonoBehaviour:
   - /MRBook_WwiseProject/Events
   - /MRBook_WwiseProject/Events/Music
   - /MRBook_WwiseProject/Events/Music/BGM
-  - /MRBook_WwiseProject/Events/Music/Jingle
-  - /MRBook_WwiseProject/Events/SE
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

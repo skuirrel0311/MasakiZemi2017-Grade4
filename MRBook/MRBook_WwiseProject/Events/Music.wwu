@@ -188,7 +188,55 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="BGM_f34" ID="{AA02FE0C-A4F8-48C7-9C7D-C3EB987788DA}"/>
+						<Event Name="BGM_f34" ID="{AA02FE0C-A4F8-48C7-9C7D-C3EB987788DA}">
+							<ChildrenList>
+								<Action Name="" ID="{A17335EB-875B-4223-A7E1-A178091A5262}" ShortID="77556448">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeCurve" Type="int16" Value="5"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="2pPlay" ID="{37092DC9-01D1-49D4-8AFE-4F3E8A723147}" WorkUnitID="{E634FB3F-9D9A-4FD9-B365-DD2955A6D911}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{5AFDAF6E-752D-476E-8603-3E30AAC9F3E5}" ShortID="988398569">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="2pSet" ID="{C8E68470-60D5-4EA9-9AB2-A995D65E748A}" WorkUnitID="{E634FB3F-9D9A-4FD9-B365-DD2955A6D911}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{135A15D7-568C-4969-ADE4-167BB1381940}" ShortID="381620708">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="3pOpen" ID="{98B34D5E-ED01-46D6-B56E-A7D9188C195B}" WorkUnitID="{E634FB3F-9D9A-4FD9-B365-DD2955A6D911}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{95E3BF55-B27B-491A-83BB-89D038E79330}" ShortID="554094744">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+										<Property Name="Delay" Type="Real64" Value="10"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="2pSet" ID="{C8E68470-60D5-4EA9-9AB2-A995D65E748A}" WorkUnitID="{E634FB3F-9D9A-4FD9-B365-DD2955A6D911}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
