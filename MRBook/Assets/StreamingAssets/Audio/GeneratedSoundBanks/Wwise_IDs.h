@@ -16,6 +16,7 @@ namespace AK
         static const AkUniqueID ALART = 855317061U;
         static const AkUniqueID BGM_1P = 3952481179U;
         static const AkUniqueID BGM_2P = 3969258766U;
+        static const AkUniqueID BGM_F34 = 886472223U;
         static const AkUniqueID BIRDS = 352130103U;
         static const AkUniqueID CLEAR_1P = 3100207988U;
         static const AkUniqueID CLEAR_2P = 3150540749U;
