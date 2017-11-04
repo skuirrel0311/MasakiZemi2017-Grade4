@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7d07e9452626d1840b9fcf42ed491ea7
-timeCreated: 1504608826
+guid: a8bc0571b01ea0a4488c8b14332ef7a7
+timeCreated: 1509588864
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -77,7 +77,7 @@ ModelImporter:
     400066: Spine1
     400068: urashima
     400070: //RootNode
-    7400000: urashima_SitGetDrunk
+    7400000: urashima_GetDrunk_Stand_Fishingrod
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -102,7 +102,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: urashima_GetDrunk_Stand_Fishingrod
+      takeName: urashima_GetDrunk_Stand_Fishingrod
+      firstFrame: 0
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -142,7 +170,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Reference
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
