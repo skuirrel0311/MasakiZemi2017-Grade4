@@ -11,7 +11,7 @@ public class HoloItem : HoloMovableObject
     /// </summary>
     public Hand hand;
 
-    public override HoloObjectType GetActorType { get { return HoloObjectType.Item; } }
+    public override Type GetActorType { get { return Type.Item; } }
     [System.NonSerialized]
     public HoloCharacter owner;
     [System.NonSerialized]

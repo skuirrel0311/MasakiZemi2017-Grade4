@@ -8,10 +8,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 {
     public enum GameState
     {
-        Title,  //ゲーム開始画面
         Wait,   //再生待機中
         Play,   //再生中
-        Next    //ページが捲られるまで待機
+        Next,   //ページが捲られるまで待機
+        Back    //ページをさかのぼっている状態
     }
 
     /* イベント */
@@ -37,7 +37,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public Action<GameState> OnGameStateChanged;
 
     /* メンバ */
-    GameState currentState = GameState.Title;
+    GameState currentState = GameState.Wait;
     public GameState CurrentState
     {
         get
@@ -157,7 +157,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         else
         {
             CurrentState = GameState.Wait;
-            GameObject urashima = ActorManager.I.GetActor(ActorName.Urashima.ToString()).gameObject;
+            GameObject urashima = ActorManager.I.GetCharacter(ActorName.Urashima).gameObject;
             AkSoundEngine.PostEvent("Die", urashima);
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
@@ -165,7 +165,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         if (!success)
         {
-            //Utilities.Delay(0.2f, () => ResetPage(), this);
+            Utilities.Delay(0.2f, () => ResetPage(), this);
         }
 
         m_Animator.SetBool("IsStart", false);
@@ -174,8 +174,14 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public virtual void GameStart()
     {
         Transform t = BookPositionModifier.I.bookTransform;
+        
+        for(int i = 0;i< pages.Length;i++)
+        {
+            pages[i].PageLock(t.position, t.rotation);
+        }
+        MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);
+        NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
 
-        SetBookPositionByAnchor(t.position, t.rotation);
         SetPage(currentPageIndex);
         IsGameStart = true;
     }
@@ -185,22 +191,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
     {
-        StartCoroutine(SetPosition(pos, rot));
-    }
-
-    IEnumerator SetPosition(Vector3 pos, Quaternion rot)
-    {
-        pages[currentPageIndex].SetAllAgentEnabled(false);
-
-        yield return null;
-
         for (int i = 0; i < pages.Length; i++)
         {
-            pages[i].PageLock(pos, rot, i);
+            pages[i].SetTransform(pos, rot);
         }
-        yield return null;
-
-        pages[currentPageIndex].SetAllAgentEnabled(true);
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
         NotificationManager.I.SetDefaultTransform(pos, rot);
     }
@@ -255,8 +249,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// <param name="isBack">前のページか？</param>
     protected virtual void SetPage(int index)
     {
-        bool isFirst = (pageIndex + 1) == index;
-
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
 
@@ -266,15 +258,15 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         //表示するtodo:エフェクト
         pages[currentPageIndex].gameObject.SetActive(true);
-        pages[currentPageIndex].PageStart(isFirst);
+        pages[currentPageIndex].PageStart();
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
-        //ミッションの切り替え
-        if (isFirst)
-        {
-            pageIndex = currentPageIndex;
-            currentMissionText = pages[currentPageIndex].missionText;
-        }
+        //todo:UIControllerで行うべき
+        //if (isFirst)
+        //{
+        //    pageIndex = currentPageIndex;
+        //    currentMissionText = pages[currentPageIndex].missionText;
+        //}
         CurrentState = GameState.Wait;
     }
 }

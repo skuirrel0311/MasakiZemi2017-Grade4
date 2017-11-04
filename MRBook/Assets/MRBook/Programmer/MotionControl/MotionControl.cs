@@ -27,7 +27,7 @@ public static class MotionNameManager
     {
         string motionName = name.ToString();
         
-        if (actor == null || actor.GetActorType != HoloObject.HoloObjectType.Character)
+        if (actor == null || actor.GetActorType != HoloObject.Type.Character)
         {
             Debug.Log(actor.name + "is call animation " + motionName);
             return motionName;

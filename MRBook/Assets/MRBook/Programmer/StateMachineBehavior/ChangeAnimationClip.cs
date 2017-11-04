@@ -11,7 +11,7 @@ public class ChangeAnimationClip : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        HoloMovableObject actor = ActorManager.I.GetActor(actorName.ToString());
+        HoloCharacter actor = ActorManager.I.GetCharacter(actorName);
         
         if(actor == null)
         {

@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 {
     [SerializeField]
-    ActorName actorName;
+    ActorName actorName = ActorName.Urashima;
 
-    HoloMovableObject actor;
+    HoloCharacter character;
     [SerializeField]
     Element[] elements = null;
 
     [System.Serializable]
     class Element
     {
-        public MotionName name;
+        public MotionName name = MotionName.Wait;
         public float transitionTime = 0.1f;
     }
 
@@ -43,7 +43,7 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
         {
             HoloObject obj = tempArray[i].GetComponent<HoloObject>();
 
-            if (obj.GetActorType == HoloObject.HoloObjectType.Statics) return;
+            if (obj.GetActorType == HoloObject.Type.Statics) return;
 
             HoloMovableObject movableObject = (HoloMovableObject)obj;
             movableObject.ApplyDefaultTransform();
@@ -62,34 +62,24 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
                 currentNameIndex = 0;
             }
 
-            actor = GetActor(actorName);
-            string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name, actor);
+            character = (HoloCharacter)(GetActor(actorName));
+            string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name, character);
             stateText.text = motionName;
             Debug.Log("call change Animation " + motionName);
-            actor.m_animator.CrossFade(motionName, elements[currentNameIndex].transitionTime);
+            character.m_animator.CrossFade(motionName, elements[currentNameIndex].transitionTime);
         }
     }
 
     public void SetItem()
     {
-        if (item == null) return;
-        actor = GetActor(actorName);
-
-        if (actor.GetActorType != HoloObject.HoloObjectType.Character) return;
-
-        HoloCharacter character = (HoloCharacter)actor;
+        character = (HoloCharacter)GetActor(actorName);
 
         character.SetItem(item.gameObject);
-
     }
 
     public void DumpItem()
     {
-        actor = GetActor(actorName);
-        if (actor.GetActorType != HoloObject.HoloObjectType.Character) return;
-
-        HoloCharacter character = (HoloCharacter)actor;
-
+        character = (HoloCharacter)GetActor(actorName);
         character.DumpItem(HoloItem.Hand.Both);
     }
 
@@ -97,9 +87,9 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
     {
         Vector3 targetPosition = targetObj.transform.position;
         targetPosition.y = 0.0f;
-        actor = GetActor(actorName);
-        actor.m_agent.stoppingDistance = 0.01f;
-        actor.m_agent.SetDestination(targetPosition);
+        character = (HoloCharacter)GetActor(actorName);
+        character.m_agent.stoppingDistance = 0.01f;
+        character.m_agent.SetDestination(targetPosition);
     }
 
     HoloMovableObject GetActor(ActorName actorName)

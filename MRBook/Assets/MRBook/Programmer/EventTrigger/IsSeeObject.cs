@@ -5,10 +5,6 @@
 /// </summary>
 public class IsSeeObject : MyEventTrigger
 {
-    //視点
-    [SerializeField]
-    Transform eye = null;
-    
     /// <summary>
     /// 誰が
     /// </summary>
@@ -22,13 +18,19 @@ public class IsSeeObject : MyEventTrigger
     [SerializeField]
     protected GameObject targetObject = null;
 
+    /// <summary>
+    /// どこから
+    /// </summary>
+    [SerializeField]
+    Transform eye = null;
+
     [SerializeField]
     LayerMask ignoreLayerMask = 1 << 2;
     Ray ray;
 
     void Start()
     {
-        actor = ActorManager.I.GetActor(ownerName.ToString());
+        actor = ActorManager.I.GetCharacter(ownerName);
     }
 
     public override void SetFlag()

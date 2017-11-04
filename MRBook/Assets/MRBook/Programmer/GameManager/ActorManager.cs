@@ -59,10 +59,10 @@ public class ActorManager : Singleton<ActorManager>
     /// <summary>
     /// 現在アクティブなアクターを返します
     /// </summary>
-    public HoloMovableObject GetActor(string name)
+    public HoloCharacter GetCharacter(ActorName name)
     {
-        HoloMovableObject obj;
-        if (currentPage.movableObjectDictionary.TryGetValue(name, out obj))
+        HoloCharacter obj;
+        if (currentPage.characterDictionary.TryGetValue(name, out obj))
         {
             return obj;
         }
@@ -151,7 +151,7 @@ public class ActorManager : Singleton<ActorManager>
         foreach(string key in globalObjectDictionary.Keys)
         {
             //前のページから登録を消す
-            previousPage.movableObjectDictionary.Remove(key);
+            previousPage.RemoveMovableObject(key);
             globalObjectDictionary[key].transform.parent = nextPage.transform;
         }
         //アクティブなアクターはページを開いた時に追加されるのでここで追加はしない

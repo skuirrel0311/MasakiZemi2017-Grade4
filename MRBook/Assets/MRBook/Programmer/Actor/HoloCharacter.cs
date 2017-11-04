@@ -5,11 +5,15 @@ using UnityEngine;
 /// <summary>
 /// アイテムをもったりできるホログラム
 /// </summary>
-public class HoloCharacter : HoloMovableObject
+public class HoloCharacter : HoloGroundingObject
 {
+    public Animator m_animator { get; private set; }
+    [SerializeField]
+    string firstAnimationName = "Wait";
+
     public bool hasItem_Left { get; private set; }
     public bool hasItem_Right { get; private set; }
-    
+
     public HoloItem leftHandItem { get; private set; }
     public HoloItem rightHandItem { get; private set; }
 
@@ -25,15 +29,22 @@ public class HoloCharacter : HoloMovableObject
     ItemTransformDataList rightHandItemDataList = null;
     [SerializeField]
     ItemTransformDataList leftHandItemDataList = null;
-    
-    public override HoloObjectType GetActorType { get { return HoloObjectType.Character; } }
+
+    public override Type GetActorType { get { return Type.Character; } }
+
+    protected override void Awake()
+    {
+        m_animator = GetComponent<Animator>();
+        if (m_animator != null) m_animator.CrossFade(firstAnimationName, 0.1f);
+        base.Awake();
+    }
 
     /// <summary>
     /// アイテムを持たせる
     /// </summary>
     public override void SetItem(GameObject itemObj)
     {
-        if(itemObj == null)
+        if (itemObj == null)
         {
             Debug.LogError("item obj is null");
         }
@@ -53,7 +64,7 @@ public class HoloCharacter : HoloMovableObject
             Debug.LogError("item data is null");
             return;
         }
-        Transform hand = itemList.hand == HoloItem.Hand.Left ? leftHand : rightHand; 
+        Transform hand = itemList.hand == HoloItem.Hand.Left ? leftHand : rightHand;
 
         if (hand == null)
         {
@@ -74,7 +85,7 @@ public class HoloCharacter : HoloMovableObject
             item.currentHand = HoloItem.Hand.Right;
             rightHandItem = item;
         }
-        
+
         item.owner = this;
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
@@ -82,8 +93,8 @@ public class HoloCharacter : HoloMovableObject
 
         //モーションを変える
         ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
-        
-        if(item.name == AlcoholItemName)
+
+        if (item.name == AlcoholItemName)
         {
             IsGetAlcohol = true;
         }
@@ -119,12 +130,12 @@ public class HoloCharacter : HoloMovableObject
         }
 
         if (oldItem == null) return;
-        
+
         oldItem.owner = null;
         //todo:parentをnullにするのはダメ
         oldItem.transform.parent = null;
         //todo:グローバルの場所に戻る可能性も考えるべき
-        if(setDefault) oldItem.ResetTransform();
+        if (setDefault) oldItem.ResetTransform();
 
         if (oldItem.name == AlcoholItemName)
         {
@@ -134,8 +145,11 @@ public class HoloCharacter : HoloMovableObject
 
     public override void ResetTransform()
     {
+        //アイテムもリセット
         DumpItem(HoloItem.Hand.Both);
-        //捨ててからリセットする
+
+        //ページが開始された時のモーションに戻す
+        m_animator.CrossFade(firstAnimationName, 0.0f);
         base.ResetTransform();
     }
 

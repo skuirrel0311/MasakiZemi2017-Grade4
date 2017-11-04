@@ -3,11 +3,10 @@
 public class LookTarget : StateMachineBehaviour
 {
     public string targetName;
-    public string actorName;
+    public ActorName actorName;
     public float rotationSpeed = 100.0f;
-
-    Transform target;
-    HoloMovableObject actor;
+    
+    HoloCharacter character;
     Animator m_animator;
     Quaternion to;
     int state = 0;
@@ -15,8 +14,8 @@ public class LookTarget : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         m_animator = animator;
-        actor = ActorManager.I.GetActor(actorName);
-        if (actor == null)
+        character = ActorManager.I.GetCharacter(actorName);
+        if (character == null)
         {
             Debug.LogError(actorName + " is null");
             Suspension();
@@ -30,23 +29,23 @@ public class LookTarget : StateMachineBehaviour
             return;
         }
         
-        Vector3 targetDirection = target.position - actor.transform.position;
+        Vector3 targetDirection = target.position - character.transform.position;
         
         to = Quaternion.LookRotation(targetDirection);
-        actor.m_agent.updateRotation = false;
+        character.m_agent.updateRotation = false;
 
-        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, actor);
+        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
 
-        actor.m_animator.CrossFade(animationName, 0.1f);
+        character.m_animator.CrossFade(animationName, 0.1f);
 
-        StateMachineManager.I.Add(actorName + "Look", new MyTask(OnUpdate, OnEnd));
+        StateMachineManager.I.Add(actorName.ToString() + "Look", new MyTask(OnUpdate, OnEnd));
     }
 
     void OnUpdate()
     {
-        actor.transform.rotation = Quaternion.RotateTowards(actor.transform.rotation, to, rotationSpeed * Time.deltaTime);
+        character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, to, rotationSpeed * Time.deltaTime);
 
-        float angle = Quaternion.Angle(actor.transform.rotation, to);
+        float angle = Quaternion.Angle(character.transform.rotation, to);
         if(angle < 0.5f)
         {
             Debug.Log("回転終わり");
@@ -58,9 +57,9 @@ public class LookTarget : StateMachineBehaviour
 
     void OnEnd()
     {
-        actor.m_agent.updateRotation = true;
-        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, actor);
-        actor.m_animator.CrossFade(animationName, 0.1f);
+        character.m_agent.updateRotation = true;
+        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
+        character.m_animator.CrossFade(animationName, 0.1f);
         m_animator.SetInteger("LookTargetState", state);
     }
 

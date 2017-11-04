@@ -38,7 +38,7 @@ public class TestSceneManager : MainSceneManager
         //エディタ上ではアンカーはないので起動時の位置に固定
         for (int i = 0; i < pages.Length; i++)
         {
-            pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation, i);
+            pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation);
         }
 
         SetPage(currentPageIndex);

@@ -5,17 +5,30 @@
 /// </summary>
 public class HoloObject : MonoBehaviour
 {
-    public enum HoloObjectType { Character, Item, Statics, Movable }
-    public virtual HoloObjectType GetActorType { get { return HoloObjectType.Statics; } }
+    public enum Type { Character, Item, Statics, Movable }
+    public virtual Type GetActorType { get { return Type.Statics; } }
 
     Shader defaultShader;
     Shader grayScaleShader;
 
     /// <summary>
+    /// そのオブジェクトが存在する（元の）ページのインデックス
+    /// </summary>
+    public int PageIndex { get; private set; }
+    protected bool isFirst = true;
+
+    /// <summary>
     /// ページが開かれた
     /// </summary>
     /// <param name="isFirst">そのページを開くのが初めてか？</param>
-    public virtual void PageStart(int currentPageIndex, bool isFirst = true) { }
+    public virtual void PageStart(int currentPageIndex)
+    {
+        if(isFirst)
+        {
+            PageIndex = currentPageIndex;
+        }
+        isFirst = false;
+    }
 
     public virtual void PlayPage() { }
 
@@ -32,7 +45,7 @@ public class HoloObject : MonoBehaviour
             rends[i].material.shader = grayScaleShader;
         }
     }
-
+    
     public void ResetShader()
     {
         Renderer[] rends = GetComponentsInChildren<Renderer>();

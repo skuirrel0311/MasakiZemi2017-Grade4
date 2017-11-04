@@ -6,66 +6,49 @@ using HoloToolkit.Unity.InputModule;
 /// 動かすことのできるホログラム
 /// </summary>
 [RequireComponent(typeof(BoxCollider))]  //BoundingBoxの形状を決めるために必須(トリガーも可)
-[RequireComponent(typeof(NavMeshAgent))] //落とすために必須
 public class HoloMovableObject : HoloObject, IInputClickHandler
 {
-    public override HoloObjectType GetActorType { get { return HoloObjectType.Movable; } }
+    public override Type GetActorType { get { return Type.Movable; } }
 
     /*
-     * 動かすことができないが別のページに持っていける場合もある。
-     * （戻ってきた時のみに動かすことが出来る）
-     * 動かせるが別のページに持っていけない場合もある。
+     * M = true  B = false  //元のページでのみ動かせる
+     * M = false B = true   //元のページでは動かせないが別のページに持っていくことができる
+     * M = true  B = true   //元のページで動かせるし別のページに持っていくこともできる
+     * の３パターンある
      */
+    public bool isMovable = false;  //元のページで動かせるか？
+    public bool isBring = false;    //別のページに持っていくことができるか？
 
-    /// <summary>
-    /// 動かせるか
-    /// </summary>
-    public bool isMovable = false;
-    /// <summary>
-    /// 別のページに持っていけるか
-    /// </summary>
-    public bool isBring = false;
-    /// <summary>
-    /// 離した時に浮いているか？
-    /// </summary>
-    public bool isFloating = false;
+    public virtual bool IsGrounding { get { return false; } }
+    
+    //初期値（リセットボタンを押した時に戻すための値）
+    Vector3 firstPosition;
+    Quaternion firstRotation;
 
-    /// <summary>
-    /// そのオブジェクトが存在する（元の）ページのインデックス
-    /// </summary>
-    public int pageIndex { get; private set; }
-
-    //初期値
-    public Vector3 firstPosition { get; private set; }
-    public Quaternion firstRotation { get; private set; }
-    bool defaultAgentEnabled;
-
-    public NavMeshAgent m_agent { get; protected set; }
+    //BoundingBoxの形状を決める
     public BoxCollider m_collider { get; protected set; }
-    public Animator m_animator { get; protected set; }
+    public float SphereCastRadius { get; private set; }
 
-    public string firstAnimationName = "Wait";
-
+    //動かせることを明示するための矢印
     protected GameObject triangle;
 
     protected virtual void Awake()
     {
-        m_agent = GetComponent<NavMeshAgent>();
         m_collider = GetComponent<BoxCollider>();
-        m_animator = GetComponent<Animator>();
-        defaultAgentEnabled = m_agent.enabled;
-        if(m_animator != null) m_animator.CrossFade(firstAnimationName, 0.1f);
+
+        float colSize = Mathf.Max(m_collider.size.x, m_collider.size.z);
+        float scale = Mathf.Max(transform.lossyScale.x, transform.lossyScale.z);
+        SphereCastRadius = colSize * scale;
     }
 
     /// <summary>
     /// ページが開かれた
     /// </summary>
     /// <param name="isFirst">そのページを開くのが初めてか？</param
-    public override void PageStart(int currentPageIndex, bool isFirst = true)
+    public override void PageStart(int currentPageIndex)
     {
         if (isFirst)
         {
-            pageIndex = currentPageIndex;
             ApplyDefaultTransform();
         }
 
@@ -73,6 +56,8 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         {
             ActivateControl();
         }
+
+        base.PageStart(currentPageIndex);
     }
 
     public override void PlayPage()
@@ -85,18 +70,9 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     /// </summary>
     public override void ResetTransform()
     {
-        if (!isFloating)
-        {
-            m_agent.enabled = true;
-        }
         transform.position = firstPosition;
         transform.rotation = firstRotation;
-
-        if(m_animator != null)
-        {
-            m_animator.CrossFade(firstAnimationName, 0.1f);
-        }
-
+        
         if(isMovable)
         {
             triangle.SetActive(true);
@@ -120,6 +96,14 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         firstRotation = transform.rotation;
     }
 
+    /// <summary>
+    /// デフォルトの位置をずらす
+    /// </summary>
+    public void ApplyDefaultTransform(Vector3 movement)
+    {
+        firstPosition += movement;
+    }
+
     void ActivateControl()
     {
         if(triangle != null)
@@ -127,6 +111,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
             triangle.SetActive(true);
             return;
         }
+        //三角形の位置を決める
         triangle = Instantiate(ActorManager.I.trianglePrefab, transform);
         triangle.transform.localPosition = Vector3.up * m_collider.size.y * 1.0f;
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
@@ -134,6 +119,8 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         triangle.transform.localScale = Vector3.one * scale * (1.0f / transform.lossyScale.x);
         Debug.Log(gameObject.name + "は操作可能だ");
     }
+
+    public virtual void Fall() { }
 
     public virtual void OnInputClicked(InputClickedEventData eventData)
     {

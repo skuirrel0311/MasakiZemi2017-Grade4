@@ -11,7 +11,7 @@ public class GoThere : StateMachineBehaviour
     public float stopDistance = 0.2f;
     public float moveSpeed = 0.1f;
 
-    HoloMovableObject actor;
+    HoloCharacter character;
     int state = 0;
 
     float time;
@@ -22,8 +22,8 @@ public class GoThere : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        actor = ActorManager.I.GetActor(actorName.ToString());
-        if(actor == null)
+        character = ActorManager.I.GetCharacter(actorName);
+        if(character == null)
         {
             Debug.LogError(actorName.ToString() + " is null");
             Suspension();
@@ -37,26 +37,26 @@ public class GoThere : StateMachineBehaviour
             return;
         }
 
-        actor.m_agent.speed = moveSpeed;
+        character.m_agent.speed = moveSpeed;
         m_animator = animator;
         m_animator.SetInteger("GoThereState", 0);
 
-        actor.m_agent.isStopped = false;
-        actor.m_agent.SetDestination(target.position);
-        actor.m_agent.stoppingDistance = stopDistance;
-        oldPosition = actor.transform.position;
+        character.m_agent.isStopped = false;
+        character.m_agent.SetDestination(target.position);
+        character.m_agent.stoppingDistance = stopDistance;
+        oldPosition = character.transform.position;
 
-        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, actor);
+        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
 
-        actor.m_animator.CrossFade(animationName, 0.1f);
+        character.m_animator.CrossFade(animationName, 0.1f);
         StateMachineManager.I.Add(actorName.ToString() + "Go",new MyTask(OnUpdate, OnEnd));
     }
 
     void OnUpdate()
     {
-        NavMeshPath path = actor.m_agent.path;
+        NavMeshPath path = character.m_agent.path;
         float distance = 0.0f;
-        Vector3 temp = actor.transform.position;
+        Vector3 temp = character.transform.position;
         
         for (int i = 0; i < path.corners.Length; i++)
         {
@@ -74,7 +74,7 @@ public class GoThere : StateMachineBehaviour
         }
 
         //動けなくなった
-        Vector3 movement = oldPosition - actor.transform.position;
+        Vector3 movement = oldPosition - character.transform.position;
         if (movement.magnitude < 0.0001f)
         {
             time += Time.deltaTime;
@@ -85,14 +85,14 @@ public class GoThere : StateMachineBehaviour
             }
         }
 
-        oldPosition = actor.transform.position;
+        oldPosition = character.transform.position;
     }
 
     void OnEnd()
     {
-        actor.m_agent.isStopped = true;
-        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, actor);
-        actor.m_animator.CrossFade(animationName, 0.1f);
+        character.m_agent.isStopped = true;
+        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
+        character.m_animator.CrossFade(animationName, 0.1f);
         m_animator.SetInteger("GoThereState", state);
     }
     //中断

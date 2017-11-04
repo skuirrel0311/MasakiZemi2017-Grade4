@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,7 +11,10 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public string missionText = "";
 
+    [SerializeField]
     int pageIndex = 0;
+
+    bool isFirst = true;
 
     public RuntimeAnimatorController controller = null;
 
@@ -26,33 +30,79 @@ public class BasePage : MonoBehaviour
 
     //同名のオブジェクトがあるときには使えない
     public Dictionary<string, HoloObject> objectDictionary = new Dictionary<string, HoloObject>();
-    //ページに存在するホログラム全部。(灰色にさせたりするときに必要)
-    public List<HoloObject> objectList = new List<HoloObject>();
-    //動かせるホログラム全部
-    public Dictionary<string, HoloMovableObject> movableObjectDictionary = new Dictionary<string, HoloMovableObject>();
-    //よく使うのでリストでも管理
-    public List<HoloMovableObject> movableObjectList = new List<HoloMovableObject>();
+    //モーションするキャラクター
+    public Dictionary<ActorName, HoloCharacter> characterDictionary = new Dictionary<ActorName, HoloCharacter>();
 
+    //ページに存在するホログラム全部。
+    public List<HoloObject> objectList = new List<HoloObject>();
+    //プレイヤーの操作によって動くことがあるオブジェクト
+    public List<HoloMovableObject> movableObjectList = new List<HoloMovableObject>();
+    //NavMeshAgentがついているオブジェクト
+    public List<HoloGroundingObject> groundingObjectList = new List<HoloGroundingObject>();
+    
     /// <summary>
-    /// 本の位置にページを固定する
+    /// ゲーム開始時に本の位置を固定させるやつ(キャラクタなどが移動していないことが保証されている)
     /// </summary>
-    public void PageLock(Vector3 position, Quaternion rotation, int pageIndex)
+    public void PageLock(Vector3 position, Quaternion rotation)
     {
         transform.SetPositionAndRotation(position, rotation);
+
+        //動く可能性のあるやつの開始時の位置を保存
         for (int i = 0; i < movableObjectList.Count; i++)
         {
             movableObjectList[i].ApplyDefaultTransform();
         }
-        this.pageIndex = pageIndex;
+    }
+
+    /// <summary>
+    /// 指定された量本をずらします
+    /// </summary>
+    public void MovePagePosition(Vector3 movement)
+    {
+        SetTransform(transform.position + movement, transform.rotation);
+    }
+
+    public void SetTransform(Vector3 position, Quaternion rotation)
+    {
+        StartCoroutine(SetPosition(position, rotation));
+    }
+
+    //フレームをまたがないとAgentの有効無効がきちんと反映されなかったので
+    IEnumerator SetPosition(Vector3 position, Quaternion rotation)
+    {
+        //現在表示されているページだったらNavMeshAgentを無効化してやらないといけない
+        bool shouldDisableAgent = MainSceneManager.I.currentPageIndex == pageIndex;
+        
+        if(shouldDisableAgent)
+        {
+            SetAllAgentEnabled(false);
+            yield return null;
+        }
+        Vector3 movement = position - transform.position;
+
+        //動く可能性のあるやつの初期値ずらす
+        for (int i = 0; i < movableObjectList.Count; i++)
+        {
+            movableObjectList[i].ApplyDefaultTransform(movement);
+        }
+
+        transform.SetPositionAndRotation(position, rotation);
+
+        if (shouldDisableAgent)
+        {
+            yield return null;
+            SetAllAgentEnabled(true);
+        }
+
+        //shouldDisableAgentがfalseだと戻り値が存在しない気がしたので
+        yield return null;
     }
 
     /// <summary>
     /// ページを開いた時に呼ぶ
     /// </summary>
-    public void PageStart(bool isFirst)
+    public void PageStart()
     {
-        Debug.Log("is first = " + isFirst + " page index = " + pageIndex);
-
         if (isFirst)
         {
             //初回のみ行う設定
@@ -69,8 +119,10 @@ public class BasePage : MonoBehaviour
 
         for (int i = 0; i < objectList.Count; i++)
         {
-            objectList[i].PageStart(pageIndex, isFirst);
+            objectList[i].PageStart(pageIndex);
         }
+
+        isFirst = false;
     }
 
     //ページに存在するActorタグのオブジェクトをDictionaryとListに格納する
@@ -84,6 +136,7 @@ public class BasePage : MonoBehaviour
             HoloObject holoObject = tempArray[i].GetComponent<HoloObject>();
             if (holoObject == null)
             {
+                //ActorタグなのにHoloObjectが取得できないのはやばい
                 Debug.LogWarning(tempArray[i].name + "is not actor");
                 continue;
             }
@@ -102,18 +155,26 @@ public class BasePage : MonoBehaviour
                 continue;
             }
 
-            if (holoObject.GetActorType == HoloObject.HoloObjectType.Statics) continue;
+            if (holoObject.GetActorType == HoloObject.Type.Statics) continue;
+
+            HoloMovableObject movableObject = (HoloMovableObject)holoObject;
 
             //動かせるオブジェクト
-            movableObjectList.Add((HoloMovableObject)holoObject);
+            movableObjectList.Add(movableObject);
+
+            if (!movableObject.IsGrounding) continue;
+
+            groundingObjectList.Add((HoloGroundingObject)movableObject);
+
+            if (movableObject.GetActorType != HoloObject.Type.Character) continue;
 
             try
             {
-                movableObjectDictionary.Add(holoObject.name, (HoloMovableObject)holoObject);
+                characterDictionary.Add((ActorName)Enum.Parse(typeof(ActorName), holoObject.name), (HoloCharacter)holoObject);
             }
             catch
             {
-                //動かすオブジェクトは必ず固有の名前にするべきなのでErrorを出す
+                //キャラクターは必ず固有の名前にするべきなのでErrorを出す
                 Debug.LogError(holoObject.name + "was not import movable dictionary");
                 continue;
             }
@@ -162,23 +223,38 @@ public class BasePage : MonoBehaviour
 
     public void SetAllAgentEnabled(bool enabled)
     {
-        for (int i = 0; i < movableObjectList.Count; i++)
+        for (int i = 0; i < groundingObjectList.Count; i++)
         {
-            if (movableObjectList[i].isFloating) continue;
-
-            movableObjectList[i].m_agent.enabled = enabled;
+            groundingObjectList[i].m_agent.enabled = enabled;
         }
     }
 
     public void AddMovableObject(HoloMovableObject obj)
     {
         movableObjectList.Add(obj);
-        movableObjectDictionary.Add(obj.name, obj);
+
+        if (!obj.IsGrounding) return;
+
+        groundingObjectList.Add((HoloGroundingObject)obj);
+
+        if (obj.GetActorType != HoloObject.Type.Character) return;
+
+        characterDictionary.Add((ActorName)Enum.Parse(typeof(ActorName), obj.name), (HoloCharacter)obj);
     }
 
     public void RemoveMovableObject(string name)
     {
-        movableObjectList.Remove(movableObjectDictionary[name]);
-        movableObjectDictionary.Remove(name);
+        HoloObject obj;
+        if (!objectDictionary.TryGetValue(name, out obj)) return;
+
+        movableObjectList.Remove((HoloMovableObject)obj);
+
+        if (!((HoloMovableObject)obj).IsGrounding) return;
+
+        groundingObjectList.Remove((HoloGroundingObject)obj);
+
+        if (obj.GetActorType != HoloObject.Type.Character) return;
+
+        characterDictionary.Remove((ActorName)Enum.Parse(typeof(ActorName), obj.name));
     }
 }

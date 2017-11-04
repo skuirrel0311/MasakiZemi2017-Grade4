@@ -37,13 +37,13 @@ public class TestSceneObjController : MainSceneObjController
         //右クリック長押し
         if (Input.GetMouseButton(0))
         {
-            if (targetActor != null) UpdateOperation();
+            if (targetObj != null) UpdateOperation();
 
         }
 
         if(Input.GetMouseButtonUp(0))
         {
-            if(targetActor != null) EndOperation();
+            if(targetObj != null) EndOperation();
         }
     }
 
@@ -60,16 +60,16 @@ public class TestSceneObjController : MainSceneObjController
             HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
             if (actor == null || !actor.isMovable)
             {
-                targetActor = null;
+                targetObj = null;
                 return false;
             }
             
             //掴むことができた
-            targetActor = actor;
+            targetObj = actor;
             return true;
         }
 
-        targetActor = null;
+        targetObj = null;
         return false;
     }
     
@@ -78,7 +78,7 @@ public class TestSceneObjController : MainSceneObjController
         base.StartOperation();
 
         oldMousePosition = Input.mousePosition;
-        targetActor.transform.position = new Vector3(targetActor.transform.position.x, operationLockHeight, targetActor.transform.position.z);
+        targetObj.transform.position = new Vector3(targetObj.transform.position.x, operationLockHeight, targetObj.transform.position.z);
     }
 
     protected override void UpdateOperation()
@@ -86,7 +86,7 @@ public class TestSceneObjController : MainSceneObjController
         Vector3 velocity = Vector2ComvertToXZVector(GetMouseVelocity());
         Quaternion cam = mainCamera.transform.rotation;
         velocity = Quaternion.Euler(0.0f, cam.eulerAngles.y, 0.0f) * velocity;
-        targetActor.transform.position += velocity * moveSpeed * Time.deltaTime;
+        targetObj.transform.position += velocity * moveSpeed * Time.deltaTime;
         base.UpdateOperation();
     }
 
