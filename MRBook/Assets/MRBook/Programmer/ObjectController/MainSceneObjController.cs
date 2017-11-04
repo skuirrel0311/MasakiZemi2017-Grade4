@@ -232,7 +232,10 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         }
 
         Debug.Log("end nav checked");
-        targetActor.m_agent.enabled = true;
+        if (!targetActor.isFloating)
+        {
+            targetActor.m_agent.enabled = true;
+        }
         targetActor = null;
     }
     

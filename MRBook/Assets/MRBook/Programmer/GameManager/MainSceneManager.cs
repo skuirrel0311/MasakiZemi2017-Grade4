@@ -157,13 +157,15 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         else
         {
             CurrentState = GameState.Wait;
+            GameObject urashima = ActorManager.I.GetActor(ActorName.Urashima.ToString()).gameObject;
+            AkSoundEngine.PostEvent("Die", urashima);
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
-        CurrentState = success ? GameState.Next : GameState.Wait;
+        CurrentState = GameState.Next;
 
         if (!success)
         {
-            Utilities.Delay(0.2f, () => ResetPage(), this);
+            //Utilities.Delay(0.2f, () => ResetPage(), this);
         }
 
         m_Animator.SetBool("IsStart", false);

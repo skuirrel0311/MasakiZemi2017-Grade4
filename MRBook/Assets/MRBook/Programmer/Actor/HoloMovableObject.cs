@@ -85,10 +85,12 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     /// </summary>
     public override void ResetTransform()
     {
-        m_agent.enabled = false;
+        if (!isFloating)
+        {
+            m_agent.enabled = true;
+        }
         transform.position = firstPosition;
         transform.rotation = firstRotation;
-        m_agent.enabled = defaultAgentEnabled;
 
         if(m_animator != null)
         {

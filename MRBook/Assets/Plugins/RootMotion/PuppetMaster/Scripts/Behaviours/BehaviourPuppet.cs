@@ -592,7 +592,7 @@ namespace RootMotion.Dynamics {
 				unpinnedTimer += Time.deltaTime;
 
 				if (unpinnedTimer >= getUpDelay && canGetUp && !getupDisabled && puppetMaster.muscles[0].rigidbody.velocity.magnitude < maxGetUpVelocity) {
-					SetState(State.GetUp);
+					//SetState(State.GetUp);
 					return;
 				}
 

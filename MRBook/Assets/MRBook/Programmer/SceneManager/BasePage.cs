@@ -52,7 +52,7 @@ public class BasePage : MonoBehaviour
     public void PageStart(bool isFirst)
     {
         Debug.Log("is first = " + isFirst + " page index = " + pageIndex);
-        
+
         if (isFirst)
         {
             //初回のみ行う設定
@@ -164,6 +164,8 @@ public class BasePage : MonoBehaviour
     {
         for (int i = 0; i < movableObjectList.Count; i++)
         {
+            if (movableObjectList[i].isFloating) continue;
+
             movableObjectList[i].m_agent.enabled = enabled;
         }
     }
