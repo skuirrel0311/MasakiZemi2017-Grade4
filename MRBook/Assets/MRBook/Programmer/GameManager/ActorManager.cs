@@ -30,22 +30,6 @@ public class ActorManager : Singleton<ActorManager>
 
     //ページの外に置かれたオブジェクト
     Dictionary<string, HoloObject> globalObjectDictionary = new Dictionary<string, HoloObject>();
-
-    string[] actorNameList = null;
-    string[] ActorNameList
-    {
-        get
-        {
-            if (actorNameList != null) return actorNameList;
-
-            int num = Enum.GetNames(typeof(ActorName)).Length;
-            for(int i = 0;i < num;i++)
-            {
-            }
-
-            return actorNameList;
-        }
-    }
     
     public void InitSceneManager(MainSceneManager sceneManager)
     {

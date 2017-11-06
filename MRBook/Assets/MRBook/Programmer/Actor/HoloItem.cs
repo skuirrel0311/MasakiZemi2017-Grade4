@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoloItem : HoloMovableObject
+public class HoloItem : HoloGroundingObject
 {
     public enum Hand { Right, Left, Both }
 

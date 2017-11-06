@@ -10,16 +10,17 @@ public class HoloCharacter : HoloGroundingObject
     public Animator m_animator { get; private set; }
     [SerializeField]
     string firstAnimationName = "Wait";
+    
+    public bool IsGetAlcohol { get; private set; }
+    const string AlcoholItemName = "Sakabin";
 
+    [SerializeField]
+    bool canHaveItem = false;
     public bool hasItem_Left { get; private set; }
     public bool hasItem_Right { get; private set; }
 
     public HoloItem leftHandItem { get; private set; }
     public HoloItem rightHandItem { get; private set; }
-
-    public bool IsGetAlcohol { get; private set; }
-    const string AlcoholItemName = "Sakabin";
-
     [SerializeField]
     Transform rightHand = null;
     [SerializeField]
@@ -44,6 +45,7 @@ public class HoloCharacter : HoloGroundingObject
     /// </summary>
     public override void SetItem(GameObject itemObj)
     {
+        if (!canHaveItem) return;
         if (itemObj == null)
         {
             Debug.LogError("item obj is null");
@@ -109,6 +111,7 @@ public class HoloCharacter : HoloGroundingObject
     /// <param name="setDefault">捨てたアイテムを元の位置に戻すか？</param>
     public void DumpItem(HoloItem.Hand hand, bool setDefault = true)
     {
+        if (!canHaveItem) return;
         //その前に持っていたアイテムは初期座標に戻す
         if (hand == HoloItem.Hand.Both)
         {
@@ -147,7 +150,7 @@ public class HoloCharacter : HoloGroundingObject
     {
         //アイテムもリセット
         DumpItem(HoloItem.Hand.Both);
-
+        gameObject.SetActive(true);
         //ページが開始された時のモーションに戻す
         m_animator.CrossFade(firstAnimationName, 0.0f);
         base.ResetTransform();
