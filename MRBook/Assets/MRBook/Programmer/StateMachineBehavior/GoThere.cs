@@ -10,6 +10,7 @@ public class GoThere : StateMachineBehaviour
     public string targetName;
     public float stopDistance = 0.2f;
     public float moveSpeed = 0.1f;
+    public string paramName = "GoThereState";
 
     HoloCharacter character;
     int state = 0;
@@ -39,7 +40,7 @@ public class GoThere : StateMachineBehaviour
 
         character.m_agent.speed = moveSpeed;
         m_animator = animator;
-        m_animator.SetInteger("GoThereState", 0);
+        m_animator.SetInteger(paramName, 0);
 
         character.m_agent.isStopped = false;
         character.m_agent.SetDestination(target.position);
@@ -93,7 +94,7 @@ public class GoThere : StateMachineBehaviour
         character.m_agent.isStopped = true;
         string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
         character.m_animator.CrossFade(animationName, 0.1f);
-        m_animator.SetInteger("GoThereState", state);
+        m_animator.SetInteger(paramName, state);
     }
     //中断
     void Suspension()
