@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-public class TestBehavior : StateMachineBehaviour
+public class TestBehavior : BaseStateMachineBehaviour
 {
     public string message;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         NotificationManager.I.ShowMessage(message, 5.0f);
     }
 }

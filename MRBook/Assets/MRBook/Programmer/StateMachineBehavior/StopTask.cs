@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StopTask : StateMachineBehaviour
+public class StopTask : BaseStateMachineBehaviour
 {
     public string taskName = "";
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         StateMachineManager.I.Stop(taskName);
     }
 }

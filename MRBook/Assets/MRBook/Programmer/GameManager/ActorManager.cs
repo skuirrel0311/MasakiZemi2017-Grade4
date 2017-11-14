@@ -85,7 +85,7 @@ public class ActorManager : Singleton<ActorManager>
     /// <summary>
     /// 現在のページに登録されているアクターを非表示にします
     /// </summary>
-    public void DisableActor(string actorName)
+    public void DisableObject(string actorName)
     {
         HoloObject actor = GetObject(actorName);
         if (actor != null) actor.gameObject.SetActive(false);

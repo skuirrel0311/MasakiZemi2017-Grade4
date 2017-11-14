@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndCallBack : StateMachineBehaviour
+public class EndCallBack : BaseStateMachineBehaviour
 {
     public bool success = false;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         MainSceneManager.I.EndCallBack(success);
     }
 }

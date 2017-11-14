@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //～まで行けという命令
-public class GoThere : StateMachineBehaviour
+public class GoThere : BaseStateMachineBehaviour
 {
     public ActorName actorName;
     public string targetName;
@@ -21,8 +21,9 @@ public class GoThere : StateMachineBehaviour
 
     Animator m_animator;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         character = ActorManager.I.GetCharacter(actorName);
         if(character == null)
         {
@@ -88,7 +89,7 @@ public class GoThere : StateMachineBehaviour
 
         oldPosition = character.transform.position;
     }
-
+    
     void OnEnd()
     {
         character.m_agent.isStopped = true;

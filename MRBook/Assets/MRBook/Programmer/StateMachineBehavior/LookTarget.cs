@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LookTarget : StateMachineBehaviour
+public class LookTarget : BaseStateMachineBehaviour
 {
     public string targetName;
     public ActorName actorName;
@@ -11,8 +11,9 @@ public class LookTarget : StateMachineBehaviour
     Quaternion to;
     int state = 0;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         m_animator = animator;
         character = ActorManager.I.GetCharacter(actorName);
         if (character == null)

@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 指定されたフラグの値とboolValueの値が等しいかをメカニムのFlaggedに入れます
 /// </summary>
-public class BoolComparison : StateMachineBehaviour
+public class BoolComparison : BaseStateMachineBehaviour
 {
     public string flagName;
     public bool boolValue = true;
@@ -16,8 +14,9 @@ public class BoolComparison : StateMachineBehaviour
 
     Animator m_animator;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         m_animator = animator;
         m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
 

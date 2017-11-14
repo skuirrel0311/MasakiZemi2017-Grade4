@@ -10,7 +10,7 @@ public class BoolComparisonElement
     public bool isCheckNow = true;
 }
 
-public class BoolComparisonAll : StateMachineBehaviour
+public class BoolComparisonAll : BaseStateMachineBehaviour
 {
     public BoolComparisonElement[] element;
     public enum Type { And, Or}
@@ -18,8 +18,9 @@ public class BoolComparisonAll : StateMachineBehaviour
 
     bool[] flaggedArray;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         flaggedArray = new bool[element.Length];
 
         for(int i = 0;i< element.Length;i++)

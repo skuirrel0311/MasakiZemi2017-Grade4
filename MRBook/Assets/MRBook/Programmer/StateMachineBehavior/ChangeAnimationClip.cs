@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeAnimationClip : StateMachineBehaviour
+public class ChangeAnimationClip : BaseStateMachineBehaviour
 {
     public ActorName actorName;
     public MotionName motionName;
     public float transitionDuration = 0.1f;
     public string WwiseEventName = string.Empty;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStart(animator, stateInfo, layerIndex);
         HoloCharacter actor = ActorManager.I.GetCharacter(actorName);
         
         if(actor == null)

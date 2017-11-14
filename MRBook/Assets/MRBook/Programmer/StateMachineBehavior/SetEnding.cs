@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetEnding : StateMachineBehaviour
+public class SetEnding : BaseStateMachineBehaviour
 {
     public string endingName;
 
