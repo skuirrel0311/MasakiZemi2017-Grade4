@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System;
-using System.Reflection;
 using Newtonsoft.Json.Serialization;
 
 #if UNITY_5_5_OR_NEWER
@@ -196,10 +195,9 @@ public static class PackedMemorySnapshotUtility
                     return;
                 }
             }
-
-            UnityEngine.Debug.unityLogger.Log(logTypeFromTraceLevel[(int) level], message);
+            Debug.logger.Log(logTypeFromTraceLevel[(int) level], message);
             if (null != ex) {
-                UnityEngine.Debug.LogException(ex);
+                Debug.LogException(ex);
             }
         }
     }
