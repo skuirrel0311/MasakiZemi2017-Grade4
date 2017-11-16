@@ -21,7 +21,6 @@ public class FlagManager : BaseManager<FlagManager>
     {
         MyFlag myFlag;
         name = name + gameManager.currentPageIndex;
-        Debug.Log("get flag " + name);
         if (flagDictionary.TryGetValue(name, out myFlag))
         {
             //いま判定を行う
