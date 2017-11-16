@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2653,8 +2653,8 @@ MonoBehaviour:
   regainPinSpeed: 1
   boostFalloff: 1
   defaults:
-    unpinParents: 0.9
-    unpinChildren: 0.9
+    unpinParents: 0
+    unpinChildren: 0
     unpinGroup: 0
     minMappingWeight: 0
     maxMappingWeight: 1
@@ -2665,7 +2665,7 @@ MonoBehaviour:
     puppetMaterial: {fileID: 13400000, guid: a3fd0ffcf0d0a384ba3568687a96ab8e, type: 2}
     unpinnedMaterial: {fileID: 13400000, guid: d4563de398e2c4412a95f4317ddf4b1a, type: 2}
   groupOverrides: []
-  knockOutDistance: 0.0001
+  knockOutDistance: 0.01
   unpinnedMuscleWeightMlp: 1
   maxRigidbodyVelocity: 1
   pinWeightThreshold: 1

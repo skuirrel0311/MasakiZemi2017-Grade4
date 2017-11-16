@@ -31,17 +31,17 @@ namespace RootMotion.Dynamics {
 
 		// When a muscle collides with something (called by the MuscleCollisionBroadcaster component on the muscle).
 		protected override void OnMuscleCollisionBehaviour(MuscleCollision m) {
-			// All the conditions for ignoring this
+            // All the conditions for ignoring this
 			if (!enabled) return;
-			if (state == State.Unpinned) return;
-			if (collisions > maxCollisions) return;
-			if (!LayerMaskExtensions.Contains(collisionLayers, m.collision.gameObject.layer)) return;
-			if (masterProps.normalMode == NormalMode.Kinematic && !puppetMaster.isActive && !masterProps.activateOnStaticCollisions && m.collision.gameObject.isStatic) return;
-
-			// Get the collision impulse on the muscle
-			float cT = collisionThreshold;
+            if (state == State.Unpinned) return;
+            if (collisions > maxCollisions) return;
+            if (!LayerMaskExtensions.Contains(collisionLayers, m.collision.gameObject.layer)) return;
+            if (masterProps.normalMode == NormalMode.Kinematic && !puppetMaster.isActive && !masterProps.activateOnStaticCollisions && m.collision.gameObject.isStatic) return;
+            // Get the collision impulse on the muscle
+            float cT = collisionThreshold;
 			float impulse = GetImpulse(m, ref cT);
-
+            impulse *= 100000.0f;
+            Debug.Log("impulse = " + impulse);
 			// Let other scripts know about the collision (even the ones below collision threshold)
 			if (OnCollisionImpulse != null) OnCollisionImpulse(m, impulse);
 

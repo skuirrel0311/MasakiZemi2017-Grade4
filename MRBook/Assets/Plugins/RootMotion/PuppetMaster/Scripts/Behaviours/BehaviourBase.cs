@@ -137,8 +137,8 @@ namespace RootMotion.Dynamics {
 		}
 
 		public void OnMuscleCollision(MuscleCollision collision) {
-			if (!initiated) return;
-			if (OnPreMuscleCollision != null) OnPreMuscleCollision(collision);
+            if (!initiated) return;
+            if (OnPreMuscleCollision != null) OnPreMuscleCollision(collision);
 
 			OnMuscleCollisionBehaviour(collision);
 
