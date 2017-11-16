@@ -201,7 +201,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         base.SetTargetObject(obj);
 
-        targetObj = targetObject.GetComponent<HoloMovableObject>();
+        targetObj = obj.GetComponent<HoloMovableObject>();
     }
 
     /// <summary>

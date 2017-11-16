@@ -19,6 +19,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     protected override void Start()
     {
+        StartCoroutine(MonitorWorldAnchor());
         base.Start();
     }
 
@@ -32,7 +33,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
             if (IsChangeWorldAnchorPosition())
             {
-                ModifyBookPosition(true);
+                ModifyBookPosition(false);
             }
             oldWorldAnchorPosition = worldAnchor.transform.position;
         }
