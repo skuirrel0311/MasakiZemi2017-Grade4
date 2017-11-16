@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1D8F057D-47DE-4CCA-B04B-50BACCF98927}" SchemaVersion="75">
+	<Events>
+		<WorkUnit Name="SE" ID="{1D8F057D-47DE-4CCA-B04B-50BACCF98927}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Sea" ID="{C5F12431-CDF4-4F44-87F9-17214E480677}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{34A6F085-3432-4F50-8475-4E9B7D54B8B6}" ShortID="545920716" Type="Stop" Scope="One" Global="true">
+							<ElementList>
+								<Element ID="{89879AD5-2A95-48BB-957A-4769A3E1A6AC}" Global="true">
+									<ObjectRef Name="Lake Waves Lapping" ID="{62A65DE8-D7CB-4066-A9C8-0CA9FACD7893}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{6E034790-C25A-4004-B0AB-23FC74356400}" ShortID="837179737" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{5614900B-B9E2-4F91-BC4F-C457AADFEE69}" Global="false">
+									<ObjectRef Name="Lake Waves Lapping" ID="{62A65DE8-D7CB-4066-A9C8-0CA9FACD7893}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="System" ID="{F5864E03-EEF6-42AF-8B15-7924D9EA45C0}" ShortID="753337819">
+					<ChildrenList>
+						<Event Name="Alart" ID="{F0730F75-3BDF-415B-B62F-F3165A64BB30}">
+							<ChildrenList>
+								<Action Name="Play" ID="{EE641E9D-6BE2-4065-A540-AB411A80B7E6}" ShortID="265418025" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{32BBE689-1972-4F56-9ACF-EA4ED878AD8D}" Global="false">
+											<ObjectRef Name="Tap" ID="{AF04C789-4527-47BE-AC96-FB2C9DA2B4CB}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Close" ID="{E887AA0B-C610-4F9E-9B70-B6A6E277F5AC}">
+							<ChildrenList>
+								<Action Name="Play" ID="{AAFC767A-FD71-41FF-A7C8-68E2DDAD3996}" ShortID="459351714" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{7D32052D-05F6-48EC-AC07-00D04A495AE3}" Global="false">
+											<ObjectRef Name="Tap" ID="{AF04C789-4527-47BE-AC96-FB2C9DA2B4CB}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Reset" ID="{46E90D0F-97C5-463C-9022-26DB740D540E}">
+							<ChildrenList>
+								<Action Name="Play" ID="{9EE2F9ED-8B18-4C6A-8F33-D0E614654518}" ShortID="685239896" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{41AE8E13-E24A-452D-B437-7DE576764695}" Global="false">
+											<ObjectRef Name="Equip" ID="{9901BC20-752B-465A-A27C-F1582DF07DB8}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Tap" ID="{AB2C9DFE-D4F3-4742-93D8-754F75E9C75E}">
+							<ChildrenList>
+								<Action Name="Play" ID="{459A42C7-A33F-46D2-9067-206E51DE0158}" ShortID="1021763873" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{CDC2BA2F-FF6D-46AF-AE1F-7FAAA9620D98}" Global="false">
+											<ObjectRef Name="Tap" ID="{AF04C789-4527-47BE-AC96-FB2C9DA2B4CB}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Birds" ID="{A9A4724B-73D3-486B-96A6-4FA57E93EC01}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{A13B13FC-A461-4AEC-A7BB-F4695A90FA64}" ShortID="532210856" Type="Stop" Scope="One" Global="true">
+							<ElementList>
+								<Element ID="{7F24BF1B-B1B4-4E81-9E3E-241CC5376BF4}" Global="true">
+									<ObjectRef Name="Birds" ID="{742D4C15-0AD8-4BC2-94FB-09A9891B4294}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Stop" ID="{FB418897-E091-4B39-93C1-E243DA829646}" ShortID="398736981" Type="Stop" Scope="One" Global="true">
+							<ElementList>
+								<Element ID="{D2B1913D-2200-4CCC-AD6A-F6786E005578}" Global="true">
+									<ObjectRef Name="Lake Waves Lapping" ID="{62A65DE8-D7CB-4066-A9C8-0CA9FACD7893}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{0C598BD4-F070-49DE-AD66-C3B1A21D37FB}" ShortID="103397853" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{E81E2097-1F25-456A-9DFC-8CDE5252D5D7}" Global="false">
+									<ObjectRef Name="Birds" ID="{742D4C15-0AD8-4BC2-94FB-09A9891B4294}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Die" ID="{173892AC-4120-49C4-AC74-5C84900BD54D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{1C3B1A75-6897-4324-BE64-C84BBF257C9C}" ShortID="389386166" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{1D520E84-C050-4EE5-BB46-BE7E806B6AAC}" Global="false">
+									<ObjectRef Name="Die" ID="{8877B37F-F0D4-4F40-A033-59B3C8F99556}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Door" ID="{566FB683-8256-4BD3-B9A9-1B6A1B257C4D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{3D377ACA-77DF-47E6-A19E-579E17E4F0FA}" ShortID="642457185" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{29F62561-32A2-4D8A-BE81-380670B40F24}" Global="false">
+									<ObjectRef Name="Door" ID="{F798D941-2E1D-4582-BC4A-317A4E500F9E}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Equip" ID="{A81263D4-3F17-4ADD-A897-69711962E607}">
+					<ChildrenList>
+						<Action Name="Play" ID="{C9431F83-E0BE-4293-BDF8-7C3689D2F292}" ShortID="250338885" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{92C78178-82E3-4632-B00E-2D69C2FF75B6}" Global="false">
+									<ObjectRef Name="Dron" ID="{F06307A4-15A2-44A2-85D6-BBD466CD960A}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Eye" ID="{0CCDBC70-C863-4EC3-B530-4BD100EE45EC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{81810FE1-3150-45D0-8D70-61E119C567A1}" ShortID="813954773" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{BAD6BE34-A90C-4906-92E0-828324895C00}" Global="false">
+									<ObjectRef Name="Eye" ID="{90118626-A3BF-4D3D-9E73-87FA57C78914}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fire" ID="{668EADA4-AE68-43B9-B629-05ABACCCA194}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{AF8A5742-A37B-4370-B0ED-1A6DA12C701B}" ShortID="750917954" Type="Stop" Scope="One" Global="true">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{38D85892-4138-4965-B6B2-57398CF38CC9}" Global="true">
+									<ObjectRef Name="Fire" ID="{D3D278D0-78CC-4F6A-B9A7-6150278C5656}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{25AF6AB9-B6BC-44D0-A998-6FB792EDFDC6}" ShortID="375895062" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{73FCA0E7-F2D9-4811-B373-35A13893C753}" Global="false">
+									<ObjectRef Name="Fire" ID="{D3D278D0-78CC-4F6A-B9A7-6150278C5656}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RodSwing" ID="{4A2382BC-BDD8-4D36-9660-BE3A20B58FA2}">
+					<ChildrenList>
+						<Action Name="Play" ID="{68D25290-D4D8-478C-A8A1-5EB768ABD814}" ShortID="185524" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{DD44B701-AA40-4634-8EB9-4066D2CE9E42}" Global="false">
+									<ObjectRef Name="RodSwing" ID="{D74D3526-3A82-43F0-992F-030DF29CBE58}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

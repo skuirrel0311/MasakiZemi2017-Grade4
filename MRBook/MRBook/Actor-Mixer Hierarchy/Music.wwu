@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{478604A1-0579-4502-856D-46229DB81984}" SchemaVersion="75">
+	<AudioObjects>
+		<WorkUnit Name="Music" ID="{478604A1-0579-4502-856D-46229DB81984}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Ambient" ID="{D545F693-6420-4CA1-B3A4-94CF98BD0270}" ShortID="790355046">
+					<ChildrenList>
+						<Sound Name="Lake Waves Lapping" ID="{62A65DE8-D7CB-4066-A9C8-0CA9FACD7893}" ShortID="520411416" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="PositioningType" Type="int16" Value="1"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Ambient" ID="{565859EB-C026-4A6D-9B18-3BBD3DB0258D}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Lake Waves Lapping" ID="{C139F642-76A1-4BA4-BC1C-F96060B0BEB1}" ShortID="1066958259">
+									<Language>SFX</Language>
+									<AudioFile>Lake Waves Lapping.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Lake Waves Lapping" ID="{C139F642-76A1-4BA4-BC1C-F96060B0BEB1}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="BGM" ID="{CB8B7604-2CAA-40A7-9BAE-282C60C47F7C}" ShortID="810910143">
+					<ChildrenList>
+						<Sound Name="2pPlay" ID="{F1D6B62A-C622-4D04-B3A4-2315A488368C}" ShortID="150118366" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="2pPlay" ID="{26B4B048-1EEE-4604-9428-9EECC2214CEF}" ShortID="455309328">
+									<Language>SFX</Language>
+									<AudioFile>2pPlay.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="2pPlay" ID="{26B4B048-1EEE-4604-9428-9EECC2214CEF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="2pSet" ID="{9CF07AB6-F31B-4663-884C-6341EA4BA645}" ShortID="143574045" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="2pSet" ID="{C572208D-1334-496C-960C-57C44CB3FC77}" ShortID="931199313">
+									<Language>SFX</Language>
+									<AudioFile>2pSet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="2pSet" ID="{C572208D-1334-496C-960C-57C44CB3FC77}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Jingle" ID="{FE74F052-2496-439A-A667-07F033E051AE}" ShortID="231390784">
+					<ChildrenList>
+						<Sound Name="3pOpen" ID="{43114F93-72DB-4C4E-AB1E-0206C07F9B69}" ShortID="56354590" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="3pOpen" ID="{FDFE3D58-A4ED-4DA6-8FFF-97B635A30845}" ShortID="232040569">
+									<Language>SFX</Language>
+									<AudioFile>3pOpen.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="3pOpen" ID="{FDFE3D58-A4ED-4DA6-8FFF-97B635A30845}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

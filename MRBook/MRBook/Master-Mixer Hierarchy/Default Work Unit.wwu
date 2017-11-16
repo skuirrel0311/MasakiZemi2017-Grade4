@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{DCFB874B-665D-483F-8E61-96A1F39E7493}" SchemaVersion="75">
+	<Busses>
+		<WorkUnit Name="Default Work Unit" ID="{DCFB874B-665D-483F-8E61-96A1F39E7493}" PersistMode="Standalone">
+			<ChildrenList>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<ReferenceList>
+						<Reference Name="Effect0">
+							<Custom>
+								<Effect Name="Wwise Peak Limiter (Custom)" ID="{A7E7F489-7103-4321-9CED-3388E9D93B20}" ShortID="70641399" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+									<PropertyList>
+										<Property Name="Threshold" Type="Real32" Value="-1"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
+						<Bus Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}">
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom>
+										<Effect Name="Microsoft HRTF (Custom)" ID="{EC5FDF7A-4D97-4E02-9D2D-8CE3C66F6AFC}" ShortID="287485663" PluginName="Microsoft HRTF" CompanyID="0" PluginID="170" PluginType="3"/>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</Bus>
+						<Bus Name="Ambient" ID="{565859EB-C026-4A6D-9B18-3BBD3DB0258D}">
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom>
+										<Effect Name="Microsoft HRTF (Custom)" ID="{8E107485-760E-496C-8D18-CA267EF3034C}" ShortID="893155172" PluginName="Microsoft HRTF" CompanyID="0" PluginID="170" PluginType="3"/>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</Bus>
+					</ChildrenList>
+				</Bus>
+				<Bus Name="Master Secondary Bus" ID="{D2E0BC7E-7B3F-4FFE-A670-FAE02761B631}"/>
+				<MotionBus Name="Master Motion Bus" ID="{20A630BA-3398-4676-B927-1004DFE41FD8}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>
