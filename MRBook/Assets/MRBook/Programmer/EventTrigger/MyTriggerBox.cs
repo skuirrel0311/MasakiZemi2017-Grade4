@@ -36,15 +36,4 @@ public class MyTriggerBox : MyTrigger
 
         return Intersect(obj);
     }
-
-    public void OnDrawGizmos()
-    {
-        if (m_transform == null) return;
-#if UNITY_EDITOR
-        var oldColor = UnityEditor.Handles.color;
-        UnityEditor.Handles.color = Color.yellow;
-        UnityEditor.Handles.DrawWireCube(m_transform.position + offset,Vector3.one * 0.1f);
-        UnityEditor.Handles.color = oldColor;
-#endif
-    }
 }

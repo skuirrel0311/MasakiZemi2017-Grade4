@@ -393,6 +393,8 @@ namespace RootMotion.Dynamics {
 		/// </summary>
 		public CollisionImpulseDelegate OnCollisionImpulse;
 
+        public System.Action OnKnockedOut = null;
+
 		/// <summary>
 		/// Gets the current state of the puppet (Puppet/Unpinned/GetUp).
 		/// </summary>
@@ -592,6 +594,9 @@ namespace RootMotion.Dynamics {
 				unpinnedTimer += Time.deltaTime;
 
 				if (unpinnedTimer >= getUpDelay && canGetUp && !getupDisabled && puppetMaster.muscles[0].rigidbody.velocity.magnitude < maxGetUpVelocity) {
+                    Debug.Log("knock out");
+                    if (OnKnockedOut != null) OnKnockedOut.Invoke();
+                    puppetMaster.state = PuppetMaster.State.Dead;
 					//SetState(State.GetUp);
 					return;
 				}

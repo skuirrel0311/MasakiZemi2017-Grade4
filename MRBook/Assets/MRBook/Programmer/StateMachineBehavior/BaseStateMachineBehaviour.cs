@@ -71,6 +71,14 @@ public class BaseStateMachineBehaviour : StateMachineBehaviour
         RootTask.I.OnEndTask();
     }
 
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        isEnd = false;
+        isActive = true;
+        isInitialize = false;
+        OnTaskEnd = null;
+    }
+
     /// <summary>
     /// 子タスクを格納する
     /// </summary>

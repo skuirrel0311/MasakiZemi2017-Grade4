@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using RootMotion.Dynamics;
 
 public class BasePage : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class BasePage : MonoBehaviour
     /// </summary>
     [SerializeField]
     GameObject[] bookObjects = null;
-
 
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();

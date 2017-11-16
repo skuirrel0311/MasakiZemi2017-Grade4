@@ -9,7 +9,7 @@ public class HoloCharacter : HoloGroundingObject
 {
     public Animator m_animator { get; private set; }
     [SerializeField]
-    string firstAnimationName = "Wait";
+    protected MotionName firstAnimationName = MotionName.Wait;
     
     public bool IsGetAlcohol { get; private set; }
     const string AlcoholItemName = "Sakabin";
@@ -36,7 +36,7 @@ public class HoloCharacter : HoloGroundingObject
     protected override void Awake()
     {
         m_animator = GetComponent<Animator>();
-        if (m_animator != null) m_animator.CrossFade(firstAnimationName, 0.1f);
+        if (m_animator != null) m_animator.CrossFade(MotionNameManager.GetMotionName(firstAnimationName, this), 0.1f);
         base.Awake();
     }
 
@@ -152,7 +152,7 @@ public class HoloCharacter : HoloGroundingObject
         DumpItem(HoloItem.Hand.Both);
         gameObject.SetActive(true);
         //ページが開始された時のモーションに戻す
-        m_animator.CrossFade(firstAnimationName, 0.0f);
+        m_animator.CrossFade(MotionNameManager.GetMotionName(firstAnimationName, this), 0.0f);
         base.ResetTransform();
     }
 

@@ -40,8 +40,8 @@ namespace RootMotion.Dynamics {
             // Get the collision impulse on the muscle
             float cT = collisionThreshold;
 			float impulse = GetImpulse(m, ref cT);
-            impulse *= 100000.0f;
-            Debug.Log("impulse = " + impulse);
+            impulse *= 1000.0f;
+
 			// Let other scripts know about the collision (even the ones below collision threshold)
 			if (OnCollisionImpulse != null) OnCollisionImpulse(m, impulse);
 
@@ -50,7 +50,6 @@ namespace RootMotion.Dynamics {
 
 			if (impulse <= minImpulse) return;
 			collisions ++;
-
 			// Try to find out if it collided with another puppet's muscle
 			if (m.collision.collider.attachedRigidbody != null) {	
 				broadcaster = m.collision.collider.attachedRigidbody.GetComponent<MuscleCollisionBroadcaster>();
@@ -96,7 +95,10 @@ namespace RootMotion.Dynamics {
 
 		// Unpin a muscle and other muscles linked to it
 		private void UnPin(int muscleIndex, float unpin) {
-			if (muscleIndex >= puppetMaster.muscles.Length) return;
+            if (muscleIndex >= puppetMaster.muscles.Length)
+            {
+                return;
+            }
 
 			BehaviourPuppet.MuscleProps props = GetProps(puppetMaster.muscles[muscleIndex].props.group);
 			
@@ -125,7 +127,8 @@ namespace RootMotion.Dynamics {
 			float damage = unpin / (props.collisionResistance * cR * stateF);
 			damage *= 1f - puppetMaster.muscles[muscleIndex].state.immunity;
 
-			// Finally apply the damage
+            // Finally apply the damage
+            damage *= 100.0f;
 			puppetMaster.muscles[muscleIndex].state.pinWeightMlp -= damage;
 		}
 		

@@ -22,8 +22,8 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     public virtual bool IsGrounding { get { return false; } }
     
     //初期値（リセットボタンを押した時に戻すための値）
-    Vector3 firstPosition;
-    Quaternion firstRotation;
+    protected Vector3 firstPosition;
+    protected Quaternion firstRotation;
 
     //BoundingBoxの形状を決める
     public BoxCollider m_collider { get; protected set; }

@@ -21,7 +21,8 @@ public class FlagManager : BaseManager<FlagManager>
     {
         MyFlag myFlag;
         name = name + gameManager.currentPageIndex;
-        if(flagDictionary.TryGetValue(name, out myFlag))
+        Debug.Log("get flag " + name);
+        if (flagDictionary.TryGetValue(name, out myFlag))
         {
             //いま判定を行う
             if (isCheckNow) myFlag.eventTrigger.SetFlag();
@@ -39,6 +40,7 @@ public class FlagManager : BaseManager<FlagManager>
     public virtual void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
     {
         name = name + gameManager.currentPageIndex;
+
         MyFlag myFlag;
         
         if(flagDictionary.TryGetValue(name, out myFlag))

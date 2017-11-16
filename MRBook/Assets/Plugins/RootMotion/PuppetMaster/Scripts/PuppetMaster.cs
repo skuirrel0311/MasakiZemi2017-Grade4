@@ -331,7 +331,7 @@ namespace RootMotion.Dynamics {
 		private bool hierarchyIsFlat;
 
 		// If PuppetMaster has been deactivated externally
-		void OnDisable() {
+		public void OnDisable() {
 			if (!gameObject.activeInHierarchy && initiated && Application.isPlaying) {
 				foreach (Muscle m in muscles) m.Reset();
 			}
@@ -421,7 +421,7 @@ namespace RootMotion.Dynamics {
 		}
 
 		void Start() {
-			/*
+            /*
 #if UNITY_EDITOR
 			if (Profiler.enabled && visualizeTargetPose) Debug.Log("Switch 'Visualize Target Pose' off when profiling PuppetMaster.", transform);
 #endif
@@ -447,7 +447,7 @@ namespace RootMotion.Dynamics {
 			return FindTargetRootRecursive(t.parent);
 		}
 
-		private void Initiate() {
+		public void Initiate() {
 			initiated = false;
 
 			// Find the target root

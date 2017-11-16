@@ -133,7 +133,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4161985353444500}
-  - component: {fileID: 114374376321395954}
+  - component: {fileID: 114159664897568170}
+  - component: {fileID: 114898502310323484}
   m_Layer: 2
   m_Name: EventTrigger
   m_TagString: Trigger
@@ -783,7 +784,7 @@ GameObject:
   - component: {fileID: 95717899475832124}
   - component: {fileID: 195052811029671112}
   - component: {fileID: 65715097663933480}
-  - component: {fileID: 114745556746182162}
+  - component: {fileID: 114705880147212230}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -1666,8 +1667,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1302533320415572}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.65, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.42261827, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 0.0575, y: 0, z: -0.1327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444519645228458}
@@ -2020,6 +2021,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114159664897568170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203710001213672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3d1c546129f2f448662d87d3281a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagName: HasSake
+  targetObject: {fileID: 0}
 --- !u!114 &114169822990933528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2072,24 +2086,6 @@ MonoBehaviour:
     so that they could be simply copied from one character to another without changing
     any references. It is important because they contain a lot of parameters and would
     be otherwise tedious to set up and tweak.
---- !u!114 &114374376321395954
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1203710001213672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee919f1f1f4827c42b837cc3de6874a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: UrashimaIsSeeTurtle
-  ownerName: 0
-  targetObject: {fileID: 0}
-  eye: {fileID: 4161985353444500}
-  ignoreLayerMask:
-    serializedVersion: 2
-    m_Bits: 2052
 --- !u!114 &114461046817886254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2126,8 +2122,8 @@ MonoBehaviour:
   pinDistanceFalloff: 5
   updateJointAnchors: 1
   supportTranslationAnimation: 0
-  angularLimits: 0
-  internalCollisions: 0
+  angularLimits: 1
+  internalCollisions: 1
   muscles:
   - name: Hips
     joint: {fileID: 153365348056260608}
@@ -2386,7 +2382,7 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   solvers: []
   storeTargetMappedState: 1
---- !u!114 &114745556746182162
+--- !u!114 &114705880147212230
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2394,17 +2390,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840830028451882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d9d2689ef29c0a479dd5b6328050203, type: 3}
+  m_Script: {fileID: 11500000, guid: 7586135610e2a0e4fbbae292c7d26a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 0
   isBring: 0
-  firstAnimationName: Wait
-  canHaveItem: 0
-  rightHand: {fileID: 0}
-  leftHand: {fileID: 0}
-  rightHandItemDataList: {fileID: 0}
-  leftHandItemDataList: {fileID: 0}
+  firstAnimationName: 0
+  canHaveItem: 1
+  rightHand: {fileID: 4561935671726440}
+  leftHand: {fileID: 4508833280868914}
+  rightHandItemDataList: {fileID: 11400000, guid: 2494becd84c41e446938b08170347bb5,
+    type: 2}
+  leftHandItemDataList: {fileID: 11400000, guid: dd292f9436894c3448d9db428eb50899,
+    type: 2}
+  m_behavirour: {fileID: 114887221822264204}
+  root: {fileID: 1302533320415572}
+  m_puppet: {fileID: 114461046817886254}
 --- !u!114 &114887221822264204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2467,7 +2468,7 @@ MonoBehaviour:
   unpinnedMuscleKnockout: 1
   dropProps: 0
   canGetUp: 1
-  getUpDelay: 5
+  getUpDelay: 0
   blendToAnimationTime: 0.2
   maxGetUpVelocity: 0.3
   minGetUpDuration: 1
@@ -2525,6 +2526,19 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   canMoveTarget: 1
+--- !u!114 &114898502310323484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203710001213672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3d1c546129f2f448662d87d3281a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagName: HasRod
+  targetObject: {fileID: 0}
 --- !u!136 &136018165738182412
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2755,7 +2769,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09859386, y: -0.0033339914, z: 0.0075808987}
+  m_ConnectedAnchor: {x: 0.09859401, y: -0.0033339914, z: 0.0075808913}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -2847,7 +2861,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.10560396, z: 0.0009263512}
+  m_ConnectedAnchor: {x: 0.000000021536833, y: 0.10560396, z: 0.00092635583}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -2939,7 +2953,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.03542691, y: -0.020532042, z: 0.0076641706}
+  m_ConnectedAnchor: {x: -0.03542703, y: -0.020532042, z: 0.007664166}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -3031,7 +3045,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0, y: -1, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09156435, y: -0.009448767, z: -0.007887907}
+  m_ConnectedAnchor: {x: -0.091564454, y: -0.009448767, z: -0.007887926}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -3123,7 +3137,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.65, y: 0.0753222, z: -0.0018852192}
+  m_ConnectedAnchor: {x: 0.058944162, y: 0.0753222, z: -0.13391179}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -3215,7 +3229,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000008940697, y: -0.15968299, z: 0.00857923}
+  m_ConnectedAnchor: {x: -0.000000011175871, y: -0.15968299, z: 0.008579217}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -3307,7 +3321,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.13793725, z: -0.016965458}
+  m_ConnectedAnchor: {x: 0.000000013969837, y: 0.13793725, z: -0.016965454}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -3491,7 +3505,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000010803342, y: -0.15968318, z: 0.008579234}
+  m_ConnectedAnchor: {x: -0.000000018626451, y: -0.15968318, z: 0.008579234}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -3583,7 +3597,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0043274052, y: -0.15393482, z: -0.024936475}
+  m_ConnectedAnchor: {x: 0.004327368, y: -0.15393482, z: -0.02493649}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -3675,7 +3689,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0, y: -1, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09859374, y: -0.003334213, z: 0.007580879}
+  m_ConnectedAnchor: {x: -0.09859377, y: -0.003334213, z: 0.007580853}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -3767,7 +3781,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09156465, y: -0.009449005, z: -0.0078879}
+  m_ConnectedAnchor: {x: 0.09156465, y: -0.009449005, z: -0.00788793}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -3859,7 +3873,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.08086651, y: 0.09203601, z: -0.019282056}
+  m_ConnectedAnchor: {x: 0.08086652, y: 0.09203601, z: -0.019282067}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -3951,7 +3965,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0043273866, y: -0.15393507, z: -0.024936507}
+  m_ConnectedAnchor: {x: -0.004327424, y: -0.15393507, z: -0.024936521}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -4043,7 +4057,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.03542691, y: -0.020532012, z: 0.0076641752}
+  m_ConnectedAnchor: {x: 0.035426997, y: -0.020532012, z: 0.007664155}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -4145,4 +4159,4 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0

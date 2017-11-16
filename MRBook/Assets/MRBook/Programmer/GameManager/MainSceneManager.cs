@@ -165,7 +165,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         if (!success)
         {
-            Utilities.Delay(0.2f, () => ResetPage(), this);
+            //Utilities.Delay(0.2f, () => ResetPage(), this);
         }
 
         m_Animator.SetBool("IsStart", false);
