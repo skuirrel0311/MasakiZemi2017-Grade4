@@ -59,8 +59,9 @@ public class BaseStateMachineBehaviour : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!isActive) return;
+        CurrentStatus = OnUpdate();
 
-        if (OnUpdate() != BehaviourStatus.Running) OnEnd();
+        if (CurrentStatus != BehaviourStatus.Running) OnEnd();
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

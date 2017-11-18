@@ -2,7 +2,6 @@
 
 public class ParentTask : BaseStateMachineBehaviour
 {
-    [UnityEngine.SerializeField]
     protected List<BaseStateMachineBehaviour> childTask = new List<BaseStateMachineBehaviour>();
 
     public override void Init(int selfIndex)

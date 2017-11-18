@@ -6,46 +6,18 @@ public class RootTask : Sequence
 {
     public static RootTask I = null;
 
-    //[System.NonSerialized]
+    [System.NonSerialized]
     public List<BaseStateMachineBehaviour> taskList = new List<BaseStateMachineBehaviour>();
-
-    AnimatorBakedData bakeData;
-
-    Dictionary<int, AnimatorBakedData.MyAnimatorState> dictionary;
-    Dictionary<int, AnimatorBakedData.MyAnimatorState> Dictionary
-    {
-        get
-        {
-            if (dictionary != null) return dictionary;
-
-            dictionary = new Dictionary<int, AnimatorBakedData.MyAnimatorState>();
-
-            for (int i = 0; i < bakeData.hashList.Count; i++)
-            {
-                Debug.Log("add");
-                dictionary.Add(bakeData.hashList[i], bakeData.stateList[i]);
-            }
-
-            return dictionary;
-        }
-    }
 
     protected override void OnStart()
     {
         I = this;
         m_animator.SetInteger("StateStatus", 0);
-        bakeData = Resources.Load<AnimatorBakedData>("Data/" + m_animator.runtimeAnimatorController.name);
-        //AnimatorBakedData.MyAnimatorState state;
 
-        Debug.Log("full hash = " + m_stateInfo.fullPathHash);
-        //Debug.Log("count = " + Dictionary.Count);
+        taskList.AddRange(GetBehaviours());
 
-        foreach (int key in Dictionary.Keys)
-        {
-            Debug.Log("hash = " + key);
-        }
+        Debug.Log("taskList.Count = " + taskList.Count);
 
-        //taskList.AddRange(GetBehaviours(state));
         //子を持つタスクに子を格納してもらう
         for (int i = taskList.Count - 1; i >= 0; i--)
         {
@@ -54,14 +26,27 @@ public class RootTask : Sequence
 
         //復元しておく
         taskList.Clear();
-        //taskList.AddRange(GetBehaviours(state));
-
-        //base.OnStart();
+        taskList.AddRange(GetBehaviours());
+        Debug.Log("taskList.Count = " + taskList.Count);
+        base.OnStart();
     }
 
-    BaseStateMachineBehaviour[] GetBehaviours(AnimatorBakedData.MyAnimatorState state)
+    BaseStateMachineBehaviour[] GetBehaviours()
     {
-        return null;
+        AnimatorBakedData.MyAnimatorState state;
+
+        if(!StateMachineManager.I.AnimatorStateDictionary.TryGetValue(m_stateInfo.fullPathHash, out state)) return null;
+        BaseStateMachineBehaviour[] behaviours = new BaseStateMachineBehaviour[state.length];
+        BaseStateMachineBehaviour[] allBehaviours = m_animator.GetBehaviours<BaseStateMachineBehaviour>();
+        int index = state.index;
+        Debug.Log("index = " + index);
+        for(int i = 0;i< state.length;i++)
+        {
+            behaviours[i] = allBehaviours[i + index];
+            Debug.Log("behaviour = " + behaviours[i].ToString());
+        }
+
+        return behaviours;
     }
 
     protected override void OnEnd()

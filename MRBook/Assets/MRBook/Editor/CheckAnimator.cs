@@ -18,11 +18,10 @@ public class CheckAnimator : EditorWindow
 
     void Hoge(string filenName)
     {
-        string animatorPath = "Assets/AnimatorControllers/" + filenName + ".controller";
+        string animatorPath = "Assets/MRBook/PageAnimatorControllers/" + filenName + ".controller";
         RuntimeAnimatorController asset = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(animatorPath);
         animatorController = asset as AnimatorController;
-
-
+        
         AnimatorBakedData bakedData = CreateInstance<AnimatorBakedData>();
 
         ChildAnimatorState[] states = animatorController.layers[0].stateMachine.states;
@@ -50,7 +49,7 @@ public class CheckAnimator : EditorWindow
             }
         }
 
-        string assetPath = "Assets/Resources/Data/" + filenName + ".asset";
+        string assetPath = "Assets/MRBook/Resources/Data/" + filenName + ".asset";
         if (IsThereOriginalFile(filenName))
         {
             //元のファイルは削除
@@ -80,7 +79,7 @@ public class CheckAnimator : EditorWindow
 
         for (int i = 0; i < animatorNum; i++)
         {
-            strs[i] = EditorGUILayout.TextField("Page" + (i + 1), GUILayout.Width(300));
+            strs[i] = EditorGUILayout.TextField("Page" + (i + 1) + "Controller", GUILayout.Width(300));
         }
         if (GUILayout.Button("Bake"))
         {

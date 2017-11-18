@@ -19,7 +19,9 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     protected override void Start()
     {
+#if !UNITY_EDITOR
         StartCoroutine(MonitorWorldAnchor());
+#endif
         base.Start();
     }
 

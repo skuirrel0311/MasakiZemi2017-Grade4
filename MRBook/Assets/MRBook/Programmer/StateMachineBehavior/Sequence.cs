@@ -15,6 +15,7 @@ public class Sequence : Composite
 
     protected override BehaviourStatus OnUpdate()
     {
+        Debug.Log("on update child num is " + childTask.Count);
         if (childTask[currentTaskIndex].CurrentStatus != BehaviourStatus.Running)
         {
             //todo:子タスクが失敗した場合も継続でいいのか？

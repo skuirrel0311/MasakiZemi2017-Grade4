@@ -7,6 +7,29 @@ public class StateMachineManager : BaseManager<StateMachineManager>
     Dictionary<string, IMyTask> taskDictionary = new Dictionary<string, IMyTask>();
     List<string> stopList = new List<string>();
 
+    Dictionary<int, AnimatorBakedData.MyAnimatorState> animatorStateDictionary = new Dictionary<int, AnimatorBakedData.MyAnimatorState>();
+
+    int currentPageIndex = -1;
+    public Dictionary<int, AnimatorBakedData.MyAnimatorState> AnimatorStateDictionary
+    {
+        get
+        {
+            //if (currentPageIndex == MainSceneManager.I.currentPageIndex) return animatorStateDictionary;
+            if (currentPageIndex == 0) return animatorStateDictionary;
+            animatorStateDictionary.Clear();
+            
+            AnimatorBakedData bakeData = Resources.Load<AnimatorBakedData>("Data/" + MainSceneManager.I.m_Animator.runtimeAnimatorController.name);
+
+            for (int i = 0; i < bakeData.hashList.Count; i++)
+            {
+                animatorStateDictionary.Add(bakeData.hashList[i], bakeData.stateList[i]);
+            }
+
+            return animatorStateDictionary;
+        }
+    }
+
+
     /// <summary>
     /// キャラの名前とかをキーにするといいんじゃないかな？
     /// </summary>
