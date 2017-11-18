@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class GetCurrentSelectObject : Editor 
 {
-	[MenuItem("Mytools/CreateItemTransformDataAsset")]
+	[MenuItem("MyTools/CreateItemTransformDataAsset")]
 	static void DrawText()
 	{
 		ItemTransformDataList asset = CreateInstance<ItemTransformDataList> ();

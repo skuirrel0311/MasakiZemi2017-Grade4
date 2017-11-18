@@ -8,9 +8,9 @@ public class PlayEffect : BaseStateMachineBehaviour
     public string effectName;
     public Vector3 offset;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetPositionName).position;
         ParticleManager.I.Play(effectName, targetPosition + offset);
     }

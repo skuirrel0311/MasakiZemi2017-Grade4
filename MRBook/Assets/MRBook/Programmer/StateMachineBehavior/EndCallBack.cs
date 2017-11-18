@@ -6,9 +6,9 @@ public class EndCallBack : BaseStateMachineBehaviour
 {
     public bool success = false;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         MainSceneManager.I.EndCallBack(success);
     }
 }

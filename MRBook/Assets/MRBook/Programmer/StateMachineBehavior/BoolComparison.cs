@@ -12,21 +12,18 @@ public class BoolComparison : BaseStateMachineBehaviour
     //瞬間判定か継続判定か？
     public bool checkOnUpdate = false;
 
-    Animator m_animator;
-
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
-        m_animator = animator;
+        base.OnStart();
         m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
 
         if(checkOnUpdate)
         {
-            StateMachineManager.I.Add(flagName, new MyTask(OnUpdate));
+            StateMachineManager.I.Add(flagName, new MyTask(OnUpdate1));
         }
     }
 
-    public void OnUpdate()
+    public void OnUpdate1()
     {
         m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, true) == boolValue);
     }

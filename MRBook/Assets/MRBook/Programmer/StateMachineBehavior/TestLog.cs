@@ -1,20 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//一番簡単なタスク
 public class TestLog : BaseStateMachineBehaviour
 {
     [SerializeField]
     public string text = "";
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         Debug.Log(text);
-    }
-
-    public override BehaviourStatus OnUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        return BehaviourStatus.Success;
     }
 }

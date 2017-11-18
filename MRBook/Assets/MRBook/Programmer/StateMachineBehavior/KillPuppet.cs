@@ -7,9 +7,9 @@ public class KillPuppet : BaseStateMachineBehaviour
     [SerializeField]
     ActorName puppetName = ActorName.Urashima;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
 
         HoloPuppet puppet = (HoloPuppet)ActorManager.I.GetCharacter(puppetName);
 

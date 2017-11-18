@@ -3,85 +3,84 @@ using UnityEngine;
 
 public class BaseStateMachineBehaviour : StateMachineBehaviour
 {
-    public enum BehaviourStatus { Running, Success, Failure }
-    /// <summary>
-    /// 更新タイミングはアクティブ時にベースのUpdateが呼ばれたタイミング
-    /// </summary>
-    public BehaviourStatus CurrentStatus { get; protected set; }
-    /// <summary>
-    /// Compositによって制御されている場合はOnStateEnterが呼ばれる前にfalseになる
-    /// </summary>
+    public enum TaskType { Action, Composite, Decrators, EndPoint }
+    public enum BehaviourStatus { Wait, Running, Success, Failure }
+
+    /* メンバ */
     [NonSerialized]
     public bool isActive = true;
 
-    [NonSerialized]
-    public bool isEnd = false;
+    protected int selfIndex = 0;
+    protected StateMachineBehaviour parent = null;
 
-    [NonSerialized]
-    public Action OnTaskEnd = null;
+    /* プロパティ */
+    public virtual bool HasChild { get; protected set; }
+    public virtual TaskType GetTaskType { get { return TaskType.Action; } }
+    public BehaviourStatus CurrentStatus { get; protected set; }
+    public bool IsEnd { get { return CurrentStatus != BehaviourStatus.Wait && CurrentStatus != BehaviourStatus.Running; } }
+    public bool hasRootTask { get; protected set; }
 
-    [NonSerialized]
-    public bool isInitialize = false;
+    protected Animator m_animator { get; private set; }
+    protected AnimatorStateInfo m_stateInfo { get; private set; }
+    protected int m_layerIndex { get; private set; }
 
-    public virtual bool HasChild { get { return false; } }
-    public enum TaskType { Action, Composite, Decrators , EndPoint}
-    public virtual TaskType GetTaskType { get{return TaskType.Action; } }
-    
+    /// <summary>
+    /// 初期化(この関数を呼ぶのはRootだけ)
+    /// </summary>
+    public virtual void Init(int selfIndex)
+    {
+        this.selfIndex = selfIndex;
+        isActive = false;
+        hasRootTask = true;
+    }
+
+    public void SetParent(BaseStateMachineBehaviour parent)
+    {
+        this.parent = parent;
+    }
+
+    public void Start()
+    {
+        OnStart();
+    }
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!isActive) return;
-        if (isInitialize) return;
+        m_animator = animator;
+        m_stateInfo = stateInfo;
+        m_layerIndex = layerIndex;
 
-        //ここの処理が呼ばれるということはCompositによって制御されていないということ
+        if (hasRootTask) return;
 
-        //Compositeの代わりにイベントを呼び出す
-        OnStart(animator, stateInfo, layerIndex);
+        m_animator.SetInteger("StateStatus", 0);
+        OnStart();
     }
-    
+
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!isActive) return;
 
-        if (CurrentStatus != BehaviourStatus.Running) return;
-
-        CurrentStatus = OnUpdate(animator, stateInfo, layerIndex);
-        if (CurrentStatus !=  BehaviourStatus.Running) OnExit(animator, stateInfo, layerIndex);
-    }
-
-    /// <summary>
-    /// ステートの開始時（Compositeの有無によって呼ばれるタイミングが異なる）
-    /// </summary>
-    public virtual void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        isInitialize = true;
-    }
-    
-    /// <summary>
-    /// ステートがActiveの時に呼ばれる
-    /// </summary>
-    public virtual BehaviourStatus OnUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) { return BehaviourStatus.Running; }
-
-    /// <summary>
-    /// ステートの終了時に呼ばれる
-    /// </summary>
-    public virtual void OnExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        isEnd = true;
-        if (OnTaskEnd != null) OnTaskEnd.Invoke();
-        RootTask.I.OnEndTask();
+        if (OnUpdate() != BehaviourStatus.Running) OnEnd();
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        isEnd = false;
+        //変数の初期化をしないとやばいかも？
         isActive = true;
-        isInitialize = false;
-        OnTaskEnd = null;
     }
 
-    /// <summary>
-    /// 子タスクを格納する
-    /// </summary>
-    /// <param name="selfIndex">自身のインデックス</param>
-    public virtual void InitChildTask(int selfIndex) { }
+    protected virtual void OnStart()
+    {
+        //これをtrueにし忘れるとUpdateが動かない
+        isActive = true;
+        CurrentStatus = BehaviourStatus.Running;
+    }
+
+    protected virtual BehaviourStatus OnUpdate() { return BehaviourStatus.Success; }
+
+    protected virtual void OnEnd()
+    {
+        isActive = false;
+        if (!hasRootTask) m_animator.SetInteger("StateStatus", 1);
+    }
 }

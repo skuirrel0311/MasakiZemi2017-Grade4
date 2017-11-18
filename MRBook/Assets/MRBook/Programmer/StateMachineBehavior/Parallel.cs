@@ -1,48 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Parallel : Composite
 {
-    bool childrenEnd = false;
-
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
-        Debug.Log("on parallel start");
-        for(int i = 0;i < childTask.Count;i++)
+        base.OnStart();
+        for (int i = 0; i < childTask.Count; i++)
         {
-            childTask[i].OnTaskEnd += () =>{
-                childrenEnd = IsAllTaskEndInChild();
-            };
-
             //全部起動
-            childTask[i].isActive = true;
-            childTask[i].OnStart(animator, stateInfo, layerIndex);
+            childTask[i].Start();
         }
     }
 
-    public override BehaviourStatus OnUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override BehaviourStatus OnUpdate()
     {
-        if (childrenEnd) return BehaviourStatus.Success;
+        if (IsEndChildTask()) return BehaviourStatus.Success;
 
         return BehaviourStatus.Running;
     }
 
-    bool IsAllTaskEndInChild()
+    protected bool IsEndChildTask()
     {
-        //後ろから見たほうが効率が良い
-        for (int i = childTask.Count - 1; i > 0; i--)
+        for (int i = 0; i < childTask.Count; i++)
         {
             //一つでもisEndがfalseだったら終わっていない
-            if (!childTask[i].isEnd) return false;
+            if (!childTask[i].IsEnd) return false;
         }
         return true;
-    }
-
-    public override void OnExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        Debug.Log("on parallel end");
-        base.OnExit(animator, stateInfo, layerIndex);
     }
 }

@@ -7,14 +7,12 @@ public class LookTarget : BaseStateMachineBehaviour
     public float rotationSpeed = 100.0f;
     
     HoloCharacter character;
-    Animator m_animator;
     Quaternion to;
     int state = 0;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
-        m_animator = animator;
+        base.OnStart();
         character = ActorManager.I.GetCharacter(actorName);
         if (character == null)
         {
@@ -39,10 +37,10 @@ public class LookTarget : BaseStateMachineBehaviour
 
         character.m_animator.CrossFade(animationName, 0.1f);
 
-        StateMachineManager.I.Add(actorName.ToString() + "Look", new MyTask(OnUpdate, OnEnd));
+        StateMachineManager.I.Add(actorName.ToString() + "Look", new MyTask(OnUpdate1, OnEnd1));
     }
 
-    void OnUpdate()
+    void OnUpdate1()
     {
         character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, to, rotationSpeed * Time.deltaTime);
 
@@ -56,7 +54,7 @@ public class LookTarget : BaseStateMachineBehaviour
         }
     }
 
-    void OnEnd()
+    void OnEnd1()
     {
         character.m_agent.updateRotation = true;
         string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);

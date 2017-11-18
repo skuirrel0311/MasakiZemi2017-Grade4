@@ -18,19 +18,19 @@ public class BoolComparisonAll : BaseStateMachineBehaviour
 
     bool[] flaggedArray;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         flaggedArray = new bool[element.Length];
 
         for(int i = 0;i< element.Length;i++)
         {
             flaggedArray[i] = FlagManager.I.GetFlag(element[i].flagName, element[i].isCheckNow) == element[i].boolValue;
-            animator.SetBool("Flagged" + (i + 1), flaggedArray[i]);
+            m_animator.SetBool("Flagged" + (i + 1), flaggedArray[i]);
         }
 
 
-        animator.SetBool("Flagged", t == Type.And ? BoolAllTrue() : BoolAnyTrue());
+        m_animator.SetBool("Flagged", t == Type.And ? BoolAllTrue() : BoolAnyTrue());
     }
 
     bool BoolAnyTrue()

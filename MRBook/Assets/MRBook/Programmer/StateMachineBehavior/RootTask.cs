@@ -1,61 +1,72 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 //一番上に居るタスク　ステート内のデータを保持している
-public class RootTask : BaseStateMachineBehaviour
+public class RootTask : Sequence
 {
     public static RootTask I = null;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public List<BaseStateMachineBehaviour> taskList = new List<BaseStateMachineBehaviour>();
 
-    [System.NonSerialized]
-    public Animator m_animator;
+    AnimatorBakedData bakeData;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    Dictionary<int, AnimatorBakedData.MyAnimatorState> dictionary;
+    Dictionary<int, AnimatorBakedData.MyAnimatorState> Dictionary
+    {
+        get
+        {
+            if (dictionary != null) return dictionary;
+
+            dictionary = new Dictionary<int, AnimatorBakedData.MyAnimatorState>();
+
+            for (int i = 0; i < bakeData.hashList.Count; i++)
+            {
+                Debug.Log("add");
+                dictionary.Add(bakeData.hashList[i], bakeData.stateList[i]);
+            }
+
+            return dictionary;
+        }
+    }
+
+    protected override void OnStart()
     {
         I = this;
-        m_animator = animator;
+        m_animator.SetInteger("StateStatus", 0);
+        bakeData = Resources.Load<AnimatorBakedData>("Data/" + m_animator.runtimeAnimatorController.name);
+        //AnimatorBakedData.MyAnimatorState state;
 
-        taskList.AddRange(animator.GetBehaviours<BaseStateMachineBehaviour>());
+        Debug.Log("full hash = " + m_stateInfo.fullPathHash);
+        //Debug.Log("count = " + Dictionary.Count);
 
-        //子を持つタスクに子を格納してもらう
-        for (int i = taskList.Count - 1; i > 0; i--)
+        foreach (int key in Dictionary.Keys)
         {
-            if (!taskList[i].HasChild) continue;
-            taskList[i].InitChildTask(i);
+            Debug.Log("hash = " + key);
         }
-        
+
+        //taskList.AddRange(GetBehaviours(state));
+        //子を持つタスクに子を格納してもらう
+        for (int i = taskList.Count - 1; i >= 0; i--)
+        {
+            taskList[i].Init(i);
+        }
+
         //復元しておく
         taskList.Clear();
-        taskList.AddRange(animator.GetBehaviours<BaseStateMachineBehaviour>());
+        //taskList.AddRange(GetBehaviours(state));
 
-        for (int i = taskList.Count - 1; i > 0; i--)
-        {
-            if (taskList[i].GetTaskType == TaskType.EndPoint)
-            {
-                taskList.Remove(taskList[i]);
-            }
-        }
-
-        taskList.Remove(this);
+        //base.OnStart();
     }
 
-    public void OnEndTask()
+    BaseStateMachineBehaviour[] GetBehaviours(AnimatorBakedData.MyAnimatorState state)
     {
-        bool isAllEnd = IsAllTaskEnd();
-        if (isAllEnd) m_animator.SetTrigger("EndState");
+        return null;
     }
 
-    bool IsAllTaskEnd()
+    protected override void OnEnd()
     {
-        //後ろから見たほうが効率が良い
-        for (int i = taskList.Count - 1; i > 0; i--)
-        {
-            //一つでもisEndがfalseだったら終わっていない
-            if (!taskList[i].isEnd) return false;
-        }
-        return true;
+        base.OnEnd();
+        m_animator.SetInteger("StateStatus", 1);
     }
 }

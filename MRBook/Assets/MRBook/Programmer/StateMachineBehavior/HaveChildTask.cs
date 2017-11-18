@@ -1,10 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-public class HaveChildTask : BaseStateMachineBehaviour
+public class ParentTask : BaseStateMachineBehaviour
 {
-    public override bool HasChild { get { return true; } }
-    
+    [UnityEngine.SerializeField]
     protected List<BaseStateMachineBehaviour> childTask = new List<BaseStateMachineBehaviour>();
+
+    public override void Init(int selfIndex)
+    {
+        base.Init(selfIndex);
+
+        SetChildTask();
+    }
+
+    protected virtual void SetChildTask() { }
 }

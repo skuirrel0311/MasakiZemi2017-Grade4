@@ -9,9 +9,9 @@ public class ChangeAnimationClip : BaseStateMachineBehaviour
     public float transitionDuration = 0.1f;
     public string WwiseEventName = string.Empty;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         HoloCharacter actor = ActorManager.I.GetCharacter(actorName);
         
         if(actor == null)

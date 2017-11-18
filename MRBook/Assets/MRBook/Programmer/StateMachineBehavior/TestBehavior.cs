@@ -4,9 +4,9 @@ public class TestBehavior : BaseStateMachineBehaviour
 {
     public string message;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         NotificationManager.I.ShowMessage(message, 5.0f);
     }
 }

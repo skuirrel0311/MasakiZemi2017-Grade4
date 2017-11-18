@@ -6,9 +6,9 @@ public class DestroyObject : BaseStateMachineBehaviour
 {
     public string objectName;
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         ActorManager.I.DisableObject(objectName);
     }
 }

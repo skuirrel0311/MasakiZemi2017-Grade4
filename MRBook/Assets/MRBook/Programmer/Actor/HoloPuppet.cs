@@ -14,12 +14,16 @@ public class HoloPuppet : HoloCharacter
     [SerializeField]
     PuppetMaster m_puppet = null;
 
+    public Behaviour behaviour { get { return m_behavirour; } }
+    public PuppetMaster puppet { get { return m_puppet; } }
+
     public override void ResetTransform()
     {
         BasePage page = transform.root.gameObject.GetComponent<BasePage>();
         page.StartCoroutine(ResetAction());
     }
-
+    
+    //現段階には問題があるかもしれないのでバグが出たら要チェック
     IEnumerator ResetAction()
     {
         DumpItem(HoloItem.Hand.Both);

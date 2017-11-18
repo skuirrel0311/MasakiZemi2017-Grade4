@@ -1,27 +1,29 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Composite : HaveChildTask
+//対応したEndPointまでを子に持ちます
+public class Composite : ParentTask
 {
     public override TaskType GetTaskType { get { return TaskType.Composite; } }
 
-    public override void InitChildTask(int selfIndex)
+    protected override void SetChildTask()
     {
-        int i = 0;
+        Debug.Log("call set child");
         //自身の1つ後ろから見ていく
-        for (i = selfIndex + 1; i < RootTask.I.taskList.Count; i++)
+        for (int i = selfIndex + 1; i < RootTask.I.taskList.Count; i++)
         {
-            childTask.Add(RootTask.I.taskList[i]);
-            if (RootTask.I.taskList[i].GetTaskType == TaskType.EndPoint)
-            {
-                break;
-            }
+            //一つでも子がある
+            HasChild = true;
+            BaseStateMachineBehaviour child = RootTask.I.taskList[i];
+            child.SetParent(this);
+            Debug.Log("add child");
+            childTask.Add(child);
+
+            if (child.GetTaskType == TaskType.EndPoint) break;
         }
 
         //子に追加したタスクは親から削除しておく
-        for(i = 0;i< childTask.Count;i++)
+        for (int i = 0; i < childTask.Count; i++)
         {
-            childTask[i].isActive = false;
             RootTask.I.taskList.Remove(childTask[i]);
         }
 

@@ -19,11 +19,9 @@ public class GoThere : BaseStateMachineBehaviour
     const float limitTime = 1.0f;
     Vector3 oldPosition;
 
-    Animator m_animator;
-
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         character = ActorManager.I.GetCharacter(actorName);
         if(character == null)
         {
@@ -40,7 +38,6 @@ public class GoThere : BaseStateMachineBehaviour
         }
 
         character.m_agent.speed = moveSpeed;
-        m_animator = animator;
         m_animator.SetInteger(paramName, 0);
 
         character.m_agent.isStopped = false;
@@ -51,10 +48,10 @@ public class GoThere : BaseStateMachineBehaviour
         string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
 
         character.m_animator.CrossFade(animationName, 0.1f);
-        StateMachineManager.I.Add(actorName.ToString() + "Go",new MyTask(OnUpdate, OnEnd));
+        StateMachineManager.I.Add(actorName.ToString() + "Go",new MyTask(OnUpdate1, OnEnd1));
     }
 
-    void OnUpdate()
+    void OnUpdate1()
     {
         NavMeshPath path = character.m_agent.path;
         float distance = 0.0f;
@@ -90,7 +87,7 @@ public class GoThere : BaseStateMachineBehaviour
         oldPosition = character.transform.position;
     }
     
-    void OnEnd()
+    void OnEnd1()
     {
         character.m_agent.isStopped = true;
         string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);

@@ -6,9 +6,9 @@ public class StopTask : BaseStateMachineBehaviour
 {
     public string taskName = "";
 
-    public override void OnStart(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    protected override void OnStart()
     {
-        base.OnStart(animator, stateInfo, layerIndex);
+        base.OnStart();
         StateMachineManager.I.Stop(taskName);
     }
 }
