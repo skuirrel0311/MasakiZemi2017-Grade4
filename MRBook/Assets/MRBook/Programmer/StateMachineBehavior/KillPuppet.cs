@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class KillPuppet : BaseStateMachineBehaviour
 {
@@ -13,6 +14,17 @@ public class KillPuppet : BaseStateMachineBehaviour
 
         HoloPuppet puppet = (HoloPuppet)ActorManager.I.GetCharacter(puppetName);
 
-        puppet.puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+        puppet.behaviour.enabled = false;
+
+
+        StateMachineManager.I.StartCoroutine(Utilities.FloatLerp(3.0f, (t) =>
+        {
+            puppet.puppet.pinWeight = Mathf.Lerp(1.0f, 0.0f, t);
+        }
+        ).OnCompleted(() =>
+        {
+            puppet.puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+        }));
+
     }
 }

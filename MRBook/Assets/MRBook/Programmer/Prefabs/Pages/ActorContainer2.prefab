@@ -543,25 +543,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1370705955758860
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4029912225092762}
-  - component: {fileID: 114186777485970186}
-  - component: {fileID: 114058670213820358}
-  - component: {fileID: 135698186918820642}
-  - component: {fileID: 114835176382322082}
-  m_Layer: 2
-  m_Name: IsThereObject
-  m_TagString: Trigger
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1375918423937006
 GameObject:
   m_ObjectHideFlags: 1
@@ -718,6 +699,7 @@ GameObject:
   - component: {fileID: 195390153055334824}
   - component: {fileID: 65490577328356980}
   - component: {fileID: 114477754031667722}
+  - component: {fileID: 65999911279220542}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -1275,19 +1257,6 @@ Transform:
   m_Father: {fileID: 4979497315060040}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4029912225092762
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370705955758860}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.49999997, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4341491891256568}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4035717045395312
 Transform:
   m_ObjectHideFlags: 1
@@ -1498,7 +1467,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4341491891256568}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4259723341558926
 Transform:
@@ -1593,7 +1562,6 @@ Transform:
   m_Children:
   - {fileID: 4890071913769120}
   - {fileID: 4834037388307278}
-  - {fileID: 4029912225092762}
   - {fileID: 4227365644670240}
   m_Father: {fileID: 4580816187249182}
   m_RootOrder: 0
@@ -2661,8 +2629,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 0.5}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 0.80700076, y: 0.8752495, z: 0.6877472}
+  m_Center: {x: -0.0029199198, y: 0.43762475, z: -0.010266098}
+--- !u!65 &65999911279220542
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444457527636368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2282875, y: 0.8850998, z: 0.24541861}
+  m_Center: {x: -0.003917082, y: 0.44043693, z: -0.022999372}
 --- !u!95 &95775022323185556
 Animator:
   serializedVersion: 3
@@ -2697,22 +2677,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114058670213820358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370705955758860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6338cfe044173e445a8d4e50acd8442d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: TurtleIsNearRoof
-  layer:
-    serializedVersion: 2
-    m_Bits: 256
-  targetObject: {fileID: 0}
 --- !u!114 &114131130282092878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3025,22 +2989,6 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   solvers: []
   storeTargetMappedState: 1
---- !u!114 &114186777485970186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370705955758860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6338cfe044173e445a8d4e50acd8442d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: UrashimaIsNearTurtle
-  layer:
-    serializedVersion: 2
-    m_Bits: 256
-  targetObject: {fileID: 0}
 --- !u!114 &114477754031667722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3054,6 +3002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 0
   isBring: 0
+  inPlayLayer: 8
   firstAnimationName: 11
   canHaveItem: 1
   rightHand: {fileID: 4641540405963562}
@@ -3078,6 +3027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 0
   isBring: 0
+  inPlayLayer: 8
   firstAnimationName: 0
   canHaveItem: 0
   rightHand: {fileID: 0}
@@ -3266,29 +3216,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: HasSake
   targetObject: {fileID: 0}
---- !u!114 &114835176382322082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370705955758860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8138223246872bd4ba2cfef803c1a63b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &135698186918820642
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370705955758860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136174488161315334
 CapsuleCollider:
   m_ObjectHideFlags: 1

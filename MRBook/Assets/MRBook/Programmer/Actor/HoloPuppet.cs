@@ -40,16 +40,19 @@ public class HoloPuppet : HoloCharacter
         yield return null;
 
         m_puppet.state = PuppetMaster.State.Dead;
+        m_agent.enabled = false;
         yield return null;
 
         transform.position = firstPosition;
         transform.rotation = firstRotation;
         yield return null;
-
+        
         m_puppet.state = PuppetMaster.State.Alive;
         root.SetActive(true);
         gameObject.SetActive(true);
+        m_agent.enabled = true;
         //ページが開始された時のモーションに戻す
+        m_puppet.pinWeight = 1.0f;
         m_animator.CrossFade(MotionNameManager.GetMotionName(firstAnimationName, this), 0.0f);
     }
 }

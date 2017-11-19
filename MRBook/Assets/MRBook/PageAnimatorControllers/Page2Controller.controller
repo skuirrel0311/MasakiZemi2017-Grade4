@@ -99,6 +99,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Turtle
+--- !u!114 &114106214087351252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6af5cd94de88f4582c7eb4c51f9cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endingName: "\u9854\u9762\u5F37\u6253"
 --- !u!114 &114113816015547492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,18 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30B9\u30BA\u30E1\u304C\u8972\u3063\u3066\u304D\u307E\u3057\u305F"
---- !u!114 &114133643337371732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u7384\u95A2\u306B\u305F\u3069\u308A\u7740\u304F\u3053\u3068\u304C\u3067\u304D\u305A\u306B\u6B7B\u3093\u3067\u3057\u307E\u3044\u307E\u3057\u305F"
 --- !u!114 &114163709352634620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
-  motionName: 0
+  motionName: 16
   transitionDuration: 0.1
   WwiseEventName: 
 --- !u!114 &114211887168369066
@@ -275,18 +275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u30B9\u30BA\u30E1\u306B\u3064\u3064\u304B\u308C\u3066\u6B7B\u3093\u3067\u3057\u307E\u3044\u307E\u3057\u305F"
---- !u!114 &114368547767717570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u8EE2\u3093\u3067\u6B7B\u3093\u3067\u3057\u307E\u3044\u307E\u3057\u305F"
 --- !u!114 &114447716566888496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,6 +410,18 @@ MonoBehaviour:
   motionName: 8
   transitionDuration: 0.1
   WwiseEventName: RodSwing
+--- !u!114 &114687524681051900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puppetName: 0
 --- !u!114 &114724123464447264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u4E80\u306F\u6D66\u5CF6\u306B\u6C17\u3065\u304F\u3053\u3068\u306A\u304F\u5E30\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F"
+  message: "\u6D66\u5CF6\u304C\u5BB6\u304B\u3089\u51FA\u3066\u304D\u307E\u305B\u3093"
 --- !u!114 &114732374444623474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,18 +508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: 
---- !u!114 &114776195804434684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u6249\u3092\u958B\u3051\u7528\u3068\u3057\u3066"
 --- !u!114 &114783335566502868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -600,7 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 0
   targetName: HomeFront
-  stopDistance: 0.1
+  stopDistance: 0.085
   moveSpeed: 0.1
   paramName: GoThereState
 --- !u!114 &114899991328295144
@@ -2698,7 +2686,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 6.1
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -2962,7 +2950,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101362035724448706}
   m_StateMachineBehaviours:
-  - {fileID: 114368547767717570}
+  - {fileID: 114687524681051900}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3013,7 +3001,6 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101982432252443194}
   m_StateMachineBehaviours:
-  - {fileID: 114776195804434684}
   - {fileID: 114200852689623280}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -3292,7 +3279,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101949930866868338}
   m_StateMachineBehaviours:
-  - {fileID: 114133643337371732}
+  - {fileID: 114106214087351252}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3700,7 +3687,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_EntryPosition: {x: 48, y: 528, z: 0}
   m_ExitPosition: {x: 1200, y: -240, z: 0}
   m_ParentStateMachinePosition: {x: 1392, y: 552, z: 0}
   m_DefaultState: {fileID: 1102837730970124850}
@@ -3789,10 +3776,10 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 1107442019330412392}
+      first: {fileID: 1107466428527798608}
       second: []
     data:
-      first: {fileID: 1107466428527798608}
+      first: {fileID: 1107442019330412392}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 48, y: 36, z: 0}

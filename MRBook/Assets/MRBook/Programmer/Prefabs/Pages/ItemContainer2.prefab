@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 195289446158468072}
   - component: {fileID: 65963237666841220}
   - component: {fileID: 114784733180753912}
+  - component: {fileID: 65837145245647144}
   m_Layer: 8
   m_Name: Fishingrod
   m_TagString: Actor
@@ -1295,6 +1296,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04601267, y: 0.053095426, z: 0.03746569}
   m_Center: {x: -0.001102319, y: 0.010260733, z: -0.00038647652}
+--- !u!65 &65837145245647144
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032175984364036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.030058939, y: 0.13694565, z: 0.015181035}
+  m_Center: {x: 0.0027213003, y: -0.0045261607, z: 0.012547575}
 --- !u!65 &65848859371121572
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1314,7 +1327,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032175984364036}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.05459869, y: 0.20065166, z: 0.07546958}

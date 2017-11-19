@@ -17,6 +17,12 @@ public class HoloItem : HoloGroundingObject
     [System.NonSerialized]
     public Hand currentHand;
 
+    public override void PlayPage()
+    {
+        base.PlayPage();
+        if (owner != null) gameObject.layer = defaultLayer;
+    }
+
     public override void ResetTransform()
     {
         //オーナー側でリセットを呼ぶ

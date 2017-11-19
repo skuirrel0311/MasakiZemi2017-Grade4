@@ -12,6 +12,8 @@ public class EndingManager : MonoBehaviour
     HoloText text = null;
     [SerializeField]
     HoloSprite sprite = null;
+    //固定されたか？
+    bool isFixation = false;
 
     public void Show()
     {
@@ -24,14 +26,16 @@ public class EndingManager : MonoBehaviour
         }));
     }
 
-    public void Show(string message)
+    public void SetEnding(string message, bool isOverride = false)
     {
-        text.CurrentText = message;
-        Show();
+        if (isFixation && !isOverride) return;
+        isFixation = isOverride;
+        text.CurrentText = "死因：" +  message;
     }
 
     public void Hide()
     {
+        isFixation = false;
         text.Color = Color.clear;
         sprite.Color = Color.clear;
     }

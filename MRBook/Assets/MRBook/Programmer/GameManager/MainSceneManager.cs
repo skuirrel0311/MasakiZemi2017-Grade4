@@ -157,6 +157,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         else
         {
             CurrentState = GameState.Wait;
+            MainGameUIController.I.endingManager.Show();
+
+            //todo:ここじゃなくて死んだ瞬間に鳴らす
             GameObject urashima = ActorManager.I.GetCharacter(ActorName.Urashima).gameObject;
             AkSoundEngine.PostEvent("Die", urashima);
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);

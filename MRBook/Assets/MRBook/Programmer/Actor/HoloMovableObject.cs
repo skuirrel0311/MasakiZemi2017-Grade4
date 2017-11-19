@@ -32,6 +32,13 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     //動かせることを明示するための矢印
     protected GameObject triangle;
 
+    /// <summary>
+    /// 再生中にセットするLayer
+    /// </summary>
+    [SerializeField]
+    int inPlayLayer = 4;
+    protected int defaultLayer;
+
     protected virtual void Awake()
     {
         m_collider = GetComponent<BoxCollider>();
@@ -39,6 +46,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
         float colSize = Mathf.Max(m_collider.size.x, m_collider.size.z);
         float scale = Mathf.Max(transform.lossyScale.x, transform.lossyScale.z);
         SphereCastRadius = colSize * scale;
+        defaultLayer = gameObject.layer;
     }
 
     /// <summary>
@@ -63,6 +71,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     public override void PlayPage()
     {
         if(triangle != null) triangle.SetActive(false);
+        gameObject.layer = inPlayLayer;
     }
 
     /// <summary>
@@ -70,6 +79,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
     /// </summary>
     public override void ResetTransform()
     {
+        gameObject.layer = defaultLayer;
         transform.position = firstPosition;
         transform.rotation = firstRotation;
         
