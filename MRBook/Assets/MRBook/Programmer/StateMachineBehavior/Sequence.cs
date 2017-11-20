@@ -5,17 +5,17 @@
 /// </summary>
 public class Sequence : Composite
 {
-    int currentTaskIndex = 0;
+    int currentTaskIndex;
 
     protected override void OnStart()
     {
         base.OnStart();
+        currentTaskIndex = 0;
         childTask[currentTaskIndex].Start();
     }
 
     protected override BehaviourStatus OnUpdate()
     {
-        Debug.Log("on update child num is " + childTask.Count);
         if (childTask[currentTaskIndex].CurrentStatus != BehaviourStatus.Running)
         {
             //todo:子タスクが失敗した場合も継続でいいのか？
@@ -39,5 +39,10 @@ public class Sequence : Composite
 
         childTask[currentTaskIndex].Start();
         return true;
+    }
+
+    protected override void OnEnd()
+    {
+        base.OnEnd();
     }
 }

@@ -30,7 +30,9 @@ public class EndingManager : MonoBehaviour
     {
         if (isFixation && !isOverride) return;
         isFixation = isOverride;
-        text.CurrentText = "死因：" +  message;
+
+        if (string.IsNullOrEmpty(message)) text.CurrentText = "";
+        else text.CurrentText = "死因：" +  message;
     }
 
     public void Hide()

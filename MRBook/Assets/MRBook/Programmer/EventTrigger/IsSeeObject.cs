@@ -65,7 +65,7 @@ public class IsSeeObject : MyEventTrigger
             }
         }
 
-        Debug.Log(ownerName.ToString() + " is see " + hit != null ? hit.name : "null");
+        Debug.Log(ownerName.ToString() + " is see " + (hit != null ? hit.name : "null"));
         //targetObjectとhitが同じだったら障害物はなかったということ
         FlagManager.I.SetFlag(flagName, this, targetObject.Equals(hit));
     }

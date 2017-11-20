@@ -7,7 +7,6 @@ public class Composite : ParentTask
 
     protected override void SetChildTask()
     {
-        Debug.Log("call set child");
         //自身の1つ後ろから見ていく
         for (int i = selfIndex + 1; i < RootTask.I.taskList.Count; i++)
         {
@@ -15,7 +14,6 @@ public class Composite : ParentTask
             HasChild = true;
             BaseStateMachineBehaviour child = RootTask.I.taskList[i];
             child.SetParent(this);
-            Debug.Log("add child");
             childTask.Add(child);
 
             if (child.GetTaskType == TaskType.EndPoint) break;

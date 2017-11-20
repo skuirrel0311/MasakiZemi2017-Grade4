@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 /// <summary>
@@ -33,10 +32,12 @@ public class HoloCharacter : HoloGroundingObject
 
     public override Type GetActorType { get { return Type.Character; } }
 
+    public Action<string, float> OnAnimationChanged;
+
     protected override void Awake()
     {
         m_animator = GetComponent<Animator>();
-        if (m_animator != null) m_animator.CrossFade(MotionNameManager.GetMotionName(firstAnimationName, this), 0.1f);
+        ChangeAnimationClip(firstAnimationName, 0.1f);
         base.Awake();
     }
 
@@ -100,8 +101,8 @@ public class HoloCharacter : HoloGroundingObject
         {
             IsGetAlcohol = true;
         }
-
-        m_animator.CrossFade(MotionNameManager.GetMotionName(itemData.motionName, this), 0.0f);
+        
+        ChangeAnimationClip(itemData.motionName, 0.0f);
     }
 
     /// <summary>
@@ -152,7 +153,7 @@ public class HoloCharacter : HoloGroundingObject
         DumpItem(HoloItem.Hand.Both);
         gameObject.SetActive(true);
         //ページが開始された時のモーションに戻す
-        m_animator.CrossFade(MotionNameManager.GetMotionName(firstAnimationName, this), 0.0f);
+        ChangeAnimationClip(firstAnimationName, 0.0f);
         base.ResetTransform();
     }
 
@@ -214,5 +215,14 @@ public class HoloCharacter : HoloGroundingObject
     public override int GetHashCode()
     {
         return base.GetHashCode();
+    }
+
+    public void ChangeAnimationClip(MotionName name, float transitionDuration)
+    {
+        if (m_animator != null) return;
+
+        string animationName = MotionNameManager.GetMotionName(name, this);
+        if (OnAnimationChanged != null) OnAnimationChanged.Invoke(animationName, transitionDuration);
+        m_animator.CrossFade(animationName, transitionDuration);
     }
 }

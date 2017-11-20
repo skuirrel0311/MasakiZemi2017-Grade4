@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
+public enum TaskType { Action, Composite, Decrators, EndPoint }
+public enum BehaviourStatus { Wait, Running, Success, Failure }
+
 public class BaseStateMachineBehaviour : StateMachineBehaviour
 {
-    public enum TaskType { Action, Composite, Decrators, EndPoint }
-    public enum BehaviourStatus { Wait, Running, Success, Failure }
-
     /* メンバ */
     [NonSerialized]
     public bool isActive = true;
@@ -27,11 +27,14 @@ public class BaseStateMachineBehaviour : StateMachineBehaviour
     /// <summary>
     /// 初期化(この関数を呼ぶのはRootだけ)
     /// </summary>
-    public virtual void Init(int selfIndex)
+    public virtual void Init(int selfIndex, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         this.selfIndex = selfIndex;
         isActive = false;
         hasRootTask = true;
+        m_animator = animator;
+        m_stateInfo = stateInfo;
+        m_layerIndex = layerIndex;
     }
 
     public void SetParent(BaseStateMachineBehaviour parent)
@@ -46,13 +49,12 @@ public class BaseStateMachineBehaviour : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (hasRootTask) return;
+
         m_animator = animator;
         m_stateInfo = stateInfo;
         m_layerIndex = layerIndex;
-
-        if (hasRootTask) return;
-
-        m_animator.SetInteger("StateStatus", 0);
+        if (!hasRootTask) m_animator.SetInteger("StateStatus", 0);
         OnStart();
     }
 
@@ -68,6 +70,7 @@ public class BaseStateMachineBehaviour : StateMachineBehaviour
     {
         //変数の初期化をしないとやばいかも？
         isActive = true;
+        hasRootTask = false;
     }
 
     protected virtual void OnStart()

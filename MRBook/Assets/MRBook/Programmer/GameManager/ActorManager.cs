@@ -14,7 +14,10 @@ public enum ActorName
     Lemon,
     Gen,
     Ryu,
-    Don
+    Don,
+    Suzume1,
+    Suzume2,
+    Suzume3
 }
 
 /// <summary>

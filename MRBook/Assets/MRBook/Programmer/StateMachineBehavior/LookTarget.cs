@@ -37,7 +37,12 @@ public class LookTarget : BaseStateMachineBehaviour
 
         character.m_animator.CrossFade(animationName, 0.1f);
 
-        StateMachineManager.I.Add(actorName.ToString() + "Look", new MyTask(OnUpdate1, OnEnd1));
+        StateMachineManager.I.Add(actorName.ToString() + "Look", new MyTask(UpdateFlagged, OnEnd1));
+    }
+
+    BehaviourStatus UpdateFlagged()
+    {
+        return BehaviourStatus.Running;
     }
 
     void OnUpdate1()

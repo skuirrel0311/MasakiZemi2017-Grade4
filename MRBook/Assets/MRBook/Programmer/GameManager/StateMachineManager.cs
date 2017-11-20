@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +30,12 @@ public class StateMachineManager : BaseManager<StateMachineManager>
     }
 
 
+    protected override void Start()
+    {
+        base.Start();
+        MainSceneManager.I.OnPlayEnd += (success) => StopAll();
+    }
+
     /// <summary>
     /// キャラの名前とかをキーにするといいんじゃないかな？
     /// </summary>
@@ -44,7 +50,11 @@ public class StateMachineManager : BaseManager<StateMachineManager>
     {
         foreach (string key in taskDictionary.Keys)
         {
-            taskDictionary[key].Update();
+            if (taskDictionary[key].Update() != BehaviourStatus.Running)
+            {
+                Debug.Log(key + "is stop");
+                Stop(key);
+            }
         }
 
         if(stopList.Count != 0) OnStopTask();
@@ -65,36 +75,54 @@ public class StateMachineManager : BaseManager<StateMachineManager>
     /// </summary>
     public void Stop(string name)
     {
-        if (!taskDictionary.ContainsKey(name)) return;
+        if (!taskDictionary.ContainsKey(name))
+        {
+            Debug.LogWarning(name + "is already stop or didn't addition");
+
+            Debug.Log("task list:");
+            Debug.Log("output start");
+            foreach (string key in taskDictionary.Keys)
+            {
+                Debug.Log(key);
+            }
+            Debug.Log("output end");
+            return;
+        }
 
         stopList.Add(name);
+    }
+
+    public void StopAll()
+    {
+        foreach(string key in taskDictionary.Keys)
+        {
+            stopList.Add(key);
+        }
     }
 }
 
 public interface IMyTask
 {
-    void Update();
+    BehaviourStatus Update();
     void Stop();
 }
 
 
 public class MyTask : IMyTask
 {
-    public delegate void VoidEvent();
+    public Func<BehaviourStatus> OnUpdate;
+    public Action OnExit;
 
-    public VoidEvent OnUpdate;
-    public VoidEvent OnExit;
-
-    public MyTask(VoidEvent onUpdate, VoidEvent onExit = null)
+    public MyTask(Func<BehaviourStatus> onUpdate, Action onExit = null)
     {
         OnUpdate = onUpdate;
         OnExit = onExit;
     }
 
-    public void Update()
+    public BehaviourStatus Update()
     {
         //アップデートは必須なのでnullチェックはしない
-        OnUpdate.Invoke();
+        return OnUpdate.Invoke();
     }
 
     public void Stop()

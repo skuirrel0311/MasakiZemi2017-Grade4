@@ -55,7 +55,6 @@ public class TestSceneObjController : MainSceneObjController
         if(Physics.Raycast(ray, out hit, 10.0f, layerMask))
         {
             GameObject obj = hit.transform.gameObject;
-
             //つかむことができるかチェック
             HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
             if (actor == null || !actor.isMovable)
@@ -68,6 +67,7 @@ public class TestSceneObjController : MainSceneObjController
             targetObj = actor;
             return true;
         }
+        Debug.Log("don't hit");
 
         targetObj = null;
         return false;

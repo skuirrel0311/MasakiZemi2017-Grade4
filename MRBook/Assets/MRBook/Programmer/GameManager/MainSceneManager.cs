@@ -28,7 +28,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public Action<BasePage> OnPlayPage;
     /// <summary>
-    /// ゲームが終了したとき(リザルトへ行く手前)
+    /// 再生が終了したとき
     /// </summary>
     public Action<bool> OnPlayEnd;
     /// <summary>
@@ -149,6 +149,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public virtual void EndCallBack(bool success)
     {
+        if (OnPlayEnd != null) OnPlayEnd.Invoke(success);
         if (success)
         {
             CurrentState = GameState.Next;

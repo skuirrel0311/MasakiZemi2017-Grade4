@@ -21,18 +21,20 @@ public class ArtBookGimmick : MyEventTrigger
     Camera mainCamera;
 
     protected Renderer m_renderer;
+    protected Collider m_collider;
 
     protected virtual void Start()
     {
         mainCamera = Camera.main;
         normalVec = transform.up;
         m_renderer = GetComponent<Renderer>();
+        m_collider = GetComponent<Collider>();
 
         if (maker == null) return;
 
         maker.foundMakerEvent = () =>
         {
-            m_renderer.enabled = true;
+            SetGimmickVisuable(true);
             isHide = false;
         };
 
@@ -43,7 +45,7 @@ public class ArtBookGimmick : MyEventTrigger
             {
                 //隠れた
                 isHide = true;
-                m_renderer.enabled = false;
+                SetGimmickVisuable(false);
             }
             else
             {
@@ -56,10 +58,15 @@ public class ArtBookGimmick : MyEventTrigger
     protected virtual void Update()
     {
     }
-
-
+    
     public override void SetFlag()
     {
         FlagManager.I.SetFlag(flagName,this, isHide);
+    }
+
+    protected void SetGimmickVisuable(bool isVisuable)
+    {
+        m_renderer.enabled = isVisuable;
+        m_collider.enabled = isVisuable;
     }
 }

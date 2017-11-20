@@ -9,22 +9,31 @@ public class BoolComparison : BaseStateMachineBehaviour
     public bool boolValue = true;
     //現在の値を使うか再生が開始されたタイミングの値を使うか？
     public bool isCheckNow = true;
+
+    //継続的にチェックする場合はフラグがTrueにならないとタスクが終了しないので注意
     //瞬間判定か継続判定か？
     public bool checkOnUpdate = false;
+
+    [SerializeField]
+    string paramName = "Flagged";
 
     protected override void OnStart()
     {
         base.OnStart();
-        m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
+        m_animator.SetBool(paramName, FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
 
         if(checkOnUpdate)
         {
-            StateMachineManager.I.Add(flagName, new MyTask(OnUpdate1));
+            StateMachineManager.I.Add(flagName, new MyTask(UpdateFlagged));
         }
     }
 
-    public void OnUpdate1()
+    BehaviourStatus UpdateFlagged()
     {
-        m_animator.SetBool("Flagged", FlagManager.I.GetFlag(flagName, true) == boolValue);
+        bool flagged = FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue;
+
+        if (flagged) return BehaviourStatus.Success;
+        
+        return BehaviourStatus.Running;
     }
 }

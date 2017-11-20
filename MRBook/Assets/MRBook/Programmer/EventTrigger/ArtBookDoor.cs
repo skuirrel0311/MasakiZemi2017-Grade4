@@ -30,7 +30,7 @@ public class ArtBookDoor : ArtBookGimmick
         if (Input.GetKeyDown(KeyCode.D))
         {
             isHide = !isHide;
-            m_renderer.enabled = !isHide;
+            SetGimmickVisuable(!isHide);
             if(!isHide) AkSoundEngine.PostEvent("Eye", gameObject);
             NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
         }

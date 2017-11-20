@@ -6,40 +6,42 @@ using UnityEngine.AI;
 //～まで行けという命令
 public class GoThere : BaseStateMachineBehaviour
 {
+    [SerializeField]
     public ActorName actorName;
+    [SerializeField]
     public string targetName;
+    [SerializeField]
     public float stopDistance = 0.2f;
+    [SerializeField]
     public float moveSpeed = 0.1f;
-    public string paramName = "GoThereState";
 
-    HoloCharacter character;
-    int state = 0;
+
+    protected HoloCharacter character;
+    protected int state = 0;
 
     float time;
     const float limitTime = 1.0f;
     Vector3 oldPosition;
-
+    
     protected override void OnStart()
     {
         base.OnStart();
         character = ActorManager.I.GetCharacter(actorName);
         if(character == null)
         {
-            Debug.LogError(actorName.ToString() + " is null");
+            Debug.LogError(actorName.ToString() + " is null in" + actorName.ToString() + " go there");
             Suspension();
             return;
         }
         Transform target = ActorManager.I.GetTargetPoint(targetName);
         if(target == null)
         {
-            Debug.LogError(targetName + " is null");
+            Debug.LogError(targetName + " is null" + " is null in" + actorName.ToString() + " go there");
             Suspension();
             return;
         }
 
         character.m_agent.speed = moveSpeed;
-        m_animator.SetInteger(paramName, 0);
-
         character.m_agent.isStopped = false;
         character.m_agent.SetDestination(target.position);
         character.m_agent.stoppingDistance = stopDistance;
@@ -48,30 +50,45 @@ public class GoThere : BaseStateMachineBehaviour
         string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
 
         character.m_animator.CrossFade(animationName, 0.1f);
-        StateMachineManager.I.Add(actorName.ToString() + "Go",new MyTask(OnUpdate1, OnEnd1));
     }
 
-    void OnUpdate1()
+    protected override BehaviourStatus OnUpdate()
     {
+        if (IsJustHere())
+        {
+            Debug.Log(actorName.ToString() + "到着");
+            return BehaviourStatus.Success;
+        }
+        if (IsDeadAgent())
+        {
+            Debug.Log(actorName.ToString() + "移動失敗");
+            return BehaviourStatus.Failure;
+        }
+
+        return BehaviourStatus.Running;
+    }
+
+    protected bool IsJustHere()
+    {
+        if (!character.m_agent.hasPath) return false;
+
         NavMeshPath path = character.m_agent.path;
         float distance = 0.0f;
         Vector3 temp = character.transform.position;
-        
+
         for (int i = 0; i < path.corners.Length; i++)
         {
             Vector3 conner = path.corners[i];
             distance += Vector3.Distance(temp, conner);
             temp = conner;
         }
-
+        
         //たどり着いた
-        if (distance < stopDistance)
-        {
-            state = 1;
-            Debug.Log("移動終了");
-            StateMachineManager.I.Stop(actorName.ToString() + "Go");
-        }
+        return distance < stopDistance;
+    }
 
+    protected bool IsDeadAgent()
+    {
         //動けなくなった
         Vector3 movement = oldPosition - character.transform.position;
         if (movement.magnitude < 0.0001f)
@@ -79,25 +96,31 @@ public class GoThere : BaseStateMachineBehaviour
             time += Time.deltaTime;
             if (time > limitTime)
             {
-                state = -1;
-                StateMachineManager.I.Stop(actorName.ToString() + "Go");
+                return true;
             }
         }
-
         oldPosition = character.transform.position;
+        return false;
     }
-    
-    void OnEnd1()
+
+    protected override void OnEnd()
     {
+        base.OnEnd();
+        StopAgent();
+    }
+
+    protected virtual void StopAgent()
+    {
+        if (character == null || ActorManager.I.GetTargetPoint(targetName) == null) return;
         character.m_agent.isStopped = true;
         string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
         character.m_animator.CrossFade(animationName, 0.1f);
-        m_animator.SetInteger(paramName, state);
+
     }
     //中断
     void Suspension()
     {
-        state = -1;
+        CurrentStatus = BehaviourStatus.Failure;
         OnEnd();
     }
 }
