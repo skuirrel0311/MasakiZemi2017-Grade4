@@ -8,7 +8,6 @@ public class LookTarget : BaseStateMachineBehaviour
     
     HoloCharacter character;
     Quaternion to;
-    int state = 0;
 
     protected override void OnStart()
     {
@@ -36,41 +35,35 @@ public class LookTarget : BaseStateMachineBehaviour
         string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
 
         character.m_animator.CrossFade(animationName, 0.1f);
-
-        StateMachineManager.I.Add(actorName.ToString() + "Look", new MyTask(UpdateFlagged, OnEnd1));
     }
 
-    BehaviourStatus UpdateFlagged()
+    protected override BehaviourStatus OnUpdate()
     {
+        if (IsJustLook()) return BehaviourStatus.Success;
+
         return BehaviourStatus.Running;
     }
 
-    void OnUpdate1()
+    protected bool IsJustLook()
     {
         character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, to, rotationSpeed * Time.deltaTime);
 
         float angle = Quaternion.Angle(character.transform.rotation, to);
-        if(angle < 0.5f)
-        {
-            Debug.Log("回転終わり");
-            //回転し終わった
-            state = 1;
-            StateMachineManager.I.Stop(actorName + "Look");
-        }
+        return angle < 0.5f;
     }
 
-    void OnEnd1()
+    protected override void OnEnd()
     {
+        base.OnEnd();
         character.m_agent.updateRotation = true;
         string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
         character.m_animator.CrossFade(animationName, 0.1f);
-        m_animator.SetInteger("LookTargetState", state);
     }
 
     //中断
     void Suspension()
     {
-        state = -1;
+        CurrentStatus = BehaviourStatus.Failure;
         OnEnd();
     }
 }

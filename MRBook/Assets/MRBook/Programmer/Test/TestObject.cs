@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class TestObject : MonoBehaviour
 {
-    [SerializeField]
-    BoxCollider box = null;
-
-    void Start()
+    void Update()
     {
-        Debug.Log("(" + box.size.x + "," + box.size.y + "," + box.size.z + ")");
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("KanekoTest");
+        }
     }
 }

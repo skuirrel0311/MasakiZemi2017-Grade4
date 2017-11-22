@@ -53,6 +53,13 @@ public class HoloPuppet : HoloCharacter
         m_agent.enabled = true;
         //ページが開始された時のモーションに戻す
         m_puppet.pinWeight = 1.0f;
+        m_puppet.mode = PuppetMaster.Mode.Disabled;
         m_animator.CrossFade(MotionNameManager.GetMotionName(firstAnimationName, this), 0.0f);
+    }
+
+    public override void PlayPage()
+    {
+        base.PlayPage();
+        m_puppet.mode = PuppetMaster.Mode.Active;
     }
 }

@@ -219,7 +219,7 @@ public class HoloCharacter : HoloGroundingObject
 
     public void ChangeAnimationClip(MotionName name, float transitionDuration)
     {
-        if (m_animator != null) return;
+        if (m_animator == null) return;
 
         string animationName = MotionNameManager.GetMotionName(name, this);
         if (OnAnimationChanged != null) OnAnimationChanged.Invoke(animationName, transitionDuration);
