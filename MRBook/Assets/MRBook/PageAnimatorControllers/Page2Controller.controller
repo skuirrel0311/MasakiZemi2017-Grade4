@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114031916150755622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +144,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114037900251810860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: TurtlePosition
+  actorName: 0
+  rotationSpeed: 360
+  updateTargetPosition: 0
 --- !u!114 &114065214174508964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114075205836269860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +206,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114081976424091850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114089767646674124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,9 +229,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 11
+  targetType: 0
   targetName: AwayPoint
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
+--- !u!114 &114098033227062412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: BaitPosition1
+  actorName: 12
+  rotationSpeed: 360
+  updateTargetPosition: 1
 --- !u!114 &114106214087351252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114148615542571204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,7 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 12
+  targetType: 0
   targetName: UrashimaPosition
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114187929868043332
@@ -362,7 +412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 11
+  targetType: 0
   targetName: BaitPosition1
+  updateTargetPosition: 0
   stopDistance: 0.001
   moveSpeed: 0.2
 --- !u!114 &114206883017055474
@@ -377,7 +429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
+  targetType: 0
   targetName: TurtleEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.01
   moveSpeed: 0.04
 --- !u!114 &114207332424714738
@@ -391,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114211887168369066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,18 +462,6 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
---- !u!114 &114219327335672168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11aac4f07b709e4fab74983759c703a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskName: UrashimaGo
 --- !u!114 &114219929076385392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114235164016421548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -536,17 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114261302340306868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114285052321879288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -597,7 +630,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  targetType: 0
   targetName: UrashimaEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114304230953547848
@@ -611,6 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114306872920892474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,9 +671,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 12
+  targetType: 0
   targetName: BaitPosition2
+  updateTargetPosition: 0
   stopDistance: 0.001
   moveSpeed: 0.2
+--- !u!114 &114326933624744758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: BaitPosition2
+  actorName: 10
+  rotationSpeed: 360
+  updateTargetPosition: 1
 --- !u!114 &114335021679934926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,7 +704,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
+  targetType: 0
   targetName: HomeFront
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.04
 --- !u!114 &114336741817349758
@@ -721,8 +777,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 11
+  targetType: 0
   targetName: UrashimaPosition1
-  stopDistance: 0.2
+  updateTargetPosition: 1
+  stopDistance: 0.04
   moveSpeed: 0.2
 --- !u!114 &114367014430961970
 MonoBehaviour:
@@ -757,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114378095430362138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -768,6 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114379553884550140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,6 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114407700308758866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,7 +923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 12
+  targetType: 0
   targetName: AwayPoint
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114463001005660014
@@ -962,6 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114492974136436518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -973,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114498386399989344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,7 +1050,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 11
+  targetType: 0
   targetName: UrashimaPosition
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114499518915470120
@@ -1000,8 +1067,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 12
+  targetType: 0
   targetName: UrashimaPosition2
-  stopDistance: 0.2
+  updateTargetPosition: 1
+  stopDistance: 0.04
   moveSpeed: 0.2
 --- !u!114 &114503133388954936
 MonoBehaviour:
@@ -1041,6 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114527587717456562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1053,7 +1123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
+  targetType: 0
   targetName: TurtleEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114533022834965424
@@ -1093,6 +1165,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114553623567980984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114555339299419746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1120,7 +1203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 10
+  targetType: 0
   targetName: BaitPosition
+  updateTargetPosition: 0
   stopDistance: 0.001
   moveSpeed: 0.2
 --- !u!114 &114561113007407688
@@ -1169,6 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114592167036246604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1180,6 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 0
 --- !u!114 &114596574139079480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1254,7 +1341,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  targetType: 0
   targetName: UrashimaEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114629184820549054
@@ -1268,6 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114630990328092480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1294,6 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114654181105154604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1339,6 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114687499309146700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1351,7 +1443,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
+  targetType: 0
   targetName: TurtleEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114711889367946002
@@ -1365,6 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114714853315358720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1377,7 +1472,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  targetType: 0
   targetName: UrashimaEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114719223750948390
@@ -1429,6 +1526,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114740271182315634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114763965968668476
@@ -1498,7 +1607,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
+  targetType: 0
   targetName: TurtleEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.01
   moveSpeed: 0.04
 --- !u!114 &114786771932602374
@@ -1536,21 +1647,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetType: 0
   targetName: Suzume1
   actorName: 0
   rotationSpeed: 360
---- !u!114 &114828426834462672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puppetName: 0
+  updateTargetPosition: 0
 --- !u!114 &114835211917302114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1563,7 +1664,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 10
+  targetType: 0
   targetName: AwayPoint
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114838285403096080
@@ -1577,6 +1680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114844358603993974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1589,7 +1693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
+  targetType: 0
   targetName: TurtleEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114846804965043904
@@ -1615,6 +1721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114866374664866658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1652,6 +1759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114884027080748750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1663,6 +1771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114887251407387958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1675,9 +1784,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  targetType: 0
   targetName: HomeFront
+  updateTargetPosition: 0
   stopDistance: 0.03
   moveSpeed: 0.1
+--- !u!114 &114895155617542986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: BaitPosition
+  actorName: 11
+  rotationSpeed: 360
+  updateTargetPosition: 1
 --- !u!114 &114899991328295144
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1702,7 +1829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 10
+  targetType: 0
   targetName: UrashimaPosition
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114904780075888734
@@ -1728,8 +1857,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 10
+  targetType: 0
   targetName: UrashimaPosition
-  stopDistance: 0.2
+  updateTargetPosition: 1
+  stopDistance: 0.04
   moveSpeed: 0.2
 --- !u!114 &114952700202115758
 MonoBehaviour:
@@ -1782,7 +1913,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  targetType: 0
   targetName: UrashimaEndPoint
+  updateTargetPosition: 0
   stopDistance: 0.1
   moveSpeed: 0.04
 --- !u!114 &114982800277960328
@@ -3928,8 +4061,13 @@ AnimatorState:
   - {fileID: 114191052760950032}
   - {fileID: 114323681365268464}
   - {fileID: 114156321362881822}
+  - {fileID: 114740271182315634}
+  - {fileID: 114326933624744758}
+  - {fileID: 114895155617542986}
+  - {fileID: 114098033227062412}
+  - {fileID: 114081976424091850}
   - {fileID: 114463001005660014}
-  - {fileID: 114261302340306868}
+  - {fileID: 114553623567980984}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -4011,6 +4149,7 @@ AnimatorState:
   - {fileID: 114474909798135328}
   - {fileID: 114605734550528660}
   - {fileID: 114887251407387958}
+  - {fileID: 114037900251810860}
   - {fileID: 114346852348936702}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -4773,12 +4912,10 @@ AnimatorState:
   - {fileID: 114631368885676306}
   - {fileID: 114714853315358720}
   - {fileID: 114954560272685544}
-  - {fileID: 114219327335672168}
   - {fileID: 114235164016421548}
   - {fileID: 114336741817349758}
   - {fileID: 114376152682651738}
   - {fileID: 114985467677822768}
-  - {fileID: 114828426834462672}
   - {fileID: 114988473206146778}
   - {fileID: 114031916150755622}
   - {fileID: 114075205836269860}
@@ -4971,10 +5108,10 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 1107466428527798608}
+      first: {fileID: 1107442019330412392}
       second: []
     data:
-      first: {fileID: 1107442019330412392}
+      first: {fileID: 1107466428527798608}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 48, y: 36, z: 0}

@@ -26,11 +26,11 @@ public class RootTask : Sequence
         //復元しておく
         taskList.Clear();
         taskList.AddRange(GetBehaviours());
-        //Debug.Log("taskList.Count = " + taskList.Count);
-        //for (int i = 0; i < taskList.Count; i++)
-        //{
-        //    Debug.Log("behaviour = " + taskList[i].ToString());
-        //}
+        Debug.Log("taskList.Count = " + taskList.Count);
+        for (int i = 0; i < taskList.Count; i++)
+        {
+            Debug.Log("behaviour = " + taskList[i].ToString());
+        }
         base.OnStart();
     }
 
@@ -52,7 +52,9 @@ public class RootTask : Sequence
 
     protected override void OnEnd()
     {
-        base.OnEnd();
+        isActive = false;
+        int state = CurrentStatus == BehaviourStatus.Success ? 1 : -1;
+        m_animator.SetInteger("StateStatus", state);
         Debug.Log("on end root");
 
         taskList.Clear();
