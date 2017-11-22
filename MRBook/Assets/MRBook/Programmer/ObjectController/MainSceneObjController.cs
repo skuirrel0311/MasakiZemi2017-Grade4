@@ -87,7 +87,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         Debug.Log("underObj = " + underObj.transform.gameObject.name);
         //ページ内に配置されそう
         particle.position = targetObj.transform.position;
-        underTargetMaker.position = underObj.point;
+        underTargetMaker.position = underObj.point + (Vector3.up * 0.01f);
         if (underObj.transform.gameObject.layer == bookLayer)
         {
             //サークルを表示
