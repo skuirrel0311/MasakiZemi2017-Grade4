@@ -8,14 +8,22 @@ public class GoThere : BaseStateMachineBehaviour
 {
     [SerializeField]
     public ActorName actorName;
+
+    public enum TargetType { StaticPoint, HoloObject }
+    [SerializeField]
+    TargetType targetType = TargetType.StaticPoint;
     [SerializeField]
     public string targetName;
+
+    [SerializeField]
+    bool updateTargetPosition = false;
+    Transform target;
+
     [SerializeField]
     public float stopDistance = 0.2f;
     [SerializeField]
     public float moveSpeed = 0.1f;
-
-
+    
     protected HoloCharacter character;
     protected int state = 0;
 
@@ -33,7 +41,7 @@ public class GoThere : BaseStateMachineBehaviour
             Suspension();
             return;
         }
-        Transform target = ActorManager.I.GetTargetPoint(targetName);
+        target = ActorManager.I.GetTargetPoint(targetName);
         if(target == null)
         {
             Debug.LogError(targetName + " is null" + " is null in" + actorName.ToString() + " go there");
@@ -52,6 +60,29 @@ public class GoThere : BaseStateMachineBehaviour
         character.m_animator.CrossFade(animationName, 0.1f);
     }
 
+    protected void SetTarget()
+    {
+        switch (targetType)
+        {
+            case TargetType.StaticPoint:
+                target = ActorManager.I.GetTargetPoint(targetName);
+                break;
+            case TargetType.HoloObject:
+                HoloObject obj = ActorManager.I.GetObject(targetName);
+                if (obj == null) break;
+                target = obj.transform;
+
+                break;
+        }
+
+        if (target == null)
+        {
+            Debug.LogError(targetName + " is null");
+            Suspension();
+            return;
+        }
+    }
+
     protected override BehaviourStatus OnUpdate()
     {
         if (IsJustHere())
@@ -65,6 +96,10 @@ public class GoThere : BaseStateMachineBehaviour
             return BehaviourStatus.Failure;
         }
 
+        if(updateTargetPosition)
+        {
+            character.m_agent.SetDestination(target.position);
+        }
         return BehaviourStatus.Running;
     }
 
