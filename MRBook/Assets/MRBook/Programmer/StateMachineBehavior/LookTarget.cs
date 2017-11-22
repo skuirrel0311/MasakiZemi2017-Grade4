@@ -2,12 +2,19 @@
 
 public class LookTarget : BaseStateMachineBehaviour
 {
+    public enum TargetType { StaticPoint, HoloObject }
+    [SerializeField]
+    TargetType targetType = TargetType.StaticPoint;
     public string targetName;
     public ActorName actorName;
     public float rotationSpeed = 100.0f;
-    
+
     HoloCharacter character;
     Quaternion to;
+
+    [SerializeField]
+    bool updateTargetPosition = false;
+    Transform target;
 
     protected override void OnStart()
     {
@@ -19,16 +26,11 @@ public class LookTarget : BaseStateMachineBehaviour
             Suspension();
             return;
         }
-        Transform target = ActorManager.I.GetTargetPoint(targetName);
-        if (target == null)
-        {
-            Debug.LogError(targetName + " is null");
-            Suspension();
-            return;
-        }
-        
+
+        SetTarget();
+
         Vector3 targetDirection = target.position - character.transform.position;
-        
+
         to = Quaternion.LookRotation(targetDirection);
         character.m_agent.updateRotation = false;
 
@@ -37,9 +39,42 @@ public class LookTarget : BaseStateMachineBehaviour
         character.m_animator.CrossFade(animationName, 0.1f);
     }
 
+    void SetTarget()
+    {
+        switch (targetType)
+        {
+            case TargetType.StaticPoint:
+                target = ActorManager.I.GetTargetPoint(targetName);
+                break;
+            case TargetType.HoloObject:
+                HoloObject obj = ActorManager.I.GetObject(targetName);
+                if (obj == null) break;
+                target = obj.transform;
+
+                break;
+        }
+
+        if (target == null)
+        {
+            Debug.LogError(targetName + " is null");
+            Suspension();
+            return;
+        }
+    }
+
+    Quaternion GetTargetDirectionRot()
+    {
+        return Quaternion.LookRotation(target.position - character.transform.position);
+    }
+
     protected override BehaviourStatus OnUpdate()
     {
         if (IsJustLook()) return BehaviourStatus.Success;
+
+        if (updateTargetPosition)
+        {
+            to = GetTargetDirectionRot();
+        }
 
         return BehaviourStatus.Running;
     }

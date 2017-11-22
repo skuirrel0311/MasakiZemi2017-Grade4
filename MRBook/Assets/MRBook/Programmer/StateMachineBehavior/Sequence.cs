@@ -7,6 +7,10 @@ public class Sequence : Composite
 {
     int currentTaskIndex;
 
+    //子タスクが失敗しても次のタスクを実行するか？
+    [SerializeField]
+    bool isForcing = true;
+
     protected override void OnStart()
     {
         base.OnStart();
@@ -19,6 +23,10 @@ public class Sequence : Composite
         if (childTask[currentTaskIndex].CurrentStatus != BehaviourStatus.Running)
         {
             //todo:子タスクが失敗した場合も継続でいいのか？
+            if(!isForcing && childTask[currentTaskIndex].CurrentStatus == BehaviourStatus.Failure)
+            {
+                return BehaviourStatus.Failure;
+            }
             if (!StartNextTask()) return BehaviourStatus.Success;
         }
 
@@ -43,6 +51,8 @@ public class Sequence : Composite
 
     protected override void OnEnd()
     {
-        base.OnEnd();
+        isActive = false;
+        int state = CurrentStatus == BehaviourStatus.Success ? 1 : -1;
+        if (!hasRootTask) m_animator.SetInteger("StateStatus", state);
     }
 }
