@@ -30,6 +30,8 @@ public class GoThere : BaseStateMachineBehaviour
     float time;
     const float limitTime = 1.0f;
     Vector3 oldPosition;
+
+    float updateTimer = 0.0f;
     
     protected override void OnStart()
     {
@@ -48,6 +50,8 @@ public class GoThere : BaseStateMachineBehaviour
             Suspension();
             return;
         }
+
+        updateTimer = 0.0f;
 
         character.m_agent.speed = moveSpeed;
         character.m_agent.isStopped = false;
@@ -98,7 +102,12 @@ public class GoThere : BaseStateMachineBehaviour
 
         if(updateTargetPosition)
         {
-            character.m_agent.SetDestination(target.position);
+            updateTimer += Time.deltaTime;
+            if (updateTimer > 0.2f)
+            {
+                updateTimer = 0.0f;
+                character.m_agent.SetDestination(target.position);
+            }
         }
         return BehaviourStatus.Running;
     }
