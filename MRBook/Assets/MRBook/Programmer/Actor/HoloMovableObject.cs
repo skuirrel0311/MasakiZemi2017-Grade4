@@ -16,7 +16,7 @@ public class HoloMovableObject : HoloObject, IInputClickHandler
      * M = true  B = true   //元のページで動かせるし別のページに持っていくこともできる
      * の３パターンある
      */
-    public bool isMovable = false;  //元のページで動かせるか？
+    //public bool isMovable = false;  //元のページで動かせるか？
     public bool isBring = false;    //別のページに持っていくことができるか？
 
     public virtual bool IsGrounding { get { return false; } }

@@ -8,14 +8,18 @@ public class HoloObject : MonoBehaviour
     public enum Type { Character, Item, Statics, Movable }
     public virtual Type GetActorType { get { return Type.Statics; } }
 
-    Shader defaultShader;
-    Shader grayScaleShader;
-
     /// <summary>
     /// そのオブジェクトが存在する（元の）ページのインデックス
     /// </summary>
     public int PageIndex { get; private set; }
     protected bool isFirst = true;
+
+    public bool isMovable = false;
+    public bool isFloating = false;
+
+    AbstractHoloObjInputHandler inputHandler;
+    AbstractHoloObjPassendObjBehaviour passendObjBehaviour;
+    AbstractHoloObjResetter resetter;
 
     /// <summary>
     /// ページが開かれた
@@ -23,47 +27,36 @@ public class HoloObject : MonoBehaviour
     /// <param name="isFirst">そのページを開くのが初めてか？</param>
     public virtual void PageStart(int currentPageIndex)
     {
-        if(isFirst)
+        if (isFirst)
         {
             PageIndex = currentPageIndex;
+            Init();
         }
         isFirst = false;
     }
 
-    public virtual void PlayPage() { }
+    protected virtual void Init()
+    {
+        if (isMovable) inputHandler = new MovableObjInputHandler(this);
+        else inputHandler = new StaticsObjInputHandler();
+    }
 
-    /// <summary>
-    /// 動かすことのできないオブジェクトは灰色にする
-    /// </summary>
-    protected void SetGrayScaleShader()
-    {
-        Renderer[] rends = GetComponentsInChildren<Renderer>();
-        grayScaleShader = MyAssetStore.I.GetAsset<Shader>("GrayScaleShader", "Shaders/");
-        for (int i = 0; i < rends.Length; i++)
-        {
-            defaultShader = rends[i].material.shader;
-            rends[i].material.shader = grayScaleShader;
-        }
-    }
-    
-    public void ResetShader()
-    {
-        Renderer[] rends = GetComponentsInChildren<Renderer>();
-        for (int i = 0; i < rends.Length; i++)
-        {
-            if (defaultShader == null) continue;
-            rends[i].material.shader = defaultShader;
-        }
-    }
+    public virtual void PlayPage() { }
 
     /// <summary>
     /// ページが初めて開かれた時の場所に戻す
     /// </summary>
     public virtual void ResetTransform()
     {
-        if(!gameObject.activeSelf) gameObject.SetActive(true);
+        resetter.Reset();
+        if (!gameObject.activeSelf) gameObject.SetActive(true);
     }
-    
+
+    public bool PassendObj(HoloObject obj)
+    {
+        return passendObjBehaviour.PassendObj(obj);
+    }
+
     /// <summary>
     /// アイテムを持たせる
     /// </summary>
