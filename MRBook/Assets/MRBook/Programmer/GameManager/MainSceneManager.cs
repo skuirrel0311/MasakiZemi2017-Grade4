@@ -27,6 +27,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ページを再生させたとき
     /// </summary>
     public Action<BasePage> OnPlayPage;
+    public Action OnReset;
     /// <summary>
     /// 再生が終了したとき
     /// </summary>
@@ -244,6 +245,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         //if (CurrentState != GameState.Wait && CurrentState != GameState.Next) return;
 
+        if (OnReset != null) OnReset.Invoke();
         CurrentState = GameState.Wait;
         AkSoundEngine.PostEvent("Reset", gameObject);
         pages[currentPageIndex].ResetPage();
