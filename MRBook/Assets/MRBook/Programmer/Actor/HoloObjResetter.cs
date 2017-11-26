@@ -73,36 +73,50 @@ public class MovableObjResetter : HoloObjResetter
 
 public class ItemResetter : MovableObjResetter
 {
+    HoloItem ownerItem;
+
     public ItemResetter(HoloObject owner)
         :base(owner)
     {
-
+        ownerItem = (HoloItem)owner;
     }
     public override void Reset()
     {
         base.Reset();
+        DumpItem();
+    }
+    void DumpItem()
+    {
+        //itemのownerにアクセスしてアイテムを捨てさせる
     }
 }
 
 public class CharacterResetter : MovableObjResetter
 {
-    public CharacterResetter(HoloObject owner)
+    HoloCharacter ownerCharacter;
+    MotionName defaultMotionName;
+
+    public CharacterResetter(HoloObject owner, MotionName defaultMotionName)
         :base(owner)
     {
-
+        ownerCharacter = (HoloCharacter)owner;
+        this.defaultMotionName = defaultMotionName;
     }
     public override void Reset()
     {
         base.Reset();
+        if (ownerCharacter == null) return;
+        ownerCharacter.ChangeAnimationClip(defaultMotionName, 0.0f);
     }
 }
 
 public class PuppetResetter : CharacterResetter
 {
-    public PuppetResetter(HoloObject owner)
-        :base(owner)
+    HoloPuppet ownerPuppet;
+    public PuppetResetter(HoloObject owner, MotionName defaultMotionName)
+        :base(owner, defaultMotionName)
     {
-
+        ownerPuppet = (HoloPuppet)owner;
     }
     public override void Reset()
     {
