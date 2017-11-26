@@ -88,13 +88,13 @@ public class HandCharacter : HoloCharacter
     /// 指定された手に持っているアイテムを捨てる
     /// </summary>
     /// <param name="hand"></param>
-    /// <param name="setDefault">捨てたアイテムを元の位置に戻すか？</param>
-    public void DumpItem(HoloItem.Hand hand, bool setDefault = true)
+    /// <param name="setDefaultTransform">捨てたアイテムを元の位置に戻すか？</param>
+    public void DumpItem(HoloItem.Hand hand, bool setDefaultTransform = true)
     {
         if (hand == HoloItem.Hand.Both)
         {
-            DumpItem(HoloItem.Hand.Left, setDefault);
-            DumpItem(HoloItem.Hand.Right, setDefault);
+            DumpItem(HoloItem.Hand.Left, setDefaultTransform);
+            DumpItem(HoloItem.Hand.Right, setDefaultTransform);
             return;
         }
 

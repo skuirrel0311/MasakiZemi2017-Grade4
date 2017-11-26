@@ -76,6 +76,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public int currentPageIndex { get; protected set; }
 
+    public HoloObjResetManager ResetManager { get; private set; }
+
     /* メソッド */
 
     protected override void Awake()
@@ -110,7 +112,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             OnGameStart.Invoke();
         }, this);
-        
+        ResetManager = new HoloObjResetManager(this);
     }
 
     /// <summary>

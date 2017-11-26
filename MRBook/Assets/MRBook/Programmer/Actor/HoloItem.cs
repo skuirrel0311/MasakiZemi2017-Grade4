@@ -17,7 +17,7 @@ public class HoloItem : HoloMovableObject
     
     //アイテムの所持者
     [System.NonSerialized]
-    public HoloCharacter owner;
+    public HandCharacter owner;
     [System.NonSerialized]
     public Hand currentHand;
 

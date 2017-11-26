@@ -48,7 +48,7 @@ public class HoloObject : MonoBehaviour
 
     protected virtual void InitInputHandler()
     {
-        //HoloObjectはそもそもタップに対して応答しない
+        //背景オブジェクトはそもそもタップに対して応答しない
         inputHandler = null;
     }
 

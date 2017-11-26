@@ -36,12 +36,6 @@ public class BasePage : MonoBehaviour
     //ページに存在するホログラム全部。
     public List<HoloObject> objectList = new List<HoloObject>();
 
-    HoloObjResetManager resetManager;
-
-    void Start()
-    {
-        resetManager = new HoloObjResetManager(this);
-    }
 
     /// <summary>
     /// ゲーム開始時に本の位置を固定させるやつ(キャラクタなどが移動していないことが保証されている)
@@ -75,8 +69,8 @@ public class BasePage : MonoBehaviour
     {
         //現在表示されているページだったらNavMeshAgentを無効化してやらないといけない
         bool shouldDisableAgent = MainSceneManager.I.currentPageIndex == pageIndex;
-        
-        if(shouldDisableAgent)
+
+        if (shouldDisableAgent)
         {
             SetAllAgentEnabled(false);
             yield return null;
@@ -131,6 +125,7 @@ public class BasePage : MonoBehaviour
     //ページに存在するActorタグのオブジェクトをDictionaryとListに格納する
     void ImportHoloObject()
     {
+        HoloObjResetManager resetManager = MainSceneManager.I.ResetManager;
         GameObject[] tempArray;
 
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
@@ -146,6 +141,7 @@ public class BasePage : MonoBehaviour
 
             //Debug.Log("add actor " + holoObject.name);
             objectList.Add(holoObject);
+            resetManager.AddResetter(holoObject.resetter);
 
             try
             {
@@ -157,7 +153,7 @@ public class BasePage : MonoBehaviour
                 Debug.Log(holoObject.name + "was not import object dictionary");
                 continue;
             }
-            
+
             if (holoObject.GetActorType != HoloObject.Type.Character) continue;
 
             try
@@ -206,7 +202,7 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void ResetPage()
     {
-        resetManager.Reset();
+        MainSceneManager.I.ResetManager.Reset();
         //todo:リセット中のアニメーション
     }
 

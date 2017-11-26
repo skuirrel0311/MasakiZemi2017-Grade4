@@ -10,26 +10,6 @@ public class HoloCharacter : HoloMovableObject
     
     public virtual bool CanHaveItem { get { return false; } }
 
-    //public bool IsGetAlcohol { get; private set; }
-    //const string AlcoholItemName = "Sakabin";
-
-    //[SerializeField]
-    //bool canHaveItem = false;
-    //public bool hasItem_Left { get; private set; }
-    //public bool hasItem_Right { get; private set; }
-
-    //public HoloItem leftHandItem { get; private set; }
-    //public HoloItem rightHandItem { get; private set; }
-    //[SerializeField]
-    //Transform rightHand = null;
-    //[SerializeField]
-    //Transform leftHand = null;
-
-    //[SerializeField]
-    //ItemTransformDataList rightHandItemDataList = null;
-    //[SerializeField]
-    //ItemTransformDataList leftHandItemDataList = null;
-
     public override Type GetActorType { get { return Type.Character; } }
 
     protected override void Awake()

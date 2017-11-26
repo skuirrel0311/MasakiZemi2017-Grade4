@@ -25,10 +25,15 @@ public class HoloObjResetManager
         {
             mono.StopCoroutine(resetCoroutine);
         }
-        resetCoroutine = mono.StartCoroutine(ResetLogic());
+        resetCoroutine = mono.StartCoroutine(ObjListResetLogic());
     }
 
-    IEnumerator ResetLogic()
+    public void ResetObject(BaseHoloObjResetter resetter)
+    {
+        mono.StartCoroutine(ObjResetLogic(resetter));
+    }
+
+    IEnumerator ObjListResetLogic()
     {
         for (int i = 0; i < resetterList.Count; i++)
         {
@@ -50,6 +55,15 @@ public class HoloObjResetManager
         }
 
         resetCoroutine = null;
+    }
+
+    IEnumerator ObjResetLogic(BaseHoloObjResetter resetter)
+    {
+        resetter.OnDisable();
+        yield return null;
+        resetter.OnLocationReset();
+        yield return null;
+        resetter.OnEnable();
     }
 }
 //オブジェクトのリセットの手順が書いてあるやつ
@@ -136,6 +150,7 @@ public class ItemResetter : MovableObjResetter
     {
         base.OnDisable();
         //アイテムを捨てさせる
+
     }
 }
 
