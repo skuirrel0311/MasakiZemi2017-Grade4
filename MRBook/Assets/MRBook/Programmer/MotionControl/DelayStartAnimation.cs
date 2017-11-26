@@ -12,12 +12,12 @@ public class DelayStartAnimation : MonoBehaviour
 
     void Start()
     {
-        character.OnAnimationChanged += (name, duration) =>
-        {
-            KKUtilities.Utilities.Delay(delayTime, () =>
-            {
-                character.m_animator.CrossFade(name, duration);
-            }, this);
-        };
+        //character.OnAnimationChanged += (name, duration) =>
+        //{
+        //    KKUtilities.Utilities.Delay(delayTime, () =>
+        //    {
+        //        character.m_animator.CrossFade(name, duration);
+        //    }, this);
+        //};
     }
 }

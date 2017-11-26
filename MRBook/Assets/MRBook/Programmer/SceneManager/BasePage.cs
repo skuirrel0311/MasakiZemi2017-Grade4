@@ -35,11 +35,14 @@ public class BasePage : MonoBehaviour
 
     //ページに存在するホログラム全部。
     public List<HoloObject> objectList = new List<HoloObject>();
-    //プレイヤーの操作によって動くことがあるオブジェクト
-    public List<HoloMovableObject> movableObjectList = new List<HoloMovableObject>();
-    //NavMeshAgentがついているオブジェクト
-    public List<HoloGroundingObject> groundingObjectList = new List<HoloGroundingObject>();
-    
+
+    HoloObjResetManager resetManager;
+
+    void Start()
+    {
+        resetManager = new HoloObjResetManager(this);
+    }
+
     /// <summary>
     /// ゲーム開始時に本の位置を固定させるやつ(キャラクタなどが移動していないことが保証されている)
     /// </summary>
@@ -48,10 +51,10 @@ public class BasePage : MonoBehaviour
         transform.SetPositionAndRotation(position, rotation);
 
         //動く可能性のあるやつの開始時の位置を保存
-        for (int i = 0; i < movableObjectList.Count; i++)
-        {
-            movableObjectList[i].ApplyDefaultTransform();
-        }
+        //for (int i = 0; i < movableObjectList.Count; i++)
+        //{
+        //    movableObjectList[i].ApplyDefaultTransform();
+        //}
     }
 
     /// <summary>
@@ -81,10 +84,10 @@ public class BasePage : MonoBehaviour
         Vector3 movement = position - transform.position;
 
         //動く可能性のあるやつの初期値ずらす
-        for (int i = 0; i < movableObjectList.Count; i++)
-        {
-            movableObjectList[i].ApplyDefaultTransform(movement);
-        }
+        //for (int i = 0; i < movableObjectList.Count; i++)
+        //{
+        //    movableObjectList[i].ApplyDefaultTransform(movement);
+        //}
 
         transform.SetPositionAndRotation(position, rotation);
 
@@ -141,7 +144,7 @@ public class BasePage : MonoBehaviour
                 continue;
             }
 
-            Debug.Log("add actor " + holoObject.name);
+            //Debug.Log("add actor " + holoObject.name);
             objectList.Add(holoObject);
 
             try
@@ -151,22 +154,11 @@ public class BasePage : MonoBehaviour
             catch
             {
                 //同名のKeyだと格納できない(Destroyとかの処理をする場合は固有の名前にしなければならない)
-                Debug.LogWarning(holoObject.name + "was not import object dictionary");
+                Debug.Log(holoObject.name + "was not import object dictionary");
                 continue;
             }
-
-            if (holoObject.GetActorType == HoloObject.Type.Statics) continue;
-
-            HoloMovableObject movableObject = (HoloMovableObject)holoObject;
-
-            //動かせるオブジェクト
-            movableObjectList.Add(movableObject);
-
-            if (!movableObject.IsGrounding) continue;
-
-            groundingObjectList.Add((HoloGroundingObject)movableObject);
-
-            if (movableObject.GetActorType != HoloObject.Type.Character) continue;
+            
+            if (holoObject.GetActorType != HoloObject.Type.Character) continue;
 
             try
             {
@@ -214,47 +206,31 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void ResetPage()
     {
-        for (int i = 0; i < objectList.Count; i++)
-        {
-            objectList[i].ResetTransform();
-        }
+        resetManager.Reset();
         //todo:リセット中のアニメーション
     }
 
     public void SetAllAgentEnabled(bool enabled)
     {
-        for (int i = 0; i < groundingObjectList.Count; i++)
-        {
-            groundingObjectList[i].m_agent.enabled = enabled;
-        }
-    }
-
-    public void AddMovableObject(HoloMovableObject obj)
-    {
-        movableObjectList.Add(obj);
-
-        if (!obj.IsGrounding) return;
-
-        groundingObjectList.Add((HoloGroundingObject)obj);
-
-        if (obj.GetActorType != HoloObject.Type.Character) return;
-
-        characterDictionary.Add((ActorName)Enum.Parse(typeof(ActorName), obj.name), (HoloCharacter)obj);
+        //for (int i = 0; i < groundingObjectList.Count; i++)
+        //{
+        //    groundingObjectList[i].m_agent.enabled = enabled;
+        //}
     }
 
     public void RemoveMovableObject(string name)
     {
-        HoloObject obj;
-        if (!objectDictionary.TryGetValue(name, out obj)) return;
+        //HoloObject obj;
+        //if (!objectDictionary.TryGetValue(name, out obj)) return;
 
-        movableObjectList.Remove((HoloMovableObject)obj);
+        //movableObjectList.Remove((HoloMovableObject)obj);
 
-        if (!((HoloMovableObject)obj).IsGrounding) return;
+        //if (!((HoloMovableObject)obj).IsGrounding) return;
 
-        groundingObjectList.Remove((HoloGroundingObject)obj);
+        //groundingObjectList.Remove((HoloGroundingObject)obj);
 
-        if (obj.GetActorType != HoloObject.Type.Character) return;
+        //if (obj.GetActorType != HoloObject.Type.Character) return;
 
-        characterDictionary.Remove((ActorName)Enum.Parse(typeof(ActorName), obj.name));
+        //characterDictionary.Remove((ActorName)Enum.Parse(typeof(ActorName), obj.name));
     }
 }

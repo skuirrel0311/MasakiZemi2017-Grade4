@@ -122,25 +122,20 @@ public class ActorManager : Singleton<ActorManager>
         return currentPage.objectList;
     }
 
-    public List<HoloMovableObject> GetAllActor()
-    {
-        return currentPage.movableObjectList;
-    }
-
     //ページが変更
     void OnPageChanged(BasePage previousPage, BasePage nextPage)
     {
         currentPage = nextPage;
         
-        if (globalObjectDictionary.Count == 0) return;
-        //前のページから持ってきたオブジェクトがある。
+        //if (globalObjectDictionary.Count == 0) return;
+        ////前のページから持ってきたオブジェクトがある。
         
-        foreach(string key in globalObjectDictionary.Keys)
-        {
-            //前のページから登録を消す
-            previousPage.RemoveMovableObject(key);
-            globalObjectDictionary[key].transform.parent = nextPage.transform;
-        }
+        //foreach(string key in globalObjectDictionary.Keys)
+        //{
+        //    //前のページから登録を消す
+        //    previousPage.RemoveMovableObject(key);
+        //    globalObjectDictionary[key].transform.parent = nextPage.transform;
+        //}
         //アクティブなアクターはページを開いた時に追加されるのでここで追加はしない
     }
 }

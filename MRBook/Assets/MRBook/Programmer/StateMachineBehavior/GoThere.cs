@@ -59,9 +59,7 @@ public class GoThere : BaseStateMachineBehaviour
         character.m_agent.stoppingDistance = stopDistance;
         oldPosition = character.transform.position;
 
-        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
-
-        character.m_animator.CrossFade(animationName, 0.1f);
+        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
     }
 
     protected void SetTarget()
@@ -157,8 +155,8 @@ public class GoThere : BaseStateMachineBehaviour
     {
         if (character == null || ActorManager.I.GetTargetPoint(targetName) == null) return;
         character.m_agent.isStopped = true;
-        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
-        character.m_animator.CrossFade(animationName, 0.1f);
+
+        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
 
     }
     //中断

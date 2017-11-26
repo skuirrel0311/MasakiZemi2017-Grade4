@@ -14,16 +14,16 @@ public class KillPuppet : BaseStateMachineBehaviour
 
         HoloPuppet puppet = (HoloPuppet)ActorManager.I.GetCharacter(puppetName);
 
-        puppet.behaviour.enabled = false;
+        puppet.PuppetBehaviour.enabled = false;
 
 
         StateMachineManager.I.StartCoroutine(Utilities.FloatLerp(3.0f, (t) =>
         {
-            puppet.puppet.pinWeight = Mathf.Lerp(1.0f, 0.0f, t);
+            puppet.Puppet.pinWeight = Mathf.Lerp(1.0f, 0.0f, t);
         }
         ).OnCompleted(() =>
         {
-            puppet.puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+            puppet.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
             CurrentStatus = BehaviourStatus.Success;
             OnEnd();
         }));

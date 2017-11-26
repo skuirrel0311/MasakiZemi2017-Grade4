@@ -1,25 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// 背景・小物などの動かないホログラム
 /// </summary>
 public class HoloObject : MonoBehaviour
 {
-    public enum Type { Character, Item, Statics, Movable }
+    public enum Type { Character, Item, Statics }
     public virtual Type GetActorType { get { return Type.Statics; } }
 
     /// <summary>
     /// そのオブジェクトが存在する（元の）ページのインデックス
     /// </summary>
     public int PageIndex { get; private set; }
-    protected bool isFirst = true;
+    bool isFirst = true;
 
-    public bool isMovable = false;
-    public bool isFloating = false;
+    [SerializeField]
+    bool isMovable = false;
+    [SerializeField]
+    bool isFloating = false;
 
-    AbstractHoloObjInputHandler inputHandler;
-    AbstractHoloObjPassendObjBehaviour passendObjBehaviour;
-    AbstractHoloObjResetter resetter;
+    public bool IsMovable { get { return isMovable; } }
+    public bool IsFloating { get { return isFloating; } }
+
+    public AbstractHoloObjInputHandler inputHandler { get; protected set; }
+    public BaseHoloObjResetter resetter { get; protected set; }
 
     /// <summary>
     /// ページが開かれた
@@ -37,28 +42,20 @@ public class HoloObject : MonoBehaviour
 
     protected virtual void Init()
     {
-        if (isMovable) inputHandler = new MovableObjInputHandler(this);
-        else inputHandler = new StaticsObjInputHandler();
+        InitInputHandler();
+        InitResetter();
+    }
+
+    protected virtual void InitInputHandler()
+    {
+        //HoloObjectはそもそもタップに対して応答しない
+        inputHandler = null;
+    }
+
+    protected virtual void InitResetter()
+    {
+        resetter = new HoloObjResetter(this);
     }
 
     public virtual void PlayPage() { }
-
-    /// <summary>
-    /// ページが初めて開かれた時の場所に戻す
-    /// </summary>
-    public virtual void ResetTransform()
-    {
-        resetter.Reset();
-        if (!gameObject.activeSelf) gameObject.SetActive(true);
-    }
-
-    public bool PassendObj(HoloObject obj)
-    {
-        return passendObjBehaviour.PassendObj(obj);
-    }
-
-    /// <summary>
-    /// アイテムを持たせる
-    /// </summary>
-    public virtual void SetItem(GameObject item) { }
 }

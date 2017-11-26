@@ -16,13 +16,12 @@ public class ChangeAnimationClip : BaseStateMachineBehaviour
         
         if(actor == null)
         {
-            Debug.LogError(actorName + "is not found actor");
+            Debug.LogError(actorName + "is not found actor in change animation clip");
             return;
         }
 
-        string animationName = MotionNameManager.GetMotionName(motionName, actor);
+        actor.ChangeAnimationClip(motionName, transitionDuration);
         
-        actor.m_animator.CrossFade(animationName, transitionDuration);
         if(!string.IsNullOrEmpty(WwiseEventName))
         {
             AkSoundEngine.PostEvent(WwiseEventName, actor.gameObject);

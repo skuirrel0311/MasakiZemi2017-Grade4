@@ -2,33 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractHoloObjResetter
+//すべてのオブジェクトをリセットする人
+public class HoloObjResetManager
+{
+    MonoBehaviour mono;
+    List<BaseHoloObjResetter> resetterList = new List<BaseHoloObjResetter>();
+    Coroutine resetCoroutine;
+
+    public HoloObjResetManager(MonoBehaviour mono)
+    {
+        this.mono = mono;
+    }
+
+    public void AddResetter(BaseHoloObjResetter resetter)
+    {
+        resetterList.Add(resetter);
+    }
+
+    public void Reset()
+    {
+        if (resetCoroutine != null)
+        {
+            mono.StopCoroutine(resetCoroutine);
+        }
+        resetCoroutine = mono.StartCoroutine(ResetLogic());
+    }
+
+    IEnumerator ResetLogic()
+    {
+        for (int i = 0; i < resetterList.Count; i++)
+        {
+            resetterList[i].OnDisable();
+        }
+
+        yield return null;
+
+        for (int i = 0; i < resetterList.Count; i++)
+        {
+            resetterList[i].OnLocationReset();
+        }
+
+        yield return null;
+
+        for (int i = 0; i < resetterList.Count; i++)
+        {
+            resetterList[i].OnEnable();
+        }
+
+        resetCoroutine = null;
+    }
+}
+//オブジェクトのリセットの手順が書いてあるやつ
+public abstract class BaseHoloObjResetter
 {
     protected HoloObject owner;
-    public AbstractHoloObjResetter(HoloObject owner)
+    public BaseHoloObjResetter(HoloObject owner)
     {
         this.owner = owner;
     }
-    public abstract void Reset();
+
+    public abstract void OnDisable();
+    public abstract void OnLocationReset();
+    public abstract void OnEnable();
 }
 
-public class HoloObjResetter : AbstractHoloObjResetter
+public class HoloObjResetter : BaseHoloObjResetter
 {
     int defaultLayer;
     bool defaultActive;
 
     public HoloObjResetter(HoloObject owner)
-        :base(owner)
+        : base(owner)
     {
         defaultLayer = owner.gameObject.layer;
         defaultActive = owner.gameObject.activeSelf;
     }
-    public override void Reset()
+
+    public override void OnDisable()
     {
-        ObjReset();
+        if (owner.gameObject.activeSelf) owner.gameObject.SetActive(false);
     }
 
-    protected void ObjReset()
+    public override void OnLocationReset() { }
+
+    public override void OnEnable()
     {
         owner.gameObject.layer = defaultLayer;
         if (owner.gameObject.activeSelf != defaultActive) owner.gameObject.SetActive(defaultActive);
@@ -41,7 +98,7 @@ public class MovableObjResetter : HoloObjResetter
     Quaternion defaultRotation;
 
     public MovableObjResetter(HoloObject owner)
-        :base(owner)
+        : base(owner)
     {
         defaultPosition = owner.transform.position;
         defaultRotation = owner.transform.rotation;
@@ -58,13 +115,7 @@ public class MovableObjResetter : HoloObjResetter
         defaultPosition += movement;
     }
 
-    public override void Reset()
-    {
-        LocationReset();
-        base.Reset();
-    }
-
-    protected void LocationReset()
+    public override void OnLocationReset()
     {
         owner.transform.position = defaultPosition;
         owner.transform.rotation = defaultRotation;
@@ -76,18 +127,15 @@ public class ItemResetter : MovableObjResetter
     HoloItem ownerItem;
 
     public ItemResetter(HoloObject owner)
-        :base(owner)
+        : base(owner)
     {
         ownerItem = (HoloItem)owner;
     }
-    public override void Reset()
+
+    public override void OnDisable()
     {
-        base.Reset();
-        DumpItem();
-    }
-    void DumpItem()
-    {
-        //itemのownerにアクセスしてアイテムを捨てさせる
+        base.OnDisable();
+        //アイテムを捨てさせる
     }
 }
 
@@ -97,15 +145,15 @@ public class CharacterResetter : MovableObjResetter
     MotionName defaultMotionName;
 
     public CharacterResetter(HoloObject owner, MotionName defaultMotionName)
-        :base(owner)
+        : base(owner)
     {
         ownerCharacter = (HoloCharacter)owner;
         this.defaultMotionName = defaultMotionName;
     }
-    public override void Reset()
+
+    public override void OnEnable()
     {
-        base.Reset();
-        if (ownerCharacter == null) return;
+        base.OnEnable();
         ownerCharacter.ChangeAnimationClip(defaultMotionName, 0.0f);
     }
 }
@@ -114,40 +162,28 @@ public class PuppetResetter : CharacterResetter
 {
     HoloPuppet ownerPuppet;
     public PuppetResetter(HoloObject owner, MotionName defaultMotionName)
-        :base(owner, defaultMotionName)
+        : base(owner, defaultMotionName)
     {
         ownerPuppet = (HoloPuppet)owner;
     }
-    public override void Reset()
+
+    public override void OnDisable()
     {
-        base.Reset();
+        base.OnDisable();
+        ownerPuppet.RootObject.SetActive(false);
+    }
+
+    public override void OnLocationReset()
+    {
+        base.OnLocationReset();
+        ownerPuppet.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Alive;
+        ownerPuppet.Puppet.pinWeight = 1.0f;
+    }
+
+    public override void OnEnable()
+    {
+        ownerPuppet.RootObject.SetActive(true);
+        base.OnEnable();
     }
 }
-
-public class AgentResetter : AbstractHoloObjResetter
-{
-    public AgentResetter(HoloObject owner)
-        :base(owner)
-    {
-
-    }
-    public override void Reset()
-    {
-
-    }
-}
-
-public class TriangleResetter : AbstractHoloObjResetter
-{
-    public TriangleResetter(HoloObject owner)
-        :base(owner)
-    {
-
-    }
-    public override void Reset()
-    {
-
-    }
-}
-
 

@@ -37,13 +37,13 @@ public class TestSceneObjController : MainSceneObjController
         //右クリック長押し
         if (Input.GetMouseButton(0))
         {
-            if (targetObj != null) UpdateOperation();
+            if (targetMovableObject != null) UpdateOperation();
 
         }
 
         if(Input.GetMouseButtonUp(0))
         {
-            if(targetObj != null) EndOperation();
+            if(targetMovableObject != null) EndOperation();
         }
     }
 
@@ -57,19 +57,19 @@ public class TestSceneObjController : MainSceneObjController
             GameObject obj = hit.transform.gameObject;
             //つかむことができるかチェック
             HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
-            if (actor == null || !actor.isMovable)
+            if (actor == null || !actor.IsMovable)
             {
-                targetObj = null;
+                targetMovableObject = null;
                 return false;
             }
             
             //掴むことができた
-            targetObj = actor;
+            targetMovableObject = actor;
             return true;
         }
         Debug.Log("don't hit");
 
-        targetObj = null;
+        targetMovableObject = null;
         return false;
     }
     
@@ -78,7 +78,7 @@ public class TestSceneObjController : MainSceneObjController
         base.StartOperation();
 
         oldMousePosition = Input.mousePosition;
-        targetObj.transform.position = new Vector3(targetObj.transform.position.x, operationLockHeight, targetObj.transform.position.z);
+        targetMovableObject.transform.position = new Vector3(targetMovableObject.transform.position.x, operationLockHeight, targetMovableObject.transform.position.z);
     }
 
     protected override void UpdateOperation()
@@ -86,7 +86,7 @@ public class TestSceneObjController : MainSceneObjController
         Vector3 velocity = Vector2ComvertToXZVector(GetMouseVelocity());
         Quaternion cam = mainCamera.transform.rotation;
         velocity = Quaternion.Euler(0.0f, cam.eulerAngles.y, 0.0f) * velocity;
-        targetObj.transform.position += velocity * moveSpeed * Time.deltaTime;
+        targetMovableObject.transform.position += velocity * moveSpeed * Time.deltaTime;
         base.UpdateOperation();
     }
 

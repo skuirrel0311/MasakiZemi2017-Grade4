@@ -34,9 +34,7 @@ public class LookTarget : BaseStateMachineBehaviour
         to = Quaternion.LookRotation(targetDirection);
         character.m_agent.updateRotation = false;
 
-        string animationName = MotionNameManager.GetMotionName(MotionName.Walk, character);
-
-        character.m_animator.CrossFade(animationName, 0.1f);
+        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
     }
 
     void SetTarget()
@@ -91,8 +89,7 @@ public class LookTarget : BaseStateMachineBehaviour
     {
         base.OnEnd();
         character.m_agent.updateRotation = true;
-        string animationName = MotionNameManager.GetMotionName(MotionName.Wait, character);
-        character.m_animator.CrossFade(animationName, 0.1f);
+        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
     }
 
     //中断

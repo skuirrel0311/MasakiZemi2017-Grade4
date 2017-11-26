@@ -1,228 +1,57 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-/// <summary>
-/// アイテムをもったりできるホログラム
-/// </summary>
-public class HoloCharacter : HoloGroundingObject
+//目的地を与えると移動してくれる
+[RequireComponent(typeof(Animator))]
+public class HoloCharacter : HoloMovableObject
 {
     public Animator m_animator { get; private set; }
     [SerializeField]
-    protected MotionName firstAnimationName = MotionName.Wait;
+    protected MotionName defaultMotionName = MotionName.Wait;
     
-    public bool IsGetAlcohol { get; private set; }
-    const string AlcoholItemName = "Sakabin";
+    public virtual bool CanHaveItem { get { return false; } }
 
-    [SerializeField]
-    bool canHaveItem = false;
-    public bool hasItem_Left { get; private set; }
-    public bool hasItem_Right { get; private set; }
+    //public bool IsGetAlcohol { get; private set; }
+    //const string AlcoholItemName = "Sakabin";
 
-    public HoloItem leftHandItem { get; private set; }
-    public HoloItem rightHandItem { get; private set; }
-    [SerializeField]
-    Transform rightHand = null;
-    [SerializeField]
-    Transform leftHand = null;
+    //[SerializeField]
+    //bool canHaveItem = false;
+    //public bool hasItem_Left { get; private set; }
+    //public bool hasItem_Right { get; private set; }
 
-    [SerializeField]
-    ItemTransformDataList rightHandItemDataList = null;
-    [SerializeField]
-    ItemTransformDataList leftHandItemDataList = null;
+    //public HoloItem leftHandItem { get; private set; }
+    //public HoloItem rightHandItem { get; private set; }
+    //[SerializeField]
+    //Transform rightHand = null;
+    //[SerializeField]
+    //Transform leftHand = null;
+
+    //[SerializeField]
+    //ItemTransformDataList rightHandItemDataList = null;
+    //[SerializeField]
+    //ItemTransformDataList leftHandItemDataList = null;
 
     public override Type GetActorType { get { return Type.Character; } }
-
-    public Action<string, float> OnAnimationChanged;
 
     protected override void Awake()
     {
         m_animator = GetComponent<Animator>();
-        ChangeAnimationClip(firstAnimationName, 0.1f);
-        base.Awake();
     }
 
-    /// <summary>
-    /// アイテムを持たせる
-    /// </summary>
-    public override void SetItem(GameObject itemObj)
+    protected override void Init()
     {
-        if (!canHaveItem) return;
-        if (itemObj == null)
-        {
-            Debug.LogError("item obj is null");
-        }
-        HoloItem item = itemObj.GetComponent<HoloItem>();
-
-        if (item == null)
-        {
-            Debug.LogError("item is null");
-            return;
-        }
-        ItemTransformDataList itemList = GetItemTransformDataList(item);
-        ItemTransformData itemData = GetItemTransformDate(itemObj.name, itemList);
-
-
-        if (itemData == null)
-        {
-            Debug.LogError("item data is null");
-            return;
-        }
-        Transform hand = itemList.hand == HoloItem.Hand.Left ? leftHand : rightHand;
-
-        if (hand == null)
-        {
-            Debug.LogError("hand is null");
-            return;
-        }
-
-
-        if (itemList.hand == HoloItem.Hand.Left)
-        {
-            hasItem_Left = true;
-            item.currentHand = HoloItem.Hand.Left;
-            leftHandItem = item;
-        }
-        else
-        {
-            hasItem_Right = true;
-            item.currentHand = HoloItem.Hand.Right;
-            rightHandItem = item;
-        }
-
-        item.owner = this;
-        item.transform.parent = hand;
-        item.transform.localPosition = itemData.position;
-        item.transform.localRotation = itemData.rotation;
-
-        //モーションを変える
-        ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
-
-        if (item.name == AlcoholItemName)
-        {
-            IsGetAlcohol = true;
-        }
-        
-        ChangeAnimationClip(itemData.motionName, 0.0f);
+        ChangeAnimationClip(defaultMotionName, 0.0f);
+        base.Init();
     }
 
-    /// <summary>
-    /// 指定された手に持っているアイテムを捨てる
-    /// </summary>
-    /// <param name="hand"></param>
-    /// <param name="setDefault">捨てたアイテムを元の位置に戻すか？</param>
-    public void DumpItem(HoloItem.Hand hand, bool setDefault = true)
+    protected override void InitResetter()
     {
-        if (!canHaveItem) return;
-        //その前に持っていたアイテムは初期座標に戻す
-        if (hand == HoloItem.Hand.Both)
-        {
-            DumpItem(HoloItem.Hand.Left, setDefault);
-            DumpItem(HoloItem.Hand.Right, setDefault);
-            return;
-        }
-
-        HoloItem oldItem;
-        if (hand == HoloItem.Hand.Right)
-        {
-            hasItem_Right = false;
-            oldItem = rightHand.GetComponentInChildren<HoloItem>();
-        }
-        else
-        {
-            hasItem_Left = false;
-            oldItem = leftHand.GetComponentInChildren<HoloItem>();
-        }
-
-        if (oldItem == null) return;
-
-        oldItem.owner = null;
-        //todo:parentをnullにするのはダメ
-        oldItem.transform.parent = null;
-        //todo:グローバルの場所に戻る可能性も考えるべき
-        if (setDefault) oldItem.ResetTransform();
-
-        if (oldItem.name == AlcoholItemName)
-        {
-            IsGetAlcohol = false;
-        }
+        resetter = new CharacterResetter(this, defaultMotionName);
     }
-
-    public override void ResetTransform()
-    {
-        //アイテムもリセット
-        DumpItem(HoloItem.Hand.Both);
-        gameObject.SetActive(true);
-        //ページが開始された時のモーションに戻す
-        ChangeAnimationClip(firstAnimationName, 0.0f);
-        base.ResetTransform();
-    }
-
-    ItemTransformData GetItemTransformDate(string name, ItemTransformDataList list)
-    {
-        //todo:できればDictionaryに変換したいがScriptableObjectと相性が悪いので放置
-        if (list == null)
-        {
-            Debug.LogError("list is null");
-            return null;
-        }
-        for (int i = 0; i < list.dataList.Count; i++)
-        {
-            if (list.dataList[i].itemName == name) return list.dataList[i];
-        }
-        return null;
-    }
-
-    ItemTransformDataList GetItemTransformDataList(HoloItem item)
-    {
-        switch (item.hand)
-        {
-            case HoloItem.Hand.Left:
-                //持っていたら捨てる
-                if (hasItem_Left) DumpItem(HoloItem.Hand.Left);
-                return leftHandItemDataList;
-
-            case HoloItem.Hand.Right:
-                //持っていたら捨てる
-                if (hasItem_Right) DumpItem(HoloItem.Hand.Right);
-                return rightHandItemDataList;
-
-            case HoloItem.Hand.Both:
-                if (hasItem_Left && hasItem_Right)
-                {
-                    //どちらの手にもアイテムを持っている
-                    //todo:UIでどちらの手に持っているアイテムを捨てるか表示
-                    //とりあえず右のアイテムを捨てる
-                    DumpItem(HoloItem.Hand.Right);
-                    return rightHandItemDataList;
-                }
-                //どちらにも持っていなかったら右になる
-                return hasItem_Right ? leftHandItemDataList : rightHandItemDataList;
-            default:
-                return null;
-        }
-    }
-
-    public override bool Equals(object other)
-    {
-        bool equal = gameObject.Equals(other);
-
-        if (!equal && hasItem_Left) equal = leftHandItem.gameObject.Equals(other);
-        if (!equal && hasItem_Right) equal = rightHandItem.gameObject.Equals(other);
-
-        return equal;
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-    public void ChangeAnimationClip(MotionName name, float transitionDuration)
+    
+    public virtual void ChangeAnimationClip(MotionName name, float transitionDuration)
     {
         if (m_animator == null) return;
-
-        string animationName = MotionNameManager.GetMotionName(name, this);
-        if (OnAnimationChanged != null) OnAnimationChanged.Invoke(animationName, transitionDuration);
-        m_animator.CrossFade(animationName, transitionDuration);
+        
+        m_animator.CrossFade(name.ToString(), transitionDuration);
     }
 }

@@ -35,61 +35,61 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
     {
         base.Start();
 
-        targetObj = GameObject.FindGameObjectWithTag("Target");
+        //targetObj = GameObject.FindGameObjectWithTag("Target");
 
-        GameObject[] tempArray = GameObject.FindGameObjectsWithTag("Actor");
+        //GameObject[] tempArray = GameObject.FindGameObjectsWithTag("Actor");
 
-        for (int i = 0; i < tempArray.Length; i++)
-        {
-            HoloObject obj = tempArray[i].GetComponent<HoloObject>();
+        //for (int i = 0; i < tempArray.Length; i++)
+        //{
+        //    HoloObject obj = tempArray[i].GetComponent<HoloObject>();
 
-            if (obj.GetActorType == HoloObject.Type.Statics) return;
+        //    if (obj.GetActorType == HoloObject.Type.Statics) return;
 
-            HoloMovableObject movableObject = (HoloMovableObject)obj;
-            movableObject.ApplyDefaultTransform();
-            actorDictionary.Add(movableObject.name, movableObject);
-        }
+        //    HoloMovableObject movableObject = (HoloMovableObject)obj;
+        //    movableObject.ApplyDefaultTransform();
+        //    actorDictionary.Add(movableObject.name, movableObject);
+        //}
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            currentNameIndex++;
+        //if(Input.GetKeyDown(KeyCode.N))
+        //{
+        //    currentNameIndex++;
 
-            if (currentNameIndex >= elements.Length)
-            {
-                currentNameIndex = 0;
-            }
+        //    if (currentNameIndex >= elements.Length)
+        //    {
+        //        currentNameIndex = 0;
+        //    }
 
-            character = (HoloCharacter)(GetActor(actorName));
-            string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name, character);
-            stateText.text = motionName;
-            Debug.Log("call change Animation " + motionName);
-            character.m_animator.CrossFade(motionName, elements[currentNameIndex].transitionTime);
-        }
+        //    character = (HoloCharacter)(GetActor(actorName));
+        //    string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name, character);
+        //    stateText.text = motionName;
+        //    Debug.Log("call change Animation " + motionName);
+        //    character.m_animator.CrossFade(motionName, elements[currentNameIndex].transitionTime);
+        //}
     }
 
     public void SetItem()
     {
-        character = (HoloCharacter)GetActor(actorName);
+        //character = (HoloCharacter)GetActor(actorName);
 
-        character.SetItem(item.gameObject);
+        ////character.SetItem(item.gameObject);
     }
 
     public void DumpItem()
     {
-        character = (HoloCharacter)GetActor(actorName);
-        character.DumpItem(HoloItem.Hand.Both);
+        //character = (HoloCharacter)GetActor(actorName);
+        ////character.DumpItem(HoloItem.Hand.Both);
     }
 
     public void GoThere()
     {
-        Vector3 targetPosition = targetObj.transform.position;
-        targetPosition.y = 0.0f;
-        character = (HoloCharacter)GetActor(actorName);
-        character.m_agent.stoppingDistance = 0.01f;
-        character.m_agent.SetDestination(targetPosition);
+        //Vector3 targetPosition = targetObj.transform.position;
+        //targetPosition.y = 0.0f;
+        //character = (HoloCharacter)GetActor(actorName);
+        //character.m_agent.stoppingDistance = 0.01f;
+        //character.m_agent.SetDestination(targetPosition);
     }
 
     HoloMovableObject GetActor(ActorName actorName)
