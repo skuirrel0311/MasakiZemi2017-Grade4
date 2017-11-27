@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 //目的地を与えると移動してくれる
 [RequireComponent(typeof(Animator))]
 public class HoloCharacter : HoloMovableObject
 {
+    public NavMeshAgent m_agent { get; private set; }
     public Animator m_animator { get; private set; }
     [SerializeField]
     protected MotionName defaultMotionName = MotionName.Wait;
-    
-    public virtual bool CanHaveItem { get { return false; } }
 
     public override Type GetActorType { get { return Type.Character; } }
 
     protected override void Awake()
     {
         m_animator = GetComponent<Animator>();
+        m_agent = GetComponent<NavMeshAgent>();
+        base.Awake();
     }
 
     protected override void Init()

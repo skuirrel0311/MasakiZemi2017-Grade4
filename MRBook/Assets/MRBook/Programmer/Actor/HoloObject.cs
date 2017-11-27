@@ -19,13 +19,23 @@ public class HoloObject : MonoBehaviour
     bool isMovable = false;
     [SerializeField]
     bool isFloating = false;
+    [SerializeField]
+    bool canHaveItem = false;
+    [SerializeField]
+    BaseObjInputHandler inputHandler = null;
+    [SerializeField]
+    BaseItemSaucer itemSaucer = null;
+    [SerializeField]
+    int inPlayLayer = 4;
 
     public bool IsMovable { get { return isMovable; } }
     public bool IsFloating { get { return isFloating; } }
+    public bool CanHaveItem { get { return canHaveItem; } }
+    public BaseObjInputHandler InputHandler { get { return inputHandler; } }
+    public BaseItemSaucer ItemSaucer { get { return itemSaucer; } }
 
-    public AbstractHoloObjInputHandler inputHandler { get; protected set; }
     public BaseHoloObjResetter resetter { get; protected set; }
-
+    
     /// <summary>
     /// ページが開かれた
     /// </summary>
@@ -42,14 +52,7 @@ public class HoloObject : MonoBehaviour
 
     protected virtual void Init()
     {
-        InitInputHandler();
         InitResetter();
-    }
-
-    protected virtual void InitInputHandler()
-    {
-        //背景オブジェクトはそもそもタップに対して応答しない
-        inputHandler = null;
     }
 
     protected virtual void InitResetter()
@@ -57,5 +60,33 @@ public class HoloObject : MonoBehaviour
         resetter = new HoloObjResetter(this);
     }
 
-    public virtual void PlayPage() { }
+    public virtual void PlayPage()
+    {
+        gameObject.layer = inPlayLayer;
+    }
+
+    public bool CheckCanHaveItem(HoloItem item)
+    {
+        if (ItemSaucer == null) return false;
+
+        return ItemSaucer.CheckCanHaveItem(item);
+    }
+
+    public void SetItem(HoloItem item)
+    {
+        if (!CheckCanHaveItem(item)) return;
+
+        //CheckCanHaveItemがtrueになったということはitemSaucerはnullではない
+        ItemSaucer.SetItem(item);
+    }
+    
+    public override bool Equals(object other)
+    {
+        return gameObject.Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

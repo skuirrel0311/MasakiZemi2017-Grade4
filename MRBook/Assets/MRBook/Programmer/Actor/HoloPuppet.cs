@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using RootMotion.Dynamics;
 
-public class HoloPuppet : HoloCharacter
+public class HoloPuppet : HandCharacter
 {
     [SerializeField]
     BehaviourPuppet m_behavirour = null;

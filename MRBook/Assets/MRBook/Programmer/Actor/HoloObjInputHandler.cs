@@ -3,31 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class AbstractHoloObjInputHandler
+public class MovableObjInputHandler : BaseObjInputHandler
 {
-    public enum HitObjType { None, Book, Character, OtherObj }
-    public enum MakerType { None, Normal, DontPut, PresentItem, DontPresentItem }
-    public abstract void OnClick();
-    public abstract void OnDragStart();
-    public abstract MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj);
-    public abstract void OnDragEnd(HitObjType hitObjType, HoloObject hitObj);
-}
-
-public class MovableObjInputHandler : AbstractHoloObjInputHandler
-{
-    protected HoloObject owner;
     AbstractInputHandlerBehaviour inputHandlerBehaviour;
 
-    public MovableObjInputHandler(HoloObject owner)
+    public override void Init(HoloObject owner)
     {
-        this.owner = owner;
+        base.Init(owner);
         if (owner.IsFloating) inputHandlerBehaviour = new FloatingObjDragEndBehaviour(owner);
         else inputHandlerBehaviour = new GroundingObjDragEndBehaviour(owner);
     }
 
     public override void OnClick()
     {
-        MyObjControllerByBoundingBox.I.SetTargetObject(owner.gameObject);
+        MainSceneObjController.I.SetTargetObject(owner.gameObject);
     }
 
     public override void OnDragStart()
@@ -50,10 +39,10 @@ public class ItemInputHandler : MovableObjInputHandler
 {
     HoloItem ownerItem;
 
-    public ItemInputHandler(HoloObject owner)
-        : base(owner)
+    public override void Init(HoloObject owner)
     {
         ownerItem = (HoloItem)owner;
+        base.Init(owner);
     }
 
     public override void OnClick()
@@ -71,23 +60,30 @@ public class ItemInputHandler : MovableObjInputHandler
 
     public override MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj)
     {
-        if(hitObjType == HitObjType.Character)
+        if (!hitObj.CanHaveItem)
         {
-            //持たせられるか、持たせられないかを判断する
-            return MakerType.PresentItem;
+            return base.OnDragUpdate(hitObjType, hitObj);
         }
-        return base.OnDragUpdate(hitObjType, hitObj);
+
+        if (hitObj.CheckCanHaveItem(ownerItem)) return MakerType.PresentItem;
+        else return MakerType.DontPresentItem;
     }
 
     public override void OnDragEnd(HitObjType hitObjType, HoloObject hitObj)
     {
-        if(hitObjType == HitObjType.Character)
+        if (!hitObj.CanHaveItem)
         {
-            //キャラクターにアイテムを持たせる
+            base.OnDragEnd(hitObjType, hitObj);
             return;
         }
 
-        base.OnDragEnd(hitObjType, hitObj);
+        if (hitObj.CheckCanHaveItem(ownerItem))
+        {
+            hitObj.SetItem(ownerItem);
+            return;
+        }
+
+        //Itemが持てるのにここまで来たってことは持たせることができなかったということ
     }
 
     public void SetItemTextEnable(bool enabled)
@@ -105,42 +101,43 @@ public abstract class AbstractInputHandlerBehaviour
         this.owner = owner;
     }
     public abstract void OnDragStart();
-    public abstract AbstractHoloObjInputHandler.MakerType OnDragUpdate(AbstractHoloObjInputHandler.HitObjType hitObjType);
-    public abstract void OnDragEnd(AbstractHoloObjInputHandler.HitObjType hitObjType);
+    public abstract BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType);
+    public abstract void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType);
 }
 
 public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 {
     HoloMovableObject ownerMovableObj;
     Coroutine fallCoroutine;
+    NavMeshAgent m_agent;
 
     public override void OnDragStart()
     {
-        ownerMovableObj.m_agent.enabled = false;
+        m_agent.enabled = false;
     }
-    public override AbstractHoloObjInputHandler.MakerType OnDragUpdate(AbstractHoloObjInputHandler.HitObjType hitObjType)
+    public override BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType)
     {
-        switch(hitObjType)
+        switch (hitObjType)
         {
-            case AbstractHoloObjInputHandler.HitObjType.None:
-                return AbstractHoloObjInputHandler.MakerType.None;
-            case AbstractHoloObjInputHandler.HitObjType.Book:
-                return AbstractHoloObjInputHandler.MakerType.Normal;
-            case AbstractHoloObjInputHandler.HitObjType.OtherObj:
-            case AbstractHoloObjInputHandler.HitObjType.Character:
-                return AbstractHoloObjInputHandler.MakerType.DontPut;
+            case BaseObjInputHandler.HitObjType.None:
+                return BaseObjInputHandler.MakerType.None;
+            case BaseObjInputHandler.HitObjType.Book:
+                return BaseObjInputHandler.MakerType.Normal;
+            case BaseObjInputHandler.HitObjType.OtherObj:
+            case BaseObjInputHandler.HitObjType.Character:
+                return BaseObjInputHandler.MakerType.DontPut;
         }
 
-        return AbstractHoloObjInputHandler.MakerType.None;
+        return BaseObjInputHandler.MakerType.None;
     }
     public GroundingObjDragEndBehaviour(HoloObject owner)
         : base(owner)
     {
         ownerMovableObj = (HoloMovableObject)owner;
     }
-    public override void OnDragEnd(AbstractHoloObjInputHandler.HitObjType hitObjType)
+    public override void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType)
     {
-        if (hitObjType != AbstractHoloObjInputHandler.HitObjType.Book) return;
+        if (hitObjType != BaseObjInputHandler.HitObjType.Book) return;
 
         if (fallCoroutine != null)
         {
@@ -160,7 +157,7 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 
             //todo : 絵本よりも下に行った場合はやばいのでなにか対応が必要
 
-            if (NavMesh.SamplePosition(owner.transform.position, out hit, ownerMovableObj.m_agent.height, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(owner.transform.position, out hit, m_agent.height, NavMesh.AllAreas))
             {
                 break;
             }
@@ -168,34 +165,28 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
             yield return null;
         }
 
-        ownerMovableObj.m_agent.enabled = true;
+        m_agent.enabled = true;
         fallCoroutine = null;
     }
 }
 
 public class FloatingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 {
-    public FloatingObjDragEndBehaviour(HoloObject owner)
-        : base(owner)
-    {
-
-    }
+    public FloatingObjDragEndBehaviour(HoloObject owner): base(owner) { }
     public override void OnDragStart() { }
-    public override AbstractHoloObjInputHandler.MakerType OnDragUpdate(AbstractHoloObjInputHandler.HitObjType hitObjType)
+    public override BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType)
     {
         switch (hitObjType)
         {
-            case AbstractHoloObjInputHandler.HitObjType.None:
-                return AbstractHoloObjInputHandler.MakerType.None;
-            case AbstractHoloObjInputHandler.HitObjType.Book:
-            case AbstractHoloObjInputHandler.HitObjType.OtherObj:
-            case AbstractHoloObjInputHandler.HitObjType.Character:
-                return AbstractHoloObjInputHandler.MakerType.None;
+            case BaseObjInputHandler.HitObjType.None:
+                return BaseObjInputHandler.MakerType.None;
+            case BaseObjInputHandler.HitObjType.Book:
+            case BaseObjInputHandler.HitObjType.OtherObj:
+            case BaseObjInputHandler.HitObjType.Character:
+                return BaseObjInputHandler.MakerType.None;
         }
 
-        return AbstractHoloObjInputHandler.MakerType.None;
+        return BaseObjInputHandler.MakerType.None;
     }
-    public override void OnDragEnd(AbstractHoloObjInputHandler.HitObjType hitObjType) { }
+    public override void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType) { }
 }
-
-

@@ -18,15 +18,15 @@ public class HoloItem : HoloMovableObject
     //アイテムの所持者
     [System.NonSerialized]
     public HandCharacter owner;
+    //どちらの手に持たれているか
     [System.NonSerialized]
     public Hand currentHand;
 
     int defaultLayer;
 
-    protected override void Awake()
+    protected void Awake()
     {
         defaultLayer = gameObject.layer;
-        base.Awake();
     }
 
     public override void PlayPage()
@@ -39,10 +39,5 @@ public class HoloItem : HoloMovableObject
     protected override void InitResetter()
     {
         resetter = new ItemResetter(this);
-    }
-
-    protected override void InitInputHandler()
-    {
-        inputHandler = new ItemInputHandler(this);
     }
 }

@@ -23,6 +23,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     const int bookLayer = 11;
 
+    float maxDistance;
+
     protected override void Start()
     {
         base.Start();
@@ -59,37 +61,64 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     /// </summary>
     protected virtual void StartOperation()
     {
-        targetMovableObject.inputHandler.OnDragStart();
+        MainSceneManager sceneManager = MainSceneManager.I;
+        maxDistance = targetMovableObject.transform.position.y - sceneManager.pages[sceneManager.currentPageIndex].transform.position.y + 0.5f;
+        targetMovableObject.InputHandler.OnDragStart();
     }
 
     protected virtual void UpdateOperation()
     {
-    //    RaycastHit underObj;
+        RaycastHit underObj;
+        bool isHitObject = TryGetUnderObject(out underObj);
+        HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
+        BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
 
-    //    bool isHitObject = TryGetUnderObject(out underObj);
+        BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
-    //    particle.gameObject.SetActive(isHitObject);
-    //    underTargetMaker.gameObject.SetActive(isHitObject);
-
-    //    if (!isHitObject) return;
-
-    //    Debug.Log("underObj = " + underObj.transform.gameObject.name);
-    //    //ページ内に配置されそう
-    //    particle.position = targetMovableObject.transform.position;
-    //    underTargetMaker.position = underObj.point + (Vector3.up * 0.01f);
-    //    if (underObj.transform.gameObject.layer == bookLayer)
-    //    {
-    //        //サークルを表示
-    //    }
-    //    else
-    //    {
-    //        //キャラに持たせようとしている可能性もある
-    //        Debug.Log("PresentItem");
-    //    }
+        //UnderTargetMakerはクラスを作りmakerTypeを渡す
+        particle.gameObject.SetActive(isHitObject);
+        underTargetMaker.gameObject.SetActive(isHitObject);
+        particle.position = targetMovableObject.transform.position;
+        underTargetMaker.position = underObj.point + (Vector3.up * 0.01f);
     }
 
     protected virtual void EndOperation()
     {
+        RaycastHit underObj;
+        bool isHitObject = TryGetUnderObject(out underObj);
+        HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
+        BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
+
+        targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
+
+        particle.gameObject.SetActive(false);
+        underTargetMaker.gameObject.SetActive(false);
+    }
+    
+    HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)
+    {
+        if (!isHit) return null;
+
+        if (hit.transform.gameObject.layer == bookLayer) return null;
+        
+        return hit.transform.GetComponent<HoloObject>();
+    }
+
+    BaseObjInputHandler.HitObjType GetHitObjType(RaycastHit hit, bool isHit)
+    {
+        if (!isHit) return BaseObjInputHandler.HitObjType.None;
+
+        if (hit.transform.gameObject.layer == bookLayer) return BaseObjInputHandler.HitObjType.Book;
+
+        HoloObject obj = hit.transform.GetComponent<HoloObject>();
+
+        if (obj != null || obj.GetActorType == HoloObject.Type.Character)return BaseObjInputHandler.HitObjType.Character;
+
+        return BaseObjInputHandler.HitObjType.OtherObj;
+    }
+
+    //protected virtual void EndOperation()
+    //{
     //    particle.gameObject.SetActive(false);
     //    underTargetMaker.gameObject.SetActive(false);
 
@@ -180,7 +209,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     //    Disable();
     //    //床に落とす
     //    targetMovableObject.Fall();
-    }
+    //}
 
     /// <summary>
     /// 渡されたオブジェクトに合わせてバウンディングボックスを表示し、操作できるようにする
@@ -201,9 +230,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         //直下を調べる
         ray.direction = Vector3.down;
         ray.origin = targetMovableObject.transform.position;
-        const float maxDistance = 3.0f;
-        ///RaycastHit[] hits = Physics.SphereCastAll(ray, targetMovableObject.SphereCastRadius, maxDistance, ~ignoreLayerMask);
-        RaycastHit[] hits = Physics.SphereCastAll(ray, 1.0f, maxDistance, ~ignoreLayerMask);
+
+        RaycastHit[] hits = Physics.SphereCastAll(ray, targetMovableObject.SphereCastRadius, maxDistance, ~ignoreLayerMask);
         hitObj = new RaycastHit();
         bool isHit = false;
 

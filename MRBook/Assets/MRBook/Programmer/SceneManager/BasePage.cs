@@ -176,7 +176,7 @@ public class BasePage : MonoBehaviour
         tempArray = GameObject.FindGameObjectsWithTag("Target");
         for (int i = 0; i < tempArray.Length; i++)
         {
-            Debug.Log("add target point " + tempArray[i].name);
+            //Debug.Log("add target point " + tempArray[i].name);
             try
             {
                 targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
