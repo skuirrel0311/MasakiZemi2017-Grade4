@@ -16,11 +16,11 @@ public class TitleView : HoloMovableObject
         objController = MyObjControllerByBoundingBox.I;
     }
 
-    public override void OnInputClicked(InputClickedEventData eventData)
-    {
-        base.OnInputClicked(eventData);
-        SetButtonActive(!objController.canDragging);
-    }
+    //public override void OnInputClicked(InputClickedEventData eventData)
+    //{
+    //    base.OnInputClicked(eventData);
+    //    SetButtonActive(!objController.canDragging);
+    //}
 
     public void HideAll()
     {

@@ -12,11 +12,10 @@ public class HoloCharacter : HoloMovableObject
 
     public override Type GetActorType { get { return Type.Character; } }
 
-    protected override void Awake()
+    protected void Awake()
     {
         m_animator = GetComponent<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
-        base.Awake();
     }
 
     protected override void Init()
@@ -27,7 +26,9 @@ public class HoloCharacter : HoloMovableObject
 
     protected override void InitResetter()
     {
-        resetter = new CharacterResetter(this, defaultMotionName);
+        base.InitResetter();
+        resetter.AddBehaviour(new LocationResetBehaviour(this));
+        resetter.AddBehaviour(new CharacterResetBehaviour(this, defaultMotionName));
     }
     
     public virtual void ChangeAnimationClip(MotionName name, float transitionDuration)

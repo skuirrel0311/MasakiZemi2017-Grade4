@@ -18,8 +18,6 @@ public class HoloObject : MonoBehaviour
     [SerializeField]
     bool isMovable = false;
     [SerializeField]
-    bool isFloating = false;
-    [SerializeField]
     bool canHaveItem = false;
     [SerializeField]
     BaseObjInputHandler inputHandler = null;
@@ -29,12 +27,11 @@ public class HoloObject : MonoBehaviour
     int inPlayLayer = 4;
 
     public bool IsMovable { get { return isMovable; } }
-    public bool IsFloating { get { return isFloating; } }
     public bool CanHaveItem { get { return canHaveItem; } }
     public BaseObjInputHandler InputHandler { get { return inputHandler; } }
     public BaseItemSaucer ItemSaucer { get { return itemSaucer; } }
 
-    public BaseHoloObjResetter resetter { get; protected set; }
+    public HoloObjResetter resetter { get; protected set; }
     
     /// <summary>
     /// ページが開かれた
@@ -53,11 +50,13 @@ public class HoloObject : MonoBehaviour
     protected virtual void Init()
     {
         InitResetter();
+        if (InputHandler != null) InputHandler.Init(this);
+        if (ItemSaucer != null) ItemSaucer.Init(this);
     }
 
     protected virtual void InitResetter()
     {
-        resetter = new HoloObjResetter(this);
+        resetter.AddBehaviour(new DefaultHoloObjResetBehaviour(this));
     }
 
     public virtual void PlayPage()

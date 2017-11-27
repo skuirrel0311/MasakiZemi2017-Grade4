@@ -4,7 +4,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 {
     protected ActorManager actorManager;
     //掴んでいるアクター
-    protected HoloMovableObject targetMovableObject;
+    protected HoloObject targetMovableObject;
 
     //アイテムを掴んでいるか？
     protected bool isHoldItem = false;
@@ -219,7 +219,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         base.SetTargetObject(obj);
 
-        targetMovableObject = obj.GetComponent<HoloMovableObject>();
+        targetMovableObject = obj.GetComponent<HoloObject>();
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         ray.direction = Vector3.down;
         ray.origin = targetMovableObject.transform.position;
 
-        RaycastHit[] hits = Physics.SphereCastAll(ray, targetMovableObject.SphereCastRadius, maxDistance, ~ignoreLayerMask);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, targetMovableObject.InputHandler.SphereCastRadius, maxDistance, ~ignoreLayerMask);
         hitObj = new RaycastHit();
         bool isHit = false;
 

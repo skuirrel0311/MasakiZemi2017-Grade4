@@ -160,7 +160,7 @@ namespace RootMotion.Dynamics {
 			if (raycastLayers == -1) Debug.LogWarning("BehaviourFall has no layers to raycast to.", transform);
 
 			// Blending between catch fall and writhe animations
-			float blendTarget = GetBlendTarget(GetGroundHeight());
+			//float blendTarget = GetBlendTarget(GetGroundHeight());
 			//float blend = Mathf.MoveTowards(puppetMaster.targetAnimator.GetFloat(blendParameter), blendTarget, Time.deltaTime * blendSpeed);
 
 			//puppetMaster.targetAnimator.SetFloat(blendParameter, blend);

@@ -38,6 +38,8 @@ public class HoloItem : HoloMovableObject
 
     protected override void InitResetter()
     {
-        resetter = new ItemResetter(this);
+        base.InitResetter();
+        resetter.AddBehaviour(new LocationResetBehaviour(this));
+        resetter.AddBehaviour(new ItemResetBehaviour(this));
     }
 }

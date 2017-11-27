@@ -23,7 +23,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     ItemTransformData itemData;
     Transform hand;
 
-    public void Init(HoloObject owner)
+    public override void Init(HoloObject owner)
     {
         ownerCharacter = (HoloCharacter)owner;
     }

@@ -5,12 +5,13 @@
 /// </summary>
 public class BaseItemSaucer : MonoBehaviour
 {
-    public virtual void SetItem(HoloItem item)
+    HoloObject owner;
+
+    public virtual void Init(HoloObject owner)
     {
+        this.owner = owner;
     }
 
-    public virtual bool CheckCanHaveItem(HoloItem item)
-    {
-        return false;
-    }
+    public virtual void SetItem(HoloItem item) { }
+    public virtual bool CheckCanHaveItem(HoloItem item) { return false; }
 }

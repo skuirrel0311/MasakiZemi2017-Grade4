@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using RootMotion.Dynamics;
 
-public class HoloPuppet : HandCharacter
+public class HoloPuppet : HoloCharacter
 {
     [SerializeField]
     BehaviourPuppet m_behavirour = null;
@@ -18,7 +18,8 @@ public class HoloPuppet : HandCharacter
 
     protected override void InitResetter()
     {
-        resetter = new PuppetResetter(this, defaultMotionName);
+        base.InitResetter();
+        resetter.AddBehaviour(new PuppetResetBehaviour(this));
     }
 
     public override void PlayPage()

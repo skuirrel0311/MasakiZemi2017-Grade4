@@ -1,16 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 
+[HideInInspector]
 public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 {
+    public enum HitObjType { None, Book, Character, OtherObj }
+    public enum MakerType { None, Normal, DontPut, PresentItem, DontPresentItem }
+
     protected HoloObject owner;
     //BoundingBoxの形状を決めるために使用される(トリガーも可)
     public BoxCollider m_collider { get; private set; }
-    public float SphereCastRadius { get; private set; }
-    [SerializeField]
-    bool isFloating = false;
+    public float SphereCastRadius { get; protected set; }
+
+    Action OnStart;
+    Func<HitObjType, MakerType> OnUpdate;
+    Action<HitObjType> OnEnd;
 
     public virtual void Init(HoloObject owner)
     {
@@ -19,13 +24,29 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 
         SetSphreCastRadius();
     }
-
-    public enum HitObjType { None, Book, Character, OtherObj }
-    public enum MakerType { None, Normal, DontPut, PresentItem, DontPresentItem }
+    
     public virtual void OnClick() { }
-    public virtual void OnDragStart() { }
-    public virtual MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj) { return MakerType.None; }
-    public virtual void OnDragEnd(HitObjType hitObjType, HoloObject hitObj) { }
+    public virtual void OnDragStart()
+    {
+        if (OnStart != null) OnStart.Invoke();
+    }
+    public virtual MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj)
+    {
+        if (OnUpdate == null) return MakerType.None;
+
+        return OnUpdate.Invoke(hitObjType);
+    }
+    public virtual void OnDragEnd(HitObjType hitObjType, HoloObject hitObj)
+    {
+        if (OnEnd != null) OnEnd.Invoke(hitObjType);
+    }
+
+    public void AddBehaviour(AbstractInputHandlerBehaviour behaviour)
+    {
+        OnStart += behaviour.OnDragStart;
+        OnUpdate += behaviour.OnDragUpdate;
+        OnEnd += behaviour.OnDragEnd;
+    }
 
     protected virtual void SetSphreCastRadius()
     {

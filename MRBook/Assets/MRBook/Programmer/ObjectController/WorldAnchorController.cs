@@ -101,7 +101,7 @@ public class WorldAnchorController : HoloMovableObject
     public virtual void SetActive(bool isActive)
     {
         m_renderer.enabled = isActive;
-        m_collider.enabled = isActive;
+        //m_collider.enabled = isActive;
         ChangeObserverState(isActive);
     }
 }
