@@ -14,6 +14,7 @@ public class TitleView : HoloObject
     void Start()
     {
         objController = MyObjControllerByBoundingBox.I;
+        Init();
     }
 
     //public override void OnInputClicked(InputClickedEventData eventData)

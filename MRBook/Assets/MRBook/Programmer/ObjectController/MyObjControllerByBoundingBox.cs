@@ -86,8 +86,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
     public virtual void SetTargetObject(GameObject obj)
     {
         if (OnTargetChanged != null) OnTargetChanged(targetObject, obj);
-
-        Debug.Log("call set target object");
+        
         if (targetObject != null && targetObject.Equals(obj))
         {
             Disable();

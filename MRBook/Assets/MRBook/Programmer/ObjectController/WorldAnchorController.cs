@@ -28,6 +28,8 @@ public class WorldAnchorController : HoloObject
 
         LoadAnchor();
         ChangeObserverState(true);
+
+        Init();
     }
 
     void ChangeObserverState(bool isObserver)
