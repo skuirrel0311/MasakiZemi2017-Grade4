@@ -1,7 +1,7 @@
 ﻿using HoloToolkit.Unity.InputModule;
 using UnityEngine;
 
-public class TitleView : HoloMovableObject
+public class TitleView : HoloObject
 {
     [SerializeField]
     HoloButton tapToStart = null;

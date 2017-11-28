@@ -4,7 +4,7 @@ using UnityEngine.VR.WSA;
 /// <summary>
 /// キューブ型のWorldAnchorを移動させたり固定させたりするもの
 /// </summary>
-public class WorldAnchorController : HoloMovableObject
+public class WorldAnchorController : HoloObject
 {
     protected MyWorldAnchorManager worldAnchorManager;
 

@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 //目的地を与えると移動してくれる
 [RequireComponent(typeof(Animator))]
-public class HoloCharacter : HoloMovableObject
+public class HoloCharacter : HoloObject
 {
     public NavMeshAgent m_agent { get; private set; }
     public Animator m_animator { get; private set; }

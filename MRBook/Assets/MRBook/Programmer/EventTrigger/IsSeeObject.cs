@@ -10,7 +10,7 @@ public class IsSeeObject : MyEventTrigger
     /// </summary>
     [SerializeField]
     ActorName ownerName = ActorName.Urashima;
-    HoloMovableObject actor;
+    HoloCharacter character;
 
     /// <summary>
     /// 誰を
@@ -30,7 +30,7 @@ public class IsSeeObject : MyEventTrigger
 
     void Start()
     {
-        actor = ActorManager.I.GetCharacter(ownerName);
+        character = ActorManager.I.GetCharacter(ownerName);
     }
 
     public override void SetFlag()
@@ -56,7 +56,7 @@ public class IsSeeObject : MyEventTrigger
         for (int i = 0; i < hits.Length; i++)
         {
             //自身は省く
-            if (actor.Equals(hits[i].transform.gameObject)) continue;
+            if (character.Equals(hits[i].transform.gameObject)) continue;
 
             //自身以外に当たった
             if (hits[i].distance < currentDistance)

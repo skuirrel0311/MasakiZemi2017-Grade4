@@ -56,18 +56,18 @@ public class TestSceneObjController : MainSceneObjController
         {
             GameObject obj = hit.transform.gameObject;
             //つかむことができるかチェック
-            HoloMovableObject actor = obj.GetComponent<HoloMovableObject>();
-            if (actor == null || !actor.IsMovable)
+            HoloObject actor = obj.GetComponent<HoloObject>();
+            if (actor == null || actor.InputHandler == null)
             {
                 targetMovableObject = null;
                 return false;
             }
-            
+
             //掴むことができた
             targetMovableObject = actor;
             return true;
         }
-        Debug.Log("don't hit");
+        //Debug.Log("don't hit");
 
         targetMovableObject = null;
         return false;

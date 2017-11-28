@@ -16,13 +16,11 @@ public abstract class AbstractInputHandlerBehaviour
 
 public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 {
-    HoloMovableObject ownerMovableObj;
     Coroutine fallCoroutine;
     NavMeshAgent m_agent;
     public GroundingObjDragEndBehaviour(HoloObject owner)
         : base(owner)
     {
-        ownerMovableObj = (HoloMovableObject)owner;
         m_agent = owner.GetComponent<NavMeshAgent>();
     }
 

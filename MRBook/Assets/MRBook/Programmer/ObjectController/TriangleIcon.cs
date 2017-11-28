@@ -6,7 +6,7 @@ public class TriangleIcon : MonoBehaviour
 {
     GameObject icon;
 
-    public void Init(HoloMovableObject owner)
+    public void Init(HoloObject owner)
     {
         //BoxCollider col = owner.m_collider;
         ////三角形の位置を決める

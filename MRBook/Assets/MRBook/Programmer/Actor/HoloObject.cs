@@ -20,16 +20,10 @@ public class HoloObject : MonoBehaviour
     [SerializeField]
     bool canHaveItem = false;
     [SerializeField]
-    BaseObjInputHandler inputHandler = null;
-    [SerializeField]
-    BaseItemSaucer itemSaucer = null;
-    [SerializeField]
     int inPlayLayer = 4;
-
-    public bool IsMovable { get { return isMovable; } }
-    public bool CanHaveItem { get { return canHaveItem; } }
-    public BaseObjInputHandler InputHandler { get { return inputHandler; } }
-    public BaseItemSaucer ItemSaucer { get { return itemSaucer; } }
+    
+    public BaseObjInputHandler InputHandler { get; private set; }
+    public BaseItemSaucer ItemSaucer { get; private set; }
 
     protected HoloObjResetter resetter = null;
     public HoloObjResetter Resetter
@@ -61,6 +55,17 @@ public class HoloObject : MonoBehaviour
     protected virtual void Init()
     {
         InitResetter();
+        
+        if(isMovable)
+        {
+            InputHandler = GetComponent<BaseObjInputHandler>();
+        }
+
+        if(canHaveItem)
+        {
+            ItemSaucer = GetComponent<BaseItemSaucer>();
+        }
+
         if (InputHandler != null) InputHandler.Init(this);
         if (ItemSaucer != null) ItemSaucer.Init(this);
     }

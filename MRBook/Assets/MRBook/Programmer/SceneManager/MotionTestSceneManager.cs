@@ -29,7 +29,7 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 
     GameObject targetObj = null;
 
-    Dictionary<string, HoloMovableObject> actorDictionary = new Dictionary<string, HoloMovableObject>();
+    Dictionary<string, HoloObject> actorDictionary = new Dictionary<string, HoloObject>();
 
     protected override void Start()
     {
@@ -92,7 +92,7 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
         //character.m_agent.SetDestination(targetPosition);
     }
 
-    HoloMovableObject GetActor(ActorName actorName)
+    HoloObject GetActor(ActorName actorName)
     {
         return actorDictionary[actorName.ToString()];
     }
