@@ -25,16 +25,13 @@ public enum MotionName
 
 public static class MotionNameManager
 {
+    /// <summary>
+    /// 持っているアイテムなどを考慮してモーションの名前を作る(itemSaucerのnullチェックは行わない)
+    /// </summary>
     public static string GetMotionName(MotionName name, CharacterItemSaucer itemSaucer)
     {
         string motionName = name.ToString();
-        
-        if (itemSaucer == null)
-        {
-            Debug.Log(itemSaucer.name + "is call animation " + motionName);
-            return motionName;
-        }
-        
+
         motionName += itemSaucer.HasItem_Right ? "_" + itemSaucer.RightHandItem.name : "";
         motionName += itemSaucer.HasItem_Left ? "_" + itemSaucer.LeftHandItem.name : "";
 
@@ -42,7 +39,7 @@ public static class MotionNameManager
         {
             motionName = "GetDrunk_" + motionName;
         }
-        Debug.Log(itemSaucer.name + "is call animation " + motionName);
+        Debug.Log(itemSaucer.name + " is call animation " + motionName);
 
         return motionName;
     }

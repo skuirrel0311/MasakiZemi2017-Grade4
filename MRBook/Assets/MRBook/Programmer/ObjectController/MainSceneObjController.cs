@@ -63,6 +63,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         MainSceneManager sceneManager = MainSceneManager.I;
         maxDistance = targetMovableObject.transform.position.y - sceneManager.pages[sceneManager.currentPageIndex].transform.position.y + 0.5f;
+
+        Debug.Log("max distance = " + maxDistance);
         targetMovableObject.InputHandler.OnDragStart();
     }
 
@@ -75,6 +77,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
+        Debug.Log("makerType = " + makerType.ToString());
         //UnderTargetMakerはクラスを作りmakerTypeを渡す
         particle.gameObject.SetActive(isHitObject);
         underTargetMaker.gameObject.SetActive(isHitObject);
@@ -98,7 +101,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)
     {
         if (!isHit) return null;
-
+        
         if (hit.transform.gameObject.layer == bookLayer) return null;
         
         return hit.transform.GetComponent<HoloObject>();
@@ -231,9 +234,10 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         ray.direction = Vector3.down;
         ray.origin = targetMovableObject.transform.position;
 
-        RaycastHit[] hits = Physics.SphereCastAll(ray, targetMovableObject.InputHandler.SphereCastRadius, maxDistance, ~ignoreLayerMask);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, targetMovableObject.InputHandler.SphereCastRadius, this.maxDistance, ~ignoreLayerMask);
         hitObj = new RaycastHit();
         bool isHit = false;
+        float maxDistance = this.maxDistance;
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -247,6 +251,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             if (hits[i].distance < maxDistance)
             {
                 hitObj = hits[i];
+                maxDistance = hits[i].distance;
             }
         }
 

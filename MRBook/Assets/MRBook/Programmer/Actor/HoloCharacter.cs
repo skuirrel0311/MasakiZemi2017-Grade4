@@ -33,8 +33,19 @@ public class HoloCharacter : HoloObject
     
     public virtual void ChangeAnimationClip(MotionName name, float transitionDuration)
     {
-        if (m_animator == null) return;
-        
-        m_animator.CrossFade(name.ToString(), transitionDuration);
+        if (m_animator == null)
+        {
+            Debug.LogWarning("don't change animation because animator is null");
+            return;
+        }
+
+        string motionName;
+
+        if(ItemSaucer == null)
+            motionName = name.ToString();
+        else
+            motionName = MotionNameManager.GetMotionName(name, (CharacterItemSaucer)ItemSaucer);
+
+        m_animator.CrossFade(motionName, transitionDuration);
     }
 }

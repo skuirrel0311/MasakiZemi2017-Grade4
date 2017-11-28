@@ -92,7 +92,7 @@ public class CharacterItemSaucer : BaseItemSaucer
             RightHandItem = item;
         }
 
-        item.owner = (HandCharacter)ownerCharacter;
+        item.owner = ownerCharacter;
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
         item.transform.localRotation = itemData.rotation;

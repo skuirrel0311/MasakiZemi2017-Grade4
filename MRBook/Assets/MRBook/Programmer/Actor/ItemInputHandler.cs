@@ -27,7 +27,7 @@ public class ItemInputHandler : HoloObjInputHandler
 
     public override MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj)
     {
-        if (hitObj.ItemSaucer == null)
+        if (hitObj == null || hitObj.ItemSaucer == null)
         {
             return base.OnDragUpdate(hitObjType, hitObj);
         }
@@ -38,7 +38,7 @@ public class ItemInputHandler : HoloObjInputHandler
 
     public override void OnDragEnd(HitObjType hitObjType, HoloObject hitObj)
     {
-        if (hitObj.ItemSaucer == null)
+        if (hitObj == null || hitObj.ItemSaucer == null)
         {
             base.OnDragEnd(hitObjType, hitObj);
             return;

@@ -112,7 +112,11 @@ public class GoThere : BaseStateMachineBehaviour
 
     protected bool IsJustHere()
     {
-        if (!character.m_agent.hasPath) return false;
+        if (!character.m_agent.hasPath)
+        {
+            Debug.Log(character.name + "don't has path");
+            return false;
+        }
 
         NavMeshPath path = character.m_agent.path;
         float distance = 0.0f;
@@ -153,10 +157,11 @@ public class GoThere : BaseStateMachineBehaviour
 
     protected virtual void StopAgent()
     {
-        if (character == null || ActorManager.I.GetTargetPoint(targetName) == null) return;
+        Debug.Log("call stop agent");
+        if (character == null || target == null) return;
         character.m_agent.isStopped = true;
 
-        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
+        character.ChangeAnimationClip(MotionName.Wait, 0.1f);
 
     }
     //中断
