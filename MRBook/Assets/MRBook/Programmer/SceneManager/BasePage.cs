@@ -141,7 +141,7 @@ public class BasePage : MonoBehaviour
 
             //Debug.Log("add actor " + holoObject.name);
             objectList.Add(holoObject);
-            resetManager.AddResetter(holoObject.resetter);
+            resetManager.AddResetter(holoObject.Resetter);
 
             try
             {

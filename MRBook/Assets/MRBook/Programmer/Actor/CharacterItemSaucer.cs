@@ -4,6 +4,10 @@ public class CharacterItemSaucer : BaseItemSaucer
 {
     HoloCharacter ownerCharacter;
 
+    //アルコールを摂取したか？
+    public bool IsGetAlcohol { get; private set; }
+    const string AlcoholItemName = "Sakabin";
+
     public bool HasItem_Left { get { return LeftHandItem != null; } }
     public bool HasItem_Right { get { return RightHandItem != null; } }
 
@@ -71,6 +75,11 @@ public class CharacterItemSaucer : BaseItemSaucer
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
         item.transform.localRotation = itemData.rotation;
+
+        if (item.name == AlcoholItemName)
+        {
+            IsGetAlcohol = true;
+        }
 
         //モーションを変える
         ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
@@ -161,5 +170,15 @@ public class CharacterItemSaucer : BaseItemSaucer
             default:
                 return null;
         }
+    }
+
+    public override bool Equals(GameObject other)
+    {
+        bool equal = gameObject.Equals(other);
+
+        if (!equal && HasItem_Left) equal = LeftHandItem.gameObject.Equals(other);
+        if (!equal && HasItem_Right) equal = RightHandItem.gameObject.Equals(other);
+
+        return equal;
     }
 }

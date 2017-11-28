@@ -25,24 +25,24 @@ public enum MotionName
 
 public static class MotionNameManager
 {
-    public static string GetMotionName(MotionName name, HandCharacter handCharacter)
+    public static string GetMotionName(MotionName name, CharacterItemSaucer itemSaucer)
     {
         string motionName = name.ToString();
         
-        if (handCharacter == null || handCharacter.GetActorType != HoloObject.Type.Character)
+        if (itemSaucer == null)
         {
-            Debug.Log(handCharacter.name + "is call animation " + motionName);
+            Debug.Log(itemSaucer.name + "is call animation " + motionName);
             return motionName;
         }
         
-        motionName += handCharacter.HasItem_Right ? "_" + handCharacter.RightHandItem.name : "";
-        motionName += handCharacter.HasItem_Left ? "_" + handCharacter.LeftHandItem.name : "";
+        motionName += itemSaucer.HasItem_Right ? "_" + itemSaucer.RightHandItem.name : "";
+        motionName += itemSaucer.HasItem_Left ? "_" + itemSaucer.LeftHandItem.name : "";
 
-        if(handCharacter.IsGetAlcohol)
+        if(itemSaucer.IsGetAlcohol)
         {
             motionName = "GetDrunk_" + motionName;
         }
-        Debug.Log(handCharacter.name + "is call animation " + motionName);
+        Debug.Log(itemSaucer.name + "is call animation " + motionName);
 
         return motionName;
     }

@@ -20,6 +20,8 @@ public class HoloObjResetManager
         resetterList.Add(resetter);
     }
 
+
+
     public void Reset()
     {
         if (resetCoroutine != null)
@@ -98,6 +100,27 @@ public class HoloObjResetter
     }
 }
 
+public class HoloMovableObjResetter : HoloObjResetter
+{
+    LocationResetBehaviour locationResetBehaviour;
+
+    //LocationResetBehaviourを重複してAddしてしまうことを防ぐ
+    public void AddBehaviour(LocationResetBehaviour locationResetBehaviour)
+    {
+        Debug.Log("already addition location reset behaviour");
+    }
+
+    public HoloMovableObjResetter(HoloObject owner)
+    {
+        locationResetBehaviour = new LocationResetBehaviour(owner);
+        base.AddBehaviour(locationResetBehaviour);
+    }
+    public void ApplyDefaultTransform(Vector3 movement)
+    {
+        locationResetBehaviour.ApplyDefaultTransform(movement);
+    }
+}
+
 //オブジェクトのリセットの手段が書いてあるやつ
 public abstract class AbstractHoloObjResetBehaviour
 {
@@ -142,19 +165,16 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
 {
     Vector3 defaultPosition;
     Quaternion defaultRotation;
+    Transform ownerTransform;
 
     public LocationResetBehaviour(HoloObject owner)
         : base(owner)
     {
-        ApplyDefaultTransform();
+        ownerTransform = owner.transform;
+        defaultPosition = ownerTransform.position;
+        defaultRotation = ownerTransform.rotation;
     }
-
-    public void ApplyDefaultTransform()
-    {
-        defaultPosition = owner.transform.position;
-        defaultRotation = owner.transform.rotation;
-    }
-
+    
     public void ApplyDefaultTransform(Vector3 movement)
     {
         defaultPosition += movement;
@@ -163,8 +183,8 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
     public override void OnDisable() { }
     public override void OnLocationReset()
     {
-        owner.transform.position = defaultPosition;
-        owner.transform.rotation = defaultRotation;
+        ownerTransform.position = defaultPosition;
+        ownerTransform.rotation = defaultRotation;
     }
     public override void OnEnable() { }
 }
@@ -206,7 +226,6 @@ public class CharacterResetBehaviour : AbstractHoloObjResetBehaviour
         ownerCharacter.ChangeAnimationClip(defaultMotionName, 0.0f);
     }
     public override void OnLocationReset() { }
-
 }
 
 public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour

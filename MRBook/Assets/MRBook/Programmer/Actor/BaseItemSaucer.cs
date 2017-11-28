@@ -14,4 +14,9 @@ public class BaseItemSaucer : MonoBehaviour
 
     public virtual void SetItem(HoloItem item) { }
     public virtual bool CheckCanHaveItem(HoloItem item) { return false; }
+
+    public virtual bool Equals(GameObject other)
+    {
+        return false;
+    }
 }

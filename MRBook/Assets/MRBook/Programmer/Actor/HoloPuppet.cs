@@ -19,7 +19,7 @@ public class HoloPuppet : HoloCharacter
     protected override void InitResetter()
     {
         base.InitResetter();
-        resetter.AddBehaviour(new PuppetResetBehaviour(this));
+        Resetter.AddBehaviour(new PuppetResetBehaviour(this));
     }
 
     public override void PlayPage()

@@ -31,8 +31,19 @@ public class HoloObject : MonoBehaviour
     public BaseObjInputHandler InputHandler { get { return inputHandler; } }
     public BaseItemSaucer ItemSaucer { get { return itemSaucer; } }
 
-    public HoloObjResetter resetter { get; protected set; }
-    
+    protected HoloObjResetter resetter = null;
+    public HoloObjResetter Resetter
+    {
+        get
+        {
+            if (resetter != null) return resetter;
+            resetter = GetResetterInstance();
+            return resetter;
+        }
+    }
+
+    protected virtual HoloObjResetter GetResetterInstance() { return new HoloObjResetter(); }
+
     /// <summary>
     /// ページが開かれた
     /// </summary>
@@ -56,7 +67,7 @@ public class HoloObject : MonoBehaviour
 
     protected virtual void InitResetter()
     {
-        resetter.AddBehaviour(new DefaultHoloObjResetBehaviour(this));
+        Resetter.AddBehaviour(new DefaultHoloObjResetBehaviour(this));
     }
 
     public virtual void PlayPage()
@@ -78,14 +89,17 @@ public class HoloObject : MonoBehaviour
         //CheckCanHaveItemがtrueになったということはitemSaucerはnullではない
         ItemSaucer.SetItem(item);
     }
-    
-    public override bool Equals(object other)
-    {
-        return gameObject.Equals(other);
-    }
 
-    public override int GetHashCode()
+    /// <summary>
+    /// アイテムを所有している場合はアイテムも自身とカウントする
+    /// </summary>
+    public bool Equals(GameObject other)
     {
-        return base.GetHashCode();
+        if (ItemSaucer == null) return gameObject.Equals(other);
+        bool equal = false;
+        equal = gameObject.Equals(other);
+        if (!equal) equal = ItemSaucer.Equals(other);
+
+        return equal;
     }
 }
