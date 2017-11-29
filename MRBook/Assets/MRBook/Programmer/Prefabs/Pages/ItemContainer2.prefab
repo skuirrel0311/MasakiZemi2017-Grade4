@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65963237666841220}
   - component: {fileID: 114784733180753912}
   - component: {fileID: 65837145245647144}
+  - component: {fileID: 114862895375648420}
   m_Layer: 8
   m_Name: Fishingrod
   m_TagString: Actor
@@ -176,8 +177,8 @@ GameObject:
   - component: {fileID: 4867086598033980}
   - component: {fileID: 195145036752636086}
   - component: {fileID: 65553302788960882}
-  - component: {fileID: 114185889482256272}
   - component: {fileID: 114504054283586146}
+  - component: {fileID: 114758085143627444}
   m_Layer: 8
   m_Name: Bait
   m_TagString: Actor
@@ -330,7 +331,8 @@ GameObject:
   - component: {fileID: 33499381086377168}
   - component: {fileID: 23528990542932892}
   - component: {fileID: 65848859371121572}
-  - component: {fileID: 114357252821509362}
+  - component: {fileID: 114108289973071790}
+  - component: {fileID: 114720865268984120}
   m_Layer: 8
   m_Name: yane
   m_TagString: Actor
@@ -1489,6 +1491,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05459869, y: 0.20065166, z: 0.07546958}
   m_Center: {x: -0.012982532, y: 0.025021307, z: 0.003210798}
+--- !u!114 &114108289973071790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895951572877526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
 --- !u!114 &114109074109240330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1501,37 +1517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 1
-  isBring: 0
+  canHaveItem: 0
   inPlayLayer: 4
-  hand: 1
---- !u!114 &114185889482256272
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546910445144358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3cacc4f14577945a9ba8fcf5bc5619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMovable: 1
-  isBring: 0
-  inPlayLayer: 4
---- !u!114 &114357252821509362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895951572877526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4cf423a9a1d13e4c854507ebbbf1d99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMovable: 1
-  isBring: 0
-  inPlayLayer: 4
+  forHand: 1
 --- !u!114 &114504054283586146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1545,6 +1533,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: {fileID: 1892189164417932}
   replacementObject: {fileID: 1623831174970578}
+--- !u!114 &114720865268984120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895951572877526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 1
+--- !u!114 &114758085143627444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546910445144358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 1
+  canHaveItem: 0
+  inPlayLayer: 4
 --- !u!114 &114784733180753912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1557,9 +1571,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 1
-  isBring: 0
+  canHaveItem: 0
   inPlayLayer: 4
-  hand: 0
+  forHand: 0
+--- !u!114 &114862895375648420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032175984364036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!195 &195145036752636086
 NavMeshAgent:
   m_ObjectHideFlags: 1

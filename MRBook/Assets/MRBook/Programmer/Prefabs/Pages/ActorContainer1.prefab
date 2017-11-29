@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 195923568092629556}
   - component: {fileID: 65676682092505160}
   - component: {fileID: 114069496924822632}
+  - component: {fileID: 114156984262115690}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -2061,19 +2062,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 1
-  isBring: 0
-  inPlayLayer: 8
-  firstAnimationName: 0
   canHaveItem: 0
-  rightHand: {fileID: 4993201278342428}
-  leftHand: {fileID: 4025348707485090}
-  rightHandItemDataList: {fileID: 11400000, guid: 2494becd84c41e446938b08170347bb5,
-    type: 2}
-  leftHandItemDataList: {fileID: 11400000, guid: dd292f9436894c3448d9db428eb50899,
-    type: 2}
+  inPlayLayer: 8
+  defaultMotionName: 0
   m_behavirour: {fileID: 114310048845717846}
-  root: {fileID: 1725194709227596}
+  rootObj: {fileID: 1725194709227596}
   m_puppet: {fileID: 114624211428053786}
+--- !u!114 &114156984262115690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504531596058232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!114 &114232877901988852
 MonoBehaviour:
   m_ObjectHideFlags: 1
