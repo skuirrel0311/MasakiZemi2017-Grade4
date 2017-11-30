@@ -18,6 +18,21 @@ namespace KKUtilities
             mono.StartCoroutine(Delay(duration, action));
         }
 
+        public static IEnumerator Delay(int frameCount, Action action)
+        {
+            for(int i = 0;i< frameCount;i++)
+            {
+                yield return null;
+            }
+
+            action.Invoke();
+        }
+
+        public static void Delay(int frameCount, Action action, MonoBehaviour mono)
+        {
+            mono.StartCoroutine(Delay(frameCount, action));
+        }
+
         //与えられたActionにduration秒かけて０→１になる値を毎フレーム渡す
         public static MyCoroutine FloatLerp(float duration, Action<float> action)
         {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 //すべてのオブジェクトをリセットする人
 public class HoloObjResetManager
@@ -38,20 +39,24 @@ public class HoloObjResetManager
 
     IEnumerator ObjListResetLogic()
     {
+
+        Debug.Log("on disable");
         for (int i = 0; i < resetterList.Count; i++)
         {
             resetterList[i].Disable();
         }
 
-        yield return null;
+        yield return mono.StartCoroutine(Utilities.Delay(10, () => { }));
 
+        Debug.Log("on location reset");
         for (int i = 0; i < resetterList.Count; i++)
         {
             resetterList[i].LocationReset();
         }
 
-        yield return null;
+        yield return mono.StartCoroutine(Utilities.Delay(10, ()=> { }));
 
+        Debug.Log("on enable");
         for (int i = 0; i < resetterList.Count; i++)
         {
             resetterList[i].Enable();
@@ -91,7 +96,7 @@ public class HoloObjResetter
     {
         if (OnEnable != null) OnEnable.Invoke();
     }
-    
+
     public void AddBehaviour(AbstractHoloObjResetBehaviour behaviour)
     {
         OnDisable += behaviour.OnDisable;
@@ -174,7 +179,7 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
         defaultPosition = ownerTransform.position;
         defaultRotation = ownerTransform.rotation;
     }
-    
+
     public void ApplyDefaultTransform(Vector3 movement)
     {
         defaultPosition += movement;
@@ -192,11 +197,13 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
 public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
 {
     HoloItem ownerItem;
+    HoloObject defaultItemOwner;
 
-    public ItemResetBehaviour(HoloObject owner)
+    public ItemResetBehaviour(HoloObject owner, HoloObject defaultItemOwner)
         : base(owner)
     {
         ownerItem = (HoloItem)owner;
+        this.defaultItemOwner = defaultItemOwner;
     }
 
     public override void OnDisable()
@@ -205,7 +212,12 @@ public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
 
     }
     public override void OnLocationReset() { }
-    public override void OnEnable() { }
+    public override void OnEnable()
+    {
+        if (defaultItemOwner == null) return;
+
+        defaultItemOwner.ItemSaucer.SetItem(ownerItem, false);
+    }
 }
 
 public class CharacterResetBehaviour : AbstractHoloObjResetBehaviour
@@ -240,17 +252,19 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
     public override void OnDisable()
     {
         ownerPuppet.RootObject.SetActive(false);
-    }
-
-    public override void OnLocationReset()
-    {
+        ownerPuppet.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
         ownerPuppet.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Alive;
         ownerPuppet.Puppet.pinWeight = 1.0f;
     }
 
-    public override void OnEnable()
+    public override void OnLocationReset()
     {
         ownerPuppet.RootObject.SetActive(true);
+    }
+
+    public override void OnEnable()
+    {
+        ownerPuppet.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Disabled;
     }
 }
 

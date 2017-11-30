@@ -7,7 +7,7 @@ using UnityEditor.Animations;
 public class CheckAnimator : EditorWindow
 {
     AnimatorController animatorController;
-    int animatorNum = 2;
+    int animatorNum = 3;
 
     [MenuItem("MyTools/BakeAnimatorWindow")]
     static void ShowWindow()

@@ -32,6 +32,7 @@ public class IsSeeObject : MyEventTrigger
     void Start()
     {
         character = ActorManager.I.GetCharacter(ownerName);
+        targetObject = ActorManager.I.GetObject(targetObjName);
     }
 
     public override void SetFlag()

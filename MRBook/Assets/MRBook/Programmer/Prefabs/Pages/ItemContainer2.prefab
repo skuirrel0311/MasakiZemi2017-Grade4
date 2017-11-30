@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65963237666841220}
   - component: {fileID: 114784733180753912}
   - component: {fileID: 65837145245647144}
-  - component: {fileID: 114862895375648420}
+  - component: {fileID: 114377143003035440}
   m_Layer: 8
   m_Name: Fishingrod
   m_TagString: Actor
@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 65729870902320310}
   - component: {fileID: 114109074109240330}
   - component: {fileID: 65462807746750062}
+  - component: {fileID: 114221704116459390}
   m_Layer: 8
   m_Name: Sakabin
   m_TagString: Actor
@@ -179,6 +180,7 @@ GameObject:
   - component: {fileID: 65553302788960882}
   - component: {fileID: 114504054283586146}
   - component: {fileID: 114758085143627444}
+  - component: {fileID: 114380529659870748}
   m_Layer: 8
   m_Name: Bait
   m_TagString: Actor
@@ -1520,6 +1522,43 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   forHand: 1
+  defaultOwner: {fileID: 0}
+--- !u!114 &114221704116459390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476118059484696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639eb74310705c5459c5d1666a8164e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
+--- !u!114 &114377143003035440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032175984364036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639eb74310705c5459c5d1666a8164e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
+--- !u!114 &114380529659870748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546910445144358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!114 &114504054283586146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1574,18 +1613,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   forHand: 0
---- !u!114 &114862895375648420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032175984364036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFloating: 0
+  defaultOwner: {fileID: 0}
 --- !u!195 &195145036752636086
 NavMeshAgent:
   m_ObjectHideFlags: 1

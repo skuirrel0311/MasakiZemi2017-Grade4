@@ -12,7 +12,7 @@ public class BaseItemSaucer : MonoBehaviour
         this.owner = owner;
     }
 
-    public virtual void SetItem(HoloItem item) { }
+    public virtual void SetItem(HoloItem item, bool showParticle = true) { }
     public virtual bool CheckCanHaveItem(HoloItem item) { return false; }
 
     public virtual bool Equals(GameObject other)
@@ -48,6 +48,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     ItemTransformData itemData;
     Transform hand;
 
+
     public override void Init(HoloObject owner)
     {
         ownerCharacter = (HoloCharacter)owner;
@@ -77,7 +78,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     /// <summary>
     /// アイテムを持たせる
     /// </summary>
-    public override void SetItem(HoloItem item)
+    public override void SetItem(HoloItem item, bool showParticle = true)
     {
         if (!CheckCanHaveItem(item)) return;
         
@@ -103,7 +104,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         }
 
         //モーションを変える
-        ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
+        if(showParticle)  ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
 

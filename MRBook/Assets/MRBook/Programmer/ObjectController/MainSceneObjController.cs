@@ -115,7 +115,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         HoloObject obj = hit.transform.GetComponent<HoloObject>();
 
-        if (obj != null || obj.GetActorType == HoloObject.Type.Character)return BaseObjInputHandler.HitObjType.Character;
+        if (obj != null && obj.GetActorType == HoloObject.Type.Character)return BaseObjInputHandler.HitObjType.Character;
 
         return BaseObjInputHandler.HitObjType.OtherObj;
     }

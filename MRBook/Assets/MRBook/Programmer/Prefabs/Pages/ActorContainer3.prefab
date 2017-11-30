@@ -2087,6 +2087,8 @@ GameObject:
   - component: {fileID: 65891640684520498}
   - component: {fileID: 114227163929401854}
   - component: {fileID: 65197212835005962}
+  - component: {fileID: 114882766028939046}
+  - component: {fileID: 114880814013383094}
   m_Layer: 8
   m_Name: Otohime
   m_TagString: Actor
@@ -3390,7 +3392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4240903136249272}
   - component: {fileID: 114676853934748624}
-  - component: {fileID: 114133781063090452}
+  - component: {fileID: 114255741826468550}
   m_Layer: 2
   m_Name: EventTrigger
   m_TagString: Trigger
@@ -5827,7 +5829,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1520109526768406}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.442, y: 0, z: -0.299}
+  m_LocalPosition: {x: 0.4394, y: 0, z: -0.3493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4872191729929958}
@@ -7885,19 +7887,6 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   defaultMotionName: 0
---- !u!114 &114133781063090452
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1857399957867228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3d1c546129f2f448662d87d3281a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: HasFood
-  targetObject: {fileID: 0}
 --- !u!114 &114146197812605668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7926,8 +7915,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 4309509476303142}
   leftHand: {fileID: 4543601093407334}
-  rightHandItemDataList: {fileID: 0}
-  leftHandItemDataList: {fileID: 0}
+  rightHandItemDataList: {fileID: 11400000, guid: e5318b0501c9c7e4398eb754cd498e9a,
+    type: 2}
+  leftHandItemDataList: {fileID: 11400000, guid: dd292f9436894c3448d9db428eb50899,
+    type: 2}
 --- !u!114 &114196068890439234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7955,9 +7946,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 1
-  canHaveItem: 0
-  inPlayLayer: 4
+  canHaveItem: 1
+  inPlayLayer: 8
   defaultMotionName: 0
+--- !u!114 &114255741826468550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857399957867228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede2437b7630bc947b889c8d21950002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagName: HasFood
+  targetItemName: 
+  ownerCharacterName: 2
+  targetItemNames:
+  - Kamayaki
+  - Ebi
+  - Pekin
+  - Pekin (1)
+  - Rice (1)
+  - Momoman
 --- !u!114 &114341677365201822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7984,7 +7996,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
-  targetObject: {fileID: 1527501072835576}
+  objName: Otohime
 --- !u!114 &114532209126037782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8330,7 +8342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagName: OtohimeIsSeeUrashima
   ownerName: 2
-  targetObject: {fileID: 1299492962281512}
+  targetObjName: Urashima
   eye: {fileID: 4240903136249272}
   ignoreLayerMask:
     serializedVersion: 2
@@ -8350,6 +8362,33 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   defaultMotionName: 0
+--- !u!114 &114880814013383094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527501072835576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
+--- !u!114 &114882766028939046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527501072835576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444a7da84c146894b8a2a786895dbacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 4264679811334520}
+  leftHand: {fileID: 4215531441645710}
+  rightHandItemDataList: {fileID: 0}
+  leftHandItemDataList: {fileID: 0}
 --- !u!114 &114886564772464168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10338,7 +10377,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.4401148, y: 0.0753222, z: -0.299}
+  m_ConnectedAnchor: {x: 0.3955148, y: 0.0753222, z: -0.3493}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2

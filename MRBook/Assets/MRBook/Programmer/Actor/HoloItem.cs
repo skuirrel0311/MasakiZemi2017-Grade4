@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class HoloItem : HoloObject
 {
@@ -14,7 +15,10 @@ public class HoloItem : HoloObject
     [SerializeField]
     Hand forHand = Hand.Right;
     public Hand ForHand { get { return forHand; } }
-    
+
+    [SerializeField]
+    HoloObject defaultOwner = null;
+
     //アイテムの所持者
     [System.NonSerialized]
     public HoloObject owner;
@@ -29,6 +33,12 @@ public class HoloItem : HoloObject
         defaultLayer = gameObject.layer;
     }
 
+    void Start()
+    {
+        if (defaultOwner == null) return;
+        defaultOwner.ItemSaucer.SetItem(this, false);
+    }
+
     public override void PlayPage()
     {
         base.PlayPage();
@@ -40,6 +50,6 @@ public class HoloItem : HoloObject
     {
         base.InitResetter();
         Resetter.AddBehaviour(new LocationResetBehaviour(this));
-        Resetter.AddBehaviour(new ItemResetBehaviour(this));
+        Resetter.AddBehaviour(new ItemResetBehaviour(this, defaultOwner));
     }
 }

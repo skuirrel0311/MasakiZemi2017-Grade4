@@ -79,7 +79,7 @@ public class HoloObjInputHandler : BaseObjInputHandler
         {
             //NavMeshAgentでRadiusを決める
             NavMeshAgent agent = owner.GetComponent<NavMeshAgent>();
-            SphereCastRadius = agent.radius;
+            SphereCastRadius = agent.radius * owner.transform.lossyScale.x;
             return;
         }
 
