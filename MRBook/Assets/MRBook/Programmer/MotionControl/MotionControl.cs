@@ -18,8 +18,12 @@ public enum MotionName
     Maintenance,//釣竿の手入れ
     Troubled,   //困惑する
     PutOff,     //引く
-    Dead,        //死亡
-    OpenDoorFailure//ドア開け失敗
+    Dead,       //死亡
+    OpenDoorFailure,//ドア開け失敗
+    FishingThrow,   //釣り始め
+    FishingLoop,    //釣りループ
+    FishingDead     //釣りして引きずり込まれて死亡
+
 }
 
 public static class MotionNameManager
