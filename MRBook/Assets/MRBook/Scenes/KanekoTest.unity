@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -188,6 +188,11 @@ Prefab:
         type: 2}
       propertyPath: targetObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820599737348878, guid: 2bacd91def87fe7459d7d0911b850341,
+        type: 2}
+      propertyPath: objName
+      value: Urashima
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bacd91def87fe7459d7d0911b850341, type: 2}
@@ -5402,9 +5407,41 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: dd292f9436894c3448d9db428eb50899,
         type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114511279981601398, guid: 3d65592d03ca9a342b7a79e71cb8f7b0,
+        type: 2}
+      propertyPath: objName
+      value: Otohime
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114133781063090452, guid: 3d65592d03ca9a342b7a79e71cb8f7b0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3d65592d03ca9a342b7a79e71cb8f7b0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2056471250 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1857399957867228, guid: 3d65592d03ca9a342b7a79e71cb8f7b0,
+    type: 2}
+  m_PrefabInternal: {fileID: 2056471249}
+--- !u!114 &2056471251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056471250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede2437b7630bc947b889c8d21950002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagName: HasFood
+  targetItemName: 
+  ownerCharacterName: 2
+  targetItemNames:
+  - Kamayaki
+  - Ebi
+  - Pekin
+  - Pekin (1)
+  - Rice (1)
+  - Momoman
 --- !u!114 &2077021154
 MonoBehaviour:
   m_ObjectHideFlags: 0
