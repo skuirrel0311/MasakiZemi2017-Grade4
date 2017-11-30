@@ -8,9 +8,10 @@ public class IsThereObject : MyEventTrigger
     LayerMask layer = 1 << 8;
 
     [SerializeField]
-    protected GameObject targetObject = null;
+    protected string objName = "";
+    HoloObject targetObject;
 
-    public void Start()
+    public void Awake()
     {
         trigger = GetComponent<MyTrigger>();
 
@@ -23,9 +24,16 @@ public class IsThereObject : MyEventTrigger
     public override void SetFlag()
     {
         if (trigger == null) FlagManager.I.SetFlag(flagName, this, false);
+        if(targetObject == null && !TryGetTargetObject(out targetObject)) return;
 
-        bool isHit = trigger.Intersect(targetObject, layer);
+        bool isHit = trigger.Intersect(targetObject.gameObject, layer);
         //フラグマネージャーに結果を保存する
         FlagManager.I.SetFlag(flagName, this, isHit);
+    }
+
+    bool TryGetTargetObject(out HoloObject obj)
+    {
+        obj = ActorManager.I.GetObject(objName);
+        return obj != null;
     }
 }

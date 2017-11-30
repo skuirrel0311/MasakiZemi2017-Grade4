@@ -14,6 +14,7 @@ public class BasePage : MonoBehaviour
 
     [SerializeField]
     int pageIndex = 0;
+    public int Index { get { return pageIndex; } }
 
     bool isFirst = true;
 

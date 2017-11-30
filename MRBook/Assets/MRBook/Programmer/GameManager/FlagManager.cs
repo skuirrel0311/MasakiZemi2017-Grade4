@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class FlagManager : BaseManager<FlagManager>
 {
-    MainSceneManager gameManager;
+    MainSceneManager sceneManager;
     Dictionary<string, MyFlag> flagDictionary = new Dictionary<string, MyFlag>();
+
 
     protected override void Start()
     {
         base.Start();
-#if UNITY_EDITOR
-        gameManager = TestSceneManager.I;
-#else
-        gameManager = MainSceneManager.I;
-#endif
+        sceneManager = MainSceneManager.I;
+
+        sceneManager.OnPlayPage += OnPlayPage;
+    }
+
+    void OnPlayPage(BasePage page)
+    {
+        SetCurrentPageFlag();
+    }
+
+    void SetCurrentPageFlag()
+    {
+        //イベントのトリガーをチェックしていく
+        GameObject[] eventTriggerObjects = GameObject.FindGameObjectsWithTag("Trigger");
+
+        for (int i = 0; i < eventTriggerObjects.Length; i++)
+        {
+            MyEventTrigger[] eventTriggers = eventTriggerObjects[i].GetComponents<MyEventTrigger>();
+
+            for (int j = 0; j < eventTriggers.Length; j++)
+            {
+                eventTriggers[j].SetFlag();
+            }
+        }
     }
 
     public bool GetFlag(string name, bool isCheckNow)
     {
         MyFlag myFlag;
-        name = name + gameManager.currentPageIndex;
+        name = name + sceneManager.currentPageIndex;
         if (flagDictionary.TryGetValue(name, out myFlag))
         {
             //いま判定を行う
@@ -38,7 +58,7 @@ public class FlagManager : BaseManager<FlagManager>
 
     public virtual void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)
     {
-        name = name + gameManager.currentPageIndex;
+        name = name + sceneManager.currentPageIndex;
 
         MyFlag myFlag;
         

@@ -127,24 +127,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         CurrentState = GameState.Play;
 
         NotificationManager.I.ShowMessage("再生開始");
-
-        //イベントのトリガーをチェックしていく
-        GameObject[] eventTriggers = GameObject.FindGameObjectsWithTag("Trigger");
-
-        for (int i = 0; i < eventTriggers.Length; i++)
-        {
-            MyEventTrigger[] tempArray = eventTriggers[i].GetComponents<MyEventTrigger>();
-
-            for (int j = 0; j < tempArray.Length; j++)
-            {
-                tempArray[j].SetFlag();
-            }
-        }
+        
+        if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
 
         m_Animator.SetBool("IsStart", true);
 
         pages[currentPageIndex].PlayPage();
-        if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
     }
 
     /// <summary>

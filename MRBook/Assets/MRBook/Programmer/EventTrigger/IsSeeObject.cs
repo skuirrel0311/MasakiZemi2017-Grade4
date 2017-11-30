@@ -16,7 +16,8 @@ public class IsSeeObject : MyEventTrigger
     /// 誰を
     /// </summary>
     [SerializeField]
-    protected GameObject targetObject = null;
+    protected string targetObjName;
+    HoloObject targetObject;
 
     /// <summary>
     /// どこから
