@@ -16,6 +16,7 @@ public class ItemInputHandler : HoloObjInputHandler
     {
         //アイテムの説明を表示
         SetItemTextEnable(true);
+        base.OnClick();
     }
 
     public override void OnDragStart()

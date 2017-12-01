@@ -351,7 +351,6 @@ MonoBehaviour:
   controller: {fileID: 9100000, guid: 822b88af395c4714e927d244156037cf, type: 2}
   bookObjects:
   - {fileID: 1238520295}
-  - {fileID: 511653432}
   objectList: []
 --- !u!4 &356696945
 Transform:
@@ -506,16 +505,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114270076043154426, guid: 26f02d09d84d79740a334652cf6a2291,
-        type: 2}
-      propertyPath: targetObject
-      value: 
-      objectReference: {fileID: 2052580155}
-    - target: {fileID: 114270076043154426, guid: 26f02d09d84d79740a334652cf6a2291,
-        type: 2}
-      propertyPath: targetObjName
-      value: Turtle
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26f02d09d84d79740a334652cf6a2291, type: 2}
   m_IsPrefabParent: 0
@@ -561,11 +550,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dd1c67daca97f44ba8130e2f02913a6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &511653432 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1226700196465026, guid: 4dd1c67daca97f44ba8130e2f02913a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 511653431}
 --- !u!1 &533185062 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1820651397045654, guid: a4d554c5c125ee4449c0cc94237398bf,
@@ -826,16 +810,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114360250634708602, guid: 839441fc340ced34d9e47f68d077fb38,
-        type: 2}
-      propertyPath: targetObject
-      value: 
-      objectReference: {fileID: 1239169476}
-    - target: {fileID: 114360250634708602, guid: 839441fc340ced34d9e47f68d077fb38,
-        type: 2}
-      propertyPath: objName
-      value: Urashima
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
   m_IsPrefabParent: 0
@@ -945,11 +919,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1170816177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff368dcefade49428972b5c6eaee7b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Tracked: {fileID: 0}
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 5, y: 5, z: 5}
 --- !u!4 &1170816179
 Transform:
   m_ObjectHideFlags: 0
@@ -1253,11 +1226,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1152243250681096, guid: 4dd1c67daca97f44ba8130e2f02913a6,
     type: 2}
   m_PrefabInternal: {fileID: 511653431}
---- !u!1 &1239169476 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1504531596058232, guid: 26f02d09d84d79740a334652cf6a2291,
-    type: 2}
-  m_PrefabInternal: {fileID: 451903165}
 --- !u!4 &1276465151 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4918476536010816, guid: b2681310c7041994a8999e7165407f7d,
@@ -1532,6 +1500,7 @@ MonoBehaviour:
   - {fileID: 2077021154}
   - {fileID: 356696944}
   visibleMat: {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
+  navMeshBuilder: {fileID: 1170816178}
   offsetController: {fileID: 86539193}
 --- !u!114 &1552864903
 MonoBehaviour:
@@ -1764,16 +1733,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114651145535369170, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
-        type: 2}
-      propertyPath: targetObject
-      value: 
-      objectReference: {fileID: 1239169476}
-    - target: {fileID: 114651145535369170, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
-        type: 2}
-      propertyPath: objName
-      value: Urashima
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
   m_IsPrefabParent: 0
@@ -1897,6 +1856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1942500388}
   - component: {fileID: 1942500387}
+  - component: {fileID: 1942500389}
   m_Layer: 0
   m_Name: Directional light
   m_TagString: Untagged
@@ -1953,6 +1913,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: 330, z: 0}
+--- !u!114 &1942500389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1942500386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3c35b93932dfb4ea1bf3c1ed355e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1977396978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5165,11 +5136,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4294827111538064, guid: 4f85fe8261439ff4daba6b67a0a562b0,
     type: 2}
   m_PrefabInternal: {fileID: 1842613298}
---- !u!1 &2052580155 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1078174488305292, guid: 839441fc340ced34d9e47f68d077fb38,
-    type: 2}
-  m_PrefabInternal: {fileID: 923577521}
 --- !u!1001 &2056471249
 Prefab:
   m_ObjectHideFlags: 0

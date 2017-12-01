@@ -28,6 +28,8 @@ public class LocalNavMeshBuilder : MonoBehaviour
         }
     }
 
+    
+
     void OnEnable()
     {
         // Construct and add navmesh

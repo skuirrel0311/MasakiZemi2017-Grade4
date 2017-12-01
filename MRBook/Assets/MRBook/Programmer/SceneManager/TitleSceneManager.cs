@@ -17,7 +17,9 @@ public class TitleSceneManager : MonoBehaviour
 
     void Start()
     {
+
         SpatialMappingManager spatialMappingManager = SpatialMappingManager.Instance;
+        if (spatialMappingManager == null) return;
         spatialMappingManager.DrawVisualMeshes = true;
         spatialMappingManager.PhysicsLayer = 10;
     }
