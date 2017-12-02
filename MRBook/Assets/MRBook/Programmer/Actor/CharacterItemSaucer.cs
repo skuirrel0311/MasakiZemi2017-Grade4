@@ -5,7 +5,7 @@
 /// </summary>
 public class BaseItemSaucer : MonoBehaviour
 {
-    HoloObject owner;
+    protected HoloObject owner = null;
 
     public virtual void Init(HoloObject owner)
     {

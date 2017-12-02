@@ -9,11 +9,11 @@ public class TitleView : HoloObject
     [SerializeField]
     GameObject rootObj = null;
     
-    MyObjControllerByBoundingBox objController;
+    //MyObjControllerByBoundingBox objController;
 
     void Start()
     {
-        objController = MyObjControllerByBoundingBox.I;
+        //objController = MyObjControllerByBoundingBox.I;
         Init();
     }
 

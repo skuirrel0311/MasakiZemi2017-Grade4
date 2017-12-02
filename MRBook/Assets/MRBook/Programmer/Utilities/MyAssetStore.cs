@@ -5,7 +5,6 @@ using UnityEngine;
 public class MyAssetStore : BaseManager<MyAssetStore>
 {
     Dictionary<string, IMyAsset> assetDictionray = new Dictionary<string, IMyAsset>();
-    List<IMyAsset> assetList = new List<IMyAsset>();
 
     /// <summary>
     /// パスの最後には「/」を付ける

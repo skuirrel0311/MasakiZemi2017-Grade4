@@ -72,10 +72,10 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         RaycastHit underObj;
         bool isHitObject = TryGetUnderObject(out underObj);
-        HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
-        BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
+        //HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
+        //BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
 
-        BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
+        //BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
         //Debug.Log("makerType = " + makerType.ToString());
         //UnderTargetMakerはクラスを作りmakerTypeを渡す

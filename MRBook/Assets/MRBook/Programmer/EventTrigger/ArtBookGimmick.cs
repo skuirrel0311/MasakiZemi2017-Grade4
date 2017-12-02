@@ -17,15 +17,12 @@ public class ArtBookGimmick : MyEventTrigger
     //本来ある場所
     [SerializeField]
     protected IsRendered original = null;
-
-    Camera mainCamera;
-
+    
     protected Renderer m_renderer;
     protected Collider m_collider;
 
     protected virtual void Start()
     {
-        mainCamera = Camera.main;
         normalVec = transform.up;
         m_renderer = GetComponent<Renderer>();
         m_collider = GetComponent<Collider>();

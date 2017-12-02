@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DelayStartAnimation : MonoBehaviour
 {
-    [SerializeField]
-    HoloCharacter character = null;
+    //[SerializeField]
+    //HoloCharacter character = null;
 
-    [SerializeField]
-    float delayTime = 0.3f;
+    //[SerializeField]
+    //float delayTime = 0.3f;
 
     void Start()
     {

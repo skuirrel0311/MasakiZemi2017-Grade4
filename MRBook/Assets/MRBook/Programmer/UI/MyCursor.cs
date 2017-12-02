@@ -35,7 +35,6 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
 
     Vector3 defaultPosition;
     Quaternion defaultRotation;
-    Transform defaultParent;
     Vector3 defaultScale;
 
     [SerializeField]
@@ -48,7 +47,6 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
         defaultPosition = PrimaryCursorVisual.localPosition;
         defaultRotation = PrimaryCursorVisual.localRotation;
         defaultScale = PrimaryCursorVisual.localScale;
-        defaultParent = PrimaryCursorVisual.parent;
     }
 
     void OnFlagChanged()

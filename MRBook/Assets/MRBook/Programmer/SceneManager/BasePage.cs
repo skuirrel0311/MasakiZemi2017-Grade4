@@ -76,7 +76,7 @@ public class BasePage : MonoBehaviour
             SetAllAgentEnabled(false);
             yield return null;
         }
-        Vector3 movement = position - transform.position;
+        //Vector3 movement = position - transform.position;
 
         //動く可能性のあるやつの初期値ずらす
         //for (int i = 0; i < movableObjectList.Count; i++)

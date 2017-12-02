@@ -18,8 +18,6 @@ public class MyNavMeshBuilder : MonoBehaviour
     NavMeshDataInstance m_Instance;
     List<NavMeshBuildSource> m_Sources = new List<NavMeshBuildSource>();
 
-    static Vector3 zeroVec = Vector3.zero;
-
     void OnEnable()
     {
         // Construct and add navmesh
