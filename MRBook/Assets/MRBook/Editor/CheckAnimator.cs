@@ -8,14 +8,28 @@ public class CheckAnimator : EditorWindow
 {
     AnimatorController animatorController;
     int animatorNum = 3;
+    string[] strs;
+
+    int AnimatorNum
+    {
+        get
+        {
+            return animatorNum;
+        }
+        set
+        {
+            if (animatorNum == value) return;
+            animatorNum = value;
+            ChangeAnimatorNum();
+        }
+    }
 
     [MenuItem("MyTools/BakeAnimatorWindow")]
     static void ShowWindow()
     {
         GetWindow<CheckAnimator>();
     }
-
-
+    
     void Hoge(string filenName)
     {
         string animatorPath = "Assets/MRBook/PageAnimatorControllers/" + filenName + ".controller";
@@ -72,21 +86,35 @@ public class CheckAnimator : EditorWindow
 
     void OnGUI()
     {
+        if(strs == null)
+        {
+            ChangeAnimatorNum();
+        }
+
         EditorGUILayout.LabelField("menu");
 
-        animatorNum = EditorGUILayout.IntField(animatorNum, GUILayout.Width(100));
-        string[] strs = new string[animatorNum];
+        AnimatorNum = EditorGUILayout.IntField(AnimatorNum, GUILayout.Width(100));
 
-        for (int i = 0; i < animatorNum; i++)
+        for (int i = 0; i < AnimatorNum; i++)
         {
-            strs[i] = EditorGUILayout.TextField("Page" + (i + 1) + "Controller", GUILayout.Width(300));
+            strs[i] = EditorGUILayout.TextField(strs[i], GUILayout.Width(300));
         }
         if (GUILayout.Button("Bake"))
         {
-            for (int i = 0; i < animatorNum; i++)
+            for (int i = 0; i < AnimatorNum; i++)
             {
                 Hoge(strs[i]);
             }
+        }
+    }
+
+    void ChangeAnimatorNum()
+    {
+        strs = new string[AnimatorNum];
+
+        for (int i = 0; i < AnimatorNum; i++)
+        {
+            strs[i] = "Page" + (i + 1) + "Controller";
         }
     }
 }

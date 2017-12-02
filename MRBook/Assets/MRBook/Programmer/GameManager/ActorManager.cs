@@ -25,6 +25,8 @@ public enum ActorName
 /// </summary>
 public class ActorManager : Singleton<ActorManager>
 {
+    public enum TargetType { StaticPoint, HoloObject }
+
     MainSceneManager sceneManager;
     BasePage currentPage;
 
@@ -83,6 +85,24 @@ public class ActorManager : Singleton<ActorManager>
 
         Debug.LogError("not found target point " + name);
         return null;
+    }
+
+    public Transform GetTargetTransform(string name, TargetType targetType)
+    {
+        Transform target = null;
+        switch (targetType)
+        {
+            case TargetType.StaticPoint:
+                target = GetTargetPoint(name);
+                break;
+            case TargetType.HoloObject:
+                HoloObject obj = GetObject(name);
+                if (obj == null) break;
+                target = obj.transform;
+                break;
+        }
+
+        return target;
     }
 
     /// <summary>

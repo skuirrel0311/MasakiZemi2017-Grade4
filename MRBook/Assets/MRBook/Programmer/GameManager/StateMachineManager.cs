@@ -79,6 +79,13 @@ public class StateMachineManager : BaseManager<StateMachineManager>
         {
             Debug.LogWarning(name + "is already stop or didn't addition");
 
+            if(taskDictionary.Count == 0)
+            {
+                Debug.Log("task count is 0");
+                return;
+            }
+
+            //いま追加されているタスクをすべて表示する
             Debug.Log("task list:");
             Debug.Log("output start");
             foreach (string key in taskDictionary.Keys)

@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class PlayEffect : BaseStateMachineBehaviour
 {
-    public string targetPositionName;
-    public string effectName;
-    public Vector3 offset;
+    [SerializeField]
+    ActorManager.TargetType targetType = ActorManager.TargetType.StaticPoint;
+    [SerializeField]
+    string targetName = "";
+    [SerializeField]
+    string effectName = "";
+    [SerializeField]
+    public Vector3 offset = Vector3.zero;
 
     protected override void OnStart()
     {
         base.OnStart();
-        Vector3 targetPosition = ActorManager.I.GetTargetPoint(targetPositionName).position;
-        ParticleManager.I.Play(effectName, targetPosition + offset);
+        Transform target = ActorManager.I.GetTargetTransform(targetName, targetType);
+        if(target == null)
+        {
+            Debug.Log(target + "is not found");
+            return;
+        }
+
+        ParticleManager.I.Play(effectName, target.position + offset);
     }
 }

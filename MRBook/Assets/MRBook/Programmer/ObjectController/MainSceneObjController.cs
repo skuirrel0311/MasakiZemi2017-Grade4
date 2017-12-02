@@ -77,7 +77,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
-        Debug.Log("makerType = " + makerType.ToString());
+        //Debug.Log("makerType = " + makerType.ToString());
         //UnderTargetMakerはクラスを作りmakerTypeを渡す
         particle.gameObject.SetActive(isHitObject);
         underTargetMaker.gameObject.SetActive(isHitObject);

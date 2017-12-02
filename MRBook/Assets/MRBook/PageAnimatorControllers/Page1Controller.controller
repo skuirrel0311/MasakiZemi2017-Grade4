@@ -13,31 +13,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsStart
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsCompleted
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: GoThereState
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: StateStatus
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114120549233152198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,7 +127,7 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
---- !u!114 &114153950533756402
+--- !u!114 &114176350770577418
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -138,7 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
-  targetName: TurtlePosition
+  targetType: 1
+  targetName: Turtle
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114194048483756216
@@ -176,9 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetName: TurtlePosition
+  targetType: 1
+  targetName: Turtle
   actorName: 0
   rotationSpeed: 360
+  updateTargetPosition: 0
 --- !u!114 &114315890863969996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,30 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30AB\u30E1\u306F\u3044\u3058\u3081\u3089\u308C\u3066\u6B7B\u3093\u3067\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
---- !u!114 &114382510835726516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11aac4f07b709e4fab74983759c703a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskName: UrashimaIsSeeTurtle
---- !u!114 &114425099887624466
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11aac4f07b709e4fab74983759c703a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskName: UrashimaGo
 --- !u!114 &114456286463861782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,7 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  targetType: 0
   targetName: AwayPosition
+  updateTargetPosition: 0
   stopDistance: 0.2
   moveSpeed: 0.1
 --- !u!114 &114648043727143948
@@ -305,7 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc6b0fcb6494de4f96c5faf3ad8eeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPositionName: TurtlePosition
+  targetType: 1
+  targetName: Turtle
   effectName: ExplosionParticle
   offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114824126396305422
@@ -732,7 +716,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101428279510753474}
   m_StateMachineBehaviours:
-  - {fileID: 114153950533756402}
+  - {fileID: 114176350770577418}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -784,8 +768,6 @@ AnimatorState:
   - {fileID: 1101274518368680408}
   m_StateMachineBehaviours:
   - {fileID: 114102207289995642}
-  - {fileID: 114425099887624466}
-  - {fileID: 114382510835726516}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1031,22 +1013,22 @@ AnimatorStateMachine:
     m_Position: {x: -276, y: 456, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102483989659472702}
-    m_Position: {x: 180, y: 456, z: 0}
+    m_Position: {x: 216, y: 456, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102163941200330110}
     m_Position: {x: -276, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102114946587267234}
-    m_Position: {x: -48, y: 456, z: 0}
+    m_Position: {x: -60, y: 456, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102755953904681746}
     m_Position: {x: -660, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102608234732919660}
-    m_Position: {x: 24, y: 600, z: 0}
+    m_Position: {x: 84, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102692106660715792}
-    m_Position: {x: 24, y: 768, z: 0}
+    m_Position: {x: 84, y: 768, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

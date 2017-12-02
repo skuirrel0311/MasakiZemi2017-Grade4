@@ -2,9 +2,8 @@
 
 public class LookTarget : BaseStateMachineBehaviour
 {
-    public enum TargetType { StaticPoint, HoloObject }
     [SerializeField]
-    TargetType targetType = TargetType.StaticPoint;
+    ActorManager.TargetType targetType = ActorManager.TargetType.StaticPoint;
     public string targetName;
     public ActorName actorName;
     public float rotationSpeed = 100.0f;
@@ -27,7 +26,14 @@ public class LookTarget : BaseStateMachineBehaviour
             return;
         }
 
-        SetTarget();
+        target = ActorManager.I.GetTargetTransform(targetName, targetType);
+        
+        if (target == null)
+        {
+            Debug.LogError(targetName + " is null");
+            Suspension();
+            return;
+        }
 
         Vector3 targetDirection = target.position - character.transform.position;
 
@@ -35,29 +41,6 @@ public class LookTarget : BaseStateMachineBehaviour
         character.m_agent.updateRotation = false;
 
         character.ChangeAnimationClip(MotionName.Walk, 0.1f);
-    }
-
-    void SetTarget()
-    {
-        switch (targetType)
-        {
-            case TargetType.StaticPoint:
-                target = ActorManager.I.GetTargetPoint(targetName);
-                break;
-            case TargetType.HoloObject:
-                HoloObject obj = ActorManager.I.GetObject(targetName);
-                if (obj == null) break;
-                target = obj.transform;
-
-                break;
-        }
-
-        if (target == null)
-        {
-            Debug.LogError(targetName + " is null");
-            Suspension();
-            return;
-        }
     }
 
     Quaternion GetTargetDirectionRot()
@@ -89,7 +72,7 @@ public class LookTarget : BaseStateMachineBehaviour
     {
         base.OnEnd();
         character.m_agent.updateRotation = true;
-        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
+        character.ChangeAnimationClip(MotionName.Wait, 0.1f);
     }
 
     //中断

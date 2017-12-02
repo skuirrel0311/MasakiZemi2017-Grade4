@@ -8,10 +8,8 @@ public class GoThere : BaseStateMachineBehaviour
 {
     [SerializeField]
     public ActorName actorName;
-
-    public enum TargetType { StaticPoint, HoloObject }
     [SerializeField]
-    TargetType targetType = TargetType.StaticPoint;
+    ActorManager.TargetType targetType = ActorManager.TargetType.StaticPoint;
     [SerializeField]
     public string targetName;
 
@@ -36,17 +34,20 @@ public class GoThere : BaseStateMachineBehaviour
     protected override void OnStart()
     {
         base.OnStart();
+        Debug.Log(actorName + " Go " + targetName);
+
         character = ActorManager.I.GetCharacter(actorName);
         if(character == null)
         {
-            Debug.LogError(actorName.ToString() + " is null in" + actorName.ToString() + " go there");
+            Debug.LogError(actorName.ToString() + " is not found in " + actorName.ToString() + " go there");
             Suspension();
             return;
         }
-        target = ActorManager.I.GetTargetPoint(targetName);
+
+        target = ActorManager.I.GetTargetTransform(targetName, targetType);
         if(target == null)
         {
-            Debug.LogError(targetName + " is null" + " is null in" + actorName.ToString() + " go there");
+            Debug.LogError(targetName + " is not found " + actorName.ToString() + " go there");
             Suspension();
             return;
         }
@@ -60,29 +61,6 @@ public class GoThere : BaseStateMachineBehaviour
         oldPosition = character.transform.position;
 
         character.ChangeAnimationClip(MotionName.Walk, 0.1f);
-    }
-
-    protected void SetTarget()
-    {
-        switch (targetType)
-        {
-            case TargetType.StaticPoint:
-                target = ActorManager.I.GetTargetPoint(targetName);
-                break;
-            case TargetType.HoloObject:
-                HoloObject obj = ActorManager.I.GetObject(targetName);
-                if (obj == null) break;
-                target = obj.transform;
-
-                break;
-        }
-
-        if (target == null)
-        {
-            Debug.LogError(targetName + " is null");
-            Suspension();
-            return;
-        }
     }
 
     protected override BehaviourStatus OnUpdate()
@@ -114,7 +92,7 @@ public class GoThere : BaseStateMachineBehaviour
     {
         if (!character.m_agent.hasPath)
         {
-            Debug.Log(character.name + "don't has path");
+            Debug.Log(character.name + " don't has path");
             return false;
         }
 
@@ -160,6 +138,7 @@ public class GoThere : BaseStateMachineBehaviour
         Debug.Log("call stop agent");
         if (character == null || target == null) return;
         character.m_agent.isStopped = true;
+        character.m_agent.ResetPath();
 
         character.ChangeAnimationClip(MotionName.Wait, 0.1f);
 

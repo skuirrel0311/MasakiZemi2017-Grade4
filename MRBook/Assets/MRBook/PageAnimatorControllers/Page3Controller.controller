@@ -39,7 +39,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114029073835071730
+--- !u!114 &114043908751519596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -47,9 +47,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actorName: 2
+  targetType: 0
+  targetName: OtohimeEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.07
 --- !u!114 &114046005191476232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,7 +83,7 @@ MonoBehaviour:
   motionName: 17
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114052828765360340
+--- !u!114 &114050879392030506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -88,13 +94,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 4
+  actorName: 2
   targetType: 0
-  targetName: AiEndPoint
+  targetName: OtohimeWayPoint
   updateTargetPosition: 0
-  stopDistance: 0.02
-  moveSpeed: 0.1
---- !u!114 &114071448983829650
+  stopDistance: 0.05
+  moveSpeed: 0.07
+--- !u!114 &114065231388517324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114082299241155802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: CenterPoint
+  actorName: 3
+  rotationSpeed: 100
+  updateTargetPosition: 0
+--- !u!114 &114085543457721756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -105,6 +138,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114086664626476334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114092874732058462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Urashima
 --- !u!114 &114103943448954276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,29 +173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endingName: "\u6EBA\u6B7B"
---- !u!114 &114112092163354722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114145200914292980
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForcing: 1
 --- !u!114 &114153872695845178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puppetName: 0
---- !u!114 &114154352883957578
+--- !u!114 &114235554105781588
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -160,38 +193,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 3
-  targetType: 0
-  targetName: AkaneEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.02
-  moveSpeed: 0.1
---- !u!114 &114203622454163392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Otohime
---- !u!114 &114226742855849246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114246551230534794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,6 +209,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u4E59\u59EB\u306F\u6D66\u5CF6\u3092\u7389\u5EA7\u3078\u6848\u5185\u3057\u307E\u3057\u305F"
+--- !u!114 &114246926095263944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114251564328561808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,7 +233,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   success: 1
---- !u!114 &114266232060989164
+--- !u!114 &114267290403652624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114271196433227146
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -255,6 +284,23 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
+--- !u!114 &114320902817568370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  targetType: 0
+  targetName: UrashimaWayPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.1
 --- !u!114 &114325093500385926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,23 +313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114341009797681060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 5
-  targetType: 0
-  targetName: MidoriEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.02
-  moveSpeed: 0.1
 --- !u!114 &114378578527357746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114438654297137016
+--- !u!114 &114448726035273896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -315,11 +344,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
---- !u!114 &114446763407227988
+  objectName: Otohime
+--- !u!114 &114454872253497546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -327,10 +356,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 0
+  actorName: 0
+  targetType: 0
+  targetName: UrashimaEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.1
 --- !u!114 &114456935375946580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,35 +396,7 @@ MonoBehaviour:
   motionName: 18
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114482860858857710
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForcing: 0
---- !u!114 &114485794258937908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 0
-  targetName: CenterPoint
-  actorName: 6
-  rotationSpeed: 100
-  updateTargetPosition: 0
---- !u!114 &114492832748364690
+--- !u!114 &114477199976362006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -401,6 +407,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114479997087889340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114507688622954524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!114 &114508734072361560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,7 +442,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
---- !u!114 &114553694093427192
+--- !u!114 &114511771340091718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114511998834929796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114536443032496682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114556934879656324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 2
+  motionName: 2
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114566338951189846
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -426,22 +504,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   targetName: CenterPoint
-  actorName: 3
+  actorName: 5
   rotationSpeed: 100
   updateTargetPosition: 0
---- !u!114 &114568819844989810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForcing: 1
---- !u!114 &114616578689062290
+--- !u!114 &114566970107407360
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -452,18 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114649707239281894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114659585142225672
+--- !u!114 &114573139666208816
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -474,8 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
---- !u!114 &114676109455311698
+  isForcing: 0
+--- !u!114 &114575067514113132
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -483,10 +538,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114677058240353214
+--- !u!114 &114654684033575974
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -494,49 +549,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 2
-  targetType: 0
-  targetName: OtohimeEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.1
-  moveSpeed: 0.05
---- !u!114 &114697493686617612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 6
-  targetType: 0
-  targetName: LemonEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.02
-  moveSpeed: 0.1
---- !u!114 &114713394041981944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
+  motionName: 2
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114661072847928184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetType: 0
-  targetName: UrashimaEndPoint
+  targetName: CenterPoint
+  actorName: 6
+  rotationSpeed: 100
   updateTargetPosition: 0
-  stopDistance: 0.1
-  moveSpeed: 0.05
+--- !u!114 &114678797561565930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114731516673347292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -553,7 +600,7 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
---- !u!114 &114731880714142540
+--- !u!114 &114775062638163430
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -561,42 +608,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 0
-  targetName: CenterPoint
-  actorName: 5
-  rotationSpeed: 100
-  updateTargetPosition: 0
---- !u!114 &114749360526756792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Urashima
---- !u!114 &114802296545159856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 0
-  targetName: CenterPoint
-  actorName: 4
-  rotationSpeed: 100
-  updateTargetPosition: 0
+  isForcing: 1
 --- !u!114 &114813072869623048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -613,7 +628,41 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
---- !u!114 &114872143343680472
+--- !u!114 &114813957191147012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 6
+  targetType: 0
+  targetName: LemonEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.1
+--- !u!114 &114858167322912568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 5
+  targetType: 0
+  targetName: MidoriEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.1
+--- !u!114 &114885213820671760
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -641,8 +690,25 @@ MonoBehaviour:
   targetName: Urashima
   updateTargetPosition: 0
   stopDistance: 0.1
+  moveSpeed: 0.07
+--- !u!114 &114909036539392964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 4
+  targetType: 0
+  targetName: AiEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
   moveSpeed: 0.1
---- !u!114 &114922569317712938
+--- !u!114 &114951074569119526
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -650,11 +716,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.5
---- !u!114 &114990190281538740
+  targetType: 0
+  targetName: CenterPoint
+  actorName: 4
+  rotationSpeed: 100
+  updateTargetPosition: 0
+--- !u!114 &114952821543594804
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -662,33 +732,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1101 &1101078608398014640
-AnimatorStateTransition:
+  targetType: 1
+  targetName: Otohime
+  actorName: 0
+  rotationSpeed: 100
+  updateTargetPosition: 0
+--- !u!114 &114969652953185084
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: StateStatus
-    m_EventTreshold: 1
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102011193654935010}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_EditorClassIdentifier: 
+  actorName: 3
+  targetType: 0
+  targetName: AkaneEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.1
 --- !u!1101 &1101091217569317570
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -758,18 +826,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101414588921623444
+--- !u!1101 &1101375799333302516
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 7
+  - m_ConditionMode: 6
     m_ConditionEvent: StateStatus
-    m_EventTreshold: 0
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102875551320430406}
+  m_DstState: {fileID: 1102011193654935010}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -854,31 +922,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101540299643088062
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: StateStatus
-    m_EventTreshold: -1
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102142248945742852}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 0
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101573421221074802
+--- !u!1101 &1101551907325191562
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -889,7 +933,7 @@ AnimatorStateTransition:
     m_ConditionEvent: StateStatus
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102910654535450332}
+  m_DstState: {fileID: 1102734873381773160}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -943,6 +987,30 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101757071763817090
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: -1
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102142248945742852}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
@@ -1249,6 +1317,62 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102734873381773160
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: "\u7389\u5EA7\u3078\u5411\u304B\u3046"
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101375799333302516}
+  - {fileID: 1101757071763817090}
+  m_StateMachineBehaviours:
+  - {fileID: 114246926095263944}
+  - {fileID: 114065231388517324}
+  - {fileID: 114573139666208816}
+  - {fileID: 114678797561565930}
+  - {fileID: 114320902817568370}
+  - {fileID: 114454872253497546}
+  - {fileID: 114092874732058462}
+  - {fileID: 114536443032496682}
+  - {fileID: 114235554105781588}
+  - {fileID: 114050879392030506}
+  - {fileID: 114043908751519596}
+  - {fileID: 114448726035273896}
+  - {fileID: 114085543457721756}
+  - {fileID: 114511998834929796}
+  - {fileID: 114969652953185084}
+  - {fileID: 114082299241155802}
+  - {fileID: 114086664626476334}
+  - {fileID: 114775062638163430}
+  - {fileID: 114909036539392964}
+  - {fileID: 114951074569119526}
+  - {fileID: 114477199976362006}
+  - {fileID: 114267290403652624}
+  - {fileID: 114858167322912568}
+  - {fileID: 114566338951189846}
+  - {fileID: 114271196433227146}
+  - {fileID: 114885213820671760}
+  - {fileID: 114813957191147012}
+  - {fileID: 114661072847928184}
+  - {fileID: 114479997087889340}
+  - {fileID: 114575067514113132}
+  - {fileID: 114511771340091718}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102739717128503336
 AnimatorState:
   serializedVersion: 5
@@ -1285,12 +1409,16 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101573421221074802}
+  - {fileID: 1101551907325191562}
   m_StateMachineBehaviours:
   - {fileID: 114277868283428720}
   - {fileID: 114893191444330630}
+  - {fileID: 114556934879656324}
+  - {fileID: 114952821543594804}
+  - {fileID: 114654684033575974}
   - {fileID: 114246551230534794}
-  - {fileID: 114071448983829650}
+  - {fileID: 114507688622954524}
+  - {fileID: 114566970107407360}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1314,84 +1442,6 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101091217569317570}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102875551320430406
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u7389\u5EA7\u3078\u5411\u304B\u3046"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101078608398014640}
-  - {fileID: 1101540299643088062}
-  m_StateMachineBehaviours:
-  - {fileID: 114482860858857710}
-  - {fileID: 114676109455311698}
-  - {fileID: 114659585142225672}
-  - {fileID: 114677058240353214}
-  - {fileID: 114203622454163392}
-  - {fileID: 114112092163354722}
-  - {fileID: 114446763407227988}
-  - {fileID: 114922569317712938}
-  - {fileID: 114713394041981944}
-  - {fileID: 114749360526756792}
-  - {fileID: 114266232060989164}
-  - {fileID: 114568819844989810}
-  - {fileID: 114154352883957578}
-  - {fileID: 114553694093427192}
-  - {fileID: 114990190281538740}
-  - {fileID: 114145200914292980}
-  - {fileID: 114052828765360340}
-  - {fileID: 114802296545159856}
-  - {fileID: 114029073835071730}
-  - {fileID: 114438654297137016}
-  - {fileID: 114341009797681060}
-  - {fileID: 114731880714142540}
-  - {fileID: 114226742855849246}
-  - {fileID: 114872143343680472}
-  - {fileID: 114697493686617612}
-  - {fileID: 114485794258937908}
-  - {fileID: 114649707239281894}
-  - {fileID: 114492832748364690}
-  - {fileID: 114616578689062290}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102910654535450332
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u8E0A\u308A\u5B50\u304C\u308F\u304D\u306B\u3088\u3051\u308B"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101414588921623444}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1441,17 +1491,14 @@ AnimatorStateMachine:
     m_State: {fileID: 1102098084077713486}
     m_Position: {x: -264, y: 480, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102875551320430406}
-    m_Position: {x: 252, y: 540, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102142248945742852}
     m_Position: {x: 372, y: 648, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102615179552908994}
     m_Position: {x: -24, y: -108, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102910654535450332}
-    m_Position: {x: 120, y: 420, z: 0}
+    m_State: {fileID: 1102734873381773160}
+    m_Position: {x: 192, y: 456, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
