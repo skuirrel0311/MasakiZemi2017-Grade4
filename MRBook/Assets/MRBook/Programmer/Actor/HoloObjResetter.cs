@@ -7,12 +7,18 @@ using KKUtilities;
 //すべてのオブジェクトをリセットする人
 public class HoloObjResetManager
 {
+    public static HoloObjResetManager I = null;
+
     MonoBehaviour mono;
     List<HoloObjResetter> resetterList = new List<HoloObjResetter>();
+    List<HoloMovableObjResetter> movableResetterList = new List<HoloMovableObjResetter>();
     Coroutine resetCoroutine;
 
     public HoloObjResetManager(MonoBehaviour mono)
     {
+        if (I != null) return;
+
+        I = this;
         this.mono = mono;
     }
 
@@ -21,7 +27,18 @@ public class HoloObjResetManager
         resetterList.Add(resetter);
     }
 
+    public void AddMovableResetter(HoloMovableObjResetter resetter)
+    {
+        movableResetterList.Add(resetter);
+    }
 
+    public void ApplyDefaultTransform(Vector3 movement)
+    {
+        for (int i = 0; i < movableResetterList.Count; i++)
+        {
+            movableResetterList[i].ApplyDefaultTransform(movement);
+        }
+    }
 
     public void Reset()
     {
@@ -46,22 +63,24 @@ public class HoloObjResetManager
             resetterList[i].Disable();
         }
 
-        yield return mono.StartCoroutine(Utilities.Delay(10, () => { }));
-
-        Debug.Log("on location reset");
-        for (int i = 0; i < resetterList.Count; i++)
+        yield return mono.StartCoroutine(Utilities.Delay(10, () =>
         {
-            resetterList[i].LocationReset();
-        }
-
-        yield return mono.StartCoroutine(Utilities.Delay(10, ()=> { }));
-
-        Debug.Log("on enable");
-        for (int i = 0; i < resetterList.Count; i++)
+            Debug.Log("on location reset");
+            for (int i = 0; i < resetterList.Count; i++)
+            {
+                resetterList[i].LocationReset();
+            }
+        }));
+        
+        yield return mono.StartCoroutine(Utilities.Delay(10, () =>
         {
-            resetterList[i].Enable();
-        }
-
+            Debug.Log("on enable");
+            for (int i = 0; i < resetterList.Count; i++)
+            {
+                resetterList[i].Enable();
+            }
+        }));
+        
         resetCoroutine = null;
     }
 

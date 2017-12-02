@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using RootMotion.Dynamics;
+using KKUtilities;
 
 public class BasePage : MonoBehaviour
 {
@@ -52,48 +51,28 @@ public class BasePage : MonoBehaviour
         //}
     }
 
-    /// <summary>
-    /// 指定された量本をずらします
-    /// </summary>
-    public void MovePagePosition(Vector3 movement)
-    {
-        SetTransform(transform.position + movement, transform.rotation);
-    }
-
     public void SetTransform(Vector3 position, Quaternion rotation)
     {
-        StartCoroutine(SetPosition(position, rotation));
+        if (MainSceneManager.I.currentPageIndex == pageIndex)
+            StartCoroutine(SetPosition(position, rotation));
+        else
+            transform.SetPositionAndRotation(position, rotation);
     }
 
     //フレームをまたがないとAgentの有効無効がきちんと反映されなかったので
     IEnumerator SetPosition(Vector3 position, Quaternion rotation)
     {
-        //現在表示されているページだったらNavMeshAgentを無効化してやらないといけない
-        bool shouldDisableAgent = MainSceneManager.I.currentPageIndex == pageIndex;
-
-        if (shouldDisableAgent)
+        SetAllObjectActive(false);
+        yield return StartCoroutine(Utilities.Delay(5, () =>
         {
-            SetAllAgentEnabled(false);
-            yield return null;
-        }
-        //Vector3 movement = position - transform.position;
-
-        //動く可能性のあるやつの初期値ずらす
-        //for (int i = 0; i < movableObjectList.Count; i++)
-        //{
-        //    movableObjectList[i].ApplyDefaultTransform(movement);
-        //}
-
-        transform.SetPositionAndRotation(position, rotation);
-
-        if (shouldDisableAgent)
+            transform.SetPositionAndRotation(position, rotation);
+        }));
+        
+        yield return StartCoroutine(Utilities.Delay(5, () =>
         {
-            yield return null;
-            SetAllAgentEnabled(true);
-        }
+            SetAllObjectActive(true);
+        }));
 
-        //shouldDisableAgentがfalseだと戻り値が存在しない気がしたので
-        yield return null;
     }
 
     /// <summary>
@@ -126,7 +105,7 @@ public class BasePage : MonoBehaviour
     //ページに存在するActorタグのオブジェクトをDictionaryとListに格納する
     void ImportHoloObject()
     {
-        HoloObjResetManager resetManager = MainSceneManager.I.ResetManager;
+        HoloObjResetManager resetManager = HoloObjResetManager.I;
         GameObject[] tempArray;
 
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
@@ -203,16 +182,16 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public void ResetPage()
     {
-        MainSceneManager.I.ResetManager.Reset();
+        HoloObjResetManager.I.Reset();
         //todo:リセット中のアニメーション
     }
 
-    public void SetAllAgentEnabled(bool enabled)
+    public void SetAllObjectActive(bool active)
     {
-        //for (int i = 0; i < groundingObjectList.Count; i++)
-        //{
-        //    groundingObjectList[i].m_agent.enabled = enabled;
-        //}
+        for (int i = 0; i < objectList.Count; i++)
+        {
+            objectList[i].gameObject.SetActive(active);
+        }
     }
 
     public void RemoveMovableObject(string name)

@@ -7,6 +7,7 @@ using UnityEngine;
 public class BookPositionModifier : BaseManager<BookPositionModifier>
 {
     public Transform bookTransform = null;
+    Vector3 pagePosition;
 
     //部屋に配置するWorldAnchor
     [SerializeField]
@@ -22,6 +23,8 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 #if !UNITY_EDITOR
         StartCoroutine(MonitorWorldAnchor());
 #endif
+        oldWorldAnchorPosition = worldAnchor.transform.position;
+        pagePosition = bookTransform.position;
         base.Start();
     }
 
@@ -56,12 +59,16 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
 
     public void ModifyBookPosition(bool showDialog)
     {
-        MainSceneManager.I.SetBookPositionByAnchor(bookTransform.position, bookTransform.rotation);
+        Vector3 movement = bookTransform.position - pagePosition;
+        pagePosition = bookTransform.position;
+        MainSceneManager.I.SetBookPositionOffset(movement);
         if (showDialog)
         {
             AkSoundEngine.PostEvent("Alart", gameObject);
             NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 3.0f);
         }
+
+        Debug.Log("modify position");
     }
 
     public void SetWorldAnchorsRendererActive(bool isActive)

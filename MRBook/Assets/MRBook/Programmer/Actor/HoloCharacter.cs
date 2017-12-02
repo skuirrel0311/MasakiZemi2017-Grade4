@@ -12,6 +12,8 @@ public class HoloCharacter : HoloObject
 
     public override Type GetActorType { get { return Type.Character; } }
 
+    protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
+
     protected void Awake()
     {
         m_animator = GetComponent<Animator>();
@@ -30,7 +32,7 @@ public class HoloCharacter : HoloObject
         Resetter.AddBehaviour(new LocationResetBehaviour(this));
         Resetter.AddBehaviour(new CharacterResetBehaviour(this, defaultMotionName));
     }
-    
+
     public virtual void ChangeAnimationClip(MotionName name, float transitionDuration)
     {
         if (m_animator == null)

@@ -11,6 +11,7 @@ public class WorldAnchorController : HoloObject
     Color movableColor = Color.yellow;
     Color staticColor = Color.green;
 
+    BoxCollider m_collider;
     Renderer m_renderer;
     MaterialPropertyBlock block;
 
@@ -22,6 +23,7 @@ public class WorldAnchorController : HoloObject
 
     protected virtual void Start()
     {
+        m_collider = GetComponent<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         worldAnchorManager = MyWorldAnchorManager.I;
         block = new MaterialPropertyBlock();
@@ -103,7 +105,7 @@ public class WorldAnchorController : HoloObject
     public virtual void SetActive(bool isActive)
     {
         m_renderer.enabled = isActive;
-        //m_collider.enabled = isActive;
+        m_collider.enabled = isActive;
         ChangeObserverState(isActive);
     }
 }

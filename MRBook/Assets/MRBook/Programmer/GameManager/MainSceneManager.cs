@@ -77,7 +77,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// </summary>
     public int currentPageIndex { get; protected set; }
 
-    public HoloObjResetManager ResetManager { get; private set; }
+    HoloObjResetManager resetManager;
 
     /* メソッド */
 
@@ -113,7 +113,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             OnGameStart.Invoke();
         }, this);
-        ResetManager = new HoloObjResetManager(this);
+        resetManager = new HoloObjResetManager(this);
     }
 
     /// <summary>
@@ -192,6 +192,21 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         }
         MainGameUIController.I.SetPositionAndRotation(pos, rot);
         NotificationManager.I.SetDefaultTransform(pos, rot);
+    }
+
+    public void SetBookPositionOffset(Vector3 movement)
+    {
+        Transform t = BookPositionModifier.I.bookTransform;
+
+        resetManager.ApplyDefaultTransform(movement);
+
+        for (int i = 0; i < pages.Length; i++)
+        {
+            pages[i].SetTransform(t.position, t.rotation);
+        }
+
+        MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);
+        NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
     }
 
     /// <summary>
