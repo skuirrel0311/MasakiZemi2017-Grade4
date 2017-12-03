@@ -22,8 +22,8 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     {
 #if !UNITY_EDITOR
         StartCoroutine(MonitorWorldAnchor());
-#endif
         oldWorldAnchorPosition = worldAnchor.transform.position;
+#endif
         pagePosition = bookTransform.position;
         base.Start();
     }
@@ -67,8 +67,6 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
             AkSoundEngine.PostEvent("Alart", gameObject);
             NotificationManager.I.ShowDialog("警告", "ホログラムのずれを検知しました。", true, 3.0f);
         }
-
-        Debug.Log("modify position");
     }
 
     public void SetWorldAnchorsRendererActive(bool isActive)

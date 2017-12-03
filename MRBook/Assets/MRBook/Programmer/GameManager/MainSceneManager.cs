@@ -184,25 +184,13 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// <summary>
     /// アンカーの位置に本を固定する
     /// </summary>
-    public void SetBookPositionByAnchor(Vector3 pos, Quaternion rot)
-    {
-        for (int i = 0; i < pages.Length; i++)
-        {
-            pages[i].SetTransform(pos, rot);
-        }
-        MainGameUIController.I.SetPositionAndRotation(pos, rot);
-        NotificationManager.I.SetDefaultTransform(pos, rot);
-    }
-
     public void SetBookPositionOffset(Vector3 movement)
     {
         Transform t = BookPositionModifier.I.bookTransform;
-
-        resetManager.ApplyDefaultTransform(movement);
-
+        
         for (int i = 0; i < pages.Length; i++)
         {
-            pages[i].SetTransform(t.position, t.rotation);
+            pages[i].SetTransform(t);
         }
 
         MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);

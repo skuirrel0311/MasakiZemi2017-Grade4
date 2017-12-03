@@ -51,27 +51,29 @@ public class BasePage : MonoBehaviour
         //}
     }
 
-    public void SetTransform(Vector3 position, Quaternion rotation)
+    public void SetTransform(Transform t)
     {
         if (MainSceneManager.I.currentPageIndex == pageIndex)
-            StartCoroutine(SetPosition(position, rotation));
+            StartCoroutine(SetPosition(t));
         else
-            transform.SetPositionAndRotation(position, rotation);
+            transform.SetPositionAndRotation(t.position, t.rotation);
     }
 
     //フレームをまたがないとAgentの有効無効がきちんと反映されなかったので
-    IEnumerator SetPosition(Vector3 position, Quaternion rotation)
+    IEnumerator SetPosition(Transform t)
     {
         SetAllObjectActive(false);
-        yield return StartCoroutine(Utilities.Delay(5, () =>
-        {
-            transform.SetPositionAndRotation(position, rotation);
-        }));
-        
-        yield return StartCoroutine(Utilities.Delay(5, () =>
-        {
-            SetAllObjectActive(true);
-        }));
+        yield return null;
+
+        transform.SetPositionAndRotation(t.position, t.rotation);
+
+        yield return null;
+
+        MyNavMeshBuilder.CreateNavMesh();
+
+        yield return null;
+
+        SetAllObjectActive(true);
 
     }
 

@@ -8,6 +8,7 @@ public class HoloItem : HoloObject
     public enum Hand { Right, Left, Both }
 
     public override Type GetActorType { get { return Type.Item; } }
+    protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
 
     /// <summary>
     /// どちらの手で持つアイテムなのか？
@@ -39,6 +40,12 @@ public class HoloItem : HoloObject
         defaultOwner.ItemSaucer.SetItem(this, false);
     }
 
+    protected override void Init()
+    {
+        HoloObjResetManager.I.AddMovableResetter((HoloMovableObjResetter)Resetter);
+        base.Init();
+    }
+
     public override void PlayPage()
     {
         base.PlayPage();
@@ -49,7 +56,6 @@ public class HoloItem : HoloObject
     protected override void InitResetter()
     {
         base.InitResetter();
-        Resetter.AddBehaviour(new LocationResetBehaviour(this));
         Resetter.AddBehaviour(new ItemResetBehaviour(this, defaultOwner));
     }
 }

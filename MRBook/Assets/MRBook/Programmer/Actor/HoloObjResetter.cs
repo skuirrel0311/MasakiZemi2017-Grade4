@@ -32,14 +32,6 @@ public class HoloObjResetManager
         movableResetterList.Add(resetter);
     }
 
-    public void ApplyDefaultTransform(Vector3 movement)
-    {
-        for (int i = 0; i < movableResetterList.Count; i++)
-        {
-            movableResetterList[i].ApplyDefaultTransform(movement);
-        }
-    }
-
     public void Reset()
     {
         if (resetCoroutine != null)
@@ -139,10 +131,6 @@ public class HoloMovableObjResetter : HoloObjResetter
         locationResetBehaviour = new LocationResetBehaviour(owner);
         base.AddBehaviour(locationResetBehaviour);
     }
-    public void ApplyDefaultTransform(Vector3 movement)
-    {
-        locationResetBehaviour.ApplyDefaultTransform(movement);
-    }
 }
 
 //オブジェクトのリセットの手段が書いてあるやつ
@@ -195,20 +183,17 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
         : base(owner)
     {
         ownerTransform = owner.transform;
-        defaultPosition = ownerTransform.position;
-        defaultRotation = ownerTransform.rotation;
-    }
+        defaultPosition = ownerTransform.localPosition;
+        defaultRotation = ownerTransform.localRotation;
 
-    public void ApplyDefaultTransform(Vector3 movement)
-    {
-        defaultPosition += movement;
+        Debug.Log("defaultPosition = " + defaultPosition);
     }
 
     public override void OnDisable() { }
     public override void OnLocationReset()
     {
-        ownerTransform.position = defaultPosition;
-        ownerTransform.rotation = defaultRotation;
+        ownerTransform.localPosition = defaultPosition;
+        ownerTransform.localRotation = defaultRotation;
     }
     public override void OnEnable() { }
 }

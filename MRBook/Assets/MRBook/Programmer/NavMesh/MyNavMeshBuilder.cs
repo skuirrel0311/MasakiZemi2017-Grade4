@@ -3,7 +3,6 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 using NavMeshBuilder = UnityEngine.AI.NavMeshBuilder;
-using KKUtilities;
 
 [DefaultExecutionOrder(-102)]
 public class MyNavMeshBuilder : MonoBehaviour
@@ -11,12 +10,13 @@ public class MyNavMeshBuilder : MonoBehaviour
     static List<MyNavMeshBuilder> builderList = new List<MyNavMeshBuilder>();
 
     // The size of the build bounds
-    public Vector3 m_Size = new Vector3(5.0f, 5.0f, 5.0f);
+    public Vector3 m_Size = new Vector3(1.3f, 1.0f, 1.3f);
 
     NavMeshData m_NavMesh;
     AsyncOperation m_Operation;
     NavMeshDataInstance m_Instance;
     List<NavMeshBuildSource> m_Sources = new List<NavMeshBuildSource>();
+    NavMeshBuildSettings setting;
 
     void OnEnable()
     {
@@ -31,6 +31,11 @@ public class MyNavMeshBuilder : MonoBehaviour
         // Unload navmesh and clear handle
         m_Instance.Remove();
         builderList.Remove(this);
+    }
+
+    void Start()
+    {
+        setting = NavMesh.GetSettingsByID(0);
     }
 
     void Update()
@@ -52,9 +57,8 @@ public class MyNavMeshBuilder : MonoBehaviour
     public void UpdateNavMesh()
     {
         NavMeshSourceTag.Collect(ref m_Sources);
-        var defaultBuildSettings = NavMesh.GetSettingsByID(0);
         var bounds = QuantizedBounds();
-        NavMeshBuilder.UpdateNavMeshData(m_NavMesh, defaultBuildSettings, m_Sources, bounds);
+        NavMeshBuilder.UpdateNavMeshData(m_NavMesh, setting, m_Sources, bounds);
     }
 
     static Vector3 Quantize(Vector3 v)

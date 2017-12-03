@@ -22,6 +22,7 @@ public class HoloCharacter : HoloObject
 
     protected override void Init()
     {
+        HoloObjResetManager.I.AddMovableResetter((HoloMovableObjResetter)Resetter);
         ChangeAnimationClip(defaultMotionName, 0.0f);
         base.Init();
     }
@@ -29,7 +30,6 @@ public class HoloCharacter : HoloObject
     protected override void InitResetter()
     {
         base.InitResetter();
-        Resetter.AddBehaviour(new LocationResetBehaviour(this));
         Resetter.AddBehaviour(new CharacterResetBehaviour(this, defaultMotionName));
     }
 
