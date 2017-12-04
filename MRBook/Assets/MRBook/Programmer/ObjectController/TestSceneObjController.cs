@@ -16,69 +16,109 @@ public class TestSceneObjController : MainSceneObjController
     [SerializeField]
     float moveSpeed = 4.0f;
 
+    float draggingTime = 0.0f;
+
     //ベースを呼ばないために宣言する
     protected override void Start()
     {
         mainCamera = Camera.main;
         actorManager = ActorManager.I;
+        base.Start();
     }
 
     protected override void Update()
     {
+        const float minDragTime = 0.1f;
+
         //右クリック
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (TryGetGameObject())
-            {
-                StartOperation();
-            }
+            draggingTime = 0.0f;
         }
 
         //右クリック長押し
         if (Input.GetMouseButton(0))
         {
-            if (targetMovableObject != null) UpdateOperation();
+            if (!isDragging)
+            {
+                draggingTime += Time.deltaTime;
 
+                if (draggingTime > minDragTime)
+                {
+                    isDragging = true;
+                    if(canDragging) StartOperation();
+                }
+            }
+            else
+            {
+                if (canDragging) UpdateOperation();
+            }
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            if(targetMovableObject != null) EndOperation();
+            if (!isDragging)
+            {
+                //短いドラッグだった
+                OnTap();
+            }
+            else
+            {
+                if (canDragging) EndOperation();
+            }
+
+            isDragging = false;
         }
     }
 
-    bool TryGetGameObject()
+    //短いドラッグ（ドラッグではない）
+    void OnTap()
+    {
+        if (!canDragging)
+        {
+            HoloObject hitObj;
+            canDragging = TryGetGameObject(out hitObj);
+            if (!canDragging) return;
+            SetTargetObject(hitObj);
+        }
+        else
+        {
+            Disable();
+        }
+    }
+
+    bool TryGetGameObject(out HoloObject holoObject)
     {
         ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        
-        if(Physics.Raycast(ray, out hit, 10.0f, layerMask))
+
+        if (Physics.Raycast(ray, out hit, 10.0f, layerMask))
         {
             GameObject obj = hit.transform.gameObject;
             //つかむことができるかチェック
             HoloObject actor = obj.GetComponent<HoloObject>();
             if (actor == null || actor.InputHandler == null)
             {
-                targetMovableObject = null;
+                holoObject = null;
                 return false;
             }
 
             //掴むことができた
-            targetMovableObject = actor;
+            holoObject = actor;
             return true;
         }
         //Debug.Log("don't hit");
 
-        targetMovableObject = null;
+        holoObject = null;
         return false;
     }
-    
+
     protected override void StartOperation()
     {
         base.StartOperation();
 
         oldMousePosition = Input.mousePosition;
-        targetMovableObject.transform.position = new Vector3(targetMovableObject.transform.position.x, operationLockHeight, targetMovableObject.transform.position.z);
+        transform.position = new Vector3(targetMovableObject.transform.position.x, operationLockHeight, targetMovableObject.transform.position.z);
     }
 
     protected override void UpdateOperation()
@@ -86,7 +126,7 @@ public class TestSceneObjController : MainSceneObjController
         Vector3 velocity = Vector2ComvertToXZVector(GetMouseVelocity());
         Quaternion cam = mainCamera.transform.rotation;
         velocity = Quaternion.Euler(0.0f, cam.eulerAngles.y, 0.0f) * velocity;
-        targetMovableObject.transform.position += velocity * moveSpeed * Time.deltaTime;
+        transform.position += velocity * moveSpeed * Time.deltaTime;
         base.UpdateOperation();
     }
 
@@ -97,7 +137,7 @@ public class TestSceneObjController : MainSceneObjController
     {
         Vector2 mousePosition = Input.mousePosition;
         Vector2 velocity = mousePosition - oldMousePosition;
-        
+
         oldMousePosition = mousePosition;
         return velocity.normalized;
     }
@@ -108,7 +148,7 @@ public class TestSceneObjController : MainSceneObjController
 
         temp.x = vec.x;
         temp.y = 0.0f;
-        temp.z = vec.y;             
+        temp.z = vec.y;
 
         return temp;
     }

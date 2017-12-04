@@ -14,9 +14,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     LayerMask ignoreLayerMask = 1 << 2;
 
     [SerializeField]
-    Transform underTargetMaker = null;
-    [SerializeField]
-    Transform particle = null;
+    UnderTargetMaker underTargetMaker = null;
 
     //キャッシュ
     Vector3 downVec = Vector3.down;
@@ -35,6 +33,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         {
             Disable();
         };
+        MainSceneManager.I.OnReset += () => Disable();
     }
 
     protected override void StartDragging()
@@ -63,8 +62,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         MainSceneManager sceneManager = MainSceneManager.I;
         maxDistance = targetMovableObject.transform.position.y - sceneManager.pages[sceneManager.currentPageIndex].transform.position.y + 0.5f;
-
-        Debug.Log("max distance = " + maxDistance);
+        
         targetMovableObject.InputHandler.OnDragStart();
     }
 
@@ -72,17 +70,13 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         RaycastHit underObj;
         bool isHitObject = TryGetUnderObject(out underObj);
-        //HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
-        //BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
+        HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
+        BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
 
-        //BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
+        BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
         //Debug.Log("makerType = " + makerType.ToString());
-        //UnderTargetMakerはクラスを作りmakerTypeを渡す
-        particle.gameObject.SetActive(isHitObject);
-        underTargetMaker.gameObject.SetActive(isHitObject);
-        particle.position = targetMovableObject.transform.position;
-        underTargetMaker.position = underObj.point + (Vector3.up * 0.01f);
+        underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
     }
 
     protected virtual void EndOperation()
@@ -94,8 +88,9 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
 
-        particle.gameObject.SetActive(false);
-        underTargetMaker.gameObject.SetActive(false);
+        Disable();
+
+        underTargetMaker.HideMaker();
     }
     
     HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)
@@ -119,110 +114,16 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         return BaseObjInputHandler.HitObjType.OtherObj;
     }
-
-    //protected virtual void EndOperation()
-    //{
-    //    particle.gameObject.SetActive(false);
-    //    underTargetMaker.gameObject.SetActive(false);
-
-    //    ////地面に落とす必要があるか？
-    //    //if (!targetMovableObject.IsGrounding) return;
-
-    //    //HoloGroundingObject groundingObj = (HoloGroundingObject)targetMovableObject;
-
-    //    //直下を調べる
-    //    ray.direction = Vector3.down;
-    //    ray.origin = groundingObj.transform.position;
-    //    float radius = groundingObj.SphereCastRadius;
-
-    //    RaycastHit[] hits = Physics.SphereCastAll(ray, radius, 3.0f, ~ignoreLayerMask);
-    //    HoloMovableObject hitActor;
-    //    int hitObjectNum = hits.Length;
-
-    //    //下にHoloObjectが有った時の処理
-    //    for (int i = 0; i < hits.Length; i++)
-    //    {
-    //        Debug.Log("hit " + hits[i].transform.name);
-    //        if (hits[i].transform.tag != "Actor") continue;
-    //        //こちらでオーバライドしたEqualsを呼び出している(アイテムを持っている時の対応)
-    //        if (targetMovableObject.Equals(hits[i].transform.gameObject)) continue;
-    //        //下にHoloObjectがあった
-    //        hitActor = hits[i].transform.GetComponent<HoloMovableObject>();
-
-    //        if (hitActor == null) return;
-
-    //        //todo:そのキャラがそのアイテムを持つことが出来るのかどうかの判定をする
-    //        if (hitActor.GetActorType == HoloObject.Type.Character && isHoldItem)
-    //        {
-    //            Debug.Log("call set item");
-    //            isHoldItem = false;
-    //            AkSoundEngine.PostEvent("Equip", gameObject);
-    //            //hitActor.SetItem(targetMovableObject.gameObject);
-    //            //バウンディングボックスは消す
-    //            Disable(false);
-    //        }
-
-    //        return;
-    //    }
-
-    //    //下に何もHoloObjectがなかった時の処理
-
-    //    for (int i = 0; i < hits.Length; i++)
-    //    {
-    //        if (targetMovableObject.Equals(hits[i].transform.gameObject))
-    //        {
-    //            //自身以外の数が知りたいので減らす
-    //            hitObjectNum--;
-    //            continue;
-    //        }
-    //    }
-
-    //    //ページの外に置いた
-    //    if (hitObjectNum == 0)
-    //    {
-    //        if (targetMovableObject.isBring) actorManager.SetGlobal(targetMovableObject);
-    //        //IsBringがtrueじゃない場合でもページ外に留まるという挙動をする
-    //        Debug.Log(targetMovableObject.name + "is out book");
-    //        return;
-    //    }
-
-    //    //下にHoloObject以外がある(ページ内に配置された)
-    //    Debug.Log(targetMovableObject + " is put page");
-
-    //    //キャラクターからアイテムを外した可能性がある
-    //    if (isHoldItem)
-    //    {
-    //        HoloItem item = (HoloItem)targetMovableObject;
-
-    //        //誰かに所有されていたら
-    //        if (item.owner != null)
-    //        {
-    //            //todo:ここで所有権を破棄するのではなく、
-    //            Debug.Log("call dump item");
-    //            item.owner.DumpItem(item.currentHand, false);
-    //        }
-    //    }
-
-    //    //グローバルに登録されていたら削除する。
-    //    actorManager.RemoveGlobal(targetMovableObject.name);
-
-    //    //設定を戻す
-    //    isHoldItem = false;
-    //    //バウンディングボックスは消す
-    //    Disable();
-    //    //床に落とす
-    //    targetMovableObject.Fall();
-    //}
-
+    
     /// <summary>
     /// 渡されたオブジェクトに合わせてバウンディングボックスを表示し、操作できるようにする
     /// </summary>
     /// <param name="obj"></param>
-    public override void SetTargetObject(GameObject obj)
+    public override void SetTargetObject(HoloObject obj)
     {
-        base.SetTargetObject(obj);
+        SetTargetObject(obj.gameObject);
 
-        targetMovableObject = obj.GetComponent<HoloObject>();
+        targetMovableObject = obj;
     }
 
     /// <summary>

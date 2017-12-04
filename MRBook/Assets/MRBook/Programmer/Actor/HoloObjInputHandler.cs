@@ -88,7 +88,7 @@ public class HoloObjInputHandler : BaseObjInputHandler
 
     public override void OnClick()
     {
-        MyObjControllerByBoundingBox.I.SetTargetObject(owner.gameObject);
+        MyObjControllerByBoundingBox.I.SetTargetObject(owner);
     }
 }
 

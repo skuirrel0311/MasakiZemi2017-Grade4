@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using KKUtilities;
     
@@ -32,6 +31,7 @@ public class ActorManager : Singleton<ActorManager>
 
     //動かせるオブジェクトの上に表示する三角のやつ
     public GameObject trianglePrefab = null;
+    public HandIconController handIconControllerPrefab = null;
 
     //ページの外に置かれたオブジェクト
     Dictionary<string, HoloObject> globalObjectDictionary = new Dictionary<string, HoloObject>();
@@ -43,6 +43,7 @@ public class ActorManager : Singleton<ActorManager>
         this.sceneManager.OnPageChanged += OnPageChanged;
 
         trianglePrefab = MyAssetStore.I.GetAsset<GameObject>("triangle", "Prefabs/");
+        handIconControllerPrefab = MyAssetStore.I.GetAsset<GameObject>("HandIconController", "Prefabs/").GetComponent<HandIconController>();
     }
 
     /// <summary>

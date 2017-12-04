@@ -178,20 +178,21 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
     Vector3 defaultPosition;
     Quaternion defaultRotation;
     Transform ownerTransform;
+    Transform defaultParent;
 
     public LocationResetBehaviour(HoloObject owner)
         : base(owner)
     {
         ownerTransform = owner.transform;
+        defaultParent = ownerTransform.parent;
         defaultPosition = ownerTransform.localPosition;
         defaultRotation = ownerTransform.localRotation;
-
-        Debug.Log("defaultPosition = " + defaultPosition);
     }
 
     public override void OnDisable() { }
     public override void OnLocationReset()
     {
+        owner.transform.parent = defaultParent;
         ownerTransform.localPosition = defaultPosition;
         ownerTransform.localRotation = defaultRotation;
     }

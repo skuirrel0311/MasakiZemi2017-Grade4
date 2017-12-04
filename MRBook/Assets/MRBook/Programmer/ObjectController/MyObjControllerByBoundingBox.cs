@@ -83,7 +83,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         }
     }
 
-    public virtual void SetTargetObject(GameObject obj)
+    public void SetTargetObject(GameObject obj)
     {
         if (OnTargetChanged != null) OnTargetChanged(targetObject, obj);
         
@@ -123,6 +123,10 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
 
         oldParent = obj.transform.parent;
         obj.transform.parent = transform;
+    }
+    public virtual void SetTargetObject(HoloObject obj)
+    {
+        SetTargetObject(obj.gameObject);
     }
 
     protected override void StartDragging()

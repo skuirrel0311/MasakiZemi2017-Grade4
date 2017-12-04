@@ -25,6 +25,8 @@ public class CharacterItemSaucer : BaseItemSaucer
 {
     HoloCharacter ownerCharacter;
 
+    HandIconController handIconController;
+
     //アルコールを摂取したか？
     public bool IsGetAlcohol { get; private set; }
     const string AlcoholItemName = "Sakabin";
@@ -47,11 +49,11 @@ public class CharacterItemSaucer : BaseItemSaucer
     ItemTransformDataList itemList;
     ItemTransformData itemData;
     Transform hand;
-
-
+    
     public override void Init(HoloObject owner)
     {
         ownerCharacter = (HoloCharacter)owner;
+        Instantiate(handIconController, owner.transform);
     }
 
     /// <summary>

@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4765132290468448}
-  - component: {fileID: 114446255541586944}
+  - component: {fileID: 114856032950845494}
   m_Layer: 0
   m_Name: NotificationManager
   m_TagString: Untagged
@@ -722,20 +722,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
---- !u!114 &114446255541586944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1029098976645904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36724624a6ea98f428e12126f0ef0257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  textMesh: {fileID: 102554833763063678}
-  normalWindow: {fileID: 114974164060118072}
 --- !u!114 &114458713332116828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -789,11 +775,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  autoHide: 0
+  clickedState: 0
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   text: {fileID: 0}
-  isChangeColor: 0
 --- !u!114 &114655422174869870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -806,6 +791,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+--- !u!114 &114856032950845494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029098976645904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096f19ab700da6c469216a7c7329214b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  textMesh: {fileID: 102554833763063678}
+  normalWindow: {fileID: 114974164060118072}
+  isActive: 1
 --- !u!114 &114974164060118072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,7 +864,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212125912610231304
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -906,7 +905,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212456919421794740
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -948,7 +946,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212596513565785550
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -990,4 +987,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
