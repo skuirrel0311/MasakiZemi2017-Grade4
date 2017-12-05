@@ -62,7 +62,11 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         MainSceneManager sceneManager = MainSceneManager.I;
         maxDistance = targetMovableObject.transform.position.y - sceneManager.pages[sceneManager.currentPageIndex].transform.position.y + 0.5f;
-        
+        if(targetMovableObject.GetActorType == HoloObject.Type.Item)
+        {
+            isHoldItem = true;
+            if(OnItemDragStart != null) OnItemDragStart.Invoke();
+        }
         targetMovableObject.InputHandler.OnDragStart();
     }
 
@@ -91,6 +95,12 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         Disable();
 
         underTargetMaker.HideMaker();
+        
+        if(isHoldItem)
+        {
+            isHoldItem = false;
+            if(OnItemDragEnd != null) OnItemDragEnd.Invoke();
+        }
     }
     
     HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)

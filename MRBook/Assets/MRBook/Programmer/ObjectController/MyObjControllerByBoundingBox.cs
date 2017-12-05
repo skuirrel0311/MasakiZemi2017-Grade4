@@ -16,6 +16,8 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
     protected LayerMask layerMask = 1 << 8;
 
     public Action<GameObject, GameObject> OnTargetChanged;
+    public Action OnItemDragStart;
+    public Action OnItemDragEnd;
 
     /* シングルトン */ 
     static MyObjControllerByBoundingBox instance;

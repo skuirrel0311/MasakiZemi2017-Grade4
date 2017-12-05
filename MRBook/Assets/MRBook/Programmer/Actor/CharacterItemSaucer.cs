@@ -25,7 +25,7 @@ public class CharacterItemSaucer : BaseItemSaucer
 {
     HoloCharacter ownerCharacter;
 
-    HandIconController handIconController;
+    HandIconController handIconController = null;
 
     //アルコールを摂取したか？
     public bool IsGetAlcohol { get; private set; }
@@ -53,7 +53,18 @@ public class CharacterItemSaucer : BaseItemSaucer
     public override void Init(HoloObject owner)
     {
         ownerCharacter = (HoloCharacter)owner;
-        Instantiate(handIconController, owner.transform);
+
+        if (handIconController != null) return;
+        handIconController = ActorManager.I.handIconControllerPrefab;
+        handIconController = Instantiate(handIconController, owner.transform);
+
+        Vector3 iconPosition = handIconController.transform.position;
+        iconPosition.y += 1.2f * owner.transform.lossyScale.y;
+        handIconController.transform.position = iconPosition;
+        float scale = 1.0f /  handIconController.transform.lossyScale.x;
+        handIconController.transform.localScale = Vector3.one * scale;
+
+        handIconController.Init(this);
     }
 
     /// <summary>
@@ -106,6 +117,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         }
 
         //モーションを変える
+        handIconController.Hide();
         AkSoundEngine.PostEvent("Equid", gameObject);
         if(showParticle)  ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
