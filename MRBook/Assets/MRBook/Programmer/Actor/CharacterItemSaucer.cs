@@ -7,6 +7,8 @@ public class BaseItemSaucer : MonoBehaviour
 {
     protected HoloObject owner = null;
 
+    public bool IsVisuable { get; protected set; }
+
     public virtual void Init(HoloObject owner)
     {
         this.owner = owner;
@@ -14,11 +16,17 @@ public class BaseItemSaucer : MonoBehaviour
 
     public virtual void SetItem(HoloItem item, bool showParticle = true) { }
     public virtual bool CheckCanHaveItem(HoloItem item) { return false; }
+    /// <summary>
+    /// 持っている全てのアイテムを捨てる
+    /// </summary>
+    public virtual void DumpItem() { }
+    //指定されたアイテムを捨てる
+    public virtual void DumpItem(HoloItem item) { }
 
-    public virtual bool Equals(GameObject other)
-    {
-        return false;
-    }
+    public virtual bool Equals(GameObject other) { return false; }
+
+    public virtual void Show() { }
+    public virtual void Close() { }
 }
 
 public class CharacterItemSaucer : BaseItemSaucer
@@ -128,40 +136,50 @@ public class CharacterItemSaucer : BaseItemSaucer
     /// </summary>
     /// <param name="hand"></param>
     /// <param name="setDefaultTransform">捨てたアイテムを元の位置に戻すか？</param>
-    public void DumpItem(HoloItem.Hand hand, bool setDefaultTransform = true)
+    void DumpItem(HoloItem.Hand hand)
     {
         if (hand == HoloItem.Hand.Both)
         {
-            DumpItem(HoloItem.Hand.Left, setDefaultTransform);
-            DumpItem(HoloItem.Hand.Right, setDefaultTransform);
+            DumpItem(HoloItem.Hand.Left);
+            DumpItem(HoloItem.Hand.Right);
             return;
         }
 
         HoloItem oldItem;
         if (hand == HoloItem.Hand.Right)
         {
-            oldItem = rightHand.GetComponentInChildren<HoloItem>();
+            oldItem = RightHandItem;
             RightHandItem = null;
         }
         else
         {
-            oldItem = leftHand.GetComponentInChildren<HoloItem>();
+            oldItem = LeftHandItem;
             LeftHandItem = null;
         }
 
         if (oldItem == null) return;
 
+        //ドロップする
+        ItemDropper.I.Drop(oldItem.owner, oldItem);
         oldItem.owner = null;
-        //todo:parentをnullにするのはダメ
-        oldItem.transform.parent = null;
-        //todo:ResetManagerに単体でリセットする機能を実装する
-        //if (setDefault) oldItem.ResetTransform();
-        //else //todo:ドロップする
 
-        //if (oldItem.name == AlcoholItemName)
-        //{
-        //    IsGetAlcohol = false;
-        //}
+        if (oldItem.name == AlcoholItemName)
+        {
+            IsGetAlcohol = false;
+        }
+    }
+    
+    public override void DumpItem()
+    {
+        //両手に持っているアイテムを捨てる
+        DumpItem(HoloItem.Hand.Both);
+    }
+
+    public override void DumpItem(HoloItem item)
+    {
+        DumpItem(item.ForHand);
+
+        Show();
     }
 
     ItemTransformData GetItemTransformDate(string name, ItemTransformDataList list)
@@ -207,6 +225,18 @@ public class CharacterItemSaucer : BaseItemSaucer
             default:
                 return null;
         }
+    }
+
+    public override void Show()
+    {
+        IsVisuable = true;
+        handIconController.Show();
+    }
+
+    public override void Close()
+    {
+        IsVisuable = false;
+        handIconController.Hide();
     }
 
     public override bool Equals(GameObject other)

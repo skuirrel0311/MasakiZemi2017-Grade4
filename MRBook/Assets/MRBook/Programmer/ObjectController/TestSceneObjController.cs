@@ -79,7 +79,7 @@ public class TestSceneObjController : MainSceneObjController
             HoloObject hitObj;
             canDragging = TryGetGameObject(out hitObj);
             if (!canDragging) return;
-            SetTargetObject(hitObj);
+            canDragging = hitObj.InputHandler.OnClick();
         }
         else
         {

@@ -138,7 +138,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         base.StartDragging();
     }
 
-    public void Disable(bool setParent = true)
+    public virtual void Disable(bool setParent = true)
     {
         if (m_renderers == null) return;
         if (targetObject != null && setParent)

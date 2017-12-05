@@ -62,20 +62,7 @@ public class HoloButton : MyInputHandler
         }
 
         Debug.Log("on click");
-        onClick.Invoke();
-
-        switch(clickedState)
-        {
-            case RefreshState.Refresh:
-                Refresh();
-                break;
-            case RefreshState.Disable:
-                Disable();
-                break;
-            case RefreshState.Hide:
-                Hide();
-                break;
-        }
+        Push();
     }
     
     void ChangeButtonColor(Color targetColor, float duration = 0.1f)
@@ -104,6 +91,11 @@ public class HoloButton : MyInputHandler
 
     }
 
+    public void AddListener(UnityAction action)
+    {
+        onClick.AddListener(action);
+    }
+
     public void Refresh()
     {
         if(text != null) text.gameObject.SetActive(true);
@@ -123,5 +115,23 @@ public class HoloButton : MyInputHandler
         m_collider.enabled = false;
         if(text != null) text.gameObject.SetActive(false);
         ChangeButtonColor(clearColor);
+    }
+
+    public void Push()
+    {
+        onClick.Invoke();
+
+        switch (clickedState)
+        {
+            case RefreshState.Refresh:
+                Refresh();
+                break;
+            case RefreshState.Disable:
+                Disable();
+                break;
+            case RefreshState.Hide:
+                Hide();
+                break;
+        }
     }
 }

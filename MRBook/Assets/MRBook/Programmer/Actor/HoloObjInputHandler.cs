@@ -25,7 +25,15 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
         SetSphreCastRadius();
     }
     
-    public virtual void OnClick() { }
+    /// <summary>
+    /// 最初にクリックされた時（バウンディングボックス表示される）
+    /// </summary>
+    public virtual bool OnClick() { return false; }
+    /// <summary>
+    /// バウンディングボックスが消えたとき
+    /// </summary>
+    public virtual void OnDisabled() { }
+
     public virtual void OnDragStart()
     {
         if (OnStart != null) OnStart.Invoke();
@@ -63,32 +71,23 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 
 public class HoloObjInputHandler : BaseObjInputHandler
 {
-    [SerializeField]
-    bool isFloating = false;
-
-    public override void Init(HoloObject owner)
+    public override bool OnClick()
     {
-        if (isFloating) AddBehaviour(new FloatingObjDragEndBehaviour(owner));
-        else AddBehaviour(new GroundingObjDragEndBehaviour(owner));
-        base.Init(owner);
+        Debug.Log("on click");
+        if (owner.ItemSaucer == null) return false;
+
+        if (!owner.ItemSaucer.IsVisuable)
+            owner.ItemSaucer.Show();
+        else
+            owner.ItemSaucer.Close();
+        return false;
     }
 
-    protected override void SetSphreCastRadius()
+    public override void OnDisabled()
     {
-        if(!isFloating)
-        {
-            //NavMeshAgentでRadiusを決める
-            NavMeshAgent agent = owner.GetComponent<NavMeshAgent>();
-            SphereCastRadius = agent.radius * owner.transform.lossyScale.x;
-            return;
-        }
+        if (owner.ItemSaucer == null) return;
 
-        base.SetSphreCastRadius();
-    }
-
-    public override void OnClick()
-    {
-        MyObjControllerByBoundingBox.I.SetTargetObject(owner);
+        owner.ItemSaucer.Close();
     }
 }
 

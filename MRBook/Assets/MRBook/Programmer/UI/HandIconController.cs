@@ -17,6 +17,20 @@ public class HandIconController : MonoBehaviour
         this.itemSaucer = itemSaucer;
         MyObjControllerByBoundingBox.I.OnItemDragStart += Show;
         MyObjControllerByBoundingBox.I.OnItemDragEnd += Hide;
+        rightButton.AddListener(() => itemSaucer.DumpItem(itemSaucer.RightHandItem));
+        leftButton.AddListener(() => itemSaucer.DumpItem(itemSaucer.LeftHandItem));
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            leftButton.Push();
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            rightButton.Push();
+        }
     }
 
     public void Show()

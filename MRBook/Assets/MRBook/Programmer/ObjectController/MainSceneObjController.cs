@@ -79,7 +79,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
-        //Debug.Log("makerType = " + makerType.ToString());
+        Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
     }
 
@@ -89,10 +89,13 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         bool isHitObject = TryGetUnderObject(out underObj);
         HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
         BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
+        BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
         targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
-
-        Disable();
+        if (makerType != BaseObjInputHandler.MakerType.PresentItem)
+            Disable();
+        else
+            Disable(false);
 
         underTargetMaker.HideMaker();
         
@@ -167,5 +170,14 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         }
 
         return isHit;
+    }
+
+    public override void Disable(bool setParent = true)
+    {
+        if(targetMovableObject != null && targetMovableObject.ItemSaucer != null)
+        {
+            targetMovableObject.ItemSaucer.Close();
+        }
+        base.Disable(setParent);
     }
 }

@@ -9,16 +9,18 @@ public class HoloItem : HoloObject
 
     public override Type GetActorType { get { return Type.Item; } }
     protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
-
+    
+    [SerializeField]
+    Hand forHand = Hand.Right;
     /// <summary>
     /// どちらの手で持つアイテムなのか？
     /// </summary>
-    [SerializeField]
-    Hand forHand = Hand.Right;
     public Hand ForHand { get { return forHand; } }
 
     [SerializeField]
     HoloObject defaultOwner = null;
+
+    public Transform defaultParent { get; private set; }
 
     //アイテムの所持者
     [System.NonSerialized]
@@ -32,6 +34,7 @@ public class HoloItem : HoloObject
     protected void Awake()
     {
         defaultLayer = gameObject.layer;
+        defaultParent = transform.parent;
     }
 
     void Start()

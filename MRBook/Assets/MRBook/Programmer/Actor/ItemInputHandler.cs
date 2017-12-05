@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInputHandler : HoloObjInputHandler
+public class ItemInputHandler : HoloMovableObjInputHander
 {
     HoloItem ownerItem;
 
@@ -12,11 +12,12 @@ public class ItemInputHandler : HoloObjInputHandler
         base.Init(owner);
     }
 
-    public override void OnClick()
+    public override bool OnClick()
     {
         //アイテムの説明を表示
         SetItemTextEnable(true);
         base.OnClick();
+        return true;
     }
 
     public override void OnDragStart()

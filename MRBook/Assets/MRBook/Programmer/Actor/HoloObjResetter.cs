@@ -214,7 +214,8 @@ public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
     public override void OnDisable()
     {
         //アイテムを捨てさせる
-
+        if (ownerItem.owner == null) return;
+        ownerItem.owner.ItemSaucer.DumpItem(ownerItem);
     }
     public override void OnLocationReset() { }
     public override void OnEnable()
