@@ -35,8 +35,7 @@ public class UnderTargetMaker : MonoBehaviour
                 circleController.ChangeSprite(CircleController.CircleState.DontPut);
                 break;
             case BaseObjInputHandler.MakerType.PresentItem:
-                circleController.gameObject.SetActive(false);
-                dottedLine.gameObject.SetActive(true);
+                HideMaker();
                 break;
             case BaseObjInputHandler.MakerType.Normal:
                 circleController.ChangeSprite(CircleController.CircleState.Normal);

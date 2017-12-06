@@ -48,6 +48,7 @@ public class CircleController : MonoBehaviour
 
     public void ChangeSprite(CircleState state)
     {
+        if (state == currentState) return;
         currentState = state;
 
         spriteRenderer.sprite = sprites[(int)currentState];

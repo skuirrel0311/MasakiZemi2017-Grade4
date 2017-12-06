@@ -96,6 +96,11 @@ public class HoloButton : MyInputHandler
         onClick.AddListener(action);
     }
 
+    public void RemoveAllListener()
+    {
+        onClick.RemoveAllListeners();
+    }
+
     public void Refresh()
     {
         if(text != null) text.gameObject.SetActive(true);
@@ -119,7 +124,7 @@ public class HoloButton : MyInputHandler
 
     public void Push()
     {
-        onClick.Invoke();
+        if(onClick != null) onClick.Invoke();
 
         switch (clickedState)
         {

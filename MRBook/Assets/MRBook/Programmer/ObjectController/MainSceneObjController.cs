@@ -23,6 +23,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     float maxDistance;
 
+    BaseObjInputHandler.MakerType oldMakerType;
+
     protected override void Start()
     {
         base.Start();
@@ -68,6 +70,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             if(OnItemDragStart != null) OnItemDragStart.Invoke();
         }
         targetMovableObject.InputHandler.OnDragStart();
+        oldMakerType = BaseObjInputHandler.MakerType.None;
     }
 
     protected virtual void UpdateOperation()
@@ -79,8 +82,21 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
-        Debug.Log("makerType = " + makerType.ToString());
+        //Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
+
+        if(makerType == BaseObjInputHandler.MakerType.PresentItem && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
+        {
+            HandIconController.I.Init((CharacterItemSaucer)hitObj.ItemSaucer);
+            HandIconController.I.Show();
+        }
+
+        if(oldMakerType == BaseObjInputHandler.MakerType.PresentItem && makerType != BaseObjInputHandler.MakerType.PresentItem)
+        {
+            HandIconController.I.Hide();
+        }
+
+        oldMakerType = makerType;
     }
 
     protected virtual void EndOperation()
@@ -92,6 +108,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
         targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
+
+        //アイテムを持たせたのに親を変更してしまうとまずいので省く
         if (makerType != BaseObjInputHandler.MakerType.PresentItem)
             Disable();
         else
@@ -176,7 +194,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         if(targetMovableObject != null && targetMovableObject.ItemSaucer != null)
         {
-            targetMovableObject.ItemSaucer.Close();
+            //targetMovableObject.ItemSaucer.Close();
         }
         base.Disable(setParent);
     }

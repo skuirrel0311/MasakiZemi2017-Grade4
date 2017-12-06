@@ -6,8 +6,7 @@
 public class BaseItemSaucer : MonoBehaviour
 {
     protected HoloObject owner = null;
-
-    public bool IsVisuable { get; protected set; }
+    public HoloObject Owner { get { return owner; } }
 
     public virtual void Init(HoloObject owner)
     {
@@ -24,16 +23,11 @@ public class BaseItemSaucer : MonoBehaviour
     public virtual void DumpItem(HoloItem item) { }
 
     public virtual bool Equals(GameObject other) { return false; }
-
-    public virtual void Show() { }
-    public virtual void Close() { }
 }
 
 public class CharacterItemSaucer : BaseItemSaucer
 {
     HoloCharacter ownerCharacter;
-
-    HandIconController handIconController = null;
 
     //アルコールを摂取したか？
     public bool IsGetAlcohol { get; private set; }
@@ -61,18 +55,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     public override void Init(HoloObject owner)
     {
         ownerCharacter = (HoloCharacter)owner;
-
-        if (handIconController != null) return;
-        handIconController = ActorManager.I.handIconControllerPrefab;
-        handIconController = Instantiate(handIconController, owner.transform);
-
-        Vector3 iconPosition = handIconController.transform.position;
-        iconPosition.y += 1.2f * owner.transform.lossyScale.y;
-        handIconController.transform.position = iconPosition;
-        float scale = 1.0f /  handIconController.transform.lossyScale.x;
-        handIconController.transform.localScale = Vector3.one * scale;
-
-        handIconController.Init(this);
+        base.Init(owner);
     }
 
     /// <summary>
@@ -125,7 +108,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         }
 
         //モーションを変える
-        handIconController.Hide();
+        HandIconController.I.Hide();
         AkSoundEngine.PostEvent("Equid", gameObject);
         if(showParticle)  ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
@@ -162,6 +145,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         //ドロップする
         ItemDropper.I.Drop(oldItem.owner, oldItem);
         oldItem.owner = null;
+        HandIconController.I.Hide();
 
         if (oldItem.name == AlcoholItemName)
         {
@@ -177,9 +161,8 @@ public class CharacterItemSaucer : BaseItemSaucer
 
     public override void DumpItem(HoloItem item)
     {
+        if (item == null) return;
         DumpItem(item.ForHand);
-
-        Show();
     }
 
     ItemTransformData GetItemTransformDate(string name, ItemTransformDataList list)
@@ -215,7 +198,6 @@ public class CharacterItemSaucer : BaseItemSaucer
                 if (HasItem_Left && HasItem_Right)
                 {
                     //どちらの手にもアイテムを持っている
-                    //todo:UIでどちらの手に持っているアイテムを捨てるか表示
                     //とりあえず右のアイテムを捨てる
                     DumpItem(HoloItem.Hand.Right);
                     return rightHandItemDataList;
@@ -225,18 +207,6 @@ public class CharacterItemSaucer : BaseItemSaucer
             default:
                 return null;
         }
-    }
-
-    public override void Show()
-    {
-        IsVisuable = true;
-        handIconController.Show();
-    }
-
-    public override void Close()
-    {
-        IsVisuable = false;
-        handIconController.Hide();
     }
 
     public override bool Equals(GameObject other)

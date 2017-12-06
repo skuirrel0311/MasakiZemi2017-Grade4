@@ -57,8 +57,8 @@ public class ItemDropper : BaseManager<ItemDropper>
 
     bool IsCalmVelocity(Vector3 vec)
     {
-        float border = 0.01f;
-        if (vec.x > border || vec.y > border || vec.z > border) return false;
+        float border = 0.001f;
+        if (vec.magnitude > border) return false;
 
         return true;
     }

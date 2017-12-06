@@ -28,7 +28,7 @@ public class TestSceneObjController : MainSceneObjController
 
     protected override void Update()
     {
-        const float minDragTime = 0.1f;
+        const float minDragTime = 0.2f;
 
         //右クリック
         if (Input.GetMouseButtonDown(0))

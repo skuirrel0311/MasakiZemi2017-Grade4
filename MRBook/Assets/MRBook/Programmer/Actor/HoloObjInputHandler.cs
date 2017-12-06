@@ -73,21 +73,21 @@ public class HoloObjInputHandler : BaseObjInputHandler
 {
     public override bool OnClick()
     {
-        Debug.Log("on click");
+        HandIconController handIconController = HandIconController.I;
+
         if (owner.ItemSaucer == null) return false;
+        if (owner.GetActorType != HoloObject.Type.Character) return false;
 
-        if (!owner.ItemSaucer.IsVisuable)
-            owner.ItemSaucer.Show();
+        if (!handIconController.IsVisuable)
+        {
+            handIconController.Init((CharacterItemSaucer)owner.ItemSaucer);
+            handIconController.Show();
+        }
         else
-            owner.ItemSaucer.Close();
+        {
+            handIconController.Hide();
+        }
         return false;
-    }
-
-    public override void OnDisabled()
-    {
-        if (owner.ItemSaucer == null) return;
-
-        owner.ItemSaucer.Close();
     }
 }
 

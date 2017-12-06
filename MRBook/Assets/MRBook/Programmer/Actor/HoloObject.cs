@@ -63,6 +63,7 @@ public class HoloObject : MonoBehaviour
 
         if(canHaveItem)
         {
+            Debug.Log("getcomponent in init");
             ItemSaucer = GetComponent<BaseItemSaucer>();
         }
 
