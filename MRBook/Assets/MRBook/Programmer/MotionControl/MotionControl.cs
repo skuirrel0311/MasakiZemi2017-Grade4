@@ -22,7 +22,8 @@ public enum MotionName
     OpenDoorFailure,//ドア開け失敗
     FishingThrow,   //釣り始め
     FishingLoop,    //釣りループ
-    FishingDead     //釣りして引きずり込まれて死亡
+    FishingDead,    //釣りして引きずり込まれて死亡
+    Abuse       //いじめられる
 
 }
 
