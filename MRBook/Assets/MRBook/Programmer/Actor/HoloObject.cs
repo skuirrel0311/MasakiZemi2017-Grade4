@@ -61,13 +61,17 @@ public class HoloObject : MonoBehaviour
             InputHandler = GetComponent<BaseObjInputHandler>();
         }
 
+        if (InputHandler != null) InputHandler.Init(this);
+
+        InitItemSaucer();
+    }
+
+    public void InitItemSaucer()
+    {
         if(canHaveItem)
         {
-            Debug.Log("getcomponent in init");
             ItemSaucer = GetComponent<BaseItemSaucer>();
         }
-
-        if (InputHandler != null) InputHandler.Init(this);
         if (ItemSaucer != null) ItemSaucer.Init(this);
     }
 

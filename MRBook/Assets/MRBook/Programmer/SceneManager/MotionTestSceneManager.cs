@@ -31,9 +31,13 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 
     Dictionary<string, HoloCharacter> actorDictionary = new Dictionary<string, HoloCharacter>();
 
+    HoloObjResetManager resetManager;
+
     protected override void Start()
     {
         base.Start();
+
+        resetManager = new HoloObjResetManager(this);
 
         targetObj = GameObject.FindGameObjectWithTag("Target");
 
@@ -41,12 +45,21 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
 
         for (int i = 0; i < tempArray.Length; i++)
         {
-            HoloObject obj = tempArray[i].GetComponent<HoloObject>();
-
-            if (obj.GetActorType == HoloObject.Type.Character) return;
+            HoloObject obj = null;
+            try
+            {
+                obj = tempArray[i].GetComponent<HoloObject>();
+            }
+            catch
+            {
+                Debug.Log(tempArray[i].name + " is not actor");
+            }
+            if (obj == null) continue;
+            if (obj.GetActorType != HoloObject.Type.Character) continue;
 
             HoloCharacter character = (HoloCharacter)obj;
-            character.PageStart(0);
+            character.InitItemSaucer();
+            Debug.Log("add " + character.name);
             actorDictionary.Add(character.name, character);
         }
     }
@@ -62,8 +75,8 @@ public class MotionTestSceneManager : BaseManager<MotionTestSceneManager>
                 currentNameIndex = 0;
             }
 
-            character =GetActor(actorName);
-            string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name,(CharacterItemSaucer)character.ItemSaucer);
+            character = GetActor(actorName);
+            string motionName = MotionNameManager.GetMotionName(elements[currentNameIndex].name, (CharacterItemSaucer)character.ItemSaucer);
             stateText.text = motionName;
             Debug.Log("call change Animation " + motionName);
             character.m_animator.CrossFade(motionName, elements[currentNameIndex].transitionTime);
