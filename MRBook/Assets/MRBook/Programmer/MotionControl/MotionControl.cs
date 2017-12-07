@@ -21,26 +21,34 @@ public enum MotionName
     Dead,       //死亡
     OpenDoorFailure,//ドア開け失敗
     FishingThrow,   //釣り始め
-    FishingDead     //釣りして引きずり込まれて死亡
+    FishingLoop,    //釣りループ
+    FishingDead,    //釣りして引きずり込まれて死亡
+    Abuse       //いじめられる
+
 }
 
 public static class MotionNameManager
 {
-    /// <summary>
-    /// 持っているアイテムなどを考慮してモーションの名前を作る(itemSaucerのnullチェックは行わない)
-    /// </summary>
-    public static string GetMotionName(MotionName name, CharacterItemSaucer itemSaucer)
+    public static string GetMotionName(MotionName name, HoloMovableObject actor)
     {
         string motionName = name.ToString();
+        
+        if (actor == null || actor.GetActorType != HoloObject.Type.Character)
+        {
+            Debug.Log(actor.name + "is call animation " + motionName);
+            return motionName;
+        }
 
-        motionName += itemSaucer.HasItem_Right ? "_" + itemSaucer.RightHandItem.name : "";
-        motionName += itemSaucer.HasItem_Left ? "_" + itemSaucer.LeftHandItem.name : "";
+        HoloCharacter character = (HoloCharacter)actor;
 
-        if(itemSaucer.IsGetAlcohol)
+        motionName += character.hasItem_Right ? "_" + character.rightHandItem.name : "";
+        motionName += character.hasItem_Left ? "_" + character.leftHandItem.name : "";
+
+        if(character.IsGetAlcohol)
         {
             motionName = "GetDrunk_" + motionName;
         }
-        Debug.Log(itemSaucer.name + " is call animation " + motionName);
+        Debug.Log(actor.name + "is call animation " + motionName);
 
         return motionName;
     }
