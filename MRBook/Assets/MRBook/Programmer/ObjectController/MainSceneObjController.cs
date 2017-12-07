@@ -189,13 +189,4 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         return isHit;
     }
-
-    public override void Disable(bool setParent = true)
-    {
-        if(targetMovableObject != null && targetMovableObject.ItemSaucer != null)
-        {
-            //targetMovableObject.ItemSaucer.Close();
-        }
-        base.Disable(setParent);
-    }
 }

@@ -16,7 +16,7 @@ public class TestSceneObjController : MainSceneObjController
     [SerializeField]
     float moveSpeed = 4.0f;
 
-    float draggingTime = 0.0f;
+    float m_draggingTime = 0.0f;
 
     //ベースを呼ばないために宣言する
     protected override void Start()
@@ -33,7 +33,7 @@ public class TestSceneObjController : MainSceneObjController
         //右クリック
         if (Input.GetMouseButtonDown(0))
         {
-            draggingTime = 0.0f;
+            m_draggingTime = 0.0f;
         }
 
         //右クリック長押し
@@ -41,9 +41,9 @@ public class TestSceneObjController : MainSceneObjController
         {
             if (!isDragging)
             {
-                draggingTime += Time.deltaTime;
+                m_draggingTime += Time.deltaTime;
 
-                if (draggingTime > minDragTime)
+                if (m_draggingTime > minDragTime)
                 {
                     isDragging = true;
                     if(canDragging) StartOperation();

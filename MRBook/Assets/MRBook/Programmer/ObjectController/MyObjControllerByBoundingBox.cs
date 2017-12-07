@@ -19,7 +19,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
     public Action OnItemDragStart;
     public Action OnItemDragEnd;
 
-    /* シングルトン */ 
+    #region シングルトン
     static MyObjControllerByBoundingBox instance;
     public static MyObjControllerByBoundingBox I
     {
@@ -62,8 +62,8 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         SceneManager.sceneLoaded -= WasLoaded;
         I = null;
     }
-
-    /* メソッド */
+    #endregion
+    
     protected override void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();

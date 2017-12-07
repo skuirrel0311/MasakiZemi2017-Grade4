@@ -29,7 +29,7 @@ public class ItemDropper : BaseManager<ItemDropper>
 
         Vector3 burstVec = item.transform.position - owner.transform.position;
 
-        burstVec.y = 0.5f;
+        burstVec.y = 0.1f;
 
         m_body.AddForce(burstVec.normalized * burstPower, ForceMode.VelocityChange);
 
@@ -46,6 +46,8 @@ public class ItemDropper : BaseManager<ItemDropper>
     IEnumerator MonitorVelocity()
     {
         yield return null;
+        yield return null;
+
         while(true)
         {
             //Debug.Log("vec = ( " + m_body.velocity.x + " , " + m_body.velocity.y + " , " + m_body.velocity.z + " )");
@@ -58,9 +60,9 @@ public class ItemDropper : BaseManager<ItemDropper>
     bool IsCalmVelocity(Vector3 vec)
     {
         float border = 0.001f;
-        if (vec.magnitude > border) return false;
-
-        return true;
+        float length = vec.magnitude;
+        Debug.Log("length = " + length);
+        return length < border;
     }
 
     void SetActive(bool active)

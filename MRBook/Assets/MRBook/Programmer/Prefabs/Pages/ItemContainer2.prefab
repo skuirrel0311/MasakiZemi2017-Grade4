@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 23528990542932892}
   - component: {fileID: 65848859371121572}
   - component: {fileID: 114108289973071790}
-  - component: {fileID: 114720865268984120}
+  - component: {fileID: 114217249714658128}
   m_Layer: 8
   m_Name: yane
   m_TagString: Actor
@@ -1504,7 +1504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMovable: 0
+  isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
 --- !u!114 &114109074109240330
@@ -1523,6 +1523,18 @@ MonoBehaviour:
   inPlayLayer: 4
   forHand: 1
   defaultOwner: {fileID: 0}
+--- !u!114 &114217249714658128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895951572877526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b92e5b05b92e54db13fd098de430ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 1
 --- !u!114 &114221704116459390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1558,7 +1570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFloating: 0
 --- !u!114 &114504054283586146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1572,18 +1583,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: {fileID: 1892189164417932}
   replacementObject: {fileID: 1623831174970578}
---- !u!114 &114720865268984120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895951572877526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFloating: 1
 --- !u!114 &114758085143627444
 MonoBehaviour:
   m_ObjectHideFlags: 1

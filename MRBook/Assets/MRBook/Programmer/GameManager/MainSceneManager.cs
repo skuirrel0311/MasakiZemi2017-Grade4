@@ -149,11 +149,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         else
         {
             CurrentState = GameState.Wait;
-            MainGameUIController.I.endingManager.Show();
-
-            //todo:ここじゃなくて死んだ瞬間に鳴らす
-            GameObject urashima = ActorManager.I.GetCharacter(ActorName.Urashima).gameObject;
-            AkSoundEngine.PostEvent("Die", urashima);
+            
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
         CurrentState = GameState.Next;
@@ -162,8 +158,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             //Utilities.Delay(0.2f, () => ResetPage(), this);
         }
-
-        m_Animator.SetBool("IsStart", false);
     }
     
     public virtual void GameStart()
@@ -235,7 +229,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public virtual void ResetPage()
     {
         //if (CurrentState != GameState.Wait && CurrentState != GameState.Next) return;
-
+        PageResultManager.I.Hide();
         if (OnReset != null) OnReset.Invoke();
         CurrentState = GameState.Wait;
         AkSoundEngine.PostEvent("Reset", gameObject);
@@ -250,7 +244,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         //前のページは消す
         pages[currentPageIndex].gameObject.SetActive(false);
-
+        PageResultManager.I.Hide();
         //ページを切り替える
         if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex], pages[index]);
         currentPageIndex = index;

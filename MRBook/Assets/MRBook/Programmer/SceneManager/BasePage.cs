@@ -43,12 +43,6 @@ public class BasePage : MonoBehaviour
     public void PageLock(Vector3 position, Quaternion rotation)
     {
         transform.SetPositionAndRotation(position, rotation);
-
-        //動く可能性のあるやつの開始時の位置を保存
-        //for (int i = 0; i < movableObjectList.Count; i++)
-        //{
-        //    movableObjectList[i].ApplyDefaultTransform();
-        //}
     }
 
     public void SetTransform(Transform t)

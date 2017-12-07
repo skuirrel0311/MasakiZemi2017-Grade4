@@ -8,7 +8,11 @@ public class HoloSprite : MonoBehaviour ,IHoloUI
     [SerializeField]
     SpriteRenderer spriteRenderer = null;
 
-
+    public void SetSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+    }
+    
     public Color Color
     {
         get

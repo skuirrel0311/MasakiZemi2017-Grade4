@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using KKUtilities;
 
 /// <summary>
@@ -17,6 +15,9 @@ public class EndingManager : MonoBehaviour
 
     public void Show()
     {
+        text.gameObject.SetActive(true);
+        sprite.gameObject.SetActive(true);
+
         Color tempColor;
         StartCoroutine(Utilities.FloatLerp(0.1f, (t)=>
         {
@@ -38,7 +39,7 @@ public class EndingManager : MonoBehaviour
     public void Hide()
     {
         isFixation = false;
-        text.Color = Color.clear;
-        sprite.Color = Color.clear;
+        text.gameObject.SetActive(false);
+        sprite.gameObject.SetActive(false);
     }
 }

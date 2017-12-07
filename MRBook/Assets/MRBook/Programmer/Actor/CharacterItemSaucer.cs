@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using KKUtilities;
 
 /// <summary>
 /// アイテムの受け皿
@@ -18,9 +19,9 @@ public class BaseItemSaucer : MonoBehaviour
     /// <summary>
     /// 持っている全てのアイテムを捨てる
     /// </summary>
-    public virtual void DumpItem() { }
+    public virtual void DumpItem(bool isDrop = true) { }
     //指定されたアイテムを捨てる
-    public virtual void DumpItem(HoloItem item) { }
+    public virtual void DumpItem(HoloItem item, bool isDrop = true) { }
 
     public virtual bool Equals(GameObject other) { return false; }
 }
@@ -119,7 +120,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     /// </summary>
     /// <param name="hand"></param>
     /// <param name="setDefaultTransform">捨てたアイテムを元の位置に戻すか？</param>
-    void DumpItem(HoloItem.Hand hand)
+    void DumpItem(HoloItem.Hand hand, bool isDrop = true)
     {
         if (hand == HoloItem.Hand.Both)
         {
@@ -143,9 +144,14 @@ public class CharacterItemSaucer : BaseItemSaucer
         if (oldItem == null) return;
 
         //ドロップする
-        ItemDropper.I.Drop(oldItem.owner, oldItem);
+        if(isDrop) ItemDropper.I.Drop(oldItem.owner, oldItem);
         oldItem.owner = null;
-        HandIconController.I.Hide();
+
+        Utilities.Delay(0.11f, () =>
+        {
+            HandIconController.I.Hide();
+        },owner);
+
 
         if (oldItem.name == AlcoholItemName)
         {
@@ -153,16 +159,16 @@ public class CharacterItemSaucer : BaseItemSaucer
         }
     }
     
-    public override void DumpItem()
+    public override void DumpItem(bool isDrop = true)
     {
         //両手に持っているアイテムを捨てる
-        DumpItem(HoloItem.Hand.Both);
+        DumpItem(HoloItem.Hand.Both, isDrop);
     }
 
-    public override void DumpItem(HoloItem item)
+    public override void DumpItem(HoloItem item, bool isDrop = true)
     {
         if (item == null) return;
-        DumpItem(item.ForHand);
+        DumpItem(item.ForHand, isDrop);
     }
 
     ItemTransformData GetItemTransformDate(string name, ItemTransformDataList list)

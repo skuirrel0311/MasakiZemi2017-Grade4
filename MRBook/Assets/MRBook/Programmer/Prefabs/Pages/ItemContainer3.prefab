@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 65952932806120252}
   - component: {fileID: 114728330723842846}
   - component: {fileID: 65584913729491188}
+  - component: {fileID: 114566778000829120}
   m_Layer: 8
   m_Name: Fishingrod
   m_TagString: Actor
@@ -1354,7 +1355,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114044041930845916
 MonoBehaviour:
@@ -1382,7 +1383,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114087331656331136
 MonoBehaviour:
@@ -1398,7 +1399,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114274575540296774
 MonoBehaviour:
@@ -1414,7 +1415,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114494267213884278
 MonoBehaviour:
@@ -1442,8 +1443,20 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
+--- !u!114 &114566778000829120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832506156606884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639eb74310705c5459c5d1666a8164e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!114 &114635963702113372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1470,7 +1483,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114728330723842846
 MonoBehaviour:
@@ -1483,7 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb0358438db1c24386812fa3f2ff0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMovable: 0
+  isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
   forHand: 0
@@ -1526,7 +1539,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
-  forHand: 2
+  forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114988152904395904
 MonoBehaviour:

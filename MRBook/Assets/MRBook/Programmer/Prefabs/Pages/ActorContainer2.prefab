@@ -838,6 +838,7 @@ GameObject:
   - component: {fileID: 114477754031667722}
   - component: {fileID: 65999911279220542}
   - component: {fileID: 114468090093941938}
+  - component: {fileID: 114128506127357384}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -3442,8 +3443,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5c3636cf121074aaf25d1ff6b208f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 114976194466044546}
-  delayTime: 0.3
+--- !u!114 &114128506127357384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444457527636368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114131130282092878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3799,7 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7586135610e2a0e4fbbae292c7d26a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMovable: 0
+  isMovable: 1
   canHaveItem: 1
   inPlayLayer: 8
   defaultMotionName: 11
@@ -3817,8 +3827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5c3636cf121074aaf25d1ff6b208f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 114653398830519938}
-  delayTime: 0.5
 --- !u!114 &114603910547054760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4044,8 +4052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5c3636cf121074aaf25d1ff6b208f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 114436367578964728}
-  delayTime: 0.4
 --- !u!114 &114976194466044546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5870,7 +5876,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 540
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -5891,7 +5897,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 540
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -5912,7 +5918,7 @@ NavMeshAgent:
   m_Speed: 0.1
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 540
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -5933,7 +5939,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 540
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

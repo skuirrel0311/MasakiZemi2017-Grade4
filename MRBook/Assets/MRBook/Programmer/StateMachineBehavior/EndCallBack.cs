@@ -9,6 +9,8 @@ public class EndCallBack : BaseStateMachineBehaviour
     protected override void OnStart()
     {
         base.OnStart();
-        MainSceneManager.I.EndCallBack(success);
+        m_animator.SetBool("IsStart", false);
+        PageResultManager.I.SetResult(success);
+        PageResultManager.I.ShowResult();
     }
 }

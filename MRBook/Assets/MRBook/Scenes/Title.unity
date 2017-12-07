@@ -971,7 +971,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1115237346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Script: {fileID: 11500000, guid: 82b92e5b05b92e54db13fd098de430ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 1
@@ -1248,7 +1248,7 @@ Transform:
   - {fileID: 1319901822}
   - {fileID: 979700804}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1654318509
 MonoBehaviour:
@@ -1278,10 +1278,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  autoHide: 1
+  clickedState: 0
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   text: {fileID: 979700805}
+  spriteRenderer: {fileID: 0}
   targetTransform: {fileID: 666398977}
 --- !u!65 &1654318510
 BoxCollider:
@@ -1388,7 +1389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4487343183876258, guid: cef1a0b2b13418742807855864cf4634, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114734577344368646, guid: cef1a0b2b13418742807855864cf4634,
         type: 2}
@@ -1543,7 +1544,7 @@ Transform:
   m_Children:
   - {fileID: 450367540}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2101031953
 MonoBehaviour:
@@ -1553,7 +1554,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2101031951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
+  m_Script: {fileID: 11500000, guid: 82b92e5b05b92e54db13fd098de430ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 1

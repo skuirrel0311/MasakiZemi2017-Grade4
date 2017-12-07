@@ -39,6 +39,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
             if (IsChangeWorldAnchorPosition())
             {
                 ModifyBookPosition(false);
+                Debug.Log("modify");
             }
             oldWorldAnchorPosition = worldAnchor.transform.position;
         }

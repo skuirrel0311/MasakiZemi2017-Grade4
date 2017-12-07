@@ -11,6 +11,6 @@ public class OverrideEnding : BaseStateMachineBehaviour
     protected override void OnStart()
     {
         base.OnStart();
-        MainGameUIController.I.endingManager.SetEnding(endingName, true);
+        PageResultManager.I.SetDeadText(endingName);
     }
 }
