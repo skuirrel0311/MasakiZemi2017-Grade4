@@ -23,7 +23,26 @@ public enum MotionName
     FishingThrow,   //釣り始め
     FishingLoop,    //釣りループ
     FishingDead,    //釣りして引きずり込まれて死亡
-    Abuse       //いじめられる
+    Abuse,      //いじめられる
+    Stand_Fine, //勢いよく立つ
+    SitPut,     //座ったまま物を置く
+    StandPut,   //立ったまま物を置く
+    Pass,       //アイテム渡す(料理以外)
+    Take,       //アイテム受け取る、拾う
+    nod,        //頷く
+    LookInDead, //のぞき込んで死亡
+    LookAround, //見回す
+    DrinkP3,    //P3で飲む(酒瓶持ち)
+    StandP3,    //P3で酔って立つ(酒瓶持ち)
+    Appreciation,   //鑑賞する
+    Applause,   //拍手
+    Eat_Suffocation,//食べて喉詰まらせて死亡
+    StandSitP3,  //P3で座る(酒瓶持ち)
+    Guide,       //案内する
+    SitSurprised,   //座ったまま驚く(死体発見時)
+    SitDelivery,    //座ったまま料理渡す
+    Surprised       //立ったまま驚く(死体発見時)
+
 }
 
 public static class MotionNameManager
