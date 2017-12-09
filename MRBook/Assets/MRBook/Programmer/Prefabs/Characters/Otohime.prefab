@@ -774,6 +774,7 @@ GameObject:
   - component: {fileID: 195502598902323714}
   - component: {fileID: 65015802829110502}
   - component: {fileID: 114072540986166532}
+  - component: {fileID: 114829324314664714}
   m_Layer: 8
   m_Name: Otohime
   m_TagString: Actor
@@ -1652,12 +1653,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 0
-  isBring: 0
-  isFloating: 0
-  firstAnimationName: Wait
+  canHaveItem: 1
+  inPlayLayer: 4
+  defaultMotionName: 0
+--- !u!114 &114829324314664714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909827179917126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444a7da84c146894b8a2a786895dbacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rightHand: {fileID: 4927372660940910}
   leftHand: {fileID: 4707243684237260}
-  rightHandItemDataList: {fileID: 0}
+  rightHandItemDataList: {fileID: 11400000, guid: c7dadd53dcb3d464f9f9b5c53722513a,
+    type: 2}
   leftHandItemDataList: {fileID: 0}
 --- !u!137 &137000940290663882
 SkinnedMeshRenderer:
