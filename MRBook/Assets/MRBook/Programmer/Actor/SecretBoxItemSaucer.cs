@@ -7,34 +7,29 @@ using UnityEngine;
 /// </summary>
 public class SecretBoxItemSaucer : BaseItemSaucer
 {
-    List<HoloItem> contentItemList = new List<HoloItem>();
+    public override void Init(HoloObject owner)
+    {
+        base.Init(owner);
 
-    //蓋
-    const string LidItemName = "SecretBox_Lid";
+        AddBehaviour(new SecretBoxItemSaucerBehaviour(owner, (HoloItem)owner));
+    }
 
-    //箱の中にものをつめる(開いている必要がある？)
     public override void SetItem(HoloItem item, bool showParticle = true)
     {
-        HandIconController.I.Hide();
-        AkSoundEngine.PostEvent("Equid", gameObject);
-        if (showParticle) ParticleManager.I.Play("Doron", transform.position, Quaternion.identity);
-
-        if (item.name == LidItemName)
-        {
-            //蓋は箱と同じ位置に配置すればしまっているように見える
-            item.transform.parent = transform;
-            item.transform.localPosition = Vector3.zero;
-            item.transform.localRotation = Quaternion.identity;
-
-            return;
-        }
-
-        contentItemList.Add(item);
-        item.gameObject.SetActive(false);
+        behaviour.OnSetItem(item, showParticle);
     }
 
     public override bool CheckCanHaveItem(HoloItem item)
     {
         return true;
+    }
+
+    public override void DumpItem(bool isDrop = true)
+    {
+        behaviour.OnDumpItem();
+    }
+    public override void DumpItem(HoloItem item, bool isDrop = true)
+    {
+        behaviour.OnDumpItem(item);
     }
 }

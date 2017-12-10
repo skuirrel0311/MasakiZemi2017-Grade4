@@ -93,5 +93,3 @@ public class HoloObjInputHandler : BaseObjInputHandler
         return false;
     }
 }
-
-
