@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 玉手箱が持っている受け皿
+/// </summary>
 public class SecretBoxItemSaucer : BaseItemSaucer
 {
     List<HoloItem> contentItemList = new List<HoloItem>();

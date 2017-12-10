@@ -153,7 +153,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     public override void SetTargetObject(HoloObject obj)
     {
         SetTargetObject(obj.gameObject);
-
+        if (targetMovableObject != null) targetMovableObject.InputHandler.OnDisabled();
         targetMovableObject = obj;
     }
 
