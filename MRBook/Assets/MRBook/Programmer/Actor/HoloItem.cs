@@ -22,7 +22,7 @@ public class HoloItem : HoloObject
     public Transform defaultParent { get; private set; }
 
     //アイテムの所持者
-    //[System.NonSerialized]
+    [System.NonSerialized]
     public HoloObject owner;
     //どちらの手に持たれているか
     [System.NonSerialized]
