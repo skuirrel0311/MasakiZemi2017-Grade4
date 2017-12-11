@@ -85,6 +85,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         //Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
 
+        //todo:何か問題
         if(makerType == BaseObjInputHandler.MakerType.PresentItem && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
         {
             HandIconController.I.Init((CharacterItemSaucer)hitObj.ItemSaucer);

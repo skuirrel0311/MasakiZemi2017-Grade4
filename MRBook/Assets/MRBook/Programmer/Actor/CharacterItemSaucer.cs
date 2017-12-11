@@ -27,6 +27,7 @@ public class BaseItemSaucer : MonoBehaviour
 
     public void AddBehaviour(BaseItemSaucerBehaviour behaviour)
     {
+        Debug.Log("call add behaviour");
         this.behaviour = behaviour;
     }
     public void RemoveBehaviour()
@@ -64,7 +65,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     ItemTransformData itemData;
     Transform hand;
 
-    const string SecretBoxName = "";
+    const string SecretBoxName = "SecretBox_Box";
     
     public override void Init(HoloObject owner)
     {
@@ -126,6 +127,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
         item.transform.localRotation = itemData.rotation;
+        item.SetColliderEnable(false);
 
         if (item.name == AlcoholItemName)
         {
@@ -140,7 +142,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         //モーションを変える
         HandIconController.I.Hide();
         AkSoundEngine.PostEvent("Equid", gameObject);
-
+        if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
 
@@ -175,8 +177,9 @@ public class CharacterItemSaucer : BaseItemSaucer
         //ドロップする
         if(isDrop) ItemDropper.I.Drop(oldItem.owner, oldItem);
         oldItem.owner = null;
+        oldItem.SetColliderEnable(true);
 
-        if(oldItem.name == SecretBoxName)
+        if (oldItem.name == SecretBoxName)
         {
             RemoveBehaviour();
         }

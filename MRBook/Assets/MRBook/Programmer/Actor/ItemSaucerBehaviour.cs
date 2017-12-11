@@ -53,9 +53,10 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
         {
             //蓋は箱と同じ位置に配置すればしまっているように見える
             item.transform.parent = box.transform;
+            item.owner = owner;
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
-
+            item.SetColliderEnable(false);
             return;
         }
 

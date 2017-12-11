@@ -4,6 +4,8 @@ using UnityEngine;
 public class BillboardSprite : MonoBehaviour
 {
     Transform cameraTransform;
+    [SerializeField]
+    float updateIntervalTime = 0.05f;
 
     void Start()
     {
@@ -14,7 +16,7 @@ public class BillboardSprite : MonoBehaviour
 
     IEnumerator Billboard()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.1f);
+        WaitForSeconds wait = new WaitForSeconds(updateIntervalTime);
         Vector3 tempPos;
 
         while(true)

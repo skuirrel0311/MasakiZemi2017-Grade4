@@ -88,7 +88,11 @@ public class BasePage : MonoBehaviour
             {
                 Material[] materials = bookObjects[i].GetComponent<Renderer>().materials;
                 for (int j = 0; j < materials.Length; j++)
+                {
                     materials[j] = visibleMat;
+                }
+
+                bookObjects[i].GetComponent<Renderer>().materials = materials;
             }
         }
 

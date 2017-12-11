@@ -26,6 +26,7 @@ public class ItemDropper : BaseManager<ItemDropper>
         transform.position = item.transform.position;
 
         item.transform.parent = transform;
+        item.transform.rotation = Quaternion.identity;
 
         Vector3 burstVec = item.transform.position - owner.transform.position;
 
@@ -61,7 +62,7 @@ public class ItemDropper : BaseManager<ItemDropper>
     {
         float border = 0.001f;
         float length = vec.magnitude;
-        Debug.Log("length = " + length);
+        //Debug.Log("length = " + length);
         return length < border;
     }
 

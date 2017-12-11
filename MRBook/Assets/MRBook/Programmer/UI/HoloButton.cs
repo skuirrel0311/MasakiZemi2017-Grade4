@@ -8,7 +8,7 @@ using KKUtilities;
 [RequireComponent(typeof(BoxCollider))]
 public class HoloButton : MyInputHandler
 {
-    public enum HoloButtonState { Normal, Over, Pressed, Disabled }
+    public enum ButtonState { Normal, Over, Pressed, Disabled }
     public enum RefreshState { Refresh, Disable, Hide }
 
     [SerializeField]
@@ -22,11 +22,10 @@ public class HoloButton : MyInputHandler
     [SerializeField]
     Color disabledColor = new Color(0.2f, 0.2f, 0.2f);
     Color clearColor = Color.clear;
-    
-    //あとで消える予定
+
     [SerializeField]
     HoloText text = null;
-    
+
     List<IHoloUI> imageList = new List<IHoloUI>();
 
     public SpriteRenderer spriteRenderer = null;
@@ -47,7 +46,7 @@ public class HoloButton : MyInputHandler
     protected override void StartDragging()
     {
         base.StartDragging();
-        ChangeButtonColor(pressedColor);
+        ChangeButtonColor(pressedColor, false);
     }
 
     protected override void StopDragging()
@@ -61,22 +60,32 @@ public class HoloButton : MyInputHandler
             return;
         }
 
-        Debug.Log("on click");
         Push();
     }
-    
-    void ChangeButtonColor(Color targetColor, float duration = 0.1f)
+
+    void ChangeButtonColor(Color targetColor, bool isInstantly, float duration = 0.1f)
     {
         if (imageList.Count <= 0) return;
+        
+        if (isChangeColor)
+        {
+            StopCoroutine(changeColorCoroutine);
+        }
+
+        //瞬時に変更する
+        if (isInstantly)
+        {
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                imageList[i].Color = targetColor;
+            }
+            isChangeColor = false;
+            return;
+        }
 
         Color start = imageList[0].Color;
 
         if (start.Equals(targetColor)) return;
-
-        if(isChangeColor)
-        {
-            StopCoroutine(changeColorCoroutine);
-        }
 
         isChangeColor = true;
         Color currentColor;
@@ -101,30 +110,30 @@ public class HoloButton : MyInputHandler
         onClick.RemoveAllListeners();
     }
 
-    public void Refresh()
+    public void Refresh(bool isInstantly = false)
     {
-        if(text != null) text.gameObject.SetActive(true);
+        if (text != null) text.gameObject.SetActive(true);
         m_collider.enabled = true;
-        ChangeButtonColor(Color.white);
+        ChangeButtonColor(Color.white, isInstantly);
     }
 
     //見えるが押せない状態
-    public void Disable()
+    public void Disable(bool isInstantly = false)
     {
         m_collider.enabled = false;
-        ChangeButtonColor(disabledColor);
+        ChangeButtonColor(disabledColor, isInstantly);
     }
 
-    public void Hide()
+    public void Hide(bool isInstantly = false)
     {
         m_collider.enabled = false;
-        if(text != null) text.gameObject.SetActive(false);
-        ChangeButtonColor(clearColor);
+        if (text != null) text.gameObject.SetActive(false);
+        ChangeButtonColor(clearColor, isInstantly);
     }
 
     public void Push()
     {
-        if(onClick != null) onClick.Invoke();
+        if (onClick != null) onClick.Invoke();
 
         switch (clickedState)
         {
@@ -136,6 +145,23 @@ public class HoloButton : MyInputHandler
                 break;
             case RefreshState.Hide:
                 Hide();
+                break;
+        }
+    }
+
+    public void SetDefaultButtonState(ButtonState state)
+    {
+        //デフォルトでOverはないだろう
+        switch (state)
+        {
+            case ButtonState.Normal:
+                Refresh(true);
+                break;
+            case ButtonState.Pressed:
+                Disable(true);
+                break;
+            case ButtonState.Disabled:
+                Hide(true);
                 break;
         }
     }

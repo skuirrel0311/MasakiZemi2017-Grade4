@@ -22,7 +22,7 @@ public class HoloItem : HoloObject
     public Transform defaultParent { get; private set; }
 
     //アイテムの所持者
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public HoloObject owner;
     //どちらの手に持たれているか
     [System.NonSerialized]
@@ -30,10 +30,14 @@ public class HoloItem : HoloObject
 
     int defaultLayer;
 
+    Collider[] cols;
+
     protected void Awake()
     {
         defaultLayer = gameObject.layer;
         defaultParent = transform.parent;
+
+        cols = GetComponents<Collider>();
     }
 
     void Start()
@@ -59,5 +63,15 @@ public class HoloItem : HoloObject
     {
         base.InitResetter();
         Resetter.AddBehaviour(new ItemResetBehaviour(this, defaultOwner));
+    }
+
+    public void SetColliderEnable(bool enabled)
+    {
+        if (cols == null) return;
+
+        for(int i = 0;i< cols.Length;i++)
+        {
+            cols[i].enabled = enabled;
+        }
     }
 }
