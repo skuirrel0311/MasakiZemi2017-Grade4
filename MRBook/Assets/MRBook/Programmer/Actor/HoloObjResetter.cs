@@ -203,6 +203,7 @@ public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
 {
     HoloItem ownerItem;
     HoloObject defaultItemOwner;
+    Collider[] cols;
 
     public ItemResetBehaviour(HoloObject owner, HoloObject defaultItemOwner)
         : base(owner)
@@ -220,6 +221,8 @@ public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
     public override void OnLocationReset() { }
     public override void OnEnable()
     {
+        ownerItem.SetColliderEnable(true);
+
         if (defaultItemOwner == null) return;
 
         defaultItemOwner.ItemSaucer.SetItem(ownerItem, false);

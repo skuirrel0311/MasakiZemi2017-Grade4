@@ -53,7 +53,7 @@ public class HoloPuppet : HoloCharacter
 
             if (Puppet.state == PuppetMaster.State.Dead) break;
         }
-        Utilities.Delay(0.5f, () =>
+        Utilities.Delay(2.0f, () =>
         {
             particlePosition = transform.position;
             ParticleManager.I.Play("UrashimaSoul", particlePosition);
