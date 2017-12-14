@@ -76,7 +76,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1109710052239992
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 4135861066176618}
   - component: {fileID: 33509804433556234}
   - component: {fileID: 23443564607429860}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,8 @@ GameObject:
   - component: {fileID: 33865952898079216}
   - component: {fileID: 114571888846406226}
   - component: {fileID: 23507687760816994}
-  m_Layer: 0
+  - component: {fileID: 65480063629404682}
+  m_Layer: 11
   m_Name: BookNav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4429664741487510}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4183169318046414
 Transform:
@@ -938,8 +939,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4135861066176618}
   - {fileID: 4459865151109700}
+  - {fileID: 4135861066176618}
   - {fileID: 4812619790465840}
   - {fileID: 4556166676439548}
   - {fileID: 4584267009086476}
@@ -998,7 +999,7 @@ Transform:
   m_LocalScale: {x: 0.068579614, y: 1, z: 0.04879584}
   m_Children: []
   m_Father: {fileID: 4429664741487510}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4487135292774104
 Transform:
@@ -2420,6 +2421,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818076320067672}
   m_Mesh: {fileID: 4300000, guid: d55ed9a2b30bfaa4684390a09b2d9bb9, type: 3}
+--- !u!65 &65480063629404682
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937178554221362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.1, z: 10}
+  m_Center: {x: 0, y: -0.05, z: 0}
 --- !u!114 &114571888846406226
 MonoBehaviour:
   m_ObjectHideFlags: 1

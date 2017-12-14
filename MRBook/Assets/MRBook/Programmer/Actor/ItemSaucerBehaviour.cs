@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BaseItemSaucerBehaviour
 {
-    public enum BehaviourType {
+    public enum BehaviourType
+    {
         Override,       //完全に上書き
         And,            //どちらも持てれば持つ
         Or              //どちらかが持てれば持つ
@@ -31,10 +32,10 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
     HoloItem box;
     //蓋
     const string LidItemName = "SecretBox_Lid";
-    
+
     //ownerが箱である確証はない
     public SecretBoxItemSaucerBehaviour(HoloObject owner, HoloItem box)
-        :base(owner)
+        : base(owner)
     {
         this.box = box;
     }
@@ -47,13 +48,13 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
 
     public override void OnSetItem(HoloItem item, bool showParticle = true)
     {
-        if(showParticle)  ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
-        
+        if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        item.owner = owner;
+
         if (item.name == LidItemName)
         {
             //蓋は箱と同じ位置に配置すればしまっているように見える
             item.transform.parent = box.transform;
-            item.owner = owner;
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
             item.SetColliderEnable(false);
