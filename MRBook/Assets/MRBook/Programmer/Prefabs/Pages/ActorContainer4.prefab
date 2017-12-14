@@ -190,7 +190,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4563103514042442}
-  - component: {fileID: 114745805924213138}
   - component: {fileID: 114692808277132010}
   m_Layer: 2
   m_Name: EventTrigger
@@ -506,6 +505,7 @@ GameObject:
   - component: {fileID: 65212493074606356}
   - component: {fileID: 114006590933543652}
   - component: {fileID: 114056083493922348}
+  - component: {fileID: 114967273799165822}
   m_Layer: 8
   m_Name: Otohime
   m_TagString: Actor
@@ -1543,6 +1543,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1890369399558228
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4121274870618946}
+  - component: {fileID: 114354528577422210}
+  m_Layer: 0
+  m_Name: EventTrigger
+  m_TagString: Trigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1902127384414742
 GameObject:
   m_ObjectHideFlags: 1
@@ -1917,6 +1933,19 @@ Transform:
   - {fileID: 4029604138776988}
   m_Father: {fileID: 4771072914991248}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4121274870618946
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890369399558228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4400277073913066}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4140786011333652
 Transform:
@@ -2296,6 +2325,7 @@ Transform:
   m_Children:
   - {fileID: 4931215814982936}
   - {fileID: 4198412857967222}
+  - {fileID: 4121274870618946}
   m_Father: {fileID: 4489436626122020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -3693,9 +3723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d2689ef29c0a479dd5b6328050203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMovable: 0
+  isMovable: 1
   canHaveItem: 1
-  inPlayLayer: 4
+  inPlayLayer: 8
   defaultMotionName: 0
 --- !u!114 &114056083493922348
 MonoBehaviour:
@@ -3712,7 +3742,8 @@ MonoBehaviour:
   leftHand: {fileID: 4937856981207426}
   rightHandItemDataList: {fileID: 11400000, guid: c7dadd53dcb3d464f9f9b5c53722513a,
     type: 2}
-  leftHandItemDataList: {fileID: 0}
+  leftHandItemDataList: {fileID: 11400000, guid: b9f76e2ee189bb34da523928f345c6cb,
+    type: 2}
 --- !u!114 &114261783312168826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3765,6 +3796,20 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+--- !u!114 &114354528577422210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890369399558228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3d1c546129f2f448662d87d3281a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagName: OtohimeHasSecretBox
+  targetItemName: SecretBox_Box
+  ownerCharacterName: 2
 --- !u!114 &114521698966863690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4107,23 +4152,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3d1c546129f2f448662d87d3281a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagName: HasRod
-  targetItemName: 
+  flagName: UrashimaHasSecretBox
+  targetItemName: SecretBox_Box
   ownerCharacterName: 0
---- !u!114 &114745805924213138
+--- !u!114 &114967273799165822
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1098280251236386}
+  m_GameObject: {fileID: 1339078528799008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3d1c546129f2f448662d87d3281a17, type: 3}
+  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagName: HasSake
-  targetItemName: 
-  ownerCharacterName: 0
 --- !u!114 &114969130168346100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5122,7 +5164,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.12272555, z: -0.29251966}
+  m_ConnectedAnchor: {x: 0, y: 0.12272555, z: -0.33361965}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2

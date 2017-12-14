@@ -20,6 +20,25 @@ public class HoloPuppet : HoloCharacter
 
     Coroutine monitorPuppetCoroutine;
 
+    SkinnedMeshRenderer rend;
+    Mesh defaultMesh;
+    Material defaultMat;
+
+    protected override void Init()
+    {
+        base.Init();
+
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        defaultMesh = rend.sharedMesh;
+        defaultMat = rend.material;
+
+        MainSceneManager.I.OnReset += () =>
+        {
+            rend.sharedMesh = defaultMesh;
+            rend.material = defaultMat;
+        };
+    }
+
     protected override void InitResetter()
     {
         base.InitResetter();
