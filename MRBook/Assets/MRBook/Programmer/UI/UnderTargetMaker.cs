@@ -9,7 +9,7 @@ public class UnderTargetMaker : MonoBehaviour
 
     public void ShowMaker(HoloObject putObj, RaycastHit underObj)
     {
-        circleController.transform.position = underObj.point + (Vector3.up * 0.001f);
+        circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
         dottedLine.transform.position = putObj.transform.position;
 
         circleController.gameObject.SetActive(true);
