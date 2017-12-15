@@ -9,20 +9,20 @@ public class SetItem : BaseStateMachineBehaviour
 
     [SerializeField]
     string itemName = "";
-    
+
     protected override void OnStart()
     {
         base.OnStart();
         HoloCharacter character = ActorManager.I.GetCharacter(actorName);
 
-        if(character == null)
+        if (character == null)
         {
             Debug.Log("not found " + actorName.ToString());
             return;
         }
 
         HoloObject itemObj = ActorManager.I.GetObject(itemName);
-        if(itemObj == null)
+        if (itemObj == null)
         {
             Debug.Log("not found " + itemName);
             return;
@@ -39,8 +39,11 @@ public class SetItem : BaseStateMachineBehaviour
             return;
         }
 
-        item.owner.ItemSaucer.DumpItem(item, false);
-
+        if (item.owner != null)
+        {
+            //誰かにもたれている場合は離してもらう
+            item.owner.ItemSaucer.DumpItem(item, false);
+        }
         character.ItemSaucer.SetItem(item, false);
 
     }
