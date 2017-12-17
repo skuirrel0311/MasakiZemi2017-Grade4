@@ -143,6 +143,17 @@ public class ActorManager : Singleton<ActorManager>
         return currentPage.objectList;
     }
 
+    public void AddObject(HoloObject obj)
+    {
+        currentPage.objectDictionary.Add(obj.name, obj);
+        currentPage.objectList.Add(obj);
+    }
+
+    public void AddCharacter(ActorName name, HoloCharacter character)
+    {
+        currentPage.characterDictionary.Add(name, character);
+    }
+
     //ページが変更
     void OnPageChanged(BasePage previousPage, BasePage nextPage)
     {

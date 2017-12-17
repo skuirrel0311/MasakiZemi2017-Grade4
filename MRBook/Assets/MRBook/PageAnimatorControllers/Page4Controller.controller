@@ -254,6 +254,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114540809250959904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c863de2910903a40b74e14505635c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objName: Urashima
+  scaleRate: 1.5
 --- !u!114 &114543401193474998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +334,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 0
+--- !u!114 &114725333404891952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b134a0d8d68ff314d8cebc7cfad03eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagName: UrashimaIsMacho
+  boolValue: 1
 --- !u!114 &114798188084002434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,9 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05a892e66013984ea2f69e8b7725746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagName: IsOpenSecretBox
-  boolValue: 0
-  isCheckNow: 0
+  flagName: IsCloseSecretBox
+  boolValue: 1
+  isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
 --- !u!114 &114848490153480046
@@ -406,6 +432,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u7A81\u7136\u6D66\u5CF6\u592A\u90CE\u306F\u304A\u3058\u3044\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+--- !u!114 &114893274179260740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7ebab0fabe9af4c92ce3b63e8f5646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114898908662284542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,7 +763,7 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: Flagged
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -774,7 +811,7 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: Flagged
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -1174,7 +1211,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "\u30D5\u30BF\u304C\u958B\u3044\u3066\u3044\u308B\u304B\uFF1F"
+  m_Name: "\u30D5\u30BF\u304C\u9589\u307E\u3063\u3066\u3044\u308B\u304B\uFF1F"
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1267,7 +1304,10 @@ AnimatorState:
   - {fileID: 114033985044526746}
   - {fileID: 114953512251322768}
   - {fileID: 114630393804684236}
+  - {fileID: 114540809250959904}
+  - {fileID: 114893274179260740}
   - {fileID: 114972873870057688}
+  - {fileID: 114725333404891952}
   - {fileID: 114828588793586242}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

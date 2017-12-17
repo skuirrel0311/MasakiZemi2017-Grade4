@@ -81,4 +81,11 @@ public class HoloPuppet : HoloCharacter
 
         monitorPuppetCoroutine = null;
     }
+
+    public override void ChangeScale(float scaleRate)
+    {
+        rootObj.transform.position = transform.position;
+        transform.localPosition = Vector3.zero;
+        rootObj.transform.localScale = rootObj.transform.localScale * scaleRate;
+    }
 }

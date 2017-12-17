@@ -74,7 +74,7 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// ページを開いた時に呼ぶ
     /// </summary>
-    public void PageStart()
+    public virtual void PageStart()
     {
         if (isFirst)
         {

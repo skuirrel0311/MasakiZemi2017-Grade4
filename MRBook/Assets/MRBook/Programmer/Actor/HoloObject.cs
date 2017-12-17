@@ -100,6 +100,11 @@ public class HoloObject : MonoBehaviour
         ItemSaucer.SetItem(item);
     }
 
+    public virtual void ChangeScale(float scaleRate)
+    {
+        transform.localScale = transform.localScale * scaleRate;
+    }
+
     /// <summary>
     /// アイテムを所有している場合はアイテムも自身とカウントする
     /// </summary>
