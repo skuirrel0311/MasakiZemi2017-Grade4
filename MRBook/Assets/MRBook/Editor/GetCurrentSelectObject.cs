@@ -38,8 +38,11 @@ public class GetCurrentSelectObject : Editor
         //同じファイルが見つかった
         if (EditorUtility.DisplayDialog("override", transform.name + ".assetを上書きしますか？", "上書きする", "中止"))
         {
-            IEnumerator t = ChangeFile(filePath, asset);
-            while (t.MoveNext()) { }
+            //データの差し替え
+            original.dataList = asset.dataList;
+
+            EditorUtility.SetDirty(original);
+            AssetDatabase.SaveAssets();
         }
     }
 
@@ -48,16 +51,5 @@ public class GetCurrentSelectObject : Editor
         ItemTransformDataList original = Resources.Load<ItemTransformDataList>("Data/" + fileName);
         result = original;
         return result == null ? false : true;
-    }
-
-    static IEnumerator ChangeFile(string filePath, ItemTransformDataList asset)
-    {
-        //データの差し替え
-        AssetDatabase.DeleteAsset(filePath);
-        yield return null;
-        AssetDatabase.CreateAsset(asset, filePath);
-        yield return null;
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
     }
 }

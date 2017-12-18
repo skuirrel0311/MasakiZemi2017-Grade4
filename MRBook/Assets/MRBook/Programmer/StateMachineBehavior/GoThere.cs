@@ -18,7 +18,7 @@ public class GoThere : BaseStateMachineBehaviour
     Transform target;
 
     [SerializeField, Range(0.02f, 1.0f)]
-    public float stopDistance = 0.2f;
+    public float stopDistance = 0.05f;
     [SerializeField]
     public float moveSpeed = 0.1f;
     

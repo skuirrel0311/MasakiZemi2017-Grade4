@@ -74,7 +74,7 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// ページを開いた時に呼ぶ
     /// </summary>
-    public void PageStart()
+    public virtual void PageStart()
     {
         if (isFirst)
         {
@@ -86,7 +86,13 @@ public class BasePage : MonoBehaviour
             Material visibleMat = MainSceneManager.I.visibleMat;
             for (int i = 0; i < bookObjects.Length; i++)
             {
-                bookObjects[i].GetComponent<Renderer>().material = visibleMat;
+                Material[] materials = bookObjects[i].GetComponent<Renderer>().materials;
+                for (int j = 0; j < materials.Length; j++)
+                {
+                    materials[j] = visibleMat;
+                }
+
+                bookObjects[i].GetComponent<Renderer>().materials = materials;
             }
         }
 

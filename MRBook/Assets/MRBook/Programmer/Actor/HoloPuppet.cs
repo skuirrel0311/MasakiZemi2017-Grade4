@@ -20,6 +20,25 @@ public class HoloPuppet : HoloCharacter
 
     Coroutine monitorPuppetCoroutine;
 
+    SkinnedMeshRenderer rend;
+    Mesh defaultMesh;
+    Material defaultMat;
+
+    protected override void Init()
+    {
+        base.Init();
+
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        defaultMesh = rend.sharedMesh;
+        defaultMat = rend.material;
+
+        MainSceneManager.I.OnReset += () =>
+        {
+            rend.sharedMesh = defaultMesh;
+            rend.material = defaultMat;
+        };
+    }
+
     protected override void InitResetter()
     {
         base.InitResetter();
@@ -53,13 +72,21 @@ public class HoloPuppet : HoloCharacter
 
             if (Puppet.state == PuppetMaster.State.Dead) break;
         }
-        Utilities.Delay(0.5f, () =>
+        Utilities.Delay(2.0f, () =>
         {
             particlePosition = transform.position;
             ParticleManager.I.Play("UrashimaSoul", particlePosition);
             AkSoundEngine.PostEvent("Die", gameObject);
+            ResultManager.I.AddDeathCount();
         }, ParticleManager.I);
 
         monitorPuppetCoroutine = null;
+    }
+
+    public override void ChangeScale(float scaleRate)
+    {
+        rootObj.transform.position = transform.position;
+        transform.localPosition = Vector3.zero;
+        rootObj.transform.localScale = rootObj.transform.localScale * scaleRate;
     }
 }

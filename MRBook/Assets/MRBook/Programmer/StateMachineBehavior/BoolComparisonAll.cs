@@ -13,7 +13,7 @@ public class BoolComparisonElement
 public class BoolComparisonAll : BaseStateMachineBehaviour
 {
     public BoolComparisonElement[] element;
-    public enum Type { And, Or}
+    public enum Type { And, Or }
     public Type t = Type.And;
 
     bool[] flaggedArray;
@@ -23,9 +23,9 @@ public class BoolComparisonAll : BaseStateMachineBehaviour
         base.OnStart();
         flaggedArray = new bool[element.Length];
 
-        for(int i = 0;i< element.Length;i++)
+        for (int i = 0; i < element.Length; i++)
         {
-            flaggedArray[i] = FlagManager.I.GetFlag(element[i].flagName, element[i].isCheckNow) == element[i].boolValue;
+            flaggedArray[i] = FlagManager.I.GetFlag(element[i].flagName, MainSceneManager.I.currentPageIndex, element[i].isCheckNow) == element[i].boolValue;
             m_animator.SetBool("Flagged" + (i + 1), flaggedArray[i]);
         }
 
@@ -35,7 +35,7 @@ public class BoolComparisonAll : BaseStateMachineBehaviour
 
     bool BoolAnyTrue()
     {
-        for(int i = 0;i< element.Length;i++)
+        for (int i = 0; i < element.Length; i++)
         {
             if (flaggedArray[i]) return true;
         }

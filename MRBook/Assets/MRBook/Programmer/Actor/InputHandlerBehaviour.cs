@@ -1,34 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class AbstractInputHandlerBehaviour
 {
     protected HoloObject owner;
+    public abstract Action OnStart { get; }
+    public abstract Func<BaseObjInputHandler.HitObjType, BaseObjInputHandler.MakerType> OnUpdate { get; }
+    public abstract Action<BaseObjInputHandler.HitObjType> OnEnd { get; }
+
     public AbstractInputHandlerBehaviour(HoloObject owner)
     {
         this.owner = owner;
     }
-    public abstract void OnDragStart();
-    public abstract BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType);
-    public abstract void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType);
 }
 
 public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 {
     Coroutine fallCoroutine;
     NavMeshAgent m_agent;
+
+    public override Action OnStart { get { return OnDragStart; } }
+    public override Func<BaseObjInputHandler.HitObjType, BaseObjInputHandler.MakerType> OnUpdate { get { return OnDragUpdate; } }
+    public override Action<BaseObjInputHandler.HitObjType> OnEnd { get { return OnDragEnd; } }
+
     public GroundingObjDragEndBehaviour(HoloObject owner)
         : base(owner)
     {
         m_agent = owner.GetComponent<NavMeshAgent>();
     }
 
-    public override void OnDragStart()
+    void OnDragStart()
     {
         m_agent.enabled = false;
     }
-    public override BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType)
+
+    BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType)
     {
         switch (hitObjType)
         {
@@ -43,7 +51,8 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 
         return BaseObjInputHandler.MakerType.None;
     }
-    public override void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType)
+
+    void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType)
     {
         if (hitObjType != BaseObjInputHandler.HitObjType.Book) return;
 
@@ -80,9 +89,12 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 
 public class FloatingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 {
+    public override Action OnStart { get { return null; } }
+    public override Func<BaseObjInputHandler.HitObjType, BaseObjInputHandler.MakerType> OnUpdate { get { return OnDragUpdate; } }
+    public override Action<BaseObjInputHandler.HitObjType> OnEnd { get { return null; } }
+
     public FloatingObjDragEndBehaviour(HoloObject owner) : base(owner) { }
-    public override void OnDragStart() { }
-    public override BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType)
+    BaseObjInputHandler.MakerType OnDragUpdate(BaseObjInputHandler.HitObjType hitObjType)
     {
         switch (hitObjType)
         {
@@ -96,5 +108,4 @@ public class FloatingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 
         return BaseObjInputHandler.MakerType.None;
     }
-    public override void OnDragEnd(BaseObjInputHandler.HitObjType hitObjType) { }
 }

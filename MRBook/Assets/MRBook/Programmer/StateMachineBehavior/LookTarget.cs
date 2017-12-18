@@ -38,7 +38,7 @@ public class LookTarget : BaseStateMachineBehaviour
         Vector3 targetDirection = target.position - character.transform.position;
 
         to = Quaternion.LookRotation(targetDirection);
-        character.m_agent.updateRotation = false;
+        if(character.m_agent != null) character.m_agent.updateRotation = false;
 
         character.ChangeAnimationClip(MotionName.Walk, 0.1f);
     }
@@ -71,7 +71,7 @@ public class LookTarget : BaseStateMachineBehaviour
     protected override void OnEnd()
     {
         base.OnEnd();
-        character.m_agent.updateRotation = true;
+        if(character.m_agent != null) character.m_agent.updateRotation = true;
         character.ChangeAnimationClip(MotionName.Wait, 0.1f);
     }
 

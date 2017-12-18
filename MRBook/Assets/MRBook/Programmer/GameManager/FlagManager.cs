@@ -40,7 +40,6 @@ public class FlagManager : BaseManager<FlagManager>
     public bool GetFlag(string name, bool isCheckNow)
     {
         MyFlag myFlag;
-        name = name + sceneManager.currentPageIndex;
         if (flagDictionary.TryGetValue(name, out myFlag))
         {
             //いま判定を行う
@@ -50,10 +49,16 @@ public class FlagManager : BaseManager<FlagManager>
         }
 
         //見つからなかった
-        Debug.LogError(name + " is not found");
+        Debug.LogWarning(name + " is not found");
 
         //強制的にfalse
         return false;
+    }
+
+    public bool GetFlag(string name, int pageIndex, bool isCheckNow = false)
+    {
+        name = name + pageIndex;
+        return GetFlag(name, isCheckNow);
     }
 
     public virtual void SetFlag(string name,MyEventTrigger eventTrigger, bool isFlagged = true)

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using KKUtilities;
 
 public class HoloItem : HoloObject
 {
@@ -31,10 +30,14 @@ public class HoloItem : HoloObject
 
     int defaultLayer;
 
+    Collider[] cols;
+
     protected void Awake()
     {
         defaultLayer = gameObject.layer;
         defaultParent = transform.parent;
+
+        cols = GetComponents<Collider>();
     }
 
     void Start()
@@ -60,5 +63,15 @@ public class HoloItem : HoloObject
     {
         base.InitResetter();
         Resetter.AddBehaviour(new ItemResetBehaviour(this, defaultOwner));
+    }
+
+    public void SetColliderEnable(bool enabled)
+    {
+        if (cols == null) return;
+
+        for(int i = 0;i< cols.Length;i++)
+        {
+            cols[i].enabled = enabled;
+        }
     }
 }

@@ -30,7 +30,7 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
     /// </summary>
     public virtual bool OnClick() { return false; }
     /// <summary>
-    /// バウンディングボックスが消えたとき
+    /// こいつを選択した状態で別のオブジェクトを選択したとき(バウンディングボックスが消えたとき)
     /// </summary>
     public virtual void OnDisabled() { }
 
@@ -51,11 +51,15 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 
     public void AddBehaviour(AbstractInputHandlerBehaviour behaviour)
     {
-        OnStart += behaviour.OnDragStart;
-        OnUpdate += behaviour.OnDragUpdate;
-        OnEnd += behaviour.OnDragEnd;
+        if(behaviour.OnStart != null) OnStart += behaviour.OnStart;
+        //Funcを複数Addした場合の挙動は意図したものになるとは限らないので注意
+        if(behaviour.OnUpdate != null) OnUpdate += behaviour.OnUpdate;
+        if(behaviour.OnEnd != null) OnEnd += behaviour.OnEnd;
     }
 
+    /// <summary>
+    /// 掴まれている時に下をチェックする範囲(長さはこのオブジェクトから本までの長さ＋α)
+    /// </summary>
     protected virtual void SetSphreCastRadius()
     {
         float colSize = Mathf.Max(m_collider.size.x, m_collider.size.z);
@@ -73,11 +77,10 @@ public class HoloObjInputHandler : BaseObjInputHandler
 {
     public override bool OnClick()
     {
-        HandIconController handIconController = HandIconController.I;
-
         if (owner.ItemSaucer == null) return false;
         if (owner.GetActorType != HoloObject.Type.Character) return false;
 
+        HandIconController handIconController = HandIconController.I;
         if (!handIconController.IsVisuable)
         {
             handIconController.Init((CharacterItemSaucer)owner.ItemSaucer);
@@ -90,5 +93,3 @@ public class HoloObjInputHandler : BaseObjInputHandler
         return false;
     }
 }
-
-

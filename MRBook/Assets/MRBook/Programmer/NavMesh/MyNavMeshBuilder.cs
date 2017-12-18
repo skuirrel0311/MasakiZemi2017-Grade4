@@ -38,6 +38,7 @@ public class MyNavMeshBuilder : MonoBehaviour
         setting = NavMesh.GetSettingsByID(0);
     }
 
+#if UNITY_EDITOR
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -45,7 +46,7 @@ public class MyNavMeshBuilder : MonoBehaviour
             UpdateNavMesh();
         }
     }
-
+#endif
     public static void CreateNavMesh()
     {
         for(int i = 0;i< builderList.Count;i++)
@@ -80,5 +81,12 @@ public class MyNavMeshBuilder : MonoBehaviour
         return new Bounds(Quantize(center), m_Size);
     }
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Color temp = Gizmos.color;
+        Gizmos.color = Color.yellow;
+        var bounds = QuantizedBounds();
+        Gizmos.DrawWireCube(bounds.center, bounds.size);
+        Gizmos.color = temp;
+    }
 }

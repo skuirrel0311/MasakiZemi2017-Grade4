@@ -29,13 +29,13 @@ public class CheckAnimator : EditorWindow
     {
         GetWindow<CheckAnimator>();
     }
-    
-    void Hoge(string filenName)
+
+    void Hoge(string fileName)
     {
-        string animatorPath = "Assets/MRBook/PageAnimatorControllers/" + filenName + ".controller";
+        string animatorPath = "Assets/MRBook/PageAnimatorControllers/" + fileName + ".controller";
         RuntimeAnimatorController asset = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(animatorPath);
         animatorController = asset as AnimatorController;
-        
+
         AnimatorBakedData bakedData = CreateInstance<AnimatorBakedData>();
 
         ChildAnimatorState[] states = animatorController.layers[0].stateMachine.states;
@@ -50,11 +50,11 @@ public class CheckAnimator : EditorWindow
         }
 
         string stateMachineName;
-        for (int i = 0;i< animatorController.layers[0].stateMachine.stateMachines.Length;i++)
+        for (int i = 0; i < animatorController.layers[0].stateMachine.stateMachines.Length; i++)
         {
             states = animatorController.layers[0].stateMachine.stateMachines[i].stateMachine.states;
             stateMachineName = animatorController.layers[0].stateMachine.stateMachines[i].stateMachine.name;
-            for(int j = 0;j< states.Length;j++)
+            for (int j = 0; j < states.Length; j++)
             {
                 stateName = states[j].state.name;
 
@@ -63,12 +63,16 @@ public class CheckAnimator : EditorWindow
             }
         }
 
-        string assetPath = "Assets/MRBook/Resources/Data/" + filenName + ".asset";
-        if (IsThereOriginalFile(filenName))
+        string assetPath = "Assets/MRBook/Resources/Data/" + fileName + ".asset";
+        AnimatorBakedData original = Resources.Load<AnimatorBakedData>("Data/" + fileName);
+        if (original != null)
         {
-            //元のファイルは削除
-            AssetDatabase.DeleteAsset(assetPath);
             Debug.Log("上書きしました");
+            original.hashList = bakedData.hashList;
+            original.stateList = bakedData.stateList;
+            EditorUtility.SetDirty(original);
+            AssetDatabase.SaveAssets();
+            return;
         }
         //作成
         AssetDatabase.CreateAsset(bakedData, assetPath);
@@ -77,16 +81,9 @@ public class CheckAnimator : EditorWindow
         AssetDatabase.Refresh();
     }
 
-    bool IsThereOriginalFile(string fileName)
-    {
-        AnimatorBakedData original = Resources.Load<AnimatorBakedData>("Data/" + fileName);
-
-        return original != null;
-    }
-
     void OnGUI()
     {
-        if(strs == null)
+        if (strs == null)
         {
             ChangeAnimatorNum();
         }

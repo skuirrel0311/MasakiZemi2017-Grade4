@@ -47,8 +47,7 @@ public class HoloCharacter : HoloObject
             motionName = name.ToString();
         else
             motionName = MotionNameManager.GetMotionName(name, (CharacterItemSaucer)ItemSaucer);
-
-        Debug.Log("call change animation " + motionName);
+        
         m_animator.CrossFade(motionName, transitionDuration);
     }
 }

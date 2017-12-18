@@ -20,9 +20,24 @@ public class BoolComparison : BaseStateMachineBehaviour
     protected override void OnStart()
     {
         base.OnStart();
-        m_animator.SetBool(paramName, FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue);
 
-        if(checkOnUpdate)
+        char lastChar;
+
+        lastChar = flagName[flagName.Length - 1];
+
+        //最後の文字が数字だったらそのページのフラグを見に行く
+        if (lastChar > '0' && lastChar < '9')
+        {
+            Debug.Log("integer access");
+            int pageIndex = '0' - lastChar;
+            m_animator.SetBool(paramName, FlagManager.I.GetFlag(flagName, false) == boolValue);
+        }
+        else
+        {
+            m_animator.SetBool(paramName, FlagManager.I.GetFlag(flagName, MainSceneManager.I.currentPageIndex, isCheckNow) == boolValue);
+        }
+
+        if (checkOnUpdate)
         {
             StateMachineManager.I.Add(flagName, new MyTask(UpdateFlagged));
         }
@@ -30,10 +45,10 @@ public class BoolComparison : BaseStateMachineBehaviour
 
     BehaviourStatus UpdateFlagged()
     {
-        bool flagged = FlagManager.I.GetFlag(flagName, isCheckNow) == boolValue;
+        bool flagged = FlagManager.I.GetFlag(flagName, MainSceneManager.I.currentPageIndex, isCheckNow) == boolValue;
 
         if (flagged) return BehaviourStatus.Success;
-        
+
         return BehaviourStatus.Running;
     }
 }
