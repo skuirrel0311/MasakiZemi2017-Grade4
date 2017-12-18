@@ -9,6 +9,6 @@ public class DestroyObject : BaseStateMachineBehaviour
     protected override void OnStart()
     {
         base.OnStart();
-        ActorManager.I.DisableObject(objectName);
+        ActorManager.I.SetEnableObject(objectName, false);
     }
 }

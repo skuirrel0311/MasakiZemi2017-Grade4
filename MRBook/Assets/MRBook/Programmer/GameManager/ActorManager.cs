@@ -107,13 +107,13 @@ public class ActorManager : Singleton<ActorManager>
     }
 
     /// <summary>
-    /// 現在のページに登録されているアクターを非表示にします
+    /// 現在のページに登録されているアクターのアクティブを設定します
     /// </summary>
-    public void DisableObject(string actorName)
+    public void SetEnableObject(string actorName, bool enabled)
     {
         HoloObject actor = GetObject(actorName);
-        if (actor != null) actor.gameObject.SetActive(false);
-        else Debug.LogError("didn't disable " + actorName);
+        if (actor != null) actor.gameObject.SetActive(enabled);
+        else Debug.LogError("didn't set enabled " + actorName);
     }
 
     /// <summary>
