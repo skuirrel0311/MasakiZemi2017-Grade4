@@ -21,6 +21,9 @@ public class HoloObject : MonoBehaviour
     bool canHaveItem = false;
     [SerializeField]
     int inPlayLayer = 4;
+
+    [SerializeField]
+    string overrideName = "";
     
     public BaseObjInputHandler InputHandler { get; private set; }
     public BaseItemSaucer ItemSaucer { get; private set; }
@@ -116,5 +119,12 @@ public class HoloObject : MonoBehaviour
         if (!equal) equal = ItemSaucer.Equals(other);
 
         return equal;
+    }
+
+    public string GetName()
+    {
+        if (string.IsNullOrEmpty(overrideName)) return name;
+
+        return overrideName;
     }
 }

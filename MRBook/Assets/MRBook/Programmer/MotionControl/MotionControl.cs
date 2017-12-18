@@ -54,8 +54,8 @@ public static class MotionNameManager
     {
         string motionName = name.ToString();
 
-        motionName += itemSaucer.HasItem_Right ? "_" + itemSaucer.RightHandItem.name : "";
-        motionName += itemSaucer.HasItem_Left ? "_" + itemSaucer.LeftHandItem.name : "";
+        motionName += itemSaucer.HasItem_Right ? "_" + itemSaucer.RightHandItem.GetName() : "";
+        motionName += itemSaucer.HasItem_Left ? "_" + itemSaucer.LeftHandItem.GetName() : "";
 
         if (itemSaucer.IsGetAlcohol)
         {
