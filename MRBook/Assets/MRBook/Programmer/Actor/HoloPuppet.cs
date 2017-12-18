@@ -77,6 +77,7 @@ public class HoloPuppet : HoloCharacter
             particlePosition = transform.position;
             ParticleManager.I.Play("UrashimaSoul", particlePosition);
             AkSoundEngine.PostEvent("Die", gameObject);
+            ResultManager.I.AddDeathCount();
         }, ParticleManager.I);
 
         monitorPuppetCoroutine = null;

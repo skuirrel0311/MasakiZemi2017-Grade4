@@ -11,6 +11,8 @@ public class ResultManager : BaseManager<ResultManager>
 
     //玉手箱の重さ（重すぎると持ち上げられない?）
 
+    int deathCount = 0;
+
     public void AddSecretBoxContent(HoloItem item)
     {
         secretBoxContentsList.Add(item);
@@ -30,5 +32,17 @@ public class ResultManager : BaseManager<ResultManager>
     {
         if (secretBoxContentsList.Count == 1) return 1;
         return 0;
+    }
+
+    public void AddDeathCount()
+    {
+        deathCount++;
+
+        //todo:上限に達したらゲームオーバー
+        const int limit = 99;
+        if(deathCount > limit)
+        {
+
+        }
     }
 }
