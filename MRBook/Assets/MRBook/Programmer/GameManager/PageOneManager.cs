@@ -14,19 +14,27 @@ public class PageOneManager : BasePage
     const string pileName = "Pile";
     const string ropeName = "Rope";
 
+    ActorManager actorManager;
+
+    public override void PageStart()
+    {
+        base.PageStart();
+        actorManager = ActorManager.I;
+    }
+
     public void ChainBoat()
     {
-        ActorManager.I.SetEnableObject(boatName, false);
-        ActorManager.I.SetEnableObject(pileName, false);
-        ActorManager.I.SetEnableObject(ropeName, false);
+        actorManager.SetEnableObject(boatName, false);
+        actorManager.SetEnableObject(pileName, false);
+        actorManager.SetEnableObject(ropeName, false);
 
         chainBoat.SetActive(true);
 
         onReset += () =>
         {
-            ActorManager.I.SetEnableObject(boatName, true);
-            ActorManager.I.SetEnableObject(pileName, true);
-            ActorManager.I.SetEnableObject(ropeName, true);
+            actorManager.SetEnableObject(boatName, true);
+            actorManager.SetEnableObject(pileName, true);
+            actorManager.SetEnableObject(ropeName, true);
             chainBoat.SetActive(false);
         };
     }
