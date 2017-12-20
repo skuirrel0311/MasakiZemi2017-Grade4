@@ -117,6 +117,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             Disable(false);
 
         underTargetMaker.HideMaker();
+
+        targetMovableObject.InputHandler.OnDisabled();
         
         if(isHoldItem)
         {
@@ -153,7 +155,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     /// <param name="obj"></param>
     public override void SetTargetObject(HoloObject obj)
     {
-        SetTargetObject(obj.gameObject);
+        SetTargetObject(obj != null ? obj.gameObject : null);
         if (targetMovableObject != null) targetMovableObject.InputHandler.OnDisabled();
         targetMovableObject = obj;
     }
@@ -189,5 +191,14 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         }
 
         return isHit;
+    }
+
+    public override void Disable(bool setParent = true)
+    {
+        if(targetMovableObject != null)
+        {
+            targetMovableObject.InputHandler.OnDisabled();
+        }
+        base.Disable(setParent);
     }
 }
