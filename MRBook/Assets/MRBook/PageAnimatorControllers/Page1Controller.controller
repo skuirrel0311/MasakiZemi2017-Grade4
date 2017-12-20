@@ -13,19 +13,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsStart
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: StateStatus
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -39,30 +39,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114042773363612444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
---- !u!114 &114053410422848236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u30AB\u30E1\u304C\u3044\u3058\u3081\u3089\u308C\u3066\u3044\u308B\u306E\u306B\u6C17\u3065\u304F\u3053\u3068\u306A\u304F"
 --- !u!114 &114084308297403548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,6 +51,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   success: 0
+--- !u!114 &114091506848735718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114164411437735004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114205391552572670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   success: 1
---- !u!114 &114262929023693310
+--- !u!114 &114244364626865554
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,11 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puppetName: 0
---- !u!114 &114416463740570788
+--- !u!114 &114266541405349968
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,10 +106,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6D41\u3055\u308C\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+--- !u!114 &114411029517705076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4e44b12ad97424e856b7dca1880e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPointNames:
+  - BoatEndPoint
+  speed: 0.1
+--- !u!114 &114513271457632564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114554422128601074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114642199873010774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +157,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114716333111243172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u306F\u30AB\u30E1\u304C\u3044\u3058\u3081\u3089\u308C\u3066\u3044\u308B\u306E\u306B\u6C17\u3065\u304F\u3053\u3068\u306A\u304F"
+--- !u!114 &114732359822807356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114753896585200756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +196,54 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
+--- !u!114 &114761977351829036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+--- !u!114 &114842212206276558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D41\u3055\u308C\u3066\u3057\u307E\u3044\u307E\u3057\u305F"
+--- !u!114 &114960710915177236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puppetName: 0
+--- !u!114 &114994384467117450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Boat
 --- !u!1101 &1101123574753997914
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -434,10 +539,19 @@ AnimatorState:
   - {fileID: 1101793683943652954}
   m_StateMachineBehaviours:
   - {fileID: 114642199873010774}
-  - {fileID: 114053410422848236}
-  - {fileID: 114042773363612444}
-  - {fileID: 114416463740570788}
-  - {fileID: 114262929023693310}
+  - {fileID: 114554422128601074}
+  - {fileID: 114091506848735718}
+  - {fileID: 114411029517705076}
+  - {fileID: 114960710915177236}
+  - {fileID: 114994384467117450}
+  - {fileID: 114266541405349968}
+  - {fileID: 114164411437735004}
+  - {fileID: 114716333111243172}
+  - {fileID: 114761977351829036}
+  - {fileID: 114842212206276558}
+  - {fileID: 114732359822807356}
+  - {fileID: 114513271457632564}
+  - {fileID: 114244364626865554}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
