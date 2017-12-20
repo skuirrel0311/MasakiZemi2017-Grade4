@@ -14413,6 +14413,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1202881223722912, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_TagString
+      value: Actor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202881223722912, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
   m_IsPrefabParent: 0
@@ -14689,9 +14697,10 @@ GameObject:
   - component: {fileID: 493581391}
   - component: {fileID: 493581393}
   - component: {fileID: 493581392}
+  - component: {fileID: 493581394}
   m_Layer: 0
   m_Name: Boat
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14752,6 +14761,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 493581390}
   m_Mesh: {fileID: 4300002, guid: 2b8464703bbb1294bbceb39ac1223db5, type: 3}
+--- !u!114 &493581394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 493581390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 1
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
 --- !u!1 &497769825
 GameObject:
   m_ObjectHideFlags: 0
@@ -27298,6 +27322,93 @@ Transform:
   m_Father: {fileID: 1132560079}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &811189360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 811189361}
+  - component: {fileID: 811189363}
+  - component: {fileID: 811189362}
+  - component: {fileID: 811189364}
+  m_Layer: 13
+  m_Name: PileEventArea
+  m_TagString: Actor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &811189361
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 811189360}
+  m_LocalRotation: {x: -0, y: 0.64842916, z: -0, w: 0.7612751}
+  m_LocalPosition: {x: -0.251, y: -0.0007000007, z: -0.201}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 867100514}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &811189362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 811189360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e94e7cd39d16ee45813acc8ede484ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2127131941}
+        m_MethodName: ChainBoat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  acceptObjectNames:
+  - Rope
+--- !u!65 &811189363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 811189360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08506765, y: 0.067668825, z: 0.058045015}
+  m_Center: {x: -0.06843934, y: 0.033834413, z: 0.37585938}
+--- !u!114 &811189364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 811189360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 1
+  inPlayLayer: 13
+  overrideName: 
 --- !u!1 &811782769 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1492075649691066, guid: 9972808a1667aa345b1f3def0f9337ab,
@@ -44554,6 +44665,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4835092329091364, guid: ea676225319699e4c8ae5c205cbf6140,
     type: 2}
   m_PrefabInternal: {fileID: 1417735422}
+--- !u!1 &1516669394 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1202881223722912, guid: 839441fc340ced34d9e47f68d077fb38,
+    type: 2}
+  m_PrefabInternal: {fileID: 478536274}
+--- !u!114 &1516669398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516669394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
 --- !u!1 &1519852347
 GameObject:
   m_ObjectHideFlags: 0
@@ -49902,7 +50033,7 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 272
+    m_Bits: 8464
   ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 548
@@ -66023,6 +66154,7 @@ MonoBehaviour:
   - {fileID: 87731219}
   objectList: []
   chainBoat: {fileID: 1783207638}
+  urashima: {fileID: 335648409}
 --- !u!1 &2127248193
 GameObject:
   m_ObjectHideFlags: 0

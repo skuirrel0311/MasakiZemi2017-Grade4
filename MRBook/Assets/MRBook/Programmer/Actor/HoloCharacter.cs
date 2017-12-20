@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 //目的地を与えると移動してくれる
@@ -14,10 +15,19 @@ public class HoloCharacter : HoloObject
 
     protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
 
+    Action enabled;
+
     protected void Awake()
     {
         m_animator = GetComponent<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
+    }
+
+    protected void OnEnable()
+    {
+        if (enabled != null) enabled.Invoke();
+
+        enabled = null;
     }
 
     protected override void Init()
@@ -43,11 +53,21 @@ public class HoloCharacter : HoloObject
 
         string motionName;
 
-        if(ItemSaucer == null)
+        if (ItemSaucer == null)
             motionName = name.ToString();
         else
             motionName = MotionNameManager.GetMotionName(name, (CharacterItemSaucer)ItemSaucer);
-        
-        m_animator.CrossFade(motionName, transitionDuration);
+
+        if (gameObject.activeInHierarchy)
+        {
+            m_animator.CrossFade(motionName, transitionDuration);
+        }
+        else
+        {
+            enabled += () =>
+            {
+                m_animator.CrossFade(motionName, transitionDuration);
+            };
+        }
     }
 }

@@ -84,9 +84,12 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         //Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
-
-        //todo:何か問題
-        if(makerType == BaseObjInputHandler.MakerType.PresentItem && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
+        
+        //受け取る側がキャラクターだったら
+        if(hitObj != null 
+            && hitObj.GetActorType == HoloObject.Type.Character 
+            && makerType == BaseObjInputHandler.MakerType.PresentItem 
+            && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
         {
             HandIconController.I.Init((CharacterItemSaucer)hitObj.ItemSaucer);
             HandIconController.I.Show();

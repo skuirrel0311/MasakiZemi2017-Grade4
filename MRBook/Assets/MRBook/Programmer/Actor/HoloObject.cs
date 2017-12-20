@@ -81,6 +81,12 @@ public class HoloObject : MonoBehaviour
     protected virtual void InitResetter()
     {
         Resetter.AddBehaviour(new DefaultHoloObjResetBehaviour(this));
+
+        //スタティックなのにムーバブルなときはリセットの挙動に位置も追加する
+        if(GetActorType == Type.Statics && isMovable)
+        {
+            Resetter.AddBehaviour(new LocationResetBehaviour(this));
+        }
     }
 
     public virtual void PlayPage()

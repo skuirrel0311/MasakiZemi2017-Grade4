@@ -10,6 +10,9 @@ public class PageOneManager : BasePage
     [SerializeField]
     GameObject chainBoat = null;
 
+    [SerializeField]
+    HoloPuppet urashima = null;
+
     const string boatName = "Boat";
     const string pileName = "Pile";
     const string ropeName = "Rope";
@@ -29,7 +32,9 @@ public class PageOneManager : BasePage
         actorManager.SetEnableObject(ropeName, false);
 
         chainBoat.SetActive(true);
-
+        urashima.RootObject.transform.parent = chainBoat.transform;
+        urashima.ChangeAnimationClip(MotionName.Lie, 0.1f);
+        
         onReset += () =>
         {
             actorManager.SetEnableObject(boatName, true);
