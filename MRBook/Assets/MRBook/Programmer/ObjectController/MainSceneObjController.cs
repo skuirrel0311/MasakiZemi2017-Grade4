@@ -117,8 +117,6 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             Disable(false);
 
         underTargetMaker.HideMaker();
-
-        targetMovableObject.InputHandler.OnDisabled();
         
         if(isHoldItem)
         {

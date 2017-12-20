@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class HoloMovableObjInputHander  : HoloObjInputHandler
+public class HoloMovableObjInputHander : HoloObjInputHandler
 {
     [SerializeField]
     bool isFloating = false;
@@ -22,6 +22,15 @@ public class HoloMovableObjInputHander  : HoloObjInputHandler
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
         scale = Mathf.Clamp(scale, 0.02f, 0.08f);
         arrow.transform.localScale = Vector3.one * scale * (1.0f / transform.lossyScale.x);
+        MainSceneManager.I.OnPlayPage += (page) =>
+        {
+            arrow.SetActive(false);
+        };
+
+        MainSceneManager.I.OnReset += () =>
+        {
+            arrow.SetActive(true);
+        };
     }
 
     protected override void SetSphreCastRadius()
