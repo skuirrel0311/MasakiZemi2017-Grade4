@@ -16,7 +16,10 @@ public enum ActorName
     Don,
     Suzume1,
     Suzume2,
-    Suzume3
+    Suzume3,
+    Child1,
+    Child2,
+    Child3
 }
 
 /// <summary>

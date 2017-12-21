@@ -14,6 +14,7 @@ public class HoloObject : MonoBehaviour
     /// </summary>
     public int PageIndex { get; private set; }
     bool isFirst = true;
+    public Transform defaultParent { get; protected set; }
 
     [SerializeField]
     bool isMovable = false;
@@ -67,6 +68,13 @@ public class HoloObject : MonoBehaviour
         if (InputHandler != null) InputHandler.Init(this);
 
         InitItemSaucer();
+
+        SetDefaultParent();
+    }
+
+    protected virtual void SetDefaultParent()
+    {
+        defaultParent = transform.parent;
     }
 
     public void InitItemSaucer()
@@ -132,5 +140,10 @@ public class HoloObject : MonoBehaviour
         if (string.IsNullOrEmpty(overrideName)) return name;
 
         return overrideName;
+    }
+
+    public virtual void SetParent(Transform parent)
+    {
+        transform.parent = parent;
     }
 }

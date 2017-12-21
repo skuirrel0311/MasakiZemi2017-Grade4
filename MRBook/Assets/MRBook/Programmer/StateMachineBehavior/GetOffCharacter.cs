@@ -6,9 +6,9 @@ using KKUtilities;
 public class GetOffCharacter : BaseStateMachineBehaviour
 {
     [SerializeField]
-    ActorName rideCharacterName = ActorName.Urashima;
+    string rideObjectName = "";
     [SerializeField]
-    ActorName matCharacterName = ActorName.Turtle;
+    string matObjectName = "";
     [SerializeField]
     string rideEndPointName = "";
 
@@ -16,18 +16,20 @@ public class GetOffCharacter : BaseStateMachineBehaviour
     {
         base.OnStart();
 
-        HoloCharacter rideCharacter = ActorManager.I.GetCharacter(rideCharacterName);
-        HoloCharacter matCharacter = ActorManager.I.GetCharacter(matCharacterName);
+        HoloObject rideObject = ActorManager.I.GetObject(rideObjectName);
+        HoloObject matObject = ActorManager.I.GetObject(matObjectName);
         Transform rideEndPoint = ActorManager.I.GetTargetPoint(rideEndPointName);
 
-        rideCharacter.transform.localPosition = rideEndPoint.localPosition;
-        rideCharacter.transform.localRotation = rideEndPoint.localRotation;
+        rideObject.gameObject.SetActive(false);
 
+        //1フレーム待ってから移動させる
         Utilities.Delay(1, () =>
         {
-            rideCharacter.transform.parent = matCharacter.transform.parent;
-            if(rideCharacter.m_agent != null) rideCharacter.m_agent.enabled = true;
-        }, rideCharacter);
+            rideObject.SetParent(matObject.transform.parent);
+            rideObject.transform.position = rideEndPoint.position;
+            rideObject.transform.rotation = rideEndPoint.rotation;
+            rideObject.gameObject.SetActive(true);
+        }, StateMachineManager.I);
 
     }
 }

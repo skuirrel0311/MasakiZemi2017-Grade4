@@ -152,7 +152,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
-        CurrentState = GameState.Next;
 
         if (!success)
         {
