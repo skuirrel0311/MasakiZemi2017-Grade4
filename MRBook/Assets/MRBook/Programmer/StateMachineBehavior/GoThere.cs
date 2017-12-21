@@ -54,6 +54,7 @@ public class GoThere : BaseStateMachineBehaviour
 
         updateTimer = 0.0f;
         time = 0.0f;
+        character.m_agent.enabled = true;
         character.m_agent.speed = moveSpeed;
         character.m_agent.isStopped = false;
         character.m_agent.SetDestination(target.position);

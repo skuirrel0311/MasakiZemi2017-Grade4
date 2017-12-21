@@ -67,6 +67,7 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
 
     public override void OnDumpItem()
     {
+        Debug.Log("on remove all");
         ResultManager.I.RemoveAllSecretBoxContents();
     }
 

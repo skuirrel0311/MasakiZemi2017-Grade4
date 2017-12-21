@@ -19,8 +19,6 @@ public class HoloItem : HoloObject
     [SerializeField]
     HoloObject defaultOwner = null;
 
-    public Transform defaultParent { get; private set; }
-
     //アイテムの所持者
     [System.NonSerialized]
     public HoloObject owner;
@@ -35,7 +33,6 @@ public class HoloItem : HoloObject
     protected void Awake()
     {
         defaultLayer = gameObject.layer;
-        defaultParent = transform.parent;
 
         cols = GetComponents<Collider>();
     }

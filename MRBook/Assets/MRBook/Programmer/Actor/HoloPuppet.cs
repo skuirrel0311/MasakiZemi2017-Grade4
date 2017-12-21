@@ -39,6 +39,11 @@ public class HoloPuppet : HoloCharacter
         };
     }
 
+    protected override void SetDefaultParent()
+    {
+        defaultParent = rootObj.transform.parent;
+    }
+
     protected override void InitResetter()
     {
         base.InitResetter();
@@ -88,5 +93,10 @@ public class HoloPuppet : HoloCharacter
         rootObj.transform.position = transform.position;
         transform.localPosition = Vector3.zero;
         rootObj.transform.localScale = rootObj.transform.localScale * scaleRate;
+    }
+
+    public override void SetParent(Transform parent)
+    {
+        rootObj.transform.parent = parent;
     }
 }

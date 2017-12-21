@@ -11,7 +11,7 @@ public class ResultManager : BaseManager<ResultManager>
 
     //玉手箱の重さ（重すぎると持ち上げられない?）
 
-    int deathCount = 0;
+    public int deathCount = 0;
 
     public void AddSecretBoxContent(HoloItem item)
     {
@@ -25,6 +25,10 @@ public class ResultManager : BaseManager<ResultManager>
 
     public void RemoveAllSecretBoxContents()
     {
+        for(int i = 0;i< secretBoxContentsList.Count;i++)
+        {
+            secretBoxContentsList[i].owner = null;
+        }
         secretBoxContentsList.Clear();
     }
     

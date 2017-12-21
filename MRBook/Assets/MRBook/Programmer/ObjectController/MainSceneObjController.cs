@@ -84,9 +84,12 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         //Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
-
-        //todo:何か問題
-        if(makerType == BaseObjInputHandler.MakerType.PresentItem && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
+        
+        //受け取る側がキャラクターだったら
+        if(hitObj != null 
+            && hitObj.GetActorType == HoloObject.Type.Character 
+            && makerType == BaseObjInputHandler.MakerType.PresentItem 
+            && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
         {
             HandIconController.I.Init((CharacterItemSaucer)hitObj.ItemSaucer);
             HandIconController.I.Show();
@@ -153,7 +156,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     /// <param name="obj"></param>
     public override void SetTargetObject(HoloObject obj)
     {
-        SetTargetObject(obj.gameObject);
+        SetTargetObject(obj != null ? obj.gameObject : null);
         if (targetMovableObject != null) targetMovableObject.InputHandler.OnDisabled();
         targetMovableObject = obj;
     }
@@ -189,5 +192,14 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         }
 
         return isHit;
+    }
+
+    public override void Disable(bool setParent = true)
+    {
+        if(targetMovableObject != null)
+        {
+            targetMovableObject.InputHandler.OnDisabled();
+        }
+        base.Disable(setParent);
     }
 }

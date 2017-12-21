@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using HoloToolkit.Unity.SpatialMapping;
 using KKUtilities;
 
@@ -152,7 +152,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
-        CurrentState = GameState.Next;
 
         if (!success)
         {
@@ -261,5 +260,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         //    currentMissionText = pages[currentPageIndex].missionText;
         //}
         CurrentState = GameState.Wait;
+    }
+
+    public void GameEnd()
+    {
+        SceneManager.LoadSceneAsync("Title");
     }
 }

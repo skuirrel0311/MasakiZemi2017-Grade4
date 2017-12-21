@@ -182,7 +182,7 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// このページに登録されているアクターをページを開いた時の位置に戻す
     /// </summary>
-    public void ResetPage()
+    public virtual void ResetPage()
     {
         HoloObjResetManager.I.Reset();
         //todo:リセット中のアニメーション

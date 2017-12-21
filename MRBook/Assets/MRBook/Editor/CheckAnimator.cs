@@ -7,7 +7,7 @@ using UnityEditor.Animations;
 public class CheckAnimator : EditorWindow
 {
     AnimatorController animatorController;
-    int animatorNum = 3;
+    int animatorNum = 5;
     string[] strs;
 
     int AnimatorNum

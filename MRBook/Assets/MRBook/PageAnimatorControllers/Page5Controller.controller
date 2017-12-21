@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1084df8a16c17bd4994ea22f1e2b1cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rideCharacterName: 0
-  matCharacterName: 1
+  rideObjectName: Urashima
+  matObjectName: Turtle
   rideEndPointName: TurtleRideEndPoint
 --- !u!114 &114070835122308896
 MonoBehaviour:
@@ -358,6 +358,18 @@ MonoBehaviour:
   targetName: SecretBox_Box
   effectName: GoldenDoron
   offset: {x: 0, y: 0.1, z: 0}
+--- !u!114 &114587021786623842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9333eb3348115de49a6645a3efb67d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  success: 1
 --- !u!114 &114633772830224070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1172,7 +1184,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114587021786623842}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
