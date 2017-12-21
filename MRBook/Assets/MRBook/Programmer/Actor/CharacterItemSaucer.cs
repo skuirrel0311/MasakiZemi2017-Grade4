@@ -141,7 +141,7 @@ public class CharacterItemSaucer : BaseItemSaucer
 
         //モーションを変える
         HandIconController.I.Hide();
-        AkSoundEngine.PostEvent("Equid", gameObject);
+        AkSoundEngine.PostEvent("Equip", gameObject);
         if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }

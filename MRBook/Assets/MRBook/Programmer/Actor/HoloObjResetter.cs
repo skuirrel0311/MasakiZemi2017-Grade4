@@ -277,3 +277,19 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
     }
 }
 
+public class SecretBoxResetBehaviour : AbstractHoloObjResetBehaviour
+{
+    public SecretBoxResetBehaviour(HoloObject owner)
+        :base(owner)
+    {
+
+    }
+
+    public override void OnDisable()
+    {
+        ResultManager.I.RemoveAllSecretBoxContents();
+    }
+    public override void OnEnable() { }
+    public override void OnLocationReset() { }
+}
+

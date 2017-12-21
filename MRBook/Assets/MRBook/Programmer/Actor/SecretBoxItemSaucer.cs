@@ -12,6 +12,8 @@ public class SecretBoxItemSaucer : BaseItemSaucer
         base.Init(owner);
 
         AddBehaviour(new SecretBoxItemSaucerBehaviour(owner, (HoloItem)owner));
+        
+        owner.Resetter.AddBehaviour(new SecretBoxResetBehaviour(owner));
     }
 
     public override void SetItem(HoloItem item, bool showParticle = true)
