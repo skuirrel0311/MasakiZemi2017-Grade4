@@ -7,6 +7,13 @@
 					<ChildrenList>
 						<Event Name="BGM_1p" ID="{1BB4CFA7-0E8B-4F03-B8F4-524F7F429E91}">
 							<ChildrenList>
+								<Action Name="Stop" ID="{3166B293-74D8-460F-B82B-D1E34984FE89}" ShortID="700000868" Type="Stop" Scope="One" Global="true">
+									<ElementList>
+										<Element ID="{E4248BB1-E88B-4C8D-A5FF-85D4A7641B88}" Global="true">
+											<ObjectRef Name="4pPlay" ID="{C2983B6D-EC6E-4AE7-B2BB-9E91BA838E52}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
 								<Action Name="Stop" ID="{A949FC3D-7694-497C-9867-FF56E4838006}" ShortID="492334173" Type="Stop" Scope="One" Global="true">
 									<ElementList>
 										<Element ID="{FEE20AD4-5518-499E-8131-DB82D181F1F6}" Global="true">
