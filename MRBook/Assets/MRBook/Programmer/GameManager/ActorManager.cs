@@ -41,7 +41,6 @@ public class ActorManager : Singleton<ActorManager>
     
     public void InitSceneManager(MainSceneManager sceneManager)
     {
-        if (this.sceneManager != null) return;
         this.sceneManager = sceneManager;
         this.sceneManager.OnPageChanged += OnPageChanged;
 

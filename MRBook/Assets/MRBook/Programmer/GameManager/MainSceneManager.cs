@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using HoloToolkit.Unity.SpatialMapping;
 using KKUtilities;
 
@@ -260,5 +260,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         //    currentMissionText = pages[currentPageIndex].missionText;
         //}
         CurrentState = GameState.Wait;
+    }
+
+    public void GameEnd()
+    {
+        SceneManager.LoadSceneAsync("Title");
     }
 }

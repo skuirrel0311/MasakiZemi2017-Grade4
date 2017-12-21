@@ -13,6 +13,10 @@ public class MainGameUIController : BaseManager<MainGameUIController>
     public HoloText stateText = null;
     public HoloButton playButton = null;
     public HoloButton resetButton = null;
+    [SerializeField]
+    HoloText totalScore = null;
+    [SerializeField]
+    HoloButton titleBack = null;
 
     protected override void Start()
     {
@@ -53,5 +57,17 @@ public class MainGameUIController : BaseManager<MainGameUIController>
                 resetButton.Refresh();
                 break;
         }
+    }
+
+    public void ShowTotalResult()
+    {
+        totalScore.CurrentText = "死んだ回数：" + ResultManager.I.deathCount + " 回";
+
+        totalScore.gameObject.SetActive(true);
+    }
+
+    public void ShowTitleBack()
+    {
+        titleBack.gameObject.SetActive(true);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class PageFiveManager : BasePage
 {
@@ -35,6 +36,17 @@ public class PageFiveManager : BasePage
         turtle.gameObject.SetActive(false);
         secretBox_Box.gameObject.SetActive(false);
         secretBox_Lid.gameObject.SetActive(false);
+
+        MainSceneManager.I.OnPlayEnd += (success) =>
+        {
+            MainGameUIController.I.ShowTotalResult();
+
+            Utilities.Delay(2.0f, () =>
+            {
+                MainGameUIController.I.ShowTitleBack();
+            }, this);
+
+        };
     }
 
     void ChangeMesh(HoloObject obj, string meshName, string materialName)
