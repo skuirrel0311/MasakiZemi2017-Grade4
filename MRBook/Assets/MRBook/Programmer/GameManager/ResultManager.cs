@@ -25,6 +25,10 @@ public class ResultManager : BaseManager<ResultManager>
 
     public void RemoveAllSecretBoxContents()
     {
+        for(int i = 0;i< secretBoxContentsList.Count;i++)
+        {
+            secretBoxContentsList[i].owner = null;
+        }
         secretBoxContentsList.Clear();
     }
     

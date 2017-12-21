@@ -18,7 +18,11 @@ public class EventAreaItemSaucer : BaseItemSaucer
     public override void SetItem(HoloItem item, bool showParticle = true)
     {
         if (onSetItem != null) onSetItem.Invoke();
-        if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        if (showParticle)
+        {
+            AkSoundEngine.PostEvent("Equip", gameObject);
+            ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        }
     }
 
     public override bool CheckCanHaveItem(HoloItem item)
