@@ -91,6 +91,58 @@
 								<ActiveSource Name="2pSet" ID="{C572208D-1334-496C-960C-57C44CB3FC77}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="4pPlay" ID="{C2983B6D-EC6E-4AE7-B2BB-9E91BA838E52}" ShortID="765633706" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="5pPlay" ID="{58EF270D-E4F6-487F-AE45-D340175894E8}" ShortID="664596408">
+									<Language>SFX</Language>
+									<AudioFile>5pPlay.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="5pPlay" ID="{58EF270D-E4F6-487F-AE45-D340175894E8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="3pPlay" ID="{BB10993C-6F8F-405D-9DDC-08B0F046A874}" ShortID="460740745" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="3pPlay" ID="{C44AC83B-40C3-4941-824B-9FAE937524FF}" ShortID="958950841">
+									<Language>SFX</Language>
+									<AudioFile>3pPlay.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="3pPlay" ID="{C44AC83B-40C3-4941-824B-9FAE937524FF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Jingle" ID="{FE74F052-2496-439A-A667-07F033E051AE}" ShortID="231390784">
