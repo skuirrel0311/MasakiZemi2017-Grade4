@@ -34,8 +34,8 @@ public class ItemInputHandler : HoloMovableObjInputHander
             return base.OnDragUpdate(hitObjType, hitObj);
         }
 
-        if (hitObj.CheckCanHaveItem(ownerItem)) return MakerType.PresentItem;
-        else return MakerType.DontPresentItem;
+        if (hitObj.CheckCanHaveItem(ownerItem)) return MakerType.Happen;
+        else return MakerType.DontPut;
     }
 
     public override void OnDragEnd(HitObjType hitObjType, HoloObject hitObj)

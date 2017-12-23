@@ -17,7 +17,6 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
 
     public Action<GameObject, GameObject> OnTargetChanged;
     public Action OnItemDragStart;
-    public Action OnItemDragEnd;
 
     #region シングルトン
     static MyObjControllerByBoundingBox instance;

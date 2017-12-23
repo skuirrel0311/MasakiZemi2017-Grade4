@@ -2,7 +2,7 @@
 
 public class CircleController : MonoBehaviour
 {
-    public enum CircleState { Normal, DontPut }
+    public enum CircleState { Normal, DontPut, Happen }
     
     [SerializeField]
     SpriteRenderer spriteRenderer = null;
@@ -20,18 +20,22 @@ public class CircleController : MonoBehaviour
     Vector3 rot;
     float t;
 
-    CircleState currentState = CircleState.Normal;
-    
+    BaseObjInputHandler.MakerType currentMakerType = BaseObjInputHandler.MakerType.None;
+
+    BillboardSprite billboard;
+
     void Start()
     {
         m_transform = transform;
         rot = transform.eulerAngles;
         t = 0.0f;
+
+        billboard = GetComponent<BillboardSprite>();
     }
 
     void Update()
     {
-        if (currentState == CircleState.DontPut) return;
+        if (currentMakerType != BaseObjInputHandler.MakerType.Normal) return;
 
         t += Time.deltaTime;
 
@@ -46,11 +50,25 @@ public class CircleController : MonoBehaviour
         m_transform.rotation = Quaternion.Euler(rot);
     }
 
-    public void ChangeSprite(CircleState state)
+    public void SetState(BaseObjInputHandler.MakerType makerType)
     {
-        if (state == currentState) return;
-        currentState = state;
+        if (makerType == currentMakerType) return;
 
-        spriteRenderer.sprite = sprites[(int)currentState];
+        currentMakerType = makerType;
+
+        if (makerType == BaseObjInputHandler.MakerType.None) return;
+
+        spriteRenderer.sprite = sprites[(int)makerType - 1];
+
+        if (makerType == BaseObjInputHandler.MakerType.Normal)
+        {
+            transform.eulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+            billboard.enabled = false;
+        }
+        else
+        {
+            billboard.enabled = true;
+            transform.eulerAngles = Vector3.zero;
+        }
     }
 }

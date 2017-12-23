@@ -64,12 +64,15 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         MainSceneManager sceneManager = MainSceneManager.I;
         maxDistance = targetMovableObject.transform.position.y - sceneManager.pages[sceneManager.currentPageIndex].transform.position.y + 0.5f;
-        if(targetMovableObject.GetActorType == HoloObject.Type.Item)
+        if (targetMovableObject.GetActorType == HoloObject.Type.Item)
         {
             isHoldItem = true;
-            if(OnItemDragStart != null) OnItemDragStart.Invoke();
+            if (OnItemDragStart != null) OnItemDragStart.Invoke();
         }
         targetMovableObject.InputHandler.OnDragStart();
+
+        underTargetMaker.InitializeMaker(targetMovableObject);
+
         oldMakerType = BaseObjInputHandler.MakerType.None;
     }
 
@@ -83,23 +86,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
 
         //Debug.Log("makerType = " + makerType.ToString());
-        underTargetMaker.SetMaker(makerType, targetMovableObject, underObj);
-        
-        //受け取る側がキャラクターだったら
-        if(hitObj != null 
-            && hitObj.GetActorType == HoloObject.Type.Character 
-            && makerType == BaseObjInputHandler.MakerType.PresentItem 
-            && oldMakerType != BaseObjInputHandler.MakerType.PresentItem)
-        {
-            HandIconController.I.Init((CharacterItemSaucer)hitObj.ItemSaucer);
-            HandIconController.I.Show();
-        }
-
-        if(oldMakerType == BaseObjInputHandler.MakerType.PresentItem && makerType != BaseObjInputHandler.MakerType.PresentItem)
-        {
-            HandIconController.I.Hide();
-        }
-
+        underTargetMaker.UpdateMaker(makerType, underObj);
         oldMakerType = makerType;
     }
 
@@ -113,27 +100,29 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
 
-        //アイテムを持たせたのに親を変更してしまうとまずいので省く
-        if (makerType != BaseObjInputHandler.MakerType.PresentItem)
-            Disable();
-        else
-            Disable(false);
+        underTargetMaker.SetMakerEnable(false);
 
-        underTargetMaker.HideMaker();
-        
-        if(isHoldItem)
+        if (isHoldItem)
         {
             isHoldItem = false;
-            if(OnItemDragEnd != null) OnItemDragEnd.Invoke();
+            
+            if (hitObj != null && hitObj.CheckCanHaveItem((HoloItem)targetMovableObject))
+            {
+                //アイテムを持たせたのに親を変更してしまうとまずいので省く
+                Disable(false);
+                return;
+            }
         }
+
+        Disable();
     }
-    
+
     HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)
     {
         if (!isHit) return null;
-        
+
         if (hit.transform.gameObject.layer == bookLayer) return null;
-        
+
         return hit.transform.GetComponent<HoloObject>();
     }
 
@@ -145,11 +134,11 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
         HoloObject obj = hit.transform.GetComponent<HoloObject>();
 
-        if (obj != null && obj.GetActorType == HoloObject.Type.Character)return BaseObjInputHandler.HitObjType.Character;
+        if (obj != null && obj.GetActorType == HoloObject.Type.Character) return BaseObjInputHandler.HitObjType.Character;
 
         return BaseObjInputHandler.HitObjType.OtherObj;
     }
-    
+
     /// <summary>
     /// 渡されたオブジェクトに合わせてバウンディングボックスを表示し、操作できるようにする
     /// </summary>
@@ -196,7 +185,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     public override void Disable(bool setParent = true)
     {
-        if(targetMovableObject != null)
+        if (targetMovableObject != null)
         {
             targetMovableObject.InputHandler.OnDisabled();
         }

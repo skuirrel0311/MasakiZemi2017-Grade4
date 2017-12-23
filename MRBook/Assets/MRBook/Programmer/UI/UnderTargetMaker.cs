@@ -7,40 +7,53 @@ public class UnderTargetMaker : MonoBehaviour
     [SerializeField]
     ParticleSystem dottedLine = null;
 
-    public void ShowMaker(HoloObject putObj, RaycastHit underObj)
-    {
-        circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
-        dottedLine.transform.position = putObj.transform.position;
+    HoloObject targetObject;
 
-        circleController.gameObject.SetActive(true);
-        dottedLine.gameObject.SetActive(true);
+    BaseObjInputHandler.MakerType currentMakerType = BaseObjInputHandler.MakerType.None;
+
+    public void InitializeMaker(HoloObject putObj)
+    {
+        targetObject = putObj;
+        SetMakerEnable(true);
     }
 
-    public void HideMaker()
+    public void SetMakerEnable(bool enable)
     {
-        circleController.gameObject.SetActive(false);
-        dottedLine.gameObject.SetActive(false);
+        circleController.gameObject.SetActive(enable);
+        dottedLine.gameObject.SetActive(enable);
     }
 
-    public void SetMaker(BaseObjInputHandler.MakerType makerType, HoloObject putObj, RaycastHit underObj)
+    public void UpdateMaker(BaseObjInputHandler.MakerType makerType, RaycastHit underObj)
     {
-        switch(makerType)
+        SetMakerType(makerType);
+
+        circleController.SetState(makerType);
+        
+        if (makerType == BaseObjInputHandler.MakerType.Normal)
         {
-            case BaseObjInputHandler.MakerType.None:
-                HideMaker();
-                break;
-            case BaseObjInputHandler.MakerType.DontPut:
-            case BaseObjInputHandler.MakerType.DontPresentItem:
-                ShowMaker(putObj, underObj);
-                circleController.ChangeSprite(CircleController.CircleState.DontPut);
-                break;
-            case BaseObjInputHandler.MakerType.PresentItem:
-                HideMaker();
-                break;
-            case BaseObjInputHandler.MakerType.Normal:
-                circleController.ChangeSprite(CircleController.CircleState.Normal);
-                ShowMaker(putObj, underObj);
-                break;
+            circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
+        }
+        else
+        {
+            circleController.transform.position = underObj.point + (Vector3.up * 0.1f);
+        }
+
+        dottedLine.transform.position = targetObject.transform.position;
+    }
+
+    void SetMakerType(BaseObjInputHandler.MakerType makerTYpe)
+    {
+        if (currentMakerType == makerTYpe) return;
+
+        currentMakerType = makerTYpe;
+
+        if(makerTYpe == BaseObjInputHandler.MakerType.None)
+        {
+            SetMakerEnable(false);
+        }
+        else
+        {
+            SetMakerEnable(true);
         }
     }
 }

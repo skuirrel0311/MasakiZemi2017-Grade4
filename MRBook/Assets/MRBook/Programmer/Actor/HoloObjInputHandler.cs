@@ -6,7 +6,7 @@ using HoloToolkit.Unity.InputModule;
 public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 {
     public enum HitObjType { None, Book, Character, OtherObj }
-    public enum MakerType { None, Normal, DontPut, PresentItem, DontPresentItem }
+    public enum MakerType { None, Normal, DontPut, Happen }
 
     protected HoloObject owner;
     //BoundingBoxの形状を決めるために使用される(トリガーも可)
