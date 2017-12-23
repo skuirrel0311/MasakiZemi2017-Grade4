@@ -153,6 +153,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     /// <param name="setDefaultTransform">捨てたアイテムを元の位置に戻すか？</param>
     void DumpItem(HoloItem.Hand hand, bool isDrop = true)
     {
+        Debug.Log("DumpItem");
         if (hand == HoloItem.Hand.Both)
         {
             DumpItem(HoloItem.Hand.Left);

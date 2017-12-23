@@ -97,24 +97,19 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
         BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
-
-        targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
-
-        underTargetMaker.SetMakerEnable(false);
-
-        if (isHoldItem)
+        bool changeParent = true;
+        if (isHoldItem && hitObj != null && hitObj.CheckCanHaveItem((HoloItem)targetMovableObject))
         {
-            isHoldItem = false;
-            
-            if (hitObj != null && hitObj.CheckCanHaveItem((HoloItem)targetMovableObject))
-            {
-                //アイテムを持たせたのに親を変更してしまうとまずいので省く
-                Disable(false);
-                return;
-            }
+            //アイテムを持たせたのに親を変更してしまうとまずいので省く
+            changeParent = false;
         }
 
-        Disable();
+        targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
+        underTargetMaker.SetMakerEnable(false);
+        
+        isHoldItem = false;
+
+        Disable(changeParent);
     }
 
     HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)
