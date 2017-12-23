@@ -41,7 +41,16 @@ public enum MotionName
     Guide,       //案内する
     SitSurprised,   //座ったまま驚く(死体発見時)
     SitDelivery,    //座ったまま料理渡す
-    Surprised       //立ったまま驚く(死体発見時)
+    Surprised,      //立ったまま驚く(死体発見時)
+    StopBullying,   //いじめを止める
+    OpenBox,    //箱を開ける
+    LocateBullying, //いじめを見つける
+    GetOnTurtle,    //亀に乗る
+    GetOffTurtle,   //亀から降りる
+    GetOffboat,     //船から降りる
+    DropDownBoat,   //船から落ちて死ぬ
+    Swim,       //泳ぐ
+    Brutality   //いじめる
 
 }
 
