@@ -9,9 +9,16 @@ public class BillboardSprite : MonoBehaviour
     
     float t = 0.0f;
 
-    void Start()
+    Transform CameraTransform
     {
-        cameraTransform = Camera.main.transform;
+        get
+        {
+            if(cameraTransform == null)
+            {
+                cameraTransform = Camera.main.transform;
+            }
+            return cameraTransform;
+        }
     }
 
     void Update()
@@ -20,11 +27,16 @@ public class BillboardSprite : MonoBehaviour
 
         if(t > updateIntervalTime)
         {
-            Vector3 tempPos;
-            tempPos = cameraTransform.position;
-            tempPos.y = transform.position.y;
-            transform.LookAt(tempPos);
-            t = 0.0f;
+            LookTarget();
         }
+    }
+
+    public void LookTarget()
+    {
+        Vector3 tempPos;
+        tempPos = CameraTransform.position;
+        tempPos.y = transform.position.y;
+        transform.LookAt(tempPos);
+        t = 0.0f;
     }
 }

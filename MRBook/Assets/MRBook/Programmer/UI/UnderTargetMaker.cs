@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using KKUtilities;
 
 public class UnderTargetMaker : MonoBehaviour
 {
@@ -11,10 +12,20 @@ public class UnderTargetMaker : MonoBehaviour
 
     BaseObjInputHandler.MakerType currentMakerType = BaseObjInputHandler.MakerType.None;
 
-    public void InitializeMaker(HoloObject putObj)
+    public void InitializeMaker(HoloObject putObj, RaycastHit underObj, bool isHit)
     {
         targetObject = putObj;
-        SetMakerEnable(true);
+        circleController.Initialize();
+
+        if (isHit)
+        {
+            circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
+            Utilities.Delay(1, ()=> SetMakerEnable(true),this);
+        }
+        else
+        {
+            SetMakerEnable(false);
+        }
     }
 
     public void SetMakerEnable(bool enable)
@@ -28,7 +39,7 @@ public class UnderTargetMaker : MonoBehaviour
         SetMakerType(makerType);
 
         circleController.SetState(makerType);
-        
+
         if (makerType == BaseObjInputHandler.MakerType.Normal)
         {
             circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
@@ -47,7 +58,7 @@ public class UnderTargetMaker : MonoBehaviour
 
         currentMakerType = makerTYpe;
 
-        if(makerTYpe == BaseObjInputHandler.MakerType.None)
+        if (makerTYpe == BaseObjInputHandler.MakerType.None)
         {
             SetMakerEnable(false);
         }

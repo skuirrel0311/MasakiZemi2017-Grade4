@@ -71,7 +71,9 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         }
         targetMovableObject.InputHandler.OnDragStart();
 
-        underTargetMaker.InitializeMaker(targetMovableObject);
+        RaycastHit underObj;
+        bool isHit = TryGetUnderObject(out underObj);
+        underTargetMaker.InitializeMaker(targetMovableObject, underObj, isHit);
 
         oldMakerType = BaseObjInputHandler.MakerType.None;
     }

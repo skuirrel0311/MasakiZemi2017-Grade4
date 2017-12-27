@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using KKUtilities;
 
 public class CircleController : MonoBehaviour
 {
@@ -26,13 +27,9 @@ public class CircleController : MonoBehaviour
 
     void Start()
     {
-        m_transform = transform;
-        rot = transform.eulerAngles;
-        t = 0.0f;
-
-        billboard = GetComponent<BillboardSprite>();
+        Initialize();
     }
-
+    
     void Update()
     {
         if (currentMakerType != BaseObjInputHandler.MakerType.Normal) return;
@@ -48,6 +45,19 @@ public class CircleController : MonoBehaviour
             rot.y = 0.0f;
         }
         m_transform.rotation = Quaternion.Euler(rot);
+    }
+
+    public void Initialize()
+    {
+        m_transform = transform;
+        rot = transform.eulerAngles;
+        t = 0.0f;
+
+        if(billboard == null)
+        {
+            billboard = GetComponent<BillboardSprite>();
+        }
+
     }
 
     public void SetState(BaseObjInputHandler.MakerType makerType)
@@ -68,7 +78,10 @@ public class CircleController : MonoBehaviour
         else
         {
             billboard.enabled = true;
+            billboard.LookTarget();
             transform.eulerAngles = Vector3.zero;
+            spriteRenderer.enabled = false;
+            Utilities.Delay(2, () => spriteRenderer.enabled = true, this);
         }
     }
 }
