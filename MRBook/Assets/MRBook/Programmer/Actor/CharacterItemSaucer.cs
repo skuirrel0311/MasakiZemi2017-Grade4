@@ -126,7 +126,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         item.owner = ownerCharacter;
         item.transform.parent = hand;
         item.transform.localPosition = itemData.position;
-        item.transform.localRotation = itemData.rotation;
+        item.transform.localEulerAngles = itemData.rotation;
         item.SetColliderEnable(false);
 
         if (item.name == AlcoholItemName)

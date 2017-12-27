@@ -13,13 +13,13 @@ public class ItemTransformData
 {
 	public string itemName;
 	public Vector3 position;
-	public Quaternion rotation;
+	public Vector3 rotation;
     public MotionName motionName;
 
 	public ItemTransformData(string itemName, Transform transform)
 	{
 		this.itemName = itemName;
 		position = transform.localPosition;
-		rotation = transform.localRotation;
+		rotation = transform.localEulerAngles;
 	}
 }
