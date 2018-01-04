@@ -27,6 +27,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ページを再生させたとき
     /// </summary>
     public Action<BasePage> OnPlayPage;
+    /// <summary>
+    /// ページがリセットされたとき
+    /// </summary>
     public Action OnReset;
     /// <summary>
     /// 再生が終了したとき
@@ -257,12 +260,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].PageStart();
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
-        //todo:UIControllerで行うべき
-        //if (isFirst)
-        //{
-        //    pageIndex = currentPageIndex;
-        //    currentMissionText = pages[currentPageIndex].missionText;
-        //}
         CurrentState = GameState.Wait;
 
         Utilities.Delay(2, () =>

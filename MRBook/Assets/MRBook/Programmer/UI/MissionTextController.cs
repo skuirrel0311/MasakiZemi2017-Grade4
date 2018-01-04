@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using KKUtilities;
 
-public class MissionTextController : MonoBehaviour
+public class MissionTextController : BaseManager<MissionTextController>
 {
     public enum Mode { Track, Statics }
 
     Mode currentMode;
     const int modeNum = 2;
     Transform mainCameraTransform;
-    
+
     [SerializeField]
     BodyLocked bodyLoacked = null;
 
@@ -25,8 +25,9 @@ public class MissionTextController : MonoBehaviour
     [SerializeField]
     HoloText storyText = null;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         MainSceneManager sceneManager = MainSceneManager.I;
         mainCameraTransform = Camera.main.transform;
 
@@ -43,6 +44,22 @@ public class MissionTextController : MonoBehaviour
             {
                 ChangeMode(Mode.Statics);
             }, this);
+        };
+
+        sceneManager.OnPlayPage += (page) =>
+        {
+            endTexts[1].gameObject.SetActive(false);
+        };
+
+        sceneManager.OnPlayEnd += (success) =>
+        {
+            if (!success) return;
+            endTexts[1].gameObject.SetActive(true);
+        };
+
+        sceneManager.OnReset += () =>
+        {
+            ResetText();
         };
     }
 
@@ -74,7 +91,7 @@ public class MissionTextController : MonoBehaviour
         yield return StartCoroutine(Utilities.FloatLerp(1.0f, (t) =>
         {
             missionTexts[0].transform.SetPositionAndRotation(
-                Vector3.Lerp(firstPosition, endPosition, t), 
+                Vector3.Lerp(firstPosition, endPosition, t),
                 Quaternion.Lerp(firstRotation, endRotation, t)
             );
         }));
@@ -83,8 +100,11 @@ public class MissionTextController : MonoBehaviour
         missionTexts[1].SetActive(true);
     }
 
-    public void SetText(string first, string end)
+    void SetText(string first, string end)
     {
+        first = SetNewLine(first);
+        end = SetNewLine(end);
+
         for (int i = 0; i < modeNum; i++)
         {
             firstTexts[i].CurrentText = first;
@@ -92,13 +112,37 @@ public class MissionTextController : MonoBehaviour
         }
     }
 
-    public void ResetText()
+    void ResetText()
     {
+        endTexts[1].gameObject.SetActive(true);
         storyText.CurrentText = "";
     }
 
     public void AddText(string text)
     {
-        storyText.CurrentText = storyText.CurrentText + '\n' + text;
+        text = SetNewLine(text);
+
+        if (string.IsNullOrEmpty(storyText.CurrentText))
+        {
+            storyText.CurrentText = text;
+        }
+        else
+        {
+            storyText.CurrentText = storyText.CurrentText + '\n' + text;
+        }
+    }
+
+    string SetNewLine(string text)
+    {
+        string[] texts = text.Split(',');
+
+        text = texts[0];
+
+        for (int i = 1; i < texts.Length; i++)
+        {
+            text += '\n' + texts[i];
+        }
+
+        return text;
     }
 }

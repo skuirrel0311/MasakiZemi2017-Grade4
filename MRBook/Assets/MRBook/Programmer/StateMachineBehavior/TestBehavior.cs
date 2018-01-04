@@ -7,6 +7,7 @@ public class TestBehavior : BaseStateMachineBehaviour
     protected override void OnStart()
     {
         base.OnStart();
+        MissionTextController.I.AddText(message);
         NotificationManager.I.ShowMessage(message, 5.0f);
     }
 }
