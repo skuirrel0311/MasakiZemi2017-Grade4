@@ -36,6 +36,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ステートが変化したとき
     /// </summary>
     public Action<GameState> OnGameStateChanged;
+    /// <summary>
+    /// ページを読み終わったとき
+    /// </summary>
+    public Action OnPageLoaded;
 
     /* メンバ */
     GameState currentState = GameState.Wait;
@@ -260,6 +264,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         //    currentMissionText = pages[currentPageIndex].missionText;
         //}
         CurrentState = GameState.Wait;
+
+        Utilities.Delay(2, () =>
+        {
+            Debug.Log("on page loaded");
+            if (OnPageLoaded != null) OnPageLoaded.Invoke();
+        },this);
     }
 
     public void GameEnd()

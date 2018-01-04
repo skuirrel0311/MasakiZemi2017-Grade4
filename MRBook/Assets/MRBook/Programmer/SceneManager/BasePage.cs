@@ -11,6 +11,10 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public string missionText = "";
 
+    public string storyFirstText = "";
+
+    public string storyEndText = "";
+
     [SerializeField]
     int pageIndex = 0;
     public int Index { get { return pageIndex; } }

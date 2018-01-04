@@ -1,50 +1,104 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class MissionTextController : MonoBehaviour
 {
-    public enum Mode { Track, Statics}
+    public enum Mode { Track, Statics }
 
     Mode currentMode;
+    const int modeNum = 2;
     Transform mainCameraTransform;
-    Transform MainCameraTransform
-    {
-        get
-        {
-            if (mainCameraTransform == null) mainCameraTransform = Camera.main.transform;
-            return mainCameraTransform;
-        }
-    }
+    
+    [SerializeField]
+    BodyLocked bodyLoacked = null;
 
     [SerializeField]
-    Transform staticsPosition = null;
+    GameObject[] missionTexts = null;
+
+    [SerializeField]
+    HoloText[] firstTexts = null;
+    [SerializeField]
+    HoloText[] endTexts = null;
+
+    [SerializeField]
+    HoloText storyText = null;
 
     void Start()
     {
         MainSceneManager sceneManager = MainSceneManager.I;
+        mainCameraTransform = Camera.main.transform;
 
-        //todo:ページの読み込みが終わった時にTrackになるように設定する
+        sceneManager.OnPageLoaded += () =>
+        {
+            ChangeMode(Mode.Track);
+
+            string firstText = sceneManager.pages[sceneManager.currentPageIndex].storyFirstText;
+            string endText = sceneManager.pages[sceneManager.currentPageIndex].storyEndText;
+
+            SetText(firstText, endText);
+
+            Utilities.Delay(3.0f, () =>
+            {
+                ChangeMode(Mode.Statics);
+            }, this);
+        };
     }
 
     public void ChangeMode(Mode mode)
     {
-        if (currentMode == mode) return;
-
         currentMode = mode;
 
-        switch(mode)
+        if (mode == Mode.Statics)
         {
-            case Mode.Statics:
-                transform.parent = MainGameUIController.I.transform;
-                transform.position = staticsPosition.position;
-                transform.rotation = staticsPosition.rotation;
-                break;
-            case Mode.Track:
-                transform.parent = MainCameraTransform;
-                transform.position = new Vector3(0.0f, 0.0f, 2.0f);
-                transform.rotation = Quaternion.identity;
-                break;
+            StartCoroutine(MoveWindow());
         }
+        else if (mode == Mode.Track)
+        {
+            missionTexts[1].SetActive(false);
+            missionTexts[0].SetActive(true);
+            bodyLoacked.enabled = true;
+        }
+    }
+
+    IEnumerator MoveWindow()
+    {
+        Vector3 firstPosition = missionTexts[0].transform.position;
+        Quaternion firstRotation = missionTexts[0].transform.rotation;
+        Vector3 endPosition = missionTexts[1].transform.position;
+        Quaternion endRotation = missionTexts[1].transform.rotation;
+
+        bodyLoacked.enabled = false;
+
+        yield return StartCoroutine(Utilities.FloatLerp(1.0f, (t) =>
+        {
+            missionTexts[0].transform.SetPositionAndRotation(
+                Vector3.Lerp(firstPosition, endPosition, t), 
+                Quaternion.Lerp(firstRotation, endRotation, t)
+            );
+        }));
+
+        missionTexts[0].SetActive(false);
+        missionTexts[1].SetActive(true);
+    }
+
+    public void SetText(string first, string end)
+    {
+        for (int i = 0; i < modeNum; i++)
+        {
+            firstTexts[i].CurrentText = first;
+            endTexts[i].CurrentText = end;
+        }
+    }
+
+    public void ResetText()
+    {
+        storyText.CurrentText = "";
+    }
+
+    public void AddText(string text)
+    {
+        storyText.CurrentText = storyText.CurrentText + '\n' + text;
     }
 }
