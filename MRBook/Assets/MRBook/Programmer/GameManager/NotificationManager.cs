@@ -87,6 +87,6 @@ public class NotificationManager : BaseManager<NotificationManager>
 
     public void ShowDialog(string title, string message, bool autoHide = false, float hideTime = 1.0f)
     {
-        normalWindow.Show(title, message, autoHide, hideTime);
+        //normalWindow.Show(title, message, autoHide, hideTime);
     }
 }
