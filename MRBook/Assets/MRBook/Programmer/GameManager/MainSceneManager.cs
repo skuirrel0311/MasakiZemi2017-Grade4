@@ -63,6 +63,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     public bool IsGameStart { get; protected set; }
 
+    [NonSerialized]
     public Animator m_Animator;
 
     public string currentMissionText { get; protected set; }
