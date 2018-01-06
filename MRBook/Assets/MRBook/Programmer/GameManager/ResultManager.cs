@@ -7,8 +7,6 @@ public class ResultManager : BaseManager<ResultManager>
     //玉手箱の中身
     List<HoloItem> secretBoxContentsList = new List<HoloItem>();
 
-    bool isOpenSecretBox;
-
     //玉手箱の重さ（重すぎると持ち上げられない?）
 
     public int deathCount = 0;

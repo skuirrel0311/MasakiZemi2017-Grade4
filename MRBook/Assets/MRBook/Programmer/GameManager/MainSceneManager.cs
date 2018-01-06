@@ -16,34 +16,22 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     /* イベント */
     /// <summary>
-    /// ページの遷移時　前のページ、次のページ
+    /// ページの読み込みが終わったとき
     /// </summary>
-    public Action<BasePage, BasePage> OnPageChanged;
-    /// <summary>
-    /// TapToStartが押されたとき
-    /// </summary>
-    public Action OnGameStart;
+    public Action OnPageLoaded;
     /// <summary>
     /// ページを再生させたとき
     /// </summary>
     public Action<BasePage> OnPlayPage;
     /// <summary>
-    /// ページがリセットされたとき
-    /// </summary>
-    public Action OnReset;
-    /// <summary>
     /// 再生が終了したとき
     /// </summary>
     public Action<bool> OnPlayEnd;
     /// <summary>
-    /// ステートが変化したとき
+    /// ページがリセットされたとき
     /// </summary>
-    public Action<GameState> OnGameStateChanged;
-    /// <summary>
-    /// ページを読み終わったとき
-    /// </summary>
-    public Action OnPageLoaded;
-
+    public Action OnReset;
+    
     /* メンバ */
     GameState currentState = GameState.Wait;
     public GameState CurrentState
@@ -57,7 +45,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             if (currentState == value) return;
 
             currentState = value;
-            if (OnGameStateChanged != null) OnGameStateChanged.Invoke(value);
         }
     }
 
@@ -112,14 +99,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     protected override void Start()
     {
         base.Start();
-        OnGameStart += GameStart;
-
         //todo:UIで読み込み中と出す
 
         //この時点ではBookTransfromが正しい位置にいないので遅らせる
         Utilities.Delay(1.0f, () =>
         {
-            OnGameStart.Invoke();
+            GameStart();
         }, this);
         resetManager = new HoloObjResetManager(this);
     }
@@ -253,7 +238,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].gameObject.SetActive(false);
         PageResultManager.I.Hide();
         //ページを切り替える
-        if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex], pages[index]);
         currentPageIndex = index;
 
         //表示するtodo:エフェクト

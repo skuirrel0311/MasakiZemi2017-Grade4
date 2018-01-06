@@ -16,16 +16,15 @@ public class HoloWindow : MonoBehaviour
 
     MyCoroutine viewCoroutine;
 
-    Material[] imageMaterials;
+    Dictionary<Renderer, Color> rendererDictionary = new Dictionary<Renderer, Color>();
 
     protected void Start()
     {
         Renderer[] rends = GetComponentsInChildren<Renderer>();
-        imageMaterials = new Material[rends.Length];
 
         for(int i = 0;i< rends.Length;i++)
         {
-            imageMaterials[i] = rends[i].material;
+            //imageMaterials[i] = rends[i].material;
         }
     }
 

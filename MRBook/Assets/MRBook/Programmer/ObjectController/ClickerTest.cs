@@ -42,14 +42,14 @@ public class ClickerTest : MonoBehaviour
 
     void NavigationUpdatedEvent(InteractionSourceKind source, Vector3 normalizedOffset, Ray headRay)
     {
-        float t = normalizedOffset.x * 0.5f + 0.5f;
+        float t = normalizedOffset.z * 0.5f + 0.5f;
         MoveTarget(t);
     }
 
     // t must be a value between 0.0 and 1.0
     void MoveTarget(float t)
     {
-        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(t, 0.5f, 5.0f));
+        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, t + 5.0f));
         targetObject.transform.position = pos;
     }
 }

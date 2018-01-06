@@ -22,12 +22,6 @@ public class MainGameUIController : BaseManager<MainGameUIController>
     {
         base.Start();
         gameManager = MainSceneManager.I;
-        gameManager.OnGameStateChanged += OnGameStateChanged;
-        gameManager.OnPageChanged += (page1, page2) =>
-        {
-            missionText.CurrentText = page2.missionText;
-            Debug.Log("current page mission = " + page2.missionText);
-        };
     }
 
     public void SetPositionAndRotation(Vector3 pos, Quaternion rot)
@@ -47,7 +41,6 @@ public class MainGameUIController : BaseManager<MainGameUIController>
                 HandIconController.I.Hide();
                 break;
             case MainSceneManager.GameState.Next:
-                missionText.CurrentText = "ページをめくれ！";
                 playButton.Disable();
                 //resetButton.Disable();
                 resetButton.Refresh();

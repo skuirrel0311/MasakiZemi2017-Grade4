@@ -42,7 +42,6 @@ public class ActorManager : Singleton<ActorManager>
     public void InitSceneManager(MainSceneManager sceneManager)
     {
         this.sceneManager = sceneManager;
-        this.sceneManager.OnPageChanged += OnPageChanged;
 
         trianglePrefab = MyAssetStore.I.GetAsset<GameObject>("triangle", "Prefabs/");
         handIconControllerPrefab = MyAssetStore.I.GetAsset<GameObject>("HandIconController", "Prefabs/").GetComponent<HandIconController>();
