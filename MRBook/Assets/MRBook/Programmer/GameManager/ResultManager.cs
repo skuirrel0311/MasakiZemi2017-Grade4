@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ResultManager : BaseManager<ResultManager>
 {
+    [SerializeField]
+    HoloText totalScore = null;
+    [SerializeField]
+    HoloButton titleBack = null;
+
     //玉手箱の中身
     List<HoloItem> secretBoxContentsList = new List<HoloItem>();
 
@@ -46,5 +51,17 @@ public class ResultManager : BaseManager<ResultManager>
         {
 
         }
+    }
+
+    public void ShowTitleBack()
+    {
+        titleBack.gameObject.SetActive(true);
+    }
+
+    public void ShowTotalResult()
+    {
+        totalScore.CurrentText = "死んだ回数：" + ResultManager.I.deathCount + " 回";
+
+        totalScore.gameObject.SetActive(true);
     }
 }

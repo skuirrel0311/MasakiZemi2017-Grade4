@@ -74,6 +74,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     HoloObjResetManager resetManager;
 
+    [SerializeField]
+    Transform uiContainer = null;
+
     /* メソッド */
 
     protected override void Awake()
@@ -160,7 +163,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             pages[i].PageLock(t.position, t.rotation);
         }
-        MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);
+
+        uiContainer.SetPositionAndRotation(t.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
 
         SetPage(currentPageIndex);
@@ -178,8 +182,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             pages[i].SetTransform(t);
         }
-
-        MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);
+        
+        uiContainer.SetPositionAndRotation(t.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
     }
 

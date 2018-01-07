@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2177,7 +2177,7 @@ Transform:
   - {fileID: 520540351}
   - {fileID: 1948016196}
   m_Father: {fileID: 1355400575}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &791918212
 MonoBehaviour:
@@ -3816,7 +3816,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1355400575}
-  - component: {fileID: 1355400574}
   m_Layer: 5
   m_Name: UIController
   m_TagString: Untagged
@@ -3824,25 +3823,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1355400574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114544130745421132, guid: 4e653380338af15458bb7a4dd66de34a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1355400573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8a99a4579fa4e64598dd77fd628fb0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
-  missionText: {fileID: 1951262871}
-  stateText: {fileID: 0}
-  playButton: {fileID: 1562682982}
-  resetButton: {fileID: 269569703}
-  totalScore: {fileID: 0}
-  titleBack: {fileID: 0}
 --- !u!4 &1355400575
 Transform:
   m_ObjectHideFlags: 0
@@ -3857,10 +3837,10 @@ Transform:
   - {fileID: 1562682983}
   - {fileID: 269569704}
   - {fileID: 1316356014}
+  - {fileID: 791918211}
   - {fileID: 113102395}
   - {fileID: 1059004622}
   - {fileID: 218553270}
-  - {fileID: 791918211}
   - {fileID: 1334607222}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -4439,6 +4419,7 @@ MonoBehaviour:
   - {fileID: 2110072177}
   - {fileID: 629083179}
   visibleMat: {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
+  uiContainer: {fileID: 1355400575}
   offsetController: {fileID: 86539193}
 --- !u!114 &1552864901
 MonoBehaviour:
@@ -4452,6 +4433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  totalScore: {fileID: 0}
+  titleBack: {fileID: 0}
   deathCount: 0
 --- !u!114 &1552864903
 MonoBehaviour:
@@ -5948,12 +5931,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1951262871 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114624609133028876, guid: 1781f1202e869c54eb51f376474989eb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1002501228}
-  m_Script: {fileID: 11500000, guid: 6a40fe0d32e51394da5daa7cee908245, type: 3}
 --- !u!1001 &1957060798
 Prefab:
   m_ObjectHideFlags: 0

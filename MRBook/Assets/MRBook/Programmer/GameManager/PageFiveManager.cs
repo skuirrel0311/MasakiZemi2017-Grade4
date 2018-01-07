@@ -39,11 +39,11 @@ public class PageFiveManager : BasePage
 
         MainSceneManager.I.OnPlayEnd += (success) =>
         {
-            MainGameUIController.I.ShowTotalResult();
+            ResultManager.I.ShowTotalResult();
 
             Utilities.Delay(2.0f, () =>
             {
-                MainGameUIController.I.ShowTitleBack();
+                ResultManager.I.ShowTitleBack();
             }, this);
 
         };
