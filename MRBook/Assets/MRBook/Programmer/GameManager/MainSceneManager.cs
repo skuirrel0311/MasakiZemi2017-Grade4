@@ -18,11 +18,11 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// <summary>
     /// ページの読み込みが終わったとき
     /// </summary>
-    public Action OnPageLoaded;
+    public Action<BasePage> OnPageLoaded;
     /// <summary>
     /// ページを再生させたとき
     /// </summary>
-    public Action<BasePage> OnPlayPage;
+    public Action OnPlayPage;
     /// <summary>
     /// 再生が終了したとき
     /// </summary>
@@ -124,7 +124,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         NotificationManager.I.ShowMessage("再生開始");
         
-        if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
+        if (OnPlayPage != null) OnPlayPage();
 
         m_Animator.SetBool("IsStart", true);
 
@@ -254,7 +254,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         Utilities.Delay(2, () =>
         {
             Debug.Log("on page loaded");
-            if (OnPageLoaded != null) OnPageLoaded.Invoke();
+            if (OnPageLoaded != null) OnPageLoaded.Invoke(pages[currentPageIndex]);
         },this);
     }
 

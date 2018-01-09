@@ -43,6 +43,7 @@ public class ActorManager : Singleton<ActorManager>
     {
         this.sceneManager = sceneManager;
 
+        sceneManager.OnPageLoaded += (page)=> OnPageLoaded(page);
         trianglePrefab = MyAssetStore.I.GetAsset<GameObject>("triangle", "Prefabs/");
         handIconControllerPrefab = MyAssetStore.I.GetAsset<GameObject>("HandIconController", "Prefabs/").GetComponent<HandIconController>();
     }
@@ -156,19 +157,8 @@ public class ActorManager : Singleton<ActorManager>
     }
 
     //ページが変更
-    void OnPageChanged(BasePage previousPage, BasePage nextPage)
+    void OnPageLoaded(BasePage nextPage)
     {
         currentPage = nextPage;
-        
-        //if (globalObjectDictionary.Count == 0) return;
-        ////前のページから持ってきたオブジェクトがある。
-        
-        //foreach(string key in globalObjectDictionary.Keys)
-        //{
-        //    //前のページから登録を消す
-        //    previousPage.RemoveMovableObject(key);
-        //    globalObjectDictionary[key].transform.parent = nextPage.transform;
-        //}
-        //アクティブなアクターはページを開いた時に追加されるのでここで追加はしない
     }
 }

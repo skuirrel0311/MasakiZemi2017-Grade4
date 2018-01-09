@@ -22,7 +22,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
         scale = Mathf.Clamp(scale, 0.02f, 0.08f);
         arrow.transform.localScale = Vector3.one * scale * (1.0f / transform.lossyScale.x);
-        MainSceneManager.I.OnPlayPage += (page) =>
+        MainSceneManager.I.OnPlayPage += () =>
         {
             arrow.SetActive(false);
         };

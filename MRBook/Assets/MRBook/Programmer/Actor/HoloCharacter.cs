@@ -15,7 +15,7 @@ public class HoloCharacter : HoloObject
 
     protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
 
-    Action enabled;
+    Action onEnabled;
 
     protected void Awake()
     {
@@ -25,9 +25,9 @@ public class HoloCharacter : HoloObject
 
     protected void OnEnable()
     {
-        if (enabled != null) enabled.Invoke();
+        if (onEnabled != null) onEnabled.Invoke();
 
-        enabled = null;
+        onEnabled = null;
     }
 
     protected override void Init()
@@ -64,7 +64,7 @@ public class HoloCharacter : HoloObject
         }
         else
         {
-            enabled += () =>
+            onEnabled += () =>
             {
                 m_animator.CrossFade(motionName, transitionDuration);
             };

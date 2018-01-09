@@ -31,7 +31,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         actorManager = ActorManager.I;
 
         if (MainSceneManager.I == null) return;
-        MainSceneManager.I.OnPlayPage += (page) =>
+        MainSceneManager.I.OnPlayPage += () =>
         {
             Disable();
         };

@@ -31,12 +31,12 @@ public class MissionTextController : BaseManager<MissionTextController>
         MainSceneManager sceneManager = MainSceneManager.I;
         mainCameraTransform = Camera.main.transform;
 
-        sceneManager.OnPageLoaded += () =>
+        sceneManager.OnPageLoaded += (page) =>
         {
             ChangeMode(Mode.Track);
 
-            string firstText = sceneManager.pages[sceneManager.currentPageIndex].storyFirstText;
-            string endText = sceneManager.pages[sceneManager.currentPageIndex].storyEndText;
+            string firstText = page.storyFirstText;
+            string endText = page.storyEndText;
 
             SetText(firstText, endText);
 
@@ -46,7 +46,7 @@ public class MissionTextController : BaseManager<MissionTextController>
             }, this);
         };
 
-        sceneManager.OnPlayPage += (page) =>
+        sceneManager.OnPlayPage += () =>
         {
             endTexts[1].gameObject.SetActive(false);
         };
