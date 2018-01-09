@@ -29,13 +29,24 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         base.Start();
         actorManager = ActorManager.I;
+        MainSceneManager sceneManager = MainSceneManager.I;
 
-        if (MainSceneManager.I == null) return;
-        MainSceneManager.I.OnPlayPage += () =>
+        if (sceneManager == null) return;
+        sceneManager.OnPlayPage += () =>
         {
+            canClick = false;
             Disable();
         };
-        MainSceneManager.I.OnReset += () => Disable();
+        sceneManager.OnReset += () =>
+        {
+            canClick = true;
+            Disable();
+        };
+        sceneManager.OnPageLoaded += (page) =>
+        {
+            canClick = true;
+        };
+        
     }
 
     protected override void StartDragging()
@@ -142,7 +153,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     /// <param name="obj"></param>
     public override void SetTargetObject(HoloObject obj)
     {
-        SetTargetObject(obj != null ? obj.gameObject : null);
+        if (!canClick) return;
+        base.SetTargetObject(obj != null ? obj.gameObject : null);
         if (targetMovableObject != null) targetMovableObject.InputHandler.OnDisabled();
         targetMovableObject = obj;
     }

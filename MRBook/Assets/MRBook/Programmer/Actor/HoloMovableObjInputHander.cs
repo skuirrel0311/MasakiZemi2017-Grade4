@@ -52,6 +52,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
 
     public override bool OnClick()
     {
+        if (!MyObjControllerByBoundingBox.I.canClick) return false;
         MyObjControllerByBoundingBox.I.SetTargetObject(owner);
         arrow.SetActive(false);
         base.OnClick();

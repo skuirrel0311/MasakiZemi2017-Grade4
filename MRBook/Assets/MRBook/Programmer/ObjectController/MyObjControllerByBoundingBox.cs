@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 //バウンディングボックスを用いたオブジェクトの操作
 public class MyObjControllerByBoundingBox : MyObjPositionController
 {
+    public bool canClick { get; protected set; }
     public bool canDragging { get; protected set; }
     Renderer[] m_renderers;
     Collider[] m_cols;
@@ -68,6 +69,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         m_renderers = GetComponentsInChildren<Renderer>();
         m_cols = GetComponentsInChildren<Collider>();
         ChangeWireFrameView(false);
+        canClick = true;
         base.Start();
     }
 
