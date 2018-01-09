@@ -1021,11 +1021,11 @@ Prefab:
         type: 2}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1334607223}
     - target: {fileID: 114834741265693118, guid: 6ec41603c132fb4418c4e56ba082bb53,
         type: 2}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameEnd
+      value: ShowTitleBack
       objectReference: {fileID: 0}
     - target: {fileID: 4350318812528728, guid: 6ec41603c132fb4418c4e56ba082bb53, type: 2}
       propertyPath: m_LocalScale.x
@@ -2781,6 +2781,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4445549106998794, guid: a4d554c5c125ee4449c0cc94237398bf,
     type: 2}
   m_PrefabInternal: {fileID: 2140310172}
+--- !u!114 &1055290435 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114231031548177256, guid: 0ae262117fba86940aa5594fe59b1cd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 17882446}
+  m_Script: {fileID: 11500000, guid: 6a40fe0d32e51394da5daa7cee908245, type: 3}
 --- !u!4 &1059004622 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4558483227401150, guid: 191aeb5b9f34df04db90365b86a6fbe6,
@@ -3722,6 +3728,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1334607222}
+  - component: {fileID: 1334607223}
   m_Layer: 5
   m_Name: TotalResult
   m_TagString: Untagged
@@ -3744,6 +3751,21 @@ Transform:
   m_Father: {fileID: 1355400575}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334607223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1334607221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19cf8df89055d648a5217c7f362c347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  totalScore: {fileID: 1055290435}
+  titleBack: {fileID: 1647601119}
+  deathCount: 0
 --- !u!1 &1355400573
 GameObject:
   m_ObjectHideFlags: 0
@@ -4366,13 +4388,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552864896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f19cf8df89055d648a5217c7f362c347, type: 3}
+  m_Script: {fileID: 11500000, guid: e2b6198cbd8a4c6499c1cacc0959141e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
-  totalScore: {fileID: 0}
-  titleBack: {fileID: 0}
-  deathCount: 0
 --- !u!114 &1552864903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4963,6 +4981,12 @@ Transform:
   m_Father: {fileID: 997409631}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647601119 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114834741265693118, guid: 6ec41603c132fb4418c4e56ba082bb53,
+    type: 2}
+  m_PrefabInternal: {fileID: 280019246}
+  m_Script: {fileID: 11500000, guid: 8ee6b3c469c317144a1a3d4d66879739, type: 3}
 --- !u!1 &1653838823
 GameObject:
   m_ObjectHideFlags: 0

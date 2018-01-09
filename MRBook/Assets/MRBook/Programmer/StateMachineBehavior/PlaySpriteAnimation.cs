@@ -2,27 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayEffect : BaseStateMachineBehaviour
+public class PlaySpriteAnimation : BaseStateMachineBehaviour
 {
     [SerializeField]
     ActorManager.TargetType targetType = ActorManager.TargetType.StaticPoint;
     [SerializeField]
     string targetName = "";
     [SerializeField]
-    string effectName = "";
+    string spriteAnimationName = "";
     [SerializeField]
-    public Vector3 offset = Vector3.zero;
-
+    Vector3 offset = Vector3.zero;
+    [SerializeField]
+    float lifeTime = 1.0f;
+    
     protected override void OnStart()
     {
         base.OnStart();
         Transform target = ActorManager.I.GetTargetTransform(targetName, targetType);
-        if(target == null)
+        if (target == null)
         {
             Debug.LogError(target + "is not found");
             return;
         }
-
-        ParticleManager.I.Play(effectName, target.position + offset);
+        
+        SpriteAnimationManager.I.Play(spriteAnimationName, target.position + offset, lifeTime);
     }
 }
