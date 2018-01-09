@@ -15,6 +15,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     }
 
     /* イベント */
+    //todo:ページの読み込みが終わったとき＝bodyLockからstaticsに変わったときにするといいかも
     /// <summary>
     /// ページの読み込みが終わったとき
     /// </summary>

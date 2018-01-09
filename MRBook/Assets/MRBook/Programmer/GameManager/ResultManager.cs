@@ -8,6 +8,8 @@ public class ResultManager : BaseManager<ResultManager>
     HoloText totalScore = null;
     [SerializeField]
     HoloButton titleBack = null;
+    [SerializeField]
+    LifePointGauge lifePointGauge = null;
 
     //玉手箱の中身
     List<HoloItem> secretBoxContentsList = new List<HoloItem>();
@@ -15,6 +17,28 @@ public class ResultManager : BaseManager<ResultManager>
     //玉手箱の重さ（重すぎると持ち上げられない?）
 
     public int deathCount = 0;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        MainSceneManager sceneManager = MainSceneManager.I;
+
+        int maxLifePoint = 0;
+
+        for(int i = 0;i < sceneManager.pages.Length;i++)
+        {
+            if (maxLifePoint >= sceneManager.pages[i].lifePoint) continue;
+            maxLifePoint = sceneManager.pages[i].lifePoint;
+        }
+
+        lifePointGauge.Init(maxLifePoint);
+
+        sceneManager.OnPageLoaded += (page) =>
+        {
+            lifePointGauge.SetValue(page.lifePoint);
+        };
+    }
 
     public void AddSecretBoxContent(HoloItem item)
     {
@@ -45,11 +69,12 @@ public class ResultManager : BaseManager<ResultManager>
     {
         deathCount++;
 
-        //todo:上限に達したらゲームオーバー
-        const int limit = 99;
-        if(deathCount > limit)
-        {
+        lifePointGauge.SetValue(lifePointGauge.value - 1);
 
+        if(lifePointGauge.value <= 0)
+        {
+            //ゲームオーバー
+            Debug.Log("ゲームオーバー");
         }
     }
 
@@ -60,7 +85,7 @@ public class ResultManager : BaseManager<ResultManager>
 
     public void ShowTotalResult()
     {
-        totalScore.CurrentText = "死んだ回数：" + ResultManager.I.deathCount + " 回";
+        totalScore.CurrentText = "死んだ回数：" + deathCount + " 回";
 
         totalScore.gameObject.SetActive(true);
     }
