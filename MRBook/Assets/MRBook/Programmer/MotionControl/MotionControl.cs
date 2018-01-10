@@ -50,7 +50,8 @@ public enum MotionName
     GetOffboat,     //船から降りる
     DropDownBoat,   //船から落ちて死ぬ
     Swim,       //泳ぐ
-    Brutality   //いじめる
+    Brutality,  //いじめる
+    Pose        //マッチョポーズ
 
 }
 

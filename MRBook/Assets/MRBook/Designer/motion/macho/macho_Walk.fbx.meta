@@ -1,63 +1,83 @@
 fileFormatVersion: 2
-guid: b29de53207b4c954e8faed554a6b2ad0
-timeCreated: 1506689580
+guid: 1ebc7fc32e44c6746a758cc292928fce
+timeCreated: 1515224484
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: B_Hair1
-    100002: B_Hair2
-    100004: //RootNode
-    100006: gakkitai
-    100008: Hair1
+    100000: Back
+    100002: Back_a
+    100004: Front
+    100006: Front_a
+    100008: Hair
     100010: Hair2
     100012: Head
     100014: Hips
-    100016: LeftArm
-    100018: LeftFoot
-    100020: LeftForeArm
-    100022: LeftHand
-    100024: LeftLeg
-    100026: LeftShoulder
-    100028: LeftUpLeg
-    100030: Neck
-    100032: Reference
-    100034: RightArm
-    100036: RightFoot
-    100038: RightForeArm
-    100040: RightHand
-    100042: RightLeg
-    100044: RightShoulder
-    100046: RightUpLeg
-    100048: Spine
-    100050: Spine1
-    400000: B_Hair1
-    400002: B_Hair2
-    400004: //RootNode
-    400006: gakkitai
-    400008: Hair1
+    100016: Left
+    100018: Left_a
+    100020: LeftArm
+    100022: LeftFoot
+    100024: LeftForeArm
+    100026: LeftHand
+    100028: LeftLeg
+    100030: LeftShoulder
+    100032: LeftSide
+    100034: LeftToeBase
+    100036: LeftUpLeg
+    100038: //RootNode
+    100040: Neck
+    100042: Reference
+    100044: Right
+    100046: Right_a
+    100048: RightArm
+    100050: RightFoot
+    100052: RightForeArm
+    100054: RightHand
+    100056: RightLeg
+    100058: RightShoulder
+    100060: RightSide
+    100062: RightToeBase
+    100064: RightUpLeg
+    100066: Spine
+    100068: Spine1
+    100070: urashimamacho
+    400000: Back
+    400002: Back_a
+    400004: Front
+    400006: Front_a
+    400008: Hair
     400010: Hair2
     400012: Head
     400014: Hips
-    400016: LeftArm
-    400018: LeftFoot
-    400020: LeftForeArm
-    400022: LeftHand
-    400024: LeftLeg
-    400026: LeftShoulder
-    400028: LeftUpLeg
-    400030: Neck
-    400032: Reference
-    400034: RightArm
-    400036: RightFoot
-    400038: RightForeArm
-    400040: RightHand
-    400042: RightLeg
-    400044: RightShoulder
-    400046: RightUpLeg
-    400048: Spine
-    400050: Spine1
-    7400000: FueGakkitai_Wait
+    400016: Left
+    400018: Left_a
+    400020: LeftArm
+    400022: LeftFoot
+    400024: LeftForeArm
+    400026: LeftHand
+    400028: LeftLeg
+    400030: LeftShoulder
+    400032: LeftSide
+    400034: LeftToeBase
+    400036: LeftUpLeg
+    400038: //RootNode
+    400040: Neck
+    400042: Reference
+    400044: Right
+    400046: Right_a
+    400048: RightArm
+    400050: RightFoot
+    400052: RightForeArm
+    400054: RightHand
+    400056: RightLeg
+    400058: RightShoulder
+    400060: RightSide
+    400062: RightToeBase
+    400064: RightUpLeg
+    400066: Spine
+    400068: Spine1
+    400070: urashimamacho
+    7400000: macho_Walk
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -83,10 +103,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: FueGakkitai_Wait
-      takeName: FueGakkitai_Wait
+      name: macho_Walk
+      takeName: macho_Walk
       firstFrame: 0
-      lastFrame: 125
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -109,11 +129,21 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: gakkitai
-        weight: 1
       - path: Reference
         weight: 1
       - path: Reference/Hips
+        weight: 1
+      - path: Reference/Hips/Back
+        weight: 1
+      - path: Reference/Hips/Back/Back_a
+        weight: 1
+      - path: Reference/Hips/Front
+        weight: 1
+      - path: Reference/Hips/Front/Front_a
+        weight: 1
+      - path: Reference/Hips/Left
+        weight: 1
+      - path: Reference/Hips/Left/Left_a
         weight: 1
       - path: Reference/Hips/LeftUpLeg
         weight: 1
@@ -121,11 +151,19 @@ ModelImporter:
         weight: 1
       - path: Reference/Hips/LeftUpLeg/LeftLeg/LeftFoot
         weight: 1
+      - path: Reference/Hips/LeftUpLeg/LeftLeg/LeftFoot/LeftToeBase
+        weight: 1
+      - path: Reference/Hips/Right
+        weight: 1
+      - path: Reference/Hips/Right/Right_a
+        weight: 1
       - path: Reference/Hips/RightUpLeg
         weight: 1
       - path: Reference/Hips/RightUpLeg/RightLeg
         weight: 1
       - path: Reference/Hips/RightUpLeg/RightLeg/RightFoot
+        weight: 1
+      - path: Reference/Hips/RightUpLeg/RightLeg/RightFoot/RightToeBase
         weight: 1
       - path: Reference/Hips/Spine
         weight: 1
@@ -143,13 +181,13 @@ ModelImporter:
         weight: 1
       - path: Reference/Hips/Spine/Spine1/Neck/Head
         weight: 1
-      - path: Reference/Hips/Spine/Spine1/Neck/Head/B_Hair1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/Hair
         weight: 1
-      - path: Reference/Hips/Spine/Spine1/Neck/Head/B_Hair1/B_Hair2
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/Hair2
         weight: 1
-      - path: Reference/Hips/Spine/Spine1/Neck/Head/Hair1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/LeftSide
         weight: 1
-      - path: Reference/Hips/Spine/Spine1/Neck/Head/Hair1/Hair2
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/RightSide
         weight: 1
       - path: Reference/Hips/Spine/Spine1/RightShoulder
         weight: 1
@@ -158,6 +196,8 @@ ModelImporter:
       - path: Reference/Hips/Spine/Spine1/RightShoulder/RightArm/RightForeArm
         weight: 1
       - path: Reference/Hips/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: urashimamacho
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
