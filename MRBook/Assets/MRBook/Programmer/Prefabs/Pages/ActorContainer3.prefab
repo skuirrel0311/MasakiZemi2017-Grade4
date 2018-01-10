@@ -2258,6 +2258,9 @@ GameObject:
   - component: {fileID: 54690897772748340}
   - component: {fileID: 136992250464810110}
   - component: {fileID: 153518418388167872}
+  - component: {fileID: 114460449985893066}
+  - component: {fileID: 114245967309782172}
+  - component: {fileID: 114537204414053492}
   m_Layer: 9
   m_Name: RightHand
   m_TagString: Untagged
@@ -2358,7 +2361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1581529740793142
 GameObject:
   m_ObjectHideFlags: 1
@@ -7887,6 +7890,7 @@ MonoBehaviour:
   isMovable: 0
   canHaveItem: 0
   inPlayLayer: 4
+  overrideName: 
   defaultMotionName: 0
 --- !u!114 &114146197812605668
 MonoBehaviour:
@@ -7902,6 +7906,7 @@ MonoBehaviour:
   isMovable: 0
   canHaveItem: 0
   inPlayLayer: 4
+  overrideName: 
   defaultMotionName: 0
 --- !u!114 &114182044512930264
 MonoBehaviour:
@@ -7934,6 +7939,7 @@ MonoBehaviour:
   isMovable: 0
   canHaveItem: 0
   inPlayLayer: 4
+  overrideName: 
   defaultMotionName: 0
 --- !u!114 &114227163929401854
 MonoBehaviour:
@@ -7949,7 +7955,21 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 8
+  overrideName: 
   defaultMotionName: 0
+--- !u!114 &114245967309782172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564749019709326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77f3049782644ff8803c8b79f2fa253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puppetMaster: {fileID: 0}
+  muscleIndex: 14
 --- !u!114 &114255741826468550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7980,6 +8000,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8138223246872bd4ba2cfef803c1a63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114460449985893066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564749019709326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114511279981601398
@@ -8034,6 +8065,19 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+--- !u!114 &114537204414053492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564749019709326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puppetMaster: {fileID: 0}
+  muscleIndex: 14
 --- !u!114 &114604314033554786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8068,10 +8112,10 @@ MonoBehaviour:
   muscleDamper: 0
   pinPow: 4
   pinDistanceFalloff: 5
-  updateJointAnchors: 1
+  updateJointAnchors: 0
   supportTranslationAnimation: 0
   angularLimits: 1
-  internalCollisions: 1
+  internalCollisions: 0
   muscles:
   - name: Hips
     joint: {fileID: 153644928387912360}
@@ -8094,7 +8138,7 @@ MonoBehaviour:
     joint: {fileID: 153158595043002254}
     target: {fileID: 4430594843615518}
     props:
-      group: 0
+      group: 5
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8111,7 +8155,7 @@ MonoBehaviour:
     joint: {fileID: 153462886534233108}
     target: {fileID: 4767976200441314}
     props:
-      group: 0
+      group: 5
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8128,7 +8172,7 @@ MonoBehaviour:
     joint: {fileID: 153050652784540884}
     target: {fileID: 4600463945532530}
     props:
-      group: 0
+      group: 6
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8145,7 +8189,7 @@ MonoBehaviour:
     joint: {fileID: 153068505120175096}
     target: {fileID: 4154893094569284}
     props:
-      group: 0
+      group: 5
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8162,7 +8206,7 @@ MonoBehaviour:
     joint: {fileID: 153498746119899678}
     target: {fileID: 4069304476725462}
     props:
-      group: 0
+      group: 5
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8179,7 +8223,7 @@ MonoBehaviour:
     joint: {fileID: 153578482407535138}
     target: {fileID: 4251983908563164}
     props:
-      group: 0
+      group: 6
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8196,7 +8240,7 @@ MonoBehaviour:
     joint: {fileID: 153545519128432936}
     target: {fileID: 4884568629453868}
     props:
-      group: 0
+      group: 1
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8213,7 +8257,7 @@ MonoBehaviour:
     joint: {fileID: 153467885824575774}
     target: {fileID: 4434444513777080}
     props:
-      group: 0
+      group: 3
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8230,7 +8274,7 @@ MonoBehaviour:
     joint: {fileID: 153528893243391736}
     target: {fileID: 4215937561643242}
     props:
-      group: 0
+      group: 3
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8247,7 +8291,7 @@ MonoBehaviour:
     joint: {fileID: 153514281450029238}
     target: {fileID: 4543601093407334}
     props:
-      group: 0
+      group: 4
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8264,7 +8308,7 @@ MonoBehaviour:
     joint: {fileID: 153284861799204406}
     target: {fileID: 4140662808649668}
     props:
-      group: 0
+      group: 2
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8281,7 +8325,7 @@ MonoBehaviour:
     joint: {fileID: 153303118453237552}
     target: {fileID: 4394459979808440}
     props:
-      group: 0
+      group: 3
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8298,7 +8342,7 @@ MonoBehaviour:
     joint: {fileID: 153683443320620142}
     target: {fileID: 4393749761449640}
     props:
-      group: 0
+      group: 3
       mappingWeight: 1
       pinWeight: 1
       muscleWeight: 1
@@ -8315,8 +8359,8 @@ MonoBehaviour:
     joint: {fileID: 153518418388167872}
     target: {fileID: 4309509476303142}
     props:
-      group: 0
-      mappingWeight: 1
+      group: 4
+      mappingWeight: 0
       pinWeight: 1
       muscleWeight: 1
       muscleDamper: 1
@@ -8362,6 +8406,7 @@ MonoBehaviour:
   isMovable: 0
   canHaveItem: 0
   inPlayLayer: 4
+  overrideName: 
   defaultMotionName: 0
 --- !u!114 &114882766028939046
 MonoBehaviour:
@@ -8378,7 +8423,8 @@ MonoBehaviour:
   leftHand: {fileID: 4215531441645710}
   rightHandItemDataList: {fileID: 11400000, guid: c7dadd53dcb3d464f9f9b5c53722513a,
     type: 2}
-  leftHandItemDataList: {fileID: 0}
+  leftHandItemDataList: {fileID: 11400000, guid: b9f76e2ee189bb34da523928f345c6cb,
+    type: 2}
 --- !u!114 &114886564772464168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8393,6 +8439,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 1
   inPlayLayer: 8
+  overrideName: 
   defaultMotionName: 0
   m_behavirour: {fileID: 114890856243054102}
   rootObj: {fileID: 1520109526768406}
@@ -10021,16 +10068,16 @@ ConfigurableJoint:
   m_ConnectedBody: {fileID: 54655720755686048}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0.09859404, y: -0.0033339914, z: 0.0075809024}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
   m_YMotion: 0
   m_ZMotion: 0
-  m_AngularXMotion: 1
-  m_AngularYMotion: 1
-  m_AngularZMotion: 1
+  m_AngularXMotion: 0
+  m_AngularYMotion: 0
+  m_AngularZMotion: 0
   m_LinearLimitSpring:
     spring: 0
     damper: 0
@@ -10077,9 +10124,9 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0.27251738, y: -0.212581, z: -0.1709411, w: 0.9226723}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
-  m_RotationDriveMode: 0
+  m_RotationDriveMode: 1
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
@@ -10092,9 +10139,9 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
-    positionSpring: 0
+    positionSpring: 30
     positionDamper: 0
-    maximumForce: 3.4028233e+38
+    maximumForce: 30
   m_ProjectionMode: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
