@@ -15,7 +15,7 @@ public class UnderTargetMaker : MonoBehaviour
     public void InitializeMaker(HoloObject putObj, RaycastHit underObj, bool isHit)
     {
         targetObject = putObj;
-        circleController.Initialize();
+        circleController.Init();
 
         if (isHit)
         {

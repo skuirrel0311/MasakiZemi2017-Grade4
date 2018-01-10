@@ -18,16 +18,18 @@ public class CircleController : MonoBehaviour
     float interval = 0.25f;
 
     Transform m_transform;
+
     Vector3 rot;
     float t;
 
     BaseObjInputHandler.MakerType currentMakerType = BaseObjInputHandler.MakerType.None;
 
-    BillboardSprite billboard;
+    [SerializeField]
+    BillboardSprite billboard = null;
 
     void Start()
     {
-        Initialize();
+        Init();
     }
     
     void Update()
@@ -39,6 +41,7 @@ public class CircleController : MonoBehaviour
         if (t < interval) return;
 
         t = 0.0f;
+        rot = transform.eulerAngles;
         rot.y += rotVal;
         if (rot.y >= 360.0f)
         {
@@ -47,17 +50,10 @@ public class CircleController : MonoBehaviour
         m_transform.rotation = Quaternion.Euler(rot);
     }
 
-    public void Initialize()
+    public void Init()
     {
         m_transform = transform;
-        rot = transform.eulerAngles;
         t = 0.0f;
-
-        if(billboard == null)
-        {
-            billboard = GetComponent<BillboardSprite>();
-        }
-
     }
 
     public void SetState(BaseObjInputHandler.MakerType makerType)
