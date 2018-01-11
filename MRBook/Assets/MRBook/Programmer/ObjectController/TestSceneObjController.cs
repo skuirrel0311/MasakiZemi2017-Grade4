@@ -17,8 +17,7 @@ public class TestSceneObjController : MainSceneObjController
     float moveSpeed = 4.0f;
 
     float m_draggingTime = 0.0f;
-
-    //ベースを呼ばないために宣言する
+    
     protected override void Start()
     {
         mainCamera = Camera.main;

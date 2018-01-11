@@ -6,7 +6,7 @@ using HoloToolkit.Unity.InputModule;
 public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 {
     public enum HitObjType { None, Book, Character, OtherObj }
-    public enum MakerType { None, Normal, DontPut, PresentItem, DontPresentItem }
+    public enum MakerType { None, Normal, DontPut, Happen }
 
     protected HoloObject owner;
     //BoundingBoxの形状を決めるために使用される(トリガーも可)
@@ -62,9 +62,9 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
     /// </summary>
     protected virtual void SetSphreCastRadius()
     {
-        float colSize = Mathf.Max(m_collider.size.x, m_collider.size.z);
-        float scale = Mathf.Max(transform.lossyScale.x, transform.lossyScale.z);
-        SphereCastRadius = colSize * scale;
+        float colSize = Mathf.Min(m_collider.size.x, m_collider.size.z);
+        float scale = Mathf.Min(transform.lossyScale.x, transform.lossyScale.z);
+        SphereCastRadius = colSize * scale * 0.5f;
     }
 
     public void OnInputClicked(InputClickedEventData eventData)

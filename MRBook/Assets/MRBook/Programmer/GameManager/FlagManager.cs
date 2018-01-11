@@ -16,7 +16,7 @@ public class FlagManager : BaseManager<FlagManager>
         sceneManager.OnPlayPage += OnPlayPage;
     }
 
-    void OnPlayPage(BasePage page)
+    void OnPlayPage()
     {
         SetCurrentPageFlag();
     }

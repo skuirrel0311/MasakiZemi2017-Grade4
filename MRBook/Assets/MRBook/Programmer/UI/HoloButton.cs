@@ -28,8 +28,6 @@ public class HoloButton : MyInputHandler
 
     List<IHoloUI> imageList = new List<IHoloUI>();
 
-    public SpriteRenderer spriteRenderer = null;
-
     BoxCollider m_collider;
 
     Coroutine changeColorCoroutine;

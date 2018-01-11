@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using KKUtilities;
 
 public class BasePage : MonoBehaviour
 {
@@ -10,6 +9,12 @@ public class BasePage : MonoBehaviour
     /// お題
     /// </summary>
     public string missionText = "";
+
+    public string storyFirstText = "";
+
+    public string storyEndText = "";
+
+    public int lifePoint = 3;
 
     [SerializeField]
     int pageIndex = 0;

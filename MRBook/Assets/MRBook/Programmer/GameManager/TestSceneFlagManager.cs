@@ -16,7 +16,7 @@ public class TestSceneFlagManager : FlagManager
     protected override void Start()
     {
         base.Start();
-        TestSceneManager.I.OnPageChanged += (arg1, arg2) =>
+        TestSceneManager.I.OnPageLoaded += (page) =>
         {
             foreach(string key in flagTextDictionary.Keys)
             {

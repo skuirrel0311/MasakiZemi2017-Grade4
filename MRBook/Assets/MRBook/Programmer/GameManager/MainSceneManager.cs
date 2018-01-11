@@ -15,28 +15,24 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     }
 
     /* イベント */
+    //todo:ページの読み込みが終わったとき＝bodyLockからstaticsに変わったときにするといいかも
     /// <summary>
-    /// ページの遷移時　前のページ、次のページ
+    /// ページの読み込みが終わったとき
     /// </summary>
-    public Action<BasePage, BasePage> OnPageChanged;
-    /// <summary>
-    /// TapToStartが押されたとき
-    /// </summary>
-    public Action OnGameStart;
+    public Action<BasePage> OnPageLoaded;
     /// <summary>
     /// ページを再生させたとき
     /// </summary>
-    public Action<BasePage> OnPlayPage;
-    public Action OnReset;
+    public Action OnPlayPage;
     /// <summary>
     /// 再生が終了したとき
     /// </summary>
     public Action<bool> OnPlayEnd;
     /// <summary>
-    /// ステートが変化したとき
+    /// ページがリセットされたとき
     /// </summary>
-    public Action<GameState> OnGameStateChanged;
-
+    public Action OnReset;
+    
     /* メンバ */
     GameState currentState = GameState.Wait;
     public GameState CurrentState
@@ -50,12 +46,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             if (currentState == value) return;
 
             currentState = value;
-            if (OnGameStateChanged != null) OnGameStateChanged.Invoke(value);
         }
     }
 
     public bool IsGameStart { get; protected set; }
 
+    [NonSerialized]
     public Animator m_Animator;
 
     public string currentMissionText { get; protected set; }
@@ -78,6 +74,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public int currentPageIndex { get; protected set; }
 
     HoloObjResetManager resetManager;
+
+    [SerializeField]
+    Transform uiContainer = null;
 
     /* メソッド */
 
@@ -104,14 +103,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     protected override void Start()
     {
         base.Start();
-        OnGameStart += GameStart;
-
         //todo:UIで読み込み中と出す
 
         //この時点ではBookTransfromが正しい位置にいないので遅らせる
         Utilities.Delay(1.0f, () =>
         {
-            OnGameStart.Invoke();
+            GameStart();
         }, this);
         resetManager = new HoloObjResetManager(this);
     }
@@ -128,7 +125,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
         NotificationManager.I.ShowMessage("再生開始");
         
-        if (OnPlayPage != null) OnPlayPage(pages[currentPageIndex]);
+        if (OnPlayPage != null) OnPlayPage();
 
         m_Animator.SetBool("IsStart", true);
 
@@ -167,7 +164,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             pages[i].PageLock(t.position, t.rotation);
         }
-        MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);
+
+        uiContainer.SetPositionAndRotation(t.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
 
         SetPage(currentPageIndex);
@@ -185,8 +183,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         {
             pages[i].SetTransform(t);
         }
-
-        MainGameUIController.I.SetPositionAndRotation(t.position, t.rotation);
+        
+        uiContainer.SetPositionAndRotation(t.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
     }
 
@@ -245,7 +243,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].gameObject.SetActive(false);
         PageResultManager.I.Hide();
         //ページを切り替える
-        if (OnPageChanged != null) OnPageChanged.Invoke(pages[currentPageIndex], pages[index]);
         currentPageIndex = index;
 
         //表示するtodo:エフェクト
@@ -253,13 +250,13 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].PageStart();
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
-        //todo:UIControllerで行うべき
-        //if (isFirst)
-        //{
-        //    pageIndex = currentPageIndex;
-        //    currentMissionText = pages[currentPageIndex].missionText;
-        //}
         CurrentState = GameState.Wait;
+
+        Utilities.Delay(2, () =>
+        {
+            Debug.Log("on page loaded");
+            if (OnPageLoaded != null) OnPageLoaded.Invoke(pages[currentPageIndex]);
+        },this);
     }
 
     public void GameEnd()

@@ -6,26 +6,37 @@ public class BillboardSprite : MonoBehaviour
     Transform cameraTransform;
     [SerializeField]
     float updateIntervalTime = 0.05f;
+    
+    float t = 0.0f;
 
-    void Start()
+    Transform CameraTransform
     {
-        cameraTransform = Camera.main.transform;
-
-        StartCoroutine(Billboard());
+        get
+        {
+            if(cameraTransform == null)
+            {
+                cameraTransform = Camera.main.transform;
+            }
+            return cameraTransform;
+        }
     }
 
-    IEnumerator Billboard()
+    void Update()
     {
-        WaitForSeconds wait = new WaitForSeconds(updateIntervalTime);
-        Vector3 tempPos;
+        t += Time.deltaTime;
 
-        while(true)
+        if(t > updateIntervalTime)
         {
-            tempPos = cameraTransform.position;
-            tempPos.y = transform.position.y;
-            transform.LookAt(tempPos);
-
-            yield return wait;
+            LookTarget();
         }
+    }
+
+    public void LookTarget()
+    {
+        Vector3 tempPos;
+        tempPos = CameraTransform.position;
+        tempPos.y = transform.position.y;
+        transform.LookAt(tempPos);
+        t = 0.0f;
     }
 }

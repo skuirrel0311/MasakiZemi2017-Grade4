@@ -51,6 +51,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30AB\u30E1\u306F\u6D66\u5CF6\u306B\u304A\u793C\u3092\u8A00\u3044\u5E30\u3063\u3066\u884C\u304D\u307E\u3057\u305F\u3002"
+--- !u!114 &114053145118604124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puppetName: 0
 --- !u!114 &114057056142747786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +170,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   success: 1
+--- !u!114 &114231009926658392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
 --- !u!114 &114244364626865554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1039,6 +1063,8 @@ AnimatorState:
   - {fileID: 114716333111243172}
   - {fileID: 114761977351829036}
   - {fileID: 114842212206276558}
+  - {fileID: 114231009926658392}
+  - {fileID: 114053145118604124}
   - {fileID: 114732359822807356}
   - {fileID: 114513271457632564}
   - {fileID: 114244364626865554}

@@ -19,7 +19,7 @@ public class PlayEffect : BaseStateMachineBehaviour
         Transform target = ActorManager.I.GetTargetTransform(targetName, targetType);
         if(target == null)
         {
-            Debug.Log(target + "is not found");
+            Debug.LogError(target + "is not found");
             return;
         }
 

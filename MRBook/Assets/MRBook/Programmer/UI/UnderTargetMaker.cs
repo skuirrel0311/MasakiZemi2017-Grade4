@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using KKUtilities;
 
 public class UnderTargetMaker : MonoBehaviour
 {
@@ -7,40 +8,63 @@ public class UnderTargetMaker : MonoBehaviour
     [SerializeField]
     ParticleSystem dottedLine = null;
 
-    public void ShowMaker(HoloObject putObj, RaycastHit underObj)
-    {
-        circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
-        dottedLine.transform.position = putObj.transform.position;
+    HoloObject targetObject;
 
-        circleController.gameObject.SetActive(true);
-        dottedLine.gameObject.SetActive(true);
-    }
+    BaseObjInputHandler.MakerType currentMakerType = BaseObjInputHandler.MakerType.None;
 
-    public void HideMaker()
+    public void InitializeMaker(HoloObject putObj, RaycastHit underObj, bool isHit)
     {
-        circleController.gameObject.SetActive(false);
-        dottedLine.gameObject.SetActive(false);
-    }
+        targetObject = putObj;
+        circleController.Init();
 
-    public void SetMaker(BaseObjInputHandler.MakerType makerType, HoloObject putObj, RaycastHit underObj)
-    {
-        switch(makerType)
+        if (isHit)
         {
-            case BaseObjInputHandler.MakerType.None:
-                HideMaker();
-                break;
-            case BaseObjInputHandler.MakerType.DontPut:
-            case BaseObjInputHandler.MakerType.DontPresentItem:
-                ShowMaker(putObj, underObj);
-                circleController.ChangeSprite(CircleController.CircleState.DontPut);
-                break;
-            case BaseObjInputHandler.MakerType.PresentItem:
-                HideMaker();
-                break;
-            case BaseObjInputHandler.MakerType.Normal:
-                circleController.ChangeSprite(CircleController.CircleState.Normal);
-                ShowMaker(putObj, underObj);
-                break;
+            circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
+            Utilities.Delay(1, ()=> SetMakerEnable(true),this);
+        }
+        else
+        {
+            SetMakerEnable(false);
+        }
+    }
+
+    public void SetMakerEnable(bool enable)
+    {
+        circleController.gameObject.SetActive(enable);
+        dottedLine.gameObject.SetActive(enable);
+    }
+
+    public void UpdateMaker(BaseObjInputHandler.MakerType makerType, RaycastHit underObj)
+    {
+        SetMakerType(makerType);
+
+        circleController.SetState(makerType);
+
+        if (makerType == BaseObjInputHandler.MakerType.Normal)
+        {
+            circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
+        }
+        else
+        {
+            circleController.transform.position = underObj.point + (Vector3.up * 0.1f);
+        }
+
+        dottedLine.transform.position = targetObject.transform.position;
+    }
+
+    void SetMakerType(BaseObjInputHandler.MakerType makerTYpe)
+    {
+        if (currentMakerType == makerTYpe) return;
+
+        currentMakerType = makerTYpe;
+
+        if (makerTYpe == BaseObjInputHandler.MakerType.None)
+        {
+            SetMakerEnable(false);
+        }
+        else
+        {
+            SetMakerEnable(true);
         }
     }
 }
