@@ -13,7 +13,7 @@ public enum MotionName
     Stand,      //立つ
     Swing,      //釣竿を振る
     Performance,//演奏する
-    Dance,      //踊る
+    Dance,      //右側で踊る
     Lie,        //寝っ転がる
     Maintenance,//釣竿の手入れ
     Troubled,   //困惑する
@@ -52,7 +52,8 @@ public enum MotionName
     Swim,       //泳ぐ
     Brutality,  //いじめる
     Pose,       //マッチョポーズ
-    LieGetUp    //寝転がりから起き上がる
+    LieGetUp,   //寝転がりから起き上がる
+    DanceLeft   //左側で踊る
 
 }
 
