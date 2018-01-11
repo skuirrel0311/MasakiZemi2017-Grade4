@@ -30,7 +30,7 @@ public class PageFiveManager : BasePage
         {
             //浦島はマッチョだった
             ChangeMesh(urashima, "UrashimaMacho", "UrashimaMachoMat");
-            urashima.ChangeScale(1.5f);
+            urashima.ChangeScale(1.25f);
         }
 
         turtle.gameObject.SetActive(false);

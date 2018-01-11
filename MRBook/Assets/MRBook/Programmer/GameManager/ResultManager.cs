@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResultManager : BaseManager<ResultManager>
 {
@@ -81,6 +82,11 @@ public class ResultManager : BaseManager<ResultManager>
     public void ShowTitleBack()
     {
         titleBack.gameObject.SetActive(true);
+    }
+
+    public void TitleBack()
+    {
+        SceneManager.LoadScene("Title");
     }
 
     public void ShowTotalResult()
