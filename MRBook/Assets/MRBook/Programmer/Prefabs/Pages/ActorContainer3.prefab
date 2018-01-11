@@ -3396,7 +3396,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4240903136249272}
   - component: {fileID: 114676853934748624}
-  - component: {fileID: 114255741826468550}
   m_Layer: 2
   m_Name: EventTrigger
   m_TagString: Trigger
@@ -7921,7 +7920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 4309509476303142}
   leftHand: {fileID: 4543601093407334}
-  rightHandItemDataList: {fileID: 11400000, guid: e5318b0501c9c7e4398eb754cd498e9a,
+  rightHandItemDataList: {fileID: 11400000, guid: ab7997b3c65f9354d9a54417da95aafa,
     type: 2}
   leftHandItemDataList: {fileID: 11400000, guid: dd292f9436894c3448d9db428eb50899,
     type: 2}
@@ -7970,27 +7969,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puppetMaster: {fileID: 0}
   muscleIndex: 14
---- !u!114 &114255741826468550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1857399957867228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede2437b7630bc947b889c8d21950002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: HasFood
-  targetItemName: 
-  ownerCharacterName: 2
-  targetItemNames:
-  - Kamayaki
-  - Ebi
-  - Pekin
-  - Pekin (1)
-  - Rice (1)
-  - Momoman
 --- !u!114 &114341677365201822
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -17,7 +17,7 @@ public class PageOneManager : BasePage
     HoloPuppet urashima = null;
 
     const string boatName = "Boat";
-    const string pileName = "Pile";
+    //const string pileName = "Pile";
     const string ropeName = "Rope";
 
     ActorManager actorManager;
@@ -31,7 +31,7 @@ public class PageOneManager : BasePage
     public void ChainBoat()
     {
         actorManager.SetEnableObject(boatName, false);
-        actorManager.SetEnableObject(pileName, false);
+        //actorManager.SetEnableObject(pileName, false);
         actorManager.SetEnableObject(ropeName, false);
 
         chainBoat.SetActive(true);
@@ -39,11 +39,11 @@ public class PageOneManager : BasePage
         urashima.ChangeAnimationClip(MotionName.Lie, 0.1f);
 
         FlagManager.I.SetFlag("IsChainRope", null, true);
-        
+
         onReset += () =>
         {
             actorManager.SetEnableObject(boatName, true);
-            actorManager.SetEnableObject(pileName, true);
+            //actorManager.SetEnableObject(pileName, true);
             actorManager.SetEnableObject(ropeName, true);
             urashima.SetParent(boat.transform);
             chainBoat.SetActive(false);
@@ -54,7 +54,7 @@ public class PageOneManager : BasePage
 
     public override void ResetPage()
     {
-        if(onReset != null) onReset.Invoke();
+        if (onReset != null) onReset.Invoke();
         onReset = null;
         base.ResetPage();
     }
