@@ -51,7 +51,8 @@ public enum MotionName
     DropDownBoat,   //船から落ちて死ぬ
     Swim,       //泳ぐ
     Brutality,  //いじめる
-    Pose        //マッチョポーズ
+    Pose,       //マッチョポーズ
+    LieGetUp    //寝転がりから起き上がる
 
 }
 
