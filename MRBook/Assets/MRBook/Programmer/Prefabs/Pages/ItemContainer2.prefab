@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 65553302788960882}
   - component: {fileID: 114504054283586146}
   - component: {fileID: 114758085143627444}
-  - component: {fileID: 114380529659870748}
+  - component: {fileID: 114802195887127602}
   m_Layer: 8
   m_Name: Bait
   m_TagString: Actor
@@ -1447,8 +1447,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.034393784, y: 0.026376246, z: 0.031121567}
-  m_Center: {x: -0.00086558424, y: -0.0031726817, z: -0.0023715794}
+  m_Size: {x: 0.04601267, y: 0.053095426, z: 0.03746569}
+  m_Center: {x: -0.001102319, y: 0.010260733, z: -0.00038647652}
 --- !u!65 &65553302788960882
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1577,17 +1577,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
---- !u!114 &114380529659870748
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546910445144358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114504054283586146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1633,6 +1622,18 @@ MonoBehaviour:
   overrideName: 
   forHand: 0
   defaultOwner: {fileID: 0}
+--- !u!114 &114802195887127602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546910445144358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b92e5b05b92e54db13fd098de430ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!195 &195145036752636086
 NavMeshAgent:
   m_ObjectHideFlags: 1

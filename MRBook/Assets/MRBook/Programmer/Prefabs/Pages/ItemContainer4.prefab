@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 1791973380165420}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.0053, y: 0.0671, z: -0.274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4993292585716236}
   m_Father: {fileID: 4339775430877434}
@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 1439621676223026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4991004092768490}
   m_Father: {fileID: 4339775430877434}
@@ -495,6 +495,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
+  overrideName: 
   forHand: 2
   defaultOwner: {fileID: 0}
 --- !u!114 &114624657738072934
@@ -523,6 +524,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 1
   inPlayLayer: 4
+  overrideName: 
   forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114720890769837372
@@ -561,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2db47be817e0844befdc5b1156b454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagName: IsOpenSecretBox
+  flagName: IsCloseSecretBox
   item: {fileID: 114892741754230012}
 --- !u!114 &114892741754230012
 MonoBehaviour:
@@ -577,6 +579,7 @@ MonoBehaviour:
   isMovable: 1
   canHaveItem: 0
   inPlayLayer: 4
+  overrideName: 
   forHand: 0
   defaultOwner: {fileID: 0}
 --- !u!114 &114924281059906074
