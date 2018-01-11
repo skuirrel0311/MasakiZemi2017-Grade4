@@ -1353,27 +1353,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4825298510124094, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -61.633003
-      objectReference: {fileID: 0}
-    - target: {fileID: 33372925548828872, guid: 111e75a4989d7d44684f7aabfa3c50f4,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300004, guid: 2b8464703bbb1294bbceb39ac1223db5, type: 3}
-    - target: {fileID: 4946355079825164, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4946355079825164, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.0728
-      objectReference: {fileID: 0}
-    - target: {fileID: 4946355079825164, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.3576
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
   m_IsPrefabParent: 0
@@ -1398,7 +1377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &629083179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1390,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: "\u7D50\u679C\u3092\u898B\u5C4A\u3051\u308D\uFF01"
+  storyFirstText: 
+  storyEndText: 
+  lifePoint: 3
   pageIndex: 4
   controller: {fileID: 9100000, guid: 90a6fe22bae0da34b8b11f779d9e952a, type: 2}
   bookObjects:
@@ -1439,7 +1421,7 @@ Transform:
   - {fileID: 1785521205}
   - {fileID: 1084945137}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639037477
 GameObject:
@@ -2208,7 +2190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &867100514 stripped
 Transform:
@@ -3091,52 +3073,6 @@ Transform:
   m_Father: {fileID: 997409631}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1479595835
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561904246825096, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1717869331965912, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 4c3a4e267600bff4c9d9df42a4ca77be, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1495191859 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4573678476147364, guid: 527ec2e9da04a7a4a8fa9f4c8057cd7d,
@@ -3190,6 +3126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: "\u6D66\u5CF6\u592A\u90CE\u3092\u64CD\u4F5C\u3057\u3066\u30AB\u30E1\u3092\u52A9\u3051\u308D\uFF01"
+  storyFirstText: 
+  storyEndText: 
+  lifePoint: 3
   pageIndex: 0
   controller: {fileID: 9100000, guid: 267531f3dd76ce04cbaa38e37cf45fa8, type: 2}
   bookObjects:
@@ -4140,7 +4079,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4189832265015196, guid: c14375dfa5c39a945afe392ac0e55435, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c14375dfa5c39a945afe392ac0e55435, type: 2}
@@ -4291,6 +4230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: "\u6D66\u5CF6\u592A\u90CE\u306B\u4E80\u306E\u5B58\u5728\u3092\u6C17\u3065\u304B\u305B\u308D\uFF01"
+  storyFirstText: 
+  storyEndText: 
+  lifePoint: 3
   pageIndex: 0
   controller: {fileID: 9100000, guid: 4ac44e2b765786b4eb5be1e7ecc56b84, type: 2}
   bookObjects:
@@ -4327,6 +4269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: "\u76EE\u7684"
+  storyFirstText: 
+  storyEndText: 
+  lifePoint: 3
   pageIndex: 0
   controller: {fileID: 0}
   bookObjects: []
@@ -4367,7 +4312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2127131940
 Transform:
   m_ObjectHideFlags: 0
