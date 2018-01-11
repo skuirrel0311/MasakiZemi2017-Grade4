@@ -9,7 +9,12 @@ public class TestSceneManager : MainSceneManager
     
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && !IsGameStart) GameStart();
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("show result");
+            PageResultManager.I.SetResult(true);
+            PageResultManager.I.ShowResult();
+        }
 
         if (Input.GetKeyDown(KeyCode.N)) ChangePage(currentPageIndex + 1);
 
