@@ -28,15 +28,11 @@ public class IsSeeObject : MyEventTrigger
     [SerializeField]
     LayerMask ignoreLayerMask = 1 << 2;
     Ray ray;
-
-    void Start()
+    
+    public override void SetFlag()
     {
         character = ActorManager.I.GetCharacter(ownerName);
         targetObject = ActorManager.I.GetObject(targetObjName);
-    }
-
-    public override void SetFlag()
-    {
         Vector3 direction = targetObject.transform.position - eye.position;
 
         //まず角度

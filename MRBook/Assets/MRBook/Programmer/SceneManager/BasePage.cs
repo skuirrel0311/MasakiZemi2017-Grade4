@@ -41,7 +41,6 @@ public class BasePage : MonoBehaviour
     //ページに存在するホログラム全部。
     public List<HoloObject> objectList = new List<HoloObject>();
 
-
     /// <summary>
     /// ゲーム開始時に本の位置を固定させるやつ(キャラクタなどが移動していないことが保証されている)
     /// </summary>

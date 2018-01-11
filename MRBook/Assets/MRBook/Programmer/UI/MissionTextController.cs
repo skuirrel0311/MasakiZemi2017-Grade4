@@ -33,12 +33,20 @@ public class MissionTextController : BaseManager<MissionTextController>
 
         sceneManager.OnPageLoaded += (page) =>
         {
+            endTexts[(int)Mode.Track].gameObject.SetActive(false);
             ChangeMode(Mode.Track);
 
             string firstText = page.storyFirstText;
             string endText = page.storyEndText;
 
             SetText(firstText, endText);
+            ResetText();
+
+            Utilities.Delay(1.0f, () =>
+            {
+                endTexts[(int)Mode.Track].gameObject.SetActive(true);
+            }, this);
+
 
             Utilities.Delay(3.0f, () =>
             {

@@ -52,6 +52,26 @@ public class PageResultManager : BaseManager<PageResultManager>
         {
             MainSceneManager.I.EndCallBack(isSuccess);
         }));
+
+        if (isSuccess)
+        {
+            StartCoroutine(PlayHanabi());
+        }
+    }
+
+    IEnumerator PlayHanabi()
+    {
+        Vector3 fireFlowerPosition;
+
+        for (int i = 0; i < 5; i++)
+        {
+            fireFlowerPosition = transform.position;
+            const float range = 0.5f;
+            fireFlowerPosition.x += Random.Range(-range, range);
+            fireFlowerPosition.y += Random.Range(-range, range);
+            ParticleManager.I.Play("Hanabi", fireFlowerPosition);
+            for (int j = 0; j < 10; j++) yield return null;
+        }
     }
 
     public void Hide()

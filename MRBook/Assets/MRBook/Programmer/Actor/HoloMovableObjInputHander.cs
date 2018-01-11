@@ -17,6 +17,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
         else AddBehaviour(new GroundingObjDragEndBehaviour(owner));
 
         //矢印
+        if (MainSceneManager.I == null) return;
         arrow = Instantiate(ActorManager.I.trianglePrefab, transform);
         arrow.transform.localPosition = Vector3.up * m_collider.size.y * 1.0f;
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
@@ -54,14 +55,14 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
     {
         if (!MyObjControllerByBoundingBox.I.canClick) return false;
         MyObjControllerByBoundingBox.I.SetTargetObject(owner);
-        arrow.SetActive(false);
+        if (arrow != null) arrow.SetActive(false);
         base.OnClick();
         return true;
     }
 
     public override void OnDisabled()
     {
-        arrow.SetActive(true);
+        if(arrow != null)arrow.SetActive(true);
         base.OnDisabled();
     }
 }

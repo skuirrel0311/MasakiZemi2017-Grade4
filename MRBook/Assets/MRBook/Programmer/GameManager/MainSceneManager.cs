@@ -165,7 +165,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             pages[i].PageLock(t.position, t.rotation);
         }
 
-        uiContainer.SetPositionAndRotation(t.position, t.rotation);
+        uiContainer.SetPositionAndRotation(t.position + uiContainer.transform.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
 
         SetPage(currentPageIndex);
