@@ -39,7 +39,7 @@ public enum MotionName
     Eat_Suffocation,//食べて喉詰まらせて死亡
     StandSitP3,  //P3で座る(酒瓶持ち)
     Guide,       //案内する
-    SitSurprised,   //座ったまま驚く(死体発見時)
+    SitSurprised,   //座ったまま驚く(死体発見時)、P5で兄ちゃんが驚く
     SitDelivery,    //座ったまま料理渡す
     Surprised,      //立ったまま驚く(死体発見時)
     StopBullying,   //いじめを止める
