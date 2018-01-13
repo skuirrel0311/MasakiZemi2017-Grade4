@@ -26,8 +26,7 @@ public class ChangeParent : BaseStateMachineBehaviour
             Debug.LogError("not found " + targetName);
             return;
         }
-
-        obj.SetParent(GetParent(parentType));
+        obj.transform.parent = GetParent(parentType);
     }
 
     Transform GetParent(ParentType type)

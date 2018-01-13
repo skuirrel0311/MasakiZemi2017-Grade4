@@ -25,6 +25,7 @@ public class GetOffCharacter : BaseStateMachineBehaviour
         //1フレーム待ってから移動させる
         Utilities.Delay(1, () =>
         {
+            //todo:このSetParentはまずいかも
             rideObject.SetParent(matObject.transform.parent);
             rideObject.transform.position = rideEndPoint.position;
             rideObject.transform.rotation = rideEndPoint.rotation;

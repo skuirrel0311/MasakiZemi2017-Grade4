@@ -36,7 +36,7 @@ public class PageOneManager : BasePage
 
         chainBoat.SetActive(true);
         urashima.SetParent(chainBoat.transform);
-        urashima.ChangeAnimationClip(MotionName.Lie, 0.1f);
+        urashima.ChangeAnimationClip(MotionName.Lie, 0.0f);
 
         FlagManager.I.SetFlag("IsChainRope", null, true);
 
