@@ -21,6 +21,9 @@ public class HoloCharacter : HoloObject
     {
         m_animator = GetComponent<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
+        if (m_agent != null) m_agent.enabled = false;
+
+        MainSceneManager.I.OnPageLoaded += (page) => m_agent.enabled = true;
     }
 
     protected void OnEnable()

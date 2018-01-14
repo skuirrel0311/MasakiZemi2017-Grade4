@@ -21,7 +21,7 @@ public class GoThere : BaseStateMachineBehaviour
     public float stopDistance = 0.05f;
     [SerializeField]
     public float moveSpeed = 0.1f;
-    
+
     protected HoloCharacter character;
     protected int state = 0;
 
@@ -30,14 +30,16 @@ public class GoThere : BaseStateMachineBehaviour
     Vector3 oldPosition;
 
     float updateTimer = 0.0f;
-    
+
+    float navMeshUpdateTimer = 0.0f;
+
     protected override void OnStart()
     {
         base.OnStart();
         Debug.Log(actorName + " Go " + targetName);
 
         character = ActorManager.I.GetCharacter(actorName);
-        if(character == null)
+        if (character == null)
         {
             Debug.LogError(actorName.ToString() + " is not found in " + actorName.ToString() + " go there");
             Suspension();
@@ -45,13 +47,14 @@ public class GoThere : BaseStateMachineBehaviour
         }
 
         target = ActorManager.I.GetTargetTransform(targetName, targetType);
-        if(target == null)
+        if (target == null)
         {
             Debug.LogError(targetName + " is not found " + actorName.ToString() + " go there");
             Suspension();
             return;
         }
 
+        MyNavMeshBuilder.CreateNavMesh();
         updateTimer = 0.0f;
         time = 0.0f;
         character.m_agent.enabled = true;
@@ -66,6 +69,8 @@ public class GoThere : BaseStateMachineBehaviour
 
     protected override BehaviourStatus OnUpdate()
     {
+        UpdateNavMesh();
+
         if (IsJustHere())
         {
             Debug.Log(actorName.ToString() + "到着");
@@ -77,7 +82,7 @@ public class GoThere : BaseStateMachineBehaviour
             return BehaviourStatus.Failure;
         }
 
-        if(updateTargetPosition)
+        if (updateTargetPosition)
         {
             updateTimer += Time.deltaTime;
             if (updateTimer > 0.2f)
@@ -89,25 +94,40 @@ public class GoThere : BaseStateMachineBehaviour
         return BehaviourStatus.Running;
     }
 
+    void UpdateNavMesh()
+    {
+        navMeshUpdateTimer += Time.deltaTime;
+        MyNavMeshBuilder.CreateNavMesh();
+        if (navMeshUpdateTimer > 0.2f)
+        {
+
+            navMeshUpdateTimer = 0.0f;
+        }
+    }
+
     protected bool IsJustHere()
     {
-        if (!character.m_agent.hasPath)
-        {
-            Debug.Log(character.name + " don't has path");
-            return false;
-        }
+        //if (!character.m_agent.hasPath)
+        //{
+        //    Debug.Log(character.name + " don't has path");
+        //    return false;
+        //}
 
-        NavMeshPath path = character.m_agent.path;
+        //NavMeshPath path = character.m_agent.path;
         float distance = 0.0f;
-        Vector3 temp = character.transform.position;
+        //Vector3 temp = character.transform.position;
 
-        for (int i = 0; i < path.corners.Length; i++)
-        {
-            Vector3 conner = path.corners[i];
-            distance += Vector3.Distance(temp, conner);
-            temp = conner;
-        }
-        
+        //for (int i = 0; i < path.corners.Length; i++)
+        //{
+        //    Vector3 conner = path.corners[i];
+        //    distance += Vector3.Distance(temp, conner);
+        //    temp = conner;
+        //}
+
+        distance = Vector3.Distance(character.transform.position, target.position);
+
+        //Debug.Log("distance = " + distance);
+
         //たどり着いた
         return distance < stopDistance;
     }

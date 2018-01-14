@@ -17,8 +17,6 @@ public class NavMeshSourceTag : MonoBehaviour
         {
             m_Meshes.Add(m);
         }
-
-        MyNavMeshBuilder.CreateNavMesh();
     }
 
     void OnDisable()

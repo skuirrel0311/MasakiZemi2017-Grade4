@@ -10,7 +10,7 @@ public class MyNavMeshBuilder : MonoBehaviour
     static List<MyNavMeshBuilder> builderList = new List<MyNavMeshBuilder>();
 
     // The size of the build bounds
-    public Vector3 m_Size = new Vector3(1.3f, 1.0f, 1.3f);
+    public Vector3 m_Size = new Vector3(0.5f, 0.5f, 0.5f);
 
     NavMeshData m_NavMesh;
     AsyncOperation m_Operation;

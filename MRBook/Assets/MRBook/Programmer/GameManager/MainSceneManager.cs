@@ -255,6 +255,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         Utilities.Delay(2, () =>
         {
             Debug.Log("on page loaded");
+            MyNavMeshBuilder.CreateNavMesh();
             if (OnPageLoaded != null) OnPageLoaded.Invoke(pages[currentPageIndex]);
         },this);
     }
