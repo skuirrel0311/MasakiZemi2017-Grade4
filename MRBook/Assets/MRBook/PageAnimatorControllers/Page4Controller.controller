@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114033985044526746
+--- !u!114 &114029451895858244
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -59,11 +59,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
---- !u!114 &114042034894805674
+  actorName: 1
+  targetType: 0
+  targetName: UrashimaSide
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.05
+--- !u!114 &114033985044526746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -99,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
---- !u!114 &114122588669872032
+--- !u!114 &114114781633516280
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,10 +112,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Script: {fileID: 11500000, guid: be4e44b12ad97424e856b7dca1880e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Urashima
+  objectName: Turtle
+  wayPointNames:
+  - TurtleEndPoint
+  speed: 0.05
 --- !u!114 &114141042622358976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 0
   itemName: SecretBox_Box
---- !u!114 &114193483702576342
+--- !u!114 &114198773483150340
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -149,9 +157,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c18621c6c43654d817db35698eebc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Turtle
+  targetPointName: UrashimaSide
 --- !u!114 &114235256646309730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,6 +197,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+--- !u!114 &114254963809655278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114289178670056500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,7 +259,7 @@ MonoBehaviour:
   motionName: 24
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114458407610291954
+--- !u!114 &114353756556135712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -245,15 +267,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c7ebab0fabe9af4c92ce3b63e8f5646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 0
-  targetType: 0
-  targetName: UrashimaEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.02
-  moveSpeed: 0.05
+--- !u!114 &114419429052535866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114434205193400288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
+--- !u!114 &114444563199454344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114507109133608030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +358,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u7389\u624B\u7BB1\u3092\u53D7\u3051\u53D6\u308A\u307E\u3057\u305F\u3002"
+--- !u!114 &114571832040215844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4e1766672978c4d807459c3260d897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: Urashima
 --- !u!114 &114626311373585962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,7 +397,7 @@ MonoBehaviour:
   materialName: UrashimaMachoMat
   objName: Urashima
   isSkinned: 1
---- !u!114 &114694428493143160
+--- !u!114 &114671023878268666
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -342,11 +405,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c18621c6c43654d817db35698eebc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 68b18e224fce4c34db75a8b61f5a14cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Turtle
-  targetPointName: 
+  parentType: 0
+  targetName: Urashima
+  parentName: Turtle
 --- !u!114 &114698310451920628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,6 +488,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObjectName: Urashima
   itemName: SecretBox_Box
+--- !u!114 &114802737213372628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114813492214741694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,6 +557,33 @@ MonoBehaviour:
   materialName: UrashimaOldMat
   objName: Urashima
   isSkinned: 1
+--- !u!114 &114852177184701946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4e1766672978c4d807459c3260d897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: Turtle
+--- !u!114 &114859070652640032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 1
+  motionName: 46
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114876285274327730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -551,6 +653,21 @@ MonoBehaviour:
   motionName: 25
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114928490243156386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 42
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114935668940149498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -566,22 +683,6 @@ MonoBehaviour:
   motionName: 38
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114943566631433044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 0
-  targetName: UrashimaEndPoint
-  actorName: 0
-  rotationSpeed: 200
-  updateTargetPosition: 0
 --- !u!114 &114953512251322768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -647,6 +748,30 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101070963813099076
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 7
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102394655694289526}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101075376562702580
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -671,6 +796,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101082837527671270
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102011193654935010}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101107249160288396
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -683,6 +829,30 @@ AnimatorStateTransition:
     m_EventTreshold: -1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102376757750612164}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101110866494454076
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 7
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102011193654935010}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -788,6 +958,30 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101229165919498372
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Flagged
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102016503802154022}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101291296845781292
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -829,6 +1023,30 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101479039961944984
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Flagged
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102016503802154022}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -881,42 +1099,15 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101772288266521074
+--- !u!1101 &1101832427811791148
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Flagged
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102272630857862230}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101784088763264104
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 7
-    m_ConditionEvent: StateStatus
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102272630857862230}
+  m_DstState: {fileID: 1102829186783453328}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -924,31 +1115,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101791381562551998
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Flagged
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102272630857862230}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1022,30 +1189,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101988300626313632
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 7
-    m_ConditionEvent: StateStatus
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102011193654935010}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1102 &1102011193654935010
 AnimatorState:
   serializedVersion: 5
@@ -1080,8 +1223,13 @@ AnimatorState:
   m_Name: "\u30AB\u30E1\u306B\u4E57\u3063\u3066\u5916\u306B\u51FA\u3066\u3044\u304F"
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_Transitions:
+  - {fileID: 1101070963813099076}
+  m_StateMachineBehaviours:
+  - {fileID: 114254963809655278}
+  - {fileID: 114198773483150340}
+  - {fileID: 114029451895858244}
+  - {fileID: 114444563199454344}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1208,39 +1356,9 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101151725839054338}
-  - {fileID: 1101791381562551998}
+  - {fileID: 1101229165919498372}
   m_StateMachineBehaviours:
   - {fileID: 114543401193474998}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102272630857862230
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u30DA\u30FC\u30B8\u5916\u306B\u51FA\u3066\u3044\u304F"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101988300626313632}
-  m_StateMachineBehaviours:
-  - {fileID: 114042034894805674}
-  - {fileID: 114694428493143160}
-  - {fileID: 114943566631433044}
-  - {fileID: 114458407610291954}
-  - {fileID: 114122588669872032}
-  - {fileID: 114193483702576342}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1309,6 +1427,40 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102394655694289526
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: "\u30AB\u30E1\u306B\u4E57\u308A\u30DA\u30FC\u30B8\u304B\u3089\u51FA\u3066\u3044\u304F"
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101110866494454076}
+  m_StateMachineBehaviours:
+  - {fileID: 114419429052535866}
+  - {fileID: 114353756556135712}
+  - {fileID: 114928490243156386}
+  - {fileID: 114671023878268666}
+  - {fileID: 114852177184701946}
+  - {fileID: 114571832040215844}
+  - {fileID: 114859070652640032}
+  - {fileID: 114114781633516280}
+  - {fileID: 114434205193400288}
+  - {fileID: 114802737213372628}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102479900740259486
 AnimatorState:
   serializedVersion: 5
@@ -1319,8 +1471,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101772288266521074}
   - {fileID: 1101515962047811286}
+  - {fileID: 1101479039961944984}
   m_StateMachineBehaviours:
   - {fileID: 114832867868011722}
   m_Position: {x: 50, y: 50, z: 0}
@@ -1369,6 +1521,30 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102829186783453328
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: "\u8D70\u308A\u53BB\u3063\u3066\u3044\u304F"
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101082837527671270}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102860796611960650
 AnimatorState:
   serializedVersion: 5
@@ -1405,7 +1581,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101784088763264104}
+  - {fileID: 1101832427811791148}
   m_StateMachineBehaviours:
   - {fileID: 114033985044526746}
   - {fileID: 114953512251322768}
@@ -1455,10 +1631,7 @@ AnimatorStateMachine:
     m_Position: {x: 288, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102291364030136672}
-    m_Position: {x: 636, y: 396, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102272630857862230}
-    m_Position: {x: 168, y: 396, z: 0}
+    m_Position: {x: 648, y: 384, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102860796611960650}
     m_Position: {x: 288, y: 72, z: 0}
@@ -1473,13 +1646,19 @@ AnimatorStateMachine:
     m_Position: {x: 408, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102941027920516626}
-    m_Position: {x: 408, y: 396, z: 0}
+    m_Position: {x: 420, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102021564950144528}
-    m_Position: {x: 468, y: 300, z: 0}
+    m_Position: {x: 516, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102016503802154022}
-    m_Position: {x: 12, y: 312, z: 0}
+    m_Position: {x: 168, y: 300, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102394655694289526}
+    m_Position: {x: 168, y: 384, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102829186783453328}
+    m_Position: {x: 420, y: 384, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

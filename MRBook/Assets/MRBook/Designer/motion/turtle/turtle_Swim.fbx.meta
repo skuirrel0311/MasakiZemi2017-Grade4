@@ -65,7 +65,71 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: reference
+        weight: 1
+      - path: reference/Hips
+        weight: 1
+      - path: reference/Hips/Left
+        weight: 1
+      - path: reference/Hips/LeftArm
+        weight: 1
+      - path: reference/Hips/LeftArm/LeftForeArm
+        weight: 1
+      - path: reference/Hips/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: reference/Hips/LeftLeg
+        weight: 1
+      - path: reference/Hips/LeftLeg/LeftFeet
+        weight: 1
+      - path: reference/Hips/Neck
+        weight: 1
+      - path: reference/Hips/Neck/Head
+        weight: 1
+      - path: reference/Hips/Neck/Head/joint1
+        weight: 1
+      - path: reference/Hips/Right
+        weight: 1
+      - path: reference/Hips/RightArm
+        weight: 1
+      - path: reference/Hips/RightArm/ReftForeArm
+        weight: 1
+      - path: reference/Hips/RightArm/ReftForeArm/RightHand
+        weight: 1
+      - path: reference/Hips/RightLeg
+        weight: 1
+      - path: reference/Hips/RightLeg/RightFeet
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

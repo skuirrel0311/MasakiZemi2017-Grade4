@@ -49,7 +49,7 @@ public class MoveObject : BaseStateMachineBehaviour
         targetPosition = wayPoints[index].position;
 
         float distance = (targetPosition - startPosition).magnitude;
-
+        Debug.Log("distance = " + distance + " in move object");
         targetTime = distance / speed;
     }
 
