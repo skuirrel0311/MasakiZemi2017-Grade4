@@ -75,17 +75,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114000511409350242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114003820403082098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,18 +92,6 @@ MonoBehaviour:
   updateTargetPosition: 1
   stopDistance: 0.1
   moveSpeed: 0.1
---- !u!114 &114017491619862366
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d6af5cd94de88f4582c7eb4c51f9cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endingName: "\u5F8C\u982D\u90E8\u5F37\u6253"
 --- !u!114 &114023460343462778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,6 +264,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114122714947792692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114136502719848708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114138964766792682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,17 +416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114187929868043332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114189741809914484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,23 +509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30B9\u30BA\u30E1\u306B\u8972\u308F\u308C\u307E\u3057\u305F"
---- !u!114 &114206883017055474
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 1
-  targetType: 0
-  targetName: TurtleEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.01
-  moveSpeed: 0.04
 --- !u!114 &114211887168369066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114242544187566408
+--- !u!114 &114248956197707946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -588,10 +560,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3.7
+  isForcing: 1
 --- !u!114 &114270640278458388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,7 +608,7 @@ MonoBehaviour:
   motionName: 12
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114304230953547848
+--- !u!114 &114303503858023180
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -644,10 +616,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
+  actorName: 1
+  targetType: 0
+  targetName: TurtleEndPoint
+  updateTargetPosition: 0
+  stopDistance: 0.05
+  moveSpeed: 0.04
 --- !u!114 &114311231996994932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -761,18 +738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114347850688230140
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "\u30AB\u30E1\u306F\u6D66\u5CF6\u304C\u3044\u306A\u3044\u3068\u601D\u3044\u5E30\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F"
 --- !u!114 &114351890297452150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114372726932378760
+--- !u!114 &114354092829300398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -792,9 +757,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puppetName: 0
+--- !u!114 &114367214801865356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6af5cd94de88f4582c7eb4c51f9cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endingName: "\u5F8C\u982D\u90E8\u5F37\u6253"
+--- !u!114 &114375026797894590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u304C\u51FA\u3066\u304D\u307E\u305B\u3093"
 --- !u!114 &114379258969333100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -812,40 +802,6 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.2
---- !u!114 &114379553884550140
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114399383151492170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForcing: 1
---- !u!114 &114407700308758866
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114431022786065420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -912,6 +868,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u3068\u30AB\u30E1\u304C\u51FA\u4F1A\u3044\u307E\u3057\u305F"
+--- !u!114 &114451481759452534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 1
+  motionName: 13
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114459116903717910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,18 +978,6 @@ MonoBehaviour:
   motionName: 7
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114478132498544044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5aa85492ef7114ab45d03255e9ba3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puppetName: 0
 --- !u!114 &114479583215475666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1059,6 +1018,17 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.2
+--- !u!114 &114493859551947824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114498661298073644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1097,6 +1067,21 @@ MonoBehaviour:
   isCheckNow: 0
   checkOnUpdate: 0
   paramName: Flagged
+--- !u!114 &114510151832479878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6b0fcb6494de4f96c5faf3ad8eeac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: Turtle
+  effectName: Question
+  offset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114513180523092966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1121,6 +1106,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114520608583867732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114524838965845596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1287,7 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3.7
 --- !u!114 &114574563595821204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1475,6 +1471,18 @@ MonoBehaviour:
   motionName: 8
   transitionDuration: 0.1
   WwiseEventName: RodSwing
+--- !u!114 &114632778743479308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!114 &114655193698159522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1549,6 +1557,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114686829895751294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6b0fcb6494de4f96c5faf3ad8eeac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: Turtle
+  effectName: Question
+  offset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114687499309146700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1578,6 +1601,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114705133675676588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
 --- !u!114 &114714234535085634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1764,18 +1799,6 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.02
   moveSpeed: 0.04
---- !u!114 &114786771932602374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Turtle
 --- !u!114 &114788782470875086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1788,6 +1811,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114816073953831722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114819218160818336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2009,6 +2043,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Turtle
+--- !u!114 &114963217620881618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114987199322699890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2081,7 +2126,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 2
+  m_ExitTime: 3
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -4945,6 +4990,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 114724123464447264}
   - {fileID: 114533022834965424}
+  - {fileID: 114686829895751294}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -4970,21 +5016,23 @@ AnimatorState:
   - {fileID: 1101539996654104260}
   m_StateMachineBehaviours:
   - {fileID: 114591207808191378}
+  - {fileID: 114963217620881618}
+  - {fileID: 114136502719848708}
   - {fileID: 114952700202115758}
   - {fileID: 114564453093663880}
-  - {fileID: 114187929868043332}
-  - {fileID: 114304230953547848}
-  - {fileID: 114347850688230140}
-  - {fileID: 114206883017055474}
-  - {fileID: 114786771932602374}
-  - {fileID: 114372726932378760}
-  - {fileID: 114399383151492170}
-  - {fileID: 114242544187566408}
-  - {fileID: 114478132498544044}
-  - {fileID: 114017491619862366}
-  - {fileID: 114379553884550140}
-  - {fileID: 114407700308758866}
-  - {fileID: 114000511409350242}
+  - {fileID: 114354092829300398}
+  - {fileID: 114367214801865356}
+  - {fileID: 114520608583867732}
+  - {fileID: 114248956197707946}
+  - {fileID: 114375026797894590}
+  - {fileID: 114451481759452534}
+  - {fileID: 114510151832479878}
+  - {fileID: 114632778743479308}
+  - {fileID: 114303503858023180}
+  - {fileID: 114705133675676588}
+  - {fileID: 114122714947792692}
+  - {fileID: 114493859551947824}
+  - {fileID: 114816073953831722}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

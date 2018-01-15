@@ -70,12 +70,14 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
         while (true)
         {
             //0.1ずつ下を探す
-            owner.transform.position += Vector3.down * 0.1f;
+            MyNavMeshBuilder.CreateNavMesh();
+            owner.transform.position += Vector3.down * 0.03f;
 
             //todo : 絵本よりも下に行った場合はやばいのでなにか対応が必要
 
             if (NavMesh.SamplePosition(owner.transform.position, out hit, m_agent.height, NavMesh.AllAreas))
             {
+                Debug.Log("found sample position");
                 break;
             }
 

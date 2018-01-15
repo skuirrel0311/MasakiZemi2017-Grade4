@@ -10,6 +10,17 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
 
     GameObject arrow;
 
+    void Awake()
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+        if (agent == null) return;
+
+        agent.enabled = false;
+
+        MainSceneManager.I.OnPageLoaded += (page) => agent.enabled = true;
+    }
+
     public override void Init(HoloObject owner)
     {
         base.Init(owner);

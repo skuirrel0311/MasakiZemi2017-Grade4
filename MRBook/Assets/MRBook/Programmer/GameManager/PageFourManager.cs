@@ -11,7 +11,7 @@ public class PageFourManager : BasePage
     {
         base.PageStart();
 
-        turtle.gameObject.SetActive(false);
+        ActorManager.I.AddCharacter(ActorName.Turtle, turtle);
     }
 
 }
