@@ -154,6 +154,8 @@ public class ActorManager : Singleton<ActorManager>
     public void AddCharacter(ActorName name, HoloCharacter character)
     {
         currentPage.characterDictionary.Add(name, character);
+        currentPage.objectDictionary.Add(character.name, character);
+        currentPage.objectList.Add(character);
     }
 
     //ページが変更
