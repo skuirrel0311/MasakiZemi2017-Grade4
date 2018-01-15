@@ -767,71 +767,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4787579230011270, guid: c8aa1e03c29c5214590c913a6e616541,
     type: 2}
   m_PrefabInternal: {fileID: 1476568717}
---- !u!1 &249765133
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1385523816253892, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 249765134}
-  m_Layer: 0
-  m_Name: TurtleDirection
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &249765134
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4974854081456486, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 249765133}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1119, y: 0.067, z: -0.0497}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 654517504}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &269569704 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4406968282353122, guid: 49634892663494d4ea5d80d75a9b0114,
     type: 2}
   m_PrefabInternal: {fileID: 741220439}
---- !u!1 &280429937
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1185095187349112, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 280429938}
-  m_Layer: 0
-  m_Name: TurtleWayPoint1
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &280429938
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4644057742611104, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 280429937}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.22, y: 0.292, z: 0.077}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 654517504}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &283345111 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4291631220955918, guid: 8089d62d4594a5b48b8b01605f5eb2c7,
@@ -2271,36 +2211,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
     type: 2}
   m_PrefabInternal: {fileID: 1539780634}
---- !u!1 &871748128
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1185095187349112, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 871748129}
-  m_Layer: 0
-  m_Name: TurtleEndPoint
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &871748129
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4644057742611104, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 871748128}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.031, y: 0.483, z: 0.725}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 654517504}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &885852043
 Prefab:
   m_ObjectHideFlags: 0
@@ -3582,36 +3492,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.03898585, y: 0.06461792, z: 0.13471408}
     m_Extent: {x: 0.57407093, y: 0.15205328, z: 0.56865394}
   m_DirtyAABB: 0
---- !u!1 &1406087925
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1385523816253892, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1406087926}
-  m_Layer: 0
-  m_Name: UrashimaSide
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1406087926
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4974854081456486, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1406087925}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1197, y: 0.067, z: -0.1977}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 654517504}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409204809 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1444457527636368, guid: f0561b7a40604c14895660871a4469da,
@@ -5181,36 +5061,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 191aeb5b9f34df04db90365b86a6fbe6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1796093752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1385523816253892, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1796093753}
-  m_Layer: 0
-  m_Name: TurtleSide
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1796093753
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4974854081456486, guid: 65d28d029e68b794ca56fc9f789db539,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1796093752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.07, z: -0.227}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 654517504}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1798469009
 Prefab:
   m_ObjectHideFlags: 0
