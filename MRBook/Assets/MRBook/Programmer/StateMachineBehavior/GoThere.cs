@@ -160,7 +160,7 @@ public class GoThere : BaseStateMachineBehaviour
         if (character == null || target == null) return;
         character.m_agent.isStopped = true;
         character.m_agent.ResetPath();
-
+        character.m_agent.enabled = false;
         character.ChangeAnimationClip(MotionName.Wait, 0.1f);
 
     }

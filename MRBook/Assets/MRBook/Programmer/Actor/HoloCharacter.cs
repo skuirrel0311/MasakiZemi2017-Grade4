@@ -21,14 +21,6 @@ public class HoloCharacter : HoloObject
     {
         m_animator = GetComponent<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
-
-        if (m_agent != null)
-        {
-            bool defaultAgentEnable = m_agent.enabled;
-            m_agent.enabled = false;
-
-            MainSceneManager.I.OnPageLoaded += (page) => m_agent.enabled = defaultAgentEnable;
-        }
     }
 
     protected void OnEnable()
@@ -36,6 +28,8 @@ public class HoloCharacter : HoloObject
         if (onEnabled != null) onEnabled.Invoke();
 
         onEnabled = null;
+
+        if(m_agent != null) m_agent.enabled = false;
     }
 
     protected override void Init()

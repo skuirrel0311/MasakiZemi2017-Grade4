@@ -85,6 +85,10 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
         }
 
         m_agent.enabled = true;
+
+        yield return null;
+
+        m_agent.enabled = false;
         fallCoroutine = null;
     }
 }

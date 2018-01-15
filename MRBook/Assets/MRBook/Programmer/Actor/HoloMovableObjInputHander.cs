@@ -8,17 +8,18 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
     [SerializeField]
     bool isFloating = false;
 
+    public NavMeshAgent m_agent { get; private set; }
+
     GameObject arrow;
 
     void Awake()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        m_agent = GetComponent<NavMeshAgent>();
+    }
 
-        if (agent == null) return;
-
-        agent.enabled = false;
-
-        MainSceneManager.I.OnPageLoaded += (page) => agent.enabled = true;
+    void OnEnable()
+    {
+        if (m_agent != null) m_agent.enabled = false;
     }
 
     public override void Init(HoloObject owner)
