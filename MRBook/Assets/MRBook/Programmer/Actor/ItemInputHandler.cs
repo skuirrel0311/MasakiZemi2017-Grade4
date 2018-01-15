@@ -9,6 +9,7 @@ public class ItemInputHandler : HoloMovableObjInputHander
     public override void Init(HoloObject owner)
     {
         ownerItem = (HoloItem)owner;
+
         base.Init(owner);
     }
 

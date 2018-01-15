@@ -35,15 +35,21 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
         scale = Mathf.Clamp(scale, 0.02f, 0.08f);
         arrow.transform.localScale = Vector3.one * scale * (1.0f / transform.lossyScale.x);
+        
         MainSceneManager.I.OnPlayPage += () =>
         {
-            arrow.SetActive(false);
+            SetArrowActive(false);
         };
 
         MainSceneManager.I.OnReset += () =>
         {
-            arrow.SetActive(true);
+            SetArrowActive(true);
         };
+    }
+
+    public virtual void SetArrowActive(bool isActive)
+    {
+        if(arrow != null) arrow.SetActive(isActive);
     }
 
     protected override void SetSphreCastRadius()

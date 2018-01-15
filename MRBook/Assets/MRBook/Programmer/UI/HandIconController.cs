@@ -12,6 +12,16 @@ public class HandIconController : BaseManager<HandIconController>
 
     public bool IsVisuable { get; private set; }
 
+    protected override void Start()
+    {
+        base.Start();
+
+        MainSceneManager.I.OnPlayPage += () =>
+        {
+            Hide();
+        };
+    }
+
     public void Init(CharacterItemSaucer itemSaucer)
     {
         if (itemSaucer.Equals(this.itemSaucer)) return;
@@ -45,6 +55,7 @@ public class HandIconController : BaseManager<HandIconController>
 
     public void Show()
     {
+        if (!MyObjControllerByBoundingBox.I.canClick) return;
         IsVisuable = true;
 
         rightButton.gameObject.SetActive(true);

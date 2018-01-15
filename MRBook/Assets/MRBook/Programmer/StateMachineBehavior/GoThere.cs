@@ -107,26 +107,7 @@ public class GoThere : BaseStateMachineBehaviour
 
     protected bool IsJustHere()
     {
-        //if (!character.m_agent.hasPath)
-        //{
-        //    Debug.Log(character.name + " don't has path");
-        //    return false;
-        //}
-
-        //NavMeshPath path = character.m_agent.path;
-        float distance = 0.0f;
-        //Vector3 temp = character.transform.position;
-
-        //for (int i = 0; i < path.corners.Length; i++)
-        //{
-        //    Vector3 conner = path.corners[i];
-        //    distance += Vector3.Distance(temp, conner);
-        //    temp = conner;
-        //}
-
-        distance = Vector3.Distance(character.transform.position, target.position);
-
-        //Debug.Log("distance = " + distance);
+        float distance = Vector3.Distance(character.transform.position, target.position);
 
         //たどり着いた
         return distance < stopDistance;
