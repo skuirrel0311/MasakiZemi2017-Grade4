@@ -49,7 +49,6 @@ public class MoveObject : BaseStateMachineBehaviour
         targetPosition = wayPoints[index].position;
 
         float distance = (targetPosition - startPosition).magnitude;
-        Debug.Log("distance = " + distance + " in move object");
         targetTime = distance / speed;
     }
 
@@ -59,7 +58,6 @@ public class MoveObject : BaseStateMachineBehaviour
 
         float progress = t / targetTime;
         targetObject.transform.position = Vector3.Lerp(startPosition, targetPosition, progress);
-
         if(progress >= 1.0f)
         {
             currentIndex++;
