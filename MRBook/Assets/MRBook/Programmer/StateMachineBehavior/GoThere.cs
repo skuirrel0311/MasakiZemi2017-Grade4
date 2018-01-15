@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,6 +7,13 @@ using UnityEngine.AI;
 //～まで行けという命令
 public class GoThere : BaseStateMachineBehaviour
 {
+    [Serializable]
+    struct Target
+    {
+        public ActorManager.TargetType targetType;
+        public string targetName;
+    }
+
     [SerializeField]
     public ActorName actorName;
     [SerializeField]
@@ -32,6 +40,13 @@ public class GoThere : BaseStateMachineBehaviour
     float updateTimer = 0.0f;
 
     float navMeshUpdateTimer = 0.0f;
+
+    [SerializeField]
+    Target[] targets = null;
+    Transform[] wayPoints = null;
+
+    int currentIndex;
+    Transform currentTarget;
 
     protected override void OnStart()
     {
@@ -60,11 +75,38 @@ public class GoThere : BaseStateMachineBehaviour
         character.m_agent.enabled = true;
         character.m_agent.speed = moveSpeed;
         character.m_agent.isStopped = false;
-        character.m_agent.SetDestination(target.position);
         character.m_agent.stoppingDistance = stopDistance;
         oldPosition = character.transform.position;
 
         character.ChangeAnimationClip(MotionName.Walk, 0.1f);
+        
+        if (targets != null)
+        {
+            wayPoints = new Transform[targets.Length];
+
+            for (int i = 0; i < wayPoints.Length; i++)
+            {
+                wayPoints[i] = ActorManager.I.GetTargetTransform(targets[i].targetName, targets[i].targetType);
+            }
+
+            SetTarget(currentIndex);
+            return;
+        }
+
+        //targetsに入力がなかった（複数ではない）
+        target = ActorManager.I.GetTargetTransform(targetName, targetType);
+        if (target != null)
+        {
+            currentTarget = target;
+            character.m_agent.SetDestination(target.position);
+        }
+    }
+
+    void SetTarget(int index)
+    {
+        if (wayPoints[index] == null) return;
+        currentTarget = wayPoints[index];
+        character.m_agent.SetDestination(wayPoints[index].position);
     }
 
     protected override BehaviourStatus OnUpdate()
@@ -73,8 +115,16 @@ public class GoThere : BaseStateMachineBehaviour
 
         if (IsJustHere())
         {
-            Debug.Log(actorName.ToString() + "到着");
-            return BehaviourStatus.Success;
+            currentIndex++;
+            if (currentIndex >= wayPoints.Length)
+            {
+                Debug.Log(actorName.ToString() + "到着");
+                return BehaviourStatus.Success;
+            }
+
+            SetTarget(currentIndex);
+
+            return BehaviourStatus.Running;
         }
         if (IsDeadAgent())
         {
@@ -107,7 +157,8 @@ public class GoThere : BaseStateMachineBehaviour
 
     protected bool IsJustHere()
     {
-        float distance = Vector3.Distance(character.transform.position, target.position);
+        if (currentTarget == null) return false;
+        float distance = Vector3.Distance(character.transform.position, currentTarget.position);
 
         //たどり着いた
         return distance < stopDistance;
