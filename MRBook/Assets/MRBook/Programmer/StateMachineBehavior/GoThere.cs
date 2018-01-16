@@ -61,14 +61,6 @@ public class GoThere : BaseStateMachineBehaviour
             return;
         }
 
-        target = ActorManager.I.GetTargetTransform(targetName, targetType);
-        if (target == null)
-        {
-            Debug.LogError(targetName + " is not found " + actorName.ToString() + " go there");
-            Suspension();
-            return;
-        }
-
         MyNavMeshBuilder.CreateNavMesh();
         updateTimer = 0.0f;
         time = 0.0f;
@@ -80,7 +72,7 @@ public class GoThere : BaseStateMachineBehaviour
 
         character.ChangeAnimationClip(MotionName.Walk, 0.1f);
         
-        if (targets != null)
+        if (targets != null && targets.Length > 0)
         {
             wayPoints = new Transform[targets.Length];
 
@@ -115,6 +107,8 @@ public class GoThere : BaseStateMachineBehaviour
 
         if (IsJustHere())
         {
+            if (wayPoints == null) return BehaviourStatus.Success;
+
             currentIndex++;
             if (currentIndex >= wayPoints.Length)
             {
@@ -138,7 +132,7 @@ public class GoThere : BaseStateMachineBehaviour
             if (updateTimer > 0.2f)
             {
                 updateTimer = 0.0f;
-                character.m_agent.SetDestination(target.position);
+                character.m_agent.SetDestination(currentTarget.position);
             }
         }
         return BehaviourStatus.Running;

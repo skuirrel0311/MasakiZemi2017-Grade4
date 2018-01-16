@@ -421,6 +421,7 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.1
+  targets: []
 --- !u!114 &114510685203436184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -598,6 +599,7 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.2
+  targets: []
 --- !u!114 &114689336863338654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,6 +652,7 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.2
+  targets: []
 --- !u!114 &114749949364216194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -678,6 +681,7 @@ MonoBehaviour:
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.2
+  targets: []
 --- !u!114 &114753896585200756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -755,10 +759,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 1
   targetType: 0
-  targetName: TurtleEndPoint
+  targetName: 
   updateTargetPosition: 0
   stopDistance: 0.05
   moveSpeed: 0.1
+  targets:
+  - targetType: 0
+    targetName: TurtleWayPoint1
+  - targetType: 0
+    targetName: TurtleWayPoint2
+  - targetType: 0
+    targetName: TurtleEndPoint
 --- !u!114 &114907246664316694
 MonoBehaviour:
   m_ObjectHideFlags: 1

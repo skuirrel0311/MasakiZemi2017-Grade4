@@ -143,6 +143,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         HandIconController.I.Hide();
         AkSoundEngine.PostEvent("Equip", gameObject);
         if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        Debug.Log(item.GetName()); 
         ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
