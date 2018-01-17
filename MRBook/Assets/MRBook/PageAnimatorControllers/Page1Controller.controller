@@ -422,6 +422,18 @@ MonoBehaviour:
   stopDistance: 0.05
   moveSpeed: 0.1
   targets: []
+--- !u!114 &114468573671069218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!114 &114510685203436184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,6 +456,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114529983959183870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114538967209238098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -600,18 +624,6 @@ MonoBehaviour:
   stopDistance: 0.05
   moveSpeed: 0.2
   targets: []
---- !u!114 &114689336863338654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.5
 --- !u!114 &114726207077815074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -624,6 +636,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u30AB\u30E1\u304C\u3044\u3058\u3081\u3089\u308C\u3066\u3044\u308B\u3053\u3068\u306B\u6C17\u3065\u304D\u307E\u3057\u305F"
+--- !u!114 &114733667349708478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6b0fcb6494de4f96c5faf3ad8eeac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: UrashimaDeadPoint
+  effectName: Splash
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114738850386552808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1207,9 +1234,8 @@ AnimatorState:
   - {fileID: 114319346160065622}
   - {fileID: 114310612934413680}
   - {fileID: 114026964383232578}
-  - {fileID: 114372824667588082}
   - {fileID: 114968173601004944}
-  - {fileID: 114689336863338654}
+  - {fileID: 114372824667588082}
   - {fileID: 114538967209238098}
   - {fileID: 114510685203436184}
   - {fileID: 114097519646374540}
@@ -1217,6 +1243,8 @@ AnimatorState:
   - {fileID: 114726207077815074}
   - {fileID: 114604160248481528}
   - {fileID: 114761968752574638}
+  - {fileID: 114468573671069218}
+  - {fileID: 114733667349708478}
   - {fileID: 114414773019801128}
   - {fileID: 114161968069159506}
   - {fileID: 114299238108658364}
