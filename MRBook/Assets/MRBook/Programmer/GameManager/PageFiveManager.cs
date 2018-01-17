@@ -7,37 +7,20 @@ public class PageFiveManager : BasePage
 {
     [SerializeField]
     HoloCharacter urashima = null;
-
     [SerializeField]
     HoloCharacter turtle = null;
-
-    [SerializeField]
-    HoloItem secretBox_Lid = null;
     [SerializeField]
     HoloItem secretBox_Box = null;
 
     public override void PageStart()
     {
         base.PageStart();
-        
-        if (FlagManager.I.GetFlag("IsCloseSecretBox",3, false))
-        {
-            //蓋をする
-            secretBox_Box.ItemSaucer.SetItem(secretBox_Lid, false);
-        }
 
-        if(FlagManager.I.GetFlag("UrashimaIsMacho", 3, false))
-        {
-            //浦島はマッチョだった
-            ChangeMesh(urashima, "UrashimaMacho", "UrashimaMachoMat");
-            urashima.ChangeScale(1.25f);
-        }
+        MainSceneManager sceneManager = MainSceneManager.I;
 
-        turtle.gameObject.SetActive(false);
-        secretBox_Box.gameObject.SetActive(false);
-        secretBox_Lid.gameObject.SetActive(false);
+        sceneManager.OnPageLoaded += AddPageCharacter;
 
-        MainSceneManager.I.OnPlayEnd += (success) =>
+        sceneManager.OnPlayEnd += (success) =>
         {
             ResultManager.I.ShowTotalResult();
 
@@ -49,19 +32,11 @@ public class PageFiveManager : BasePage
         };
     }
 
-    void ChangeMesh(HoloObject obj, string meshName, string materialName)
+    void AddPageCharacter(BasePage page)
     {
-        Mesh mesh = MyAssetStore.I.GetAsset<Mesh>(meshName, "Meshes/");
-        if (mesh == null) return;
-        Material material = MyAssetStore.I.GetAsset<Material>(materialName, "Materials/");
-        if (material == null) return;
-
-        SkinnedMeshRenderer rend;
-        rend = obj.GetComponentInChildren<SkinnedMeshRenderer>();
-
-        if (rend == null) return;
-
-        rend.sharedMesh = mesh;
-        rend.material = material;
+        ActorManager.I.AddCharacter(ActorName.Urashima, urashima);
+        ActorManager.I.AddCharacter(ActorName.Turtle, turtle);
+        ActorManager.I.AddObject(secretBox_Box);
+        MainSceneManager.I.OnPageLoaded -= AddPageCharacter;
     }
 }

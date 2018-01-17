@@ -11,11 +11,14 @@ public class PageFourManager : BasePage
     {
         base.PageStart();
 
-        MainSceneManager.I.OnPageLoaded += (page) =>
-        {
-            ActorManager.I.AddCharacter(ActorName.Turtle, turtle);
-        };
+        MainSceneManager.I.OnPageLoaded += AddPageCharacter;
 
+    }
+
+    void AddPageCharacter(BasePage page)
+    {
+        ActorManager.I.AddCharacter(ActorName.Turtle, turtle);
+        MainSceneManager.I.OnPageLoaded -= AddPageCharacter;
     }
 
 }

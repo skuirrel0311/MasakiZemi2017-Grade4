@@ -153,6 +153,7 @@ public class ActorManager : Singleton<ActorManager>
 
     public void AddCharacter(ActorName name, HoloCharacter character)
     {
+        Debug.Log("add character " + currentPage.name + " " + name.ToString());
         currentPage.characterDictionary.Add(name, character);
         currentPage.objectDictionary.Add(character.name, character);
         currentPage.objectList.Add(character);
