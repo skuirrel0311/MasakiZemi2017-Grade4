@@ -149,14 +149,16 @@ public class ActorManager : Singleton<ActorManager>
     {
         currentPage.objectDictionary.Add(obj.name, obj);
         currentPage.objectList.Add(obj);
+
+        obj.Init();
     }
 
     public void AddCharacter(ActorName name, HoloCharacter character)
     {
         Debug.Log("add character " + currentPage.name + " " + name.ToString());
         currentPage.characterDictionary.Add(name, character);
-        currentPage.objectDictionary.Add(character.name, character);
-        currentPage.objectList.Add(character);
+
+        AddObject(character);
     }
 
     //ページが変更

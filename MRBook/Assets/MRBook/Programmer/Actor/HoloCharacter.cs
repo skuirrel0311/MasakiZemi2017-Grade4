@@ -32,7 +32,7 @@ public class HoloCharacter : HoloObject
         if(m_agent != null) m_agent.enabled = false;
     }
 
-    protected override void Init()
+    public override void Init()
     {
         HoloObjResetManager.I.AddMovableResetter((HoloMovableObjResetter)Resetter);
         ChangeAnimationClip(defaultMotionName, 0.0f);

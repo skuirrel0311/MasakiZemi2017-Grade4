@@ -110,7 +110,11 @@ public class CharacterItemSaucer : BaseItemSaucer
             return;
         }
 
-        if (!CheckCanHaveItem(item)) return;
+        if (!CheckCanHaveItem(item))
+        {
+            Debug.Log(owner.name + " don't have " + item.name);
+            return;
+        }
 
         if (itemList.hand == HoloItem.Hand.Left)
         {
@@ -148,7 +152,9 @@ public class CharacterItemSaucer : BaseItemSaucer
             ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
         }
         Debug.Log(item.GetName());
-        ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
+
+        if (item.InputHandler != null)
+            ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
 

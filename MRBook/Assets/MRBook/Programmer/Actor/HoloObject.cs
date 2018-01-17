@@ -56,7 +56,7 @@ public class HoloObject : MonoBehaviour
         isFirst = false;
     }
 
-    protected virtual void Init()
+    public virtual void Init()
     {
         InitResetter();
         

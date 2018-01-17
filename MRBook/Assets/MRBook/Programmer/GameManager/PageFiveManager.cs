@@ -11,6 +11,8 @@ public class PageFiveManager : BasePage
     HoloCharacter turtle = null;
     [SerializeField]
     HoloItem secretBox_Box = null;
+    [SerializeField]
+    HoloItem secretBox_Lid = null;
 
     public override void PageStart()
     {
@@ -37,6 +39,8 @@ public class PageFiveManager : BasePage
         ActorManager.I.AddCharacter(ActorName.Urashima, urashima);
         ActorManager.I.AddCharacter(ActorName.Turtle, turtle);
         ActorManager.I.AddObject(secretBox_Box);
+        ActorManager.I.AddObject(secretBox_Lid);
+
         MainSceneManager.I.OnPageLoaded -= AddPageCharacter;
     }
 }

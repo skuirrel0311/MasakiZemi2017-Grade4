@@ -24,7 +24,7 @@ public class HoloPuppet : HoloCharacter
     Mesh defaultMesh;
     Material defaultMat;
 
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
 
