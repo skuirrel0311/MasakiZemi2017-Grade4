@@ -103,6 +103,13 @@
 								</Element>
 							</ElementList>
 						</Action>
+						<Action Name="Play" ID="{0D52A62C-1DF3-4074-AEB7-37E99CD48589}" ShortID="83296035" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{73B40974-E735-4585-81E2-D24A89BB9F80}" Global="false">
+									<ObjectRef Name="Ghost" ID="{C0DFF0A0-2AC8-4D10-B45E-55E4CC19DF2A}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Door" ID="{566FB683-8256-4BD3-B9A9-1B6A1B257C4D}">
@@ -168,6 +175,41 @@
 							<ElementList>
 								<Element ID="{DD44B701-AA40-4634-8EB9-4066D2CE9E42}" Global="false">
 									<ObjectRef Name="RodSwing" ID="{D74D3526-3A82-43F0-992F-030DF29CBE58}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Splash" ID="{D670B52C-4064-48E1-8D9F-5C4769FADB55}">
+					<ChildrenList>
+						<Action Name="Play" ID="{EF9A529C-E0AD-4D77-9120-74657F780EB7}" ShortID="596224815" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F22E6C3F-DB87-4D15-8AA0-94753D8A636D}" Global="false">
+									<ObjectRef Name="Splash" ID="{C63F6BB4-F90B-4196-BEBD-B03CCECEF591}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Wow" ID="{28CA8CA4-072F-481A-BADF-807B3241DE7B}"/>
+				<Event Name="Hatena" ID="{FE2D3C0F-A70C-4073-8637-E1CCCD4B9193}">
+					<ChildrenList>
+						<Action Name="Play" ID="{419660F7-1187-4223-9EC1-F489EDC6E6B5}" ShortID="880597308" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A0709E41-7599-4907-8477-41D074F1F7F9}" Global="false">
+									<ObjectRef Name="Hatena" ID="{FBE3CF3E-C957-416A-BB91-2C977AB3777C}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Talk" ID="{20D8B622-5DC2-4728-8D8C-5DFDD8DF5EFB}"/>
+				<Event Name="Equip_M" ID="{DCD2E413-10FE-40C6-9904-564939963CB5}">
+					<ChildrenList>
+						<Action Name="Play" ID="{E2517C77-191A-4932-A91B-6810470EFD6E}" ShortID="159788875" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{DD8D5DF3-F5B6-41D9-BD0F-61A32B251D46}" Global="false">
+									<ObjectRef Name="Equip_M" ID="{C8251C2F-169A-4C6E-8190-CF0C591441A0}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
 								</Element>
 							</ElementList>
 						</Action>

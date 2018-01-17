@@ -163,14 +163,139 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="BGM_Macho" ID="{EEE0363C-9EFF-4CA6-B3C7-6911E2989014}"/>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Jingle" ID="{CF5FC777-3F0F-47AD-97B8-7B9C72D6EE49}" ShortID="432800587">
 					<ChildrenList>
-						<Event Name="Clear_1p" ID="{DC7E3E16-7A52-4628-9736-DC6A3E7B6044}"/>
-						<Event Name="Clear_2p" ID="{B113FACF-3913-4009-B0A4-26A8E11358D6}"/>
-						<Event Name="Clear_3p" ID="{C85C24F4-E102-4D7D-965A-1D7AC58BADB6}"/>
-						<Event Name="Clear_4p" ID="{B70A7A35-A269-4133-A8E3-CA0AA248C8BE}"/>
+						<Event Name="Clear_1p" ID="{DC7E3E16-7A52-4628-9736-DC6A3E7B6044}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{4FE8A788-2A53-46C9-8D3D-A210BDCB0BE1}" ShortID="885545726" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{E279F62A-4D5A-4F7D-A38D-74393F4DC748}" Global="true">
+											<ObjectRef Name="2pSet" ID="{9CF07AB6-F31B-4663-884C-6341EA4BA645}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{FFE13A93-E990-4DDF-BBCA-B41177DF1079}" ShortID="1068714771" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{AE8BAE4C-6FD9-4112-9773-2C8B2160B004}" Global="false">
+											<ObjectRef Name="Clear" ID="{1C3558D7-5290-4C36-91D3-B5E7422FF6DE}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{3A067133-F945-4A2E-9C7E-6B6BA1371D13}" ShortID="66460852" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{9751F225-F71B-4C77-984C-BA537999F0F7}" Global="false">
+											<ObjectRef Name="Hanabi" ID="{4D4867E2-8EE0-40F4-8039-0DB9552482FF}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Clear_2p" ID="{B113FACF-3913-4009-B0A4-26A8E11358D6}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{C4258457-8CAA-4206-BA1A-D24FAFF78E40}" ShortID="913580499" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{7E863ED5-4C5B-4E6D-B431-E0A82320A10A}" Global="true">
+											<ObjectRef Name="2pPlay" ID="{F1D6B62A-C622-4D04-B3A4-2315A488368C}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{6674A256-941D-41EC-832D-A4BB1E765057}" ShortID="229972071" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{D9A9F92F-1F03-45B6-B51A-B9302AD36AF1}" Global="false">
+											<ObjectRef Name="Clear" ID="{1C3558D7-5290-4C36-91D3-B5E7422FF6DE}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{B3F0D937-2458-4C81-9786-192788FE1E96}" ShortID="447792277" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{096BF1EC-8A5C-4D05-AEAC-CD7BEFB5CC9A}" Global="false">
+											<ObjectRef Name="Hanabi" ID="{4D4867E2-8EE0-40F4-8039-0DB9552482FF}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Clear_3p" ID="{C85C24F4-E102-4D7D-965A-1D7AC58BADB6}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{B45B05F2-A006-44B6-AD84-A9413A1CC3DF}" ShortID="406476496" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{A3F68187-49D4-4A17-BDA0-97C444853E2F}" Global="true">
+											<ObjectRef Name="3pPlay" ID="{BB10993C-6F8F-405D-9DDC-08B0F046A874}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{0F7D84DB-84ED-42D5-B14F-1AC3CDBD1DD7}" ShortID="646146230" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{3D82EED2-FE6E-497E-9C16-AB68CBBE5AA9}" Global="false">
+											<ObjectRef Name="Clear" ID="{1C3558D7-5290-4C36-91D3-B5E7422FF6DE}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{DCD377FF-D598-4BB9-91A2-1D1FC032B723}" ShortID="783507162" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{982C308D-4219-482F-A13C-6ADE00A44718}" Global="false">
+											<ObjectRef Name="Hanabi" ID="{4D4867E2-8EE0-40F4-8039-0DB9552482FF}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Clear_4p" ID="{B70A7A35-A269-4133-A8E3-CA0AA248C8BE}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{9BCDBB65-C4B4-4A98-9115-980E2C272F43}" ShortID="116664515" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{1BF9B352-D076-40BE-AFC6-BE8257B94BD6}" Global="true">
+											<ObjectRef Name="4pPlay" ID="{C2983B6D-EC6E-4AE7-B2BB-9E91BA838E52}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{D59EEB16-52BC-466A-9567-2E6DC3DBA61F}" ShortID="92983930" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{CC7C234E-2A6D-471B-950C-341E3B16DED9}" Global="false">
+											<ObjectRef Name="Clear" ID="{1C3558D7-5290-4C36-91D3-B5E7422FF6DE}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{205B06FB-FC9A-4145-AA96-99F85C26AD41}" ShortID="181137943" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{F628E93B-4E1A-4406-B48F-237F342EFBE6}" Global="false">
+											<ObjectRef Name="Hanabi" ID="{4D4867E2-8EE0-40F4-8039-0DB9552482FF}" WorkUnitID="{7636841B-8E0A-46DB-ADD3-35FFAD683C7A}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="Clear_5p" ID="{1EFE49E8-182B-46DA-A164-6B14D7717930}"/>
 						<Event Name="Mistake_1p" ID="{5F02587B-1C00-4E67-8656-4D502E35C3C6}"/>
 						<Event Name="Mistake_2p" ID="{71094AB6-8C8E-4563-BA09-8E345D83CD5E}">
@@ -235,6 +360,8 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="Mistake_5p" ID="{3AA44EB6-D1F4-4F40-A3BB-4178AC695B86}"/>
+						<Event Name="GameClear" ID="{A011C38E-FCF6-4B20-A799-BD41C68C9D24}"/>
+						<Event Name="GameOver" ID="{601F72B6-FE30-4C03-ABB8-B97FCF24601D}"/>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

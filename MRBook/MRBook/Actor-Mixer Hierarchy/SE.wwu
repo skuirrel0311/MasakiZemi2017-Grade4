@@ -650,6 +650,143 @@
 						<ItemRef Name="Rod1" ID="{E7092A1B-BA01-43B3-B464-72DA0A1DC2AA}"/>
 					</Playlist>
 				</RandomSequenceContainer>
+				<Sound Name="Ghost" ID="{C0DFF0A0-2AC8-4D10-B45E-55E4CC19DF2A}" ShortID="84522564" Type="SoundFX">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Ghost" ID="{21C5A18E-0EAF-45BD-8709-868353697BBC}" ShortID="134623927">
+							<Language>SFX</Language>
+							<AudioFile>Ghost.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Ghost" ID="{21C5A18E-0EAF-45BD-8709-868353697BBC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Splash" ID="{C63F6BB4-F90B-4196-BEBD-B03CCECEF591}" ShortID="965950961" Type="SoundFX">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Splash" ID="{1B708190-DFBB-41F6-ABDA-EAE7C6B28F50}" ShortID="565305508">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="1.71875"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Splash.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Splash" ID="{1B708190-DFBB-41F6-ABDA-EAE7C6B28F50}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Hanabi" ID="{4D4867E2-8EE0-40F4-8039-0DB9552482FF}" ShortID="458425296" Type="SoundFX">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hanabi" ID="{CDF2758C-40D2-4CAD-9892-1DE92FDBB38A}" ShortID="55068511">
+							<Language>SFX</Language>
+							<AudioFile>Hanabi.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hanabi" ID="{CDF2758C-40D2-4CAD-9892-1DE92FDBB38A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Hatena" ID="{FBE3CF3E-C957-416A-BB91-2C977AB3777C}" ShortID="10322584" Type="SoundFX">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hatena" ID="{E64B735E-1FF6-4882-8979-2BE589427288}" ShortID="460804271">
+							<Language>SFX</Language>
+							<AudioFile>Hatena.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hatena" ID="{E64B735E-1FF6-4882-8979-2BE589427288}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Equip_M" ID="{C8251C2F-169A-4C6E-8190-CF0C591441A0}" ShortID="934292032" Type="SoundFX">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Equip_M" ID="{CD52A96C-FAC5-47BC-AE12-63A699BB564E}" ShortID="729306703">
+							<Language>SFX</Language>
+							<AudioFile>Equip_M.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Equip_M" ID="{CD52A96C-FAC5-47BC-AE12-63A699BB564E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
