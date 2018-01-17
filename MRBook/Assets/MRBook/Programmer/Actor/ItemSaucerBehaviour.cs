@@ -48,7 +48,11 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
 
     public override void OnSetItem(HoloItem item, bool showParticle = true)
     {
-        if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        if (showParticle)
+        {
+            AkSoundEngine.PostEvent("Equip", owner.gameObject);
+            ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        }
         item.owner = owner;
 
         if (item.name == LidItemName)

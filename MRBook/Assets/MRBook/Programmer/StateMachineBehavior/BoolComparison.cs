@@ -28,7 +28,6 @@ public class BoolComparison : BaseStateMachineBehaviour
         //最後の文字が数字だったらそのページのフラグを見に行く
         if (lastChar > '0' && lastChar < '9')
         {
-            Debug.Log("integer access");
             int pageIndex = '0' - lastChar;
             m_animator.SetBool(paramName, FlagManager.I.GetFlag(flagName, false) == boolValue);
         }

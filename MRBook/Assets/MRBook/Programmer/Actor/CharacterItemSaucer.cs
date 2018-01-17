@@ -66,7 +66,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     Transform hand;
 
     const string SecretBoxName = "SecretBox_Box";
-    
+
     public override void Init(HoloObject owner)
     {
         ownerCharacter = (HoloCharacter)owner;
@@ -104,14 +104,14 @@ public class CharacterItemSaucer : BaseItemSaucer
     /// </summary>
     public override void SetItem(HoloItem item, bool showParticle = true)
     {
-        if(behaviour != null)
+        if (behaviour != null)
         {
             behaviour.OnSetItem(item, showParticle);
             return;
         }
-         
+
         if (!CheckCanHaveItem(item)) return;
-        
+
         if (itemList.hand == HoloItem.Hand.Left)
         {
             item.currentHand = HoloItem.Hand.Left;
@@ -134,16 +134,20 @@ public class CharacterItemSaucer : BaseItemSaucer
             IsGetAlcohol = true;
         }
 
-        if(item.name == SecretBoxName)
+        if (item.name == SecretBoxName)
         {
             AddBehaviour(new SecretBoxItemSaucerBehaviour(owner, item));
         }
 
         //モーションを変える
         HandIconController.I.Hide();
-        AkSoundEngine.PostEvent("Equip", gameObject);
-        if (showParticle) ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
-        Debug.Log(item.GetName()); 
+
+        if (showParticle)
+        {
+            AkSoundEngine.PostEvent("Equip", gameObject);
+            ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+        }
+        Debug.Log(item.GetName());
         ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
         ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
@@ -178,7 +182,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         if (oldItem == null) return;
 
         //ドロップする
-        if(isDrop) ItemDropper.I.Drop(oldItem.owner, oldItem);
+        if (isDrop) ItemDropper.I.Drop(oldItem.owner, oldItem);
         oldItem.owner = null;
         oldItem.SetColliderEnable(true);
 
@@ -190,7 +194,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         Utilities.Delay(0.11f, () =>
         {
             HandIconController.I.Hide();
-        },owner);
+        }, owner);
 
 
         if (oldItem.name == AlcoholItemName)
@@ -198,7 +202,7 @@ public class CharacterItemSaucer : BaseItemSaucer
             IsGetAlcohol = false;
         }
     }
-    
+
     public override void DumpItem(bool isDrop = true)
     {
         //両手に持っているアイテムを捨てる
