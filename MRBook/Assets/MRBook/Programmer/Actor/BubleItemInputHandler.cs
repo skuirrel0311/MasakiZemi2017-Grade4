@@ -10,6 +10,8 @@ public class BubleItemInputHandler : ItemInputHandler
 
     GameObject bubble;
 
+    bool isPoped = false;
+
     public override void Init(HoloObject owner)
     {
         base.Init(owner);
@@ -21,12 +23,25 @@ public class BubleItemInputHandler : ItemInputHandler
 
     public override bool OnClick()
     {
+        if (isPoped) return base.OnClick();
+
+        isPoped = true;
+        
+        MainSceneManager.I.OnReset += OnReset;
+
         //泡がはじけて下に落ちる
         StartCoroutine(Fall());
         bubble.SetActive(false);
         AkSoundEngine.PostEvent("Bubble", owner.gameObject);
 
         return base.OnClick();
+    }
+
+    void OnReset()
+    {
+        isPoped = false;
+        bubble.SetActive(true);
+        MainSceneManager.I.OnReset -= OnReset;
     }
 
     IEnumerator Fall()

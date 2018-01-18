@@ -12,12 +12,12 @@ public class UnderTargetMaker : MonoBehaviour
 
     BaseObjInputHandler.MakerType currentMakerType = BaseObjInputHandler.MakerType.None;
 
-    public void InitializeMaker(HoloObject putObj, RaycastHit underObj, bool isHit)
+    public void InitializeMaker(HoloObject putObj, RaycastHit underObj, BaseObjInputHandler.MakerType makerType)
     {
         targetObject = putObj;
         circleController.Init();
 
-        if (isHit)
+        if (makerType != BaseObjInputHandler.MakerType.None)
         {
             circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
             Utilities.Delay(1, ()=> SetMakerEnable(true),this);
@@ -38,8 +38,6 @@ public class UnderTargetMaker : MonoBehaviour
     {
         SetMakerType(makerType);
 
-        circleController.SetState(makerType);
-
         if (makerType == BaseObjInputHandler.MakerType.Normal)
         {
             circleController.transform.position = underObj.point + (Vector3.up * 0.01f);
@@ -52,13 +50,14 @@ public class UnderTargetMaker : MonoBehaviour
         dottedLine.transform.position = targetObject.transform.position;
     }
 
-    void SetMakerType(BaseObjInputHandler.MakerType makerTYpe)
+    void SetMakerType(BaseObjInputHandler.MakerType makerType)
     {
-        if (currentMakerType == makerTYpe) return;
+        if (currentMakerType == makerType) return;
 
-        currentMakerType = makerTYpe;
+        currentMakerType = makerType;
+        circleController.SetState(makerType);
 
-        if (makerTYpe == BaseObjInputHandler.MakerType.None)
+        if (makerType == BaseObjInputHandler.MakerType.None)
         {
             SetMakerEnable(false);
         }

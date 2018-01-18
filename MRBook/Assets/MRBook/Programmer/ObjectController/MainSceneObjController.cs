@@ -83,8 +83,8 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         targetMovableObject.InputHandler.OnDragStart();
 
         RaycastHit underObj;
-        bool isHit = TryGetUnderObject(out underObj);
-        underTargetMaker.InitializeMaker(targetMovableObject, underObj, isHit);
+        bool isHitObject = TryGetUnderObject(out underObj);
+        underTargetMaker.InitializeMaker(targetMovableObject, underObj, GetMakerType(underObj, isHitObject));
 
         oldMakerType = BaseObjInputHandler.MakerType.None;
     }
@@ -93,14 +93,19 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     {
         RaycastHit underObj;
         bool isHitObject = TryGetUnderObject(out underObj);
-        HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
-        BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
 
-        BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
+        BaseObjInputHandler.MakerType makerType = GetMakerType(underObj, isHitObject);
 
         //Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.UpdateMaker(makerType, underObj);
         oldMakerType = makerType;
+    }
+
+    BaseObjInputHandler.MakerType GetMakerType(RaycastHit underObj, bool isHitObject)
+    {
+        HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
+        BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
+        return targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
     }
 
     protected virtual void EndOperation()
