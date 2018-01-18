@@ -8,7 +8,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
     [SerializeField]
     bool isFloating = false;
 
-    public NavMeshAgent m_agent { get; private set; }
+    public NavMeshAgent m_agent { get; protected set; }
 
     GameObject arrow;
 

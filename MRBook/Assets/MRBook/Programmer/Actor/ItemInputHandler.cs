@@ -21,6 +21,12 @@ public class ItemInputHandler : HoloMovableObjInputHander
         return true;
     }
 
+    public override void OnDisabled()
+    {
+        SetItemTextEnable(false);
+        base.OnDisabled();
+    }
+
     public override void OnDragStart()
     {
         //アイテムの説明を非表示

@@ -106,8 +106,8 @@ public class FloatingObjDragEndBehaviour : AbstractInputHandlerBehaviour
         {
             case BaseObjInputHandler.HitObjType.None:
             case BaseObjInputHandler.HitObjType.Book:
-                return BaseObjInputHandler.MakerType.None;
             case BaseObjInputHandler.HitObjType.OtherObj:
+                return BaseObjInputHandler.MakerType.None;
             case BaseObjInputHandler.HitObjType.Character:
                 return BaseObjInputHandler.MakerType.DontPut;
         }
