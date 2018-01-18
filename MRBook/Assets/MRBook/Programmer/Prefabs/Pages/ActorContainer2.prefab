@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 65052455199923730}
   - component: {fileID: 54265196172201860}
   - component: {fileID: 65041612930347376}
+  - component: {fileID: 114138458741956474}
   m_Layer: 4
   m_Name: Suzume2
   m_TagString: Actor
@@ -518,6 +519,7 @@ GameObject:
   - component: {fileID: 65660436287236964}
   - component: {fileID: 54657939462603268}
   - component: {fileID: 65910506241912948}
+  - component: {fileID: 114294871268199860}
   m_Layer: 4
   m_Name: Suzume3
   m_TagString: Actor
@@ -568,6 +570,7 @@ GameObject:
   - component: {fileID: 65006284639221846}
   - component: {fileID: 195725881125494288}
   - component: {fileID: 114603910547054760}
+  - component: {fileID: 114562158398916592}
   m_Layer: 8
   m_Name: Turtle
   m_TagString: Actor
@@ -834,11 +837,11 @@ GameObject:
   - component: {fileID: 4979497315060040}
   - component: {fileID: 95775022323185556}
   - component: {fileID: 195390153055334824}
-  - component: {fileID: 65490577328356980}
   - component: {fileID: 114477754031667722}
   - component: {fileID: 65999911279220542}
   - component: {fileID: 114468090093941938}
   - component: {fileID: 114128506127357384}
+  - component: {fileID: 114777440066303828}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -1000,6 +1003,7 @@ GameObject:
   - component: {fileID: 65269432327615608}
   - component: {fileID: 54274935747829820}
   - component: {fileID: 65774993908852284}
+  - component: {fileID: 114795987022052908}
   m_Layer: 4
   m_Name: Suzume1
   m_TagString: Actor
@@ -3263,18 +3267,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16173302, y: 0.12804674, z: 0.09703982}
   m_Center: {x: 3.5659154e-17, y: 0.057493255, z: -0.009061873}
---- !u!65 &65490577328356980
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1444457527636368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.80700076, y: 0.8752495, z: 0.6877472}
-  m_Center: {x: -0.0029199198, y: 0.43762475, z: -0.010266098}
 --- !u!65 &65537593500912082
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3470,6 +3462,18 @@ MonoBehaviour:
     so that they could be simply copied from one character to another without changing
     any references. It is important because they contain a lot of parameters and would
     be otherwise tedious to set up and tweak.
+--- !u!114 &114138458741956474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001337987500802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &114174417022482036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3766,6 +3770,18 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   solvers: []
   storeTargetMappedState: 1
+--- !u!114 &114294871268199860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269038535498592}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &114436367578964728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3818,6 +3834,18 @@ MonoBehaviour:
   m_behavirour: {fileID: 114763983923540624}
   rootObj: {fileID: 1383225348634682}
   m_puppet: {fileID: 114174417022482036}
+--- !u!114 &114562158398916592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307473356777590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &114567805872880448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4056,6 +4084,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5c3636cf121074aaf25d1ff6b208f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114777440066303828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444457527636368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+--- !u!114 &114795987022052908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612332220418390}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &114976194466044546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5919,7 +5971,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1444457527636368}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_Speed: 0.1
   m_Acceleration: 8
   avoidancePriority: 99
@@ -5928,7 +5980,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1
+  m_Height: 0.7
   m_BaseOffset: 0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114784733180753912}
   - component: {fileID: 65837145245647144}
   - component: {fileID: 114377143003035440}
+  - component: {fileID: 114828341124115292}
   m_Layer: 8
   m_Name: Fishingrod
   m_TagString: Actor
@@ -128,6 +129,7 @@ GameObject:
   - component: {fileID: 65462807746750062}
   - component: {fileID: 114221704116459390}
   - component: {fileID: 54673225196009808}
+  - component: {fileID: 114271475302244542}
   m_Layer: 8
   m_Name: Sakabin
   m_TagString: Actor
@@ -182,6 +184,7 @@ GameObject:
   - component: {fileID: 114504054283586146}
   - component: {fileID: 114758085143627444}
   - component: {fileID: 114802195887127602}
+  - component: {fileID: 114347426997965068}
   m_Layer: 8
   m_Name: Bait
   m_TagString: Actor
@@ -1565,6 +1568,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+--- !u!114 &114271475302244542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476118059484696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.5, z: 0.2}
+--- !u!114 &114347426997965068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546910445144358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.5, z: 0.2}
 --- !u!114 &114377143003035440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1634,6 +1661,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+--- !u!114 &114828341124115292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032175984364036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.5, z: 0.2}
 --- !u!195 &195145036752636086
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -814,6 +814,7 @@ GameObject:
   - component: {fileID: 65976358086549862}
   - component: {fileID: 114196068890439234}
   - component: {fileID: 54696116316600762}
+  - component: {fileID: 114249695154469396}
   m_Layer: 8
   m_Name: Lemon
   m_TagString: Actor
@@ -1062,6 +1063,7 @@ GameObject:
   - component: {fileID: 65962026158357154}
   - component: {fileID: 114053657695851656}
   - component: {fileID: 54340691421438128}
+  - component: {fileID: 114710439078269414}
   m_Layer: 8
   m_Name: Midori
   m_TagString: Actor
@@ -1252,6 +1254,7 @@ GameObject:
   - component: {fileID: 114886564772464168}
   - component: {fileID: 114182044512930264}
   - component: {fileID: 114971027235467004}
+  - component: {fileID: 114364728756039926}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -1897,6 +1900,7 @@ GameObject:
   - component: {fileID: 65593138275382676}
   - component: {fileID: 114877872676518460}
   - component: {fileID: 54852104372814794}
+  - component: {fileID: 114694765990950654}
   m_Layer: 8
   m_Name: Akane
   m_TagString: Actor
@@ -2090,6 +2094,7 @@ GameObject:
   - component: {fileID: 65197212835005962}
   - component: {fileID: 114882766028939046}
   - component: {fileID: 114960510191999020}
+  - component: {fileID: 114320292449950386}
   m_Layer: 8
   m_Name: Otohime
   m_TagString: Actor
@@ -2968,6 +2973,7 @@ GameObject:
   - component: {fileID: 65270223775160752}
   - component: {fileID: 114146197812605668}
   - component: {fileID: 54469670832380244}
+  - component: {fileID: 114047295128614518}
   m_Layer: 8
   m_Name: Ai
   m_TagString: Actor
@@ -7819,7 +7825,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f9b51fd8acefb9f46bd655c271cb444e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -7836,7 +7842,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f9b51fd8acefb9f46bd655c271cb444e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -7853,7 +7859,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f9b51fd8acefb9f46bd655c271cb444e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -7870,11 +7876,23 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f9b51fd8acefb9f46bd655c271cb444e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114047295128614518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718974819682054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &114053657695851656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7969,6 +7987,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puppetMaster: {fileID: 0}
   muscleIndex: 14
+--- !u!114 &114249695154469396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179612258031088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+--- !u!114 &114320292449950386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527501072835576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &114341677365201822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7980,6 +8022,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8138223246872bd4ba2cfef803c1a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114364728756039926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1299492962281512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &114460449985893066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8370,6 +8424,30 @@ MonoBehaviour:
   ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 2052
+--- !u!114 &114694765990950654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468746635802158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+--- !u!114 &114710439078269414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237399551227598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &114877872676518460
 MonoBehaviour:
   m_ObjectHideFlags: 1

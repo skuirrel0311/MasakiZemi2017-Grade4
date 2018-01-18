@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 65137958950576850}
   - component: {fileID: 114058034211758942}
   - component: {fileID: 114067993014316352}
+  - component: {fileID: 208309004354525234}
   m_Layer: 13
   m_Name: PileEventArea
   m_TagString: Actor
@@ -127,3 +128,18 @@ MonoBehaviour:
   canHaveItem: 1
   inPlayLayer: 13
   overrideName: 
+--- !u!208 &208309004354525234
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569671701836826}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.045, y: 0.075, z: 0.055}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.09, z: 0}
+  m_TimeToStationary: 0.5
