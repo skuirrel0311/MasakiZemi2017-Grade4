@@ -7,6 +7,9 @@ public class NextPageButton : MonoBehaviour
     [SerializeField]
     HoloButton button = null;
 
+    [SerializeField]
+    HoloText text = null;
+
     MainSceneManager sceneManager;
 
     void Start()
@@ -23,10 +26,21 @@ public class NextPageButton : MonoBehaviour
             sceneManager.ChangePage(nextPageIndex);
         });
 
-        sceneManager.OnPageLoaded += (page) => button.Hide();
+        sceneManager.OnPageLoaded += (page) =>
+        {
+            text.gameObject.SetActive(false);
+            button.Hide();
+        };
         sceneManager.OnPlayEnd += (success) =>
         {
-            if(success) button.Refresh();
+            if (sceneManager.currentPageIndex == 4) return;
+
+            if (success)
+            {
+                text.gameObject.SetActive(true);
+                button.Refresh();
+            }
+
         };
     }
 }

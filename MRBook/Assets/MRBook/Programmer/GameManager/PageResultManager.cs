@@ -37,6 +37,8 @@ public class PageResultManager : BaseManager<PageResultManager>
 
     public void ShowResult()
     {
+        if (ResultManager.I.isGameOver) return;
+
         sprite.SetSprite(sprites[isSuccess ? 1 : 0]);
 
         deatText.gameObject.SetActive(true);

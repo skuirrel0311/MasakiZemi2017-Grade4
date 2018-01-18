@@ -63,6 +63,7 @@ public class PassItemInPage3 : BaseStateMachineBehaviour
 
         yield return new WaitForSeconds(5.0f);
 
+        otohime.ItemSaucer.DumpItem(false);
         urashimaItemSaucer.SetItem(item, false, false);
 
         yield return new WaitForSeconds(5.0f);
