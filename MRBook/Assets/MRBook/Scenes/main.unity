@@ -1137,6 +1137,19 @@ Prefab:
       propertyPath: forHand
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114784733180753912, guid: b2681310c7041994a8999e7165407f7d,
+        type: 2}
+      propertyPath: isMovable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546910445144358, guid: b2681310c7041994a8999e7165407f7d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032175984364036, guid: b2681310c7041994a8999e7165407f7d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114357252821509362, guid: b2681310c7041994a8999e7165407f7d, type: 2}
     - {fileID: 114185889482256272, guid: b2681310c7041994a8999e7165407f7d, type: 2}
@@ -1998,8 +2011,8 @@ MonoBehaviour:
   objectList: []
   urashima: {fileID: 13802081}
   turtle: {fileID: 48023140}
-  secretBox_Lid: {fileID: 1597202113}
   secretBox_Box: {fileID: 700417042}
+  secretBox_Lid: {fileID: 1597202113}
 --- !u!4 &629083180
 Transform:
   m_ObjectHideFlags: 0
@@ -5611,7 +5624,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cedbd10b6f1e4869b0e5c0e86177899e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d262b7ef22714e87a7f1fca8ef39d1e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -5937,7 +5950,6 @@ GameObject:
   - component: {fileID: 1828689627}
   - component: {fileID: 1828689626}
   - component: {fileID: 1828689625}
-  - component: {fileID: 1828689624}
   - component: {fileID: 1828689623}
   m_Layer: 0
   m_Name: DoorMaker
@@ -5958,17 +5970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
---- !u!114 &1828689624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1828689622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a917f0af64a6423093132dab321c15f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &1828689625
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6656,7 +6657,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: P2Material
+  m_Name: P1Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -6669,7 +6670,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4a03e7ed4dca478a8fe810b31a1d7ea4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 07d0513b46574dfcbf9c3d35d30a3a29, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []

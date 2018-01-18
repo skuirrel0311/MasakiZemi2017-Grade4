@@ -57,7 +57,7 @@ public class BubleItemInputHandler : ItemInputHandler
 
             if (NavMesh.SamplePosition(owner.transform.position, out hit, m_agent.height, NavMesh.AllAreas))
             {
-                Debug.Log("found sample position");
+                //Debug.Log("found sample position");
                 break;
             }
 

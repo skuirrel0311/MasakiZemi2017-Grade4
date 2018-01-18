@@ -99,10 +99,15 @@ public class CharacterItemSaucer : BaseItemSaucer
         return true;
     }
 
+    public override void SetItem(HoloItem item, bool showParticle = true)
+    {
+        SetItem(item, showParticle, true);
+    }
+
     /// <summary>
     /// アイテムを持たせる
     /// </summary>
-    public override void SetItem(HoloItem item, bool showParticle = true)
+    public void SetItem(HoloItem item, bool showParticle = true, bool changeAnimation = true)
     {
         if (behaviour != null)
         {
@@ -155,7 +160,7 @@ public class CharacterItemSaucer : BaseItemSaucer
 
         if (item.InputHandler != null)
             ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
-        ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
+        if(changeAnimation) ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
 
     /// <summary>

@@ -11,15 +11,13 @@ public class AnyHasItem : HasItem
     {
         SetOwnerCharacter();
 
-        bool hasItem = false;
-
         for (int i = 0; i < targetItemNames.Length; i++)
         {
             if (!OwnerHasItem(targetItemNames[i])) continue;
             //一つでもtrueだったら終了
-            hasItem = true;
-            break;
+            FlagManager.I.SetFlag(flagName, this, true);
+            return;
         }
-        FlagManager.I.SetFlag(flagName, this, hasItem);
+        FlagManager.I.SetFlag(flagName, this, false);
     }
 }

@@ -11,6 +11,8 @@ public class PlayEffect : BaseStateMachineBehaviour
     [SerializeField]
     string effectName = "";
     [SerializeField]
+    string WwiseEventName = string.Empty;
+    [SerializeField]
     public Vector3 offset = Vector3.zero;
 
     protected override void OnStart()
@@ -24,5 +26,10 @@ public class PlayEffect : BaseStateMachineBehaviour
         }
 
         ParticleManager.I.Play(effectName, target.position + offset);
+
+        if(!string.IsNullOrEmpty(WwiseEventName))
+        {
+            AkSoundEngine.PostEvent(WwiseEventName, target.gameObject);
+        }
     }
 }

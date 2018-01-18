@@ -28,7 +28,7 @@ public enum MotionName
     SitPut,     //座ったまま物を置く
     StandPut,   //立ったまま物を置く
     Pass,       //アイテム渡す(料理以外)
-    Take,       //アイテム受け取る、拾う
+    TakeBox,       //箱を受け取る
     nod,        //頷く
     LookInDead, //のぞき込んで死亡
     LookAround, //見回す
@@ -53,7 +53,8 @@ public enum MotionName
     Brutality,  //いじめる
     Pose,       //マッチョポーズ
     LieGetUp,   //寝転がりから起き上がる
-    DanceLeft   //左側で踊る
+    DanceLeft,   //左側で踊る
+    TakeFood    //食べ物を受け取る
 
 }
 
