@@ -19,6 +19,8 @@ public class CircleController : MonoBehaviour
 
     Transform m_transform;
 
+    UnderTargetMaker targetMaker;
+
     Vector3 rot;
     float t;
 
@@ -53,6 +55,7 @@ public class CircleController : MonoBehaviour
     public void Init()
     {
         m_transform = transform;
+        targetMaker = m_transform.parent.GetComponent<UnderTargetMaker>();
         t = 0.0f;
     }
 
@@ -77,7 +80,7 @@ public class CircleController : MonoBehaviour
             billboard.LookTarget();
             transform.eulerAngles = Vector3.zero;
             spriteRenderer.enabled = false;
-            Utilities.Delay(2, () => spriteRenderer.enabled = true, this);
+            Utilities.Delay(2, () => spriteRenderer.enabled = true, targetMaker);
         }
     }
 }
