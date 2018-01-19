@@ -32,8 +32,6 @@ public class PassItemInPage3 : BaseStateMachineBehaviour
         CharacterItemSaucer urashimaItemSaucer = (CharacterItemSaucer)urashima.ItemSaucer;
         HoloItem urashimaItem = ((CharacterItemSaucer)urashima.ItemSaucer).RightHandItem;
 
-        bool withEat = false;
-
         if (urashimaItem != null)
         {
             if (urashimaItem.name == "Fishingrod")
@@ -41,25 +39,10 @@ public class PassItemInPage3 : BaseStateMachineBehaviour
                 urashimaItemSaucer.DumpItem(false);
                 actorManager.SetEnableObject(urashimaItem.name, false);
             }
-
-            if (urashimaItem.GetName() == "Food")
-            {
-                //一緒に食べる
-                withEat = true;
-            }
         }
 
-        if (withEat)
-        {
-            otohime.ChangeAnimationClip(MotionName.Eat, 0.1f);
-            //一緒に食べるが、浦島は死ぬ
-            urashima.ChangeAnimationClip(MotionName.Eat_Suffocation, 0.1f);
-        }
-        else
-        {
-            otohime.ChangeAnimationClip(MotionName.SitDelivery, 0.1f);
-            urashima.ChangeAnimationClip(MotionName.TakeFood, 0.1f);
-        }
+        otohime.ChangeAnimationClip(MotionName.SitDelivery, 0.1f);
+        urashima.ChangeAnimationClip(MotionName.TakeFood, 0.1f);
 
         yield return new WaitForSeconds(5.0f);
 
@@ -71,8 +54,7 @@ public class PassItemInPage3 : BaseStateMachineBehaviour
         //食べ終わった
         urashima.ItemSaucer.DumpItem(false);
         actorManager.SetEnableObject(item.name, false);
-
-        Debug.Log("on completed");
+        
         CurrentStatus = BehaviourStatus.Success;
         OnEnd();
     }
