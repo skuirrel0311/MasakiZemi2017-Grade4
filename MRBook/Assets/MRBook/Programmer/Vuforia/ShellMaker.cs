@@ -68,6 +68,7 @@ public class ShellMaker : MonoBehaviour
 
     void ChangeShellState(bool isClose)
     {
+        AkSoundEngine.PostEvent("Eye", gameObject);
         treasureObject.gameObject.SetActive(!isClose);
     }
 }
