@@ -2,6 +2,7 @@
 
 public class TestBehavior : BaseStateMachineBehaviour
 {
+    [Multiline]
     public string message;
 
     protected override void OnStart()

@@ -22,7 +22,7 @@ public class Sequence : Composite
     {
         if (childTask[currentTaskIndex].CurrentStatus != BehaviourStatus.Running)
         {
-            Debug.Log(childTask[currentTaskIndex].ToString() + " status =  " + childTask[currentTaskIndex].CurrentStatus.ToString());
+            //Debug.Log(childTask[currentTaskIndex].ToString() + " status =  " + childTask[currentTaskIndex].CurrentStatus.ToString());
             //todo:子タスクが失敗した場合も継続でいいのか？
             if(!isForcing && childTask[currentTaskIndex].CurrentStatus == BehaviourStatus.Failure)
             {

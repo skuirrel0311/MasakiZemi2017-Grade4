@@ -264,6 +264,7 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
         ownerPuppet.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
         ownerPuppet.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Alive;
         ownerPuppet.Puppet.pinWeight = 1.0f;
+        ownerPuppet.Puppet.muscleWeight = 1.0f;
     }
 
     public override void OnLocationReset()
@@ -273,7 +274,7 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
 
     public override void OnEnable()
     {
-        ownerPuppet.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Disabled;
+        ownerPuppet.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Kinematic;
     }
 }
 

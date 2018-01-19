@@ -15,6 +15,9 @@ public class ResultManager : BaseManager<ResultManager>
     [SerializeField]
     GameObject gameover = null;
 
+    [SerializeField]
+    bool activeGameOver = false;
+
     //玉手箱の中身
     List<HoloItem> secretBoxContentsList = new List<HoloItem>();
 
@@ -37,12 +40,15 @@ public class ResultManager : BaseManager<ResultManager>
             maxLifePoint = sceneManager.pages[i].lifePoint;
         }
 
-        lifePointGauge.Init(maxLifePoint);
-
-        sceneManager.OnPageLoaded += (page) =>
+        if (activeGameOver)
         {
-            lifePointGauge.SetValue(page.lifePoint);
-        };
+            lifePointGauge.Init(maxLifePoint);
+
+            sceneManager.OnPageLoaded += (page) =>
+            {
+                lifePointGauge.SetValue(page.lifePoint);
+            };
+        }
     }
 
     public void AddSecretBoxContent(HoloItem item)
@@ -74,6 +80,8 @@ public class ResultManager : BaseManager<ResultManager>
     {
         deathCount++;
 
+        //ゲームオーバーしないならライフゲージの表示もいらないはず
+        if (!activeGameOver) return;
         lifePointGauge.SetValue(lifePointGauge.value - 1);
 
         if (lifePointGauge.value <= 0)

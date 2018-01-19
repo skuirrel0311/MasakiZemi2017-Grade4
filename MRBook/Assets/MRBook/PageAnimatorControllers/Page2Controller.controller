@@ -722,9 +722,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 1
   targetType: 0
-  targetName: HomeFront
+  targetName: TurtleHomeFront
   updateTargetPosition: 0
-  stopDistance: 0.2
+  stopDistance: 0.05
   moveSpeed: 0.04
   targets: []
 --- !u!114 &114339204430696104
@@ -772,6 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puppetName: 0
+  duration: 1
 --- !u!114 &114367214801865356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1095,6 +1096,7 @@ MonoBehaviour:
   targetType: 1
   targetName: Turtle
   effectName: Question
+  WwiseEventName: 
   offset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114513180523092966
 MonoBehaviour:
@@ -1299,7 +1301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3.7
+  duration: 6.5
 --- !u!114 &114574563595821204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1590,6 +1592,7 @@ MonoBehaviour:
   targetType: 1
   targetName: Turtle
   effectName: Question
+  WwiseEventName: 
   offset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114687499309146700
 MonoBehaviour:
@@ -1974,7 +1977,7 @@ MonoBehaviour:
   targetType: 0
   targetName: HomeFront
   updateTargetPosition: 0
-  stopDistance: 0.03
+  stopDistance: 0.05
   moveSpeed: 0.1
   targets: []
 --- !u!114 &114895155617542986
