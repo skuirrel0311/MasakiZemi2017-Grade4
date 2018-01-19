@@ -386,6 +386,7 @@ MonoBehaviour:
   titleBack: {fileID: 114526483975089918}
   lifePointGauge: {fileID: 0}
   gameover: {fileID: 1114976832256504}
+  activeGameOver: 0
   isGameOver: 0
   deathCount: 0
 --- !u!114 &114355600296538562
@@ -428,7 +429,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114307209724345074}
-        m_MethodName: ShowTitleBack
+        m_MethodName: TitleBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

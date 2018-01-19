@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1132329542789552
 GameObject:
   m_ObjectHideFlags: 1
@@ -962,6 +962,8 @@ GameObject:
   - component: {fileID: 33372925548828872}
   - component: {fileID: 23083304376432904}
   - component: {fileID: 114575170068588722}
+  - component: {fileID: 65304249937370494}
+  - component: {fileID: 65836686461617406}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Actor
@@ -2384,6 +2386,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16173302, y: 0.12804674, z: 0.09703982}
   m_Center: {x: 3.5659154e-17, y: 0.057493255, z: -0.009061873}
+--- !u!65 &65304249937370494
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894759496032444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10332275, y: 0.022540402, z: 0.3874277}
+  m_Center: {x: -0.011569137, y: 0.011259301, z: 0.019302715}
 --- !u!65 &65580294716118896
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2408,6 +2422,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12938641, y: 0.14043203, z: 0.07763185}
   m_Center: {x: 0, y: 0.041772455, z: 0.0013230452}
+--- !u!65 &65836686461617406
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894759496032444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.032425836, y: 0.06455884, z: 0.3874277}
+  m_Center: {x: 0.059970547, y: 0.031695124, z: 0.019302718}
 --- !u!65 &65874401004964864
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2598,7 +2624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovable: 1
   canHaveItem: 0
-  inPlayLayer: 4
+  inPlayLayer: 11
   overrideName: 
 --- !u!114 &114626288894519334
 MonoBehaviour:
