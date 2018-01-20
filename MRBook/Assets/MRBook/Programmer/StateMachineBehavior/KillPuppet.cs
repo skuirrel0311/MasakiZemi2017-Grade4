@@ -27,7 +27,7 @@ public class KillPuppet : BaseStateMachineBehaviour
         }
         ).OnCompleted(() =>
         {
-            //puppet.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+            puppet.Puppet.urashimaState = RootMotion.Dynamics.PuppetMaster.UrashimaState.Dead;
             CurrentStatus = BehaviourStatus.Success;
             OnEnd();
         }));

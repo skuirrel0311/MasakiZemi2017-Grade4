@@ -70,12 +70,12 @@ public class HoloPuppet : HoloCharacter
     IEnumerator MonitorPuppet()
     {
         WaitForSeconds wait = new WaitForSeconds(0.1f);
-        Vector3 particlePosition = transform.position;
+        Vector3 particlePosition;
         while (true)
         {
             yield return null;
 
-            if (Puppet.state == PuppetMaster.State.Dead) break;
+            if (Puppet.urashimaState == PuppetMaster.UrashimaState.Dead) break;
         }
         Utilities.Delay(2.0f, () =>
         {

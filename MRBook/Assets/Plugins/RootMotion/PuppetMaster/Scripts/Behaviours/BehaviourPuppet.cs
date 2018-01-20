@@ -594,6 +594,7 @@ namespace RootMotion.Dynamics {
 				if (unpinnedTimer >= getUpDelay && canGetUp && !getupDisabled && puppetMaster.muscles[0].rigidbody.velocity.magnitude < maxGetUpVelocity) {
                     Debug.Log("knock out");
                     puppetMaster.state = PuppetMaster.State.Dead;
+                    puppetMaster.urashimaState = PuppetMaster.UrashimaState.Dead;
 					//SetState(State.GetUp);
 					return;
 				}
