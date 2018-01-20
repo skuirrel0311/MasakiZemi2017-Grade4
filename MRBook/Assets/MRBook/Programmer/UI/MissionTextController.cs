@@ -59,12 +59,6 @@ public class MissionTextController : BaseManager<MissionTextController>
             endTexts[1].gameObject.SetActive(false);
         };
 
-        sceneManager.OnPlayEnd += (success) =>
-        {
-            if (!success) return;
-            endTexts[1].gameObject.SetActive(true);
-        };
-
         sceneManager.OnReset += () =>
         {
             ResetText();
