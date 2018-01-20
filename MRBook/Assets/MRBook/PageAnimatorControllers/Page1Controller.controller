@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 2.5
 --- !u!114 &114043421542206454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetType: 1
-  targetName: Turtle
+  targetName: Child1
   actorName: 0
   rotationSpeed: 360
   updateTargetPosition: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u3044\u3058\u3081\u3089\u308C\u3066\u3044\u308B\u30AB\u30E1\u306B\n\u6C17\u3065\u3044\u305F\u6D66\u5CF6\u306F\n\u8239\u3092\u964D\u308A\u3088\u3046\u3068\u3057\u307E\u3057\u305F\u304C\u3001"
-  lifeTime: 5
+  lifeTime: 4
 --- !u!114 &114057056142747786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 0
   motionName: 39
-  transitionDuration: 0.1
+  transitionDuration: 0.2
   WwiseEventName: 
 --- !u!114 &114276184827957330
 MonoBehaviour:
@@ -248,6 +248,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114298063640032080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ac9f8120b761f4989db9d316458bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: Urashima
+  spriteAnimationName: ExclamationEff
+  offset: {x: 0, y: 0.1, z: 0}
+  lifeTime: 0.5
 --- !u!114 &114309717262254762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Child1
---- !u!114 &114352473556904518
+--- !u!114 &114351259518751556
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -318,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
-  motionName: 49
+  motionName: 53
   transitionDuration: 0.1
   WwiseEventName: 
 --- !u!114 &114364736897282894
@@ -423,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 2.5
 --- !u!114 &114448781933622868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -459,11 +475,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 0
   targetType: 0
-  targetName: TurtlePoint
+  targetName: 
   updateTargetPosition: 0
   stopDistance: 0.05
-  moveSpeed: 0.1
-  targets: []
+  moveSpeed: 0.15
+  targets:
+  - targetType: 0
+    targetName: TurtleHelpPoint2
+  - targetType: 0
+    targetName: TurtleHelpPoint1
+  - targetType: 0
+    targetName: TurtlePoint
 --- !u!114 &114468573671069218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 4
+  duration: 3.5
 --- !u!114 &114493740359162060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -585,6 +607,18 @@ MonoBehaviour:
   motionName: 0
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114613897114082380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114615530040522630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -832,6 +866,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Child3
+--- !u!114 &114878265769829364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.7
 --- !u!114 &114880905948364426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,7 +894,7 @@ MonoBehaviour:
   targetName: 
   updateTargetPosition: 0
   stopDistance: 0.05
-  moveSpeed: 0.1
+  moveSpeed: 0.2
   targets:
   - targetType: 0
     targetName: TurtleWayPoint1
@@ -879,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 2.5
 --- !u!114 &114934106166981724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -955,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.3
 --- !u!114 &114976416631007184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -981,7 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 0
   motionName: 2
-  transitionDuration: 0.1
+  transitionDuration: 0.15
   WwiseEventName: 
 --- !u!114 &114990421305338318
 MonoBehaviour:
@@ -1267,9 +1313,9 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 114993568970811666}
   - {fileID: 114180391405355202}
-  - {fileID: 114618643233750152}
-  - {fileID: 114352473556904518}
   - {fileID: 114907246664316694}
+  - {fileID: 114618643233750152}
+  - {fileID: 114613897114082380}
   - {fileID: 114941361411168856}
   - {fileID: 114971091959287820}
   - {fileID: 114738850386552808}
@@ -1532,6 +1578,9 @@ AnimatorState:
   - {fileID: 114057056142747786}
   - {fileID: 114556160913199156}
   - {fileID: 114954676988730286}
+  - {fileID: 114351259518751556}
+  - {fileID: 114878265769829364}
+  - {fileID: 114298063640032080}
   - {fileID: 114749949364216194}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

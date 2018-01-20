@@ -55,7 +55,8 @@ public enum MotionName
     LieGetUp,   //寝転がりから起き上がる
     DanceLeft,   //左側で踊る
     TakeFood,    //食べ物を受け取る
-    FrontSurprised  //乙姫 前向いて立ったまま驚く(P4浦島マッチョ化ルート用)
+    FrontSurprised, //乙姫 前向いて立ったまま驚く(P4浦島マッチョ化ルート用)
+    LieNotice   //寝ながらいじめ気付く→起きる
 
 }
 
