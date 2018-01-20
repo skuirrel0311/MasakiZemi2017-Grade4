@@ -120,7 +120,15 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     {
         if (CurrentState != GameState.Wait) return;
 
-        AkSoundEngine.PostEvent("BGM_" + (currentPageIndex + 1) + "p", gameObject);
+        if (currentPageIndex == 4 && FlagManager.I.GetFlag("UrashimaIsMacho", 3))
+        {
+            Debug.Log("macho bgm");
+            AkSoundEngine.PostEvent("BGM_Macho", gameObject);
+        }
+        else
+        {
+            AkSoundEngine.PostEvent("BGM_" + (currentPageIndex + 1) + "p", gameObject);
+        }
         CurrentState = GameState.Play;
 
         NotificationManager.I.ShowMessage("再生開始");

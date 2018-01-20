@@ -80,6 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObjectName: Urashima
   itemName: SecretBox_Box
+  isDrop: 0
+  isAll: 0
 --- !u!114 &114069063692527808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,6 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u304A\u3058\u3044\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114329505939224152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,6 +620,7 @@ MonoBehaviour:
   targetType: 1
   targetName: SecretBox_Box
   effectName: GoldenDoron
+  WwiseEventName: Equip_M
   offset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114587021786623842
 MonoBehaviour:
@@ -674,6 +678,7 @@ MonoBehaviour:
   targetType: 1
   targetName: SecretBox_Box
   effectName: Doron
+  WwiseEventName: 
   offset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114646628155528338
 MonoBehaviour:
@@ -714,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u7BB1\u3092\u958B\u3051\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114669396881774762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -769,6 +775,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObjectName: Urashima
   itemName: SecretBox_Lid
+  isDrop: 0
+  isAll: 0
 --- !u!114 &114680831796293120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -960,6 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u3092\u9001\u308A\u5C4A\u3051\u305F\u30AB\u30E1\u306F\u5E30\u3063\u3066\u3044\u304D\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114853072831972310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,6 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u30DE\u30C3\u30C1\u30E7\u306B\u306A\u308A\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!1101 &1101056301301480524
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
