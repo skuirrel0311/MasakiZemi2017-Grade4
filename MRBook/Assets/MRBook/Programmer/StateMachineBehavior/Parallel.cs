@@ -28,4 +28,20 @@ public class Parallel : Composite
         }
         return true;
     }
+
+    protected override void OnEnd()
+    {
+        isActive = false;
+        
+        for(int i = 0;i< childTask.Count;i++)
+        {
+            if(childTask[i].CurrentStatus == BehaviourStatus.Failure)
+            {
+                CurrentStatus = BehaviourStatus.Failure;
+            }
+        }
+
+        int state = CurrentStatus == BehaviourStatus.Success ? 1 : -1;
+        if (!hasRootTask) m_animator.SetInteger("StateStatus", state);
+    }
 }
