@@ -77,6 +77,9 @@ namespace RootMotion.Dynamics {
 		/// </summary>
 		public State state;
 
+        public enum UrashimaState { Alive, Dead }
+        public UrashimaState urashimaState = UrashimaState.Alive;
+
 		[ContextMenuItem("Reset To Default", "ResetStateSettings")]
 		[Tooltip("Settings for killing and freezing the puppet.")]
 		/// <summary>
