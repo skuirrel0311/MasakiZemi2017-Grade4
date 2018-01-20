@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 3
 --- !u!114 &114274857289009412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,6 +304,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Child1
+--- !u!114 &114352473556904518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 49
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114364736897282894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,6 +358,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114406046117352096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u52A9\u3051\u3066\u3082\u3089\u3063\u305F\u4E80\u306F\n\u6D66\u5CF6\u306B\u304A\u793C\u3092\u8A00\u3063\u3066\u6D77\u306B\u5E30\u308A\u307E\u3057\u305F\u3002"
 --- !u!114 &114411029517705076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1234,6 +1261,7 @@ AnimatorState:
   - {fileID: 114993568970811666}
   - {fileID: 114180391405355202}
   - {fileID: 114618643233750152}
+  - {fileID: 114352473556904518}
   - {fileID: 114907246664316694}
   - {fileID: 114941361411168856}
   - {fileID: 114971091959287820}
@@ -1416,6 +1444,7 @@ AnimatorState:
   - {fileID: 114405981520264198}
   - {fileID: 114669248176940134}
   - {fileID: 114990421305338318}
+  - {fileID: 114406046117352096}
   - {fileID: 114979908729363478}
   - {fileID: 114446196322029488}
   - {fileID: 114585298833225358}
