@@ -9,6 +9,11 @@ public class DumpItem : BaseStateMachineBehaviour
     [SerializeField]
     string itemName = "";
 
+    [SerializeField]
+    bool isDrop = false;
+    [SerializeField]
+    bool isAll = false;
+    
     protected override void OnStart()
     {
         base.OnStart();
@@ -20,6 +25,13 @@ public class DumpItem : BaseStateMachineBehaviour
             Debug.LogError("not found " + targetObjectName + " in dump item");
             return;
         }
+
+        if(isAll)
+        {
+            target.ItemSaucer.DumpItem(isDrop);
+            return;
+        }
+
         HoloItem item = actorManager.GetObject(itemName) as HoloItem;
 
         if(item == null)
@@ -28,6 +40,6 @@ public class DumpItem : BaseStateMachineBehaviour
             return;
         }
         
-        target.ItemSaucer.DumpItem(item);
+        target.ItemSaucer.DumpItem(item, isDrop);
     }
 }

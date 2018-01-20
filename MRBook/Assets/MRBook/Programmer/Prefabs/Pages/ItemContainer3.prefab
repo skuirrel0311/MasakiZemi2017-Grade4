@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 114728330723842846}
   - component: {fileID: 65584913729491188}
   - component: {fileID: 114566778000829120}
+  - component: {fileID: 114429732912811956}
   m_Layer: 8
   m_Name: Fishingrod
   m_TagString: Actor
@@ -1106,6 +1107,18 @@ MonoBehaviour:
   isFloating: 0
   m_agent: {fileID: 0}
   agent: {fileID: 195914452393719794}
+--- !u!114 &114429732912811956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832506156606884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.1, y: 0.5, z: 0.1}
 --- !u!114 &114499121665075774
 MonoBehaviour:
   m_ObjectHideFlags: 1

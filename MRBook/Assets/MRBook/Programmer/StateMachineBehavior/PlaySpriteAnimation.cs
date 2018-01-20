@@ -21,7 +21,7 @@ public class PlaySpriteAnimation : BaseStateMachineBehaviour
         Transform target = ActorManager.I.GetTargetTransform(targetName, targetType);
         if (target == null)
         {
-            Debug.LogError(target + "is not found");
+            Debug.LogError(targetName + "is not found");
             return;
         }
         

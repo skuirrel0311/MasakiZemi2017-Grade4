@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KKUtilities;
 
 public class ResetButton : HoloButton
 {
@@ -15,6 +16,10 @@ public class ResetButton : HoloButton
         });
 
         sceneManager.OnPageLoaded += (page) => Refresh();
+        sceneManager.OnReset += () =>
+        {
+            Utilities.Delay(4, () => Refresh(),this);
+        };
         sceneManager.OnPlayPage += () => Disable();
         sceneManager.OnPlayEnd += (success) =>
         {

@@ -10,8 +10,10 @@ public class BasePage : MonoBehaviour
     /// </summary>
     public string missionText = "";
 
+    [Multiline]
     public string storyFirstText = "";
 
+    [Multiline]
     public string storyEndText = "";
 
     public int lifePoint = 3;

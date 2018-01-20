@@ -45,7 +45,7 @@ public class PageResultManager : BaseManager<PageResultManager>
         sprite.gameObject.SetActive(true);
 
         Color tempColor;
-        StartCoroutine(Utilities.FloatLerp(0.1f, (t) =>
+        StartCoroutine(Utilities.FloatLerp(0.5f, (t) =>
         {
             tempColor = Color.Lerp(Color.clear, Color.white, t);
             deatText.Color = tempColor;
