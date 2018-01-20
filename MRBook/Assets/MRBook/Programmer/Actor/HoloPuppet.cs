@@ -53,7 +53,7 @@ public class HoloPuppet : HoloCharacter
         {
             if(monitorPuppetCoroutine != null)
             {
-                StopCoroutine(monitorPuppetCoroutine);
+                StateMachineManager.I.StopCoroutine(monitorPuppetCoroutine);
             }
 
             monitorPuppetCoroutine = null;
@@ -64,19 +64,18 @@ public class HoloPuppet : HoloCharacter
     {
         base.PlayPage();
         m_puppet.mode = PuppetMaster.Mode.Active;
-        monitorPuppetCoroutine = StartCoroutine(MonitorPuppet()); 
+        monitorPuppetCoroutine = StateMachineManager.I.StartCoroutine(MonitorPuppet()); 
     }
 
     IEnumerator MonitorPuppet()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.1f);
         Vector3 particlePosition;
         while (true)
         {
             yield return null;
-
             if (Puppet.urashimaState == PuppetMaster.UrashimaState.Dead) break;
         }
+
         Utilities.Delay(2.0f, () =>
         {
             particlePosition = transform.position;

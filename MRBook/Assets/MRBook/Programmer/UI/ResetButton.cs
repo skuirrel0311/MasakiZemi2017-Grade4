@@ -18,7 +18,7 @@ public class ResetButton : HoloButton
         sceneManager.OnPageLoaded += (page) => Refresh();
         sceneManager.OnReset += () =>
         {
-            Utilities.Delay(4, () => Refresh(),this);
+            Utilities.Delay(25, () => Refresh(),this);
         };
         sceneManager.OnPlayPage += () => Disable();
         sceneManager.OnPlayEnd += (success) =>
