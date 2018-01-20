@@ -633,7 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 2.5
 --- !u!114 &114226393104791464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 7.5
 --- !u!114 &114510151832479878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 2
 --- !u!114 &114611217580495136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1739,7 +1739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 4
 --- !u!114 &114640278043325474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1765,6 +1765,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114653382696802514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u529B\u5C3D\u304D\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114655193698159522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2186,7 +2199,7 @@ MonoBehaviour:
   targetName: TurtleEndPoint
   updateTargetPosition: 0
   stopDistance: 0.02
-  moveSpeed: 0.04
+  moveSpeed: 0.1
   targets: []
 --- !u!114 &114788782470875086
 MonoBehaviour:
@@ -2314,6 +2327,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114863570782405368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3.5
 --- !u!114 &114871370920768156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2445,7 +2470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u3057\u304B\u3057\u3001\u6249\u3092\u958B\u3051\u3089\u308C\u305A\n\u529B\u5C3D\u304D\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  message: "\u3057\u304B\u3057\u3001\u6249\u3092\u958B\u3051\u3089\u308C\u305A"
   lifeTime: 5
 --- !u!114 &114952700202115758
 MonoBehaviour:
@@ -4041,7 +4066,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 7
-    m_ConditionEvent: GoThereState
+    m_ConditionEvent: StateStatus
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102617061809568450}
@@ -5534,8 +5559,8 @@ AnimatorState:
   - {fileID: 114367214801865356}
   - {fileID: 114520608583867732}
   - {fileID: 114248956197707946}
-  - {fileID: 114451481759452534}
   - {fileID: 114504622609925928}
+  - {fileID: 114451481759452534}
   - {fileID: 114510151832479878}
   - {fileID: 114632778743479308}
   - {fileID: 114303503858023180}
@@ -5544,6 +5569,8 @@ AnimatorState:
   - {fileID: 114652884888324140}
   - {fileID: 114385147712914488}
   - {fileID: 114944719238220062}
+  - {fileID: 114863570782405368}
+  - {fileID: 114653382696802514}
   - {fileID: 114219036671599864}
   - {fileID: 114336606752902634}
   - {fileID: 114778438939715312}
