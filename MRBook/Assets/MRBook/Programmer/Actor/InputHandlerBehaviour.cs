@@ -20,6 +20,7 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
 {
     Coroutine fallCoroutine;
     NavMeshAgent m_agent;
+    public MyNavMeshBuilder m_navMeshBuilder { get; private set; }
 
     public override Action OnStart { get { return OnDragStart; } }
     public override Func<BaseObjInputHandler.HitObjType, BaseObjInputHandler.MakerType> OnUpdate { get { return OnDragUpdate; } }
@@ -29,6 +30,8 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
         : base(owner)
     {
         m_agent = owner.GetComponent<NavMeshAgent>();
+        m_navMeshBuilder = owner.GetComponent<MyNavMeshBuilder>();
+        if (m_navMeshBuilder != null) m_navMeshBuilder.enabled = false;
     }
 
     void OnDragStart()
@@ -67,6 +70,8 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
     IEnumerator Falling()
     {
         NavMeshHit hit;
+        m_navMeshBuilder.enabled = true;
+
         while (true)
         {
             //0.1ずつ下を探す
@@ -89,6 +94,7 @@ public class GroundingObjDragEndBehaviour : AbstractInputHandlerBehaviour
         yield return null;
 
         m_agent.enabled = false;
+        m_navMeshBuilder.enabled = false;
         fallCoroutine = null;
     }
 }

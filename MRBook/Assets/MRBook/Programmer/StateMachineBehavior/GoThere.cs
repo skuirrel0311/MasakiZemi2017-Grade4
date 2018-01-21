@@ -34,7 +34,7 @@ public class GoThere : BaseStateMachineBehaviour
     protected int state = 0;
 
     float time;
-    const float limitTime = 1.0f;
+    const float limitTime = 1.5f;
     Vector3 oldPosition;
 
     float updateTimer = 0.0f;
@@ -64,14 +64,18 @@ public class GoThere : BaseStateMachineBehaviour
         MyNavMeshBuilder.CreateNavMesh();
         updateTimer = 0.0f;
         time = 0.0f;
+        character.m_navMeshBuilder.enabled = true;
+        MyNavMeshBuilder.CreateNavMesh();
         character.m_agent.enabled = true;
         character.m_agent.speed = moveSpeed;
         character.m_agent.isStopped = false;
         character.m_agent.stoppingDistance = stopDistance;
         oldPosition = character.transform.position;
+        currentIndex = 0;
+
 
         character.ChangeAnimationClip(MotionName.Walk, 0.1f);
-        
+
         if (targets != null && targets.Length > 0)
         {
             wayPoints = new Transform[targets.Length];
@@ -141,10 +145,10 @@ public class GoThere : BaseStateMachineBehaviour
     void UpdateNavMesh()
     {
         navMeshUpdateTimer += Time.deltaTime;
-        MyNavMeshBuilder.CreateNavMesh();
+
         if (navMeshUpdateTimer > 0.2f)
         {
-
+            MyNavMeshBuilder.CreateNavMesh();
             navMeshUpdateTimer = 0.0f;
         }
     }
@@ -152,6 +156,8 @@ public class GoThere : BaseStateMachineBehaviour
     protected bool IsJustHere()
     {
         if (currentTarget == null) return false;
+        if (!character.m_agent.hasPath) return false;
+
         float distance = Vector3.Distance(character.transform.position, currentTarget.position);
 
         //たどり着いた
@@ -182,13 +188,12 @@ public class GoThere : BaseStateMachineBehaviour
 
     protected virtual void StopAgent()
     {
-        Debug.Log("call stop agent");
-        if (character == null || target == null) return;
-        character.m_agent.isStopped = true;
-        character.m_agent.ResetPath();
+        if (character == null || currentTarget == null) return;
+        character.m_navMeshBuilder.enabled = false;
+        //character.m_agent.isStopped = true;
+        //character.m_agent.ResetPath();
         character.m_agent.enabled = false;
         character.ChangeAnimationClip(MotionName.Wait, 0.1f);
-
     }
     //中断
     void Suspension()

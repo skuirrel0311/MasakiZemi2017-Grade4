@@ -8,6 +8,7 @@ public class HoloCharacter : HoloObject
 {
     public NavMeshAgent m_agent { get; private set; }
     public Animator m_animator { get; private set; }
+    public MyNavMeshBuilder m_navMeshBuilder { get; private set; }
     [SerializeField]
     protected MotionName defaultMotionName = MotionName.Wait;
 
@@ -21,6 +22,8 @@ public class HoloCharacter : HoloObject
     {
         m_animator = GetComponent<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
+        m_navMeshBuilder = GetComponent<MyNavMeshBuilder>();
+        if(m_navMeshBuilder != null) m_navMeshBuilder.enabled = false;
     }
 
     protected void OnEnable()
