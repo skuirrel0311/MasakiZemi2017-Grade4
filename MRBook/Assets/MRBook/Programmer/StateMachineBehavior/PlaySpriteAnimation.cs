@@ -11,6 +11,8 @@ public class PlaySpriteAnimation : BaseStateMachineBehaviour
     [SerializeField]
     string spriteAnimationName = "";
     [SerializeField]
+    string WwiseEventName = "";
+    [SerializeField]
     Vector3 offset = Vector3.zero;
     [SerializeField]
     float lifeTime = 1.0f;
