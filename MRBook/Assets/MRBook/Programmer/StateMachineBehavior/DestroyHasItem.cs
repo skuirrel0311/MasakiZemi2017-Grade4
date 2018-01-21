@@ -22,7 +22,19 @@ public class DestroyHasItem : BaseStateMachineBehaviour
         }
         CharacterItemSaucer characterItemSaucer = (CharacterItemSaucer)character.ItemSaucer;
 
-        characterItemSaucer.DumpItem();
+        HoloItem rightHandItem = characterItemSaucer.RightHandItem;
+        HoloItem leftHandItem = characterItemSaucer.LeftHandItem;
+
+        if (rightHandItem != null)
+        {
+            characterItemSaucer.DumpItem(rightHandItem, false);
+            ActorManager.I.SetEnableObject(rightHandItem.name, false);
+        }
+        if (leftHandItem != null)
+        {
+            characterItemSaucer.DumpItem(leftHandItem, false);
+            ActorManager.I.SetEnableObject(leftHandItem.name, false);
+        }
 
     }
 }
