@@ -57,7 +57,8 @@ public enum MotionName
     TakeFood,    //食べ物を受け取る
     FrontSurprised, //乙姫 前向いて立ったまま驚く(P4浦島マッチョ化ルート用)
     LieNotice,  //寝ながらいじめ気付く→起きる
-    WaveHand    //手を振る
+    WaveHand,   //手を振る
+    QuickTalkTroubled　  //カメドン引き(困惑会話の会話部分消したの)
 
 }
 
