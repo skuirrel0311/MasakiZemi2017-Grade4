@@ -10,6 +10,9 @@ public class LookTarget : BaseStateMachineBehaviour
 
     HoloCharacter character;
     Quaternion to;
+    
+    [SerializeField]
+    bool callChangeAnimation = true;
 
     [SerializeField]
     bool updateTargetPosition = false;
@@ -40,7 +43,7 @@ public class LookTarget : BaseStateMachineBehaviour
         to = Quaternion.LookRotation(targetDirection);
         if(character.m_agent != null) character.m_agent.updateRotation = false;
 
-        character.ChangeAnimationClip(MotionName.Walk, 0.1f);
+        if(callChangeAnimation) character.ChangeAnimationClip(MotionName.Walk, 0.1f);
     }
 
     Quaternion GetTargetDirectionRot()
@@ -72,7 +75,7 @@ public class LookTarget : BaseStateMachineBehaviour
     {
         base.OnEnd();
         if(character.m_agent != null) character.m_agent.updateRotation = true;
-        character.ChangeAnimationClip(MotionName.Wait, 0.1f);
+        if(callChangeAnimation) character.ChangeAnimationClip(MotionName.Wait, 0.1f);
     }
 
     //中断

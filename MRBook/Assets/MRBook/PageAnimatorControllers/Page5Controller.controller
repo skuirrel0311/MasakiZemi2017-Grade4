@@ -32,6 +32,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Flagged1
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Flagged2
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -45,7 +57,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114014269736282704
+--- !u!114 &114007164743407696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -53,9 +65,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0.1
+--- !u!114 &114010355063169554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u304C\u30DE\u30C3\u30C1\u30E7\u30DE\u30F3\u306B\u306A\u308A\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114024766249817814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114061453440836154
+--- !u!114 &114032918246133494
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,13 +101,71 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a071b5e8a5d4d45894ddc5009ec7bd, type: 3}
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjectName: Urashima
-  itemName: SecretBox_Box
-  isDrop: 0
-  isAll: 0
+  message: "\u6D66\u5CF6\u306F\u3088\u307C\u3088\u307C\u306E,\r\n\u304A\u3058\u3044\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114036585265797208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114048410620536356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114055726473269822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114058864989895896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114066914895224664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u306F\u9A5A\u304D\u307E\u3057\u305F\u304C"
+  lifeTime: 5
 --- !u!114 &114069063692527808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +193,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114070865434883756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114077462038220536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,9 +218,10 @@ MonoBehaviour:
   targetType: 0
   targetName: TurtleEndPoint
   actorName: 1
-  rotationSpeed: 360
+  rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
---- !u!114 &114089427595936950
+--- !u!114 &114099973411893572
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,11 +229,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a82f232481adf4392abf5fc8f49ca9, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 0
-  itemName: SecretBox_Box
+  isForcing: 1
 --- !u!114 &114100526325411508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +246,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: Urashima
   scaleRate: 1.25
+--- !u!114 &114101018481892294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114105427494454692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114132261023042908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b18e224fce4c34db75a8b61f5a14cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentType: 1
+  targetName: SecretBox_Box
+  parentName: 
+--- !u!114 &114135877452928998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114138949650298936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 16
+  motionName: 36
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114139376952508502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114139737198368856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,8 +375,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Urashima
   wayPointNames:
-  - SecretBoxPosition
+  - DashEndPoint
   speed: 0.2
+--- !u!114 &114152250828640354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 0
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114152354964560734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +406,7 @@ MonoBehaviour:
   parentType: 1
   targetName: Urashima
   parentName: 
---- !u!114 &114156204663960312
+--- !u!114 &114160177277760790
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -227,11 +414,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a82f232481adf4392abf5fc8f49ca9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 0
-  itemName: SecretBox_Lid
+  duration: 2
+--- !u!114 &114179437827663160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114181819173721468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,6 +442,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Turtle
   targetPointName: 
+--- !u!114 &114186233280786732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ac9f8120b761f4989db9d316458bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: NiceGuy
+  spriteAnimationName: ExclamationEff
+  WwiseEventName: Wow
+  offset: {x: 0, y: 0.1, z: 0}
+  lifeTime: 2
 --- !u!114 &114191212632179812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +498,19 @@ MonoBehaviour:
   materialName: UrashimaOldMat
   objName: Urashima
   isSkinned: 1
+--- !u!114 &114201589811923214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c18621c6c43654d817db35698eebc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: SecretBox_Lid
+  targetPointName: SecreteBoxPosition
 --- !u!114 &114208334921622662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,7 +526,7 @@ MonoBehaviour:
   motionName: 48
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114210296619644708
+--- !u!114 &114208998926217398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -307,13 +534,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4e44b12ad97424e856b7dca1880e51, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Turtle
-  wayPointNames:
-  - TurtleEndPoint
-  speed: 0.1
+  isForcing: 1
+--- !u!114 &114214197149394488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!114 &114216803605667372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,7 +565,19 @@ MonoBehaviour:
   motionName: 46
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114226690639323376
+--- !u!114 &114222051860477168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114227862846249258
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -340,10 +588,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 0
-  motionName: 2
+  actorName: 1
+  motionName: 46
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114232755539813516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114235494099559206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114249595235510932
+--- !u!114 &114237078619048718
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -364,14 +624,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 0
-  targetName: TurtleEndPoint
   actorName: 1
-  rotationSpeed: 200
-  updateTargetPosition: 0
+  motionName: 46
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114241300236953680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114244634916744582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114264380319685694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 16
+  motionName: 36
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114264817280142516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,7 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: 0
   animatorControllerName: UrashimaMachoAnimCon
---- !u!114 &114267292571620522
+--- !u!114 &114266573001007328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -396,7 +693,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 3
+--- !u!114 &114267084140137650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114271106828203732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,7 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Urashima
   targetPointName: DashStartPoint
---- !u!114 &114283966784435978
+--- !u!114 &114282044169100686
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -434,14 +743,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 0
-  motionName: 40
-  transitionDuration: 0.1
-  WwiseEventName: 
---- !u!114 &114294638946399196
+  isForcing: 1
+--- !u!114 &114283282295938758
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -449,9 +755,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114293988718658020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u305D\u306E\u5F8C\u6D66\u5CF6\u306F\u4EBA\u6C17\u8005\u306B\u306A\u308A\u3001\n\u751F\u6DAF\u5E78\u305B\u306B\u66AE\u3089\u3057\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114307320762953782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,29 +784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114316720099975500
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Turtle
---- !u!114 &114323336800497678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114324618941136906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,7 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u304A\u3058\u3044\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  message: "\u3059\u308B\u3068\u305F\u3061\u307E\u3061\u7159\u304C\u7ACB\u3061\u8FBC\u3081\u3066\u3001"
   lifeTime: 5
 --- !u!114 &114329505939224152
 MonoBehaviour:
@@ -515,6 +812,36 @@ MonoBehaviour:
   motionName: 43
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114342954768781666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfaaa0f055f4c2747bf44c0a7d51c58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element:
+  - flagName: UrashimaHasSecretBox3
+    boolValue: 1
+    isCheckNow: 0
+  - flagName: OtohimeHasSecretBox3
+    boolValue: 1
+    isCheckNow: 0
+  t: 1
+--- !u!114 &114351173970272564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114354684845627354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -527,6 +854,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114357123410619348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114368505079842860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!114 &114368724713178240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -555,7 +905,7 @@ MonoBehaviour:
   wayPointNames:
   - TurtleEndPoint
   speed: 0.1
---- !u!114 &114380424217546020
+--- !u!114 &114384838071859350
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -567,7 +917,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114407114071777800
+--- !u!114 &114409883946198192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u5468\u308A\u306E\u4EBA\u3082\u6D77\u304B\u3089\u51FA\u3066\u6765\u305F\n\u6D66\u5CF6\u306B\u30D3\u30C3\u30AF\u30EA\u3057\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114409962768706836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a071b5e8a5d4d45894ddc5009ec7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObjectName: Urashima
+  itemName: SecretBox_Box
+  isDrop: 0
+  isAll: 0
+--- !u!114 &114412018953430428
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -578,7 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114479997027075588
+--- !u!114 &114422388647814524
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -586,14 +964,120 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 1
-  targetName: Turtle
+  duration: 2
+--- !u!114 &114425201151487804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114428174325414832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+--- !u!114 &114439524213179314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   actorName: 0
-  rotationSpeed: 200
-  updateTargetPosition: 0
+  motionName: 0
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114444038940750096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea19e44cfc38c34091355419357b3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 0
+  animatorControllerName: UrashimaOldAnimCon
+--- !u!114 &114450137511758032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u305F\u3061\u307E\u3061\u6D66\u5CF6\u306F\u4EBA\u6C17\u8005\u306B\u306A\u308A\u3001\n\u751F\u6DAF\u5E78\u305B\u306B\u66AE\u3089\u3057\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114451877218404566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114469648211712828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114486871735395648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114487573211374660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114515217132018462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,6 +1090,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.1
+--- !u!114 &114515410031652354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u7389\u624B\u7BB1\u3092\u958B\u3051\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114530249789483028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
+--- !u!114 &114534489308701050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
+--- !u!114 &114536625261206250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u306F\u8CA7\u5F31\u3067\u306F\u306A\u304F\u306A\u3063\u305F\u4E8B\u306B\n\u6B53\u559C\u3057\u3001\u8089\u4F53\u7F8E\u3092\u62AB\u9732\u3059\u308B\u306E\u3067\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114537640224149928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114550178218414390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114556389483917430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +1180,110 @@ MonoBehaviour:
   effectName: GoldenDoron
   WwiseEventName: Equip_M
   offset: {x: 0, y: 0.1, z: 0}
+--- !u!114 &114566730326274240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u5FC3\u7D30\u304F\u306A\u3063\u3066\u3057\u307E\u3063\u305F\u6D66\u5CF6\u306F\n\u4E59\u59EB\u306E\u5FE0\u544A\u3092\u5FD8\u308C\u3001"
+  lifeTime: 5
+--- !u!114 &114567737903688884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
+--- !u!114 &114570181475043550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b18e224fce4c34db75a8b61f5a14cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentType: 1
+  targetName: SecretBox_Lid
+  parentName: 
+--- !u!114 &114571042529843988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+--- !u!114 &114575834587697350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114575926327809504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114579935610068602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u3082\u3046\u6016\u3044\u3082\u306E\u306F\u4F55\u3082\u306A\u3044\u3068\u3001\n\u3072\u305F\u3059\u3089\u8089\u4F53\u7F8E\u3092\u62AB\u9732\u3059\u308B\u306E\u3067\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114585900524140532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: TurtleEndPoint
+  actorName: 1
+  rotationSpeed: 360
+  callChangeAnimation: 1
+  updateTargetPosition: 0
 --- !u!114 &114588141422795810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,6 +1299,18 @@ MonoBehaviour:
   motionName: 42
   transitionDuration: 0
   WwiseEventName: 
+--- !u!114 &114598485273582128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114598631724581912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -649,9 +1323,110 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 1
-  motionName: 13
+  motionName: 55
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114605132643735170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: MachoDirection
+  actorName: 0
+  rotationSpeed: 50
+  callChangeAnimation: 0
+  updateTargetPosition: 0
+--- !u!114 &114610372334320162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+--- !u!114 &114618364227991654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114621918761147288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 16
+  motionName: 36
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114623869621681174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
+--- !u!114 &114624579234868898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+--- !u!114 &114625372072725198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114633695726618612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114633772830224070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -666,8 +1441,32 @@ MonoBehaviour:
   targetType: 1
   targetName: SecretBox_Box
   effectName: Doron
-  WwiseEventName: 
+  WwiseEventName: Equip
   offset: {x: 0, y: 0.1, z: 0}
+--- !u!114 &114634188816488474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u306F\u9A5A\u304D\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114645829255264016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114646628155528338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,7 +1494,7 @@ MonoBehaviour:
   motionName: 48
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114655194101070730
+--- !u!114 &114668547376931180
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -703,27 +1502,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u7BB1\u3092\u958B\u3051\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
-  lifeTime: 5
---- !u!114 &114669396881774762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 1
-  targetName: Urashima
-  actorName: 1
-  rotationSpeed: 200
-  updateTargetPosition: 0
 --- !u!114 &114669750072308990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -735,7 +1516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114670877297061002
+--- !u!114 &114671260445213312
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -743,13 +1524,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorName: 1
-  motionName: 1
-  transitionDuration: 0.1
-  WwiseEventName: 
+  duration: 2
+--- !u!114 &114671262131336326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114672571884558496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114677125016426554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -763,8 +1564,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObjectName: Urashima
   itemName: SecretBox_Lid
-  isDrop: 0
+  isDrop: 1
   isAll: 0
+--- !u!114 &114678897751184604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4e44b12ad97424e856b7dca1880e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
+  wayPointNames:
+  - TurtleEndPoint
+  speed: 0.1
+--- !u!114 &114679523249743396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ac9f8120b761f4989db9d316458bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: NiceGuy
+  spriteAnimationName: ExclamationEff
+  WwiseEventName: Wow
+  offset: {x: 0, y: 0.1, z: 0}
+  lifeTime: 2
 --- !u!114 &114680831796293120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -799,6 +1632,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+--- !u!114 &114690894677082122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114692079305175070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -813,9 +1657,21 @@ MonoBehaviour:
   targetType: 1
   targetName: Turtle
   spriteAnimationName: ExclamationEff
-  WwiseEventName: 
+  WwiseEventName: Wow
   offset: {x: 0, y: 0.1, z: 0}
   lifeTime: 2
+--- !u!114 &114699829721915898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
 --- !u!114 &114700262489649840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -840,6 +1696,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114707378077614172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a82f232481adf4392abf5fc8f49ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  itemName: SecretBox_Box
+--- !u!114 &114707477053732152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a82f232481adf4392abf5fc8f49ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  itemName: SecretBox_Lid
 --- !u!114 &114715858032428034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -855,7 +1737,7 @@ MonoBehaviour:
   wayPointNames:
   - RideEndPoint
   speed: 0.1
---- !u!114 &114723767373205048
+--- !u!114 &114724979288089562
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -863,12 +1745,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b18e224fce4c34db75a8b61f5a14cb, type: 3}
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentType: 1
-  targetName: SecretBox_Box
-  parentName: 
+  message: "\u30D0\u30EA\u30A2\u30D5\u30EA\u30FC\u306E\u5BB6\u3092\u5EFA\u3066\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114731420146778102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114733356740422368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -881,7 +1773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Turtle
---- !u!114 &114733724546751458
+--- !u!114 &114740633857620062
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -889,11 +1781,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
---- !u!114 &114746299115994556
+--- !u!114 &114745911652116028
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -901,14 +1792,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 1
-  targetName: SecretBox_Box
-  actorName: 0
-  rotationSpeed: 100
-  updateTargetPosition: 0
+  duration: 2
+--- !u!114 &114746095254214950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114752336535569394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u5468\u308A\u306E\u4EBA\u306F\u6D66\u5CF6\u306B\u30D3\u30C3\u30AF\u30EA\u3057\u307E\u3057\u305F\u3002"
+  lifeTime: 5
+--- !u!114 &114756448930760928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114764531410146774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -921,6 +1843,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+--- !u!114 &114779821556555770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114780845239329298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -932,6 +1866,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114786649144805260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ac9f8120b761f4989db9d316458bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: NiceGuy
+  spriteAnimationName: ExclamationEff
+  WwiseEventName: Wow
+  offset: {x: 0, y: 0.1, z: 0}
+  lifeTime: 2
+--- !u!114 &114795635311871280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 28
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114797905796942432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -945,7 +1911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: 0
   animatorControllerName: UrashimaMachoAnimCon
---- !u!114 &114811332527311354
+--- !u!114 &114813680093530422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -956,9 +1922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u3092\u9001\u308A\u5C4A\u3051\u305F\u30AB\u30E1\u306F\u5E30\u3063\u3066\u3044\u304D\u307E\u3057\u305F\u3002"
+  message: "\u3059\u308B\u3068\u305F\u3061\u307E\u3061\n\u91D1\u8272\u306E\u7159\u304C\u7ACB\u3061\u8FBC\u3081\u3066\u3001"
   lifeTime: 5
---- !u!114 &114853072831972310
+--- !u!114 &114823692831830744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -969,7 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 2
 --- !u!114 &114858661918384398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,6 +1949,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Urashima
   targetPointName: RidePoint
+--- !u!114 &114859771653523944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u6D66\u5CF6\u306F\u611F\u8B1D\u3057\u306A\u304C\u3089\n\u5E78\u305B\u306B\u66AE\u3089\u3057\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114864983752475792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -997,6 +1976,54 @@ MonoBehaviour:
   parentType: 0
   targetName: Urashima
   parentName: Turtle
+--- !u!114 &114866275580273520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114870015309304476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114878922273607344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114882349435434424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u5468\u308A\u306E\u4EBA\u306F\u6D66\u5CF6\u306B\u30D3\u30C3\u30AF\u30EA\u3057\u307E\u3057\u305F\u3002"
+  lifeTime: 5
 --- !u!114 &114890639123794394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1024,7 +2051,59 @@ MonoBehaviour:
   materialName: UrashimaMachoMat
   objName: Urashima
   isSkinned: 1
+--- !u!114 &114900308673364552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 1
+  motionName: 46
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114900761608126100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114908726889809784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 40
+  transitionDuration: 0.1
+  WwiseEventName: 
+--- !u!114 &114914023454890970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114916837738576392
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1061,7 +2140,7 @@ MonoBehaviour:
   motionName: 46
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114939026093229518
+--- !u!114 &114939074332429906
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1069,25 +2148,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c18621c6c43654d817db35698eebc0, type: 3}
+  m_Script: {fileID: 11500000, guid: be4e44b12ad97424e856b7dca1880e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: SecretBox_Box
-  targetPointName: SecretBoxPosition
---- !u!114 &114941197883571040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b18e224fce4c34db75a8b61f5a14cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentType: 1
-  targetName: SecretBox_Lid
-  parentName: 
+  objectName: Turtle
+  wayPointNames:
+  - TurtleEndPoint
+  speed: 0.15
 --- !u!114 &114956023906977208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1101,7 +2168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Turtle
   wayPointNames:
-  - RideEndPoint
+  - TurtleTroubledPoint
   speed: 0.1
 --- !u!114 &114957383460318116
 MonoBehaviour:
@@ -1115,7 +2182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
---- !u!114 &114970810012649810
+--- !u!114 &114958130343598352
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1127,6 +2194,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114964666162826414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\u305D\u306E\u5F8C\u3001\u6D66\u5CF6\u3092\u5FC3\u914D\u3057\u305F\u4EBA\u9054\u306F\n\u6D66\u5CF6\u306E\u70BA\u306B\u52DF\u91D1\u6D3B\u52D5\u3092\u3057\u3001"
+  lifeTime: 5
 --- !u!114 &114974304732675374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1138,8 +2218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.3
---- !u!114 &114986733171759398
+  duration: 1.5
+--- !u!114 &114983854444561238
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1147,11 +2227,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c18621c6c43654d817db35698eebc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u30DE\u30C3\u30C1\u30E7\u306B\u306A\u308A\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  objectName: SecretBox_Box
+  targetPointName: 
+--- !u!114 &114984006947604750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+--- !u!114 &114991927485279062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: TurtleEndPoint
+  actorName: 1
+  rotationSpeed: 200
+  callChangeAnimation: 1
+  updateTargetPosition: 0
 --- !u!1101 &1101056301301480524
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1185,9 +2294,129 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: ContentKind
-    m_EventTreshold: 0
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102165162833801294}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101145345554386432
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 7
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102066752700483302}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101158817021458158
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 7
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102066752700483302}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101160156816135778
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Flagged
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102308536968308464}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101162587455974618
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 7
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102066752700483302}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101242374410930678
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Flagged
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102785721854052152}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1209,7 +2438,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: ContentKind
-    m_EventTreshold: 1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102893543946810140}
   m_Solo: 0
@@ -1248,7 +2477,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101401076862455412
+--- !u!1101 &1101479365859391750
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1259,7 +2488,7 @@ AnimatorStateTransition:
     m_ConditionEvent: StateStatus
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102305551673023678}
+  m_DstState: {fileID: 1102066752700483302}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1267,54 +2496,6 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101409325714250684
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Flagged
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102109795791487962}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101591201625074732
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 7
-    m_ConditionEvent: StateStatus
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102823072229190984}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 2
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1326,33 +2507,12 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102838419160433928}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101711572529028434
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: Flagged
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102308536968308464}
+  m_DstState: {fileID: 1102838419160433928}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1389,7 +2549,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101741303751217958
+--- !u!1101 &1101960829681020738
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1400,7 +2560,7 @@ AnimatorStateTransition:
     m_ConditionEvent: StateStatus
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102845658634131360}
+  m_DstState: {fileID: 1102823072229190984}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1413,7 +2573,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101773923407586330
+--- !u!1101 &1101991068749078702
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1424,7 +2584,7 @@ AnimatorStateTransition:
     m_ConditionEvent: StateStatus
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102266356088383350}
+  m_DstState: {fileID: 1102109795791487962}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1437,6 +2597,29 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &1102008589643082928
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: New State
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102024577767802866
 AnimatorState:
   serializedVersion: 5
@@ -1461,6 +2644,29 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102066752700483302
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: "\u304A\u3057\u307E\u3044"
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102109795791487962
 AnimatorState:
   serializedVersion: 5
@@ -1471,9 +2677,10 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101711572529028434}
   - {fileID: 1101642271538078586}
-  m_StateMachineBehaviours: []
+  - {fileID: 1101242374410930678}
+  m_StateMachineBehaviours:
+  - {fileID: 114342954768781666}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1495,13 +2702,28 @@ AnimatorState:
   m_Name: "\u304A\u723A\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3046"
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 1101479365859391750}
   m_StateMachineBehaviours:
   - {fileID: 114354684845627354}
+  - {fileID: 114756448930760928}
+  - {fileID: 114469648211712828}
   - {fileID: 114633772830224070}
+  - {fileID: 114201589811923214}
+  - {fileID: 114570181475043550}
   - {fileID: 114199917549918042}
-  - {fileID: 114324618941136906}
+  - {fileID: 114444038940750096}
+  - {fileID: 114152250828640354}
   - {fileID: 114900761608126100}
+  - {fileID: 114058864989895896}
+  - {fileID: 114160177277760790}
+  - {fileID: 114324618941136906}
+  - {fileID: 114214197149394488}
+  - {fileID: 114032918246133494}
+  - {fileID: 114671260445213312}
+  - {fileID: 114486871735395648}
+  - {fileID: 114351173970272564}
+  - {fileID: 114412018953430428}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1523,18 +2745,22 @@ AnimatorState:
   m_Name: "\u30C0\u30C3\u30B7\u30E5\u3067\u5E30\u3063\u3066\u304F\u308B"
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 1101158817021458158}
   m_StateMachineBehaviours:
   - {fileID: 114235494099559206}
   - {fileID: 114680831796293120}
   - {fileID: 114307320762953782}
   - {fileID: 114143610064558962}
+  - {fileID: 114439524213179314}
   - {fileID: 114974304732675374}
+  - {fileID: 114605132643735170}
   - {fileID: 114208334921622662}
   - {fileID: 114195569987904834}
   - {fileID: 114890639123794394}
   - {fileID: 114764531410146774}
   - {fileID: 114181819173721468}
+  - {fileID: 114227862846249258}
   - {fileID: 114956023906977208}
   - {fileID: 114646628155528338}
   - {fileID: 114598631724581912}
@@ -1545,79 +2771,25 @@ AnimatorState:
   - {fileID: 114371120991205986}
   - {fileID: 114733356740422368}
   - {fileID: 114669750072308990}
-  - {fileID: 114323336800497678}
-  - {fileID: 114294638946399196}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102266356088383350
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u7BB1\u3092\u958B\u3051\u308B"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101591201625074732}
-  m_StateMachineBehaviours:
-  - {fileID: 114380424217546020}
-  - {fileID: 114746299115994556}
-  - {fileID: 114089427595936950}
-  - {fileID: 114283966784435978}
-  - {fileID: 114655194101070730}
-  - {fileID: 114853072831972310}
-  - {fileID: 114061453440836154}
-  - {fileID: 114723767373205048}
-  - {fileID: 114941197883571040}
-  - {fileID: 114156204663960312}
-  - {fileID: 114970810012649810}
-  - {fileID: 114407114071777800}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102305551673023678
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u30AB\u30E1\u306B\u304C\u304A\u793C\u3092\u8A00\u3044\u5E30\u3063\u3066\u3044\u304F"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101773923407586330}
-  m_StateMachineBehaviours:
-  - {fileID: 114733724546751458}
-  - {fileID: 114479997027075588}
-  - {fileID: 114669396881774762}
-  - {fileID: 114811332527311354}
-  - {fileID: 114226690639323376}
-  - {fileID: 114267292571620522}
-  - {fileID: 114249595235510932}
-  - {fileID: 114670877297061002}
-  - {fileID: 114210296619644708}
-  - {fileID: 114316720099975500}
-  - {fileID: 114014269736282704}
+  - {fileID: 114241300236953680}
+  - {fileID: 114534489308701050}
+  - {fileID: 114264380319685694}
+  - {fileID: 114679523249743396}
+  - {fileID: 114283282295938758}
+  - {fileID: 114070865434883756}
+  - {fileID: 114282044169100686}
+  - {fileID: 114870015309304476}
+  - {fileID: 114066914895224664}
+  - {fileID: 114266573001007328}
+  - {fileID: 114579935610068602}
+  - {fileID: 114598485273582128}
+  - {fileID: 114752336535569394}
+  - {fileID: 114575834587697350}
+  - {fileID: 114450137511758032}
+  - {fileID: 114958130343598352}
+  - {fileID: 114575926327809504}
+  - {fileID: 114487573211374660}
+  - {fileID: 114055726473269822}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1640,7 +2812,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101741303751217958}
+  - {fileID: 1101991068749078702}
   m_StateMachineBehaviours:
   - {fileID: 114700262489649840}
   - {fileID: 114191212632179812}
@@ -1666,17 +2838,46 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1102 &1102821252636108116
+--- !u!1102 &1102785721854052152
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "\u4E80\u306B\u4E57\u308B"
+  m_Name: "\u7BB1\u3092\u958B\u3051\u308B"
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_Transitions:
+  - {fileID: 1101960829681020738}
+  m_StateMachineBehaviours:
+  - {fileID: 114384838071859350}
+  - {fileID: 114425201151487804}
+  - {fileID: 114208998926217398}
+  - {fileID: 114991927485279062}
+  - {fileID: 114900308673364552}
+  - {fileID: 114939074332429906}
+  - {fileID: 114567737903688884}
+  - {fileID: 114746095254214950}
+  - {fileID: 114232755539813516}
+  - {fileID: 114451877218404566}
+  - {fileID: 114983854444561238}
+  - {fileID: 114707378077614172}
+  - {fileID: 114007164743407696}
+  - {fileID: 114908726889809784}
+  - {fileID: 114623869621681174}
+  - {fileID: 114409962768706836}
+  - {fileID: 114132261023042908}
+  - {fileID: 114707477053732152}
+  - {fileID: 114878922273607344}
+  - {fileID: 114740633857620062}
+  - {fileID: 114135877452928998}
+  - {fileID: 114139376952508502}
+  - {fileID: 114566730326274240}
+  - {fileID: 114048410620536356}
+  - {fileID: 114515410031652354}
+  - {fileID: 114668547376931180}
+  - {fileID: 114916837738576392}
+  - {fileID: 114244634916744582}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1724,33 +2925,35 @@ AnimatorState:
   m_Name: "\u30D0\u30EA\u3084\u30D5\u30EA\u30FC\u306E\u5BB6\u3092\u5EFA\u3066\u308B"
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102845658634131360
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u7389\u624B\u7BB1\u3092\u914D\u7F6E\u3059\u308B"
-  m_Speed: 1
-  m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101401076862455412}
+  - {fileID: 1101162587455974618}
   m_StateMachineBehaviours:
-  - {fileID: 114939026093229518}
+  - {fileID: 114101018481892294}
+  - {fileID: 114357123410619348}
+  - {fileID: 114036585265797208}
+  - {fileID: 114585900524140532}
+  - {fileID: 114237078619048718}
+  - {fileID: 114678897751184604}
+  - {fileID: 114699829721915898}
+  - {fileID: 114914023454890970}
+  - {fileID: 114099973411893572}
+  - {fileID: 114795635311871280}
+  - {fileID: 114984006947604750}
+  - {fileID: 114634188816488474}
+  - {fileID: 114422388647814524}
+  - {fileID: 114409883946198192}
+  - {fileID: 114621918761147288}
+  - {fileID: 114186233280786732}
+  - {fileID: 114368505079842860}
+  - {fileID: 114964666162826414}
+  - {fileID: 114745911652116028}
+  - {fileID: 114724979288089562}
+  - {fileID: 114610372334320162}
+  - {fileID: 114859771653523944}
+  - {fileID: 114779821556555770}
+  - {fileID: 114618364227991654}
+  - {fileID: 114866275580273520}
+  - {fileID: 114671262131336326}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1774,7 +2977,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101718948355102076}
-  - {fileID: 1101409325714250684}
+  - {fileID: 1101160156816135778}
   m_StateMachineBehaviours:
   - {fileID: 114271106828203732}
   m_Position: {x: 50, y: 50, z: 0}
@@ -1798,18 +3001,40 @@ AnimatorState:
   m_Name: "\u30DE\u30C3\u30C1\u30E7\u306B\u306A\u3063\u3066\u3057\u307E\u3046"
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 1101145345554386432}
   m_StateMachineBehaviours:
   - {fileID: 114070835122308896}
+  - {fileID: 114645829255264016}
+  - {fileID: 114672571884558496}
   - {fileID: 114556389483917430}
+  - {fileID: 114677125016426554}
   - {fileID: 114896184791268920}
   - {fileID: 114368724713178240}
   - {fileID: 114797905796942432}
-  - {fileID: 114986733171759398}
-  - {fileID: 114677125016426554}
   - {fileID: 114647727210965334}
   - {fileID: 114957383460318116}
   - {fileID: 114024766249817814}
+  - {fileID: 114530249789483028}
+  - {fileID: 114550178218414390}
+  - {fileID: 114786649144805260}
+  - {fileID: 114138949650298936}
+  - {fileID: 114633695726618612}
+  - {fileID: 114222051860477168}
+  - {fileID: 114105427494454692}
+  - {fileID: 114813680093530422}
+  - {fileID: 114428174325414832}
+  - {fileID: 114010355063169554}
+  - {fileID: 114624579234868898}
+  - {fileID: 114536625261206250}
+  - {fileID: 114823692831830744}
+  - {fileID: 114882349435434424}
+  - {fileID: 114571042529843988}
+  - {fileID: 114293988718658020}
+  - {fileID: 114537640224149928}
+  - {fileID: 114731420146778102}
+  - {fileID: 114625372072725198}
+  - {fileID: 114179437827663160}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1864,53 +3089,47 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102024577767802866}
-    m_Position: {x: 372, y: -168, z: 0}
+    m_Position: {x: 252, y: -168, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102308536968308464}
-    m_Position: {x: 108, y: 156, z: 0}
+    m_Position: {x: 108, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102165162833801294}
-    m_Position: {x: -12, y: 564, z: 0}
+    m_Position: {x: -12, y: 576, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102893543946810140}
-    m_Position: {x: 216, y: 564, z: 0}
+    m_Position: {x: 216, y: 576, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102174619872055380}
-    m_Position: {x: 492, y: 552, z: 0}
+    m_Position: {x: 444, y: 576, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102823072229190984}
-    m_Position: {x: 108, y: 468, z: 0}
+    m_Position: {x: 108, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102870482414858442}
-    m_Position: {x: 372, y: -72, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102266356088383350}
-    m_Position: {x: 108, y: 384, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102305551673023678}
-    m_Position: {x: 108, y: 312, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102845658634131360}
-    m_Position: {x: 108, y: 240, z: 0}
+    m_Position: {x: 252, y: -36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102905484374289906}
-    m_Position: {x: 456, y: 36, z: 0}
+    m_Position: {x: 372, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102109795791487962}
-    m_Position: {x: 228, y: 36, z: 0}
+    m_Position: {x: 108, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102838419160433928}
-    m_Position: {x: 348, y: 288, z: 0}
+    m_Position: {x: -264, y: 576, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102821252636108116}
-    m_Position: {x: 0, y: -24, z: 0}
+    m_State: {fileID: 1102066752700483302}
+    m_Position: {x: 158, y: 726, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102785721854052152}
+    m_Position: {x: 108, y: 336, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 336, y: -384, z: 0}
-  m_EntryPosition: {x: 396, y: -240, z: 0}
+  m_EntryPosition: {x: 276, y: -240, z: 0}
   m_ExitPosition: {x: 720, y: 744, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102024577767802866}
