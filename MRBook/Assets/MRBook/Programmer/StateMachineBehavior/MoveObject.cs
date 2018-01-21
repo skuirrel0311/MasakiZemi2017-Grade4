@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveObject : BaseStateMachineBehaviour
 {
     [SerializeField]
-    string objectName = "";
+    protected string objectName = "";
 
     [SerializeField]
     string[] wayPointNames = null;
@@ -13,9 +13,9 @@ public class MoveObject : BaseStateMachineBehaviour
     [SerializeField]
     float speed = 0.1f;
 
-    HoloObject targetObject;
-    Transform[] wayPoints;
-    int currentIndex = 0;
+    protected HoloObject targetObject;
+    protected Transform[] wayPoints;
+    protected int currentIndex = 0;
 
     float t;
 
@@ -43,7 +43,7 @@ public class MoveObject : BaseStateMachineBehaviour
         SetTargetPoint(currentIndex);
     }
 
-    void SetTargetPoint(int index)
+    protected virtual void SetTargetPoint(int index)
     {
         startPosition = targetObject.transform.position;
         targetPosition = wayPoints[index].position;

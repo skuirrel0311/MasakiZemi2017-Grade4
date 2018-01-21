@@ -196,6 +196,7 @@ MonoBehaviour:
   targetName: TurtlePosition
   actorName: 0
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114045538981086530
 MonoBehaviour:
@@ -272,6 +273,7 @@ MonoBehaviour:
   targetName: Bait
   actorName: 12
   rotationSpeed: 100
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114098033227062412
 MonoBehaviour:
@@ -288,6 +290,7 @@ MonoBehaviour:
   targetName: BaitPosition1
   actorName: 12
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 1
 --- !u!114 &114113375156806186
 MonoBehaviour:
@@ -828,6 +831,7 @@ MonoBehaviour:
   targetName: BaitPosition2
   actorName: 10
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 1
 --- !u!114 &114327190076714310
 MonoBehaviour:
@@ -1004,6 +1008,7 @@ MonoBehaviour:
   targetName: Suzume1
   actorName: 0
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 1
 --- !u!114 &114447716566888496
 MonoBehaviour:
@@ -1333,6 +1338,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114526303818481098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5b4f33b6ebdb241b14c16f20c7442f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Urashima
+  wayPointNames:
+  - HomeFront
+  speed: 0.1
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114533022834965424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1781,6 +1803,7 @@ MonoBehaviour:
   targetName: Bait
   actorName: 11
   rotationSpeed: 100
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114655275999693110
 MonoBehaviour:
@@ -2365,24 +2388,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Suzume2
---- !u!114 &114887251407387958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 0
-  targetType: 0
-  targetName: HomeFront
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.1
-  targets: []
 --- !u!114 &114895155617542986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2398,6 +2403,7 @@ MonoBehaviour:
   targetName: BaitPosition
   actorName: 11
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 1
 --- !u!114 &114899991328295144
 MonoBehaviour:
@@ -4805,7 +4811,7 @@ AnimatorState:
   - {fileID: 114113816015547492}
   - {fileID: 114474909798135328}
   - {fileID: 114605734550528660}
-  - {fileID: 114887251407387958}
+  - {fileID: 114526303818481098}
   - {fileID: 114037900251810860}
   - {fileID: 114346852348936702}
   m_Position: {x: 50, y: 50, z: 0}
