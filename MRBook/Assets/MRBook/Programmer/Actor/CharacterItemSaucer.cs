@@ -96,7 +96,7 @@ public class CharacterItemSaucer : BaseItemSaucer
             return false;
         }
 
-        return true;
+        return !itemData.notTake;
     }
 
     public override void SetItem(HoloItem item, bool showParticle = true)

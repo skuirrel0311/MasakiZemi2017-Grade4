@@ -15,7 +15,7 @@ public class ItemTransformData
 	public Vector3 position;
 	public Vector3 rotation;
     public MotionName motionName;
-    public bool canTake = true;
+    public bool notTake;
 
 	public ItemTransformData(string itemName, Transform transform)
 	{
