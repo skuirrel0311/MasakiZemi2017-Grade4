@@ -114,6 +114,7 @@ MonoBehaviour:
   targetName: Otohime
   actorName: 0
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114023555132904776
 MonoBehaviour:
@@ -283,6 +284,7 @@ MonoBehaviour:
   targetName: CenterPoint
   actorName: 5
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114068088229029884
 MonoBehaviour:
@@ -890,6 +892,7 @@ MonoBehaviour:
   targetName: Urashima
   actorName: 2
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114261036798338450
 MonoBehaviour:
@@ -1270,24 +1273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message: "\u52E2\u3044\u304C\u3088\u3059\u304E\u3066\u306E\u3069\u306B\n\u8A70\u307E\u3089\u305B\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
   lifeTime: 5
---- !u!114 &114361812102546626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 0
-  targetType: 0
-  targetName: UrashimaEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.12
-  targets: []
 --- !u!114 &114363885828690408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1303,6 +1288,7 @@ MonoBehaviour:
   targetName: 
   actorName: 0
   rotationSpeed: 100
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114368415203335048
 MonoBehaviour:
@@ -1693,6 +1679,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+--- !u!114 &114478680966216566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5b4f33b6ebdb241b14c16f20c7442f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Urashima
+  wayPointNames:
+  - UrashimaEndPoint1
+  - UrashimaEndPoint
+  speed: 0.12
+  rotationSpeed: 100
+  callChangeAnimation: 1
 --- !u!114 &114479302464507810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1908,6 +1912,7 @@ MonoBehaviour:
   targetName: Urashima
   actorName: 2
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114554033058307040
 MonoBehaviour:
@@ -1951,6 +1956,7 @@ MonoBehaviour:
   targetName: CenterPoint
   actorName: 3
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114573495253411478
 MonoBehaviour:
@@ -2074,6 +2080,7 @@ MonoBehaviour:
   targetName: CenterPoint
   actorName: 6
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114626424954800242
 MonoBehaviour:
@@ -2114,24 +2121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114646816936046778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 2
-  targetType: 0
-  targetName: OtohimeEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.12
-  targets: []
 --- !u!114 &114647275753802014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2391,6 +2380,7 @@ MonoBehaviour:
   targetName: Lemon
   actorName: 0
   rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114740530838611640
 MonoBehaviour:
@@ -2455,6 +2445,7 @@ MonoBehaviour:
   targetName: Akane
   actorName: 2
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114754822445351220
 MonoBehaviour:
@@ -2600,6 +2591,7 @@ MonoBehaviour:
   targetName: Otohime
   actorName: 0
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114794752434163298
 MonoBehaviour:
@@ -2703,6 +2695,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114823138760365350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458e8b7364b67684d87f0037cfc172e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Otohime
+  wayPointNames:
+  - OtohimeEndPoint1
+  - OtohimeEndPoint
+  speed: 0.12
+  rotationSpeed: 100
+  callChangeAnimation: 1
 --- !u!114 &114824495974268662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3212,6 +3222,7 @@ MonoBehaviour:
   targetName: CenterPoint
   actorName: 4
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114999249092734688
 MonoBehaviour:
@@ -4473,11 +4484,11 @@ AnimatorState:
   - {fileID: 114894962601243594}
   - {fileID: 114987298164834498}
   - {fileID: 114798685403651122}
-  - {fileID: 114361812102546626}
+  - {fileID: 114478680966216566}
   - {fileID: 114377306001978868}
   - {fileID: 114822103586116902}
   - {fileID: 114973329691544714}
-  - {fileID: 114646816936046778}
+  - {fileID: 114823138760365350}
   - {fileID: 114586616349867428}
   - {fileID: 114848622386183314}
   - {fileID: 114312970978885834}

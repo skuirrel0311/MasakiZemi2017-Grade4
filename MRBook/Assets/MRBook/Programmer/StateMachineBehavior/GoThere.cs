@@ -183,7 +183,7 @@ public class GoThere : BaseStateMachineBehaviour
     protected virtual void StopAgent()
     {
         Debug.Log("call stop agent");
-        if (character == null || target == null) return;
+        if (character == null || currentTarget == null) return;
         character.m_agent.isStopped = true;
         character.m_agent.ResetPath();
         character.m_agent.enabled = false;

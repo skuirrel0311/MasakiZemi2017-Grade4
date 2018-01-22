@@ -60,6 +60,7 @@ public class MoveCharacter : MoveObject
         character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, to, rotationSpeed * Time.deltaTime);
 
         float angle = Quaternion.Angle(character.transform.rotation, to);
+        
         return angle < 0.5f;
     }
 }
