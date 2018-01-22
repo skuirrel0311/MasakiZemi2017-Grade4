@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.8
 --- !u!114 &114011267964602588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,28 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114077778735508254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 2
-  targetType: 0
-  targetName: 
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.1
-  targets:
-  - targetType: 0
-    targetName: OtohimeWayPoint
-  - targetType: 0
-    targetName: OtohimeAppreciationPoint
 --- !u!114 &114078628344823638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3
 --- !u!114 &114095002194587366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,18 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114095949581966558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0
 --- !u!114 &114096870705273552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -947,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.5
 --- !u!114 &114277270688430692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -996,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 2.5
 --- !u!114 &114292854642223458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1062,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 2.5
 --- !u!114 &114306951549171116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1312,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 4
 --- !u!114 &114378578527357746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1378,7 +1344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3
 --- !u!114 &114395390906427530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1425,18 +1391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114405020007838192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0
 --- !u!114 &114410279099919486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1462,6 +1416,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114414279734297634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  targetName: Urashima
+  actorName: 2
+  rotationSpeed: 100
+  callChangeAnimation: 1
+  updateTargetPosition: 0
 --- !u!114 &114419753420156928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1838,7 +1809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
+  isForcing: 0
 --- !u!114 &114537628820641658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1902,7 +1873,7 @@ MonoBehaviour:
   rotationSpeed: 360
   callChangeAnimation: 1
   updateTargetPosition: 0
---- !u!114 &114554033058307040
+--- !u!114 &114558069620900882
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1910,10 +1881,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b5b4f33b6ebdb241b14c16f20c7442f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
+  objectName: Urashima
+  wayPointNames:
+  - UrashimaWayPoint
+  - UrashimaAppreciationPoint
+  speed: 0.1
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114559134147469728
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2011,6 +1988,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Otohime
+--- !u!114 &114589866866884486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458e8b7364b67684d87f0037cfc172e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Otohime
+  wayPointNames:
+  - OtohimeWayPoint
+  - OtohimeAppreciationPoint
+  speed: 0.1
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114594543478605020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2446,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
+  duration: 2
 --- !u!114 &114772774350268828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2514,28 +2509,6 @@ MonoBehaviour:
   stopDistance: 0.05
   moveSpeed: 0.18
   targets: []
---- !u!114 &114781031252311208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 0
-  targetType: 0
-  targetName: 
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.1
-  targets:
-  - targetType: 0
-    targetName: UrashimaWayPoint
-  - targetType: 0
-    targetName: UrashimaAppreciationPoint
 --- !u!114 &114784040372343892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2609,18 +2582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
---- !u!114 &114798685403651122
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0
 --- !u!114 &114805022324241268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2724,7 +2685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 1
 --- !u!114 &114827230158629854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3082,7 +3043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 4
 --- !u!114 &114962421929796316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3182,7 +3143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isForcing: 1
+  isForcing: 0
 --- !u!114 &114991660864508606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3194,7 +3155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 4
 --- !u!114 &114996446397159006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4186,6 +4147,7 @@ AnimatorState:
   - {fileID: 114363885828690408}
   - {fileID: 114203386556223270}
   - {fileID: 114227790315313568}
+  - {fileID: 114414279734297634}
   - {fileID: 114395390906427530}
   - {fileID: 114772774350268828}
   - {fileID: 114543416169658422}
@@ -4470,7 +4432,6 @@ AnimatorState:
   - {fileID: 114526131912921256}
   - {fileID: 114894962601243594}
   - {fileID: 114987298164834498}
-  - {fileID: 114798685403651122}
   - {fileID: 114478680966216566}
   - {fileID: 114377306001978868}
   - {fileID: 114822103586116902}
@@ -4610,12 +4571,12 @@ AnimatorState:
   - {fileID: 114939354422748772}
   - {fileID: 114710000239742504}
   - {fileID: 114723807512166120}
-  - {fileID: 114781031252311208}
+  - {fileID: 114558069620900882}
   - {fileID: 114734719294780436}
   - {fileID: 114999249092734688}
   - {fileID: 114553671020510904}
   - {fileID: 114488267415127180}
-  - {fileID: 114077778735508254}
+  - {fileID: 114589866866884486}
   - {fileID: 114748259885048966}
   - {fileID: 114455799682149870}
   - {fileID: 114404191668652812}
@@ -4823,9 +4784,7 @@ AnimatorState:
   - {fileID: 114070590196472538}
   - {fileID: 114379334922030754}
   - {fileID: 114210985727975408}
-  - {fileID: 114405020007838192}
   - {fileID: 114232150554431770}
-  - {fileID: 114554033058307040}
   - {fileID: 114690985398367484}
   - {fileID: 114684680683365278}
   - {fileID: 114775097489134508}
@@ -4862,7 +4821,6 @@ AnimatorState:
   - {fileID: 114537628820641658}
   - {fileID: 114796895577338704}
   - {fileID: 114018521118895310}
-  - {fileID: 114095949581966558}
   - {fileID: 114096870705273552}
   - {fileID: 114134910779814484}
   - {fileID: 114147116822498834}
@@ -4953,7 +4911,7 @@ AnimatorStateMachine:
     m_Position: {x: -108, y: -96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102832414905304440}
-    m_Position: {x: -360, y: 540, z: 0}
+    m_Position: {x: -384, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102977316243399678}
     m_Position: {x: 408, y: 216, z: 0}
@@ -4992,10 +4950,10 @@ AnimatorStateMachine:
     m_Position: {x: -108, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102462968323336206}
-    m_Position: {x: -96, y: 636, z: 0}
+    m_Position: {x: -132, y: 648, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102134086020797362}
-    m_Position: {x: -360, y: 648, z: 0}
+    m_Position: {x: -396, y: 648, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
