@@ -26,9 +26,14 @@ public class Sequence : Composite
             //todo:子タスクが失敗した場合も継続でいいのか？
             if(!isForcing && childTask[currentTaskIndex].CurrentStatus == BehaviourStatus.Failure)
             {
+                Debug.Log("Sequence = Failure");
                 return BehaviourStatus.Failure;
             }
-            if (!StartNextTask()) return BehaviourStatus.Success;
+            if (!StartNextTask())
+            {
+                Debug.Log("Sequence = Success");
+                return BehaviourStatus.Success;
+            }
         }
 
         return BehaviourStatus.Running;

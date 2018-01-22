@@ -16,6 +16,7 @@ public class MoveCharacter : MoveObject
     protected override void OnStart()
     {
         character = (HoloCharacter)ActorManager.I.GetObject(objectName);
+        Debug.Log("start " + character.name + " Move");
         base.OnStart();
     }
 
@@ -31,6 +32,7 @@ public class MoveCharacter : MoveObject
 
     protected override void OnEnd()
     {
+        Debug.Log(character.name + " MoveEnd");
         if (callChangeAnimation) character.ChangeAnimationClip(MotionName.Wait, 0.1f);
         isActive = false;
         if (!hasRootTask) m_animator.SetInteger("StateStatus", CurrentStatus == BehaviourStatus.Success ? 1 : -1);

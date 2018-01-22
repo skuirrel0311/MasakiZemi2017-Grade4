@@ -5,12 +5,14 @@ public class UrashimaGo : MoveCharacter
 {
     HoloPuppet puppet;
 
+    Coroutine coroutine;
+
     protected override void OnStart()
     {
         puppet = (HoloPuppet)ActorManager.I.GetObject(objectName);
         base.OnStart();
         
-        StateMachineManager.I.StartCoroutine(MonitorPuppet());
+        coroutine = StateMachineManager.I.StartCoroutine(MonitorPuppet());
     }
 
     IEnumerator MonitorPuppet()
@@ -27,7 +29,7 @@ public class UrashimaGo : MoveCharacter
 
     protected override void OnEnd()
     {
-        StateMachineManager.I.StopCoroutine(MonitorPuppet());
+        StateMachineManager.I.StopCoroutine(coroutine);
         base.OnEnd();
     }
 }

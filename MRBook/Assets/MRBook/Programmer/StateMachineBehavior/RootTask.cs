@@ -20,17 +20,17 @@ public class RootTask : Sequence
         //子を持つタスクに子を格納してもらう
         for (int i = taskList.Count - 1; i >= 0; i--)
         {
-            taskList[i].Init(i,m_animator, m_stateInfo, m_layerIndex);
+            taskList[i].Init(i, m_animator, m_stateInfo, m_layerIndex);
         }
 
         //復元しておく
         taskList.Clear();
         taskList.AddRange(GetBehaviours());
-        //Debug.Log("taskList.Count = " + taskList.Count);
-        //for (int i = 0; i < taskList.Count; i++)
-        //{
-        //    Debug.Log("behaviour = " + taskList[i].ToString());
-        //}
+        Debug.Log("taskList.Count = " + taskList.Count);
+        for (int i = 0; i < taskList.Count; i++)
+        {
+            Debug.Log("behaviour = " + taskList[i].ToString());
+        }
         base.OnStart();
     }
 
@@ -38,11 +38,11 @@ public class RootTask : Sequence
     {
         AnimatorBakedData.MyAnimatorState state;
 
-        if(!StateMachineManager.I.AnimatorStateDictionary.TryGetValue(m_stateInfo.fullPathHash, out state)) return null;
+        if (!StateMachineManager.I.AnimatorStateDictionary.TryGetValue(m_stateInfo.fullPathHash, out state)) return null;
         BaseStateMachineBehaviour[] behaviours = new BaseStateMachineBehaviour[state.length];
         BaseStateMachineBehaviour[] allBehaviours = m_animator.GetBehaviours<BaseStateMachineBehaviour>();
         int index = state.index;
-        for(int i = 0;i< state.length;i++)
+        for (int i = 0; i < state.length; i++)
         {
             behaviours[i] = allBehaviours[i + index];
         }

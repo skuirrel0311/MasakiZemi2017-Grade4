@@ -14,7 +14,18 @@ public class Parallel : Composite
 
     protected override BehaviourStatus OnUpdate()
     {
-        if (IsEndChildTask()) return BehaviourStatus.Success;
+        if (IsEndChildTask())
+        {
+            CurrentStatus = BehaviourStatus.Success;
+            //for (int i = 0; i < childTask.Count; i++)
+            //{
+            //    if (childTask[i].CurrentStatus == BehaviourStatus.Failure)
+            //    {
+            //        CurrentStatus = BehaviourStatus.Failure;
+            //    }
+            //}
+            return CurrentStatus;
+        }
 
         return BehaviourStatus.Running;
     }
@@ -32,14 +43,8 @@ public class Parallel : Composite
     protected override void OnEnd()
     {
         isActive = false;
-        
-        for(int i = 0;i< childTask.Count;i++)
-        {
-            if(childTask[i].CurrentStatus == BehaviourStatus.Failure)
-            {
-                CurrentStatus = BehaviourStatus.Failure;
-            }
-        }
+
+        Debug.Log("parallel = " + CurrentStatus.ToString());
 
         int state = CurrentStatus == BehaviourStatus.Success ? 1 : -1;
         if (!hasRootTask) m_animator.SetInteger("StateStatus", state);
