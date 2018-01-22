@@ -11,6 +11,9 @@ public class ResultManager : BaseManager<ResultManager>
     HoloButton titleBack = null;
     [SerializeField]
     LifePointGauge lifePointGauge = null;
+    [SerializeField]
+    DeadUrashimaFactory urashimaFactory = null;
+
 
     [SerializeField]
     GameObject gameover = null;
@@ -110,5 +113,7 @@ public class ResultManager : BaseManager<ResultManager>
         totalScore.CurrentText = "死んだ回数：" + deathCount + " 回";
 
         totalScore.gameObject.SetActive(true);
+
+        urashimaFactory.StartFactory(deathCount);
     }
 }
