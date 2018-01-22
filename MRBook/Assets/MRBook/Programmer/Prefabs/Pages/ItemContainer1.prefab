@@ -2957,7 +2957,7 @@ MonoBehaviour:
   deactivated: 0
   masterProps:
     normalMode: 0
-    mappingBlendSpeed: 10
+    mappingBlendSpeed: 15
     activateOnStaticCollisions: 0
     activateOnImpulse: 0
   groundLayers:
@@ -2991,15 +2991,15 @@ MonoBehaviour:
     minMappingWeight: 0
     maxMappingWeight: 0
     disableColliders: 0
-    regainPinSpeed: 0
-    collisionResistance: 0
+    regainPinSpeed: 0.07
+    collisionResistance: 1
     knockOutDistance: 0
     puppetMaterial: {fileID: 0}
     unpinnedMaterial: {fileID: 0}
   groupOverrides: []
-  knockOutDistance: 1
-  unpinnedMuscleWeightMlp: 0.3
-  maxRigidbodyVelocity: 10
+  knockOutDistance: 0.01
+  unpinnedMuscleWeightMlp: 1
+  maxRigidbodyVelocity: 1
   pinWeightThreshold: 1
   unpinnedMuscleKnockout: 1
   dropProps: 0

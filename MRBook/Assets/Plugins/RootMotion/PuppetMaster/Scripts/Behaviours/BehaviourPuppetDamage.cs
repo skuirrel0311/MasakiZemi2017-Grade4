@@ -37,10 +37,11 @@ namespace RootMotion.Dynamics {
             if (collisions > maxCollisions) return;
             if (!LayerMaskExtensions.Contains(collisionLayers, m.collision.gameObject.layer)) return;
             if (masterProps.normalMode == NormalMode.Kinematic && !puppetMaster.isActive && !masterProps.activateOnStaticCollisions && m.collision.gameObject.isStatic) return;
+            
+            //ここを変更
             // Get the collision impulse on the muscle
             float cT = collisionThreshold;
 			float impulse = GetImpulse(m, ref cT);
-            impulse *= 1000.0f;
 
 			// Let other scripts know about the collision (even the ones below collision threshold)
 			if (OnCollisionImpulse != null) OnCollisionImpulse(m, impulse);

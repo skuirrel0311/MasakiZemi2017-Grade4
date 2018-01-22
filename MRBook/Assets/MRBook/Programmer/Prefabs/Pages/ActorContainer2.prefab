@@ -2898,7 +2898,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 7.4100003
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2913,7 +2913,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1.2
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2928,7 +2928,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 2.025
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2943,7 +2943,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 2.025
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2958,7 +2958,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1.0875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3018,7 +3018,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 5.4900002
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3033,7 +3033,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 0.495
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3048,7 +3048,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 7.410001
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3063,7 +3063,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1.2
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3078,7 +3078,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 0.49500003
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3108,7 +3108,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1.0875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3123,7 +3123,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 3.4875002
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3138,7 +3138,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 12.700001
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3153,7 +3153,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 3.4875002
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3488,6 +3488,7 @@ MonoBehaviour:
   humanoidConfig: {fileID: 0}
   targetRoot: {fileID: 4979497315060040}
   state: 0
+  urashimaState: 0
   stateSettings:
     killDuration: 1
     deadMuscleWeight: 0.01
@@ -3504,7 +3505,7 @@ MonoBehaviour:
   mappingWeight: 1
   pinWeight: 1
   muscleWeight: 1
-  muscleSpring: 1
+  muscleSpring: 5
   muscleDamper: 0
   pinPow: 4
   pinDistanceFalloff: 5
@@ -3954,7 +3955,7 @@ MonoBehaviour:
   deactivated: 0
   masterProps:
     normalMode: 0
-    mappingBlendSpeed: 10
+    mappingBlendSpeed: 15
     activateOnStaticCollisions: 0
     activateOnImpulse: 0
   groundLayers:
@@ -3988,14 +3989,14 @@ MonoBehaviour:
     minMappingWeight: 0
     maxMappingWeight: 0
     disableColliders: 0
-    regainPinSpeed: 0
-    collisionResistance: 0
+    regainPinSpeed: 0.07
+    collisionResistance: 1
     knockOutDistance: 0
     puppetMaterial: {fileID: 0}
     unpinnedMaterial: {fileID: 0}
   groupOverrides: []
-  knockOutDistance: 1
-  unpinnedMuscleWeightMlp: 0.3
+  knockOutDistance: 0.01
+  unpinnedMuscleWeightMlp: 1
   maxRigidbodyVelocity: 1
   pinWeightThreshold: 1
   unpinnedMuscleKnockout: 1
