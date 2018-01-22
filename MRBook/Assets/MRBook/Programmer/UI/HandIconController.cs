@@ -24,8 +24,6 @@ public class HandIconController : BaseManager<HandIconController>
 
     public void Init(CharacterItemSaucer itemSaucer)
     {
-        if (itemSaucer.Equals(this.itemSaucer)) return;
-
         this.itemSaucer = itemSaucer;
 
         //キャラクターの頭上に出す

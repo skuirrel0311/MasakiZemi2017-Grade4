@@ -13,6 +13,8 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
     public BoxCollider m_collider { get; private set; }
     public float SphereCastRadius { get; protected set; }
 
+    protected HandIconController handIconController;
+
     Action OnStart;
     Func<HitObjType, MakerType> OnUpdate;
     Action<HitObjType> OnEnd;
@@ -21,10 +23,11 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
     {
         this.owner = owner;
         m_collider = GetComponent<BoxCollider>();
+        handIconController = HandIconController.I;
 
         SetSphreCastRadius();
     }
-    
+
     /// <summary>
     /// 最初にクリックされた時（バウンディングボックス表示される）
     /// </summary>
@@ -51,10 +54,10 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 
     public void AddBehaviour(AbstractInputHandlerBehaviour behaviour)
     {
-        if(behaviour.OnStart != null) OnStart += behaviour.OnStart;
+        if (behaviour.OnStart != null) OnStart += behaviour.OnStart;
         //Funcを複数Addした場合の挙動は意図したものになるとは限らないので注意
-        if(behaviour.OnUpdate != null) OnUpdate += behaviour.OnUpdate;
-        if(behaviour.OnEnd != null) OnEnd += behaviour.OnEnd;
+        if (behaviour.OnUpdate != null) OnUpdate += behaviour.OnUpdate;
+        if (behaviour.OnEnd != null) OnEnd += behaviour.OnEnd;
     }
 
     /// <summary>
@@ -80,7 +83,6 @@ public class HoloObjInputHandler : BaseObjInputHandler
         if (owner.ItemSaucer == null) return false;
         if (owner.GetActorType != HoloObject.Type.Character) return false;
 
-        HandIconController handIconController = HandIconController.I;
         if (!handIconController.IsVisuable)
         {
             handIconController.Init((CharacterItemSaucer)owner.ItemSaucer);
@@ -96,10 +98,11 @@ public class HoloObjInputHandler : BaseObjInputHandler
     public override void OnDragStart()
     {
         base.OnDragStart();
+        handIconController.Hide();
     }
 
     public override void OnDisabled()
     {
-        HandIconController.I.Hide();
+        handIconController.Hide();
     }
 }
