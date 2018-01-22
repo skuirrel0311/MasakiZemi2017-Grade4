@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f6bc243f1092b6d48b533ebfe368756a
-timeCreated: 1504608827
+guid: cdce10823879ddd418c3c9dde84c39b0
+timeCreated: 1516583279
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -77,7 +77,7 @@ ModelImporter:
     400066: Spine1
     400068: urashima
     400070: //RootNode
-    7400000: urashima_Walk
+    7400000: urashima_Wait_Box
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -103,10 +103,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: urashima_Walk
-      takeName: urashima_Walk
+      name: urashima_Wait_Box
+      takeName: urashima_Wait_Box
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -126,7 +126,79 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Reference
+        weight: 1
+      - path: Reference/Hips
+        weight: 1
+      - path: Reference/Hips/Back
+        weight: 1
+      - path: Reference/Hips/Back/Back_a
+        weight: 1
+      - path: Reference/Hips/Front
+        weight: 1
+      - path: Reference/Hips/Front/Front_a
+        weight: 1
+      - path: Reference/Hips/Left
+        weight: 1
+      - path: Reference/Hips/Left/Left_a
+        weight: 1
+      - path: Reference/Hips/LeftUpLeg
+        weight: 1
+      - path: Reference/Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Reference/Hips/LeftUpLeg/LeftLeg/LeftFoot
+        weight: 1
+      - path: Reference/Hips/LeftUpLeg/LeftLeg/LeftFoot/LeftToeBase
+        weight: 1
+      - path: Reference/Hips/Right
+        weight: 1
+      - path: Reference/Hips/Right/Right_a
+        weight: 1
+      - path: Reference/Hips/RightUpLeg
+        weight: 1
+      - path: Reference/Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Reference/Hips/RightUpLeg/RightLeg/RightFoot
+        weight: 1
+      - path: Reference/Hips/RightUpLeg/RightLeg/RightFoot/RightToeBase
+        weight: 1
+      - path: Reference/Hips/Spine
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/LeftShoulder
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/LeftShoulder/LeftArm
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/LeftShoulder/LeftArm/LeftForeArm
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/LeftShoulder/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/Neck
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/Hair
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/Hair2
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/LeftSide
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/Neck/Head/RightSide
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/RightShoulder
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/RightShoulder/RightArm
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/RightShoulder/RightArm/RightForeArm
+        weight: 1
+      - path: Reference/Hips/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: urashima
+        weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
@@ -165,7 +237,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: Reference
+    rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0

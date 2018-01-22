@@ -49,7 +49,7 @@ public class UrashimaGo : MoveObject
         if(callChangeAnimation) puppet.ChangeAnimationClip(MotionName.Wait, 0.1f);
         isActive = false;
         StateMachineManager.I.StopCoroutine(MonitorPuppet());
-        if (hasRootTask) m_animator.SetInteger("StateStatus", CurrentStatus == BehaviourStatus.Success ? 1 : -1);
+        if (!hasRootTask) m_animator.SetInteger("StateStatus", CurrentStatus == BehaviourStatus.Success ? 1 : -1);
     }
 
     protected override BehaviourStatus OnUpdate()
