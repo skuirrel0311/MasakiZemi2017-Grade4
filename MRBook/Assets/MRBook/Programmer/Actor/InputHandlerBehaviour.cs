@@ -102,7 +102,7 @@ public class GroundingObjDragEndBehaviour : BaseImputHandlerBehaviour
 
         float bookHeight = OffsetController.I.bookTransform.position.y;
         float airHeight = bookHeight + 0.5f;
-        Debug.Log("book height = " + bookHeight);
+        //Debug.Log("book height = " + bookHeight);
 
         while (true)
         {

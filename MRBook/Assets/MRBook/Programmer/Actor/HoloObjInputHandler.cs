@@ -92,4 +92,14 @@ public class HoloObjInputHandler : BaseObjInputHandler
         }
         return false;
     }
+
+    public override void OnDragStart()
+    {
+        base.OnDragStart();
+    }
+
+    public override void OnDisabled()
+    {
+        HandIconController.I.Hide();
+    }
 }

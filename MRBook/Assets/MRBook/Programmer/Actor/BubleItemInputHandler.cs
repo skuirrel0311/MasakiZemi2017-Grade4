@@ -23,6 +23,7 @@ public class BubleItemInputHandler : ItemInputHandler
 
     public override bool OnClick()
     {
+        if (!MyObjControllerByBoundingBox.I.canClick) return false;
         if (isPoped) return base.OnClick();
 
         isPoped = true;
@@ -47,6 +48,11 @@ public class BubleItemInputHandler : ItemInputHandler
     IEnumerator Fall()
     {
         NavMeshHit hit;
+
+        float bookHeight = OffsetController.I.bookTransform.position.y;
+        float airHeight = bookHeight + 0.5f;
+        //Debug.Log("book height = " + bookHeight);
+
         while (true)
         {
             //0.1ずつ下を探す
@@ -59,6 +65,15 @@ public class BubleItemInputHandler : ItemInputHandler
             {
                 //Debug.Log("found sample position");
                 break;
+            }
+
+            if (owner.transform.position.y < bookHeight)
+            {
+                Vector3 airPosition = owner.transform.position;
+                airPosition.y = airHeight;
+                owner.transform.position = airPosition;
+
+                yield break;
             }
 
             yield return null;

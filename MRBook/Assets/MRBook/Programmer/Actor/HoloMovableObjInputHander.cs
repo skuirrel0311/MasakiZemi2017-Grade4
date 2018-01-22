@@ -8,8 +8,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
     [SerializeField]
     bool isFloating = false;
 
-    //public NavMeshAgent m_agent { get; protected set; }
-    public NavMeshAgent m_agent;
+    public NavMeshAgent m_agent { get; protected set; }
 
     GameObject arrow;
 
@@ -81,7 +80,8 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
 
     public override void OnDisabled()
     {
-        if(arrow != null)arrow.SetActive(true);
+        if (!MyObjControllerByBoundingBox.I.canClick) return;
+        if (arrow != null)arrow.SetActive(true);
         base.OnDisabled();
     }
 }
