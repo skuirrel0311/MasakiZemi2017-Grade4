@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83146bdc23a5b4fae5947683837575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6D66\u5CF6\u306F\u3088\u307C\u3088\u307C\u306E,\r\n\u304A\u3058\u3044\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  message: "\u6D66\u5CF6\u306F\u3088\u307C\u3088\u307C\u306E\n\u304A\u3058\u3044\u3055\u3093\u306B\u306A\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
+  lifeTime: 6
 --- !u!114 &114036585265797208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 8
 --- !u!114 &114055726473269822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 1.56
 --- !u!114 &114139737198368856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 1
 --- !u!114 &114143610064558962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,6 +377,18 @@ MonoBehaviour:
   wayPointNames:
   - DashEndPoint
   speed: 0.2
+--- !u!114 &114147141579458060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
 --- !u!114 &114152250828640354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,7 +429,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 1
+--- !u!114 &114165033295795244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+--- !u!114 &114174620078799518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 1
+  motionName: 46
+  transitionDuration: 0.25
+  WwiseEventName: 
 --- !u!114 &114179437827663160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,7 +496,7 @@ MonoBehaviour:
   targetName: NiceGuy
   spriteAnimationName: ExclamationEff
   WwiseEventName: Wow
-  offset: {x: 0, y: 0.1, z: 0}
+  offset: {x: 0.05, y: 0.15, z: 0}
   lifeTime: 2
 --- !u!114 &114191212632179812
 MonoBehaviour:
@@ -549,7 +588,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3
+--- !u!114 &114216183888906758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4e44b12ad97424e856b7dca1880e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: SecretBox_Lid
+  wayPointNames:
+  - OldBoxPosition
+  speed: 0.5
 --- !u!114 &114216803605667372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -693,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 4
 --- !u!114 &114267084140137650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -812,6 +866,21 @@ MonoBehaviour:
   motionName: 43
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114339226389649366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 1
+  motionName: 0
+  transitionDuration: 0.5
+  WwiseEventName: 
 --- !u!114 &114342954768781666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -904,7 +973,7 @@ MonoBehaviour:
   objectName: Turtle
   wayPointNames:
   - TurtleEndPoint
-  speed: 0.1
+  speed: 0.2
 --- !u!114 &114384838071859350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -990,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 4
 --- !u!114 &114439524213179314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1031,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u305F\u3061\u307E\u3061\u6D66\u5CF6\u306F\u4EBA\u6C17\u8005\u306B\u306A\u308A\u3001\n\u751F\u6DAF\u5E78\u305B\u306B\u66AE\u3089\u3057\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 6
 --- !u!114 &114451877218404566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1163,7 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 2
 --- !u!114 &114556389483917430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1230,7 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3
 --- !u!114 &114575834587697350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1242,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 4
 --- !u!114 &114575926327809504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1266,7 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u3082\u3046\u6016\u3044\u3082\u306E\u306F\u4F55\u3082\u306A\u3044\u3068\u3001\n\u3072\u305F\u3059\u3089\u8089\u4F53\u7F8E\u3092\u62AB\u9732\u3059\u308B\u306E\u3067\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 8
 --- !u!114 &114585900524140532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1296,7 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: 0
-  motionName: 42
+  motionName: 56
   transitionDuration: 0
   WwiseEventName: 
 --- !u!114 &114598485273582128
@@ -1310,7 +1379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 8
 --- !u!114 &114598631724581912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1355,6 +1424,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+--- !u!114 &114612935899553766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114618364227991654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1404,7 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3
 --- !u!114 &114625372072725198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1494,6 +1575,23 @@ MonoBehaviour:
   motionName: 48
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114664126762799650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaeca4ee343f8a4e831d1160275f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 0
+  targetName: MachoDirection
+  actorName: 0
+  rotationSpeed: 360
+  callChangeAnimation: 1
+  updateTargetPosition: 0
 --- !u!114 &114668547376931180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1596,7 +1694,7 @@ MonoBehaviour:
   targetName: NiceGuy
   spriteAnimationName: ExclamationEff
   WwiseEventName: Wow
-  offset: {x: 0, y: 0.1, z: 0}
+  offset: {x: 0.05, y: 0.15, z: 0}
   lifeTime: 2
 --- !u!114 &114680831796293120
 MonoBehaviour:
@@ -1795,7 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 4
 --- !u!114 &114746095254214950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1819,7 +1917,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u5468\u308A\u306E\u4EBA\u306F\u6D66\u5CF6\u306B\u30D3\u30C3\u30AF\u30EA\u3057\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 4
+--- !u!114 &114754335187917436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &114756448930760928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1881,7 +1991,7 @@ MonoBehaviour:
   targetName: NiceGuy
   spriteAnimationName: ExclamationEff
   WwiseEventName: Wow
-  offset: {x: 0, y: 0.1, z: 0}
+  offset: {x: 0.05, y: 0.15, z: 0}
   lifeTime: 2
 --- !u!114 &114795635311871280
 MonoBehaviour:
@@ -1935,7 +2045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 4
 --- !u!114 &114858661918384398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1948,7 +2058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Urashima
-  targetPointName: RidePoint
+  targetPointName: 
 --- !u!114 &114859771653523944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1961,7 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u6D66\u5CF6\u306F\u611F\u8B1D\u3057\u306A\u304C\u3089\n\u5E78\u305B\u306B\u66AE\u3089\u3057\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 6
 --- !u!114 &114864983752475792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1998,7 +2108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 4
 --- !u!114 &114878922273607344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2036,6 +2146,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114891253008233728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 28
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114896184791268920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2051,21 +2176,6 @@ MonoBehaviour:
   materialName: UrashimaMachoMat
   objName: Urashima
   isSkinned: 1
---- !u!114 &114900308673364552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 1
-  motionName: 46
-  transitionDuration: 0.1
-  WwiseEventName: 
 --- !u!114 &114900761608126100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2243,7 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 1
 --- !u!114 &114991927485279062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2714,6 +2824,7 @@ AnimatorState:
   - {fileID: 114199917549918042}
   - {fileID: 114444038940750096}
   - {fileID: 114152250828640354}
+  - {fileID: 114216183888906758}
   - {fileID: 114900761608126100}
   - {fileID: 114058864989895896}
   - {fileID: 114160177277760790}
@@ -2774,6 +2885,7 @@ AnimatorState:
   - {fileID: 114241300236953680}
   - {fileID: 114534489308701050}
   - {fileID: 114264380319685694}
+  - {fileID: 114612935899553766}
   - {fileID: 114679523249743396}
   - {fileID: 114283282295938758}
   - {fileID: 114070865434883756}
@@ -2823,6 +2935,7 @@ AnimatorState:
   - {fileID: 114931414482037218}
   - {fileID: 114715858032428034}
   - {fileID: 114152354964560734}
+  - {fileID: 114339226389649366}
   - {fileID: 114329505939224152}
   - {fileID: 114143274793057402}
   - {fileID: 114931386045961212}
@@ -2854,12 +2967,14 @@ AnimatorState:
   - {fileID: 114425201151487804}
   - {fileID: 114208998926217398}
   - {fileID: 114991927485279062}
-  - {fileID: 114900308673364552}
+  - {fileID: 114174620078799518}
   - {fileID: 114939074332429906}
   - {fileID: 114567737903688884}
   - {fileID: 114746095254214950}
   - {fileID: 114232755539813516}
   - {fileID: 114451877218404566}
+  - {fileID: 114891253008233728}
+  - {fileID: 114147141579458060}
   - {fileID: 114983854444561238}
   - {fileID: 114707378077614172}
   - {fileID: 114007164743407696}
@@ -2943,6 +3058,7 @@ AnimatorState:
   - {fileID: 114422388647814524}
   - {fileID: 114409883946198192}
   - {fileID: 114621918761147288}
+  - {fileID: 114754335187917436}
   - {fileID: 114186233280786732}
   - {fileID: 114368505079842860}
   - {fileID: 114964666162826414}
@@ -3012,13 +3128,15 @@ AnimatorState:
   - {fileID: 114896184791268920}
   - {fileID: 114368724713178240}
   - {fileID: 114797905796942432}
+  - {fileID: 114664126762799650}
   - {fileID: 114647727210965334}
   - {fileID: 114957383460318116}
   - {fileID: 114024766249817814}
   - {fileID: 114530249789483028}
   - {fileID: 114550178218414390}
-  - {fileID: 114786649144805260}
   - {fileID: 114138949650298936}
+  - {fileID: 114165033295795244}
+  - {fileID: 114786649144805260}
   - {fileID: 114633695726618612}
   - {fileID: 114222051860477168}
   - {fileID: 114105427494454692}
