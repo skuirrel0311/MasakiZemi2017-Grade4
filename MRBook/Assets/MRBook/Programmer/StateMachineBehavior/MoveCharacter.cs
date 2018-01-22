@@ -24,6 +24,7 @@ public class MoveCharacter : MoveObject
         base.SetTargetPoint(index);
 
         //目的地が設定されたので回転を始める
+        isRotating = true;
         if (callChangeAnimation) character.ChangeAnimationClip(MotionName.Walk, 0.1f);
         to = GetTargetDirectionRot(wayPoints[currentIndex]);
     }

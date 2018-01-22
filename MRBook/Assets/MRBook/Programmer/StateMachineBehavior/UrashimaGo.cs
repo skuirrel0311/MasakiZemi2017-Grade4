@@ -5,15 +5,6 @@ public class UrashimaGo : MoveCharacter
 {
     HoloPuppet puppet;
 
-    [SerializeField]
-    float rotationSpeed = 200.0f;
-    Quaternion to;
-
-    bool isRotating = false;
-
-    [SerializeField]
-    bool callChangeAnimation = true;
-
     protected override void OnStart()
     {
         puppet = (HoloPuppet)ActorManager.I.GetObject(objectName);
