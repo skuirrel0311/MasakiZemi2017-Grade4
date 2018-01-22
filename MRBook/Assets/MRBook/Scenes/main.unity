@@ -1385,6 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   movePower: 0.01
+  bookTransform: {fileID: 0}
 --- !u!4 &376465148
 Transform:
   m_ObjectHideFlags: 0
@@ -3579,6 +3580,10 @@ Prefab:
         type: 2}
       propertyPath: layerMask.m_Bits
       value: 8464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003660348131340, guid: 4e6c7cda5e65bb64ea910640f495b4d4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e6c7cda5e65bb64ea910640f495b4d4, type: 2}
