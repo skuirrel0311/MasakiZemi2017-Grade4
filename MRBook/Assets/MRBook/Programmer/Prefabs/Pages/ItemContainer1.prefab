@@ -2480,7 +2480,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c5cef3176dab545439c84de1544aada1, type: 3}
   m_Controller: {fileID: 9100000, guid: f01c9b43c37ddbf44b00d59d8130619d, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -2563,7 +2563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
-  m_agent: {fileID: 0}
 --- !u!114 &114322009707944272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2581,6 +2580,9 @@ MonoBehaviour:
   overrideName: 
   forHand: 0
   defaultOwner: {fileID: 114642407784995562}
+  owner: {fileID: 0}
+  itemName: "\u65E5\u672C\u8A9E\u3067"
+  itemText: 
 --- !u!114 &114442873554819542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2593,7 +2595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
-  m_agent: {fileID: 0}
 --- !u!114 &114475542691711948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2611,6 +2612,9 @@ MonoBehaviour:
   overrideName: 
   forHand: 0
   defaultOwner: {fileID: 0}
+  owner: {fileID: 0}
+  itemName: "\u65E5\u672C\u8A9E\u3067"
+  itemText: 
 --- !u!114 &114575170068588722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3074,7 +3078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
-  m_agent: {fileID: 0}
 --- !u!114 &114944134886771836
 MonoBehaviour:
   m_ObjectHideFlags: 1
