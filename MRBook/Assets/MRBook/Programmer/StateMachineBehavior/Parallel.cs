@@ -17,13 +17,13 @@ public class Parallel : Composite
         if (IsEndChildTask())
         {
             CurrentStatus = BehaviourStatus.Success;
-            //for (int i = 0; i < childTask.Count; i++)
-            //{
-            //    if (childTask[i].CurrentStatus == BehaviourStatus.Failure)
-            //    {
-            //        CurrentStatus = BehaviourStatus.Failure;
-            //    }
-            //}
+            for (int i = 0; i < childTask.Count; i++)
+            {
+                if (childTask[i].CurrentStatus == BehaviourStatus.Failure)
+                {
+                    CurrentStatus = BehaviourStatus.Failure;
+                }
+            }
             return CurrentStatus;
         }
 
