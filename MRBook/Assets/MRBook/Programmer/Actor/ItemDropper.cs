@@ -13,11 +13,19 @@ public class ItemDropper : BaseManager<ItemDropper>
     [SerializeField]
     float burstPower = 5.0f;
 
+    OffsetController offsetController;
+
     protected override void Awake()
     {
         base.Awake();
         m_body = GetComponent<Rigidbody>();
         m_collider = GetComponent<SphereCollider>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        offsetController = OffsetController.I;
     }
 
     public void Drop(HoloObject owner, HoloItem item)
@@ -46,13 +54,21 @@ public class ItemDropper : BaseManager<ItemDropper>
 
     IEnumerator MonitorVelocity()
     {
+        Vector3 startPosition = transform.position;
         yield return null;
         yield return null;
-
+        
         while(true)
         {
             //Debug.Log("vec = ( " + m_body.velocity.x + " , " + m_body.velocity.y + " , " + m_body.velocity.z + " )");
             if (IsCalmVelocity(m_body.velocity)) break;
+            if(IsOverBookHeight())
+            {
+                Vector3 airPosition = startPosition;
+                airPosition.y = offsetController.bookTransform.position.y + 0.5f;
+                transform.position = airPosition;
+                break;
+            }
             yield return null;
         }
         SetActive(false);
@@ -64,6 +80,11 @@ public class ItemDropper : BaseManager<ItemDropper>
         float length = vec.magnitude;
         //Debug.Log("length = " + length);
         return length < border;
+    }
+
+    bool IsOverBookHeight()
+    {
+        return transform.position.y < offsetController.bookTransform.position.y;
     }
 
     void SetActive(bool active)

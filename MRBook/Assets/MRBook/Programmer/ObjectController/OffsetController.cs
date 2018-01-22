@@ -17,7 +17,7 @@ public class OffsetController : BaseManager<OffsetController>
 
     Vector3 zeroVec = Vector3.zero;
     
-    Transform bookTransform = null;
+    public Transform bookTransform = null;
 
     protected override void Start()
     {
