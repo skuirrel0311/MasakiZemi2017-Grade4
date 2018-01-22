@@ -185,17 +185,6 @@ MonoBehaviour:
   motionName: 1
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114035852793498666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114037900251810860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "2\u4EBA\u306F\u9F8D\u5BAE\u57CE\u3078\u3068\u5411\u304B\u3044\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 8
 --- !u!114 &114088632086782338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,24 +777,6 @@ MonoBehaviour:
   motionName: 12
   transitionDuration: 0.1
   WwiseEventName: 
---- !u!114 &114303503858023180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 1
-  targetType: 0
-  targetName: TurtleEndPoint
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.04
-  targets: []
 --- !u!114 &114311231996994932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1004,7 +975,7 @@ MonoBehaviour:
   objectName: Turtle
   wayPointNames:
   - TurtleEndPoint
-  speed: 0.07
+  speed: 0.05
 --- !u!114 &114431022786065420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1826,7 +1797,7 @@ MonoBehaviour:
   objectName: Turtle
   wayPointNames:
   - TurtleEndPoint
-  speed: 0.1
+  speed: 0.05
 --- !u!114 &114640278043325474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1839,7 +1810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30AB\u30E1\u306F\u7559\u5B88\u3060\u3068\u601D\u3044\u3001\n\u5E30\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 10
 --- !u!114 &114652111362519354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1998,6 +1969,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114694006219236638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458e8b7364b67684d87f0037cfc172e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
+  wayPointNames:
+  - TurtleEndPoint
+  speed: 0.05
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114698804811762976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2082,6 +2070,18 @@ MonoBehaviour:
   stopDistance: 0.05
   moveSpeed: 0.2
   targets: []
+--- !u!114 &114737239476970850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114737547900101096
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 5
 --- !u!114 &114745198624774108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2195,18 +2195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114777692532455978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForcing: 1
 --- !u!114 &114778438939715312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2270,7 +2258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30AB\u30E1\u306F\u6C17\u3065\u304B\u305A\u9F8D\u5BAE\u57CE\u3078\u3068\n\u5411\u304B\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 7
 --- !u!114 &114788782470875086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2500,7 +2488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "\u30AB\u30E1\u306F\u7559\u5B88\u3060\u3068\u601D\u3044\u3001\n\u5E30\u3063\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u3002"
-  lifeTime: 5
+  lifeTime: 10
 --- !u!114 &114937970661041232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2622,6 +2610,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isForcing: 1
+--- !u!114 &114999835657455974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &1101013323142209826
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3781,9 +3780,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 7
+  - m_ConditionMode: 6
     m_ConditionEvent: StateStatus
-    m_EventTreshold: 0
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102617061809568450}
   m_Solo: 0
@@ -4837,11 +4836,11 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101699195890219898}
   m_StateMachineBehaviours:
-  - {fileID: 114777692532455978}
+  - {fileID: 114737239476970850}
   - {fileID: 114871370920768156}
   - {fileID: 114740546404398186}
   - {fileID: 114783409236443226}
-  - {fileID: 114035852793498666}
+  - {fileID: 114999835657455974}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -5619,7 +5618,7 @@ AnimatorState:
   - {fileID: 114451481759452534}
   - {fileID: 114510151832479878}
   - {fileID: 114632778743479308}
-  - {fileID: 114303503858023180}
+  - {fileID: 114694006219236638}
   - {fileID: 114705133675676588}
   - {fileID: 114816073953831722}
   - {fileID: 114652884888324140}
