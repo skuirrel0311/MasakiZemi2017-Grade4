@@ -216,7 +216,10 @@ public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
     {
         //アイテムを捨てさせる
         if (ownerItem.owner == null) return;
+
+        Debug.Log(ownerItem.name + " is call dump item");
         ownerItem.owner.ItemSaucer.DumpItem(ownerItem, false);
+        ownerItem.owner = null;
     }
     public override void OnLocationReset() { }
     public override void OnEnable()
@@ -281,15 +284,18 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
 
 public class SecretBoxResetBehaviour : AbstractHoloObjResetBehaviour
 {
+    SecretBoxItemSaucer ownerItemSaucer;
+
     public SecretBoxResetBehaviour(HoloObject owner)
         :base(owner)
     {
-
+        ownerItemSaucer = (SecretBoxItemSaucer)owner.ItemSaucer;
     }
 
     public override void OnDisable()
     {
-        ResultManager.I.RemoveAllSecretBoxContents();
+        Debug.Log("secretBox resetter");
+        ownerItemSaucer.DumpItem(false);
     }
     public override void OnEnable() { }
     public override void OnLocationReset() { }

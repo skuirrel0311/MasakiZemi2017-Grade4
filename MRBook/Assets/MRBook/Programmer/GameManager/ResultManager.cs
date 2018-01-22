@@ -61,6 +61,7 @@ public class ResultManager : BaseManager<ResultManager>
 
     public void RemoveSecretBoxContent(HoloItem item)
     {
+        item.owner = null;
         secretBoxContentsList.Remove(item);
     }
 

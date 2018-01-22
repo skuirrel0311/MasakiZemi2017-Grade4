@@ -30,6 +30,8 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
 {
     public override BehaviourType GetBehaviourType { get { return BehaviourType.Override; } }
     HoloItem box;
+
+    HoloItem lid;
     //蓋
     const string LidItemName = "SecretBox_Lid";
 
@@ -62,6 +64,8 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
             item.SetColliderEnable(false);
+            Debug.Log("set lid");
+            lid = item;
             return;
         }
 
@@ -71,12 +75,23 @@ public class SecretBoxItemSaucerBehaviour : BaseItemSaucerBehaviour
 
     public override void OnDumpItem()
     {
-        Debug.Log("on remove all");
+        if (lid != null)
+        {
+            lid.owner = null;
+        }
         ResultManager.I.RemoveAllSecretBoxContents();
     }
 
     public override void OnDumpItem(HoloItem item)
     {
+        if (item.name == LidItemName)
+        {
+            Debug.Log("dump lid");
+            lid.owner = null;
+            lid = null;
+            return;
+        }
+
         ResultManager.I.RemoveSecretBoxContent(item);
     }
 }

@@ -205,7 +205,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         Utilities.Delay(0.11f, () =>
         {
             HandIconController.I.Hide();
-        }, owner);
+        }, StateMachineManager.I);
 
 
         if (oldItem.name == AlcoholItemName)

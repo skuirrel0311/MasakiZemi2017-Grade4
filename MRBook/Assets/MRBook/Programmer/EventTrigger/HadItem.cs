@@ -8,7 +8,7 @@ using UnityEngine;
 public class HadItem : MyEventTrigger
 {
     [SerializeField]
-    HoloItem item = null;
+    HoloItem item = null; 
 
     public override void SetFlag()
     {

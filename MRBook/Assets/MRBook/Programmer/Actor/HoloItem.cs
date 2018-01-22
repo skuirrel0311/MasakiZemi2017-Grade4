@@ -21,7 +21,7 @@ public class HoloItem : HoloObject
     HoloObject defaultOwner = null;
 
     //アイテムの所持者
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public HoloObject owner;
     //どちらの手に持たれているか
     [System.NonSerialized]
