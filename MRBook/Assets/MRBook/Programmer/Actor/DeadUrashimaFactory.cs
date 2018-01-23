@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KKUtilities;
+using RootMotion.Dynamics;
 
 public class DeadUrashimaFactory : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class DeadUrashimaFactory : MonoBehaviour
     [SerializeField]
     Transform spownPoint = null;
 
+    PuppetMaster currentUrashima;
+
     public void StartFactory(int urashimaNum)
     {
         StartCoroutine(FactroyUrashima(urashimaNum));
@@ -24,10 +27,14 @@ public class DeadUrashimaFactory : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(0.1f);
         for(int i = 0;i< urashimaNum;i++)
         {
-            Instantiate(urashimaPrefab, spownPoint.position, Quaternion.identity, transform);
+            GameObject obj = Instantiate(urashimaPrefab, spownPoint.position, Quaternion.identity, transform);
+            currentUrashima = obj.GetComponentInChildren<PuppetMaster>();
 
             yield return wait;
             yield return StartCoroutine(MoveSlider());
+
+            
+            currentUrashima.state = PuppetMaster.State.Frozen;
         }
     }
 

@@ -65,7 +65,7 @@ public class ItemDropper : BaseManager<ItemDropper>
             if(IsOverBookHeight())
             {
                 Vector3 airPosition = startPosition;
-                airPosition.y = offsetController.bookTransform.position.y + 0.5f;
+                airPosition.y = offsetController.bookTransform.position.y + 0.2f;
                 transform.position = airPosition;
                 break;
             }

@@ -131,7 +131,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         }
         CurrentState = GameState.Play;
 
-        NotificationManager.I.ShowMessage("再生開始");
+        //NotificationManager.I.ShowMessage("再生開始");
         
         if (OnPlayPage != null) OnPlayPage();
 

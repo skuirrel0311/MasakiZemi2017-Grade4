@@ -6,9 +6,7 @@ public class HandIconController : BaseManager<HandIconController>
     CharacterItemSaucer itemSaucer;
 
     [SerializeField]
-    HoloButton rightButton = null;
-    [SerializeField]
-    HoloButton leftButton = null;
+    HoloButton button = null;
 
     public bool IsVisuable { get; private set; }
 
@@ -39,14 +37,9 @@ public class HandIconController : BaseManager<HandIconController>
     void Update()
     {
 #if UNITY_EDITOR
-
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            if(leftButton.gameObject.activeSelf) leftButton.Push();
-        }
         if(Input.GetKeyDown(KeyCode.E))
         {
-            if(rightButton.gameObject.activeSelf) rightButton.Push();
+            if(button.gameObject.activeSelf) button.Push();
         }
 #endif
     }
@@ -56,25 +49,19 @@ public class HandIconController : BaseManager<HandIconController>
         if (!MyObjControllerByBoundingBox.I.canClick) return;
         IsVisuable = true;
 
-        rightButton.gameObject.SetActive(true);
-        leftButton.gameObject.SetActive(true);
+        button.gameObject.SetActive(true);
         
-        rightButton.AddListener(() => itemSaucer.DumpItem(itemSaucer.RightHandItem));
-        leftButton.AddListener(() => itemSaucer.DumpItem(itemSaucer.LeftHandItem));
-        HoloButton.ButtonState rightButtonState = itemSaucer.HasItem_Right ? HoloButton.ButtonState.Normal : HoloButton.ButtonState.Pressed;
-        HoloButton.ButtonState leftButtonState = itemSaucer.HasItem_Left ? HoloButton.ButtonState.Normal : HoloButton.ButtonState.Pressed;
-        rightButton.SetDefaultButtonState(rightButtonState);
-        leftButton.SetDefaultButtonState(leftButtonState);
+        button.AddListener(() => itemSaucer.DumpItem());
+        HoloButton.ButtonState rightButtonState = itemSaucer.HasItem_Right || itemSaucer.HasItem_Left ? HoloButton.ButtonState.Normal : HoloButton.ButtonState.Pressed;
+        button.SetDefaultButtonState(rightButtonState);
     }
 
     public void Hide()
     {
         IsVisuable = false;
 
-        rightButton.gameObject.SetActive(false);
-        leftButton.gameObject.SetActive(false);
+        button.gameObject.SetActive(false);
 
-        rightButton.RemoveAllListener();
-        leftButton.RemoveAllListener();
+        button.RemoveAllListener();
     }
 }

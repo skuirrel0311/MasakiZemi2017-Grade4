@@ -33,10 +33,15 @@ public class BaseImputHandlerBehaviour : AbstractInputHandlerBehaviour
         if (hitObjType == BaseObjInputHandler.HitObjType.None)
         {
             float bookHeight = OffsetController.I.bookTransform.position.y;
-            float airHeight = bookHeight + 0.5f;
+            float airHeight = bookHeight + 0.2f;
+            if(owner.name == "yane")
+            {
+                bookHeight += 0.2f;
+            }
             if (owner.transform.position.y < bookHeight)
             {
                 Vector3 airPosition = owner.transform.position;
+                
                 airPosition.y = airHeight;
                 owner.transform.position = airPosition;
             }
@@ -101,7 +106,7 @@ public class GroundingObjDragEndBehaviour : BaseImputHandlerBehaviour
         NavMeshHit hit;
 
         float bookHeight = OffsetController.I.bookTransform.position.y;
-        float airHeight = bookHeight + 0.5f;
+        float airHeight = bookHeight + 0.2f;
         //Debug.Log("book height = " + bookHeight);
 
         while (true)

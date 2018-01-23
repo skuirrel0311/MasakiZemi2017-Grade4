@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using KKUtilities;
 
 public class ResultManager : BaseManager<ResultManager>
 {
@@ -116,5 +117,7 @@ public class ResultManager : BaseManager<ResultManager>
         totalScore.gameObject.SetActive(true);
 
         urashimaFactory.StartFactory(deathCount);
+
+        Utilities.Delay(2.0f, () => ShowTitleBack());
     }
 }

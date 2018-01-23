@@ -48,7 +48,7 @@ public class MissionTextController : BaseManager<MissionTextController>
             }, this);
 
 
-            Utilities.Delay(3.0f, () =>
+            Utilities.Delay(5.0f, () =>
             {
                 ChangeMode(Mode.Statics);
             }, this);
