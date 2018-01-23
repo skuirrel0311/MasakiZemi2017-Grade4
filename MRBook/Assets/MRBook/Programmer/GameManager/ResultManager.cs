@@ -118,6 +118,8 @@ public class ResultManager : BaseManager<ResultManager>
 
         urashimaFactory.StartFactory(deathCount);
 
+        AkSoundEngine.PostEvent("GameClear", gameObject);
+
         Utilities.Delay(2.0f, () => ShowTitleBack());
     }
 }
