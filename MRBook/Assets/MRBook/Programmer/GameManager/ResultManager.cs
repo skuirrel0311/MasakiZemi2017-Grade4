@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,9 @@ public class ResultManager : BaseManager<ResultManager>
 
     [SerializeField]
     bool activeGameOver = false;
+
+    [SerializeField]
+    HoloSprite gameClear = null;
 
     //玉手箱の中身
     List<HoloItem> secretBoxContentsList = new List<HoloItem>();
@@ -118,8 +122,18 @@ public class ResultManager : BaseManager<ResultManager>
 
         urashimaFactory.StartFactory(deathCount);
 
+        StartCoroutine(FadeInSprite(gameClear));
+
         AkSoundEngine.PostEvent("GameClear", gameObject);
 
         Utilities.Delay(2.0f, () => ShowTitleBack());
+    }
+
+    IEnumerator FadeInSprite(HoloSprite sprite)
+    {
+        yield return StartCoroutine(Utilities.FloatLerp(1.0f, (t) =>
+        {
+            sprite.Color = Color.Lerp(Color.clear, Color.white, t * t);
+        }));
     }
 }
