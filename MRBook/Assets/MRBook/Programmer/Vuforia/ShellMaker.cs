@@ -9,7 +9,7 @@ public class ShellMaker : MonoBehaviour
     [SerializeField]
     ShellTracableEventHandler shellBack = null;
     [SerializeField]
-    GameObject treasureObject = null;
+    HoloItem treasureObject = null;
     [SerializeField]
     GameObject arrow = null;
 
@@ -58,10 +58,20 @@ public class ShellMaker : MonoBehaviour
             IsCloseShell = false;
         };
 #endif
-        //MainSceneManager.I.OnReset += () =>
-        //{
-        //    treasureObject.transform.localPosition = defaultPosition;
-        //};
+    }
+
+    void OnEnable()
+    {
+        MainSceneManager.I.OnReset += ResetTreasureObject;
+    }
+    void OnDisable()
+    {
+        MainSceneManager.I.OnReset -= ResetTreasureObject;
+    }
+
+    void ResetTreasureObject()
+    {
+        treasureObject.gameObject.SetActive(!IsCloseShell);
     }
 
 #if UNITY_EDITOR
@@ -78,6 +88,13 @@ public class ShellMaker : MonoBehaviour
     void ChangeShellState(bool isClose)
     {
         AkSoundEngine.PostEvent("Eye", gameObject);
+
+        if (treasureObject.owner != null) return;
         treasureObject.gameObject.SetActive(!isClose);
+
+        if (isClose)
+        {
+            treasureObject.transform.localPosition = defaultPosition;
+        }
     }
 }
