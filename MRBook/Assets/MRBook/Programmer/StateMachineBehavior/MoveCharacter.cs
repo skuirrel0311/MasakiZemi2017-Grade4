@@ -54,7 +54,10 @@ public class MoveCharacter : MoveObject
 
     Quaternion GetTargetDirectionRot(Transform target)
     {
-        return Quaternion.LookRotation(target.position - character.transform.position);
+        Quaternion rot = Quaternion.LookRotation(target.position - character.transform.position);
+        rot = Quaternion.Euler(0.0f, rot.eulerAngles.y, 0.0f);
+
+        return rot;
     }
 
     protected bool IsJustLook()
