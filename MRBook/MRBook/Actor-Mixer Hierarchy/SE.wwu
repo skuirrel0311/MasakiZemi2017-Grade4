@@ -61,7 +61,7 @@
 						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-4</Value>
+								<Value>-3</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -760,7 +760,122 @@
 						<ActiveSource Name="Hatena" ID="{E64B735E-1FF6-4882-8979-2BE589427288}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Equip_M" ID="{C8251C2F-169A-4C6E-8190-CF0C591441A0}" ShortID="934292032" Type="SoundFX">
+				<Sound Name="Bubble" ID="{B691C585-94C8-4D5C-9162-0C10DE852749}" ShortID="635029311" Type="SoundFX">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>1420</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Babble" ID="{D838F3AE-2FCC-4917-928C-3CFDCCB538A5}" ShortID="1010749682">
+							<Language>SFX</Language>
+							<AudioFile>Babble.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Babble" ID="{D838F3AE-2FCC-4917-928C-3CFDCCB538A5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="lure" ID="{364D2058-489A-40E7-97B1-4FE7CBF0945D}" ShortID="439690649" Type="SoundFX">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Vorbis Quality Medium" ID="{01D20CF3-9A4C-4EEE-AE3E-2942B47543E9}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Ambient" ID="{565859EB-C026-4A6D-9B18-3BBD3DB0258D}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="lure" ID="{AAF1D23E-8DE5-4FDB-931A-AE39EA047614}" ShortID="961911133">
+							<PropertyList>
+								<Property Name="TrimBegin" Type="Real64" Value="0.155133928571429"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>lure.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="lure" ID="{AAF1D23E-8DE5-4FDB-931A-AE39EA047614}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dron_M" ID="{25C1AB0D-9ABA-4C20-944D-B9F7C1A49D0E}" ShortID="376857717" Type="SoundFX">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SE" ID="{3C96073A-221C-4E96-BDA5-6A8344E4A826}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dron_M" ID="{8046371C-F8B9-4BB3-B0F7-754C7C2708DE}" ShortID="355011430">
+							<Language>SFX</Language>
+							<AudioFile>Dron_M.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dron_M" ID="{8046371C-F8B9-4BB3-B0F7-754C7C2708DE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Jingle_M" ID="{DAE63843-4313-4169-A1E9-FCE9A07FF109}" ShortID="437820737" Type="SoundFX">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Jingle_M" ID="{81221109-4E1A-4B35-A558-3576180E1B7B}" ShortID="169155310">
+							<Language>SFX</Language>
+							<AudioFile>Jingle_M.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Jingle_M" ID="{81221109-4E1A-4B35-A558-3576180E1B7B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Hit" ID="{E7E6E497-9854-476B-9339-BE1CF9D53CD2}" ShortID="81315794" Type="SoundFX">
 					<PropertyList>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="Volume" Type="Real64">
@@ -778,13 +893,13 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Equip_M" ID="{CD52A96C-FAC5-47BC-AE12-63A699BB564E}" ShortID="729306703">
+						<AudioFileSource Name="Hit" ID="{D285212C-0E99-4ACA-9827-C290D987B7C8}" ShortID="220635354">
 							<Language>SFX</Language>
-							<AudioFile>Equip_M.wav</AudioFile>
+							<AudioFile>Hit.wav</AudioFile>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Equip_M" ID="{CD52A96C-FAC5-47BC-AE12-63A699BB564E}" Platform="Linked"/>
+						<ActiveSource Name="Hit" ID="{D285212C-0E99-4ACA-9827-C290D987B7C8}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

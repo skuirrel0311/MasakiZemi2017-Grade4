@@ -109,7 +109,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="BGM_5p" ID="{0317CAAB-DBCA-4911-B8F5-481E183E56C0}"/>
+						<Event Name="BGM_5p" ID="{0317CAAB-DBCA-4911-B8F5-481E183E56C0}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{2D8BB8EB-8130-471B-AE24-E12054523F65}" ShortID="235004869" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{C13BF705-A2AE-4D19-A04F-13BA87F5CCF3}" Global="true">
+											<ObjectRef Name="2pSet" ID="{9CF07AB6-F31B-4663-884C-6341EA4BA645}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{97D1C636-D811-4286-949D-3373714F5667}" ShortID="799433710" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{3A7B036C-49EF-455B-BFB4-185910B80AA3}" Global="false">
+											<ObjectRef Name="FpPlay" ID="{010B46A6-B93D-48AC-8C58-EF7B3702970E}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="BGM_f34" ID="{36F97964-35E7-481F-B47F-4EF3B2086738}">
 							<ChildrenList>
 								<Action Name="Stop" ID="{04FF0908-0A07-47F6-88D7-540FF0F6FF40}" ShortID="344857881" Type="Stop" Scope="One" Global="true">
@@ -163,7 +184,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="BGM_Macho" ID="{EEE0363C-9EFF-4CA6-B3C7-6911E2989014}"/>
+						<Event Name="BGM_Macho" ID="{EEE0363C-9EFF-4CA6-B3C7-6911E2989014}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{DB89E6BF-FDEC-426F-A64E-261DA7415F61}" ShortID="937126025" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{8CFFF11D-D858-430B-B182-3BD92428C3AF}" Global="true">
+											<ObjectRef Name="2pSet" ID="{9CF07AB6-F31B-4663-884C-6341EA4BA645}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{E681CBC9-8BEB-400A-8536-F58A23DBA237}" ShortID="803373020" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{C60BC3C1-6943-4E09-9B9F-97AEA1B97DDB}" Global="false">
+											<ObjectRef Name="BGM_Macho_01" ID="{CCAA3CC0-E49E-4C6B-A140-23B35AEB2B2A}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Jingle" ID="{CF5FC777-3F0F-47AD-97B8-7B9C72D6EE49}" ShortID="432800587">
@@ -277,6 +319,17 @@
 										</Element>
 									</ElementList>
 								</Action>
+								<Action Name="Stop" ID="{5D20B665-DD07-4B04-B148-40485F6AD367}" ShortID="7304658" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="7"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{B8B3C55B-2336-4D03-9F3C-7B07D07B2E4F}" Global="true">
+											<ObjectRef Name="BGM_Macho" ID="{7ADBC98E-ED4B-406B-9BC1-744C1EE0F633}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
 								<Action Name="Play" ID="{D59EEB16-52BC-466A-9567-2E6DC3DBA61F}" ShortID="92983930" Type="Play" Scope="One" Global="false">
 									<PropertyList>
 										<Property Name="Delay" Type="Real64" Value="0.5"/>
@@ -360,7 +413,26 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="Mistake_5p" ID="{3AA44EB6-D1F4-4F40-A3BB-4178AC695B86}"/>
-						<Event Name="GameClear" ID="{A011C38E-FCF6-4B20-A799-BD41C68C9D24}"/>
+						<Event Name="GameClear" ID="{A011C38E-FCF6-4B20-A799-BD41C68C9D24}">
+							<ChildrenList>
+								<Action Name="Stop All" ID="{DBFC3104-A913-4123-926A-FF5D501633E0}" ShortID="396175118" Type="Stop" Scope="All" Global="true">
+									<PropertyList>
+										<Property Name="FadeCurve" Type="int16" Value="1"/>
+										<Property Name="FadeTime" Type="Real64" Value="4"/>
+									</PropertyList>
+								</Action>
+								<Action Name="Play" ID="{C33A9DCC-9989-47CD-A8E7-2A31F35F63FC}" ShortID="296804065" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{7013A86C-78DB-46D9-B901-016336740654}" Global="false">
+											<ObjectRef Name="End" ID="{A4AF3015-080E-4CFF-BA81-113BE4A8DB3C}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="GameOver" ID="{601F72B6-FE30-4C03-ABB8-B97FCF24601D}"/>
 					</ChildrenList>
 				</Folder>

@@ -16,13 +16,16 @@
 			<ShortName>MRBook</ShortName>
 			<Path>MRBook.bnk</Path>
 			<IncludedEvents>
+				<Event Id="855317061" Name="Alart" ObjectPath="\Events\SE\System\Alart"/>
 				<Event Id="3952481179" Name="BGM_1p" ObjectPath="\Events\Music\BGM\BGM_1p"/>
 				<Event Id="3969258766" Name="BGM_2p" ObjectPath="\Events\Music\BGM\BGM_2p"/>
 				<Event Id="3986036577" Name="BGM_3p" ObjectPath="\Events\Music\BGM\BGM_3p"/>
 				<Event Id="4002814164" Name="BGM_4p" ObjectPath="\Events\Music\BGM\BGM_4p"/>
 				<Event Id="4019591751" Name="BGM_5p" ObjectPath="\Events\Music\BGM\BGM_5p"/>
 				<Event Id="886472223" Name="BGM_f34" ObjectPath="\Events\Music\BGM\BGM_f34"/>
+				<Event Id="83038038" Name="BGM_Macho" ObjectPath="\Events\Music\BGM\BGM_Macho"/>
 				<Event Id="352130103" Name="Birds" ObjectPath="\Events\SE\Birds"/>
+				<Event Id="3835649095" Name="Bubble" ObjectPath="\Events\SE\Bubble"/>
 				<Event Id="3100207988" Name="Clear_1p" ObjectPath="\Events\Music\Jingle\Clear_1p"/>
 				<Event Id="3150540749" Name="Clear_2p" ObjectPath="\Events\Music\Jingle\Clear_2p"/>
 				<Event Id="3133763162" Name="Clear_3p" ObjectPath="\Events\Music\Jingle\Clear_3p"/>
@@ -34,6 +37,8 @@
 				<Event Id="2158282495" Name="Equip_M" ObjectPath="\Events\SE\Equip_M"/>
 				<Event Id="915611696" Name="Eye" ObjectPath="\Events\SE\Eye"/>
 				<Event Id="2678880713" Name="Fire" ObjectPath="\Events\SE\Fire"/>
+				<Event Id="3188984297" Name="Fishing" ObjectPath="\Events\SE\Fishing"/>
+				<Event Id="1397260774" Name="GameClear" ObjectPath="\Events\Music\Jingle\GameClear"/>
 				<Event Id="1267095562" Name="Hatena" ObjectPath="\Events\SE\Hatena"/>
 				<Event Id="3755927857" Name="Mistake_1p" ObjectPath="\Events\Music\Jingle\Mistake_1p"/>
 				<Event Id="3705595128" Name="Mistake_2p" ObjectPath="\Events\Music\Jingle\Mistake_2p"/>
@@ -58,6 +63,14 @@
 					<ShortName>Ghost.wav</ShortName>
 					<Path>SFX\Ghost_9E69E797.wem</Path>
 				</File>
+				<File Id="156637315" Language="SFX">
+					<ShortName>End.wav</ShortName>
+					<Path>SFX\End_9E69E797.wem</Path>
+				</File>
+				<File Id="169155310" Language="SFX">
+					<ShortName>Jingle_M.wav</ShortName>
+					<Path>SFX\Jingle_M_9E69E797.wem</Path>
+				</File>
 				<File Id="184650976" Language="SFX">
 					<ShortName>bird1.wav</ShortName>
 					<Path>SFX\bird1_0EEECE5B.wem</Path>
@@ -65,6 +78,10 @@
 				<File Id="209587572" Language="SFX">
 					<ShortName>bird3.wav</ShortName>
 					<Path>SFX\bird3_0EEECE5B.wem</Path>
+				</File>
+				<File Id="220635354" Language="SFX">
+					<ShortName>Hit.wav</ShortName>
+					<Path>SFX\Hit_9E69E797.wem</Path>
 				</File>
 				<File Id="226544734" Language="SFX">
 					<ShortName>Fire3.wav</ShortName>
@@ -77,6 +94,18 @@
 				<File Id="341202102" Language="SFX">
 					<ShortName>Fire1.wav</ShortName>
 					<Path>SFX\Fire1_0EEECE5B.wem</Path>
+				</File>
+				<File Id="355011430" Language="SFX">
+					<ShortName>Dron_M.wav</ShortName>
+					<Path>SFX\Dron_M_9E69E797.wem</Path>
+				</File>
+				<File Id="385583282" Language="SFX">
+					<ShortName>BGM_Macho.wav</ShortName>
+					<Path>SFX\BGM_Macho_1C0F779F.wem</Path>
+				</File>
+				<File Id="405236503" Language="SFX">
+					<ShortName>BGM_Macho.wav</ShortName>
+					<Path>SFX\BGM_Macho_9E69E797.wem</Path>
 				</File>
 				<File Id="455309328" Language="SFX">
 					<ShortName>2pPlay.wav</ShortName>
@@ -114,10 +143,6 @@
 					<ShortName>Equip.wav</ShortName>
 					<Path>SFX\Equip_9E69E797.wem</Path>
 				</File>
-				<File Id="729306703" Language="SFX">
-					<ShortName>Equip_M.wav</ShortName>
-					<Path>SFX\Equip_M_9E69E797.wem</Path>
-				</File>
 				<File Id="733816394" Language="SFX">
 					<ShortName>Fire4.wav</ShortName>
 					<Path>SFX\Fire4_0EEECE5B.wem</Path>
@@ -125,6 +150,10 @@
 				<File Id="776095263" Language="SFX">
 					<ShortName>bird2.wav</ShortName>
 					<Path>SFX\bird2_0EEECE5B.wem</Path>
+				</File>
+				<File Id="789781467" Language="SFX">
+					<ShortName>FpPlay.wav</ShortName>
+					<Path>SFX\FpPlay_9E69E797.wem</Path>
 				</File>
 				<File Id="887509276" Language="SFX">
 					<ShortName>Clear.wav</ShortName>
@@ -142,6 +171,10 @@
 					<ShortName>3pPlay.wav</ShortName>
 					<Path>SFX\3pPlay_50DB02DB.wem</Path>
 				</File>
+				<File Id="961911133" Language="SFX">
+					<ShortName>lure.wav</ShortName>
+					<Path>SFX\lure_3FAF8546.wem</Path>
+				</File>
 				<File Id="979699462" Language="SFX">
 					<ShortName>Die.wav</ShortName>
 					<Path>SFX\Die_9E69E797.wem</Path>
@@ -153,6 +186,10 @@
 				<File Id="1003713101" Language="SFX">
 					<ShortName>Fire5.wav</ShortName>
 					<Path>SFX\Fire5_0EEECE5B.wem</Path>
+				</File>
+				<File Id="1010749682" Language="SFX">
+					<ShortName>Babble.wav</ShortName>
+					<Path>SFX\Babble_9E69E797.wem</Path>
 				</File>
 				<File Id="1025315701" Language="SFX">
 					<ShortName>Fire2.wav</ShortName>

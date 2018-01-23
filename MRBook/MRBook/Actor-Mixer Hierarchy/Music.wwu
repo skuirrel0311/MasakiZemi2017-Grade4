@@ -143,6 +143,81 @@
 								<ActiveSource Name="3pPlay" ID="{C44AC83B-40C3-4941-824B-9FAE937524FF}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="BGM_Macho" ID="{7ADBC98E-ED4B-406B-9BC1-744C1EE0F633}" ShortID="813158803" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BGM_Macho" ID="{866871B2-8989-4EE0-925C-175FF78C882F}" ShortID="405236503">
+									<Language>SFX</Language>
+									<AudioFile>BGM_Macho.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BGM_Macho" ID="{866871B2-8989-4EE0-925C-175FF78C882F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BGM_Macho_01" ID="{CCAA3CC0-E49E-4C6B-A140-23B35AEB2B2A}" ShortID="714217559" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BGM_Macho" ID="{67207376-1F5E-43AA-976B-720D8B0A01A5}" ShortID="385583282">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="5.21918519193392"/>
+										<Property Name="TrimBegin" Type="Real64" Value="5.29068087949466"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>BGM_Macho.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BGM_Macho" ID="{67207376-1F5E-43AA-976B-720D8B0A01A5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="FpPlay" ID="{010B46A6-B93D-48AC-8C58-EF7B3702970E}" ShortID="632513517" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="FpPlay" ID="{7FA041ED-72B9-43DE-954F-E975029C63C3}" ShortID="789781467">
+									<Language>SFX</Language>
+									<AudioFile>FpPlay.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="FpPlay" ID="{7FA041ED-72B9-43DE-954F-E975029C63C3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Jingle" ID="{FE74F052-2496-439A-A667-07F033E051AE}" ShortID="231390784">
@@ -190,6 +265,32 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Clear" ID="{820AC1FE-6365-47A7-AE42-483187E954C6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="End" ID="{A4AF3015-080E-4CFF-BA81-113BE4A8DB3C}" ShortID="250633813" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5AD0ECB4-6F0D-44ED-8D49-756927808C4B}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{9A98CD23-590A-4359-8FFC-DCBF0A88AA7B}" WorkUnitID="{DCFB874B-665D-483F-8E61-96A1F39E7493}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="End" ID="{C21B8FCC-2C56-44BA-9833-166110E734F4}" ShortID="156637315">
+									<Language>SFX</Language>
+									<AudioFile>End.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="End" ID="{C21B8FCC-2C56-44BA-9833-166110E734F4}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
