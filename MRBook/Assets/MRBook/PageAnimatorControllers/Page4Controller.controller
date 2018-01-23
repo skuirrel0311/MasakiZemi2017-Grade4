@@ -254,6 +254,7 @@ MonoBehaviour:
   targetName: otohimeLookPoint
   actorName: 2
   rotationSpeed: 270
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114082101319786786
 MonoBehaviour:
@@ -536,6 +537,7 @@ MonoBehaviour:
   targetName: TurtleDirection
   actorName: 0
   rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114166294587299496
 MonoBehaviour:
@@ -694,6 +696,7 @@ MonoBehaviour:
   targetName: TurtleDirection
   actorName: 0
   rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114234741085546114
 MonoBehaviour:
@@ -1368,6 +1371,7 @@ MonoBehaviour:
   targetName: TurtleDirection
   actorName: 0
   rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114459150423489302
 MonoBehaviour:
@@ -1597,18 +1601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114524941283110064
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: SecretBox_Box
 --- !u!114 &114540809250959904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1956,6 +1948,7 @@ MonoBehaviour:
   targetName: TurtleDirection
   actorName: 0
   rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114649684523247214
 MonoBehaviour:
@@ -2480,6 +2473,7 @@ MonoBehaviour:
   targetName: otohimeLookPoint
   actorName: 2
   rotationSpeed: 270
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114806150750874716
 MonoBehaviour:
@@ -2968,6 +2962,7 @@ MonoBehaviour:
   targetName: OtohimeFront
   actorName: 1
   rotationSpeed: 360
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114925118445320386
 MonoBehaviour:
@@ -3148,6 +3143,7 @@ MonoBehaviour:
   targetName: TurtleDirection
   actorName: 0
   rotationSpeed: 200
+  callChangeAnimation: 1
   updateTargetPosition: 0
 --- !u!114 &114972873870057688
 MonoBehaviour:
@@ -4501,7 +4497,6 @@ AnimatorState:
   - {fileID: 114973515858022948}
   - {fileID: 114965289945622796}
   - {fileID: 114451294107471220}
-  - {fileID: 114524941283110064}
   - {fileID: 114774003154939964}
   - {fileID: 114826513673990446}
   - {fileID: 114866455619669420}
