@@ -13,6 +13,8 @@ public class ItemDropper : BaseManager<ItemDropper>
     [SerializeField]
     float burstPower = 5.0f;
 
+    HoloItem dropItem;
+
     OffsetController offsetController;
 
     protected override void Awake()
@@ -31,6 +33,7 @@ public class ItemDropper : BaseManager<ItemDropper>
     public void Drop(HoloObject owner, HoloItem item)
     {
         SetActive(true);
+        dropItem = item;
         transform.position = item.transform.position;
 
         item.transform.parent = transform;
@@ -71,6 +74,7 @@ public class ItemDropper : BaseManager<ItemDropper>
             }
             yield return null;
         }
+        if (dropItem.InputHandler != null) ((ItemInputHandler)dropItem.InputHandler).SetArrowActive(true);
         SetActive(false);
     }
 

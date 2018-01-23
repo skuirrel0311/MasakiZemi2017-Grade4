@@ -15,10 +15,16 @@ public class ResetButton : HoloButton
             sceneManager.ResetPage();
         });
 
-        sceneManager.OnPageLoaded += (page) => Refresh();
+        sceneManager.OnPageLoaded += (page) =>
+        {
+            if (page.Index == 4)
+                Disable();
+            else
+                Refresh();
+        };
         sceneManager.OnReset += () =>
         {
-            Utilities.Delay(25, () => Refresh(),this);
+            Utilities.Delay(25, () => Refresh(), this);
         };
         sceneManager.OnPlayPage += () => Disable();
         sceneManager.OnPlayEnd += (success) =>

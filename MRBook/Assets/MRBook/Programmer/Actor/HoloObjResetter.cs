@@ -11,7 +11,6 @@ public class HoloObjResetManager
 
     MonoBehaviour mono;
     List<HoloObjResetter> resetterList = new List<HoloObjResetter>();
-    List<HoloMovableObjResetter> movableResetterList = new List<HoloMovableObjResetter>();
     Coroutine resetCoroutine;
 
     public HoloObjResetManager(MonoBehaviour mono)
@@ -25,11 +24,6 @@ public class HoloObjResetManager
     public void AddResetter(HoloObjResetter resetter)
     {
         resetterList.Add(resetter);
-    }
-
-    public void AddMovableResetter(HoloMovableObjResetter resetter)
-    {
-        movableResetterList.Add(resetter);
     }
 
     public void Reset()

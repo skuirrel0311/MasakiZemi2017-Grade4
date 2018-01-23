@@ -44,12 +44,6 @@ public class HoloItem : HoloObject
         defaultOwner.ItemSaucer.SetItem(this, false);
     }
 
-    public override void Init()
-    {
-        HoloObjResetManager.I.AddMovableResetter((HoloMovableObjResetter)Resetter);
-        base.Init();
-    }
-
     public override void PlayPage()
     {
         base.PlayPage();

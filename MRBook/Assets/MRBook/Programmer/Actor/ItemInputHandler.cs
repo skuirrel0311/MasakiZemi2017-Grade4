@@ -23,8 +23,10 @@ public class ItemInputHandler : HoloMovableObjInputHander
 
     public override void OnDisabled()
     {
+        if (!MyObjControllerByBoundingBox.I.canClick) return;
+        if (ownerItem.owner == null) SetArrowActive(true);
+        handIconController.Hide();
         SetItemTextEnable(false);
-        base.OnDisabled();
     }
 
     public override void OnDragStart()

@@ -109,6 +109,11 @@ public class CharacterItemSaucer : BaseItemSaucer
     /// </summary>
     public void SetItem(HoloItem item, bool showParticle = true, bool changeAnimation = true)
     {
+        if (item.InputHandler != null)
+        {
+            ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
+        }
+
         if (behaviour != null)
         {
             behaviour.OnSetItem(item, showParticle);
@@ -157,9 +162,7 @@ public class CharacterItemSaucer : BaseItemSaucer
             ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
         }
         Debug.Log(item.GetName());
-
-        if (item.InputHandler != null)
-            ((HoloMovableObjInputHander)item.InputHandler).SetArrowActive(false);
+        
         if(changeAnimation) ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
     }
 
@@ -211,6 +214,26 @@ public class CharacterItemSaucer : BaseItemSaucer
         if (oldItem.name == AlcoholItemName)
         {
             IsGetAlcohol = false;
+        }
+
+        if (MainSceneManager.I.CurrentState != MainSceneManager.GameState.Wait) return;
+
+        //モーションを正しいのにする
+        if(LeftHandItem != null)
+        {
+            ItemTransformDataList dataList = GetItemTransformDataList(LeftHandItem);
+            ItemTransformData data = GetItemTransformDate(LeftHandItem.name, dataList);
+            ownerCharacter.ChangeAnimationClip(data.motionName, 0.0f);
+        }
+        else if (RightHandItem != null)
+        {
+            ItemTransformDataList dataList = GetItemTransformDataList(RightHandItem);
+            ItemTransformData data = GetItemTransformDate(RightHandItem.name, dataList);
+            ownerCharacter.ChangeAnimationClip(data.motionName, 0.0f);
+        }
+        else
+        {
+            ownerCharacter.ChangeAnimationClip(ownerCharacter.defaultMotionName, 0.0f);
         }
     }
 

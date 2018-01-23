@@ -8,8 +8,7 @@ public class HoloCharacter : HoloObject
 {
     public NavMeshAgent m_agent { get; private set; }
     public Animator m_animator { get; private set; }
-    [SerializeField]
-    protected MotionName defaultMotionName = MotionName.Wait;
+    public MotionName defaultMotionName = MotionName.Wait;
 
     public override Type GetActorType { get { return Type.Character; } }
 
@@ -34,7 +33,6 @@ public class HoloCharacter : HoloObject
 
     public override void Init()
     {
-        HoloObjResetManager.I.AddMovableResetter((HoloMovableObjResetter)Resetter);
         ChangeAnimationClip(defaultMotionName, 0.0f);
         base.Init();
     }

@@ -146,20 +146,21 @@ public class ActorManager : Singleton<ActorManager>
         return currentPage.objectList;
     }
 
-    public void AddObject(HoloObject obj)
+    public void AddObject(HoloObject obj, bool addResetter = true)
     {
         currentPage.objectDictionary.Add(obj.name, obj);
         currentPage.objectList.Add(obj);
 
         obj.Init();
+        if(addResetter) HoloObjResetManager.I.AddResetter(obj.Resetter);
     }
 
-    public void AddCharacter(ActorName name, HoloCharacter character)
+    public void AddCharacter(ActorName name, HoloCharacter character, bool addResetter = true)
     {
         Debug.Log("add character " + currentPage.name + " " + name.ToString());
         currentPage.characterDictionary.Add(name, character);
 
-        AddObject(character);
+        AddObject(character, addResetter);
     }
 
     //ページが変更

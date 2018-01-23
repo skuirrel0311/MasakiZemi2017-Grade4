@@ -10,7 +10,10 @@ public class ShellMaker : MonoBehaviour
     ShellTracableEventHandler shellBack = null;
     [SerializeField]
     GameObject treasureObject = null;
+    [SerializeField]
+    GameObject arrow = null;
 
+    Vector3 defaultPosition;
     Transform cameraTransform;
 
     bool isCloseShell = true;
@@ -40,19 +43,25 @@ public class ShellMaker : MonoBehaviour
     void Start()
     {
         cameraTransform = Camera.main.transform;
-
+        defaultPosition = treasureObject.transform.localPosition;
 #if !UNITY_EDITOR
 
         shellFront.onFound += () =>
         {
+            arrow.SetActive(true);
             IsCloseShell = true;
         };
 
         shellBack.onFound += () =>
         {
+            arrow.SetActive(false);
             IsCloseShell = false;
         };
 #endif
+        //MainSceneManager.I.OnReset += () =>
+        //{
+        //    treasureObject.transform.localPosition = defaultPosition;
+        //};
     }
 
 #if UNITY_EDITOR
