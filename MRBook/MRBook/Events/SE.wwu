@@ -228,6 +228,17 @@
 								</Element>
 							</ElementList>
 						</Action>
+						<Action Name="Stop" ID="{E0D23B55-C4E7-4C12-924B-F61CD9A676A8}" ShortID="185452385" Type="Stop" Scope="One" Global="true">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="7"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{C18AA226-6D4B-488F-A36E-CF052FE355D6}" Global="true">
+									<ObjectRef Name="FpPlay" ID="{010B46A6-B93D-48AC-8C58-EF7B3702970E}" WorkUnitID="{478604A1-0579-4502-856D-46229DB81984}"/>
+								</Element>
+							</ElementList>
+						</Action>
 						<Action Name="Play" ID="{E2517C77-191A-4932-A91B-6810470EFD6E}" ShortID="159788875" Type="Play" Scope="One" Global="false">
 							<ElementList>
 								<Element ID="{DD8D5DF3-F5B6-41D9-BD0F-61A32B251D46}" Global="false">
