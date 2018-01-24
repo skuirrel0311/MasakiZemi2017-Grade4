@@ -87,6 +87,11 @@ public class WorldAnchorController : HoloObject
     {
         worldAnchorManager.LoadAnchor(gameObject, (anchor) =>
         {
+            if(anchor != null)
+            {
+                BookPositionModifier.I.LoadBookLocation();
+            }
+
             SetColor(anchor != null ? staticColor : movableColor);
         });
     }

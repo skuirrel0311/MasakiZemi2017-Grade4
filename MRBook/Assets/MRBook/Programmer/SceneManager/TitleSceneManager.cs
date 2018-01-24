@@ -28,6 +28,9 @@ public class TitleSceneManager : MonoBehaviour
     {
         bookPosition.position = bookPositionController.position;
         bookPosition.rotation = bookPositionController.rotation;
+
+        BookPositionModifier.I.SaveBookLocation();
+
         titleView.HideAll();
 
         Debug.LogWarning("BookPos = " + BookPositionModifier.I.bookTransform.position);

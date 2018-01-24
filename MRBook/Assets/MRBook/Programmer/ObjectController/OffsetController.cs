@@ -60,7 +60,7 @@ public class OffsetController : BaseManager<OffsetController>
                 vec.z = -movePower;
                 break;
         }
-
-        return vec;
+        
+        return bookTransform.rotation * vec;
     }
 }

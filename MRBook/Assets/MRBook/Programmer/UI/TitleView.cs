@@ -8,8 +8,15 @@ public class TitleView : HoloObject
 
     [SerializeField]
     GameObject rootObj = null;
-    
+
     //MyObjControllerByBoundingBox objController;
+
+    public static TitleView I = null;
+
+    void Awake()
+    {
+        I = this;
+    }
 
     void Start()
     {
