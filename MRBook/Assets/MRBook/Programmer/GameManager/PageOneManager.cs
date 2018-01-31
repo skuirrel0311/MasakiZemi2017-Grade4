@@ -22,41 +22,41 @@ public class PageOneManager : BasePage
 
     ActorManager actorManager;
 
-    public override void PageStart()
-    {
-        base.PageStart();
-        actorManager = ActorManager.I;
-    }
+    //public override void PageStart()
+    //{
+    //    base.PageStart();
+    //    actorManager = ActorManager.I;
+    //}
 
-    public void ChainBoat()
-    {
-        actorManager.SetEnableObject(boatName, false);
-        //actorManager.SetEnableObject(pileName, false);
-        actorManager.SetEnableObject(ropeName, false);
+    //public void ChainBoat()
+    //{
+    //    actorManager.SetEnableObject(boatName, false);
+    //    //actorManager.SetEnableObject(pileName, false);
+    //    actorManager.SetEnableObject(ropeName, false);
 
-        chainBoat.SetActive(true);
-        urashima.SetParent(chainBoat.transform);
-        urashima.ChangeAnimationClip(MotionName.Lie, 0.0f);
+    //    chainBoat.SetActive(true);
+    //    urashima.SetParent(chainBoat.transform);
+    //    urashima.ChangeAnimationClip(MotionName.Lie, 0.0f);
 
-        FlagManager.I.SetFlag("IsChainRope", null, true);
+    //    FlagManager.I.SetFlag("IsChainRope", null, true);
 
-        onReset += () =>
-        {
-            actorManager.SetEnableObject(boatName, true);
-            //actorManager.SetEnableObject(pileName, true);
-            actorManager.SetEnableObject(ropeName, true);
-            urashima.SetParent(boat.transform);
-            chainBoat.SetActive(false);
-            FlagManager.I.SetFlag("IsChainRope", null, false);
-        };
-    }
+    //    onReset += () =>
+    //    {
+    //        actorManager.SetEnableObject(boatName, true);
+    //        //actorManager.SetEnableObject(pileName, true);
+    //        actorManager.SetEnableObject(ropeName, true);
+    //        urashima.SetParent(boat.transform);
+    //        chainBoat.SetActive(false);
+    //        FlagManager.I.SetFlag("IsChainRope", null, false);
+    //    };
+    //}
 
 
-    public override void ResetPage()
-    {
-        if (onReset != null) onReset.Invoke();
-        onReset = null;
-        base.ResetPage();
-    }
+    //public override void ResetPage()
+    //{
+    //    if (onReset != null) onReset.Invoke();
+    //    onReset = null;
+    //    base.ResetPage();
+    //}
 
 }

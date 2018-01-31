@@ -15,9 +15,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     }
 
     /* イベント */
-    //todo:ページの読み込みが終わったとき＝bodyLockからstaticsに変わったときにするといいかも
     /// <summary>
-    /// ページの読み込みが終わったとき
+    /// キャラのインポートが終了したとき
+    /// </summary>
+    public Action<BasePage> OnPageInitialized;
+    /// <summary>
+    /// ページの読み込みが終わったとき＝bodyLockからstaticsに変わったとき
     /// </summary>
     public Action<BasePage> OnPageLoaded;
     /// <summary>
@@ -32,7 +35,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ページがリセットされたとき
     /// </summary>
     public Action OnReset;
-    
+
     /* メンバ */
     GameState currentState = GameState.Wait;
     public GameState CurrentState
@@ -85,7 +88,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         base.Awake();
         pageIndex = -1;
         m_Animator = GetComponent<Animator>();
-        
+
         SpatialMappingManager spatialMappingManager = SpatialMappingManager.Instance;
 
         if (spatialMappingManager != null)
@@ -132,7 +135,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         CurrentState = GameState.Play;
 
         //NotificationManager.I.ShowMessage("再生開始");
-        
+
         if (OnPlayPage != null) OnPlayPage();
 
         m_Animator.SetBool("IsStart", true);
@@ -154,7 +157,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         else
         {
             CurrentState = GameState.Wait;
-            
+
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
 
@@ -163,12 +166,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             //Utilities.Delay(0.2f, () => ResetPage(), this);
         }
     }
-    
+
     public virtual void GameStart()
     {
         Transform t = BookPositionModifier.I.bookTransform;
-        
-        for(int i = 0;i< pages.Length;i++)
+
+        for (int i = 0; i < pages.Length; i++)
         {
             pages[i].PageLock(t.position, t.rotation);
         }
@@ -186,12 +189,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public void SetBookPositionOffset(Vector3 movement)
     {
         Transform t = BookPositionModifier.I.bookTransform;
-        
+
         for (int i = 0; i < pages.Length; i++)
         {
             pages[i].SetTransform(t);
         }
-        
+
         uiContainer.SetPositionAndRotation(t.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
     }
@@ -237,6 +240,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         PageResultManager.I.Hide();
         if (OnReset != null) OnReset.Invoke();
         CurrentState = GameState.Wait;
+        m_Animator.SetBool("IsStart", false);
+        m_Animator.CrossFade("Wait", 0.0f);
         AkSoundEngine.PostEvent("Reset", gameObject);
         pages[currentPageIndex].ResetPage();
     }
@@ -259,13 +264,13 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
         CurrentState = GameState.Wait;
+    }
 
-        Utilities.Delay(2, () =>
-        {
-            Debug.Log("on page loaded");
-            MyNavMeshBuilder.CreateNavMesh();
-            if (OnPageLoaded != null) OnPageLoaded.Invoke(pages[currentPageIndex]);
-        },this);
+    public void PageLoaded()
+    {
+        Debug.Log("on page loaded");
+        if (OnPageInitialized != null) OnPageInitialized.Invoke(pages[currentPageIndex]);
+        Play();
     }
 
     public void GameEnd()

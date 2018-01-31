@@ -32,6 +32,9 @@ public class BasePage : MonoBehaviour
     [SerializeField]
     GameObject[] bookObjects = null;
 
+    [SerializeField]
+    HoloObject[] defaultDisableObjects = null;
+
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
 
@@ -116,6 +119,23 @@ public class BasePage : MonoBehaviour
         HoloObjResetManager resetManager = HoloObjResetManager.I;
         GameObject[] tempArray;
 
+        //非アクティブなオブジェクトを追加していく
+        for(int i = 0;i< defaultDisableObjects.Length;i++)
+        {
+            HoloObject obj = defaultDisableObjects[i];
+
+            resetManager.AddResetter(obj.Resetter);
+
+            objectList.Add(obj);
+
+            objectDictionary.Add(obj.name, obj);
+
+            if (obj.GetActorType != HoloObject.Type.Character) continue;
+
+            characterDictionary.Add((ActorName)Enum.Parse(typeof(ActorName), obj.name), (HoloCharacter)obj);
+        }
+
+        //アクティブなオブジェクトを追加していく
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {

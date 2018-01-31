@@ -31,7 +31,7 @@ public class MissionTextController : BaseManager<MissionTextController>
         MainSceneManager sceneManager = MainSceneManager.I;
         mainCameraTransform = Camera.main.transform;
 
-        sceneManager.OnPageLoaded += (page) =>
+        sceneManager.OnPageInitialized += (page) =>
         {
             endTexts[(int)Mode.Track].gameObject.SetActive(false);
             ChangeMode(Mode.Track);
@@ -100,6 +100,7 @@ public class MissionTextController : BaseManager<MissionTextController>
 
         missionTexts[0].SetActive(false);
         missionTexts[1].SetActive(true);
+        MainSceneManager.I.PageLoaded();
     }
 
     void SetText(string first, string end)

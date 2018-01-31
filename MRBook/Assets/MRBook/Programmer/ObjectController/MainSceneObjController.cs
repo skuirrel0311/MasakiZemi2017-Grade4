@@ -42,7 +42,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
             canClick = true;
             Disable();
         };
-        sceneManager.OnPageLoaded += (page) =>
+        sceneManager.OnPageInitialized += (page) =>
         {
             canClick = true;
         };

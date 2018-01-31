@@ -44,7 +44,7 @@ public class ActorManager : Singleton<ActorManager>
     {
         this.sceneManager = sceneManager;
 
-        sceneManager.OnPageLoaded += (page)=> OnPageLoaded(page);
+        sceneManager.OnPageInitialized += (page)=> OnPageLoaded(page);
         trianglePrefab = MyAssetStore.I.GetAsset<GameObject>("triangle", "Prefabs/");
         handIconControllerPrefab = MyAssetStore.I.GetAsset<GameObject>("HandIconController", "Prefabs/").GetComponent<HandIconController>();
     }

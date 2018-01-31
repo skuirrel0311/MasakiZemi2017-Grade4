@@ -36,9 +36,10 @@ GameObject:
   - component: {fileID: 4201223500976388}
   - component: {fileID: 33613223112756782}
   - component: {fileID: 23221634493358604}
-  m_Layer: 0
-  m_Name: allboat
-  m_TagString: Untagged
+  - component: {fileID: 114167803187255880}
+  m_Layer: 8
+  m_Name: AllBoat
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -186,8 +187,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177976349797710}
-  m_LocalRotation: {x: -0, y: 0.64842916, z: -0, w: 0.7612751}
-  m_LocalPosition: {x: -0.344, y: -0.0007000007, z: -0.13}
+  m_LocalRotation: {x: -0, y: 0.64842916, z: -0, w: 0.76127505}
+  m_LocalPosition: {x: -0.34399998, y: -0.0007000007, z: -0.13000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4884727084701106}
@@ -641,6 +642,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b9bd8b22b25534aa7c4b1dfdb9f12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114167803187255880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1177976349797710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
 --- !u!114 &114257850132015000
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,7 +26,7 @@ public class NextPageButton : MonoBehaviour
             sceneManager.ChangePage(nextPageIndex);
         });
 
-        sceneManager.OnPageLoaded += (page) =>
+        sceneManager.OnPageInitialized += (page) =>
         {
             text.gameObject.SetActive(false);
             button.Hide();

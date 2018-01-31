@@ -20,7 +20,7 @@ public class PageFiveManager : BasePage
 
         MainSceneManager sceneManager = MainSceneManager.I;
 
-        sceneManager.OnPageLoaded += AddPageCharacter;
+        sceneManager.OnPageInitialized += AddPageCharacter;
 
         sceneManager.OnPlayEnd += (success) =>
         {
@@ -41,6 +41,6 @@ public class PageFiveManager : BasePage
         ActorManager.I.AddObject(secretBox_Box);
         ActorManager.I.AddObject(secretBox_Lid);
 
-        MainSceneManager.I.OnPageLoaded -= AddPageCharacter;
+        MainSceneManager.I.OnPageInitialized -= AddPageCharacter;
     }
 }

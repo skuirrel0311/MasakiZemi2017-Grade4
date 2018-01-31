@@ -221,6 +221,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Child2
+--- !u!114 &114200864039593844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74423a68d5ee74a8a2929811ddcf58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114205391552572670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,6 +245,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   success: 1
+--- !u!114 &114221343078320096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Boat
 --- !u!114 &114262497201772724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,6 +307,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114284533872821688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Rope
 --- !u!114 &114298063640032080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -400,6 +436,19 @@ MonoBehaviour:
   motionName: 45
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114378877334489290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c18621c6c43654d817db35698eebc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: AllBoat
+  targetPointName: 
 --- !u!114 &114405981520264198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,6 +489,17 @@ MonoBehaviour:
   wayPointNames:
   - BoatEndPoint
   speed: 0.05
+--- !u!114 &114421192078220614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114426033975276782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -646,6 +706,18 @@ MonoBehaviour:
   motionName: 44
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114628597837296426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Pile
 --- !u!114 &114642199873010774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,22 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114753896585200756
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05a892e66013984ea2f69e8b7725746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flagName: IsChainRope
-  boolValue: 1
-  isCheckNow: 0
-  checkOnUpdate: 0
-  paramName: Flagged
 --- !u!114 &114784722016072742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -804,6 +860,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114841353744654444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b18e224fce4c34db75a8b61f5a14cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentType: 0
+  targetName: Urashima
+  parentName: AllBoat
 --- !u!114 &114842312457832750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,30 +1115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Boat
---- !u!1101 &1101123574753997914
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 7
-    m_ConditionEvent: StateStatus
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102671969653162400}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1101 &1101262117748490468
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1086,30 +1132,6 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0
   m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &1101289316014731756
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Flagged
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102535608865046454}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1207,6 +1229,30 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101519217965121282
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 7
+    m_ConditionEvent: StateStatus
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102535608865046454}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101560325212754310
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1231,26 +1277,23 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101730572365128818
+--- !u!1101 &1101624951036961634
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Flagged
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102217318748938012}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1285,7 +1328,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "\u8239\u304B\u3089\u964D\u308A\u308B"
+  m_Name: "\u8239\u3092\u4E0B\u308A\u308B"
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1311,13 +1354,44 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102219423123543078
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ChainBoat
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101624951036961634}
+  m_StateMachineBehaviours:
+  - {fileID: 114200864039593844}
+  - {fileID: 114378877334489290}
+  - {fileID: 114841353744654444}
+  - {fileID: 114284533872821688}
+  - {fileID: 114221343078320096}
+  - {fileID: 114628597837296426}
+  - {fileID: 114421192078220614}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102321987886998986
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "Play\u3092\u62BC\u3055\u308C\u308B\u307E\u3067\u5F85\u3064"
+  m_Name: Wait
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1373,32 +1447,6 @@ AnimatorState:
   - {fileID: 114426033975276782}
   - {fileID: 114018542419132602}
   - {fileID: 114448781933622868}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102671969653162400
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: "\u8239\u304C\u30ED\u30FC\u30D7\u3067\u7E4B\u304C\u308C\u3066\u3044\u308B\u304B\uFF1F"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101289316014731756}
-  - {fileID: 1101730572365128818}
-  m_StateMachineBehaviours:
-  - {fileID: 114753896585200756}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1550,7 +1598,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101123574753997914}
+  - {fileID: 1101519217965121282}
   m_StateMachineBehaviours:
   - {fileID: 114951866734536352}
   - {fileID: 114806904300985124}
@@ -1583,7 +1631,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102321987886998986}
-    m_Position: {x: -24, y: -84, z: 0}
+    m_Position: {x: 108, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102676562508583282}
     m_Position: {x: -132, y: 588, z: 0}
@@ -1591,30 +1639,30 @@ AnimatorStateMachine:
     m_State: {fileID: 1102692106660715792}
     m_Position: {x: 108, y: 588, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102671969653162400}
-    m_Position: {x: -24, y: 120, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102535608865046454}
-    m_Position: {x: 108, y: 240, z: 0}
+    m_Position: {x: 108, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102217318748938012}
-    m_Position: {x: -132, y: 240, z: 0}
+    m_Position: {x: -132, y: 372, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102948803642003858}
-    m_Position: {x: -132, y: 360, z: 0}
+    m_Position: {x: -132, y: 444, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102731138057934004}
-    m_Position: {x: -132, y: 456, z: 0}
+    m_Position: {x: -132, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102961282418045474}
-    m_Position: {x: -24, y: 36, z: 0}
+    m_Position: {x: 108, y: 288, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102219423123543078}
+    m_Position: {x: -132, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 216, y: -96, z: 0}
-  m_EntryPosition: {x: 0, y: -156, z: 0}
+  m_EntryPosition: {x: 132, y: 72, z: 0}
   m_ExitPosition: {x: 12, y: 672, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102321987886998986}

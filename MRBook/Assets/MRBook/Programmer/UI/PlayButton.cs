@@ -14,7 +14,7 @@ public class PlayButton : HoloButton
             sceneManager.Play();
         });
 
-        sceneManager.OnPageLoaded += (page)=> Refresh();
+        sceneManager.OnPageInitialized += (page)=> Refresh();
         sceneManager.OnPlayPage += () => Disable();
         sceneManager.OnReset += () => Refresh();
     }
