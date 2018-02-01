@@ -14,7 +14,7 @@ public class PageFourManager : BasePage
     {
         base.PageStart();
 
-        MainSceneManager.I.OnPageInitialized += AddPageCharacter;
+        MainSceneManager.I.OnPageLoaded += AddPageCharacter;
     }
 
     void AddPageCharacter(BasePage page)
@@ -22,7 +22,7 @@ public class PageFourManager : BasePage
         ActorManager.I.AddCharacter(ActorName.Turtle, turtle);
         ActorManager.I.AddObject(goldenBall, false);
         HoloObjResetManager.I.AddResetter(new HoloMovableObjResetter(goldenBall));
-        MainSceneManager.I.OnPageInitialized -= AddPageCharacter;
+        MainSceneManager.I.OnPageLoaded -= AddPageCharacter;
     }
 
 }

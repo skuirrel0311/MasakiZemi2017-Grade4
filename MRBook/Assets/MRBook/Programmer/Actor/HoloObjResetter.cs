@@ -151,8 +151,6 @@ public class DefaultHoloObjResetBehaviour : AbstractHoloObjResetBehaviour
     {
         defaultLayer = owner.gameObject.layer;
         defaultActive = owner.gameObject.activeSelf;
-
-        Debug.Log(owner.name + " default active = " + defaultActive);
     }
 
     public override void OnDisable()

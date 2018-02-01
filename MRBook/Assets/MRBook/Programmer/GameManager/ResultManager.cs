@@ -52,7 +52,7 @@ public class ResultManager : BaseManager<ResultManager>
         {
             lifePointGauge.Init(maxLifePoint);
 
-            sceneManager.OnPageInitialized += (page) =>
+            sceneManager.OnPageLoaded += (page) =>
             {
                 lifePointGauge.SetValue(page.lifePoint);
             };
