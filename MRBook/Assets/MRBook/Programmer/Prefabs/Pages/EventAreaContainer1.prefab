@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114058034211758942}
   - component: {fileID: 114067993014316352}
   - component: {fileID: 208309004354525234}
+  - component: {fileID: 65306766387435490}
   m_Layer: 13
   m_Name: PileEventArea
   m_TagString: Actor
@@ -82,8 +83,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08479867, y: 0.067668825, z: 0.09246785}
-  m_Center: {x: 0.00013449398, y: 0.049999997, z: 0.004119457}
+  m_Size: {x: 0.18979712, y: 0.17459849, z: 0.2385847}
+  m_Center: {x: -0.0020259547, y: 0.049999997, z: 0.0041194553}
+--- !u!65 &65306766387435490
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569671701836826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.36, y: 0.2, z: 0.44}
+  m_Center: {x: 0, y: 0.05, z: -0.57}
 --- !u!114 &114058034211758942
 MonoBehaviour:
   m_ObjectHideFlags: 1

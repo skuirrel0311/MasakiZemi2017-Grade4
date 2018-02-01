@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 114056083493922348}
   - component: {fileID: 114967273799165822}
   - component: {fileID: 114365762438933466}
+  - component: {fileID: 65844239018531548}
   m_Layer: 8
   m_Name: Otohime
   m_TagString: Actor
@@ -4236,6 +4237,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.039259266, y: 0.039259266, z: 0.10364447}
   m_Center: {x: 0.000000013504177, y: -0.022831306, z: 0.031407416}
+--- !u!65 &65844239018531548
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339078528799008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1, z: 1.2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!95 &95270443812684196
 Animator:
   serializedVersion: 3

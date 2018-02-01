@@ -703,9 +703,10 @@ GameObject:
   - component: {fileID: 4243581412867886}
   - component: {fileID: 33362947923584124}
   - component: {fileID: 23833961446246882}
-  m_Layer: 0
-  m_Name: norope_pile
-  m_TagString: Untagged
+  - component: {fileID: 114122694970736110}
+  m_Layer: 8
+  m_Name: Pile
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2370,7 +2371,7 @@ BoxCollider:
   m_GameObject: {fileID: 1290570002783634}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -2487,6 +2488,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114122694970736110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586144081948804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
 --- !u!114 &114146262424535054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2581,8 +2597,6 @@ MonoBehaviour:
   forHand: 0
   defaultOwner: {fileID: 114642407784995562}
   owner: {fileID: 0}
-  itemName: "\u65E5\u672C\u8A9E\u3067"
-  itemText: 
 --- !u!114 &114442873554819542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2613,8 +2627,6 @@ MonoBehaviour:
   forHand: 0
   defaultOwner: {fileID: 0}
   owner: {fileID: 0}
-  itemName: "\u65E5\u672C\u8A9E\u3067"
-  itemText: 
 --- !u!114 &114575170068588722
 MonoBehaviour:
   m_ObjectHideFlags: 1
