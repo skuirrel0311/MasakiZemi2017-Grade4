@@ -26,6 +26,9 @@ public class BasePage : MonoBehaviour
 
     public RuntimeAnimatorController controller = null;
 
+    [SerializeField]
+    HoloObject[] defaultDisableObjects = null;
+
     /// <summary>
     /// オクルージョン用のオブジェクト
     /// </summary>
@@ -114,8 +117,22 @@ public class BasePage : MonoBehaviour
     void ImportHoloObject()
     {
         HoloObjResetManager resetManager = HoloObjResetManager.I;
-        GameObject[] tempArray;
 
+        //非アクティブなオブジェクトを追加していく
+
+        for(int i = 0;i< defaultDisableObjects.Length;i++)
+        {
+            HoloObject obj = defaultDisableObjects[i];
+
+            resetManager.AddResetter(obj.Resetter);
+            objectList.Add(obj);
+            objectDictionary.Add(obj.name, obj);
+            if (obj.GetActorType != HoloObject.Type.Character) continue;
+            characterDictionary.Add((ActorName)Enum.Parse(typeof(ActorName), obj.name), (HoloCharacter)obj);
+        }
+
+        //アクティブなオブジェクトを追加していく
+        GameObject[] tempArray;
         tempArray = GameObject.FindGameObjectsWithTag("Actor");
         for (int i = 0; i < tempArray.Length; i++)
         {
@@ -200,21 +217,5 @@ public class BasePage : MonoBehaviour
         {
             objectList[i].gameObject.SetActive(active);
         }
-    }
-
-    public void RemoveMovableObject(string name)
-    {
-        //HoloObject obj;
-        //if (!objectDictionary.TryGetValue(name, out obj)) return;
-
-        //movableObjectList.Remove((HoloMovableObject)obj);
-
-        //if (!((HoloMovableObject)obj).IsGrounding) return;
-
-        //groundingObjectList.Remove((HoloGroundingObject)obj);
-
-        //if (obj.GetActorType != HoloObject.Type.Character) return;
-
-        //characterDictionary.Remove((ActorName)Enum.Parse(typeof(ActorName), obj.name));
     }
 }

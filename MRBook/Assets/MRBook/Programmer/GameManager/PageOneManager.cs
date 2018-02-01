@@ -5,21 +5,6 @@ using UnityEngine;
 
 public class PageOneManager : BasePage
 {
-    Action onReset;
-
-    [SerializeField]
-    GameObject chainBoat = null;
-
-    [SerializeField]
-    GameObject boat = null;
-
-    [SerializeField]
-    HoloPuppet urashima = null;
-
-    const string boatName = "Boat";
-    //const string pileName = "Pile";
-    const string ropeName = "Rope";
-
     ActorManager actorManager;
 
     public override void PageStart()
@@ -30,33 +15,23 @@ public class PageOneManager : BasePage
 
     public void ChainBoat()
     {
-        actorManager.SetEnableObject(boatName, false);
-        //actorManager.SetEnableObject(pileName, false);
-        actorManager.SetEnableObject(ropeName, false);
+        actorManager.SetEnableObject("Boat", false);
+        actorManager.SetEnableObject("Pile", false);
+        actorManager.SetEnableObject("Rope", false);
 
-        chainBoat.SetActive(true);
+        HoloObject chainBoat = actorManager.GetObject("AllBoat");
+        HoloCharacter urashima = actorManager.GetCharacter(ActorName.Urashima);
+
+        chainBoat.gameObject.SetActive(true);
         urashima.SetParent(chainBoat.transform);
         urashima.ChangeAnimationClip(MotionName.Lie, 0.0f);
-
-        FlagManager.I.SetFlag("IsChainRope", null, true);
-
-        onReset += () =>
-        {
-            actorManager.SetEnableObject(boatName, true);
-            //actorManager.SetEnableObject(pileName, true);
-            actorManager.SetEnableObject(ropeName, true);
-            urashima.SetParent(boat.transform);
-            chainBoat.SetActive(false);
-            FlagManager.I.SetFlag("IsChainRope", null, false);
-        };
     }
-
 
     public override void ResetPage()
     {
-        if (onReset != null) onReset.Invoke();
-        onReset = null;
         base.ResetPage();
+        HoloCharacter urashima = actorManager.GetCharacter(ActorName.Urashima);
+        HoloObject boat = actorManager.GetObject("Boat");
+        urashima.SetParent(boat.transform);
     }
-
 }
