@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 /// <summary>
 /// アイテムがエリアに配置された時にイベントを発生させる
 /// </summary>
@@ -13,9 +12,19 @@ public class EventAreaItemSaucer : BaseItemSaucer
     UnityEvent onSetItem = null;
 
     [SerializeField]
-    string[] acceptObjectNames = null;
+    string acceptObjectName = "";
 
     public override void SetItem(HoloItem item, bool showParticle = true)
+    {
+        SetObject(showParticle);
+    }
+
+    public virtual void SetCharacter(HoloCharacter character, bool showParticle = true)
+    {
+        SetObject(showParticle);
+    }
+
+    void SetObject(bool showParticle)
     {
         if (onSetItem != null) onSetItem.Invoke();
         if (showParticle)
@@ -27,11 +36,11 @@ public class EventAreaItemSaucer : BaseItemSaucer
 
     public override bool CheckCanHaveItem(HoloItem item)
     {
-        for(int i = 0;i< acceptObjectNames.Length;i++)
-        {
-            if (item.name == acceptObjectNames[i]) return true;
-        }
+        return item.GetName() == acceptObjectName;
+    }
 
-        return false;
+    public bool CheckCanHaveItem(HoloCharacter character)
+    {
+        return character.GetName() == acceptObjectName;
     }
 }

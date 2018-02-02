@@ -5,7 +5,7 @@ using HoloToolkit.Unity.InputModule;
 
 public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 {
-    public enum HitObjType { None, Book, Character, OtherObj }
+    public enum HitObjType { None, Book, Character, EventArea, OtherObj }
     public enum MakerType { None, Normal, DontPut, Happen }
 
     protected HoloObject owner;

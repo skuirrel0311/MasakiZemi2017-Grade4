@@ -20,6 +20,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     Vector3 downVec = Vector3.down;
 
     const int bookLayer = 11;
+    const int eventAreaLayer = 13;
 
     float maxDistance;
 
@@ -144,6 +145,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         if (!isHit) return BaseObjInputHandler.HitObjType.None;
 
         if (hit.transform.gameObject.layer == bookLayer) return BaseObjInputHandler.HitObjType.Book;
+        if (hit.transform.gameObject.layer == eventAreaLayer) return BaseObjInputHandler.HitObjType.EventArea;
 
         HoloObject obj = hit.transform.GetComponent<HoloObject>();
 
