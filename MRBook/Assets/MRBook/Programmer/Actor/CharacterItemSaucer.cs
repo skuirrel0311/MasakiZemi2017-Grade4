@@ -11,12 +11,25 @@ public class BaseItemSaucer : MonoBehaviour
 
     protected BaseItemSaucerBehaviour behaviour = null;
 
+    [System.NonSerialized]
+    public bool hasItem = false;
+
     public virtual void Init(HoloObject owner)
     {
         this.owner = owner;
+
+        owner.Resetter.AddBehaviour(new ResetActionBehaviour(owner, OnReset));
     }
 
-    public virtual void SetItem(HoloItem item, bool showParticle = true) { }
+    public virtual void OnReset()
+    {
+        hasItem = false;
+    }
+
+    public virtual void SetItem(HoloItem item, bool showParticle = true)
+    {
+        hasItem = true;
+    }
     public virtual bool CheckCanHaveItem(HoloItem item) { return false; }
     /// <summary>
     /// 持っている全てのアイテムを捨てる
@@ -45,7 +58,7 @@ public class CharacterItemSaucer : BaseItemSaucer
     //アルコールを摂取したか？
     public bool IsGetAlcohol { get; private set; }
     const string AlcoholItemName = "Sakabin";
-
+    
     public bool HasItem_Left { get { return LeftHandItem != null; } }
     public bool HasItem_Right { get { return RightHandItem != null; } }
 
@@ -164,6 +177,8 @@ public class CharacterItemSaucer : BaseItemSaucer
         Debug.Log(item.GetName());
         
         if(changeAnimation) ownerCharacter.ChangeAnimationClip(itemData.motionName, 0.0f);
+
+        base.SetItem(item, showParticle);
     }
 
     /// <summary>

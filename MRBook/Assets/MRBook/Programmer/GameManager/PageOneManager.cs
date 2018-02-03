@@ -7,6 +7,9 @@ public class PageOneManager : BasePage
 {
     ActorManager actorManager;
 
+    [SerializeField]
+    Transform ActorContainer = null;
+
     public override void PageStart()
     {
         base.PageStart();
@@ -15,23 +18,39 @@ public class PageOneManager : BasePage
 
     public void ChainBoat()
     {
+        //ボートのモデルを入れ替える
         actorManager.SetEnableObject("Boat", false);
         actorManager.SetEnableObject("Pile", false);
         actorManager.SetEnableObject("Rope", false);
 
-        HoloObject chainBoat = actorManager.GetObject("AllBoat");
+        actorManager.SetEnableObject("AllBoat", true);
+    }
+
+    public void GameStart()
+    {
+        bool chainBoat = FlagManager.I.GetFlag("IsChainRope", 0, false);
+
+        Transform parent;
+
+        if (chainBoat)
+        {
+            parent = actorManager.GetObject("AllBoat").transform;
+        }
+        else
+        {
+            parent = actorManager.GetObject("Boat").transform;
+        }
+
         HoloCharacter urashima = actorManager.GetCharacter(ActorName.Urashima);
 
-        chainBoat.gameObject.SetActive(true);
-        urashima.SetParent(chainBoat.transform);
-        urashima.ChangeAnimationClip(MotionName.Lie, 0.0f);
+        Debug.Log("set parent");
+        urashima.SetParent(parent);
     }
 
     public override void ResetPage()
     {
-        base.ResetPage();
         HoloCharacter urashima = actorManager.GetCharacter(ActorName.Urashima);
-        HoloObject boat = actorManager.GetObject("Boat");
-        urashima.SetParent(boat.transform);
+        urashima.SetParent(ActorContainer);
+        base.ResetPage();
     }
 }

@@ -1,22 +1,47 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using KKUtilities;
 
 public class StartPoint : EventAreaItemSaucer
 {
     [SerializeField]
-    string parentName = "";
+    UnityEvent onGameStart = null;
     [SerializeField]
     MotionName motionName = MotionName.Wait;
 
+    [SerializeField]
+    string mainCharacterName = "Urashima";
+
     public override void SetCharacter(HoloCharacter character, bool showParticle = true)
     {
-        HoloObject parent = ActorManager.I.GetObject(parentName);
+        if(character.GetName() == mainCharacterName)
+        {
+            GameStart(character);
+            return;
+        }
 
-        character.transform.parent = parent.transform;
-        character.transform.localPosition = Vector3.zero;
+        base.SetCharacter(character, showParticle);
+    }
+
+    void GameStart(HoloCharacter character)
+    {
+        if (onGameStart != null) onGameStart.Invoke();
+
         character.ChangeAnimationClip(motionName, 0.0f);
+        character.transform.position = transform.position;
+        character.transform.rotation = transform.rotation;
         
-        MainSceneManager.I.Play();
+        AkSoundEngine.PostEvent("Equip", gameObject);
+        ParticleManager.I.Play("Doron", owner.transform.position, Quaternion.identity);
+
+        Utilities.Delay(0.2f, ()=> MainSceneManager.I.Play(), this);
+    }
+
+    protected override bool CheckCanHaveObject(HoloObject obj)
+    {
+        if (obj.GetName() == mainCharacterName) return true;
+        return base.CheckCanHaveObject(obj);
     }
 }

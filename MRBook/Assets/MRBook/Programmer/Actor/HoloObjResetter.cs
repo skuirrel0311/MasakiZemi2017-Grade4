@@ -249,10 +249,18 @@ public class CharacterResetBehaviour : AbstractHoloObjResetBehaviour
 public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
 {
     HoloPuppet ownerPuppet;
+    Vector3 defaultRootPosition;
+    Quaternion defaultRootRotation;
+    Transform defaultRootParent;
+
     public PuppetResetBehaviour(HoloObject owner)
         : base(owner)
     {
         ownerPuppet = (HoloPuppet)owner;
+
+        defaultRootPosition = ownerPuppet.RootObject.transform.position;
+        defaultRootRotation = ownerPuppet.RootObject.transform.rotation;
+        defaultRootParent = ownerPuppet.RootObject.transform.parent;
     }
 
     public override void OnDisable()
@@ -267,6 +275,9 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
 
     public override void OnLocationReset()
     {
+        ownerPuppet.RootObject.transform.parent = defaultRootParent;
+        ownerPuppet.RootObject.transform.position = defaultRootPosition;
+        ownerPuppet.RootObject.transform.rotation = defaultRootRotation;
         ownerPuppet.RootObject.SetActive(true);
     }
 
@@ -291,6 +302,25 @@ public class SecretBoxResetBehaviour : AbstractHoloObjResetBehaviour
         Debug.Log("secretBox resetter");
         ownerItemSaucer.DumpItem(false);
     }
+    public override void OnEnable() { }
+    public override void OnLocationReset() { }
+}
+
+public class ResetActionBehaviour : AbstractHoloObjResetBehaviour
+{
+    Action onReset;
+
+    public ResetActionBehaviour(HoloObject owner, Action action)
+        :base(owner)
+    {
+        onReset = action;
+    }
+
+    public override void OnDisable()
+    {
+        if(onReset != null) onReset.Invoke();
+    }
+
     public override void OnEnable() { }
     public override void OnLocationReset() { }
 }

@@ -47,7 +47,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         {
             canClick = true;
         };
-        
+
     }
 
     protected override void StartDragging()
@@ -116,18 +116,16 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
         HoloObject hitObj = GetHitHoloObject(underObj, isHitObject);
         BaseObjInputHandler.HitObjType hitObjType = GetHitObjType(underObj, isHitObject);
         BaseObjInputHandler.MakerType makerType = targetMovableObject.InputHandler.OnDragUpdate(hitObjType, hitObj);
-        bool changeParent = true;
-        if (isHoldItem && hitObj != null && hitObj.CheckCanHaveItem((HoloItem)targetMovableObject))
-        {
-            //アイテムを持たせたのに親を変更してしまうとまずいので省く
-            changeParent = false;
-        }
-
+        
         targetMovableObject.InputHandler.OnDragEnd(hitObjType, hitObj);
         underTargetMaker.SetMakerEnable(false);
-        
         isHoldItem = false;
-
+        bool changeParent = true;
+        //アイテムを持たせたのに親を変更してしまうとまずいので省く
+        if (hitObj != null && hitObj.ItemSaucer != null && hitObj.ItemSaucer.hasItem)
+        {
+            changeParent = false;
+        }
         Disable(changeParent);
     }
 

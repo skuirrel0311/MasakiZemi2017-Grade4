@@ -19,6 +19,7 @@ public class SecretBoxItemSaucer : BaseItemSaucer
     public override void SetItem(HoloItem item, bool showParticle = true)
     {
         behaviour.OnSetItem(item, showParticle);
+        base.SetItem(item, showParticle);
     }
 
     public override bool CheckCanHaveItem(HoloItem item)
