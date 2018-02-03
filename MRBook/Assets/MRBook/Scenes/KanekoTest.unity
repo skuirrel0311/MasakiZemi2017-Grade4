@@ -145,12 +145,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &13802081 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114354424688575542, guid: ba5bb98dd01fad14b8ca0f06aad71488,
-    type: 2}
-  m_PrefabInternal: {fileID: 683610189}
-  m_Script: {fileID: 11500000, guid: 8d9d2689ef29c0a479dd5b6328050203, type: 3}
 --- !u!4 &35744108 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4158352989201298, guid: 4ced51b64b6b6b04ea6dd5778461ecde,
@@ -901,15 +895,14 @@ MonoBehaviour:
   lifePoint: 3
   pageIndex: 4
   controller: {fileID: 9100000, guid: 90a6fe22bae0da34b8b11f779d9e952a, type: 2}
-  defaultDisableObjects: []
+  defaultDisableObjects:
+  - {fileID: 48023140}
+  - {fileID: 700417042}
+  - {fileID: 2143265040}
   bookObjects:
   - {fileID: 691407433}
   - {fileID: 1928827437}
   objectList: []
-  urashima: {fileID: 13802081}
-  turtle: {fileID: 48023140}
-  secretBox_Box: {fileID: 700417042}
-  secretBox_Lid: {fileID: 2143265040}
 --- !u!4 &629083180
 Transform:
   m_ObjectHideFlags: 0

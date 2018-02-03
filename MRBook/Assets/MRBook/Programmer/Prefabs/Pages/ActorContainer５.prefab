@@ -82,13 +82,16 @@ GameObject:
   - component: {fileID: 95787881924319150}
   - component: {fileID: 114895844872386832}
   - component: {fileID: 114354424688575542}
+  - component: {fileID: 65467027707050734}
+  - component: {fileID: 114929157363995076}
+  - component: {fileID: 195552400939306226}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1034077717147640
 GameObject:
   m_ObjectHideFlags: 1
@@ -1978,15 +1981,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033706001202406}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.616, y: 0, z: -0.1359}
-  m_LocalScale: {x: 0.20000012, y: 0.2, z: 0.20000012}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.0168831, y: 0.0219, z: -0.18741423}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4594252141042650}
   - {fileID: 4463089760775866}
   m_Father: {fileID: 4861714824126278}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4694841723168852
 Transform:
   m_ObjectHideFlags: 1
@@ -2340,6 +2343,18 @@ Transform:
   m_Father: {fileID: 4338539768788394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65467027707050734
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033706001202406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27968675, y: 0.87118024, z: 0.297173}
+  m_Center: {x: 0.006902963, y: 0.4789844, z: -0.027194448}
 --- !u!95 &95204134262977394
 Animator:
   serializedVersion: 3
@@ -2434,7 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d2689ef29c0a479dd5b6328050203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMovable: 0
+  isMovable: 1
   canHaveItem: 1
   inPlayLayer: 8
   overrideName: 
@@ -2456,6 +2471,18 @@ MonoBehaviour:
     type: 2}
   leftHandItemDataList: {fileID: 11400000, guid: dd292f9436894c3448d9db428eb50899,
     type: 2}
+--- !u!114 &114929157363995076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033706001202406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec17bb3d4c3264bad5313e633e2258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!137 &137136392776606324
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2657,3 +2684,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000014901161, y: 0.067386985, z: -0.10325697}
     m_Extent: {x: 0.3360783, y: 0.44399798, z: 0.1993573}
   m_DirtyAABB: 0
+--- !u!195 &195552400939306226
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033706001202406}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 0.1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
