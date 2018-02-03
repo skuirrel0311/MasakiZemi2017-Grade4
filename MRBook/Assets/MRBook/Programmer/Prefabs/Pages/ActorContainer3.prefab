@@ -1270,9 +1270,9 @@ GameObject:
   - component: {fileID: 65791510823953706}
   - component: {fileID: 114886564772464168}
   - component: {fileID: 114182044512930264}
-  - component: {fileID: 114971027235467004}
   - component: {fileID: 114364728756039926}
   - component: {fileID: 65940426136515210}
+  - component: {fileID: 114143411434184188}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -5923,8 +5923,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1520109526768406}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.446, y: 0, z: -0.3493}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.0168831, y: 0.0219, z: -0.18741423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4872191729929958}
@@ -5932,7 +5932,7 @@ Transform:
   - {fileID: 4297225859462864}
   m_Father: {fileID: 4661861731543106}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4538029399799868
 Transform:
   m_ObjectHideFlags: 1
@@ -8216,6 +8216,18 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   defaultMotionName: 0
+--- !u!114 &114143411434184188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1299492962281512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec17bb3d4c3264bad5313e633e2258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!114 &114146197812605668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8986,17 +8998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
---- !u!114 &114971027235467004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1299492962281512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &135547070071923632
 SphereCollider:
   m_ObjectHideFlags: 1
