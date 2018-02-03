@@ -840,8 +840,8 @@ GameObject:
   - component: {fileID: 114477754031667722}
   - component: {fileID: 65999911279220542}
   - component: {fileID: 114468090093941938}
-  - component: {fileID: 114128506127357384}
   - component: {fileID: 114777440066303828}
+  - component: {fileID: 114334756379025246}
   m_Layer: 8
   m_Name: Urashima
   m_TagString: Actor
@@ -1735,8 +1735,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383225348634682}
-  m_LocalRotation: {x: 0, y: -0.42261827, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0.0575, y: 0, z: -0.1327}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.0168831, y: 0.0219, z: -0.18741423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4532027913483784}
@@ -1744,7 +1744,7 @@ Transform:
   - {fileID: 4979497315060040}
   m_Father: {fileID: 4580816187249182}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4160498473195014
 Transform:
   m_ObjectHideFlags: 1
@@ -3435,17 +3435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5c3636cf121074aaf25d1ff6b208f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114128506127357384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1444457527636368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a74b3dabab9c54da34c0c8d9dd7a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114131130282092878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3783,6 +3772,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 0.2, y: 0.2, z: 0.2}
+--- !u!114 &114334756379025246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444457527636368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec17bb3d4c3264bad5313e633e2258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
 --- !u!114 &114436367578964728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3831,7 +3832,7 @@ MonoBehaviour:
   canHaveItem: 1
   inPlayLayer: 8
   overrideName: 
-  defaultMotionName: 11
+  defaultMotionName: 0
   m_behavirour: {fileID: 114763983923540624}
   rootObj: {fileID: 1383225348634682}
   m_puppet: {fileID: 114174417022482036}
