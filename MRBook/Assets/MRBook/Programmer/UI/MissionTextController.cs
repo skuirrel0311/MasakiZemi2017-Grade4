@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using KKUtilities;
 
@@ -12,18 +11,25 @@ public class MissionTextController : BaseManager<MissionTextController>
     Transform mainCameraTransform;
 
     [SerializeField]
+    float trackTime = 5.0f;
+
+    [SerializeField]
     BodyLocked bodyLoacked = null;
 
     [SerializeField]
-    GameObject[] missionTexts = null;
+    GameObject[] storyTextWindows = null;
 
     [SerializeField]
-    HoloText[] firstTexts = null;
-    [SerializeField]
-    HoloText[] endTexts = null;
+    HoloText[] missionTexts = null;
 
+    [SerializeField]
+    HoloText firstText = null;
+    [SerializeField]
+    HoloText endText = null;
     [SerializeField]
     HoloText storyText = null;
+    [SerializeField]
+    HoloText hintText = null;
 
     protected override void Start()
     {
@@ -33,22 +39,16 @@ public class MissionTextController : BaseManager<MissionTextController>
 
         sceneManager.OnPageLoaded += (page) =>
         {
-            endTexts[(int)Mode.Track].gameObject.SetActive(false);
             ChangeMode(Mode.Track);
 
-            string firstText = page.storyFirstText;
-            string endText = page.storyEndText;
+            missionTexts[(int)Mode.Statics].CurrentText = page.missionText;
+            missionTexts[(int)Mode.Track].CurrentText = page.missionText;
+            firstText.CurrentText = page.storyFirstText;
+            endText.CurrentText = page.storyEndText;
 
-            SetText(firstText, endText);
             ResetText();
-
-            Utilities.Delay(1.0f, () =>
-            {
-                endTexts[(int)Mode.Track].gameObject.SetActive(true);
-            }, this);
-
-
-            Utilities.Delay(5.0f, () =>
+            
+            Utilities.Delay(trackTime, () =>
             {
                 ChangeMode(Mode.Statics);
             }, this);
@@ -56,7 +56,8 @@ public class MissionTextController : BaseManager<MissionTextController>
 
         sceneManager.OnPlayPage += () =>
         {
-            endTexts[1].gameObject.SetActive(false);
+            endText.gameObject.SetActive(false);
+            missionTexts[(int)Mode.Statics].gameObject.SetActive(false);
         };
 
         sceneManager.OnReset += () =>
@@ -75,55 +76,43 @@ public class MissionTextController : BaseManager<MissionTextController>
         }
         else if (mode == Mode.Track)
         {
-            missionTexts[1].SetActive(false);
-            missionTexts[0].SetActive(true);
+            storyTextWindows[(int)Mode.Statics].SetActive(false);
+            storyTextWindows[(int)Mode.Track].SetActive(true);
             bodyLoacked.enabled = true;
         }
     }
 
     IEnumerator MoveWindow()
     {
-        Vector3 firstPosition = missionTexts[0].transform.position;
-        Quaternion firstRotation = missionTexts[0].transform.rotation;
-        Vector3 endPosition = missionTexts[1].transform.position;
-        Quaternion endRotation = missionTexts[1].transform.rotation;
+        Vector3 firstPosition = storyTextWindows[(int)Mode.Track].transform.position;
+        Quaternion firstRotation = storyTextWindows[(int)Mode.Track].transform.rotation;
+        Vector3 endPosition = storyTextWindows[(int)Mode.Statics].transform.position;
+        Quaternion endRotation = storyTextWindows[(int)Mode.Statics].transform.rotation;
 
         bodyLoacked.enabled = false;
 
         yield return StartCoroutine(Utilities.FloatLerp(1.0f, (t) =>
         {
-            missionTexts[0].transform.SetPositionAndRotation(
+            storyTextWindows[(int)Mode.Track].transform.SetPositionAndRotation(
                 Vector3.Lerp(firstPosition, endPosition, t),
                 Quaternion.Lerp(firstRotation, endRotation, t)
             );
         }));
 
-        missionTexts[0].SetActive(false);
-        missionTexts[1].SetActive(true);
-    }
-
-    void SetText(string first, string end)
-    {
-        first = SetNewLine(first);
-        end = SetNewLine(end);
-
-        for (int i = 0; i < modeNum; i++)
-        {
-            firstTexts[i].CurrentText = first;
-            endTexts[i].CurrentText = end;
-        }
+        //todo:きちんとしたアニメーションを導入する
+        storyTextWindows[(int)Mode.Track].SetActive(false);
+        storyTextWindows[(int)Mode.Statics].SetActive(true);
     }
 
     void ResetText()
     {
-        endTexts[1].gameObject.SetActive(true);
+        endText.gameObject.SetActive(true);
+        missionTexts[(int)Mode.Statics].gameObject.SetActive(true);
         storyText.CurrentText = "";
     }
 
     public void AddText(string text)
     {
-        text = SetNewLine(text);
-
         if (string.IsNullOrEmpty(storyText.CurrentText))
         {
             storyText.CurrentText = text;
@@ -132,19 +121,5 @@ public class MissionTextController : BaseManager<MissionTextController>
         {
             storyText.CurrentText = storyText.CurrentText + '\n' + text;
         }
-    }
-
-    string SetNewLine(string text)
-    {
-        string[] texts = text.Split(',');
-
-        text = texts[0];
-
-        for (int i = 1; i < texts.Length; i++)
-        {
-            text += '\n' + texts[i];
-        }
-
-        return text;
     }
 }
