@@ -77,7 +77,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
     {
         base.Update();
 
-        if (canDragging && !isDragging)
+        if (canDragging && !IsDragging)
         {
             Vector3 actorPosition = targetObject.transform.position;
             transform.position = actorPosition + offset;

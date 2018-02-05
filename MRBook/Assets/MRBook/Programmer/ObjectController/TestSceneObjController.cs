@@ -38,13 +38,13 @@ public class TestSceneObjController : MainSceneObjController
         //右クリック長押し
         if (Input.GetMouseButton(0))
         {
-            if (!isDragging)
+            if (!IsDragging)
             {
                 m_draggingTime += Time.deltaTime;
 
                 if (m_draggingTime > minDragTime)
                 {
-                    isDragging = true;
+                    IsDragging = true;
                     if(canDragging) StartOperation();
                 }
             }
@@ -56,7 +56,7 @@ public class TestSceneObjController : MainSceneObjController
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!isDragging)
+            if (!IsDragging)
             {
                 //短いドラッグだった
                 OnTap();
@@ -66,7 +66,7 @@ public class TestSceneObjController : MainSceneObjController
                 if (canDragging) EndOperation();
             }
 
-            isDragging = false;
+            IsDragging = false;
         }
     }
 

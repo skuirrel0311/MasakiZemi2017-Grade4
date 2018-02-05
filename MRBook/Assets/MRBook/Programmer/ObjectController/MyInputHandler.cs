@@ -4,7 +4,7 @@ using HoloToolkit.Unity.InputModule;
 
 public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
 {
-    protected bool isDragging = false;
+    public bool IsDragging { get; protected set; }
 
     protected IInputSource currentInputSource = null;
     protected uint currentInputSourceID;
@@ -31,7 +31,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     }
     protected virtual void Update()
     {
-        if (!isDragging) return;
+        if (!IsDragging) return;
 
         UpdateDragging();
     }
@@ -41,12 +41,12 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
         //入力イベントの対象を固定
         InputManager.Instance.PushModalInputHandler(gameObject);
 
-        isDragging = true;
+        IsDragging = true;
     }
     protected virtual void UpdateDragging() { }
     protected virtual void StopDragging()
     {
-        isDragging = false;
+        IsDragging = false;
         //固定の解除
         InputManager.Instance.PopModalInputHandler();
         currentInputSource = null;
@@ -55,7 +55,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     //指が倒された
     public void OnInputDown(InputEventData eventData)
     {
-        if (isDragging) return;
+        if (IsDragging) return;
 
         //手の位置が検出できない場合は終了
         if (!eventData.InputSource.SupportsInputInfo(eventData.SourceId, SupportedInputInfo.Position)) return;
@@ -72,7 +72,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
         //フィルター
         if (currentInputSource == null) return;
         if (eventData.SourceId != currentInputSourceID) return;
-        if (!isDragging) return;
+        if (!IsDragging) return;
 
         StopDragging();
     }
@@ -86,7 +86,7 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
         //フィルター
         if (currentInputSource == null) return;
         if (eventData.SourceId != currentInputSourceID) return;
-        if (!isDragging) return;
+        if (!IsDragging) return;
 
         StopDragging();
     }

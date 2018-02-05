@@ -6,7 +6,7 @@ public class ItemText : MonoBehaviour
 {
     [SerializeField]
     MyCursor cursor = null;
-    
+
     [SerializeField]
     HoloText text = null;
 
@@ -22,7 +22,7 @@ public class ItemText : MonoBehaviour
     {
         actorManager = ActorManager.I;
         mainCamera = Camera.main;
-        if(cursor != null) cursor.onFocuesdObjectChanged += OnFocuesdObjectChanged;
+        if (cursor != null) cursor.onFocuesdObjectChanged += OnFocuesdObjectChanged;
     }
 
 #if UNITY_EDITOR
@@ -51,13 +51,19 @@ public class ItemText : MonoBehaviour
 
     void OnFocuesdObjectChanged(GameObject preObj, GameObject newObj)
     {
+        if (!MyObjControllerByBoundingBox.I.canClick || MyObjControllerByBoundingBox.I.IsDragging)
+        {
+            text.gameObject.SetActive(false);
+            return;
+        }
+
         if (newObj == null)
         {
             text.gameObject.SetActive(false);
             return;
         }
 
-        if(newObj.tag != "Actor") return;
+        if (newObj.tag != "Actor") return;
 
 
         HoloObject obj = actorManager.GetObject(newObj.name);
@@ -86,4 +92,6 @@ public class ItemText : MonoBehaviour
         text.CurrentText = item.nameText;
         text.gameObject.SetActive(true);
     }
+
+
 }
