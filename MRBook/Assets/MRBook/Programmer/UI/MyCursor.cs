@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine;
@@ -39,6 +39,8 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
 
     [SerializeField]
     float resetSpeed = 0.2f;
+
+    public Action<GameObject, GameObject> onFocuesdObjectChanged;
 
     protected override void Start()
     {
@@ -97,6 +99,7 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
     protected override void OnFocusedObjectChanged(GameObject previousObject, GameObject newObject)
     {
         base.OnFocusedObjectChanged(previousObject, newObject);
+        if (onFocuesdObjectChanged != null) onFocuesdObjectChanged.Invoke(previousObject, newObject);
 
         if ((isRecognizedPosCon || isRecognizedRotCon) && isRecognizedHold) return;
 

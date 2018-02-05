@@ -9,7 +9,13 @@ public class HoloItem : HoloObject
 
     public override Type GetActorType { get { return Type.Item; } }
     protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
-    
+
+    //見つめてると表示されるテキスト（日本語）
+    public string nameText = "";
+    //アイテムの説明テキスト
+    [Multiline]
+    public string explanatoryText = "";
+
     [SerializeField]
     Hand forHand = Hand.Right;
     /// <summary>
