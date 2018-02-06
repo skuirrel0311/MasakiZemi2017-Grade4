@@ -16,7 +16,23 @@ public class TestSceneManager : MainSceneManager
             PageResultManager.I.ShowResult();
         }
 
-        if (Input.GetKeyDown(KeyCode.N)) ChangePage(currentPageIndex + 1);
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            DisableCurrentPage();
+            ChangePage(currentPageIndex + 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (CurrentState == GameState.NextWait)
+            {
+                DisableCurrentPage();
+            }
+            else if (CurrentState == GameState.Next)
+            {
+                ChangePage(currentPageIndex + 1);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.B)) ChangePage(currentPageIndex - 1);
 

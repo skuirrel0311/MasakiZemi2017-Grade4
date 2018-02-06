@@ -8,10 +8,10 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 {
     public enum GameState
     {
-        Wait,   //再生待機中
-        Play,   //再生中
-        Next,   //ページが捲られるまで待機
-        Back    //ページをさかのぼっている状態
+        Wait,       //再生待機中
+        Play,       //再生中
+        NextWait,   //成功後待機
+        Next        //ホログラムが消された（次のページへ進む準備が出来た）
     }
 
     /* イベント */
@@ -32,7 +32,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     /// ページがリセットされたとき
     /// </summary>
     public Action OnReset;
-    
+
     /* メンバ */
     GameState currentState = GameState.Wait;
     public GameState CurrentState
@@ -85,7 +85,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         base.Awake();
         pageIndex = -1;
         m_Animator = GetComponent<Animator>();
-        
+
         SpatialMappingManager spatialMappingManager = SpatialMappingManager.Instance;
 
         if (spatialMappingManager != null)
@@ -132,7 +132,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         CurrentState = GameState.Play;
 
         //NotificationManager.I.ShowMessage("再生開始");
-        
+
         if (OnPlayPage != null) OnPlayPage();
 
         m_Animator.SetBool("IsStart", true);
@@ -148,13 +148,13 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         if (OnPlayEnd != null) OnPlayEnd.Invoke(success);
         if (success)
         {
-            CurrentState = GameState.Next;
+            CurrentState = GameState.NextWait;
             AkSoundEngine.PostEvent("Clear_" + (currentPageIndex + 1) + "p", gameObject);
         }
         else
         {
             CurrentState = GameState.Wait;
-            
+
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
         }
 
@@ -163,12 +163,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             //Utilities.Delay(0.2f, () => ResetPage(), this);
         }
     }
-    
+
     public virtual void GameStart()
     {
         Transform t = BookPositionModifier.I.bookTransform;
-        
-        for(int i = 0;i< pages.Length;i++)
+
+        for (int i = 0; i < pages.Length; i++)
         {
             pages[i].PageLock(t.position, t.rotation);
         }
@@ -186,12 +186,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
     public void SetBookPositionOffset(Vector3 movement)
     {
         Transform t = BookPositionModifier.I.bookTransform;
-        
+
         for (int i = 0; i < pages.Length; i++)
         {
             pages[i].SetTransform(t);
         }
-        
+
         uiContainer.SetPositionAndRotation(t.position, t.rotation);
         NotificationManager.I.SetDefaultTransform(t.position, t.rotation);
     }
@@ -241,20 +241,38 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].ResetPage();
     }
 
+    public void DisableCurrentPage()
+    {
+        //前のページは消す
+
+        MissionTextController.I.Disable();
+        PageResultManager.I.Hide();
+        Fader.I.FadeIn(() =>
+        {
+            pages[currentPageIndex].gameObject.SetActive(false);
+        });
+
+        CurrentState = GameState.Next;
+    }
+
     /// <summary>
     /// 指定されたページへ遷移する(実際のページの遷移はここ)
     /// </summary>
     /// <param name="isBack">前のページか？</param>
     protected virtual void SetPage(int index)
     {
-        //前のページは消す
-        pages[currentPageIndex].gameObject.SetActive(false);
-        PageResultManager.I.Hide();
         //ページを切り替える
         currentPageIndex = index;
-
-        //表示するtodo:エフェクト
         pages[currentPageIndex].gameObject.SetActive(true);
+
+        Fader.I.FadeOut(() =>
+        {
+            ShowNextPage();
+        });
+    }
+
+    void ShowNextPage()
+    {
         pages[currentPageIndex].PageStart();
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
@@ -265,7 +283,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             Debug.Log("on page loaded");
             MyNavMeshBuilder.CreateNavMesh();
             if (OnPageLoaded != null) OnPageLoaded.Invoke(pages[currentPageIndex]);
-        },this);
+        }, this);
     }
 
     public void GameEnd()

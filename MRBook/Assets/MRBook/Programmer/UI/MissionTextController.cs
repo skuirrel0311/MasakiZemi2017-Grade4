@@ -82,6 +82,12 @@ public class MissionTextController : BaseManager<MissionTextController>
         }
     }
 
+    public void Disable()
+    {
+        storyTextWindows[0].SetActive(false);
+        storyTextWindows[1].SetActive(false);
+    }
+
     IEnumerator MoveWindow()
     {
         Vector3 firstPosition = storyTextWindows[(int)Mode.Track].transform.position;

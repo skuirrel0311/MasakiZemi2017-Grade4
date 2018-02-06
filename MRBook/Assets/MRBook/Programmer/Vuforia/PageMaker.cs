@@ -10,28 +10,38 @@ public class PageMaker : MyTracableEventHandler
     /// </summary>
     [SerializeField]
     int pageIndex = 0;
-    MainSceneManager gameManager;
+    MainSceneManager sceneManager;
 
     protected override void Start()
     {
         base.Start();
-        gameManager = MainSceneManager.I;
+        sceneManager = MainSceneManager.I;
     }
 
     protected override void OnTrackingFound()
     {
-        //ページに遷移するべきか？
-        if (gameManager.CurrentState != MainSceneManager.GameState.Next) return;
-        //意味のない移動はしない
-        if (gameManager.currentPageIndex == pageIndex) return;
-
-        NotificationManager.I.ShowMessage("page" + (pageIndex + 1) + "に移動します");
-
-        Utilities.Delay(2.0f, () =>
+        if (sceneManager.CurrentState == MainSceneManager.GameState.NextWait)
         {
-            gameManager.ChangePage(pageIndex);
-        }, this);
 
+            if (sceneManager.currentPageIndex != pageIndex)
+            {
+                //見つけたいマーカーじゃなかった（まずいかも）
+                //todo:見つけたいページの次のマーカーを見つけた場合もホログラムを消す
+                return;
+            }
+
+            sceneManager.DisableCurrentPage();
+        }
+        else if(sceneManager.CurrentState == MainSceneManager.GameState.Next)
+        {
+            if (sceneManager.currentPageIndex + 1 != pageIndex)
+            {
+                //見つけたいマーカーじゃなかった（まずいかも）
+                return;
+            }
+
+            sceneManager.ChangePage(pageIndex);
+        }
     }
 
     //見失った時にすることはない
