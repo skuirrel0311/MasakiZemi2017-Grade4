@@ -17,8 +17,8 @@ public class Fader : BaseManager<Fader>
     BookPositionModifier positionModifier;
 
     public enum State { Wait, FadeIn, FadeOut }
-    //public State CurrentState;
-    public State CurrentState { get; private set; }
+    public State CurrentState;
+    //public State CurrentState { get; private set; }
 
     protected override void Start()
     {

@@ -11,7 +11,7 @@ public class PageMaker : MyTracableEventHandler
     [SerializeField]
     int pageIndex = 0;
     MainSceneManager sceneManager;
-
+    [SerializeField]
     bool isBooking = false;
 
     protected override void Start()
@@ -22,6 +22,8 @@ public class PageMaker : MyTracableEventHandler
 
     protected override void OnTrackingFound()
     {
+        Debug.Log("tracking");
+
         if (isBooking) return;
 
         if (sceneManager.CurrentState == MainSceneManager.GameState.NextWait)
@@ -43,8 +45,7 @@ public class PageMaker : MyTracableEventHandler
         }
         else if (sceneManager.CurrentState == MainSceneManager.GameState.Next)
         {
-            if (sceneManager.currentPageIndex != pageIndex) return;
-
+            if (sceneManager.currentPageIndex == pageIndex) return;
             //まだフェードイン中だった
             if (Fader.I.CurrentState == Fader.State.FadeIn)
             {
