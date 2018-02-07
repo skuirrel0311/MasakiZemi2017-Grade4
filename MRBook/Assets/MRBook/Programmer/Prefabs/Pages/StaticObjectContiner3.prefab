@@ -1007,9 +1007,10 @@ GameObject:
   - component: {fileID: 4056135166437810}
   - component: {fileID: 33563903650216866}
   - component: {fileID: 23261154263703608}
-  m_Layer: 0
+  - component: {fileID: 114632596446430026}
+  m_Layer: 8
   m_Name: haruaki
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1214,9 +1215,10 @@ GameObject:
   - component: {fileID: 4247594149424068}
   - component: {fileID: 33263833808185354}
   - component: {fileID: 23712040795749130}
-  m_Layer: 0
+  - component: {fileID: 114910678194337326}
+  m_Layer: 8
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1828,9 +1830,10 @@ GameObject:
   - component: {fileID: 4333467308012292}
   - component: {fileID: 33219042976163430}
   - component: {fileID: 23328413042912140}
-  m_Layer: 0
+  - component: {fileID: 114882167616683498}
+  m_Layer: 8
   m_Name: gokou
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6583,6 +6586,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114038009616696942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6598,6 +6602,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 8
   overrideName: 
+  fadeShader: {fileID: 0}
   defaultMotionName: 0
 --- !u!114 &114134539911551442
 MonoBehaviour:
@@ -6614,6 +6619,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114159920528902262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6629,6 +6635,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114290139793124546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6655,6 +6662,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114414695641180906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6670,6 +6678,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114434161203208032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6685,6 +6694,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114465898860154638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6700,6 +6710,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114491991837891170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6715,6 +6726,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114538810146231186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6730,6 +6742,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 8
   overrideName: 
+  fadeShader: {fileID: 0}
   defaultMotionName: 0
 --- !u!114 &114544982053921370
 MonoBehaviour:
@@ -6742,6 +6755,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b9bd8b22b25534aa7c4b1dfdb9f12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114632596446430026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371671705997684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 4800000, guid: a56e219312b76b146b7df3dfdb89316b, type: 3}
 --- !u!114 &114668722168489108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6757,6 +6786,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114678626652874800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6772,6 +6802,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114703878136492164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6787,6 +6818,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114791173331277296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6802,6 +6834,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114801575496663114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6817,6 +6850,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 8
   overrideName: 
+  fadeShader: {fileID: 0}
   defaultMotionName: 0
 --- !u!114 &114803617734699538
 MonoBehaviour:
@@ -6833,6 +6867,39 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
+--- !u!114 &114882167616683498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759760509602910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 4800000, guid: e19eb652617e62948a8ad48acc0bcc12, type: 3}
+--- !u!114 &114910678194337326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462817015004084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 4800000, guid: a56e219312b76b146b7df3dfdb89316b, type: 3}
 --- !u!137 &137223707570924382
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -7154,7 +7221,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1364286929
+  randomSeed: -20949725
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13430,7 +13497,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 948651300
+  randomSeed: -333442086
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16568,7 +16635,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1567726119
+  randomSeed: 848096246
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -25970,7 +26037,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2043807543
+  randomSeed: 781615498
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -32246,7 +32313,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1992321803
+  randomSeed: -956359594
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -38522,7 +38589,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1565104484
+  randomSeed: -2062848193
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -47924,7 +47991,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -778248106
+  randomSeed: 280311202
   InitialModule:
     serializedVersion: 3
     enabled: 1

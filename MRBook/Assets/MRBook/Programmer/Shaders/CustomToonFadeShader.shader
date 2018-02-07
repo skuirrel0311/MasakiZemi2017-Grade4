@@ -23,7 +23,7 @@ Shader "Custom/CustomToonFadeShader"
 		LOD 200
 
 		CGPROGRAM
-#pragma surface surf ToonRamp Standard fullforwardshadows alpha
+#pragma surface surf ToonRamp alpha
 
 		sampler2D _Ramp;
 

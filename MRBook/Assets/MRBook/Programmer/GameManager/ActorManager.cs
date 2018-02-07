@@ -31,7 +31,6 @@ public class ActorManager : Singleton<ActorManager>
     public enum TargetType { StaticPoint, HoloObject }
 
     MainSceneManager sceneManager;
-    BasePage currentPage;
 
     //動かせるオブジェクトの上に表示する三角のやつ
     public GameObject trianglePrefab = null;
@@ -43,8 +42,7 @@ public class ActorManager : Singleton<ActorManager>
     public void InitSceneManager(MainSceneManager sceneManager)
     {
         this.sceneManager = sceneManager;
-
-        sceneManager.OnPageLoaded += (page)=> OnPageLoaded(page);
+        
         trianglePrefab = MyAssetStore.I.GetAsset<GameObject>("triangle", "Prefabs/");
         handIconControllerPrefab = MyAssetStore.I.GetAsset<GameObject>("HandIconController", "Prefabs/").GetComponent<HandIconController>();
     }
@@ -55,7 +53,7 @@ public class ActorManager : Singleton<ActorManager>
     public HoloCharacter GetCharacter(ActorName name)
     {
         HoloCharacter obj;
-        if (currentPage.characterDictionary.TryGetValue(name, out obj))
+        if (sceneManager.pages[sceneManager.currentPageIndex].characterDictionary.TryGetValue(name, out obj))
         {
             return obj;
         }
@@ -67,7 +65,7 @@ public class ActorManager : Singleton<ActorManager>
     public HoloObject GetObject(string name)
     {
         HoloObject obj;
-        if (currentPage.objectDictionary.TryGetValue(name, out obj))
+        if (sceneManager.pages[sceneManager.currentPageIndex].objectDictionary.TryGetValue(name, out obj))
         {
             return obj;
         }
@@ -82,7 +80,7 @@ public class ActorManager : Singleton<ActorManager>
     public Transform GetTargetPoint(string name)
     {
         Transform t;
-        if (currentPage.targetPointDictionary.TryGetValue(name, out t))
+        if (sceneManager.pages[sceneManager.currentPageIndex].targetPointDictionary.TryGetValue(name, out t))
         {
             return t;
         }
@@ -143,13 +141,13 @@ public class ActorManager : Singleton<ActorManager>
     
     public List<HoloObject> GetAllObject()
     {
-        return currentPage.objectList;
+        return sceneManager.pages[sceneManager.currentPageIndex].objectList;
     }
 
     public void AddObject(HoloObject obj, bool addResetter = true)
     {
-        currentPage.objectDictionary.Add(obj.name, obj);
-        currentPage.objectList.Add(obj);
+        sceneManager.pages[sceneManager.currentPageIndex].objectDictionary.Add(obj.name, obj);
+        sceneManager.pages[sceneManager.currentPageIndex].objectList.Add(obj);
 
         obj.Init();
         if(addResetter) HoloObjResetManager.I.AddResetter(obj.Resetter);
@@ -157,15 +155,9 @@ public class ActorManager : Singleton<ActorManager>
 
     public void AddCharacter(ActorName name, HoloCharacter character, bool addResetter = true)
     {
-        Debug.Log("add character " + currentPage.name + " " + name.ToString());
-        currentPage.characterDictionary.Add(name, character);
+        Debug.Log("add character " + sceneManager.pages[sceneManager.currentPageIndex].name + " " + name.ToString());
+        sceneManager.pages[sceneManager.currentPageIndex].characterDictionary.Add(name, character);
 
         AddObject(character, addResetter);
-    }
-
-    //ページが変更
-    void OnPageLoaded(BasePage nextPage)
-    {
-        currentPage = nextPage;
     }
 }

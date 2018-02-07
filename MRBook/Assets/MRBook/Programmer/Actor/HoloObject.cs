@@ -25,6 +25,13 @@ public class HoloObject : MonoBehaviour
 
     [SerializeField]
     string overrideName = "";
+
+    [SerializeField]
+    Shader fadeShader = null;
+
+    [System.NonSerialized]
+    public Material[] m_materials;
+    Shader[] defaultShaders;
     
     public BaseObjInputHandler InputHandler { get; private set; }
     public BaseItemSaucer ItemSaucer { get; private set; }
@@ -59,7 +66,18 @@ public class HoloObject : MonoBehaviour
     public virtual void Init()
     {
         InitResetter();
-        
+
+        Renderer rend = GetComponentInChildren<Renderer>();
+        if (rend != null)
+        {
+            m_materials = rend.materials;
+            defaultShaders = new Shader[m_materials.Length];
+            for(int i = 0;i< defaultShaders.Length;i++)
+            {
+                defaultShaders[i] = m_materials[i].shader;
+            }
+        }
+
         if(isMovable)
         {
             InputHandler = GetComponent<BaseObjInputHandler>();
@@ -145,5 +163,26 @@ public class HoloObject : MonoBehaviour
     public virtual void SetParent(Transform parent)
     {
         transform.parent = parent;
+    }
+
+    public void SetFadeShader(Shader shader)
+    {
+        if (m_materials == null || m_materials.Length == 0) return;
+
+        if (fadeShader != null) shader = fadeShader;
+        for (int i = 0; i < defaultShaders.Length; i++)
+        {
+            m_materials[i].shader = shader;
+        }
+    }
+
+    public void ResetShader()
+    {
+        if (m_materials == null || m_materials.Length == 0) return;
+
+        for (int i = 0; i < defaultShaders.Length; i++)
+        {
+            m_materials[i].shader = defaultShaders[i];
+        }
     }
 }

@@ -241,18 +241,19 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].ResetPage();
     }
 
-    public void DisableCurrentPage()
+    public void DisableCurrentPage(Action callback = null)
     {
         //前のページは消す
-
+        CurrentState = GameState.Next;
         MissionTextController.I.Disable();
         PageResultManager.I.Hide();
         Fader.I.FadeIn(() =>
         {
             pages[currentPageIndex].gameObject.SetActive(false);
+            if (callback != null) callback.Invoke();
         });
 
-        CurrentState = GameState.Next;
+
     }
 
     /// <summary>
@@ -264,6 +265,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         //ページを切り替える
         currentPageIndex = index;
         pages[currentPageIndex].gameObject.SetActive(true);
+        pages[currentPageIndex].PageStart();
 
         Fader.I.FadeOut(() =>
         {
@@ -273,7 +275,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     void ShowNextPage()
     {
-        pages[currentPageIndex].PageStart();
         m_Animator.runtimeAnimatorController = pages[currentPageIndex].controller;
 
         CurrentState = GameState.Wait;

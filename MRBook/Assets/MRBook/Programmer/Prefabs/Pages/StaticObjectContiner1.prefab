@@ -174,9 +174,10 @@ GameObject:
   - component: {fileID: 4227882558303574}
   - component: {fileID: 33403715676603074}
   - component: {fileID: 23005633758498212}
-  m_Layer: 0
+  - component: {fileID: 114849424820054538}
+  m_Layer: 8
   m_Name: wave
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -668,3 +669,20 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
+--- !u!114 &114849424820054538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1958645567816718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 4800000, guid: e19eb652617e62948a8ad48acc0bcc12, type: 3}
