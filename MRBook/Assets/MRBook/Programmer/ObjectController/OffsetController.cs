@@ -19,11 +19,14 @@ public class OffsetController : BaseManager<OffsetController>
     
     public Transform bookTransform = null;
 
+    bool isMainScene = false;
+
     protected override void Start()
     {
         base.Start();
 
-        bookTransform = BookPositionModifier.I.bookTransform;
+        isMainScene = MainSceneManager.I != null;
+        if(isMainScene) bookTransform = BookPositionModifier.I.bookTransform;
     }
 
     //別にWorldAnchorの位置を操作するわけではない
@@ -32,7 +35,8 @@ public class OffsetController : BaseManager<OffsetController>
         Vector3 moveVec = GetMoveVec(direction);
         
         bookTransform.position += moveVec;
-        BookPositionModifier.I.ModifyBookPosition(false);
+
+        if(isMainScene) BookPositionModifier.I.ModifyBookPosition(false);
     }
 
     Vector3 GetMoveVec(int direction)

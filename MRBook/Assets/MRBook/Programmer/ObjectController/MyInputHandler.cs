@@ -83,10 +83,9 @@ public class MyInputHandler : MonoBehaviour, IInputHandler, ISourceStateHandler
     //手を見失った
     public void OnSourceLost(SourceStateEventData eventData)
     {
-        //フィルター
+        if (!IsDragging) return;
         if (currentInputSource == null) return;
         if (eventData.SourceId != currentInputSourceID) return;
-        if (!IsDragging) return;
 
         StopDragging();
     }

@@ -137,8 +137,18 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
     }
     public override void OnSourceLost(SourceStateEventData eventData)
     {
+        if (isRecognizedPosCon || isRecognizedRotCon)
+        {
+            ResetCursorTransform();
+
+            OnFocusedObjectChanged(null, TargetedObject);
+        }
+        
         isRecognizedFinger = false;
         isRecognizedHold = false;
+        isRecognizedPosCon = false;
+        isRecognizedRotCon = false;
+
         OnFlagChanged();
         base.OnSourceLost(eventData);
     }
