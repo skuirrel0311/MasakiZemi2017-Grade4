@@ -29,14 +29,14 @@ public class Fader : BaseManager<Fader>
         CurrentState = State.Wait;
     }
 
-    public void FadeIn(Action callback = null)
+    public void FadeOut(Action callback = null)
     {
         this.callback = callback;
         CurrentState = State.FadeIn;
         fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y + 0.5f,positionModifier.bookTransform.position.y +  0.0f));
     }
 
-    public void FadeOut(Action callback = null)
+    public void FadeIn(Action callback = null)
     {
         this.callback = callback;
         CurrentState = State.FadeOut;
@@ -46,15 +46,16 @@ public class Fader : BaseManager<Fader>
         for (int i = 0; i < objList.Count; i++)
         {
             objList[i].SetFadeShader(fadeShader);
+            
             if (objList[i].m_materials == null) continue;
             for (int j = 0; j < objList[i].m_materials.Length; j++)
             {
-                objList[i].m_materials[j].SetFloat("_Height", 0.0f);
+                objList[i].m_materials[j].SetFloat("_Height", positionModifier.bookTransform.position.y);
             }
         }
 
         //FadeOut開始
-        fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y + 0.0f, positionModifier.bookTransform.position.y + 0.5f, 5.0f, 0.5f));
+        fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y + 0.0f, positionModifier.bookTransform.position.y + 0.5f, 5.0f, 2.0f));
     }
 
     IEnumerator Fade(float start, float end,  float duration = 2.0f, float startDelay = 0.0f)

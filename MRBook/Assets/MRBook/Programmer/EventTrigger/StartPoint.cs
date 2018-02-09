@@ -29,6 +29,8 @@ public class StartPoint : EventAreaItemSaucer
     {
         if (onGameStart != null) onGameStart.Invoke();
 
+        transform.GetChild(0).gameObject.SetActive(false);
+
         character.ChangeAnimationClip(motionName, 0.0f);
         character.transform.position = transform.position;
         character.transform.rotation = transform.rotation;

@@ -55,9 +55,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4243856132896290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: umi
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 4011289757141212}
   - component: {fileID: 33595238983188604}
   - component: {fileID: 23009949065411198}
+  - component: {fileID: 114586841812690206}
   m_Layer: 0
   m_Name: umi
   m_TagString: Untagged
@@ -230,6 +231,7 @@ GameObject:
   - component: {fileID: 4035980445270412}
   - component: {fileID: 33101536696860392}
   - component: {fileID: 23108396111160914}
+  - component: {fileID: 114705648032526858}
   m_Layer: 0
   m_Name: umi_gokou
   m_TagString: Untagged
@@ -2710,6 +2712,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b9bd8b22b25534aa7c4b1dfdb9f12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114586841812690206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247459062776582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 4800000, guid: e19eb652617e62948a8ad48acc0bcc12, type: 3}
 --- !u!114 &114633997226441540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2742,6 +2760,22 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+--- !u!114 &114705648032526858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375008538673912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 4800000, guid: a56e219312b76b146b7df3dfdb89316b, type: 3}
 --- !u!114 &114739454135385048
 MonoBehaviour:
   m_ObjectHideFlags: 1

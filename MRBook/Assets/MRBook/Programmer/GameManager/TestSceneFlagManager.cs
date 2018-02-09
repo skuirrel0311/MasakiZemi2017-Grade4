@@ -13,6 +13,9 @@ public class TestSceneFlagManager : FlagManager
 
     Dictionary<string, Text> flagTextDictionary = new Dictionary<string, Text>();
 
+    [SerializeField]
+    bool showFlag = true;
+
     protected override void Start()
     {
         base.Start();
@@ -31,6 +34,7 @@ public class TestSceneFlagManager : FlagManager
     {
         base.SetFlag(name, eventTrigger, isFlagged);
 
+        if (!showFlag) return;
         Text text;
         
         if(!flagTextDictionary.TryGetValue(name, out text))

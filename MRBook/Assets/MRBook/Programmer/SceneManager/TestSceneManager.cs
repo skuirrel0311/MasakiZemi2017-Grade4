@@ -6,7 +6,7 @@ public class TestSceneManager : MainSceneManager
 {
     [SerializeField]
     OffsetController offsetController = null;
-    
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -24,14 +24,10 @@ public class TestSceneManager : MainSceneManager
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            if (CurrentState == GameState.NextWait)
-            {
+            if (CurrentState != GameState.Next)
                 DisableCurrentPage();
-            }
-            else if (CurrentState == GameState.Next)
-            {
+            else
                 ChangePage(currentPageIndex + 1);
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.B)) ChangePage(currentPageIndex - 1);

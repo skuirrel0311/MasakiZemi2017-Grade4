@@ -253,7 +253,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         CurrentState = GameState.Next;
         MissionTextController.I.Disable();
         PageResultManager.I.Hide();
-        Fader.I.FadeIn(() =>
+        Fader.I.FadeOut(() =>
         {
             pages[currentPageIndex].gameObject.SetActive(false);
             if (callback != null) callback.Invoke();
@@ -273,7 +273,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].gameObject.SetActive(true);
         pages[currentPageIndex].PageStart();
 
-        Fader.I.FadeOut(() =>
+        Fader.I.FadeIn(() =>
         {
             ShowNextPage();
         });

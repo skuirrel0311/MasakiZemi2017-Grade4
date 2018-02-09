@@ -31,6 +31,7 @@ public class HoloObject : MonoBehaviour
 
     [System.NonSerialized]
     public Material[] m_materials;
+    Renderer m_rend;
     Shader[] defaultShaders;
     
     public BaseObjInputHandler InputHandler { get; private set; }
@@ -67,10 +68,10 @@ public class HoloObject : MonoBehaviour
     {
         InitResetter();
 
-        Renderer rend = GetComponentInChildren<Renderer>();
-        if (rend != null)
+        m_rend = GetComponentInChildren<Renderer>();
+        if (m_rend != null)
         {
-            m_materials = rend.materials;
+            m_materials = m_rend.materials;
             defaultShaders = new Shader[m_materials.Length];
             for(int i = 0;i< defaultShaders.Length;i++)
             {
@@ -168,7 +169,7 @@ public class HoloObject : MonoBehaviour
     public void SetFadeShader(Shader shader)
     {
         if (m_materials == null || m_materials.Length == 0) return;
-
+        m_rend.enabled = true;
         if (fadeShader != null) shader = fadeShader;
         for (int i = 0; i < defaultShaders.Length; i++)
         {
