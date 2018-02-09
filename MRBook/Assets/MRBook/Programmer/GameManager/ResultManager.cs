@@ -111,6 +111,7 @@ public class ResultManager : BaseManager<ResultManager>
 
     public void TitleBack()
     {
+        Destroy(BookPositionModifier.I.gameObject);
         SceneManager.LoadScene("Title");
     }
 

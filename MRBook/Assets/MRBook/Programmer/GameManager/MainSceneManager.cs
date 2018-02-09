@@ -113,6 +113,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         resetManager = new HoloObjResetManager(this);
     }
 
+    protected override void OnDestroy()
+    {
+        HoloObjResetManager.I = null;
+        base.OnDestroy();
+    }
+
     /// <summary>
     /// 再生する
     /// </summary>
