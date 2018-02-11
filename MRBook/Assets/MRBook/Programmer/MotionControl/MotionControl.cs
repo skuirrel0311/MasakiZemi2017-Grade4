@@ -61,6 +61,8 @@ public enum MotionName
     QuickTalkTroubled,　//カメドン引き(困惑会話の会話部分消したの)
     RideTurtle_Loop,    //カメに乗ってる
     OldWait,    //爺用待機
+    LookInBook, //本をのぞき込む(本の外で待機してる浦島用)
+    Turn        //振りむく(現地点ではP1浦島のお見送りのみ)
 
 }
 
