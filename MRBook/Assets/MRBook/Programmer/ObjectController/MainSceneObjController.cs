@@ -74,8 +74,7 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     /// </summary>
     protected virtual void StartOperation()
     {
-        MainSceneManager sceneManager = MainSceneManager.I;
-        maxDistance = targetMovableObject.transform.position.y - sceneManager.pages[sceneManager.currentPageIndex].transform.position.y + 0.5f;
+        maxDistance = targetMovableObject.transform.position.y - OffsetController.I.bookTransform.position.y + 0.5f;
         if (targetMovableObject.GetActorType == HoloObject.Type.Item)
         {
             isHoldItem = true;

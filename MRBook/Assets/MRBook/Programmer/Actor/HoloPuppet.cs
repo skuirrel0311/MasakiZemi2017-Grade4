@@ -32,6 +32,8 @@ public class HoloPuppet : HoloCharacter
         defaultMesh = rend.sharedMesh;
         defaultMat = rend.material;
 
+        if (MainSceneManager.I == null) return;
+
         MainSceneManager.I.OnReset += () =>
         {
             rend.sharedMesh = defaultMesh;
@@ -49,6 +51,7 @@ public class HoloPuppet : HoloCharacter
         base.InitResetter();
         Resetter.AddBehaviour(new PuppetResetBehaviour(this));
 
+        if (MainSceneManager.I == null) return;
         MainSceneManager.I.OnPlayEnd += (success) =>
         {
             if(monitorPuppetCoroutine != null)

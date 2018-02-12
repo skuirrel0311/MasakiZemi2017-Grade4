@@ -285,7 +285,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09859386, y: -0.0033339914, z: 0.007580865}
+  m_ConnectedAnchor: {x: 0.09859401, y: -0.0033339914, z: 0.007580418}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -1074,7 +1074,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0, y: -1, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09859374, y: -0.0033341534, z: 0.0075809015}
+  m_ConnectedAnchor: {x: -0.09859374, y: -0.003334213, z: 0.00758038}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -1196,7 +1196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 214842840}
   - component: {fileID: 214842843}
-  - component: {fileID: 214842842}
   - component: {fileID: 214842841}
   m_Layer: 2
   m_Name: Awa
@@ -1212,9 +1211,9 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214842839}
-  m_LocalRotation: {x: -0, y: -0.5798291, z: -0, w: -0.81473815}
-  m_LocalPosition: {x: 0, y: 0.439, z: 0}
-  m_LocalScale: {x: 1.0661008, y: 1.0661007, z: 1.0661007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1424117426}
   m_RootOrder: 2
@@ -1252,19 +1251,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &214842842
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 135731287127474724, guid: 986c413f922c73942bd5155e55aebb15,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 214842839}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &214842843
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1590,7 +1576,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.1379373, z: -0.016965443}
+  m_ConnectedAnchor: {x: 0, y: 0.13793725, z: -0.016965741}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -1702,7 +1688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   movePower: 0.01
-  bookTransform: {fileID: 0}
+  bookTransform: {fileID: 1748186283}
 --- !u!4 &376465148
 Transform:
   m_ObjectHideFlags: 0
@@ -1773,7 +1759,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 395121226}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.053, y: -0.05, z: 1.028}
+  m_LocalPosition: {x: -1.053, y: 0.05, z: 1.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 723867947}
@@ -2690,7 +2676,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0, y: -1, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.080866806, y: 0.09203589, z: -0.019281978}
+  m_ConnectedAnchor: {x: -0.08086651, y: 0.09203589, z: -0.019281978}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -2847,7 +2833,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.03542721, y: -0.020532042, z: 0.007664182}
+  m_ConnectedAnchor: {x: -0.03542706, y: -0.020532042, z: 0.007664182}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -2953,7 +2939,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 723867946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.064, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 395121227}
@@ -3128,7 +3114,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.0168831, y: 0.0972222, z: -0.18552901}
+  m_ConnectedAnchor: {x: 0.422, y: 0.028322205, z: 2.308885}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -3519,7 +3505,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0, y: -1, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09156435, y: -0.009448707, z: -0.007887896}
+  m_ConnectedAnchor: {x: -0.09156435, y: -0.009448767, z: -0.007888045}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -4031,7 +4017,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000020861626, y: -0.15968297, z: 0.0085792}
+  m_ConnectedAnchor: {x: 0.000000059604645, y: -0.15968299, z: 0.008579498}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -4276,6 +4262,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1867388872242424, guid: 191aeb5b9f34df04db90365b86a6fbe6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 191aeb5b9f34df04db90365b86a6fbe6, type: 2}
   m_IsPrefabParent: 0
@@ -4391,6 +4381,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23235805378259522, guid: 4e6c7cda5e65bb64ea910640f495b4d4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e6c7cda5e65bb64ea910640f495b4d4, type: 2}
   m_IsPrefabParent: 0
@@ -4432,6 +4427,10 @@ Prefab:
     - target: {fileID: 4406968282353122, guid: 49634892663494d4ea5d80d75a9b0114, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252430596153448, guid: 49634892663494d4ea5d80d75a9b0114, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49634892663494d4ea5d80d75a9b0114, type: 2}
@@ -4712,16 +4711,17 @@ Transform:
 --- !u!114 &1424117427
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114200709209623372, guid: 26f02d09d84d79740a334652cf6a2291,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424117425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ec17bb3d4c3264bad5313e633e2258, type: 3}
+  m_Script: {fileID: 11500000, guid: fcce56f8aa3f8cc4fb7347a4e97026e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  agent: {fileID: 1424117432}
+  bubble: {fileID: 214842839}
 --- !u!114 &1424117428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424117425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7586135610e2a0e4fbbae292c7d26a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isMovable: 1
@@ -4751,6 +4751,10 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  defaultMotionName: 0
+  m_behavirour: {fileID: 348646558}
+  rootObj: {fileID: 1677008202}
+  m_puppet: {fileID: 704295105}
 --- !u!65 &1424117431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4762,7 +4766,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &1424117432
 NavMeshAgent:
@@ -5017,7 +5021,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09156465, y: -0.009449005, z: -0.007887926}
+  m_ConnectedAnchor: {x: 0.09156465, y: -0.009449005, z: -0.007888}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -5123,7 +5127,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1677008202}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 1.0168831, y: 0.0219, z: -0.18741423}
+  m_LocalPosition: {x: 0.422, y: -0.047, z: 2.307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 150500186}
@@ -5328,7 +5332,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1748186282}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.466, z: 2.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2136822401}
@@ -5353,7 +5357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1749126091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5382,8 +5386,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3747642, y: 0.15469539, z: 0.16898942}
-  m_Center: {x: 0.00511542, y: 0.06450546, z: 0.0041201115}
+  m_Size: {x: 0.2, y: 0.1, z: 0.2}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &1749126093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5440,8 +5444,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1749126090}
-  m_LocalRotation: {x: -0, y: 0.99857163, z: -0, w: 0.053429484}
-  m_LocalPosition: {x: -0.31912127, y: 0.0219, z: -0.12272109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31912127, y: 0, z: -0.12272109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 723867947}
@@ -5785,7 +5789,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0043276846, y: -0.15393507, z: -0.024936523}
+  m_ConnectedAnchor: {x: -0.0043273866, y: -0.15393507, z: -0.024935927}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -6009,6 +6013,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 1913404771}
+--- !u!1 &1947017334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1947017336}
+  - component: {fileID: 1947017335}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1947017335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1947017334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3391d3d35e9f3348a262f7f32ac708b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  urashima: {fileID: 1424117429}
+--- !u!4 &1947017336
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1947017334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.422, y: 0.519, z: 0.271}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1971917099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,7 +6131,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.10560396, z: 0.0009263251}
+  m_ConnectedAnchor: {x: 0, y: 0.10560396, z: 0.0009264741}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -6270,7 +6316,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.080866806, y: 0.09203607, z: -0.019282052}
+  m_ConnectedAnchor: {x: 0.08086651, y: 0.09203601, z: -0.019281978}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -6661,7 +6707,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.03542721, y: -0.020532012, z: 0.007664182}
+  m_ConnectedAnchor: {x: 0.03542706, y: -0.020532012, z: 0.007664182}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -6816,7 +6862,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.004327107, y: -0.15393482, z: -0.024936449}
+  m_ConnectedAnchor: {x: 0.0043274052, y: -0.15393482, z: -0.024935927}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -6973,7 +7019,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: -0, z: -0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000001899898, y: -0.15968315, z: 0.008579206}
+  m_ConnectedAnchor: {x: -0.000000040978193, y: -0.15968318, z: 0.008579504}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 1}
   m_XMotion: 0
@@ -7098,6 +7144,7 @@ GameObject:
   - component: {fileID: 2136822404}
   - component: {fileID: 2136822403}
   - component: {fileID: 2136822402}
+  - component: {fileID: 2136822405}
   m_Layer: 11
   m_Name: floor
   m_TagString: Untagged
@@ -7130,8 +7177,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1276693, y: 0.1, z: 1.03}
-  m_Center: {x: -0.16416526, y: -0.05, z: 0}
+  m_Size: {x: 1.4568572, y: 0.1, z: 1.03}
+  m_Center: {x: 0.0004287064, y: -0.05, z: 0}
 --- !u!23 &2136822403
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7173,3 +7220,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2136822400}
   m_Mesh: {fileID: 4300000, guid: bc30765b6b3d7644cbe033dbacb89b31, type: 3}
+--- !u!114 &2136822405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2136822400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b9bd8b22b25534aa7c4b1dfdb9f12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

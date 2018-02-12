@@ -8,9 +8,15 @@ public class ItemInputHandler : HoloMovableObjInputHander
 
     public override void Init(HoloObject owner)
     {
-        ownerItem = (HoloItem)owner;
-
         base.Init(owner);
+        try
+        {
+            ownerItem = (HoloItem)owner;
+        }
+        catch
+        {
+            Debug.LogWarning("owner is not item");
+        }
     }
 
     public override bool OnClick()
@@ -24,8 +30,8 @@ public class ItemInputHandler : HoloMovableObjInputHander
     public override void OnDisabled()
     {
         if (!MyObjControllerByBoundingBox.I.canClick) return;
-        if (ownerItem.owner == null) SetArrowActive(true);
-        handIconController.Hide();
+        if (ownerItem != null && ownerItem.owner == null) SetArrowActive(true);
+        if(handIconController != null) handIconController.Hide();
         SetItemTextEnable(false);
     }
 

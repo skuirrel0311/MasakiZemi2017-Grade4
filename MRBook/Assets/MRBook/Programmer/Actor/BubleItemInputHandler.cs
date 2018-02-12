@@ -8,17 +8,19 @@ public class BubleItemInputHandler : ItemInputHandler
     [SerializeField]
     NavMeshAgent agent = null;
 
-    GameObject bubble;
+    [SerializeField]
+    GameObject bubble = null;
 
     bool isPoped = false;
 
     public override void Init(HoloObject owner)
     {
+        Debug.Log("init");
         base.Init(owner);
 
         m_agent = agent;
 
-        bubble = transform.GetChild(0).gameObject;
+        if(bubble == null) bubble = transform.GetChild(0).gameObject;
     }
 
     public override bool OnClick()
@@ -28,7 +30,7 @@ public class BubleItemInputHandler : ItemInputHandler
 
         isPoped = true;
         
-        MainSceneManager.I.OnReset += OnReset;
+        if(MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
 
         //泡がはじけて下に落ちる
         StartCoroutine(Fall());

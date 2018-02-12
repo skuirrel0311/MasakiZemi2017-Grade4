@@ -81,10 +81,12 @@ public class HoloObject : MonoBehaviour
 
         if(isMovable)
         {
+            Debug.Log("get component");
             InputHandler = GetComponent<BaseObjInputHandler>();
         }
 
         if (InputHandler != null) InputHandler.Init(this);
+        else Debug.Log("input handler is null");
 
         InitItemSaucer();
 

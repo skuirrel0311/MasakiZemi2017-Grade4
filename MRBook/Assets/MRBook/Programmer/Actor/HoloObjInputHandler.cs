@@ -21,6 +21,7 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
 
     public virtual void Init(HoloObject owner)
     {
+        Debug.Log("init base");
         this.owner = owner;
         m_collider = GetComponent<BoxCollider>();
         handIconController = HandIconController.I;
@@ -82,6 +83,7 @@ public class HoloObjInputHandler : BaseObjInputHandler
     {
         if (owner.ItemSaucer == null) return false;
         if (owner.GetActorType != HoloObject.Type.Character) return false;
+        if (handIconController == null) return false;
 
         if (!handIconController.IsVisuable)
         {
@@ -98,11 +100,11 @@ public class HoloObjInputHandler : BaseObjInputHandler
     public override void OnDragStart()
     {
         base.OnDragStart();
-        handIconController.Hide();
+        if (handIconController != null) handIconController.Hide();
     }
 
     public override void OnDisabled()
     {
-        handIconController.Hide();
+        if (handIconController != null) handIconController.Hide();
     }
 }
