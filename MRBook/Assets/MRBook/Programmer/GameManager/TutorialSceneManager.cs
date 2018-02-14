@@ -7,10 +7,13 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
     [SerializeField]
     HoloPuppet urashima = null;
 
+    [SerializeField]
+    HoloPuppet urashima2 = null;
+
     protected override void Start()
     {
         base.Start();
-        Debug.Log("call init");
         urashima.Init();
+        urashima2.Init();
     }
 }

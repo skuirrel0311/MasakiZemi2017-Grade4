@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MainSceneObjController : MyObjControllerByBoundingBox
+public class MainSceneObjController : HoloObjectController
 {
     protected ActorManager actorManager;
     //掴んでいるアクター
@@ -52,8 +52,6 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
 
     protected override void StartDragging()
     {
-        if (!canDragging) return;
-
         StartOperation();
 
         base.StartDragging();
@@ -158,9 +156,9 @@ public class MainSceneObjController : MyObjControllerByBoundingBox
     public override void SetTargetObject(HoloObject obj)
     {
         if (!canClick) return;
-        base.SetTargetObject(obj != null ? obj.gameObject : null);
         if (targetMovableObject != null) targetMovableObject.InputHandler.OnDisabled();
         targetMovableObject = obj;
+        base.SetTargetObject(obj);
     }
 
     /// <summary>

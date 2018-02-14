@@ -111,7 +111,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
 
     public override bool OnClick()
     {
-        if (!MyObjControllerByBoundingBox.I.canClick) return false;
+        if (MyObjControllerByBoundingBox.I == null || !MyObjControllerByBoundingBox.I.canClick) return false;
         MyObjControllerByBoundingBox.I.SetTargetObject(owner);
         SetArrowActive(false);
         base.OnClick();
@@ -120,7 +120,7 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
 
     public override void OnDisabled()
     {
-        if (!MyObjControllerByBoundingBox.I.canClick) return;
+        if (!HoloObjectController.I.canClick) return;
         SetArrowActive(true);
         base.OnDisabled();
     }

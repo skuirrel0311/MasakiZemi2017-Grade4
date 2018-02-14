@@ -6,7 +6,7 @@ using KKUtilities;
 
 public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
 {
-    enum CursorImageState
+    protected enum CursorImageState
     {
         Normal,     //指もオブジェクトも認識していない状態
         Finger,     //指を認識している（オブジェクトは認識していない）
@@ -18,20 +18,20 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
         PosConHol,  //PositionControllerを認識している（指が倒れている状態を認識している）
         RotConHol   //RotationControllerを認識している（指が倒れている状態を認識している）
     }
-    CursorImageState imageState = CursorImageState.Normal;
+    protected CursorImageState imageState = CursorImageState.Normal;
 
     [SerializeField]
     SpriteRenderer spriteRenderer = null;
     [SerializeField]
     Sprite[] sprites = null;
 
-    bool isRecognizedFinger = false;
-    bool isRecognizedPosCon = false;
-    bool isRecognizedRotCon = false;
-    bool isRecognizedHold = false;
+    protected bool isRecognizedFinger = false;
+    protected bool isRecognizedPosCon = false;
+    protected bool isRecognizedRotCon = false;
+    protected bool isRecognizedHold = false;
 
     [SerializeField]
-    Transform boundingBox = null;
+    protected Transform boundingBox = null;
 
     Vector3 defaultPosition;
     Quaternion defaultRotation;
@@ -51,7 +51,7 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
         defaultScale = PrimaryCursorVisual.localScale;
     }
 
-    void OnFlagChanged()
+    protected void OnFlagChanged()
     {
         CursorImageState temp;
 
@@ -157,7 +157,8 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
     {
         if (isRecognizedPosCon || isRecognizedRotCon)
         {
-            PrimaryCursorVisual.parent = boundingBox;
+            Debug.Log("input down in myCursor");
+            Utilities.Delay(1, () => PrimaryCursorVisual.parent = boundingBox, this);
             PrimaryCursorVisual.localScale = PrimaryCursorVisual.localScale * (boundingBox.lossyScale.x * 3.0f);
         }
 
@@ -168,7 +169,7 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
     public override void OnInputUp(InputEventData eventData)
     {
         base.OnInputUp(eventData);
-        isRecognizedHold = false;
+
         //ひとまず
         AkSoundEngine.PostEvent("Tap", gameObject);
 
@@ -182,14 +183,15 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
             }
         }
 
-        if (isRecognizedPosCon || isRecognizedRotCon)
+        if (isRecognizedHold)
         {
+            isRecognizedHold = false;
             ResetCursorTransform();
-
             OnFocusedObjectChanged(null, TargetedObject);
+            OnFlagChanged();
             return;
         }
-
+        isRecognizedHold = false;
         OnFlagChanged();
 
     }

@@ -27,7 +27,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         {
             if (instance == null)
             {
-                instance = (MainSceneObjController)FindObjectOfType(typeof(MainSceneObjController));
+                instance = (MyObjControllerByBoundingBox)FindObjectOfType(typeof(MyObjControllerByBoundingBox));
             }
             return instance;
         }
@@ -104,7 +104,7 @@ public class MyObjControllerByBoundingBox : MyObjPositionController
         targetObject = obj;
 
         transform.position = targetObject.transform.position;
-
+        
         BoxCollider boxCol = targetObject.GetComponent<BoxCollider>();
 
         Vector3 boxSize = targetObject.transform.lossyScale;

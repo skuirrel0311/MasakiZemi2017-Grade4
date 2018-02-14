@@ -17,7 +17,7 @@ public class TestSceneObjController : MainSceneObjController
     float moveSpeed = 4.0f;
 
     float m_draggingTime = 0.0f;
-    
+
     protected override void Start()
     {
         mainCamera = Camera.main;
@@ -45,12 +45,12 @@ public class TestSceneObjController : MainSceneObjController
                 if (m_draggingTime > minDragTime)
                 {
                     IsDragging = true;
-                    if(canDragging) StartOperation();
+                    StartOperation();
                 }
             }
             else
             {
-                if (canDragging) UpdateOperation();
+                UpdateOperation();
             }
         }
 
@@ -63,7 +63,7 @@ public class TestSceneObjController : MainSceneObjController
             }
             else
             {
-                if (canDragging) EndOperation();
+                EndOperation();
             }
 
             IsDragging = false;
@@ -73,17 +73,9 @@ public class TestSceneObjController : MainSceneObjController
     //短いドラッグ（ドラッグではない）
     void OnTap()
     {
-        if (!canDragging)
-        {
-            HoloObject hitObj;
-            canDragging = TryGetGameObject(out hitObj);
-            if (!canDragging) return;
-            canDragging = hitObj.InputHandler.OnClick();
-        }
-        else
-        {
-            Disable();
-        }
+        HoloObject hitObj;
+        TryGetGameObject(out hitObj);
+
     }
 
     bool TryGetGameObject(out HoloObject holoObject)

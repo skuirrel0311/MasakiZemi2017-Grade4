@@ -2,8 +2,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 using HoloToolkit.Unity.InputModule;
+using KKUtilities;
 
-public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
+public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler, IInputHandler, ISourceStateHandler
 {
     public enum HitObjType { None, Book, Character, EventArea, OtherObj }
     public enum MakerType { None, Normal, DontPut, Happen }
@@ -19,12 +20,14 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
     Func<HitObjType, MakerType> OnUpdate;
     Action<HitObjType> OnEnd;
 
+    HoloObjectController objController;
+
     public virtual void Init(HoloObject owner)
     {
-        Debug.Log("init base");
         this.owner = owner;
         m_collider = GetComponent<BoxCollider>();
         handIconController = HandIconController.I;
+        objController = HoloObjectController.I;
 
         SetSphreCastRadius();
     }
@@ -74,6 +77,36 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler
     public void OnInputClicked(InputClickedEventData eventData)
     {
         OnClick();
+    }
+
+    //指が倒された
+    public void OnInputDown(InputEventData eventData)
+    {
+        if (objController == null) return;
+        objController.SetTargetObject(owner);
+        Utilities.Delay(1, () => objController.OnInputDown(eventData), this);
+        
+    }
+
+    //指が持ち上げられた
+    public void OnInputUp(InputEventData eventData)
+    {
+        if (objController == null) return;
+        objController.OnInputUp(eventData);
+    }
+
+    //手を見つけた
+    public void OnSourceDetected(SourceStateEventData eventData)
+    {
+        if (objController == null) return;
+        objController.OnSourceDetected(eventData);
+    }
+
+    //手を見失った
+    public void OnSourceLost(SourceStateEventData eventData)
+    {
+        if (objController == null) return;
+        objController.OnSourceLost(eventData);
     }
 }
 
