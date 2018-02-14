@@ -11,6 +11,7 @@ public class EventCharacterInputHandler : HoloMovableObjInputHander
 
     public override void Init(HoloObject owner)
     {
+        Debug.Log("call init");
         ownerCharacter = (HoloCharacter)owner;
 
         base.Init(owner);

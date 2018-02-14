@@ -3,48 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BubleItemInputHandler : ItemInputHandler
+public class TutorialUrashimaInputHandler : ItemInputHandler
 {
-    [SerializeField]
     NavMeshAgent agent = null;
 
     [SerializeField]
     GameObject bubble = null;
-
+    //泡がはじけているか？
     bool isPoped = false;
+
+    HoloCharacter urashima;
 
     public override void Init(HoloObject owner)
     {
-        Debug.Log("init");
         base.Init(owner);
 
-        m_agent = agent;
-
-        if(bubble == null) bubble = transform.GetChild(0).gameObject;
+        urashima = (HoloCharacter)owner;
+        m_agent = GetComponent<NavMeshAgent>();
     }
 
     public override bool OnClick()
     {
         if (!HoloObjectController.I.canClick) return false;
+
+        //もうはじけている場合は普通のやつ
         if (isPoped) return base.OnClick();
 
         isPoped = true;
-        
-        if(MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
 
         //泡がはじけて下に落ちる
         StartCoroutine(Fall());
         bubble.SetActive(false);
         AkSoundEngine.PostEvent("Bubble", owner.gameObject);
 
-        return base.OnClick();
-    }
-
-    void OnReset()
-    {
-        isPoped = false;
-        bubble.SetActive(true);
-        MainSceneManager.I.OnReset -= OnReset;
+        return true;
     }
 
     IEnumerator Fall()
@@ -89,5 +81,38 @@ public class BubleItemInputHandler : ItemInputHandler
         HoloObjectController.I.Disable();
         OnDisabled();
         m_agent.enabled = false;
+    }
+
+    public override MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj)
+    {
+        if (hitObj == null || hitObj.ItemSaucer == null)
+        {
+            return base.OnDragUpdate(hitObjType, hitObj);
+        }
+
+        if (hitObjType == HitObjType.EventArea)
+        {
+            EventAreaItemSaucer eventArea = (EventAreaItemSaucer)hitObj.ItemSaucer;
+
+            if (eventArea.CheckCanHaveItem(urashima)) return MakerType.Happen;
+        }
+
+        return MakerType.DontPut;
+    }
+
+    public override void OnDragEnd(HitObjType hitObjType, HoloObject hitObj)
+    {
+        if (hitObjType != HitObjType.EventArea)
+        {
+            base.OnDragEnd(hitObjType, hitObj);
+            return;
+        }
+
+        EventAreaItemSaucer eventArea = (EventAreaItemSaucer)hitObj.ItemSaucer;
+
+        if (eventArea.CheckCanHaveItem(urashima))
+        {
+            eventArea.SetCharacter(urashima, false);
+        }
     }
 }
