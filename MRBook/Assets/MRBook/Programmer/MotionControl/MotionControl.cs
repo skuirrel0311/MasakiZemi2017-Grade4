@@ -66,6 +66,8 @@ public enum MotionName
     StandSit_Fine,      //座る→食べる→立つ
     HangFrom,   //持たれてぶら下がる
     StandSit_Fine_Dead, //座る→食べる→死亡
+    Brutality2, //いじめる２
+    Brutality3  //いじめる３
 
 }
 
