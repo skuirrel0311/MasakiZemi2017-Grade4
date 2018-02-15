@@ -19,13 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4465626297743852}
-  - component: {fileID: 195289446158468072}
-  - component: {fileID: 65963237666841220}
-  - component: {fileID: 114784733180753912}
   - component: {fileID: 65837145245647144}
-  - component: {fileID: 114377143003035440}
-  - component: {fileID: 114828341124115292}
-  m_Layer: 8
+  - component: {fileID: 114529059845305566}
+  m_Layer: 0
   m_Name: Fishingrod
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -130,7 +126,7 @@ GameObject:
   - component: {fileID: 114221704116459390}
   - component: {fileID: 54673225196009808}
   - component: {fileID: 114271475302244542}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sakabin
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -185,7 +181,7 @@ GameObject:
   - component: {fileID: 114758085143627444}
   - component: {fileID: 114802195887127602}
   - component: {fileID: 114347426997965068}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Bait
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -1500,18 +1496,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6557848, y: 0.2448309, z: 0.4966941}
   m_Center: {x: 0.007419646, y: -0.00048356876, z: 0.0016587079}
---- !u!65 &65963237666841220
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032175984364036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05459869, y: 0.20065166, z: 0.07546958}
-  m_Center: {x: -0.012982532, y: 0.025021307, z: 0.003210798}
 --- !u!114 &114108289973071790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1597,18 +1581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 0.2, y: 0.5, z: 0.2}
---- !u!114 &114377143003035440
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032175984364036}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639eb74310705c5459c5d1666a8164e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFloating: 0
 --- !u!114 &114504054283586146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1622,6 +1594,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: {fileID: 1892189164417932}
   replacementObject: {fileID: 1623831174970578}
+--- !u!114 &114529059845305566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032175984364036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114758085143627444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1638,27 +1626,6 @@ MonoBehaviour:
   inPlayLayer: 4
   overrideName: 
   fadeShader: {fileID: 0}
---- !u!114 &114784733180753912
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032175984364036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb0358438db1c24386812fa3f2ff0ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMovable: 0
-  canHaveItem: 0
-  inPlayLayer: 4
-  overrideName: 
-  fadeShader: {fileID: 0}
-  nameText: "\u91E3\u7AFF"
-  explanatoryText: "\u68D2\u3067\u306F\u306A\u304F\u6D66\u5CF6\u306E\u611B\u7528\u306E\u91E3\u7AFF\u3002\r\n\u8CEA\u7D20\u3060\u304C\u4E08\u592B\u3002"
-  forHand: 0
-  defaultOwner: {fileID: 0}
-  owner: {fileID: 0}
 --- !u!114 &114802195887127602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1671,18 +1638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
---- !u!114 &114828341124115292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032175984364036}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865f36061e878fc4bb92b5b15babd36d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Size: {x: 0.2, y: 0.5, z: 0.2}
 --- !u!195 &195145036752636086
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -1704,27 +1659,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!195 &195289446158468072
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032175984364036}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.04
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.2
-  m_BaseOffset: 0.075
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
 --- !u!195 &195366962534665414
 NavMeshAgent:
   m_ObjectHideFlags: 1

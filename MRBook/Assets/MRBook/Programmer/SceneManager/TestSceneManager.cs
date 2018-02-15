@@ -18,8 +18,8 @@ public class TestSceneManager : MainSceneManager
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            DisableCurrentPage();
-            ChangePage(currentPageIndex + 1);
+            DisableCurrentPage(null, false);
+            SetPage(currentPageIndex + 1, false);
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -58,7 +58,7 @@ public class TestSceneManager : MainSceneManager
             pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation);
         }
 
-        SetPage(currentPageIndex);
+        SetPage(currentPageIndex, false);
         IsGameStart = true;
     }
 

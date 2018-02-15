@@ -7,6 +7,14 @@ public class MainSceneCursor : MyCursor
     [SerializeField]
     int actorLayer = 8;
 
+    HoloObjectController objController;
+
+    protected override void Start()
+    {
+        base.Start();
+        objController = HoloObjectController.I;
+    }
+
     protected override void OnFocusedObjectChanged(GameObject previousObject, GameObject newObject)
     {
         base.OnFocusedObjectChanged(previousObject, newObject);
@@ -23,6 +31,8 @@ public class MainSceneCursor : MyCursor
             OnFlagChanged();
             return;
         }
+
+        if (objController != null && !objController.canClick) return;
 
         //矢印付きのカーソル
         isRecognizedPosCon = true;

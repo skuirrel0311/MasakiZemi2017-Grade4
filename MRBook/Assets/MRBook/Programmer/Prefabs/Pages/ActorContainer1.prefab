@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 114117855328913114}
   - component: {fileID: 65229952521349732}
   - component: {fileID: 114932262607702586}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Child2
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 114952475577227234}
   - component: {fileID: 195152798238158276}
   - component: {fileID: 114966467067494324}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Turtle
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -796,9 +796,10 @@ GameObject:
   - component: {fileID: 4256333795468718}
   - component: {fileID: 33084525008866962}
   - component: {fileID: 23950081828482790}
+  - component: {fileID: 114316380332615156}
   m_Layer: 0
   m_Name: eda
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1756,9 +1757,10 @@ GameObject:
   - component: {fileID: 4853618897057836}
   - component: {fileID: 33063266858714218}
   - component: {fileID: 23167501710262400}
+  - component: {fileID: 114896883585577482}
   m_Layer: 0
   m_Name: eda
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1988,7 +1990,7 @@ GameObject:
   - component: {fileID: 114891122793578984}
   - component: {fileID: 65907103906055830}
   - component: {fileID: 114614424835983786}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Child1
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -2132,7 +2134,7 @@ GameObject:
   - component: {fileID: 114287731889544212}
   - component: {fileID: 65583532391792148}
   - component: {fileID: 114385581023478808}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Child3
   m_TagString: Actor
   m_Icon: {fileID: 0}
@@ -2179,9 +2181,10 @@ GameObject:
   - component: {fileID: 4357074882946178}
   - component: {fileID: 33111913556221626}
   - component: {fileID: 23283403435648906}
+  - component: {fileID: 114709638055362446}
   m_Layer: 0
   m_Name: eda
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2906,7 +2909,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352521775938634}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.0168831, y: 0.0219, z: -0.18741423}
+  m_LocalPosition: {x: 0, y: 0.694, z: 0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4779735510670472}
@@ -5438,6 +5441,22 @@ MonoBehaviour:
   overrideName: 
   fadeShader: {fileID: 0}
   defaultMotionName: 47
+--- !u!114 &114316380332615156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273049772797844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114385581023478808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5599,6 +5618,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 0.1, y: 0.2, z: 0.1}
+--- !u!114 &114709638055362446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862054409126154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114855995863912038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5949,6 +5984,22 @@ MonoBehaviour:
   overrideName: 
   fadeShader: {fileID: 0}
   defaultMotionName: 47
+--- !u!114 &114896883585577482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689937490306774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 8
+  overrideName: 
+  fadeShader: {fileID: 0}
 --- !u!114 &114932262607702586
 MonoBehaviour:
   m_ObjectHideFlags: 1

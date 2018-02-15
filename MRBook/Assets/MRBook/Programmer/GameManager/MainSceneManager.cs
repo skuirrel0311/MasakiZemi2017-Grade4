@@ -247,31 +247,43 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].ResetPage();
     }
 
-    public void DisableCurrentPage(Action callback = null)
+    public void DisableCurrentPage(Action callback = null, bool isFade = true)
     {
         //前のページは消す
         CurrentState = GameState.Next;
         MissionTextController.I.Disable();
         PageResultManager.I.Hide();
+
+        if(!isFade)
+        {
+            pages[currentPageIndex].gameObject.SetActive(false);
+            if (callback != null) callback.Invoke();
+            return;
+        }
+
         Fader.I.FadeOut(() =>
         {
             pages[currentPageIndex].gameObject.SetActive(false);
             if (callback != null) callback.Invoke();
         });
-
-
     }
 
     /// <summary>
     /// 指定されたページへ遷移する(実際のページの遷移はここ)
     /// </summary>
     /// <param name="isBack">前のページか？</param>
-    protected virtual void SetPage(int index)
+    protected virtual void SetPage(int index, bool isFade = true)
     {
         //ページを切り替える
         currentPageIndex = index;
         pages[currentPageIndex].gameObject.SetActive(true);
         pages[currentPageIndex].PageStart();
+
+        if(!isFade)
+        {
+            ShowNextPage();
+            return;
+        }
 
         Fader.I.FadeIn(() =>
         {
