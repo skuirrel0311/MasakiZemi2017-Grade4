@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4304600240751634}
   - component: {fileID: 212706041603858210}
+  - component: {fileID: 95835611961924454}
   m_Layer: 0
   m_Name: eye
   m_TagString: Untagged
@@ -315,14 +316,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610099598638072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
   m_LocalPosition: {x: 0.0277, y: 0.01, z: 0.0953}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4082813425589886}
   m_Father: {fileID: 4297890089330314}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 40, z: 0}
 --- !u!4 &4779636392144312
 Transform:
   m_ObjectHideFlags: 1
@@ -507,6 +508,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95835611961924454
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1348589296967300}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 679554e7931d474459397cf781e89df5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114105869577164336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -545,6 +563,7 @@ MonoBehaviour:
   original: {fileID: 114105869577164336}
   arrowSprite: {fileID: 1507335449540324}
   openPositionTransform: {fileID: 4305662182168496}
+  eyeAnimator: {fileID: 0}
 --- !u!114 &114403648636242690
 MonoBehaviour:
   m_ObjectHideFlags: 1

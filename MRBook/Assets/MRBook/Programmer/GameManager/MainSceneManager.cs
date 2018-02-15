@@ -247,6 +247,12 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         pages[currentPageIndex].ResetPage();
     }
 
+    public void SkipPage(int nextPageIndex)
+    {
+        DisableCurrentPage(null, false);
+        SetPage(nextPageIndex);
+    }
+
     public void DisableCurrentPage(Action callback = null, bool isFade = true)
     {
         //前のページは消す

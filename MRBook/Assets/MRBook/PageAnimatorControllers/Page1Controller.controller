@@ -185,6 +185,23 @@ MonoBehaviour:
   speed: 0.2
   rotationSpeed: 270
   callChangeAnimation: 1
+--- !u!114 &114159998680561544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5b4f33b6ebdb241b14c16f20c7442f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Urashima
+  wayPointNames:
+  - UrashimaEndPoint
+  speed: 0.1
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114161968069159506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,6 +213,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114177248000539092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 8
 --- !u!114 &114180391405355202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,6 +402,18 @@ MonoBehaviour:
   motionName: 53
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114359408071036780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66159f267dac7d14dbef402136086ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Urashima
 --- !u!114 &114364736897282894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +573,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114522424866672166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114529983959183870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,6 +749,40 @@ MonoBehaviour:
   motionName: 2
   transitionDuration: 0.2
   WwiseEventName: 
+--- !u!114 &114684147691222992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
+--- !u!114 &114710129442061176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdeb1d427e53447aba523c139cc28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114723525806447292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114733667349708478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -712,6 +799,21 @@ MonoBehaviour:
   effectName: Splash
   WwiseEventName: Splash
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &114736000835723062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 59
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114738850386552808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,6 +852,17 @@ MonoBehaviour:
   isCheckNow: 0
   checkOnUpdate: 0
   paramName: Flagged
+--- !u!114 &114765231917165340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114784722016072742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,6 +905,21 @@ MonoBehaviour:
   speed: 0.15
   rotationSpeed: 270
   callChangeAnimation: 1
+--- !u!114 &114815224604922230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57ab4ccb142b24d9b2d588c0b9912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: 0
+  motionName: 54
+  transitionDuration: 0.1
+  WwiseEventName: 
 --- !u!114 &114829496965715904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -804,6 +932,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114840619097005350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8e439c46fd6814eb088834cd045d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForcing: 1
 --- !u!114 &114842312457832750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -829,6 +969,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Child3
+--- !u!114 &114857714104983186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a28ccc67dd05f48bebd463bfdbdbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114868216274052970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -894,6 +1045,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114902033843150900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5064c90a08c24488ea5379a202a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
 --- !u!114 &114907246664316694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,7 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: 0
   motionName: 2
-  transitionDuration: 0.15
+  transitionDuration: 0.2
   WwiseEventName: 
 --- !u!114 &114990421305338318
 MonoBehaviour:
@@ -1474,6 +1637,8 @@ AnimatorState:
   - {fileID: 1101309728799827548}
   m_StateMachineBehaviours:
   - {fileID: 114405981520264198}
+  - {fileID: 114710129442061176}
+  - {fileID: 114840619097005350}
   - {fileID: 114669248176940134}
   - {fileID: 114990421305338318}
   - {fileID: 114406046117352096}
@@ -1483,6 +1648,17 @@ AnimatorState:
   - {fileID: 114880905948364426}
   - {fileID: 114364736897282894}
   - {fileID: 114518586336439612}
+  - {fileID: 114522424866672166}
+  - {fileID: 114902033843150900}
+  - {fileID: 114736000835723062}
+  - {fileID: 114684147691222992}
+  - {fileID: 114815224604922230}
+  - {fileID: 114177248000539092}
+  - {fileID: 114159998680561544}
+  - {fileID: 114359408071036780}
+  - {fileID: 114765231917165340}
+  - {fileID: 114857714104983186}
+  - {fileID: 114723525806447292}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

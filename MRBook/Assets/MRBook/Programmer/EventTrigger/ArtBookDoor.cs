@@ -9,9 +9,17 @@ public class ArtBookDoor : ArtBookGimmick
 
     [SerializeField]
     Transform openPositionTransform = null;
+
+    [SerializeField]
+    Animator eyeAnimator = null;
+
     float maxCrossValue;
 
     Vector3 cameraPosition;
+
+    //どれだけ開いているか？
+    float amount = 0.0f;
+    float oldAmount = 0.0f;
 
     protected override void Start()
     {
@@ -31,7 +39,8 @@ public class ArtBookDoor : ArtBookGimmick
         {
             isHide = !isHide;
             SetGimmickVisuable(!isHide);
-            if(!isHide) AkSoundEngine.PostEvent("Eye", gameObject);
+            if (!isHide) AkSoundEngine.PostEvent("Eye", gameObject);
+            else AkSoundEngine.PostEvent("Door", gameObject);
             NotificationManager.I.ShowMessage("ドアが" + (isHide ? "開いた" : "閉じた"), 1.0f);
         }
 
@@ -41,7 +50,25 @@ public class ArtBookDoor : ArtBookGimmick
 
         if (arrowSprite.activeSelf != maker.IsVisuable)
         {
-            if(maker.IsVisuable) AkSoundEngine.PostEvent("Eye", gameObject);
+            eyeAnimator.SetBool("IsFound", maker.IsVisuable);
+            if (maker.IsVisuable)
+            {
+                //見つけた
+                AkSoundEngine.PostEvent("Eye", gameObject);
+            }
+            else
+            {
+                if(amount > 0.3f)
+                {
+                    //開いた
+                    AkSoundEngine.PostEvent("Door", gameObject);
+                }
+                else
+                {
+                    //開いていない可能性がある
+                    return;
+                }
+            }
             arrowSprite.SetActive(maker.IsVisuable);
         }
 
@@ -52,6 +79,7 @@ public class ArtBookDoor : ArtBookGimmick
             Vector3 vec2 = (maker.child.position - cameraPosition).normalized;
             float crossValue = GetCrossValue(vec1, vec2);
             float t = crossValue / maxCrossValue;
+            amount = t;
             transform.position = Vector3.Lerp(original.transform.position, openPositionTransform.position, t);
         }
 #endif

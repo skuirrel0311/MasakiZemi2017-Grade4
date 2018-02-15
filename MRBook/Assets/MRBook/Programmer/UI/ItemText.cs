@@ -51,21 +51,18 @@ public class ItemText : MonoBehaviour
 
     void OnFocuesdObjectChanged(GameObject preObj, GameObject newObj)
     {
-        if (!MyObjControllerByBoundingBox.I.canClick || MyObjControllerByBoundingBox.I.IsDragging)
+        if (!HoloObjectController.I.canClick || HoloObjectController.I.IsDragging)
         {
             text.gameObject.SetActive(false);
             return;
         }
 
-        if (newObj == null)
+        if (newObj == null || newObj.tag != "Actor")
         {
             text.gameObject.SetActive(false);
             return;
         }
-
-        if (newObj.tag != "Actor") return;
-
-
+        
         HoloObject obj = actorManager.GetObject(newObj.name);
 
         if (obj == null || obj.GetActorType != HoloObject.Type.Item) return;
