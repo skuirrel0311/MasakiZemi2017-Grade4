@@ -85,7 +85,6 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler, IInputHand
         if (objController == null) return;
         objController.SetTargetObject(owner);
         Utilities.Delay(1, () => objController.OnInputDown(eventData), this);
-        
     }
 
     //指が持ち上げられた

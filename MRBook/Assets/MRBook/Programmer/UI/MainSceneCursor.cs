@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MainSceneCursor : MyCursor
 {
+    [SerializeField]
+    int actorLayer = 8;
+
     protected override void OnFocusedObjectChanged(GameObject previousObject, GameObject newObject)
     {
         base.OnFocusedObjectChanged(previousObject, newObject);
@@ -12,7 +15,7 @@ public class MainSceneCursor : MyCursor
         if (isRecognizedPosCon && isRecognizedHold) return;
 
         //普通のカーソル
-        if(newObject == null || newObject.tag != "Actor")
+        if(newObject == null || newObject.layer != actorLayer)
         {
             isRecognizedPosCon = false;
             isRecognizedRotCon = false;

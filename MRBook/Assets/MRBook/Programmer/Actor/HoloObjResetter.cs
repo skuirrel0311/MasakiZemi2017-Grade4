@@ -190,7 +190,10 @@ public class LocationResetBehaviour : AbstractHoloObjResetBehaviour
         ownerTransform.localPosition = defaultPosition;
         ownerTransform.localRotation = defaultRotation;
     }
-    public override void OnEnable() { }
+    public override void OnEnable()
+    {
+        ownerTransform.localPosition = defaultPosition;
+    }
 }
 
 public class ItemResetBehaviour : AbstractHoloObjResetBehaviour

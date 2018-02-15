@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using KKUtilities;
 
 public class TutorialUrashimaInputHandler : ItemInputHandler
 {
@@ -13,13 +14,20 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
     bool isPoped = false;
 
     HoloCharacter urashima;
-
+    
     public override void Init(HoloObject owner)
     {
         base.Init(owner);
 
         urashima = (HoloCharacter)owner;
         m_agent = GetComponent<NavMeshAgent>();
+    }
+
+    void OnReset()
+    {
+        isPoped = false;
+        bubble.SetActive(true);
+        TutorialSceneManager.I.onReset += OnReset;
     }
 
     public override bool OnClick()
@@ -31,6 +39,8 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
 
         isPoped = true;
 
+        TutorialSceneManager.I.onReset += OnReset;
+
         //泡がはじけて下に落ちる
         StartCoroutine(Fall());
         bubble.SetActive(false);
@@ -38,7 +48,7 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
 
         return true;
     }
-
+    
     IEnumerator Fall()
     {
         NavMeshHit hit;
@@ -46,12 +56,12 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
         float bookHeight = OffsetController.I.bookTransform.position.y;
         float airHeight = bookHeight + 0.5f;
         //Debug.Log("book height = " + bookHeight);
-
+        
         while (true)
         {
             //0.1ずつ下を探す
             MyNavMeshBuilder.CreateNavMesh();
-            owner.transform.position += Vector3.down * 0.03f;
+            owner.transform.position += Vector3.down * 0.01f;
 
             //todo : 絵本よりも下に行った場合はやばいのでなにか対応が必要
 
@@ -77,10 +87,14 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
 
         yield return null;
 
-
         HoloObjectController.I.Disable();
         OnDisabled();
         m_agent.enabled = false;
+    }
+
+    public override void OnDragStart()
+    {
+        base.OnDragStart();
     }
 
     public override MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj)
@@ -114,5 +128,12 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
         {
             eventArea.SetCharacter(urashima, false);
         }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag != "Water") return;
+
+        TutorialSceneManager.I.HitWater();
     }
 }
