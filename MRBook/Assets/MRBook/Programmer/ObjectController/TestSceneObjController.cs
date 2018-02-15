@@ -27,24 +27,16 @@ public class TestSceneObjController : MainSceneObjController
 
     protected override void Update()
     {
-        const float minDragTime = 0.2f;
-
-        //右クリック
-        if (Input.GetMouseButtonDown(0))
-        {
-            m_draggingTime = 0.0f;
-        }
-
         //右クリック長押し
         if (Input.GetMouseButton(0))
         {
             if (!IsDragging)
             {
-                m_draggingTime += Time.deltaTime;
-
-                if (m_draggingTime > minDragTime)
+                HoloObject obj;
+                if (TryGetGameObject(out obj))
                 {
                     IsDragging = true;
+                    SetTargetObject(obj);
                     StartOperation();
                 }
             }
@@ -56,17 +48,11 @@ public class TestSceneObjController : MainSceneObjController
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!IsDragging)
-            {
-                //短いドラッグだった
-                OnTap();
-            }
-            else
+            if (IsDragging)
             {
                 EndOperation();
+                IsDragging = false;
             }
-
-            IsDragging = false;
         }
     }
 

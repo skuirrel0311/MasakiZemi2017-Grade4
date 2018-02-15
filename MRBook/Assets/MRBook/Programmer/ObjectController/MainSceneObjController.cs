@@ -94,7 +94,7 @@ public class MainSceneObjController : HoloObjectController
 
         BaseObjInputHandler.MakerType makerType = GetMakerType(underObj, isHitObject);
 
-        //Debug.Log("makerType = " + makerType.ToString());
+        Debug.Log("makerType = " + makerType.ToString());
         underTargetMaker.UpdateMaker(makerType, underObj);
         oldMakerType = makerType;
     }
