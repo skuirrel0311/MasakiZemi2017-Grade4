@@ -143,7 +143,7 @@ Transform:
   - {fileID: 1046156873}
   - {fileID: 283345111}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &13802079 stripped
 GameObject:
@@ -182,6 +182,7 @@ MonoBehaviour:
   canHaveItem: 1
   inPlayLayer: 8
   overrideName: 
+  fadeShader: {fileID: 0}
   defaultMotionName: 5
 --- !u!4 &13802084 stripped
 Transform:
@@ -364,6 +365,7 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 8
   overrideName: 
+  fadeShader: {fileID: 0}
   defaultMotionName: 1
 --- !u!195 &48023141
 NavMeshAgent:
@@ -557,11 +559,52 @@ Transform:
   m_Father: {fileID: 936744437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &87731219 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1701887303963912, guid: 839441fc340ced34d9e47f68d077fb38,
-    type: 2}
-  m_PrefabInternal: {fileID: 989198272}
+--- !u!1001 &85088117
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00079240464
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.409
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5112664
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.8594223
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 298.504
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b8ed1618b8747724f9d78a39253c625a, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1001 &107063259
 Prefab:
   m_ObjectHideFlags: 0
@@ -667,7 +710,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &133138182 stripped
 Transform:
@@ -1097,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &491261909
 Transform:
   m_ObjectHideFlags: 0
@@ -1113,7 +1156,7 @@ Transform:
   - {fileID: 107063260}
   - {fileID: 1162103364}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510141368 stripped
 GameObject:
@@ -1257,7 +1300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &629083179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,14 +1318,11 @@ MonoBehaviour:
   lifePoint: 3
   pageIndex: 4
   controller: {fileID: 9100000, guid: 90a6fe22bae0da34b8b11f779d9e952a, type: 2}
+  defaultDisableObjects: []
   bookObjects:
-  - {fileID: 1242186034}
-  - {fileID: 1619339680}
+  - {fileID: 0}
+  - {fileID: 0}
   objectList: []
-  urashima: {fileID: 13802081}
-  turtle: {fileID: 48023140}
-  secretBox_Lid: {fileID: 1597202113}
-  secretBox_Box: {fileID: 700417042}
 --- !u!4 &629083180
 Transform:
   m_ObjectHideFlags: 0
@@ -1301,7 +1341,7 @@ Transform:
   - {fileID: 1785521205}
   - {fileID: 1084945137}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639037477
 GameObject:
@@ -1597,8 +1637,12 @@ MonoBehaviour:
   canHaveItem: 1
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
+  nameText: 
+  explanatoryText: 
   forHand: 0
   defaultOwner: {fileID: 0}
+  owner: {fileID: 0}
 --- !u!23 &700417043
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2070,7 +2114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &867100514 stripped
 Transform:
@@ -2145,7 +2189,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &929336409 stripped
 Transform:
@@ -2324,7 +2368,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1046156873 stripped
 Transform:
@@ -2666,11 +2710,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1895951572877526, guid: b2681310c7041994a8999e7165407f7d,
     type: 2}
   m_PrefabInternal: {fileID: 312856933}
---- !u!1 &1242186034 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1283780893679348, guid: cd053293ac73d4243a8768c76a1337fd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1066747965}
 --- !u!4 &1276465151 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4918476536010816, guid: b2681310c7041994a8999e7165407f7d,
@@ -2971,8 +3010,9 @@ MonoBehaviour:
   lifePoint: 3
   pageIndex: 0
   controller: {fileID: 9100000, guid: 267531f3dd76ce04cbaa38e37cf45fa8, type: 2}
+  defaultDisableObjects: []
   bookObjects:
-  - {fileID: 87731219}
+  - {fileID: 0}
   objectList: []
 --- !u!1 &1569923746 stripped
 GameObject:
@@ -3110,8 +3150,12 @@ MonoBehaviour:
   canHaveItem: 0
   inPlayLayer: 4
   overrideName: 
+  fadeShader: {fileID: 0}
+  nameText: 
+  explanatoryText: 
   forHand: 0
   defaultOwner: {fileID: 0}
+  owner: {fileID: 0}
 --- !u!23 &1597202114
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3153,11 +3197,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1597202106}
   m_Mesh: {fileID: 4300002, guid: 0b0766b5ab8cefe428ea4411b6ee3971, type: 3}
---- !u!1 &1619339680 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1968187622929700, guid: cd053293ac73d4243a8768c76a1337fd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1066747965}
 --- !u!1 &1621783182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,6 +3818,7 @@ MonoBehaviour:
   lifePoint: 3
   pageIndex: 0
   controller: {fileID: 9100000, guid: 4ac44e2b765786b4eb5be1e7ecc56b84, type: 2}
+  defaultDisableObjects: []
   bookObjects:
   - {fileID: 811782769}
   - {fileID: 533185062}
@@ -3818,6 +3858,7 @@ MonoBehaviour:
   lifePoint: 3
   pageIndex: 0
   controller: {fileID: 0}
+  defaultDisableObjects: []
   bookObjects: []
   objectList: []
 --- !u!4 &2110072178
@@ -3838,7 +3879,7 @@ Transform:
   - {fileID: 35744108}
   - {fileID: 820819048}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127131939
 GameObject:
@@ -3875,7 +3916,7 @@ Transform:
   - {fileID: 1656464676}
   - {fileID: 617516907}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2140310172
 Prefab:
