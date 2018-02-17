@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using KKUtilities;
+using HoloToolkit.Unity.InputModule;
 
 public class TutorialUrashimaInputHandler : ItemInputHandler
 {
@@ -90,6 +91,32 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
         HoloObjectController.I.Disable();
         OnDisabled();
         m_agent.enabled = false;
+    }
+
+    public override void OnInputDown(InputEventData eventData)
+    {
+        if (!isPoped)
+        {
+            if (MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
+
+            //泡がはじけて下に落ちる
+            StartCoroutine(Fall());
+            bubble.SetActive(false);
+            ParticleManager.I.Play("BubbleBreak", bubble.transform.position);
+            AkSoundEngine.PostEvent("Bubble", owner.gameObject);
+            return;
+        }
+        base.OnInputDown(eventData);
+    }
+
+    public override void OnInputUp(InputEventData eventData)
+    {
+        if (!isPoped)
+        {
+            isPoped = true;
+            return;
+        }
+        base.OnInputUp(eventData);
     }
 
     public override void OnDragStart()

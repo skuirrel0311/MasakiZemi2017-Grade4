@@ -80,7 +80,7 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler, IInputHand
     }
 
     //指が倒された
-    public void OnInputDown(InputEventData eventData)
+    public virtual void OnInputDown(InputEventData eventData)
     {
         if (objController == null) return;
         objController.SetTargetObject(owner);
@@ -88,7 +88,7 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler, IInputHand
     }
 
     //指が持ち上げられた
-    public void OnInputUp(InputEventData eventData)
+    public virtual void OnInputUp(InputEventData eventData)
     {
         if (objController == null) return;
         objController.OnInputUp(eventData);

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using HoloToolkit.Unity.InputModule;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,22 +24,75 @@ public class BubleItemInputHandler : ItemInputHandler
         if(bubble == null) bubble = transform.GetChild(0).gameObject;
     }
 
-    public override bool OnClick()
+    public override void OnInputDown(InputEventData eventData)
     {
-        if (!HoloObjectController.I.canClick) return false;
-        if (isPoped) return base.OnClick();
+        if(!isPoped)
+        {
+            if (MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
 
-        isPoped = true;
-        
-        if(MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
-
-        //泡がはじけて下に落ちる
-        StartCoroutine(Fall());
-        bubble.SetActive(false);
-        AkSoundEngine.PostEvent("Bubble", owner.gameObject);
-
-        return base.OnClick();
+            //泡がはじけて下に落ちる
+            StartCoroutine(Fall());
+            bubble.SetActive(false);
+            ParticleManager.I.Play("BubbleBreak", bubble.transform.position);
+            AkSoundEngine.PostEvent("Bubble", owner.gameObject);
+            return;
+        }
+        base.OnInputDown(eventData);
     }
+
+    public override void OnInputUp(InputEventData eventData)
+    {
+        if (!isPoped)
+        {
+            isPoped = true;
+            return;
+        }
+        base.OnInputUp(eventData);
+    }
+
+    public override void OnDragStart()
+    {
+        if (!isPoped)
+        {
+            if (MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
+
+            //泡がはじけて下に落ちる
+            StartCoroutine(Fall());
+            bubble.SetActive(false);
+            ParticleManager.I.Play("BubbleBreak", bubble.transform.position);
+            AkSoundEngine.PostEvent("Bubble", owner.gameObject);
+            return;
+        }
+        base.OnDragStart();
+    }
+
+    public override void OnDragEnd(HitObjType hitObjType, HoloObject hitObj)
+    {
+        if (!isPoped)
+        {
+            isPoped = true;
+            return;
+        }
+
+        base.OnDragEnd(hitObjType, hitObj);
+    }
+
+    //public override bool OnClick()
+    //{
+    //    if (!HoloObjectController.I.canClick) return false;
+    //    if (isPoped) return base.OnClick();
+
+    //    isPoped = true;
+
+    //    if(MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
+
+    //    //泡がはじけて下に落ちる
+    //    StartCoroutine(Fall());
+    //    bubble.SetActive(false);
+    //    AkSoundEngine.PostEvent("Bubble", owner.gameObject);
+
+    //    return base.OnClick();
+    //}
 
     void OnReset()
     {
