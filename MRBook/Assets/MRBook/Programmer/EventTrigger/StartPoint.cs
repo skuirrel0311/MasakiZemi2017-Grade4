@@ -46,4 +46,10 @@ public class StartPoint : EventAreaItemSaucer
         if (obj.GetName() == mainCharacterName) return true;
         return base.CheckCanHaveObject(obj);
     }
+
+    public override void OnReset()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+        base.OnReset();
+    }
 }
