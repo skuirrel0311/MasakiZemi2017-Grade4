@@ -35,6 +35,14 @@ public class BasePage : MonoBehaviour
     [SerializeField]
     GameObject[] bookObjects = null;
 
+    public List<GameObject> rightSideObjectList = new List<GameObject>();
+    public List<GameObject> leftSideObjectList = new List<GameObject>();
+
+    [SerializeField]
+    float leftSideHeightOffset = 0.0f;
+    [SerializeField]
+    float rightSideHeightOffset = 0.0f;
+
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
 
@@ -105,11 +113,23 @@ public class BasePage : MonoBehaviour
             }
         }
 
+        Vector3 upVec = Vector3.up;
+
+        for(int i = 0;i< rightSideObjectList.Count;i++)
+        {
+            rightSideObjectList[i].transform.localPosition += (upVec * rightSideHeightOffset);
+        }
+
+        for(int i = 0;i< leftSideObjectList.Count;i++)
+        {
+            leftSideObjectList[i].transform.localPosition += (upVec * leftSideHeightOffset);
+        }
+
         for (int i = 0; i < objectList.Count; i++)
         {
             objectList[i].PageStart(pageIndex);
         }
-
+        
         isFirst = false;
     }
 
@@ -126,6 +146,8 @@ public class BasePage : MonoBehaviour
 
             resetManager.AddResetter(obj.Resetter);
             objectList.Add(obj);
+            IntoSideList(obj.gameObject);
+
             objectDictionary.Add(obj.name, obj);
             if (obj.GetActorType != HoloObject.Type.Character) continue;
             characterDictionary.Add((ActorName)Enum.Parse(typeof(ActorName), obj.name), (HoloCharacter)obj);
@@ -146,6 +168,7 @@ public class BasePage : MonoBehaviour
 
             //Debug.Log("add actor " + holoObject.name);
             objectList.Add(holoObject);
+            IntoSideList(holoObject.gameObject);
             resetManager.AddResetter(holoObject.Resetter);
 
             try
@@ -185,6 +208,7 @@ public class BasePage : MonoBehaviour
             try
             {
                 targetPointDictionary.Add(tempArray[i].name, tempArray[i].transform);
+                IntoSideList(tempArray[i].gameObject);
             }
             catch
             {
@@ -217,5 +241,41 @@ public class BasePage : MonoBehaviour
         {
             objectList[i].gameObject.SetActive(active);
         }
+    }
+
+    void IntoSideList(GameObject obj)
+    {
+        float cross = GetCrossValue(transform.forward, Vector3.Normalize(obj.transform.position - transform.position));
+        float length = Vector3.Magnitude(obj.transform.position - transform.position);
+        
+        //Debug.Log(obj.name +  " cross = " + cross + " length = " + length);
+
+        if (Mathf.Abs(length) > 0.2f)
+        {
+            if (Mathf.Abs(cross) <= 0.01) return;
+
+            if(cross > 0)
+            {
+                //左側
+                leftSideObjectList.Add(obj);
+            }
+            else
+            {
+                //右側
+                rightSideObjectList.Add(obj);
+            }
+        }
+
+    } 
+    
+    //正規化したベクトルを渡す
+    float GetDotValue(Vector3 vec1, Vector3 vec2)
+    {
+        return (vec1.x * vec2.x) + (vec1.z * vec2.z);
+    }
+
+    float GetCrossValue(Vector3 vec1, Vector3 vec2)
+    {
+        return (vec1.x * vec2.z) - (vec2.x * vec1.z);
     }
 }

@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   movePower: 0.01
+  rotatePower: 1
   bookTransform: {fileID: 86539194}
 --- !u!4 &86539194
 Transform:
@@ -323,7 +324,7 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38,
     type: 2}
-  m_PrefabInternal: {fileID: 2052108339}
+  m_PrefabInternal: {fileID: 1389764623}
 --- !u!1001 &189076516
 Prefab:
   m_ObjectHideFlags: 0
@@ -539,6 +540,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4946355079825164, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 111e75a4989d7d44684f7aabfa3c50f4, type: 2}
   m_IsPrefabParent: 0
@@ -586,6 +591,10 @@ MonoBehaviour:
   defaultDisableObjects: []
   bookObjects:
   - {fileID: 1238520295}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 0
+  rightSideHeightOffset: 0
   objectList: []
 --- !u!4 &356696945
 Transform:
@@ -896,6 +905,10 @@ MonoBehaviour:
   bookObjects:
   - {fileID: 691407433}
   - {fileID: 1928827437}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 0
+  rightSideHeightOffset: 0
   objectList: []
 --- !u!4 &629083180
 Transform:
@@ -1128,7 +1141,7 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 1211512636395498, guid: 839441fc340ced34d9e47f68d077fb38,
     type: 2}
-  m_PrefabInternal: {fileID: 2052108339}
+  m_PrefabInternal: {fileID: 1389764623}
 --- !u!1001 &741220439
 Prefab:
   m_ObjectHideFlags: 0
@@ -2537,6 +2550,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1389764623
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2127131940}
+    m_Modifications:
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &1413140916 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114776030319548992, guid: 822d9b3d25ebdb945828275f971b474a,
@@ -3249,7 +3304,7 @@ Prefab:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114463199135869080, guid: 839441fc340ced34d9e47f68d077fb38,
     type: 2}
-  m_PrefabInternal: {fileID: 2052108339}
+  m_PrefabInternal: {fileID: 1389764623}
   m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
 --- !u!4 &1785521205 stripped
 Transform:
@@ -3516,48 +3571,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1235203826831010, guid: 4dd1c67daca97f44ba8130e2f02913a6,
     type: 2}
   m_PrefabInternal: {fileID: 296323052}
---- !u!1001 &2052108339
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2127131940}
-    m_Modifications:
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884727084701106, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 839441fc340ced34d9e47f68d077fb38, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &2056471249
 Prefab:
   m_ObjectHideFlags: 0
@@ -3622,6 +3635,10 @@ MonoBehaviour:
   bookObjects:
   - {fileID: 811782769}
   - {fileID: 533185062}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 0
+  rightSideHeightOffset: 0
   objectList: []
 --- !u!1001 &2081933886
 Prefab:
@@ -3744,6 +3761,10 @@ MonoBehaviour:
   defaultDisableObjects: []
   bookObjects:
   - {fileID: 1945198542}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 0
+  rightSideHeightOffset: 0
   objectList: []
   turtle: {fileID: 1413140916}
   goldenBall: {fileID: 1228815778}
@@ -3826,13 +3847,17 @@ MonoBehaviour:
   bookObjects:
   - {fileID: 2136822400}
   - {fileID: 736885309}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 0
+  rightSideHeightOffset: 0
   objectList: []
   ActorContainer: {fileID: 576427974}
 --- !u!1 &2136822400 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1829936518323970, guid: 839441fc340ced34d9e47f68d077fb38,
     type: 2}
-  m_PrefabInternal: {fileID: 2052108339}
+  m_PrefabInternal: {fileID: 1389764623}
 --- !u!114 &2143265040 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114604540917585264, guid: 2c117ad4f4df53f4e9501f94b18e9d36,
