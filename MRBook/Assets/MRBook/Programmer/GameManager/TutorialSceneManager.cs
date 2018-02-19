@@ -10,6 +10,9 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
     HoloPuppet urashima = null;
 
     [SerializeField]
+    HoloObject book = null;
+
+    [SerializeField]
     HoloObject[] objs = null;
 
     [SerializeField]
@@ -19,10 +22,14 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
 
     public Action onReset;
 
-    [SerializeField]
-    Rigidbody urashimaFoot = null;
-
     Vector3 hitPoint;
+
+    bool hitWater = false;
+
+    [SerializeField]
+    GameObject tutorial = null;
+    [SerializeField]
+    GameObject tutorialPosition = null;
 
     protected override void Start()
     {
@@ -31,6 +38,7 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
 
         urashima.Init();
         resetManager.AddResetter(urashima.Resetter);
+        book.Init();
         for (int i = 0; i < objs.Length; i++)
         {
             objs[i].Init();
@@ -38,61 +46,51 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
         }
     }
 
+    public void SetTutorial()
+    {
+        tutorialPosition.SetActive(false);
+        tutorial.transform.SetPositionAndRotation(tutorialPosition.transform.position, tutorialPosition.transform.rotation);
+        Utilities.Delay(10, ()=> tutorial.SetActive(true), this);
+    }
+
+    public void ActiveDebugMode()
+    {
+        tutorial.SetActive(false);
+        tutorialPosition.SetActive(true);
+    }
+
     public void DeadUrashima()
     {
         HoloObjectController.I.Disable();
 
-        urashima.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
-        urashima.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
         Ray ray = new Ray(urashima.transform.position, Vector3.down);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 3, layerMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, 3, layerMask, QueryTriggerInteraction.Collide))
         {
             hitPoint = hit.point;
+            urashima.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
+            urashima.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+            Utilities.Delay((hit.distance * 1.0f) + 2.0f, () =>
+           {
+               if (hitWater)
+               {
+                   ParticleManager.I.Play("UrahsimaSoul", hit.point);
+               }
+               else
+               {
+                   ParticleManager.I.Play("UrahsimaSoul", urashima.transform.position);
+               }
+               AkSoundEngine.PostEvent("Die", gameObject);
+               OnReset();
+           }, this);
         }
-
-        //StartCoroutine(MonitorUrashima());
-    }
-
-    IEnumerator MonitorUrashima()
-    {
-        Ray ray = new Ray();
-        ray.direction = Vector3.down;
-        RaycastHit hit;
-        float hitDistance = 1f;
-
-        float timer = 0.0f;
-
-        while (true)
-        {
-            timer += Time.deltaTime;
-
-            if(timer > 0.2f)
-            {
-                urashimaFoot.AddForce(urashimaFoot.transform.right * 20.0f, ForceMode.Acceleration);
-            }
-            ray.origin = urashima.transform.position;
-
-            if (Physics.Raycast(ray, out hit, 3, layerMask))
-            {
-                if (hit.distance < hitDistance) break;
-            }
-
-            yield return null;
-        }
-
-        ParticleManager.I.Play("Splash", hit.point);
-
-        yield return new WaitForSeconds(1.0f);
-
-        OnReset();
     }
 
     public void HitWater()
     {
         ParticleManager.I.Play("Splash", hitPoint);
-        Utilities.Delay(1.0f, () => OnReset(), this);
+        AkSoundEngine.PostEvent("Splash", gameObject);
     }
 
     public void OnReset()

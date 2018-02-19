@@ -261,8 +261,8 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
     {
         ownerPuppet = (HoloPuppet)owner;
 
-        defaultRootPosition = ownerPuppet.RootObject.transform.position;
-        defaultRootRotation = ownerPuppet.RootObject.transform.rotation;
+        defaultRootPosition = ownerPuppet.RootObject.transform.localPosition;
+        defaultRootRotation = ownerPuppet.RootObject.transform.localRotation;
         defaultRootParent = ownerPuppet.RootObject.transform.parent;
     }
 
@@ -279,8 +279,8 @@ public class PuppetResetBehaviour : AbstractHoloObjResetBehaviour
     public override void OnLocationReset()
     {
         ownerPuppet.RootObject.transform.parent = defaultRootParent;
-        ownerPuppet.RootObject.transform.position = defaultRootPosition;
-        ownerPuppet.RootObject.transform.rotation = defaultRootRotation;
+        ownerPuppet.RootObject.transform.localPosition = defaultRootPosition;
+        ownerPuppet.RootObject.transform.localRotation = defaultRootRotation;
         ownerPuppet.RootObject.SetActive(true);
     }
 

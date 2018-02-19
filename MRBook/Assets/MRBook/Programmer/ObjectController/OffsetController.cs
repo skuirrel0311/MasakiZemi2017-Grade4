@@ -15,6 +15,9 @@ public class OffsetController : BaseManager<OffsetController>
     [SerializeField]
     float movePower = 0.01f;
 
+    [SerializeField]
+    float rotatePower = 1.0f;
+
     Vector3 zeroVec = Vector3.zero;
     
     public Transform bookTransform = null;
@@ -37,6 +40,23 @@ public class OffsetController : BaseManager<OffsetController>
         bookTransform.position += moveVec;
 
         if(isMainScene) BookPositionModifier.I.ModifyBookPosition(false);
+    }
+
+    public void RotateBook(int direction)
+    {
+        Vector3 vec = zeroVec;
+
+        switch((Direction)direction)
+        {
+            case Direction.Left:
+                vec.y = -rotatePower;
+                break;
+            case Direction.Right:
+                vec.y = rotatePower;
+                break;
+        }
+
+        bookTransform.rotation = Quaternion.Euler(bookTransform.eulerAngles + vec);
     }
 
     Vector3 GetMoveVec(int direction)
