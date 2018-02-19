@@ -8,6 +8,9 @@ public class GuideArrow : MonoBehaviour
     Transform startPoint = null;
 
     [SerializeField]
+    Transform wayPoint = null;
+
+    [SerializeField]
     Transform endPoint = null;
 
     [SerializeField]
@@ -48,7 +51,7 @@ public class GuideArrow : MonoBehaviour
         {
             t += Time.deltaTime;
             temp = t / speed;
-            emitter.position = Vector3.Slerp(startPoint.position, endPoint.position, temp);
+            emitter.position = GetBezierCurvePoint(startPoint.position, wayPoint.position, endPoint.position, temp);
             
             if (temp > 1.0f)
             {
@@ -68,5 +71,10 @@ public class GuideArrow : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    Vector3 GetBezierCurvePoint(Vector3 point1, Vector3 point2, Vector3 point3, float t)
+    {
+        return Vector3.Lerp(Vector3.Lerp(point1, point2, t), Vector3.Lerp(point2, point3, t), t);
     }
 }
