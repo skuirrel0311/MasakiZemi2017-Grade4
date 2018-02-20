@@ -127,7 +127,7 @@ public class ResultManager : BaseManager<ResultManager>
 
         AkSoundEngine.PostEvent("GameClear", gameObject);
 
-        Utilities.Delay(2.0f, () => ShowTitleBack());
+        Utilities.Delay(2.0f, () => ShowTitleBack(), this);
     }
 
     IEnumerator FadeInSprite(HoloSprite sprite)

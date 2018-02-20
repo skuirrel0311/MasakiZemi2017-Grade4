@@ -996,6 +996,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9972808a1667aa345b1f3def0f9337ab, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &245304244 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1075610424566302, guid: 9972808a1667aa345b1f3def0f9337ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 245304243}
 --- !u!1001 &251015741
 Prefab:
   m_ObjectHideFlags: 0
@@ -2975,11 +2980,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c14f084b28c5f454085e3bfbe61e9c46, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &811782769 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1492075649691066, guid: 9972808a1667aa345b1f3def0f9337ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 245304243}
 --- !u!1001 &820819047
 Prefab:
   m_ObjectHideFlags: 0
@@ -7550,7 +7550,7 @@ MonoBehaviour:
   controller: {fileID: 9100000, guid: 83b303364b0358843af0892c3c71a9b3, type: 2}
   defaultDisableObjects: []
   bookObjects:
-  - {fileID: 811782769}
+  - {fileID: 245304244}
   - {fileID: 533185062}
   rightSideObjectList: []
   leftSideObjectList: []
