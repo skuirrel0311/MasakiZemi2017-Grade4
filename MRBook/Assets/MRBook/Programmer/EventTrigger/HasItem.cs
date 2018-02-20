@@ -39,7 +39,7 @@ public class HasItem : MyEventTrigger
         HoloObject obj = ActorManager.I.GetObject(itemName);
 
         if (obj == null) return false;
-
+        
         item = (HoloItem)obj;
         return item != null; ;
     }

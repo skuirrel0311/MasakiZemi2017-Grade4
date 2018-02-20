@@ -33,7 +33,7 @@ public class Fader : BaseManager<Fader>
     {
         this.callback = callback;
         CurrentState = State.FadeIn;
-        fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y + 0.5f,positionModifier.bookTransform.position.y +  0.0f));
+        fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y + 0.9f,positionModifier.bookTransform.position.y -  0.01f));
     }
 
     public void FadeIn(Action callback = null)
@@ -55,7 +55,7 @@ public class Fader : BaseManager<Fader>
         }
 
         //FadeOut開始
-        fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y + 0.0f, positionModifier.bookTransform.position.y + 0.5f, 5.0f, 2.0f));
+        fadeCoroutine = StartCoroutine(Fade(positionModifier.bookTransform.position.y - 0.01f, positionModifier.bookTransform.position.y + 0.9f, 5.0f, 2.0f));
     }
 
     IEnumerator Fade(float start, float end,  float duration = 2.0f, float startDelay = 0.0f)
@@ -74,7 +74,7 @@ public class Fader : BaseManager<Fader>
 
         yield return StartCoroutine(Utilities.FloatLerp(duration, (t) =>
         {
-            float temp = Mathf.Lerp(start, end, t);
+            float temp = Mathf.Lerp(start, end, t * t);
 
             for (int i = 0; i < objList.Count; i++)
             {

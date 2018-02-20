@@ -29,7 +29,29 @@ public class ArtBookDoor : ArtBookGimmick
         Vector3 vec2 = (openPositionTransform.position - cameraPosition).normalized;
         maxCrossValue = GetCrossValue(vec1, vec2);
 
+        MainSceneManager sceneManager = MainSceneManager.I;
+
+        sceneManager.OnPlayPage += OnPlay;
+        sceneManager.OnReset += OnReset;
+        sceneManager.OnPlayEnd += (success) =>
+        {
+            if(success)
+            {
+                sceneManager.OnPlayPage -= OnPlay;
+                sceneManager.OnReset -= OnReset;
+            }
+        };
+
         base.Start();
+    }
+
+    void OnPlay()
+    {
+        eyeAnimator.gameObject.SetActive(false);
+    }
+    void OnReset()
+    {
+        eyeAnimator.gameObject.SetActive(true);
     }
 
     protected override void Update()

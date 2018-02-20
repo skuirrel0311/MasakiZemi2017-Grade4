@@ -77,6 +77,9 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     [SerializeField]
     Transform uiContainer = null;
+
+    [SerializeField]
+    GuideArrow turnPageGuide = null;
     
     public float bookOffsetCoefficient = 0.01f;
 
@@ -156,6 +159,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         if (OnPlayEnd != null) OnPlayEnd.Invoke(success);
         if (success)
         {
+            turnPageGuide.ShowGuideArrow();
             CurrentState = GameState.NextWait;
             AkSoundEngine.PostEvent("Clear_" + (currentPageIndex + 1) + "p", gameObject);
         }
@@ -164,11 +168,6 @@ public class MainSceneManager : BaseManager<MainSceneManager>
             CurrentState = GameState.Wait;
 
             AkSoundEngine.PostEvent("Mistake_" + (currentPageIndex + 1) + "p", gameObject);
-        }
-
-        if (!success)
-        {
-            //Utilities.Delay(0.2f, () => ResetPage(), this);
         }
     }
 
@@ -261,6 +260,7 @@ public class MainSceneManager : BaseManager<MainSceneManager>
         CurrentState = GameState.Next;
         MissionTextController.I.Disable();
         PageResultManager.I.Hide();
+        turnPageGuide.HideGuideArrow();
 
         if(!isFade)
         {

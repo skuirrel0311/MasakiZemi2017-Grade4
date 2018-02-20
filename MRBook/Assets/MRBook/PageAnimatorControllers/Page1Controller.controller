@@ -660,6 +660,25 @@ MonoBehaviour:
   motionName: 0
   transitionDuration: 0.1
   WwiseEventName: 
+--- !u!114 &114604496475207188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458e8b7364b67684d87f0037cfc172e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Turtle
+  wayPointNames:
+  - TurtleWayPoint1
+  - TurtleWayPoint2
+  - TurtleEndPoint
+  speed: 0.15
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114613897114082380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1009,30 +1028,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.7
---- !u!114 &114880905948364426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25062a893b1128409e0ebcd67afac38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: 1
-  targetType: 0
-  targetName: 
-  updateTargetPosition: 0
-  stopDistance: 0.05
-  moveSpeed: 0.15
-  targets:
-  - targetType: 0
-    targetName: TurtleWayPoint1
-  - targetType: 0
-    targetName: TurtleWayPoint2
-  - targetType: 0
-    targetName: TurtleEndPoint
 --- !u!114 &114882911434379910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1645,7 +1640,7 @@ AnimatorState:
   - {fileID: 114979908729363478}
   - {fileID: 114446196322029488}
   - {fileID: 114585298833225358}
-  - {fileID: 114880905948364426}
+  - {fileID: 114604496475207188}
   - {fileID: 114364736897282894}
   - {fileID: 114518586336439612}
   - {fileID: 114522424866672166}

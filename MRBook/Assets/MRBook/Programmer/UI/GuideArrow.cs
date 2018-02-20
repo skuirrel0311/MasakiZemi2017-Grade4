@@ -32,7 +32,7 @@ public class GuideArrow : MonoBehaviour
         if (autoStart) ShowGuideArrow();
     }
 
-    public void ShowGuideArrow()
+    public virtual void ShowGuideArrow()
     {
         if(moveEmitterCoroutine != null)
         {
@@ -42,7 +42,7 @@ public class GuideArrow : MonoBehaviour
         moveEmitterCoroutine = StartCoroutine(MoveEmitter());
     }
 
-    public void HideGuideArrow()
+    public virtual void HideGuideArrow()
     {
         if (moveEmitterCoroutine == null) return;
         StopCoroutine(moveEmitterCoroutine);
