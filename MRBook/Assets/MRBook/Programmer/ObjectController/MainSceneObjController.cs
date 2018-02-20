@@ -25,7 +25,7 @@ public class MainSceneObjController : HoloObjectController
     float maxDistance;
 
     BaseObjInputHandler.MakerType oldMakerType;
-
+    
     protected override void Start()
     {
         base.Start();

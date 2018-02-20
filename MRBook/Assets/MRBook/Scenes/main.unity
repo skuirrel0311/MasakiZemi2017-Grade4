@@ -707,6 +707,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26f02d09d84d79740a334652cf6a2291, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &184144980 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4060667587067906, guid: 26f02d09d84d79740a334652cf6a2291,
+    type: 2}
+  m_PrefabInternal: {fileID: 184144979}
 --- !u!1001 &189076516
 Prefab:
   m_ObjectHideFlags: 0
@@ -1532,6 +1537,10 @@ MonoBehaviour:
   - {fileID: 590094177}
   - {fileID: 1238520297}
   - {fileID: 1238520295}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 3
+  rightSideHeightOffset: 3
   objectList: []
 --- !u!4 &356696945
 Transform:
@@ -1583,6 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   movePower: 0.01
+  rotatePower: 1
   bookTransform: {fileID: 0}
 --- !u!4 &376465148
 Transform:
@@ -2445,6 +2455,10 @@ MonoBehaviour:
   bookObjects:
   - {fileID: 1407430585}
   - {fileID: 1407430584}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 5
+  rightSideHeightOffset: 1
   objectList: []
 --- !u!4 &629083180
 Transform:
@@ -3129,7 +3143,7 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
     type: 2}
-  m_PrefabInternal: {fileID: 1539780634}
+  m_PrefabInternal: {fileID: 1339448208}
 --- !u!1 &878778928 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1580516040068166, guid: b2681310c7041994a8999e7165407f7d,
@@ -3838,6 +3852,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   particleList: []
   particleInstanceList: []
+  remainParticleList: []
 --- !u!114 &1077021669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3858,6 +3873,7 @@ MonoBehaviour:
   - {fileID: 629083179}
   visibleMat: {fileID: 2100000, guid: 0fa81c2c2db3a3940b42471a2841f018, type: 2}
   uiContainer: {fileID: 1092000063}
+  bookOffsetCoefficient: 0.01
 --- !u!114 &1077021670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5148,6 +5164,73 @@ Transform:
   m_PrefabParentObject: {fileID: 4632767634033400, guid: 7d53f537c57ba5d43b9726f0cde0d64f,
     type: 2}
   m_PrefabInternal: {fileID: 1332930292}
+--- !u!1001 &1339448208
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2127131940}
+    m_Modifications:
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058034211758942, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
+        type: 2}
+      propertyPath: events.Array.data[0].onSetItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2127131941}
+    - target: {fileID: 114775927047033324, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
+        type: 2}
+      propertyPath: events.Array.data[0].onSetItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2127131941}
+    - target: {fileID: 114775927047033324, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
+        type: 2}
+      propertyPath: onGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2127131941}
+    - target: {fileID: 114733926927477016, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
+        type: 2}
+      propertyPath: startPoint
+      value: 
+      objectReference: {fileID: 184144980}
+    - target: {fileID: 114494282386007662, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
+        type: 2}
+      propertyPath: startPoint
+      value: 
+      objectReference: {fileID: 184144980}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1347367281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5569,63 +5652,6 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
---- !u!1001 &1539780634
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2127131940}
-    m_Modifications:
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021619367055608, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114058034211758942, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
-        type: 2}
-      propertyPath: events.Array.data[0].onSetItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2127131941}
-    - target: {fileID: 114775927047033324, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
-        type: 2}
-      propertyPath: events.Array.data[0].onSetItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2127131941}
-    - target: {fileID: 114775927047033324, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f,
-        type: 2}
-      propertyPath: onGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2127131941}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a7e0b5aa6ada17840a5e5cb0bfa4de1f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1563058708
 Prefab:
   m_ObjectHideFlags: 0
@@ -7524,6 +7550,10 @@ MonoBehaviour:
   bookObjects:
   - {fileID: 811782769}
   - {fileID: 533185062}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 2
+  rightSideHeightOffset: 4
   objectList: []
 --- !u!1 &2089432224
 GameObject:
@@ -7653,6 +7683,10 @@ MonoBehaviour:
   defaultDisableObjects: []
   bookObjects:
   - {fileID: 1945198542}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 4
+  rightSideHeightOffset: 2
   objectList: []
   turtle: {fileID: 1957060801}
   goldenBall: {fileID: 1930313681}
@@ -7756,6 +7790,10 @@ MonoBehaviour:
   bookObjects:
   - {fileID: 478536276}
   - {fileID: 478536275}
+  rightSideObjectList: []
+  leftSideObjectList: []
+  leftSideHeightOffset: 1
+  rightSideHeightOffset: 5
   objectList: []
   ActorContainer: {fileID: 576427974}
 --- !u!1 &2143421986

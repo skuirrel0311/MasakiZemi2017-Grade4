@@ -13,13 +13,13 @@ Prefab:
   m_IsPrefabParent: 1
 --- !u!1 &1176016245717292
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4542554253652170}
-  - component: {fileID: 114733926927477016}
+  - component: {fileID: 114494282386007662}
   m_Layer: 0
   m_Name: UrashimaPutGuide
   m_TagString: Untagged
@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1765048874461794
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +188,6 @@ Transform:
   m_Children:
   - {fileID: 4964822227905840}
   - {fileID: 4133108922898544}
-  - {fileID: 4542554253652170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -212,12 +211,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371088116507884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.192, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1.053, y: -1.0280002, z: -1.242}
+  m_LocalScale: {x: 0.10000002, y: 0.10000003, z: 0.100000046}
   m_Children: []
-  m_Father: {fileID: 4767637504040506}
-  m_RootOrder: 1
+  m_Father: {fileID: 4491188004464558}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4491188004464558
 Transform:
@@ -228,7 +227,8 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.053, y: -0.05, z: 1.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4251846552498478}
   m_Father: {fileID: 4767637504040506}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -238,14 +238,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1176016245717292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.053429484, z: -0, w: -0.99857163}
+  m_LocalPosition: {x: 3.3039439, y: -0.859, z: 0.8796816}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4740183069356408}
   - {fileID: 4659759969881814}
-  m_Father: {fileID: 4021619367055608}
-  m_RootOrder: 2
+  m_Father: {fileID: 4767637504040506}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4659759969881814
 Transform:
@@ -285,7 +285,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4491188004464558}
-  - {fileID: 4251846552498478}
+  - {fileID: 4542554253652170}
   m_Father: {fileID: 4133108922898544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -471,6 +471,24 @@ MonoBehaviour:
   inPlayLayer: 13
   overrideName: 
   fadeShader: {fileID: 0}
+--- !u!114 &114494282386007662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176016245717292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fd48263f9bc0546a6e55b02bad10ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  wayPoint: {fileID: 4659759969881814}
+  endPoint: {fileID: 4133108922898544}
+  emitter: {fileID: 4740183069356408}
+  speed: 1
+  waitTime: 2
+  autoStart: 1
 --- !u!114 &114657448544965422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,23 +501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 102470245781258066}
---- !u!114 &114733926927477016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1176016245717292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b24d5ed3d838c8448bc34ccdd489766, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  wayPoint: {fileID: 4659759969881814}
-  endPoint: {fileID: 4133108922898544}
-  emitter: {fileID: 4740183069356408}
-  speed: 1
-  waitTime: 2
 --- !u!114 &114775927047033324
 MonoBehaviour:
   m_ObjectHideFlags: 1

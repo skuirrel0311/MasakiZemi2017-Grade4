@@ -14,6 +14,22 @@ public class StartPoint : EventAreaItemSaucer
     [SerializeField]
     string mainCharacterName = "Urashima";
 
+    GameObject circle;
+
+    void Start()
+    {
+        circle = transform.GetChild(0).gameObject;
+
+        MainSceneManager.I.OnPageLoaded += OnLoaded;
+    }
+
+    void OnLoaded(BasePage page)
+    {
+        circle.SetActive(true);
+
+        MainSceneManager.I.OnPageLoaded -= OnLoaded;
+    }
+
     public override void SetCharacter(HoloCharacter character, bool showParticle = true)
     {
         if(character.GetName() == mainCharacterName)

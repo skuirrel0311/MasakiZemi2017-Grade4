@@ -14,7 +14,7 @@ public class GuideArrow : MonoBehaviour
     Transform endPoint = null;
 
     [SerializeField]
-    Transform emitter = null;
+    protected Transform emitter = null;
 
     [SerializeField]
     float speed = 1.0f;
@@ -22,23 +22,33 @@ public class GuideArrow : MonoBehaviour
     [SerializeField]
     float waitTime = 2.0f;
 
-    Coroutine moveEmitterCoroutine;
+    protected Coroutine moveEmitterCoroutine;
 
-    void Start()
+    [SerializeField]
+    bool autoStart = true;
+
+    protected virtual void Start()
     {
+        if (autoStart) ShowGuideArrow();
+    }
+
+    public void ShowGuideArrow()
+    {
+        if(moveEmitterCoroutine != null)
+        {
+            StopCoroutine(moveEmitterCoroutine);
+        }
+
         moveEmitterCoroutine = StartCoroutine(MoveEmitter());
-
-        MainSceneManager.I.OnPlayPage += OnPlay;
     }
 
-    void OnPlay()
+    public void HideGuideArrow()
     {
-        emitter.gameObject.SetActive(false);
+        if (moveEmitterCoroutine == null) return;
         StopCoroutine(moveEmitterCoroutine);
-        MainSceneManager.I.OnPlayPage -= OnPlay;
     }
 
-    IEnumerator MoveEmitter()
+    protected IEnumerator MoveEmitter()
     {
         float t = 0.0f;
         float temp = 0.0f;

@@ -77,6 +77,8 @@ public class MainSceneManager : BaseManager<MainSceneManager>
 
     [SerializeField]
     Transform uiContainer = null;
+    
+    public float bookOffsetCoefficient = 0.01f;
 
     /* メソッド */
 

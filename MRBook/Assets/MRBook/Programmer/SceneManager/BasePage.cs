@@ -115,14 +115,17 @@ public class BasePage : MonoBehaviour
 
         Vector3 upVec = Vector3.up;
 
-        for(int i = 0;i< rightSideObjectList.Count;i++)
+        float rightOffset = rightSideHeightOffset * MainSceneManager.I.bookOffsetCoefficient;
+        float leftOffset = leftSideHeightOffset * MainSceneManager.I.bookOffsetCoefficient;
+
+        for (int i = 0;i< rightSideObjectList.Count;i++)
         {
-            rightSideObjectList[i].transform.localPosition += (upVec * rightSideHeightOffset);
+            rightSideObjectList[i].transform.localPosition += (upVec * rightOffset);
         }
 
         for(int i = 0;i< leftSideObjectList.Count;i++)
         {
-            leftSideObjectList[i].transform.localPosition += (upVec * leftSideHeightOffset);
+            leftSideObjectList[i].transform.localPosition += (upVec * leftOffset);
         }
 
         for (int i = 0; i < objectList.Count; i++)
