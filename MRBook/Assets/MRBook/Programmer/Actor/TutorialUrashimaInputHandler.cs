@@ -28,26 +28,7 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
     {
         isPoped = false;
         bubble.SetActive(true);
-        TutorialSceneManager.I.onReset += OnReset;
-    }
-
-    public override bool OnClick()
-    {
-        if (!HoloObjectController.I.canClick) return false;
-
-        //もうはじけている場合は普通のやつ
-        if (isPoped) return base.OnClick();
-
-        isPoped = true;
-
-        TutorialSceneManager.I.onReset += OnReset;
-
-        //泡がはじけて下に落ちる
-        StartCoroutine(Fall());
-        bubble.SetActive(false);
-        AkSoundEngine.PostEvent("Bubble", owner.gameObject);
-
-        return true;
+        TutorialSceneManager.I.onReset -= OnReset;
     }
     
     IEnumerator Fall()
@@ -62,7 +43,7 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
         {
             //0.1ずつ下を探す
             MyNavMeshBuilder.CreateNavMesh();
-            owner.transform.position += Vector3.down * 0.01f;
+            owner.transform.position += Vector3.down * 1.2f * Time.deltaTime;
 
             //todo : 絵本よりも下に行った場合はやばいのでなにか対応が必要
 
@@ -97,9 +78,10 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
     {
         if (!isPoped)
         {
-            if (MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
-
+            isPoped = true;
+            TutorialSceneManager.I.onReset += OnReset;
             //泡がはじけて下に落ちる
+            MainSceneCursor.I.Refresh();
             StartCoroutine(Fall());
             bubble.SetActive(false);
             ParticleManager.I.Play("BubbleBreak", bubble.transform.position);
@@ -107,21 +89,6 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
             return;
         }
         base.OnInputDown(eventData);
-    }
-
-    public override void OnInputUp(InputEventData eventData)
-    {
-        if (!isPoped)
-        {
-            isPoped = true;
-            return;
-        }
-        base.OnInputUp(eventData);
-    }
-
-    public override void OnDragStart()
-    {
-        base.OnDragStart();
     }
 
     public override MakerType OnDragUpdate(HitObjType hitObjType, HoloObject hitObj)
@@ -159,7 +126,6 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("hit " + col.name);
         if (col.tag != "Water") return;
         
         TutorialSceneManager.I.HitWater();

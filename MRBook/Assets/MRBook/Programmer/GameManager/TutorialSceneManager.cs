@@ -97,24 +97,25 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
             hitPoint = hit.point;
 
             StartCoroutine(FallUrashima());
-
-           urashima.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
-           urashima.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
-           // Utilities.Delay((hit.distance * 1.0f) + 0.0f, () =>
-           //{
-           //    //urashima.gameObject.SetActive(false);
-           //    ShowUrashimaSaul(hit.point);
-           //}, this);
         }
     }
 
     IEnumerator FallUrashima()
     {
+        Debug.Log("fall in scene manager");
         float bookHeight = OffsetController.I.bookTransform.position.y - 0.2f;
+        bool enablePuppet = false;
 
         while(true)
         {
-            urashima.transform.position += Vector3.down * 0.02f;
+            urashima.transform.position += Vector3.down * Time.deltaTime;
+
+            if(!enablePuppet && urashima.transform.position.y < bookHeight + 0.5f)
+            {
+                enablePuppet = true;
+                urashima.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
+                urashima.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+            }
 
             if(urashima.transform.position.y < bookHeight)
             {
@@ -146,7 +147,6 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
 
     public void HitWater()
     {
-        //HoloObjectController.I.Disable();
         hitWater = true;
         ParticleManager.I.Play("Splash", hitPoint);
         AkSoundEngine.PostEvent("Splash", gameObject);

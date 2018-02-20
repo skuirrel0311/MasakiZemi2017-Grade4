@@ -146,8 +146,6 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
         
         isRecognizedFinger = false;
         isRecognizedHold = false;
-        isRecognizedPosCon = false;
-        isRecognizedRotCon = false;
 
         OnFlagChanged();
         base.OnSourceLost(eventData);
@@ -196,7 +194,7 @@ public class MyCursor : HoloToolkit.Unity.InputModule.Cursor
 
     }
 
-    void ResetCursorTransform()
+    protected void ResetCursorTransform()
     {
         PrimaryCursorVisual.parent = transform.GetChild(0);
         spriteRenderer.color = Color.clear;

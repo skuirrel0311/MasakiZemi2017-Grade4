@@ -77,7 +77,6 @@ public class HoloObjectController : MyObjPositionController
 
     public virtual void Disable(bool setParent = true)
     {
-
         if (targetObject != null && setParent)
         {
             targetObject.transform.parent = oldParent;

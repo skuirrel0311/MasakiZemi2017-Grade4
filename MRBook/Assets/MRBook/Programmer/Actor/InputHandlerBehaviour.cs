@@ -103,6 +103,7 @@ public class GroundingObjDragEndBehaviour : BaseImputHandlerBehaviour
     //0.1ずつ落ちて地面が近かったらAgentを有効化する
     IEnumerator Falling()
     {
+        Debug.Log("fall in input handler");
         NavMeshHit hit;
 
         float bookHeight = OffsetController.I.bookTransform.position.y;
