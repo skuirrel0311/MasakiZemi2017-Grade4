@@ -81,7 +81,6 @@ public class HoloObject : MonoBehaviour
 
         if(isMovable)
         {
-            Debug.Log(name + " get component");
             InputHandler = GetComponent<BaseObjInputHandler>();
         }
 

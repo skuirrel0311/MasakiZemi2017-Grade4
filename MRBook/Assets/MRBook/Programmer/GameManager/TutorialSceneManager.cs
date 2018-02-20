@@ -7,6 +7,14 @@ using KKUtilities;
 public class TutorialSceneManager : BaseManager<TutorialSceneManager>
 {
     [SerializeField]
+    HoloButton startButton = null;
+
+    bool isStart = false;
+
+    [SerializeField]
+    HoloButton resetButton = null;
+    
+    [SerializeField]
     HoloPuppet urashima = null;
 
     [SerializeField]
@@ -14,6 +22,9 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
 
     [SerializeField]
     HoloObject[] objs = null;
+
+    [SerializeField]
+    Transform uiContainer = null;
 
     [SerializeField]
     LayerMask layerMask;
@@ -50,13 +61,28 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
     {
         tutorialPosition.SetActive(false);
         tutorial.transform.SetPositionAndRotation(tutorialPosition.transform.position, tutorialPosition.transform.rotation);
-        Utilities.Delay(10, ()=> tutorial.SetActive(true), this);
+        uiContainer.SetPositionAndRotation(tutorialPosition.transform.position, tutorialPosition.transform.rotation);
+        Utilities.Delay(10, () =>
+        {
+            tutorial.SetActive(true);
+            if (!isStart) startButton.gameObject.SetActive(true);
+            else resetButton.gameObject.SetActive(true);
+        }, this);
     }
 
     public void ActiveDebugMode()
     {
+        if (!isStart) startButton.gameObject.SetActive(false);
+        else resetButton.gameObject.SetActive(false);
         tutorial.SetActive(false);
         tutorialPosition.SetActive(true);
+    }
+
+    public void StartTutorial()
+    {
+        isStart = true;
+        urashima.RootObject.SetActive(true);
+        resetButton.gameObject.SetActive(true);
     }
 
     public void DeadUrashima()
@@ -69,26 +95,59 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
         if (Physics.Raycast(ray, out hit, 3, layerMask, QueryTriggerInteraction.Collide))
         {
             hitPoint = hit.point;
-            urashima.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
-            urashima.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
-            Utilities.Delay((hit.distance * 1.0f) + 2.0f, () =>
-           {
-               if (hitWater)
-               {
-                   ParticleManager.I.Play("UrahsimaSoul", hit.point);
-               }
-               else
-               {
-                   ParticleManager.I.Play("UrahsimaSoul", urashima.transform.position);
-               }
-               AkSoundEngine.PostEvent("Die", gameObject);
-               OnReset();
-           }, this);
+
+            StartCoroutine(FallUrashima());
+
+           urashima.Puppet.mode = RootMotion.Dynamics.PuppetMaster.Mode.Active;
+           urashima.Puppet.state = RootMotion.Dynamics.PuppetMaster.State.Dead;
+           // Utilities.Delay((hit.distance * 1.0f) + 0.0f, () =>
+           //{
+           //    //urashima.gameObject.SetActive(false);
+           //    ShowUrashimaSaul(hit.point);
+           //}, this);
         }
+    }
+
+    IEnumerator FallUrashima()
+    {
+        float bookHeight = OffsetController.I.bookTransform.position.y - 0.2f;
+
+        while(true)
+        {
+            urashima.transform.position += Vector3.down * 0.02f;
+
+            if(urashima.transform.position.y < bookHeight)
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        urashima.RootObject.SetActive(false);
+
+        yield return new WaitForSeconds(1.0f);
+
+        ShowUrashimaSaul(hitPoint);
+    }
+
+    void ShowUrashimaSaul(Vector3 point)
+    {
+        if (hitWater)
+        {
+            ParticleManager.I.Play("UrashimaSoul", point);
+        }
+        else
+        {
+            ParticleManager.I.Play("UrashimaSoul", urashima.transform.position);
+        }
+        AkSoundEngine.PostEvent("Die", gameObject);
     }
 
     public void HitWater()
     {
+        //HoloObjectController.I.Disable();
+        hitWater = true;
         ParticleManager.I.Play("Splash", hitPoint);
         AkSoundEngine.PostEvent("Splash", gameObject);
     }
@@ -96,6 +155,9 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
     public void OnReset()
     {
         if (onReset != null) onReset.Invoke();
+        hitWater = false;
         resetManager.Reset();
+
+        Utilities.Delay(10, () => resetButton.Refresh(), this);
     }
 }

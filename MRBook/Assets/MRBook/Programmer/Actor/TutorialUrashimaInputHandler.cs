@@ -159,8 +159,9 @@ public class TutorialUrashimaInputHandler : ItemInputHandler
 
     void OnTriggerEnter(Collider col)
     {
+        Debug.Log("hit " + col.name);
         if (col.tag != "Water") return;
-
+        
         TutorialSceneManager.I.HitWater();
     }
 }

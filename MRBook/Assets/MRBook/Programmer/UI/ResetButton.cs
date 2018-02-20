@@ -8,7 +8,10 @@ public class ResetButton : HoloButton
     protected override void Start()
     {
         base.Start();
+        
         MainSceneManager sceneManager = MainSceneManager.I;
+
+        if (sceneManager == null) return;
 
         onClick.AddListener(() =>
         {
