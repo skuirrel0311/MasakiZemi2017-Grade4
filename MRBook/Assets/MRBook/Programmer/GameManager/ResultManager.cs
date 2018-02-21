@@ -8,7 +8,9 @@ using KKUtilities;
 public class ResultManager : BaseManager<ResultManager>
 {
     [SerializeField]
-    HoloText totalScore = null;
+    GameObject totalScore = null;
+    [SerializeField]
+    HoloText totalScoreText = null;
     [SerializeField]
     HoloButton titleBack = null;
     [SerializeField]
@@ -16,6 +18,8 @@ public class ResultManager : BaseManager<ResultManager>
     [SerializeField]
     DeadUrashimaFactory urashimaFactory = null;
 
+    [SerializeField]
+    NumberTexture numberTexture = null;
 
     [SerializeField]
     GameObject gameover = null;
@@ -117,9 +121,10 @@ public class ResultManager : BaseManager<ResultManager>
 
     public void ShowTotalResult()
     {
-        totalScore.CurrentText = "死んだ回数：" + deathCount + " 回";
+        numberTexture.SetNumber(deathCount);
+        totalScoreText.CurrentText = "死んだ回数：　　回";
 
-        totalScore.gameObject.SetActive(true);
+        totalScore.SetActive(true);
 
         urashimaFactory.StartFactory(deathCount);
 
