@@ -892,9 +892,10 @@ GameObject:
   - component: {fileID: 4503075934941772}
   - component: {fileID: 33562101290759944}
   - component: {fileID: 23620420867626218}
+  - component: {fileID: 114970872845415258}
   m_Layer: 0
   m_Name: ougi
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1839,9 +1840,10 @@ GameObject:
   - component: {fileID: 4984336603716450}
   - component: {fileID: 33674549777141286}
   - component: {fileID: 23801516273391158}
+  - component: {fileID: 114914120057331818}
   m_Layer: 0
   m_Name: ougi
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3045,9 +3047,10 @@ GameObject:
   - component: {fileID: 4945167452989426}
   - component: {fileID: 33792548983586294}
   - component: {fileID: 23971271416540478}
+  - component: {fileID: 114434746412575994}
   m_Layer: 0
   m_Name: ougi
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3411,9 +3414,10 @@ GameObject:
   - component: {fileID: 4771889958128256}
   - component: {fileID: 33834598735515188}
   - component: {fileID: 23515974055251636}
+  - component: {fileID: 114352479254658410}
   m_Layer: 0
   m_Name: ougi
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8216,6 +8220,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
   defaultMotionName: 0
 --- !u!114 &114143411434184188
 MonoBehaviour:
@@ -8245,6 +8250,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
   defaultMotionName: 0
 --- !u!114 &114182044512930264
 MonoBehaviour:
@@ -8279,6 +8285,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
   defaultMotionName: 0
 --- !u!114 &114227163929401854
 MonoBehaviour:
@@ -8296,6 +8303,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
   defaultMotionName: 0
 --- !u!114 &114245967309782172
 MonoBehaviour:
@@ -8345,6 +8353,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8138223246872bd4ba2cfef803c1a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114352479254658410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838886584734596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
+  fadeShader: {fileID: 0}
+  useHeightOffset: 0
 --- !u!114 &114364728756039926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8357,6 +8382,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 0.2, y: 0.3, z: 0.2}
+--- !u!114 &114434746412575994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723931108345214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
+  fadeShader: {fileID: 0}
+  useHeightOffset: 0
 --- !u!114 &114511279981601398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8818,6 +8860,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
   defaultMotionName: 0
 --- !u!114 &114882766028939046
 MonoBehaviour:
@@ -8852,6 +8895,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
   defaultMotionName: 58
   m_behavirour: {fileID: 114890856243054102}
   rootObj: {fileID: 1520109526768406}
@@ -8976,6 +9020,23 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   canMoveTarget: 1
+--- !u!114 &114914120057331818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460946184362814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
+  fadeShader: {fileID: 0}
+  useHeightOffset: 0
 --- !u!114 &114926844953167724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9004,6 +9065,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+--- !u!114 &114970872845415258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1190499135653214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68225bc5d06140646a043503d191092b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovable: 0
+  canHaveItem: 0
+  inPlayLayer: 4
+  overrideName: 
+  fadeShader: {fileID: 0}
+  useHeightOffset: 0
 --- !u!135 &135547070071923632
 SphereCollider:
   m_ObjectHideFlags: 1

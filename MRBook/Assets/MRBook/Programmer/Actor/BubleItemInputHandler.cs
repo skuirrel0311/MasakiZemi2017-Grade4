@@ -16,17 +16,31 @@ public class BubleItemInputHandler : ItemInputHandler
 
     public override void Init(HoloObject owner)
     {
-        Debug.Log("init");
         base.Init(owner);
 
         m_agent = agent;
 
-        if(bubble == null) bubble = transform.GetChild(0).gameObject;
+        if (bubble == null) bubble = transform.GetChild(0).gameObject;
+
+        if (bubble != null)
+        {
+            if (MainSceneManager.I != null)
+            {
+                bubble.gameObject.SetActive(false);
+                MainSceneManager.I.OnPageLoaded += OnPageLoaded;
+            }
+        }
+    }
+
+    void OnPageLoaded(BasePage page)
+    {
+        bubble.gameObject.SetActive(true);
+        MainSceneManager.I.OnPageLoaded -= OnPageLoaded;
     }
 
     public override void OnInputDown(InputEventData eventData)
     {
-        if(!isPoped)
+        if (!isPoped)
         {
             if (MainSceneManager.I != null) MainSceneManager.I.OnReset += OnReset;
 

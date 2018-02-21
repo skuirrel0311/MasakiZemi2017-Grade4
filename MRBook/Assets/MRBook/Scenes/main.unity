@@ -1152,6 +1152,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1001 &312856933
 Prefab:
   m_ObjectHideFlags: 0
@@ -1355,6 +1356,7 @@ MonoBehaviour:
   inPlayLayer: 4
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1001 &316202678
 Prefab:
   m_ObjectHideFlags: 0
@@ -1544,8 +1546,10 @@ MonoBehaviour:
   - {fileID: 1238520295}
   rightSideObjectList: []
   leftSideObjectList: []
+  middleSideObjectList: []
   leftSideHeightOffset: 3
   rightSideHeightOffset: 3
+  middleSideHeightOffset: 0
   objectList: []
 --- !u!4 &356696945
 Transform:
@@ -2462,8 +2466,10 @@ MonoBehaviour:
   - {fileID: 1407430584}
   rightSideObjectList: []
   leftSideObjectList: []
+  middleSideObjectList: []
   leftSideHeightOffset: 5
   rightSideHeightOffset: 1
+  middleSideHeightOffset: 0
   objectList: []
 --- !u!4 &629083180
 Transform:
@@ -3165,6 +3171,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!4 &897863364 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4580816187249182, guid: f0561b7a40604c14895660871a4469da,
@@ -3659,6 +3666,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &1019735604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4191,6 +4199,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &1141808580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4563,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0, z: 0.3263158}
+      m_Extent: {x: 0.32738093, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -4606,7 +4615,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 000000bf00000000dd12a7be000000000000803f000000000000000000000000000000bf00000000dd12a73e000000000000803f00000000000000000000803f0000003f00000000dd12a7be000000000000803f000000000000803f000000000000003f00000000dd12a73e000000000000803f000000000000803f0000803f
+    _typelessdata: 799ea7be00000000000000bf000000000000803f000000000000000000000000799ea7be000000000000003f000000000000803f00000000000000000000803f799ea73e00000000000000bf000000000000803f000000000000803f00000000799ea73e000000000000003f000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -4879,6 +4888,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!4 &1303581481 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4339775430877434, guid: fde515702ba08884e9fe09180d6577d1,
@@ -5654,6 +5664,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1001 &1563058708
 Prefab:
   m_ObjectHideFlags: 0
@@ -5850,6 +5861,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &1691762409
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,7 +6023,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5d93b2f90e6647809de6c7e543555c1d, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -6364,7 +6376,7 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 0.6526316
+  mAspectRatio: 1.5272728
   mImageTargetType: 0
   mWidth: 0.15322581
   mHeight: 0.1
@@ -6613,6 +6625,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &1904698017 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1537618964453694, guid: b2681310c7041994a8999e7165407f7d,
@@ -6634,6 +6647,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &1913404768
 GameObject:
   m_ObjectHideFlags: 0
@@ -7133,6 +7147,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &1983432817
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,8 +7569,10 @@ MonoBehaviour:
   - {fileID: 533185062}
   rightSideObjectList: []
   leftSideObjectList: []
+  middleSideObjectList: []
   leftSideHeightOffset: 2
   rightSideHeightOffset: 4
+  middleSideHeightOffset: 0
   objectList: []
 --- !u!1001 &2085341455
 Prefab:
@@ -7740,8 +7757,10 @@ MonoBehaviour:
   - {fileID: 1945198542}
   rightSideObjectList: []
   leftSideObjectList: []
+  middleSideObjectList: []
   leftSideHeightOffset: 4
   rightSideHeightOffset: 2
+  middleSideHeightOffset: 0
   objectList: []
   turtle: {fileID: 1957060801}
   goldenBall: {fileID: 1930313681}
@@ -7786,6 +7805,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!1 &2127131939
 GameObject:
   m_ObjectHideFlags: 0
@@ -7847,8 +7867,10 @@ MonoBehaviour:
   - {fileID: 478536275}
   rightSideObjectList: []
   leftSideObjectList: []
+  middleSideObjectList: []
   leftSideHeightOffset: 1
   rightSideHeightOffset: 5
+  middleSideHeightOffset: 0
   objectList: []
   ActorContainer: {fileID: 576427974}
 --- !u!1 &2143421986
