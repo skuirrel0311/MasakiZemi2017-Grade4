@@ -125,7 +125,7 @@ public class MainSceneObjController : HoloObjectController
         }
         Disable(changeParent);
 
-        if(targetMovableObject.name == "Urashima" || targetMovableObject.name == "Otohime")
+        if(hitObjType != BaseObjInputHandler.HitObjType.EventArea && (targetMovableObject.name == "Urashima" || targetMovableObject.name == "Otohime"))
         {
             ((HoloCharacter)targetMovableObject).ChangeAnimationClip(MotionName.Wait, 0.0f);
         }

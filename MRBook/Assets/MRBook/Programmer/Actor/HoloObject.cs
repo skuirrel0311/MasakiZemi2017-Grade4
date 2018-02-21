@@ -28,6 +28,8 @@ public class HoloObject : MonoBehaviour
 
     [SerializeField]
     Shader fadeShader = null;
+    
+    public bool useHeightOffset = true;
 
     [System.NonSerialized]
     public Material[] m_materials;

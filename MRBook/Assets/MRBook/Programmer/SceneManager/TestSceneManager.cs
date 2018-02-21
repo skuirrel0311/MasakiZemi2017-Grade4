@@ -58,7 +58,7 @@ public class TestSceneManager : MainSceneManager
             pages[i].PageLock(pages[i].transform.position, pages[i].transform.rotation);
         }
 
-        SetPage(currentPageIndex, false);
+        SetPage(currentPageIndex, true);
         IsGameStart = true;
     }
 

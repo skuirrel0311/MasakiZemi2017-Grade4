@@ -37,11 +37,14 @@ public class BasePage : MonoBehaviour
 
     public List<GameObject> rightSideObjectList = new List<GameObject>();
     public List<GameObject> leftSideObjectList = new List<GameObject>();
+    public List<GameObject> middleSideObjectList = new List<GameObject>();
 
     [SerializeField]
     float leftSideHeightOffset = 0.0f;
     [SerializeField]
     float rightSideHeightOffset = 0.0f;
+    [SerializeField]
+    float middleSideHeightOffset = 0.0f;
 
     //ページに存在するアンカー(何かを発生させる位置のこと)のリスト
     public Dictionary<string, Transform> targetPointDictionary = new Dictionary<string, Transform>();
@@ -117,6 +120,7 @@ public class BasePage : MonoBehaviour
 
         float rightOffset = rightSideHeightOffset * MainSceneManager.I.bookOffsetCoefficient;
         float leftOffset = leftSideHeightOffset * MainSceneManager.I.bookOffsetCoefficient;
+        float middleOffset = middleSideHeightOffset * MainSceneManager.I.bookOffsetCoefficient;
 
         for (int i = 0;i< rightSideObjectList.Count;i++)
         {
@@ -128,8 +132,15 @@ public class BasePage : MonoBehaviour
             leftSideObjectList[i].transform.localPosition += (upVec * leftOffset);
         }
 
+        for (int i = 0; i < middleSideObjectList.Count; i++)
+        {
+            middleSideObjectList[i].transform.localPosition += (upVec * middleOffset);
+        }
+
+        HoloObjResetManager resetManager = HoloObjResetManager.I;
         for (int i = 0; i < objectList.Count; i++)
         {
+            resetManager.AddResetter(objectList[i].Resetter);
             objectList[i].PageStart(pageIndex);
         }
         
@@ -139,17 +150,14 @@ public class BasePage : MonoBehaviour
     //ページに存在するActorタグのオブジェクトをDictionaryとListに格納する
     void ImportHoloObject()
     {
-        HoloObjResetManager resetManager = HoloObjResetManager.I;
-
         //非アクティブなオブジェクトを追加していく
 
         for(int i = 0;i< defaultDisableObjects.Length;i++)
         {
             HoloObject obj = defaultDisableObjects[i];
-
-            resetManager.AddResetter(obj.Resetter);
+            
             objectList.Add(obj);
-            IntoSideList(obj.gameObject);
+            if(obj.useHeightOffset) IntoSideList(obj.gameObject);
 
             objectDictionary.Add(obj.name, obj);
             if (obj.GetActorType != HoloObject.Type.Character) continue;
@@ -171,8 +179,7 @@ public class BasePage : MonoBehaviour
 
             //Debug.Log("add actor " + holoObject.name);
             objectList.Add(holoObject);
-            IntoSideList(holoObject.gameObject);
-            resetManager.AddResetter(holoObject.Resetter);
+            if (holoObject.useHeightOffset) IntoSideList(holoObject.gameObject);
 
             try
             {
@@ -253,10 +260,8 @@ public class BasePage : MonoBehaviour
         
         //Debug.Log(obj.name +  " cross = " + cross + " length = " + length);
 
-        if (Mathf.Abs(length) > 0.2f)
+        if (Mathf.Abs(length) > 0.2f && Mathf.Abs(cross) >= 0.01)
         {
-            if (Mathf.Abs(cross) <= 0.01) return;
-
             if(cross > 0)
             {
                 //左側
@@ -267,6 +272,11 @@ public class BasePage : MonoBehaviour
                 //右側
                 rightSideObjectList.Add(obj);
             }
+        }
+        else
+        {
+            //真ん中
+            middleSideObjectList.Add(obj);
         }
 
     } 
