@@ -47,6 +47,11 @@ public class HoloItem : HoloObject
     void Start()
     {
         if (defaultOwner == null) return;
+        if (defaultOwner.name == "Urashima")
+        {
+            ((CharacterItemSaucer)defaultOwner.ItemSaucer).SetItem(this, false, false);
+            return;
+        }
         defaultOwner.ItemSaucer.SetItem(this, false);
     }
 

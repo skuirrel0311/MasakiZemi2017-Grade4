@@ -124,6 +124,11 @@ public class MainSceneObjController : HoloObjectController
             changeParent = false;
         }
         Disable(changeParent);
+
+        if(targetMovableObject.name == "Urashima" || targetMovableObject.name == "Otohime")
+        {
+            ((HoloCharacter)targetMovableObject).ChangeAnimationClip(MotionName.Wait, 0.0f);
+        }
     }
 
     HoloObject GetHitHoloObject(RaycastHit hit, bool isHit)
@@ -158,6 +163,10 @@ public class MainSceneObjController : HoloObjectController
         if (!canClick) return;
         if (targetMovableObject != null) targetMovableObject.InputHandler.OnDisabled();
         targetMovableObject = obj;
+        if(targetMovableObject.name == "Urashima" || targetMovableObject.name == "Otohime")
+        {
+            ((HoloCharacter)targetMovableObject).ChangeAnimationClip(MotionName.HangFrom, 0.1f);
+        }
         base.SetTargetObject(obj);
     }
 
