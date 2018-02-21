@@ -8,6 +8,7 @@ public class BasePage : MonoBehaviour
     /// <summary>
     /// お題
     /// </summary>
+    [Multiline]
     public string missionText = "";
 
     [Multiline]

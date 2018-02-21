@@ -20,6 +20,9 @@ public class MissionTextController : BaseManager<MissionTextController>
     GameObject[] storyTextWindows = null;
 
     [SerializeField]
+    Transform staticWindowLocation = null;
+
+    [SerializeField]
     HoloText[] missionTexts = null;
 
     [SerializeField]
@@ -92,8 +95,8 @@ public class MissionTextController : BaseManager<MissionTextController>
     {
         Vector3 firstPosition = storyTextWindows[(int)Mode.Track].transform.position;
         Quaternion firstRotation = storyTextWindows[(int)Mode.Track].transform.rotation;
-        Vector3 endPosition = storyTextWindows[(int)Mode.Statics].transform.position;
-        Quaternion endRotation = storyTextWindows[(int)Mode.Statics].transform.rotation;
+        Vector3 endPosition = staticWindowLocation.position;
+        Quaternion endRotation = staticWindowLocation.rotation;
 
         bodyLoacked.enabled = false;
 
