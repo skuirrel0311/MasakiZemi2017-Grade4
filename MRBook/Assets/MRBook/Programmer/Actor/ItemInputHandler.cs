@@ -74,4 +74,10 @@ public class ItemInputHandler : HoloMovableObjInputHander
     {
 
     }
+
+    public override void SetArrowActive(bool isActive)
+    {
+        if (isActive && ownerItem.owner != null) return;
+        base.SetArrowActive(isActive);
+    }
 }

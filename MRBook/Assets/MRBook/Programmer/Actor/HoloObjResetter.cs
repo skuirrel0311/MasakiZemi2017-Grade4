@@ -224,7 +224,11 @@ public class ItemResetBehaviour : AbstractHoloObjResetBehaviour
         ownerItem.SetColliderEnable(true);
 
         if (defaultItemOwner == null) return;
-
+        if (defaultItemOwner.name == "Urashima")
+        {
+            ((CharacterItemSaucer)defaultItemOwner.ItemSaucer).SetItem(ownerItem, false, false);
+            return;
+        }
         defaultItemOwner.ItemSaucer.SetItem(ownerItem, false);
     }
 }

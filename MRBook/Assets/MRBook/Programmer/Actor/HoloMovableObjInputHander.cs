@@ -8,6 +8,9 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
     [SerializeField]
     bool isFloating = false;
 
+    [SerializeField]
+    float arrowHeight = 0.0f;
+
     public NavMeshAgent m_agent { get; protected set; }
 
     enum ColType { inPlay, inOperation }
@@ -55,7 +58,8 @@ public class HoloMovableObjInputHander : HoloObjInputHandler
         //矢印
         if (MainSceneManager.I == null) return;
         arrow = Instantiate(ActorManager.I.trianglePrefab, transform);
-        arrow.transform.localPosition = Vector3.up * m_collider.size.y * 1.0f;
+        arrow.transform.localPosition = Vector3.up * ((m_collider.size.y * 1.0f) + arrowHeight);
+
         float scale = m_collider.size.x * transform.lossyScale.x * 0.5f;
         scale = Mathf.Clamp(scale, 0.02f, 0.08f);
         arrow.transform.localScale = Vector3.one * scale * (1.0f / transform.lossyScale.x);

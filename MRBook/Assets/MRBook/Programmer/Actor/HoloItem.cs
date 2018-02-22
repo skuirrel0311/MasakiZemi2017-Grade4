@@ -9,6 +9,8 @@ public class HoloItem : HoloObject
 
     public override Type GetActorType { get { return Type.Item; } }
     protected override HoloObjResetter GetResetterInstance() { return new HoloMovableObjResetter(this); }
+    
+    public float itemTextHeight = 0.0f;
 
     //見つめてると表示されるテキスト（日本語）
     public string nameText = "";

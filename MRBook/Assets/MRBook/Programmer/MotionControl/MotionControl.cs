@@ -67,8 +67,8 @@ public enum MotionName
     HangFrom,   //持たれてぶら下がる
     StandSit_Fine_Dead, //座る→食べる→死亡
     Brutality2, //いじめる２
-    Brutality3  //いじめる３
-
+    Brutality3,  //いじめる３
+    LookInBookFishingrod
 }
 
 public static class MotionNameManager

@@ -332,6 +332,23 @@ MonoBehaviour:
   parentType: 0
   targetName: Urashima
   parentName: Turtle
+--- !u!114 &114127830641073738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5b4f33b6ebdb241b14c16f20c7442f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Urashima
+  wayPointNames:
+  - OtohimeFront
+  speed: 0.05
+  rotationSpeed: 200
+  callChangeAnimation: 1
 --- !u!114 &114128464302798020
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2578,23 +2595,6 @@ MonoBehaviour:
   isCheckNow: 1
   checkOnUpdate: 0
   paramName: Flagged
---- !u!114 &114842519715104808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458e8b7364b67684d87f0037cfc172e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Urashima
-  wayPointNames:
-  - OtohimeFront
-  speed: 0.05
-  rotationSpeed: 200
-  callChangeAnimation: 1
 --- !u!114 &114844950642657600
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -4333,7 +4333,7 @@ AnimatorState:
   - {fileID: 114698310451920628}
   - {fileID: 114845099936817992}
   - {fileID: 114954582892856128}
-  - {fileID: 114842519715104808}
+  - {fileID: 114127830641073738}
   - {fileID: 114260726258649802}
   - {fileID: 114358342193223066}
   - {fileID: 114548197374507458}

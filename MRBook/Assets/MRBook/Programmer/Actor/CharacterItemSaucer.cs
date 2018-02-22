@@ -152,6 +152,7 @@ public class CharacterItemSaucer : BaseItemSaucer
 
         item.owner = ownerCharacter;
         item.transform.parent = hand;
+        item.gameObject.layer = 2;
         item.transform.localPosition = itemData.position;
         item.transform.localEulerAngles = itemData.rotation;
         item.SetColliderEnable(false);
@@ -213,6 +214,7 @@ public class CharacterItemSaucer : BaseItemSaucer
         //ドロップする
         if (isDrop) ItemDropper.I.Drop(oldItem.owner, oldItem);
         oldItem.owner = null;
+        oldItem.gameObject.layer = 8;
         oldItem.SetColliderEnable(true);
 
         if (oldItem.name == SecretBoxName)

@@ -79,7 +79,7 @@ public class ItemText : MonoBehaviour
 
         //Debug.Log("height = " + height);
 
-        itemTextPosition.y += height;
+        itemTextPosition.y += height + item.itemTextHeight;
         //float scale = item.InputHandler.m_collider.size.x * item.transform.lossyScale.x * 0.1f;
         //Debug.Log(item.name + " = " + item.InputHandler.m_collider.size.x + " * " + item.transform.lossyScale.x + " * 0.1 = " + scale);
         //scale = Mathf.Clamp(scale, 0.02f, 0.08f);

@@ -1110,6 +1110,7 @@ MonoBehaviour:
   overrideName: Food
   fadeShader: {fileID: 0}
   useHeightOffset: 1
+  itemTextHeight: -0.05
   nameText: "\u5317\u4EAC\u30C0\u30C3\u30AF"
   explanatoryText: "\u8089\u3067\u306F\u306A\u304F\u76AE\u3092\u98DF\u3079\u308B\u9AD8\u7D1A\u6599\u7406\u3002\r\n\u6D66\u5CF6\u306F\u98DF\u3079\u65B9\u304C\u5206\u304B\u3089\u306A\u3055\u305D\u3046\u3002"
   forHand: 0
@@ -1132,6 +1133,7 @@ MonoBehaviour:
   overrideName: Food
   fadeShader: {fileID: 0}
   useHeightOffset: 1
+  itemTextHeight: -0.04
   nameText: "\u30C1\u30E3\u30FC\u30CF\u30F3"
   explanatoryText: "\u5375\u3068\u3054\u98EF\u3092\u7092\u3081\u305F\u6599\u7406\u3002\r\n\u5BB6\u3067\u3082\u7C21\u5358\u306B\u4F5C\u308C\u3066\u7F8E\u5473\u3057\u3044\u3002"
   forHand: 0
@@ -1149,6 +1151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  arrowHeight: -0.01
   agent: {fileID: 195101240084434440}
   bubble: {fileID: 0}
 --- !u!114 &114274575540296774
@@ -1168,6 +1171,7 @@ MonoBehaviour:
   overrideName: Food
   fadeShader: {fileID: 0}
   useHeightOffset: 1
+  itemTextHeight: -0.04
   nameText: "\u515C\u713C\u304D"
   explanatoryText: "\u5DE8\u5927\u9B5A\u306E\u982D\u3092\u713C\u3044\u305F\u6599\u7406\u3002\r\n\u30C7\u30AB\u3044\u9AA8\u304C\u5165\u3063\u3066\u308B\u3002"
   forHand: 0
@@ -1185,6 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  arrowHeight: -0.05
   agent: {fileID: 195914452393719794}
   bubble: {fileID: 0}
 --- !u!114 &114429732912811956
@@ -1216,6 +1221,7 @@ MonoBehaviour:
   overrideName: Food
   fadeShader: {fileID: 0}
   useHeightOffset: 1
+  itemTextHeight: -0.06
   nameText: "\u6843\u30DE\u30F3"
   explanatoryText: "\u6843\u306E\u5F62\u3092\u3057\u305F\u9945\u982D\u3002\r\n\u98DF\u3079\u308B\u3068\u731B\u70C8\u306B\u98F2\u307F\u7269\u304C\u6B32\u3057\u304F\u306A\u308B\u3002"
   forHand: 0
@@ -1245,6 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  arrowHeight: -0.1
 --- !u!114 &114644072241976044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1262,6 +1269,7 @@ MonoBehaviour:
   overrideName: Food
   fadeShader: {fileID: 0}
   useHeightOffset: 1
+  itemTextHeight: -0.06
   nameText: "\u30A8\u30D3\u30C1\u30EA"
   explanatoryText: "\u9AD8\u7D1A\u306A\u30A8\u30D3\u3092\u51C4\u304F\u8F9B\u3081\u306B\u7092\u3081\u305F\u6599\u7406\u3002\r\n\u5B9F\u306F\u65E5\u672C\u306E\u5275\u4F5C\u4E2D\u83EF\u3002"
   forHand: 0
@@ -1279,6 +1287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  arrowHeight: -0.01
   agent: {fileID: 195269116558106194}
   bubble: {fileID: 0}
 --- !u!114 &114728330723842846
@@ -1298,6 +1307,7 @@ MonoBehaviour:
   overrideName: 
   fadeShader: {fileID: 0}
   useHeightOffset: 1
+  itemTextHeight: 0
   nameText: "\u91E3\u7AFF"
   explanatoryText: "\u68D2\u3067\u306F\u306A\u304F\u6D66\u5CF6\u306E\u611B\u7528\u306E\u91E3\u7AFF\u3002\r\n\u8CEA\u7D20\u3060\u304C\u4E08\u592B\u3002"
   forHand: 0
@@ -1315,6 +1325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  arrowHeight: -0.01
   agent: {fileID: 195652916990244820}
   bubble: {fileID: 0}
 --- !u!114 &114834358923117852
@@ -1377,6 +1388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloating: 0
+  arrowHeight: -0.01
   agent: {fileID: 195031953985767730}
   bubble: {fileID: 0}
 --- !u!135 &135304083397370252
@@ -1519,7 +1531,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.2
+  m_Height: 0.1
   m_BaseOffset: 0.075
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
