@@ -9,8 +9,6 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
     [SerializeField]
     HoloButton startButton = null;
 
-    bool isStart = false;
-
     [SerializeField]
     HoloButton resetButton = null;
     
@@ -65,22 +63,22 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
         Utilities.Delay(10, () =>
         {
             tutorial.SetActive(true);
-            if (!isStart) startButton.gameObject.SetActive(true);
-            else resetButton.gameObject.SetActive(true);
+            startButton.gameObject.SetActive(true);
+            startButton.Refresh();
         }, this);
     }
 
     public void ActiveDebugMode()
     {
-        if (!isStart) startButton.gameObject.SetActive(false);
-        else resetButton.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
+        resetButton.gameObject.SetActive(false);
+        urashima.RootObject.SetActive(false);
         tutorial.SetActive(false);
         tutorialPosition.SetActive(true);
     }
 
     public void StartTutorial()
     {
-        isStart = true;
         urashima.RootObject.SetActive(true);
         resetButton.gameObject.SetActive(true);
     }
@@ -102,7 +100,6 @@ public class TutorialSceneManager : BaseManager<TutorialSceneManager>
 
     IEnumerator FallUrashima()
     {
-        Debug.Log("fall in scene manager");
         float bookHeight = OffsetController.I.bookTransform.position.y - 0.2f;
         bool enablePuppet = false;
 
