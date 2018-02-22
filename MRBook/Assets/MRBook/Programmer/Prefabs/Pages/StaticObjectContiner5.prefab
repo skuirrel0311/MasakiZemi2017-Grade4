@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 114156129865657986}
   m_Layer: 0
   m_Name: Rack
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -645,7 +645,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 03e9c11133e9bce46a1626e06439cacd, type: 2}
+  - {fileID: 2100000, guid: 0fa81c2c2db3a3940b42471a2841f018, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -830,7 +830,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1883798781076924}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -1154,6 +1154,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 4800000, guid: e19eb652617e62948a8ad48acc0bcc12, type: 3}
+  useHeightOffset: 1
 --- !u!114 &114054139666232226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,6 +1193,7 @@ MonoBehaviour:
   inPlayLayer: 4
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!114 &114183179586711796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1219,6 +1221,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!114 &114185327585273344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1235,6 +1238,7 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!114 &114276554154851242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1251,6 +1255,7 @@ MonoBehaviour:
   inPlayLayer: 4
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
 --- !u!114 &114342416725051706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1278,3 +1283,4 @@ MonoBehaviour:
   inPlayLayer: 8
   overrideName: 
   fadeShader: {fileID: 0}
+  useHeightOffset: 1
