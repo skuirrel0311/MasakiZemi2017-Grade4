@@ -17,7 +17,9 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     [SerializeField]
     float positionCheckInterval = 1.0f;
 
-    Vector3 oldWorldAnchorPosition;
+    MainSceneManager sceneManager;
+
+    Vector3 oldPagePosition;
 
     const string saveBookPositionXKey = "BookPositionX";
     const string saveBookPositionYKey = "BookPositionY";
@@ -26,11 +28,12 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     const string saveBookRotationYKey = "BookRotationY";
     const string saveBookRotationZKey = "BookRotationZ";
 
+    public Transform currentPageTransform;
+
     protected override void Start()
     {
 #if !UNITY_EDITOR
         StartCoroutine(MonitorWorldAnchor());
-        oldWorldAnchorPosition = worldAnchor.transform.position;
 #endif
         pagePosition = bookTransform.position;
         base.Start();
@@ -81,6 +84,13 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     {
         WaitForSeconds wait = new WaitForSeconds(positionCheckInterval);
 
+        while(MainSceneManager.I == null)
+        {
+            yield return wait;
+        }
+
+        sceneManager = MainSceneManager.I;
+
         while (true)
         {
             yield return wait;
@@ -90,7 +100,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
                 ModifyBookPosition(false);
                 Debug.Log("modify");
             }
-            oldWorldAnchorPosition = worldAnchor.transform.position;
+            oldPagePosition = sceneManager.pages[sceneManager.currentPageIndex].transform.position;
         }
     }
 
@@ -98,7 +108,7 @@ public class BookPositionModifier : BaseManager<BookPositionModifier>
     {
         float temp = 0.3f;
 
-        Vector3 difVec = oldWorldAnchorPosition - worldAnchor.transform.position;
+        Vector3 difVec = oldPagePosition - sceneManager.pages[sceneManager.currentPageIndex].transform.position;
 
         if (Mathf.Abs(difVec.x) > temp) return true;
         if (Mathf.Abs(difVec.y) > temp) return true;
