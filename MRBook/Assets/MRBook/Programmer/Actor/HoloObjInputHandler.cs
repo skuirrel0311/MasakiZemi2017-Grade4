@@ -82,7 +82,7 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler, IInputHand
     //指が倒された
     public virtual void OnInputDown(InputEventData eventData)
     {
-        if (objController == null) return;
+        if (objController == null　|| objController.canClick) return;
         objController.SetTargetObject(owner);
         Utilities.Delay(1, () => objController.OnInputDown(eventData), this);
     }
@@ -90,7 +90,7 @@ public class BaseObjInputHandler : MonoBehaviour, IInputClickHandler, IInputHand
     //指が持ち上げられた
     public virtual void OnInputUp(InputEventData eventData)
     {
-        if (objController == null) return;
+        if (objController == null || objController.canClick) return;
         objController.OnInputUp(eventData);
     }
 
