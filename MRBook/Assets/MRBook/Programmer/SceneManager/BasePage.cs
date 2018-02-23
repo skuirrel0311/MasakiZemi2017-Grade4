@@ -16,6 +16,9 @@ public class BasePage : MonoBehaviour
 
     [Multiline]
     public string storyEndText = "";
+    
+    [Multiline]
+    public string[] hintTexts = null;
 
     public int lifePoint = 3;
 

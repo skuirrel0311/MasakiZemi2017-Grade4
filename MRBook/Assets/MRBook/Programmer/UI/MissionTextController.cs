@@ -115,6 +115,7 @@ public class MissionTextController : BaseManager<MissionTextController>
 
     void ResetText()
     {
+        hintText.gameObject.SetActive(false);
         endText.gameObject.SetActive(true);
         missionTexts[(int)Mode.Statics].gameObject.SetActive(true);
         storyText.CurrentText = "";
@@ -130,5 +131,11 @@ public class MissionTextController : BaseManager<MissionTextController>
         {
             storyText.CurrentText = storyText.CurrentText + '\n' + text;
         }
+    }
+
+    public void SetHint(string text)
+    {
+        hintText.gameObject.SetActive(true);
+        hintText.CurrentText = text;
     }
 }
